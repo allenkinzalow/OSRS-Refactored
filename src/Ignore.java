@@ -24,7 +24,7 @@ public class Ignore {
       return var3.method356(var1, 143975474);
    }
 
-   static final void method397(RSInterface[] components, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+   static final void buildRightClickMenu(RSInterface[] components, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       for(int componentID = 0; componentID < components.length; ++componentID) {
          RSInterface component = components[componentID];
          if(null != component && (!component.aBool1855 || 0 == component.componentType * 942877543 || component.hasScript || Class32.method576(component, -1267315198) != 0 || Client.aClass108_Sub17_2878 == component) && var1 == component.hoverPopup * -867206361 && (!component.aBool1855 || !ClientScriptMap.method2161(component, (byte)8))) {
@@ -107,10 +107,10 @@ public class Ignore {
                         int interactableID = menuHash >> 14 & 32767;
                         if(var21 != menuHash) {
                            var21 = menuHash;
-                           if(2 == interactionMenuType && Class56.gameScene.method431(Class108_Sub20_Sub2.plane * -570926309, xPos, yPos, menuHash) >= 0) {
+                           if(2 == interactionMenuType && Class56.gameScene.method431(VarpBit.plane * -570926309, xPos, yPos, menuHash) >= 0) {
                               ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(interactableID, (byte)0);
                               if(null != objectDef.configChangeDest) {
-                                 objectDef = objectDef.method2184((byte)-49);
+                                 objectDef = objectDef.getDefinitionForStatus((byte)-49);
                               }
 
                               if(objectDef == null) {
@@ -216,7 +216,7 @@ public class Ignore {
                            }
 
                            if(3 == interactionMenuType) {
-                              Deque groundItems = Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][xPos][yPos];
+                              Deque groundItems = Client.groundItemArray[VarpBit.plane * -570926309][xPos][yPos];
                               if(null != groundItems) {
                                  for(Item item = (Item)groundItems.method1332(); null != item; item = (Item)groundItems.method1342()) {
                                     ItemDefinition itemDef = AnimationDefinition.getItemDefinition(item.itemID * -1672318173, -873033053);
@@ -281,9 +281,9 @@ public class Ignore {
                         continue;
                      }
 
-                     method397(components, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.anInt1785 * -643576081, 66663869);
+                     buildRightClickMenu(components, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.anInt1785 * -643576081, 66663869);
                      if(component.aClass108_Sub17Array1879 != null) {
-                        method397(component.aClass108_Sub17Array1879, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.anInt1785 * -643576081, 121975215);
+                        buildRightClickMenu(component.aClass108_Sub17Array1879, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.anInt1785 * -643576081, 121975215);
                      }
 
                      Class108_Sub10 var37 = (Class108_Sub10) Client.aClass101_2866.get((long) (component.interfaceHash * -1081473899));
@@ -297,7 +297,7 @@ public class Ignore {
 
                         var24 = var37.anInt1653 * 1557246219;
                         if(AbstractIndex.method1073(var24, 1046680614)) {
-                           method397(RSInterface.interface_cache[var24], -1, var13, var19, var11, var20, var18, var14, -1200460421);
+                           buildRightClickMenu(RSInterface.interface_cache[var24], -1, var13, var19, var11, var20, var18, var14, -1200460421);
                         }
                      }
                   }
@@ -716,6 +716,6 @@ public class Ignore {
    }
 
    public static void method399(AbstractIndex var0, byte var1) {
-      Class108_Sub20_Sub2.aClass74_1951 = var0;
+      VarpBit.aClass74_1951 = var0;
    }
 }

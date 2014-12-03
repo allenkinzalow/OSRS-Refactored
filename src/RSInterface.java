@@ -625,7 +625,7 @@ public class RSInterface extends Node {
       } else {
          RSFont font = (RSFont)fontMap.get((long)(this.fontID * 1523886561));
          if(font == null) {
-            font = ItemDefinition.loadFont(aClass74_1765, Class108_Sub20_Sub2.aClass74_1954, this.fontID * 1523886561, 0, 1909425233);
+            font = ItemDefinition.loadFont(aClass74_1765, VarpBit.aClass74_1954, this.fontID * 1523886561, 0, 1909425233);
             if(null != font) {
                fontMap.put(font, (long)(this.fontID * 1523886561));
             } else {

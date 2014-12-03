@@ -30,9 +30,9 @@ public class Class104 {
    }
 
    static final void spawnGroundItem(int x, int y, byte var2) {
-      Deque itemDeque = Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][x][y];
+      Deque itemDeque = Client.groundItemArray[VarpBit.plane * -570926309][x][y];
       if(null == itemDeque) {
-         Class56.gameScene.removeGroundItemTile(Class108_Sub20_Sub2.plane * -570926309, x, y);
+         Class56.gameScene.removeGroundItemTile(VarpBit.plane * -570926309, x, y);
       } else {
          long maxValue = -99999999L;
          Item topGroundItem = null;
@@ -52,7 +52,7 @@ public class Class104 {
          }
 
          if(null == topGroundItem) {
-            Class56.gameScene.removeGroundItemTile(Class108_Sub20_Sub2.plane * -570926309, x, y);
+            Class56.gameScene.removeGroundItemTile(VarpBit.plane * -570926309, x, y);
          } else {
             itemDeque.insertFront(topGroundItem);
             Item firstItem = null;
@@ -71,7 +71,7 @@ public class Class104 {
             }
 
             int hash = 1610612736 + x + (y << 7);
-            Class56.gameScene.addGroundItemTile(Class108_Sub20_Sub2.plane * -570926309, x, y, ClientScript.getFloorDrawHeight(x * 128 + 64, 64 + y * 128, Class108_Sub20_Sub2.plane * -570926309, 1084393702), topGroundItem, hash, firstItem, secondItem);
+            Class56.gameScene.addGroundItemTile(VarpBit.plane * -570926309, x, y, ClientScript.getFloorDrawHeight(x * 128 + 64, 64 + y * 128, VarpBit.plane * -570926309, 1084393702), topGroundItem, hash, firstItem, secondItem);
          }
       }
    }

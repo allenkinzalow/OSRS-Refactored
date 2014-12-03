@@ -7,7 +7,7 @@ import java.util.zip.CRC32;
  */
 public class CacheIndex extends AbstractIndex {
 
-   int anInt1712;
+   int indexID;
    volatile boolean[] aBoolArray1713;
    boolean aBool1714 = false;
    volatile boolean aBool1715 = false;
@@ -21,14 +21,14 @@ public class CacheIndex extends AbstractIndex {
 
 
    void method1003(int archiveID, int var2) {
-      Class23.method342(this.anInt1712 * 663669877, archiveID, (byte)2);
+      Class23.method342(this.indexID * 663669877, archiveID, (byte)2);
    }
  
    void submitArchiveRequest(int archiveID, int var2) {
       if(this.aClass59_1719 != null && null != this.aBoolArray1713 && this.aBoolArray1713[archiveID]) {
          RegionReference.method587(archiveID, this.aClass59_1719, this, 1473251475);
       } else { 
-         GroundItem.submitJs5Request(this, this.anInt1712 * 663669877, archiveID, this.anIntArray933[archiveID], (byte) 2, true, (byte) 58);
+         GroundItem.submitJs5Request(this, this.indexID * 663669877, archiveID, this.anIntArray933[archiveID], (byte) 2, true, (byte) 58);
       }
    }
 
@@ -36,9 +36,9 @@ public class CacheIndex extends AbstractIndex {
       this.anInt1717 = var1 * -1492563333;
       this.anInt1720 = var2 * 1660478651;
       if(this.aClass59_1716 != null) {
-         RegionReference.method587(this.anInt1712 * 663669877, this.aClass59_1716, this, 2119283429);
+         RegionReference.method587(this.indexID * 663669877, this.aClass59_1716, this, 2119283429);
       } else {
-         GroundItem.submitJs5Request(this, 255, this.anInt1712 * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 41);
+         GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 41);
       }
    }
 
@@ -80,7 +80,7 @@ public class CacheIndex extends AbstractIndex {
    }
 
    int method1897(int var1, int var2) {
-      return this.archiveArray[var1] == null?(!this.aBoolArray1713[var1]?NPC.method3169(this.anInt1712 * 663669877, var1, -1749788887):100):100;
+      return this.archiveArray[var1] == null?(!this.aBoolArray1713[var1]?NPC.method3169(this.indexID * 663669877, var1, -1749788887):100):100;
    }
 
    public int getTotalCompletion(int var1) {
@@ -109,7 +109,7 @@ public class CacheIndex extends AbstractIndex {
       } else if(this.archiveArray != null) {
          return 99;
       } else {
-         int var2 = NPC.method3169(255, this.anInt1712 * 663669877, -1337521135);
+         int var2 = NPC.method3169(255, this.indexID * 663669877, -1337521135);
          if(var2 >= 100) {
             var2 = 99;
          }
@@ -124,7 +124,7 @@ public class CacheIndex extends AbstractIndex {
             throw new RuntimeException();
          } else {
             if(null != this.aClass59_1716) {
-               int var14 = this.anInt1712 * 663669877;
+               int var14 = this.indexID * 663669877;
                IndexTable var15 = this.aClass59_1716;
                Class108_Sub16 var16 = new Class108_Sub16();
                var16.anInt1759 = 0;
@@ -173,7 +173,7 @@ public class CacheIndex extends AbstractIndex {
          if(this.aBool1715) {
             throw new RuntimeException();
          } else if(var3 == null) {
-            GroundItem.submitJs5Request(this, 255, this.anInt1712 * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 122);
+            GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 122);
          } else {
             aCRC32_1718.reset();
             aCRC32_1718.update(var3, 0, var3.length);
@@ -192,7 +192,7 @@ public class CacheIndex extends AbstractIndex {
                   this.method1002(var3, -1942605956);
                   this.method1895(-983603587);
                } else {
-                  GroundItem.submitJs5Request(this, 255, this.anInt1712 * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 80);
+                  GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 80);
                }
             }
          }
@@ -214,13 +214,13 @@ public class CacheIndex extends AbstractIndex {
             } else {
                this.aBoolArray1713[var2] = false;
                if(this.aBool1714 || var4) {
-                  GroundItem.submitJs5Request(this, this.anInt1712 * 663669877, var2, this.anIntArray933[var2], (byte) 2, var4, (byte) 30);
+                  GroundItem.submitJs5Request(this, this.indexID * 663669877, var2, this.anIntArray933[var2], (byte) 2, var4, (byte) 30);
                }
             }
          } else {
             this.aBoolArray1713[var2] = false;
             if(this.aBool1714 || var4) {
-               GroundItem.submitJs5Request(this, this.anInt1712 * 663669877, var2, this.anIntArray933[var2], (byte) 2, var4, (byte) 20);
+               GroundItem.submitJs5Request(this, this.indexID * 663669877, var2, this.anIntArray933[var2], (byte) 2, var4, (byte) 20);
             }
          }
       }
@@ -230,8 +230,8 @@ public class CacheIndex extends AbstractIndex {
       super(var4, var5);
       this.aClass59_1719 = var1;
       this.aClass59_1716 = var2;
-      this.anInt1712 = var3 * -1845517347;
+      this.indexID = var3 * -1845517347;
       this.aBool1714 = var6;
-      Class84.method1119(this, this.anInt1712 * 663669877, -252987119);
+      Class84.method1119(this, this.indexID * 663669877, -252987119);
    }
 }

@@ -146,18 +146,18 @@ public class ChatMessagesContainer {
 		return var1 >= 0 && var1 < this.lastMessageIndex * 993019301 ? this.chatMessages[var1] : null;
 	}
 
-	public static Class108_Sub20_Sub2 method358(int fileID, int var1) {
-		Class108_Sub20_Sub2 var2 = (Class108_Sub20_Sub2) Class108_Sub20_Sub2.aClass106_1955.get((long) fileID);
+	public static VarpBit method358(int fileID, int var1) {
+		VarpBit var2 = (VarpBit) VarpBit.aClass106_1955.get((long) fileID);
 		if (null != var2) {
 			return var2;
 		} else {
-			byte[] var3 = Class108_Sub20_Sub2.aClass74_1951.getFile(14, fileID, (byte) 7);
-			var2 = new Class108_Sub20_Sub2();
+			byte[] var3 = VarpBit.aClass74_1951.getFile(14, fileID, (byte) 7);
+			var2 = new VarpBit();
 			if (var3 != null) {
 				var2.decode(new RSByteBuffer(var3), (short) 5866);
 			}
 
-			Class108_Sub20_Sub2.aClass106_1955.put(var2, (long) fileID);
+			VarpBit.aClass106_1955.put(var2, (long) fileID);
 			return var2;
 		}
 	}

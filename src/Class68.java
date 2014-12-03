@@ -24,25 +24,25 @@ public class Class68 {
       SpotAnim.spotAnimCache.method1371();
       SpotAnim.spotAnimRasterizerMap.method1371();
       Class5.method98(1194839351);
-      Class108_Sub20_Sub6.aClass106_2040.method1371();
+      Varp.varpCacheMap.method1371();
       EquipmentKit.equipmentMap.method1371();
       RSInterface.spriteMap.method1371();
       RSInterface.interfaceMediaMap.method1371();
       RSInterface.fontMap.method1371();
       ((TextureLoader)Rasterizer3D.anInterface2_2501).method379(304324233);
       ClientScriptDefinition.clientScriptMap.method1371();
-      Projectile.skeletonIndex.method1017(-563500780);
-      Class108_Sub10.skinIndex.method1017(-1872137171);
-      FloorDefinition.interfaceIndex.method1017(-1461018176);
-      Class118.soundEffectsIndex_1.method1017(-1707603336);
-      PingRequester.landscapeIndex.method1017(-1525003540);
-      Friend.musicIndex_1.method1017(-1673169891);
-      Class47.modelIndex.method1017(-1724607254);
-      Class23.spriteIndex.method1017(-1262001320);
-      Class4.textureIndex.method1017(-627064502);
-      RuntimeException_Sub1.huffmanIndex.method1017(-2010882466);
-      ClientParameter.musicIndex_2.method1017(-779015851);
-      Class108_Sub13.clientScriptIndex.method1017(-1143832158);
+      Projectile.skeletonIndex.resetCachedIndex(-563500780);
+      Class108_Sub10.skinIndex.resetCachedIndex(-1872137171);
+      FloorDefinition.interfaceIndex.resetCachedIndex(-1461018176);
+      Class118.soundEffectsIndex_1.resetCachedIndex(-1707603336);
+      PingRequester.landscapeIndex.resetCachedIndex(-1525003540);
+      Friend.musicIndex_1.resetCachedIndex(-1673169891);
+      Class47.modelIndex.resetCachedIndex(-1724607254);
+      Class23.spriteIndex.resetCachedIndex(-1262001320);
+      Class4.textureIndex.resetCachedIndex(-627064502);
+      RuntimeException_Sub1.huffmanIndex.resetCachedIndex(-2010882466);
+      ClientParameter.musicIndex_2.resetCachedIndex(-779015851);
+      Class108_Sub13.clientScriptIndex.resetCachedIndex(-1143832158);
    }
 
    static void method930(int var0) {

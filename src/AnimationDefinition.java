@@ -240,8 +240,8 @@ public class AnimationDefinition extends CacheableNode {
          }
 
          definition.method2089((byte)-97);
-         if(definition.certTemplate * -910205763 != -1) {
-            definition.method2123(getItemDefinition(definition.certTemplate * -910205763, -702304258), getItemDefinition(definition.certLink * -616959653, -471384956), 2075734647);
+         if(definition.notedTemplate * -910205763 != -1) {
+            definition.method2123(getItemDefinition(definition.notedTemplate * -910205763, -702304258), getItemDefinition(definition.notedID * -616959653, -471384956), 2075734647);
          }
 
          if(!ItemDefinition.aBool1974 && definition.members) {

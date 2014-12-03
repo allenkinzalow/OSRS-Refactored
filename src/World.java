@@ -30,7 +30,7 @@ public class World {
          if(var3 >= 1) {
             if(var2 <= 102) {
                if(var3 <= 102) {
-                  if(!Client.lowMemory || Class108_Sub20_Sub2.plane * -570926309 == var0) {
+                  if(!Client.lowMemory || VarpBit.plane * -570926309 == var0) {
                      int var15 = 0;
                      boolean var19 = true;
                      boolean var22 = false;

@@ -22,7 +22,7 @@ public final class Class108_Sub6 extends Node {
 
    void method1666(int var1) {
       int var2 = this.anInt1601 * -2120283541;
-      ObjectDefinition var3 = this.aClass108_Sub20_Sub8_1599.method2184((byte)46);
+      ObjectDefinition var3 = this.aClass108_Sub20_Sub8_1599.getDefinitionForStatus((byte)46);
       if(null != var3) {
          this.anInt1601 = var3.anInt2110 * -551779905;
          this.anInt1591 = var3.anInt2083 * -973903232;

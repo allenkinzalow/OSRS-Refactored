@@ -85,19 +85,19 @@ public final class WallDecoration {
 
    }
 
-   static boolean method339(String name, int var1) {
-      if(null == name) {
+   static boolean isOnIgnore(String rawUsername, int var1) {
+      if(null == rawUsername) {
          return false; 
       } else {
-         String var2 = Class108_Sub10.method1683(name, UnderlayDefinition.aClass116_2142, -1906056421);
+         String decodedUsername = Class108_Sub10.method1683(rawUsername, UnderlayDefinition.aClass116_2142, -1906056421);
 
          for(int var4 = 0; var4 < Client.ignoreListCount * -1283681697; ++var4) {
-            Ignore var3 = Client.ignoreList[var4];
-            if(var2.equalsIgnoreCase(Class108_Sub10.method1683(var3.username, UnderlayDefinition.aClass116_2142, -1974944439))) {
+            Ignore ignore = Client.ignoreList[var4];
+            if(decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(ignore.username, UnderlayDefinition.aClass116_2142, -1974944439))) {
                return true;
             }
 
-            if(var2.equalsIgnoreCase(Class108_Sub10.method1683(var3.aString387, UnderlayDefinition.aClass116_2142, -1976347131))) {
+            if(decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(ignore.aString387, UnderlayDefinition.aClass116_2142, -1976347131))) {
                return true;
             }
          }
