@@ -41,10 +41,10 @@ public class ItemDefinition extends CacheableNode {
 	int femaleHeadModel2;
 	int[] countObj;
 	int femaleModel2;
-	public int notedID;
+	public int certLink;
 	int femaleModel0;
 	int resizeX;
-	public int notedTemplate;
+	public int certTemplate;
 	public int itemID;
 	public int ambient;
 	public int contrast;
@@ -55,7 +55,7 @@ public class ItemDefinition extends CacheableNode {
 
 
 	public static RSFont loadFont(AbstractIndex spriteIndex, AbstractIndex fontIndex, int archiveID, int fileID, int var4) {
-		if (!FriendsChatMember.method1686(spriteIndex, archiveID, fileID, -930113977)) {
+		if (!Class108_Sub11.method1686(spriteIndex, archiveID, fileID, -930113977)) {
 			return null;
 		} else {
 			byte[] fontData = fontIndex.getFile(archiveID, fileID, (byte) 7);
@@ -357,9 +357,9 @@ public class ItemDefinition extends CacheableNode {
 				} else if (opcode == 95) {
 					this.zan2d = buffer.readUShort(374907387) * -1107934227;
 				} else if (97 == opcode) {
-					this.notedID = buffer.readUShort(152003485) * -617294125;
+					this.certLink = buffer.readUShort(152003485) * -617294125;
 				} else if (98 == opcode) {
-					this.notedTemplate = buffer.readUShort(-1073744203) * 1015185045;
+					this.certTemplate = buffer.readUShort(-1073744203) * 1015185045;
 				} else if (opcode >= 100 && opcode < 110) {
 					if (this.countObj == null) {
 						this.countObj = new int[10];
@@ -444,8 +444,8 @@ public class ItemDefinition extends CacheableNode {
 		this.maleHeadModel2 = 1892427331;
 		this.femaleHeadModel = -728410711;
 		this.femaleHeadModel2 = -1395292373;
-		this.notedID = 617294125;
-		this.notedTemplate = -1015185045;
+		this.certLink = 617294125;
+		this.certTemplate = -1015185045;
 		this.resizeX = 501743232;
 		this.resizeY = -251078272;
 		this.resizeZ = 1091385728;
@@ -597,7 +597,7 @@ public class ItemDefinition extends CacheableNode {
 				int var9 = Client.packetBuffer.position * 798331555;
 				if (null != player.playerName && null != player.bodyEquipmentKit) {
 					boolean var10 = false;
-					if (var6 <= 1 && WallDecoration.isOnIgnore(player.playerName, 1393039656)) {
+					if (var6 <= 1 && WallDecoration.method339(player.playerName, 1393039656)) {
 						var10 = true;
 					}
 

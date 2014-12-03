@@ -198,21 +198,21 @@ public final class ProducingGraphicsBuffer extends GraphicsBuffer implements Ima
       }
    }
 
-   static final void renderMapDotSprite(int xPos, int yPos, int var2, int var3, RGBSprite mapDotSprite) {
-      if(null != mapDotSprite) {
-         int delta = Client.anInt2775 * 1889215063 + Client.anInt2771 * -44898889 & 2047;
-         int radius = var3 * var3 + var2 * var2;
-         if(radius <= 6400) {
-            int var11 = Rasterizer3D.SINE[delta];
-            int var10 = Rasterizer3D.COSINE[delta];
+   static final void method1594(int var0, int var1, int var2, int var3, RGBSprite var4) {
+      if(null != var4) {
+         int var9 = Client.anInt2775 * 1889215063 + Client.anInt2771 * -44898889 & 2047;
+         int var8 = var3 * var3 + var2 * var2;
+         if(var8 <= 6400) {
+            int var11 = Rasterizer3D.SINE[var9];
+            int var10 = Rasterizer3D.COSINE[var9];
             var11 = var11 * 256 / (Client.anInt2957 * 331969371 + 256);
             var10 = var10 * 256 / (Client.anInt2957 * 331969371 + 256);
-            int xOffset = var2 * var10 + var3 * var11 >> 16;
-            int yOffset = var3 * var10 - var2 * var11 >> 16;
-            if(radius > 2500) {
-               mapDotSprite.method2778(Class63.mapBackSprite, xPos + 94 + xOffset - mapDotSprite.maxWidth / 2 + 4, yPos + 83 - yOffset - mapDotSprite.maxHeight / 2 - 4);
+            int var6 = var2 * var10 + var3 * var11 >> 16;
+            int var7 = var3 * var10 - var2 * var11 >> 16;
+            if(var8 > 2500) {
+               var4.method2778(Class63.mapBackSprite, var0 + 94 + var6 - var4.maxWidth / 2 + 4, var1 + 83 - var7 - var4.maxHeight / 2 - 4);
             } else {
-               mapDotSprite.method2746(4 + (94 + xPos + xOffset - mapDotSprite.maxWidth / 2), 83 + yPos - yOffset - mapDotSprite.maxHeight / 2 - 4);
+               var4.method2746(4 + (94 + var0 + var6 - var4.maxWidth / 2), 83 + var1 - var7 - var4.maxHeight / 2 - 4);
             }
          }
       }

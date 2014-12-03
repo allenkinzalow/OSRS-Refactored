@@ -130,7 +130,7 @@ public final class PlainTile {
 				}
 			}
 
-			FriendsChatMember.method1684(cx, cy, height, localx, localy, (byte) 122);
+			Class108_Sub11.method1684(cx, cy, height, localx, localy, (byte) 122);
 		} else {
 			localx = Client.packetBuffer.readUByte();
 			height = Client.packetBuffer.readUShortA();
@@ -207,7 +207,7 @@ public final class PlainTile {
 				}
 			}
 
-			FriendsChatMember.method1684(cy, height, localx, nummaps, localy, (byte) 100);
+			Class108_Sub11.method1684(cy, height, localx, nummaps, localy, (byte) 100);
 		}
 	}
 

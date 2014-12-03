@@ -30,12 +30,12 @@ public class BuildType {
       return var2 == 0?var1:(1 != var2?(2 == var2?7 - var1 - (var4 - 1):var0):7 - var0 - (var3 - 1));
    }
 
-   public static int method1094(int varpBitID, int var1) {
-      VarpBit varpbit = ChatMessagesContainer.method358(varpBitID, 2117507523);
-      int configID = varpbit.configId * 863090207;
-      int leastSig = varpbit.leastSigBit * 194527281;
-      int mostSig = varpbit.mostSigBit * -944103735;
-      int bit = Class88.anIntArray1314[mostSig - leastSig];
-      return Class88.configSettings[configID] >> leastSig & bit;
+   public static int method1094(int var0, int var1) {
+      Class108_Sub20_Sub2 var2 = ChatMessagesContainer.method358(var0, 2117507523);
+      int var6 = var2.anInt1957 * 863090207;
+      int var3 = var2.anInt1950 * 194527281;
+      int var4 = var2.anInt1949 * -944103735;
+      int var5 = Class88.anIntArray1314[var4 - var3];
+      return Class88.anIntArray1315[var6] >> var3 & var5;
    }
 }

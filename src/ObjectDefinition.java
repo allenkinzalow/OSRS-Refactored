@@ -17,7 +17,7 @@ public class ObjectDefinition extends CacheableNode {
    short[] recolorToFind;
    public int mapIconID = 372177979;
    static CacheableNodeMap aClass106_2079 = new CacheableNodeMap(30);
-   short[] textureToReplace;
+   short[] rextureToReplace;
    public int sizeX = 160821065;
    public int sizeY = 1617841409;
    public int anInt2083 = 0;
@@ -46,7 +46,7 @@ public class ObjectDefinition extends CacheableNode {
    public int anInt2106 = -1443463903;
    public int[] configChangeDest;
    boolean aBool2108 = false;
-   int configId = -1070845109;
+   int anInt2109 = -1070845109;
    public int anInt2110 = 2019882883;
    public boolean aBool2111 = false;
    public int anInt2112 = 0;
@@ -160,11 +160,11 @@ public class ObjectDefinition extends CacheableNode {
       } else if(opcode == 41) {
          length = buffer.readUByte();
          this.retextureToFind = new short[length];
-         this.textureToReplace = new short[length];
+         this.rextureToReplace = new short[length];
 
          for(index = 0; index < length; ++index) {
             this.retextureToFind[index] = (short)buffer.readUShort(-664605432);
-            this.textureToReplace[index] = (short)buffer.readUShort(1934273499);
+            this.rextureToReplace[index] = (short)buffer.readUShort(1934273499);
          }
 
       } else if(opcode == 60) {
@@ -201,9 +201,9 @@ public class ObjectDefinition extends CacheableNode {
             this.varpID = -155117661;
          }
 
-         this.configId = buffer.readUShort(12300167) * 1070845109;
-         if(this.configId * 436978077 == '\uffff') {
-            this.configId = -1070845109;
+         this.anInt2109 = buffer.readUShort(12300167) * 1070845109;
+         if(this.anInt2109 * 436978077 == '\uffff') {
+            this.anInt2109 = -1070845109;
          }
 
          length = buffer.readUByte();
@@ -379,16 +379,15 @@ public class ObjectDefinition extends CacheableNode {
       }
    }
 
-   public final ObjectDefinition getDefinitionForStatus(byte var1) {
+   public final ObjectDefinition method2184(byte var1) {
       int var2 = -1;
       if(this.varpID * 1083452405 != -1) {
          var2 = BuildType.method1094(this.varpID * 1083452405, -511913587);
-      } else if(this.configId * 436978077 != -1) {
-         var2 = Class88.configSettings[this.configId * 436978077];
+      } else if(this.anInt2109 * 436978077 != -1) {
+         var2 = Class88.anIntArray1315[this.anInt2109 * 436978077];
       }
 
-      return var2 >= 0 && var2 < this.configChangeDest.length && -1 != this.configChangeDest[var2] ? 
-    		  ChatMessagesContainer.getObjectDefForID(this.configChangeDest[var2], (byte)0) : null;
+      return var2 >= 0 && var2 < this.configChangeDest.length && -1 != this.configChangeDest[var2]?ChatMessagesContainer.getObjectDefForID(this.configChangeDest[var2], (byte)0):null;
    }
 
    void decode(RSByteBuffer buffer, byte var2) {
@@ -543,7 +542,7 @@ public class ObjectDefinition extends CacheableNode {
 
       if(null != this.retextureToFind) {
          for(modelID = 0; modelID < this.retextureToFind.length; ++modelID) {
-            modifiedModel.findReplaceTexture(this.retextureToFind[modelID], this.textureToReplace[modelID]);
+            modifiedModel.findReplaceTexture(this.retextureToFind[modelID], this.rextureToReplace[modelID]);
          }
       }
 
@@ -946,21 +945,21 @@ public class ObjectDefinition extends CacheableNode {
          if(Class4.anInt57 * 250523231 > 0) {
             for(var4 = 0; var4 < 256; ++var4) {
                if(Class4.anInt57 * 250523231 > 768) {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(MouseCapturer.anIntArray382[var4], Class56.anIntArray757[var4], 1024 - Class4.anInt57 * 250523231, (byte)51);
+                  Class108_Sub10.anIntArray1655[var4] = Class108_Sub20_Sub6.method2160(MouseCapturer.anIntArray382[var4], Class56.anIntArray757[var4], 1024 - Class4.anInt57 * 250523231, (byte)51);
                } else if(Class4.anInt57 * 250523231 > 256) {
                   Class108_Sub10.anIntArray1655[var4] = Class56.anIntArray757[var4];
                } else {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(Class56.anIntArray757[var4], MouseCapturer.anIntArray382[var4], 256 - Class4.anInt57 * 250523231, (byte)70);
+                  Class108_Sub10.anIntArray1655[var4] = Class108_Sub20_Sub6.method2160(Class56.anIntArray757[var4], MouseCapturer.anIntArray382[var4], 256 - Class4.anInt57 * 250523231, (byte)70);
                }
             }
          } else if(Class4.anInt67 * -713414969 > 0) {
             for(var4 = 0; var4 < 256; ++var4) {
                if(Class4.anInt67 * -713414969 > 768) {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(MouseCapturer.anIntArray382[var4], Client.anIntArray2966[var4], 1024 - Class4.anInt67 * -713414969, (byte)-82);
+                  Class108_Sub10.anIntArray1655[var4] = Class108_Sub20_Sub6.method2160(MouseCapturer.anIntArray382[var4], Client.anIntArray2966[var4], 1024 - Class4.anInt67 * -713414969, (byte)-82);
                } else if(Class4.anInt67 * -713414969 > 256) {
                   Class108_Sub10.anIntArray1655[var4] = Client.anIntArray2966[var4];
                } else {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(Client.anIntArray2966[var4], MouseCapturer.anIntArray382[var4], 256 - Class4.anInt67 * -713414969, (byte)32);
+                  Class108_Sub10.anIntArray1655[var4] = Class108_Sub20_Sub6.method2160(Client.anIntArray2966[var4], MouseCapturer.anIntArray382[var4], 256 - Class4.anInt67 * -713414969, (byte)32);
                }
             }
          } else {
@@ -1114,13 +1113,13 @@ public class ObjectDefinition extends CacheableNode {
 
       var6 = Item.anInt2616 * -1461479521 >> 7;
       var7 = GroundItem.anInt480 * -1594540275 >> 7;
-      int var8 = ClientScript.getFloorDrawHeight(Item.anInt2616 * -1461479521, GroundItem.anInt480 * -1594540275, VarpBit.plane * -570926309, 1820764416);
+      int var8 = ClientScript.getFloorDrawHeight(Item.anInt2616 * -1461479521, GroundItem.anInt480 * -1594540275, Class108_Sub20_Sub2.plane * -570926309, 1820764416);
       int var9 = 0;
       int var3;
       if(var6 > 3 && var7 > 3 && var6 < 100 && var7 < 100) {
          for(var3 = var6 - 4; var3 <= var6 + 4; ++var3) {
             for(int var4 = var7 - 4; var4 <= 4 + var7; ++var4) {
-               int var2 = VarpBit.plane * -570926309;
+               int var2 = Class108_Sub20_Sub2.plane * -570926309;
                if(var2 < 3 && (RegionReference.mapTileSettings[1][var3][var4] & 2) == 2) {
                   ++var2;
                }

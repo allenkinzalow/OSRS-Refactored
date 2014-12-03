@@ -52,8 +52,8 @@ public class Class41 {
                                     var4 = 64 + var4 * 128;
                                     var8 = var8 * 128 + 64;
                                     var9 = var9 * 128 + 64;
-                                    Projectile var41 = new Projectile(var10, VarpBit.plane * -570926309, var3, var4, ClientScript.getFloorDrawHeight(var3, var4, VarpBit.plane * -570926309, 671885400) - var5, var43 + Client.cycle * -637317861, Client.cycle * -637317861 + var14, var42, var16, var2, var1);
-                                    var41.method2979(var8, var9, ClientScript.getFloorDrawHeight(var8, var9, VarpBit.plane * -570926309, 1440857988) - var1, Client.cycle * -637317861 + var43, (byte)0);
+                                    Projectile var41 = new Projectile(var10, Class108_Sub20_Sub2.plane * -570926309, var3, var4, ClientScript.getFloorDrawHeight(var3, var4, Class108_Sub20_Sub2.plane * -570926309, 671885400) - var5, var43 + Client.cycle * -637317861, Client.cycle * -637317861 + var14, var42, var16, var2, var1);
+                                    var41.method2979(var8, var9, ClientScript.getFloorDrawHeight(var8, var9, Class108_Sub20_Sub2.plane * -570926309, 1440857988) - var1, Client.cycle * -637317861 + var43, (byte)0);
                                     Client.projectileDeque.insertBack(var41);
                                  }
                               }
@@ -77,7 +77,7 @@ public class Class41 {
             if(var4 >= 0) {
                if(var3 < 104) {
                   if(var4 < 104) {
-                     Class51.method705(VarpBit.plane * -570926309, var3, var4, var10, var5, var9, var2, 0, -1, (byte)86);
+                     Class51.method705(Class108_Sub20_Sub2.plane * -570926309, var3, var4, var10, var5, var9, var2, 0, -1, (byte)86);
                   }
                }
             }
@@ -97,11 +97,11 @@ public class Class41 {
                         var34 = new Item();
                         var34.itemID = var8 * -1979951989;
                         var34.anInt2614 = var9 * 872772091;
-                        if(Client.groundItemArray[VarpBit.plane * -570926309][var3][var4] == null) {
-                           Client.groundItemArray[VarpBit.plane * -570926309][var3][var4] = new Deque();
+                        if(Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][var3][var4] == null) {
+                           Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][var3][var4] = new Deque();
                         }
 
-                        Client.groundItemArray[VarpBit.plane * -570926309][var3][var4].insertBack(var34);
+                        Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][var3][var4].insertBack(var34);
                         Class104.spawnGroundItem(var3, var4, (byte)-83);
                      }
                   }
@@ -119,7 +119,7 @@ public class Class41 {
                if(var4 >= 0) {
                   if(var3 < 104) {
                      if(var4 < 104) {
-                        Class51.method705(VarpBit.plane * -570926309, var3, var4, var10, -1, var9, var2, 0, -1, (byte)86);
+                        Class51.method705(Class108_Sub20_Sub2.plane * -570926309, var3, var4, var10, -1, var9, var2, 0, -1, (byte)86);
                      }
                   }
                }
@@ -138,52 +138,52 @@ public class Class41 {
                   if(var3 < 103) {
                      if(var4 < 103) {
                         if(var10 == 0) {
-                           Wall var30 = Class56.gameScene.method493(VarpBit.plane * -570926309, var3, var4);
+                           Wall var30 = Class56.gameScene.method493(Class108_Sub20_Sub2.plane * -570926309, var3, var4);
                            if(null != var30) {
                               var43 = var30.anInt337 * 639818003 >> 14 & 32767;
                               if(var9 == 2) {
-                                 var30.aClass108_Sub20_Sub14_338 = new GameObject(var43, 2, 4 + var2, VarpBit.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_338);
-                                 var30.aClass108_Sub20_Sub14_343 = new GameObject(var43, 2, 1 + var2 & 3, VarpBit.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_343);
+                                 var30.aClass108_Sub20_Sub14_338 = new GameObject(var43, 2, 4 + var2, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_338);
+                                 var30.aClass108_Sub20_Sub14_343 = new GameObject(var43, 2, 1 + var2 & 3, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_343);
                               } else {
-                                 var30.aClass108_Sub20_Sub14_338 = new GameObject(var43, var9, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_338);
+                                 var30.aClass108_Sub20_Sub14_338 = new GameObject(var43, var9, var2, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_338);
                               }
                            }
                         }
 
                         if(var10 == 1) {
-                           WallDecoration var31 = Class56.gameScene.method424(VarpBit.plane * -570926309, var3, var4);
+                           WallDecoration var31 = Class56.gameScene.method424(Class108_Sub20_Sub2.plane * -570926309, var3, var4);
                            if(var31 != null) {
                               var43 = var31.anInt302 * 414599861 >> 14 & 32767;
                               if(var9 != 4 && 5 != var9) {
                                  if(var9 == 6) {
-                                    var31.renderable = new GameObject(var43, 4, var2 + 4, VarpBit.plane * -570926309, var3, var4, var5, false, var31.renderable);
+                                    var31.renderable = new GameObject(var43, 4, var2 + 4, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var31.renderable);
                                  } else if(var9 == 7) {
-                                    var31.renderable = new GameObject(var43, 4, (2 + var2 & 3) + 4, VarpBit.plane * -570926309, var3, var4, var5, false, var31.renderable);
+                                    var31.renderable = new GameObject(var43, 4, (2 + var2 & 3) + 4, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var31.renderable);
                                  } else if(var9 == 8) {
-                                    var31.renderable = new GameObject(var43, 4, 4 + var2, VarpBit.plane * -570926309, var3, var4, var5, false, var31.renderable);
-                                    var31.aClass108_Sub20_Sub14_301 = new GameObject(var43, 4, (var2 + 2 & 3) + 4, VarpBit.plane * -570926309, var3, var4, var5, false, var31.aClass108_Sub20_Sub14_301);
+                                    var31.renderable = new GameObject(var43, 4, 4 + var2, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var31.renderable);
+                                    var31.aClass108_Sub20_Sub14_301 = new GameObject(var43, 4, (var2 + 2 & 3) + 4, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var31.aClass108_Sub20_Sub14_301);
                                  }
                               } else {
-                                 var31.renderable = new GameObject(var43, 4, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var31.renderable);
+                                 var31.renderable = new GameObject(var43, 4, var2, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var31.renderable);
                               }
                            }
                         }
 
                         if(var10 == 2) {
-                           InteractableObject var32 = Class56.gameScene.method502(VarpBit.plane * -570926309, var3, var4);
+                           InteractableObject var32 = Class56.gameScene.method502(Class108_Sub20_Sub2.plane * -570926309, var3, var4);
                            if(11 == var9) {
                               var9 = 10;
                            }
 
                            if(var32 != null) {
-                              var32.renderableObject = new GameObject(var32.anInt586 * 380600017 >> 14 & 32767, var9, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var32.renderableObject);
+                              var32.renderableObject = new GameObject(var32.anInt586 * 380600017 >> 14 & 32767, var9, var2, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var32.renderableObject);
                            }
                         }
 
                         if(var10 == 3) {
-                           FloorDecoration var33 = Class56.gameScene.method426(VarpBit.plane * -570926309, var3, var4);
+                           FloorDecoration var33 = Class56.gameScene.method426(Class108_Sub20_Sub2.plane * -570926309, var3, var4);
                            if(var33 != null) {
-                              var33.renderable = new GameObject(var33.hash * 1276953639 >> 14 & 32767, 22, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var33.renderable);
+                              var33.renderable = new GameObject(var33.hash * 1276953639 >> 14 & 32767, 22, var2, Class108_Sub20_Sub2.plane * -570926309, var3, var4, var5, false, var33.renderable);
                            }
                         }
                      }
@@ -199,7 +199,7 @@ public class Class41 {
                if(var4 >= 0) {
                   if(var3 < 104) {
                      if(var4 < 104) {
-                        Deque var38 = Client.groundItemArray[VarpBit.plane * -570926309][var3][var4];
+                        Deque var38 = Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][var3][var4];
                         if(var38 != null) {
                            for(var34 = (Item)var38.getFront(); null != var34; var34 = (Item)var38.getNext()) {
                               if(var34.itemID * -1672318173 == (var8 & 32767)) {
@@ -209,7 +209,7 @@ public class Class41 {
                            }
 
                            if(var38.getFront() == null) {
-                              Client.groundItemArray[VarpBit.plane * -570926309][var3][var4] = null;
+                              Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][var3][var4] = null;
                            }
 
                            Class104.spawnGroundItem(var3, var4, (byte)-53);
@@ -229,7 +229,7 @@ public class Class41 {
                if(var4 >= 0) {
                   if(var3 < 104) {
                      if(var4 < 104) {
-                        Deque var40 = Client.groundItemArray[VarpBit.plane * -570926309][var3][var4];
+                        Deque var40 = Client.groundItemArray[Class108_Sub20_Sub2.plane * -570926309][var3][var4];
                         if(null != var40) {
                            for(Item var36 = (Item)var40.getFront(); null != var36; var36 = (Item)var40.getNext()) {
                               if(var36.itemID * -1672318173 == (var8 & 32767) && var36.anInt2614 * -767037133 == var9) {
@@ -306,13 +306,13 @@ public class Class41 {
                   int var27 = var12 + (var11 + 1 >> 1);
                   int var28 = var18 + (var20 >> 1);
                   int var29 = var18 + (1 + var20 >> 1);
-                  int[][] var25 = RegionReference.tileHeights[VarpBit.plane * -570926309];
+                  int[][] var25 = RegionReference.tileHeights[Class108_Sub20_Sub2.plane * -570926309];
                   int var24 = var25[var27][var28] + var25[var26][var28] + var25[var26][var29] + var25[var27][var29] >> 2;
                   int var13 = (var11 << 6) + (var12 << 7);
                   int var21 = (var18 << 7) + (var20 << 6);
                   ModelRasterizer var6 = var22.method2180(var10, var5, var25, var13, var24, var21, -1494204670);
                   if(null != var6) {
-                     Class51.method705(VarpBit.plane * -570926309, var12, var18, var1, -1, 0, 0, 1 + var8, 1 + var14, (byte)86);
+                     Class51.method705(Class108_Sub20_Sub2.plane * -570926309, var12, var18, var1, -1, 0, 0, 1 + var8, 1 + var14, (byte)86);
                      var19.anInt2665 = (var8 + Client.cycle * -637317861) * 2092902079;
                      var19.anInt2670 = (Client.cycle * -637317861 + var14) * 267310813;
                      var19.aClass108_Sub20_Sub14_Sub3_2675 = var6;
@@ -353,7 +353,7 @@ public class Class41 {
                         if(var4 < 104) {
                            var3 = var3 * 128 + 64;
                            var4 = 64 + var4 * 128;
-                           Class108_Sub20_Sub14_Sub6 var39 = new Class108_Sub20_Sub14_Sub6(var8, VarpBit.plane * -570926309, var3, var4, ClientScript.getFloorDrawHeight(var3, var4, VarpBit.plane * -570926309, 1602261234) - var9, var2, Client.cycle * -637317861);
+                           Class108_Sub20_Sub14_Sub6 var39 = new Class108_Sub20_Sub14_Sub6(var8, Class108_Sub20_Sub2.plane * -570926309, var3, var4, ClientScript.getFloorDrawHeight(var3, var4, Class108_Sub20_Sub2.plane * -570926309, 1602261234) - var9, var2, Client.cycle * -637317861);
                            Client.aClass105_2928.insertBack(var39);
                         }
                      }

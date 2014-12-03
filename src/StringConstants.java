@@ -121,7 +121,7 @@ public class StringConstants {
    public static String aString1066 = "";
    public static String PLEASE_ENTER_USER_EMAIL = "Please enter your username/email address.";
    public static String LOADED_UPDATE_LIST = "Loaded update list";
-   public static String COMBAT_LEVEL = "level-";
+   public static String aString1069 = "level-";
    public static String PLEASE_ENTER_PASS = "Please enter your password.";
    public static String aString1071 = "";
    public static String aString1072 = "Your account must have a displayname set";
@@ -158,7 +158,7 @@ public class StringConstants {
    public static String aString1103 = "You are standing in a members-only area.";
    public static String aString1104 = "wave2:";
    public static String aString1105 = "You can\'t add yourself to your own ignore list";
-   public static String SKILL_LEVEL = "skill-";
+   public static String aString1106 = "skill-";
    public static String aString1107 = "cyan:";
    public static String aString1108 = "Close";
    public static String aString1109 = " ";

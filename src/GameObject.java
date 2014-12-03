@@ -128,7 +128,7 @@ public class GameObject extends Renderable {
 
       ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(this.objectID * -1212535243, (byte)0);
       if(null != objectDef.configChangeDest) {
-         objectDef = objectDef.getDefinitionForStatus((byte)45);
+         objectDef = objectDef.method2184((byte)45);
       }
 
       if(null == objectDef) {

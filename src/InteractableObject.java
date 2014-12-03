@@ -21,9 +21,9 @@ public final class InteractableObject {
 
 
    static final void method648(int var0) {
-      if(null != Varp.loginConnection) {
-         Varp.loginConnection.disconnect();
-         Varp.loginConnection = null;
+      if(null != Class108_Sub20_Sub6.loginConnection) {
+         Class108_Sub20_Sub6.loginConnection.disconnect();
+         Class108_Sub20_Sub6.loginConnection = null;
       }
 
       Class68.method929(-1417557093);

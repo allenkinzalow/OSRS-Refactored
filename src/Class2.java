@@ -18,8 +18,8 @@ public class Class2 {
 
 
    public static void method39(AbstractIndex var0, int var1) {
-      Class36.configIndex_ref = var0;
-      Varp.anInt2045 = Class36.configIndex_ref.getFileCount(16, (byte)-29) * -564083269;
+      Class36.aClass74_518 = var0;
+      Class108_Sub20_Sub6.anInt2045 = Class36.aClass74_518.getFileCount(16, (byte)-29) * -564083269;
    }
 
    static String method40(String var0, RSInterface var1, int var2) {

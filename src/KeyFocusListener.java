@@ -95,7 +95,7 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
       } else if(var0.anInt2383 * -1116714413 >= Client.cycle * -637317861) {
          NPCDefinition.method2293(var0, (short)14400);
       } else {
-         var0.anInt2365 = var0.standAnimationID * 1667007719;
+         var0.anInt2365 = var0.anInt2343 * 1667007719;
          if(var0.anInt2390 * 2120122927 == 0) {
             var0.anInt2338 = 0;
          } else {
@@ -145,13 +145,13 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
                      var7 -= 2048;
                   }
 
-                  int var9 = var0.turn180AnimationID * 953582413;
+                  int var9 = var0.anInt2347 * 953582413;
                   if(var7 >= -256 && var7 <= 256) {
                      var9 = var0.anInt2357 * 1461718367;
                   } else if(var7 >= 256 && var7 < 768) {
-                     var9 = var0.turn90LeftAnimationID * 568563325;
+                     var9 = var0.anInt2378 * 568563325;
                   } else if(var7 >= -768 && var7 <= -256) {
-                     var9 = var0.turn90RightAnimationID * -2059161139;
+                     var9 = var0.anInt2376 * -2059161139;
                   }
 
                   if(var9 == -1) {
@@ -201,8 +201,8 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
                      var6 <<= 1;
                   }
 
-                  if(var6 >= 8 && var0.anInt2357 * 1461718367 == var0.anInt2365 * 1103885695 && -1 != var0.runAnimationID * -790681545) {
-                     var0.anInt2365 = var0.runAnimationID * -350004919;
+                  if(var6 >= 8 && var0.anInt2357 * 1461718367 == var0.anInt2365 * 1103885695 && -1 != var0.anInt2350 * -790681545) {
+                     var0.anInt2365 = var0.anInt2350 * -350004919;
                   }
 
                   if(var5 < var4) {
@@ -314,9 +314,9 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
                   var12 = false;
                }
 
-               if(var0.anInt2365 * 1103885695 == var0.standAnimationID * -532414055 && (var0.anInt2397 * -2089126523 > 25 || var12)) {
-                  if(-1 != var0.nextAnimationID * 1113049431) {
-                     var0.anInt2365 = var0.nextAnimationID * -692156375;
+               if(var0.anInt2365 * 1103885695 == var0.anInt2343 * -532414055 && (var0.anInt2397 * -2089126523 > 25 || var12)) {
+                  if(-1 != var0.anInt2344 * 1113049431) {
+                     var0.anInt2365 = var0.anInt2344 * -692156375;
                   } else {
                      var0.anInt2365 = var0.anInt2357 * 2062456865;
                   }
@@ -329,9 +329,9 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
                   var12 = false;
                }
 
-               if(var0.anInt2365 * 1103885695 == var0.standAnimationID * -532414055 && (var0.anInt2397 * -2089126523 > 25 || var12)) {
-                  if(var0.walkAnimationID * -1972207769 != -1) {
-                     var0.anInt2365 = var0.walkAnimationID * 1945598489;
+               if(var0.anInt2365 * 1103885695 == var0.anInt2343 * -532414055 && (var0.anInt2397 * -2089126523 > 25 || var12)) {
+                  if(var0.anInt2370 * -1972207769 != -1) {
+                     var0.anInt2365 = var0.anInt2370 * 1945598489;
                   } else {
                      var0.anInt2365 = var0.anInt2357 * 2062456865;
                   }

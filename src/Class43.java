@@ -431,7 +431,7 @@ public class Class43 {
                      RSInterface.interfaceIndexReference = var20;
                      Class121.aClass74_1495 = var9;
                      RSInterface.aClass74_1765 = var11;
-                     VarpBit.aClass74_1954 = var12;
+                     Class108_Sub20_Sub2.aClass74_1954 = var12;
                      RSInterface.interface_cache = new RSInterface[RSInterface.interfaceIndexReference.getArchiveCount(-788185017)][];
                      RSInterface.interfacesLoadedArray = new boolean[RSInterface.interfaceIndexReference.getArchiveCount(-1790859268)];
                      CacheIndex var13 = AbstractIndex.configIndex;
@@ -510,8 +510,8 @@ public class Class43 {
                      ++var1;
                   }
 
-                  if(VarpBit.mapFunctionIcons == null) {
-                     VarpBit.mapFunctionIcons = RegionReference.loadImageSet(Class23.spriteIndex, "mapfunction", "", (short) 15254);
+                  if(Class108_Sub20_Sub2.mapFunctionIcons == null) {
+                     Class108_Sub20_Sub2.mapFunctionIcons = RegionReference.loadImageSet(Class23.spriteIndex, "mapfunction", "", (short) 15254);
                   } else {
                      ++var1;
                   }
@@ -587,15 +587,15 @@ public class Class43 {
                      var4 = (int)(Math.random() * 21.0D) - 10;
                      var5 = (int)(Math.random() * 41.0D) - 20;
 
-                     for(int mapicon = 0; mapicon < VarpBit.mapFunctionIcons.length; ++mapicon) {
-                        VarpBit.mapFunctionIcons[mapicon].alterColor(var2 + var5, var5 + var3, var5 + var4);
+                     for(int mapicon = 0; mapicon < Class108_Sub20_Sub2.mapFunctionIcons.length; ++mapicon) {
+                        Class108_Sub20_Sub2.mapFunctionIcons[mapicon].alterColor(var2 + var5, var5 + var3, var5 + var4);
                      }
 
                      ChatMessagesContainer.mapSceneIcons[0].mixPalette(var2 + var5, var5 + var3, var4 + var5);
                      Ignore.anIntArray397 = new int[33];
                      ChatMessagesContainer.anIntArray332 = new int[33];
                      FloorDefinition.anIntArray2221 = new int[151];
-                     Varp.anIntArray2043 = new int[151];
+                     Class108_Sub20_Sub6.anIntArray2043 = new int[151];
                      fileID = 0;
 
                      int var6;
@@ -655,7 +655,7 @@ public class Class43 {
                            }
 
                            FloorDefinition.anIntArray2221[fileID - 5] = var7 - 25;
-                           Varp.anIntArray2043[fileID - 5] = var10 - var7;
+                           Class108_Sub20_Sub6.anIntArray2043[fileID - 5] = var10 - var7;
                            ++fileID;
                            break;
                         }

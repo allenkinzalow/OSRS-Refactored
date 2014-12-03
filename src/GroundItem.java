@@ -17,19 +17,19 @@ public final class GroundItem {
 		return (MouseInputHandler.anInt765 += 1238703313) * -1622361039 - 1;
 	}
 
-	static boolean isFriend(String rawUsername, boolean var1, byte var2) {
-		if (null == rawUsername) {
+	static boolean method581(String var0, boolean var1, byte var2) {
+		if (null == var0) {
 			return false;
 		} else {
-			String decodedUsername = Class108_Sub10.method1683(rawUsername, UnderlayDefinition.aClass116_2142, -2105432968);
+			String var4 = Class108_Sub10.method1683(var0, UnderlayDefinition.aClass116_2142, -2105432968);
 
-			for (int friendIndex = 0; friendIndex < Client.friendListCount * -163737695; ++friendIndex) {
-				if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Client.friendList[friendIndex].username, UnderlayDefinition.aClass116_2142, -1893730066)) && (!var1 || Client.friendList[friendIndex].friendHash * -62644779 != 0)) {
+			for (int var3 = 0; var3 < Client.friendListCount * -163737695; ++var3) {
+				if (var4.equalsIgnoreCase(Class108_Sub10.method1683(Client.friendList[var3].username, UnderlayDefinition.aClass116_2142, -1893730066)) && (!var1 || Client.friendList[var3].friendHash * -62644779 != 0)) {
 					return true;
 				}
 			}
 
-			if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Class108_Sub10.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -2108261163))) {
+			if (var4.equalsIgnoreCase(Class108_Sub10.method1683(Class108_Sub10.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -2108261163))) {
 				return true;
 			} else {
 				return false;

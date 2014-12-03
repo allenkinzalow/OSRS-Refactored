@@ -156,7 +156,7 @@ public class EquipmentKit {
                   }
 
                   if(this.bodyPartColors[bodyPartID] < aShortArrayArray1337[bodyPartID].length) {
-                     completeModel.findReplaceColor(FriendsChatMember.aShortArray1668[bodyPartID], aShortArrayArray1337[bodyPartID][this.bodyPartColors[bodyPartID]]);
+                     completeModel.findReplaceColor(Class108_Sub11.aShortArray1668[bodyPartID], aShortArrayArray1337[bodyPartID][this.bodyPartColors[bodyPartID]]);
                   }
                }
 
@@ -234,7 +234,7 @@ public class EquipmentKit {
                }
 
                if(this.bodyPartColors[bodyPartID] < aShortArrayArray1337[bodyPartID].length) {
-                  completeModel.findReplaceColor(FriendsChatMember.aShortArray1668[bodyPartID], aShortArrayArray1337[bodyPartID][this.bodyPartColors[bodyPartID]]);
+                  completeModel.findReplaceColor(Class108_Sub11.aShortArray1668[bodyPartID], aShortArrayArray1337[bodyPartID][this.bodyPartColors[bodyPartID]]);
                }
             }
 

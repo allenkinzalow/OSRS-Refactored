@@ -49,11 +49,11 @@ public class Class5 {
    }
 
    public static void method98(int var0) {
-      VarpBit.aClass106_1955.method1371();
+      Class108_Sub20_Sub2.aClass106_1955.method1371();
    }
 
    static PaletteSprite method99(AbstractIndex var0, int var1, int var2, byte var3) {
-      return !FriendsChatMember.method1686(var0, var1, var2, -1425645056)?null:Class37.getLastLoadedPaletteSprite(1969691175);
+      return !Class108_Sub11.method1686(var0, var1, var2, -1425645056)?null:Class37.getLastLoadedPaletteSprite(1969691175);
    }
 
    public static final RGBSprite getItemSprite(int itemID, int amount, int var2, int var3, boolean exist, int var5) {
@@ -86,8 +86,8 @@ public class Class5 {
          return null;
       } else {
          RGBSprite sprite = null;
-         if(-1 != itemDef.notedTemplate * -910205763) {
-            sprite = getItemSprite(itemDef.notedID * -616959653, 10, 1, 0, true, -944989678);
+         if(-1 != itemDef.certTemplate * -910205763) {
+            sprite = getItemSprite(itemDef.certLink * -616959653, 10, 1, 0, true, -944989678);
             if(null == sprite) {
                return null;
             }
@@ -128,12 +128,12 @@ public class Class5 {
          }
 
          Rasterizer2D.copySprite(cachedSprite.pixels, 36, 32);
-         if(-1 != itemDef.notedTemplate * -910205763) {
+         if(-1 != itemDef.certTemplate * -910205763) {
             sprite.method2746(0, 0);
          }
 
          if(!exist && (itemDef.stackable * 1548462817 == 1 || amount != 1) && -1 != amount) {
-            RSFont itemFont = ItemDefinition.itemAmountFont;
+            RSFont var14 = ItemDefinition.itemAmountFont;
             String amountString;
             if(amount < 100000) {
                amountString = "<col=ffff00>" + amount + "</col>";
@@ -143,7 +143,7 @@ public class Class5 {
                amountString = "<col=00ff80>" + amount / 1000000 + StringConstants.ITEM_AMOUNT_M + "</col>";
             }
 
-            itemFont.drawString(amountString, 0, 9, 16776960, 1);
+            var14.drawString(amountString, 0, 9, 16776960, 1);
          }
 
          if(!exist) {

@@ -39,7 +39,7 @@ public class AnimationSkin extends Node {
       Class91.anInt1329 = var1 * -2020957493;
       OnlineFriend.anInt1511 = var2 * -1300146319;
       Class27.anInt362 = var3 * 495527089;
-      FriendsChatMember.aBool1669 = var4;
+      Class108_Sub11.aBool1669 = var4;
       ClientScriptDefinition.anInt2281 = 1706374896;
    }
 }

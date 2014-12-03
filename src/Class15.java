@@ -117,7 +117,7 @@ public class Class15 {
       Class91.anInt1329 = 2020957493;
       OnlineFriend.anInt1511 = 1300146319;
       Class27.anInt362 = 0;
-      FriendsChatMember.aBool1669 = false;
+      Class108_Sub11.aBool1669 = false;
       ClientScriptDefinition.anInt2281 = var0 * 1352655839;
    }
 
@@ -446,12 +446,12 @@ public class Class15 {
             Class1.createRegionScene(Class56.gameScene, Client.clippingPlanes, -2017189657);
             Class23.method343(true, (byte)78);
             var37 = RegionReference.anInt485 * -1362129233;
-            if(var37 > VarpBit.plane * -570926309) {
-               var37 = VarpBit.plane * -570926309;
+            if(var37 > Class108_Sub20_Sub2.plane * -570926309) {
+               var37 = Class108_Sub20_Sub2.plane * -570926309;
             }
 
-            if(var37 < VarpBit.plane * -570926309 - 1) {
-               var37 = VarpBit.plane * -570926309 - 1;
+            if(var37 < Class108_Sub20_Sub2.plane * -570926309 - 1) {
+               var37 = Class108_Sub20_Sub2.plane * -570926309 - 1;
             }
 
             if(Client.lowMemory) {
@@ -471,7 +471,7 @@ public class Class15 {
             for(Class108_Sub13 var44 = (Class108_Sub13) Client.aClass105_2939.getFront(); var44 != null; var44 = (Class108_Sub13) Client.aClass105_2939.getNext()) {
                if(-1 == var44.anInt1690 * 1336924445) {
                   var44.anInt1689 = 0;
-                  FriendsChatMember.method1685(var44, (byte)0);
+                  Class108_Sub11.method1685(var44, (byte)0);
                } else {
                   var44.unlink();
                }

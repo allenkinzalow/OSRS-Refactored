@@ -307,14 +307,14 @@ public class ClientScriptDefinition extends CacheableNode {
 												boolean var40 = false;
 												var10 = component.widgetItems[var22] - 1;
 												if (var20 + 32 > mapx && var20 < var4 && var41 + 32 > mapy && var41 < var5 || IsaacRandomGen.aClass108_Sub17_745 == component && var22 == Client.anInt2863 * -664226831) {
-													RGBSprite itemSprite;
+													RGBSprite var54;
 													if (1 == Client.anInt2858 * -968945719 && Class51.anInt716 * 347376265 == var22 && component.interfaceHash * -1081473899 == Class50.anInt699 * -932350913) {
-														itemSprite = Class5.getItemSprite(var10, component.widgetItemAmounts[var22], 2, 0, false, 1256224427);
+														var54 = Class5.getItemSprite(var10, component.widgetItemAmounts[var22], 2, 0, false, 1256224427);
 													} else {
-														itemSprite = Class5.getItemSprite(var10, component.widgetItemAmounts[var22], 1, 3153952, false, -1431232517);
+														var54 = Class5.getItemSprite(var10, component.widgetItemAmounts[var22], 1, 3153952, false, -1431232517);
 													}
 
-													if (itemSprite != null) {
+													if (var54 != null) {
 														if (component == IsaacRandomGen.aClass108_Sub17_745 && Client.anInt2863 * -664226831 == var22) {
 															var47 = MouseInputHandler.mouseX * -367052265 - Client.anInt2900 * 785242869;
 															var16 = MouseInputHandler.mouseY * 1533395117 - Client.anInt2903 * 685630743;
@@ -332,7 +332,7 @@ public class ClientScriptDefinition extends CacheableNode {
 																var16 = 0;
 															}
 
-															itemSprite.method2818(var47 + var20, var16 + var41, 128);
+															var54.method2818(var47 + var20, var16 + var41, 128);
 															if (var1 != -1) {
 																RSInterface var50 = components[var1 & '\uffff'];
 																if (var41 + var16 < Rasterizer2D.topY && var50.anInt1785 * -643576081 > 0) {
@@ -366,9 +366,9 @@ public class ClientScriptDefinition extends CacheableNode {
 																}
 															}
 														} else if (Class4.aClass108_Sub17_75 == component && var22 == Client.anInt2815 * -1269538377) {
-															itemSprite.method2818(var20, var41, 128);
+															var54.method2818(var20, var41, 128);
 														} else {
-															itemSprite.method2746(var20, var41);
+															var54.method2746(var20, var41);
 														}
 													} else {
 														MouseInputHandler.method775(component, -16054773);

@@ -174,12 +174,12 @@ public class Class19 {
             var1.anInt2349 = var1.definition.tileSpacesOccupied * 869735027;
             var1.anInt2389 = var1.definition.anInt2156 * 1300761443;
             var1.anInt2357 = var1.definition.walkAnimation * 1834238161;
-            var1.turn180AnimationID = var1.definition.rotate180Animation * -1799278961;
-            var1.turn90RightAnimationID = var1.definition.rotate90RightAnimation * 1104470195;
-            var1.turn90LeftAnimationID = var1.definition.rotate90LeftAnimation * -1117812389;
-            var1.standAnimationID = var1.definition.stanceAnimation * -517518475;
-            var1.nextAnimationID = var1.definition.anInt2165 * -1414070185;
-            var1.walkAnimationID = var1.definition.anInt2189 * -2025131807;
+            var1.anInt2347 = var1.definition.rotate180Animation * -1799278961;
+            var1.anInt2376 = var1.definition.rotate90RightAnimation * 1104470195;
+            var1.anInt2378 = var1.definition.rotate90LeftAnimation * -1117812389;
+            var1.anInt2343 = var1.definition.stanceAnimation * -517518475;
+            var1.anInt2344 = var1.definition.anInt2165 * -1414070185;
+            var1.anInt2370 = var1.definition.anInt2189 * -2025131807;
          }
 
          if(0 != (var5 & 4)) {

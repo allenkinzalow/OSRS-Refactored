@@ -57,9 +57,9 @@ public class LoginHandler {
 	static final void method884(int var0) {
 		try {
 			if (Client.loginStage * -1241953979 == 0) {
-				if (null != Varp.loginConnection) {
-					Varp.loginConnection.disconnect();
-					Varp.loginConnection = null;
+				if (null != Class108_Sub20_Sub6.loginConnection) {
+					Class108_Sub20_Sub6.loginConnection.disconnect();
+					Class108_Sub20_Sub6.loginConnection = null;
 				}
 
 				Ignore.aClass85_388 = null;
@@ -78,7 +78,7 @@ public class LoginHandler {
 				}
 
 				if (Ignore.aClass85_388.anInt1292 == 1) {
-					Varp.loginConnection = new GameConnection((Socket) Ignore.aClass85_388.anObject1294, ClientScriptMap.pringRequester);
+					Class108_Sub20_Sub6.loginConnection = new GameConnection((Socket) Ignore.aClass85_388.anObject1294, ClientScriptMap.pringRequester);
 					Ignore.aClass85_388 = null;
 					Client.loginStage = 651412250;
 				}
@@ -87,7 +87,7 @@ public class LoginHandler {
 			if (Client.loginStage * -1241953979 == 2) {
 				Client.secureBuffer.position = 0;
 				Client.secureBuffer.writeByte(14);
-				Varp.loginConnection.writeBytes(Client.secureBuffer.buf, 0, 1);
+				Class108_Sub20_Sub6.loginConnection.writeBytes(Client.secureBuffer.buf, 0, 1);
 				Client.packetBuffer.position = 0;
 				Client.loginStage = -1170365273;
 			}
@@ -102,7 +102,7 @@ public class LoginHandler {
 					Class50.aClass7_697.method119((byte) 61);
 				}
 
-				var1 = Varp.loginConnection.read();
+				var1 = Class108_Sub20_Sub6.loginConnection.read();
 				if (Class2.aClass7_17 != null) {
 					Class2.aClass7_17.method119((byte) -8);
 				}
@@ -221,7 +221,7 @@ public class LoginHandler {
 					Client.loginBuffer.doXTEA(xteakeys, var3, Client.loginBuffer.position * 798331555, (byte) 102);
 
 				Client.loginBuffer.endShort(Client.loginBuffer.position * 798331555 - var2, -393321369);
-				Varp.loginConnection.writeBytes(Client.loginBuffer.buf, 0, Client.loginBuffer.position * 798331555);
+				Class108_Sub20_Sub6.loginConnection.writeBytes(Client.loginBuffer.buf, 0, Client.loginBuffer.position * 798331555);
 				Client.secureBuffer.setCipherSet(xteakeys, -1376347399);
 
 				for (var6 = 0; var6 < 4; ++var6) {
@@ -234,8 +234,8 @@ public class LoginHandler {
 
 			final int paki = 1954236750 * -1241953979;
 
-			if (Client.loginStage * -1241953979 == 6 && Varp.loginConnection.available() > 0) {
-				var1 = Varp.loginConnection.read();
+			if (Client.loginStage * -1241953979 == 6 && Class108_Sub20_Sub6.loginConnection.available() > 0) {
+				var1 = Class108_Sub20_Sub6.loginConnection.read();
 				if (21 == var1 && 20 == Client.loginLoadingStage * 1315883169) {
 					Client.loginStage = 132459227;
 				} else if (2 == var1) {
@@ -288,8 +288,8 @@ public class LoginHandler {
 				}
 			}
 
-			if (7 == Client.loginStage * -1241953979 && Varp.loginConnection.available() > 0) {
-				Client.anInt2751 = (Varp.loginConnection.read() + 3) * 2112240596;
+			if (7 == Client.loginStage * -1241953979 && Class108_Sub20_Sub6.loginConnection.available() > 0) {
+				Client.anInt2751 = (Class108_Sub20_Sub6.loginConnection.read() + 3) * 2112240596;
 				Client.loginStage = -1689318296;
 			}
 
@@ -300,9 +300,9 @@ public class LoginHandler {
 					Client.loginStage = 0;
 				}
 			} else {
-				if (Client.loginStage * -1241953979 == 9 && Varp.loginConnection.available() >= 13) {
-					boolean var13 = Varp.loginConnection.read() == 1;
-					Varp.loginConnection.read(Client.packetBuffer.buf, 0, 4);
+				if (Client.loginStage * -1241953979 == 9 && Class108_Sub20_Sub6.loginConnection.available() >= 13) {
+					boolean var13 = Class108_Sub20_Sub6.loginConnection.read() == 1;
+					Class108_Sub20_Sub6.loginConnection.read(Client.packetBuffer.buf, 0, 4);
 					Client.packetBuffer.position = 0;
 					boolean var14 = false;
 					if (var13) {
@@ -322,19 +322,19 @@ public class LoginHandler {
 					}
 
 					int r=0;
-					Client.rights = (r=Varp.loginConnection.read()) * 203290551;
-					Client.aBool2949 = Varp.loginConnection.read() == 1;
-					Client.anInt2823 = Varp.loginConnection.read() * 1510013235;
+					Client.rights = (r=Class108_Sub20_Sub6.loginConnection.read()) * 203290551;
+					Client.aBool2949 = Class108_Sub20_Sub6.loginConnection.read() == 1;
+					Client.anInt2823 = Class108_Sub20_Sub6.loginConnection.read() * 1510013235;
 					Client.anInt2823 = (Client.anInt2823 * 1800645115 << 8) * 1510013235;
-					Client.anInt2823 += Varp.loginConnection.read() * 1510013235;
-					Client.anInt2758 = Varp.loginConnection.read() * 1532011819;
+					Client.anInt2823 += Class108_Sub20_Sub6.loginConnection.read() * 1510013235;
+					Client.anInt2758 = Class108_Sub20_Sub6.loginConnection.read() * 1532011819;
 					System.out.println("Rights: " + r + ", " + (Client.anInt2823 * 0x6b53a9fb));
-					Varp.loginConnection.read(Client.packetBuffer.buf, 0, 1);
+					Class108_Sub20_Sub6.loginConnection.read(Client.packetBuffer.buf, 0, 1);
 					Client.packetBuffer.position = 0;
 					int a;
 					Client.packetID = (a= Client.packetBuffer.readPacket(-1684324366)) * -859744123;
 					System.out.println("They gif us " + a);
-					Varp.loginConnection.read(Client.packetBuffer.buf, 0, 2);
+					Class108_Sub20_Sub6.loginConnection.read(Client.packetBuffer.buf, 0, 2);
 					Client.packetBuffer.position = 0;
 					Client.anInt2927 = (a= Client.packetBuffer.readUShort(-838299460)) * 1182625323;
 					System.out.println("Size " + a);
@@ -371,9 +371,9 @@ public class LoginHandler {
 							Friend.method661(-3, -16711936);
 						}
 					}
-				} else if (Varp.loginConnection.available() >= Client.anInt2927 * -574496637) {
+				} else if (Class108_Sub20_Sub6.loginConnection.available() >= Client.anInt2927 * -574496637) {
 					Client.packetBuffer.position = 0;
-					Varp.loginConnection.read(Client.packetBuffer.buf, 0, Client.anInt2927 * -574496637);
+					Class108_Sub20_Sub6.loginConnection.read(Client.packetBuffer.buf, 0, Client.anInt2927 * -574496637);
 					Client.aLong2716 = 5205271143587660129L;
 					Client.anInt2714 = -1445469673;
 					ClientScript.mouseCapturer.coord = 0;
@@ -439,11 +439,11 @@ public class LoginHandler {
 					Client.friendListCount = 0;
 					Client.ignoreListCount = 0;
 
-					for (var1 = 0; var1 < Varp.anInt2045 * -1989920909; ++var1) {
-						Varp var18 = SpotAnim.method2149(var1, (byte) 4);
+					for (var1 = 0; var1 < Class108_Sub20_Sub6.anInt2045 * -1989920909; ++var1) {
+						Class108_Sub20_Sub6 var18 = SpotAnim.method2149(var1, (byte) 4);
 						if (null != var18) {
 							Class88.anIntArray1317[var1] = 0;
-							Class88.configSettings[var1] = 0;
+							Class88.anIntArray1315[var1] = 0;
 						}
 					}
 
@@ -481,7 +481,7 @@ public class LoginHandler {
 
 					Client.aString2967 = null;
 					Class27.anInt363 = 0;
-					Class50.friendsChatList = null;
+					Class50.aClass108_Sub11Array706 = null;
 					Friend.anInt620 = 964554551;
 					PlainTile.method624(false, (byte) 117);
 					Client.packetID = 859744123;

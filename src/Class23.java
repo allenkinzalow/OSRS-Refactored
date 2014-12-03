@@ -61,11 +61,11 @@ public class Class23 {
       if(Client.anInt2946 * 219371015 >= 50 || var0) {
          Client.anInt2946 = 0;
          if(!Client.aBool2719) {
-            if(Varp.loginConnection != null) {
+            if(Class108_Sub20_Sub6.loginConnection != null) {
                Client.secureBuffer.writePacket(32);
 
                try {
-                  Varp.loginConnection.writeBytes(Client.secureBuffer.buf, 0, Client.secureBuffer.position * 798331555);
+                  Class108_Sub20_Sub6.loginConnection.writeBytes(Client.secureBuffer.buf, 0, Client.secureBuffer.position * 798331555);
                   Client.secureBuffer.position = 0;
                } catch (IOException var3) {
                   Client.aBool2719 = true;

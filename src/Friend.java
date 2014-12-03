@@ -28,14 +28,14 @@ public class Friend {
       ChatMessage.method2017(var0.anInt2394 * 171470795, var0.anInt2339 * 826764905, var1, (short)2048);
    }
 
-   static final void method659(Player player, int var1, int var2, int var3, short var4) {
-      if(player != Class108_Sub10.myPlayer) {
+   static final void method659(Player var0, int var1, int var2, int var3, short var4) {
+      if(var0 != Class108_Sub10.myPlayer) {
          if(Client.menuActionRow * 391839991 < 400) {
             String var6;
-            if(player.skillLevel * -1817505683 == 0) {
-               var6 = player.playerName + Class108_Sub13.method1702(player.combatLevel * -1769445007, Class108_Sub10.myPlayer.combatLevel * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + player.combatLevel * -1769445007 + Class47.CLOSE_PAREN;
+            if(var0.anInt2668 * -1817505683 == 0) {
+               var6 = var0.playerName + Class108_Sub13.method1702(var0.anInt2681 * -1769445007, Class108_Sub10.myPlayer.anInt2681 * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringConstants.aString1069 + var0.anInt2681 * -1769445007 + Class47.CLOSE_PAREN;
             } else {
-               var6 = player.playerName + " " + Class47.OPEN_PAREN + StringConstants.SKILL_LEVEL + player.skillLevel * -1817505683 + Class47.CLOSE_PAREN;
+               var6 = var0.playerName + " " + Class47.OPEN_PAREN + StringConstants.aString1106 + var0.anInt2668 * -1817505683 + Class47.CLOSE_PAREN;
             }
 
             int var7;
@@ -50,12 +50,12 @@ public class Friend {
                   if(null != Client.aStringArray2834[var7]) {
                      short var5 = 0;
                      if(Client.aStringArray2834[var7].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
-                        if(Client.aClass50_2733 == Class50.aClass50_701 || Class50.aClass50_698 == Client.aClass50_2733 && player.combatLevel * -1769445007 > Class108_Sub10.myPlayer.combatLevel * -1769445007) {
+                        if(Client.aClass50_2733 == Class50.aClass50_701 || Class50.aClass50_698 == Client.aClass50_2733 && var0.anInt2681 * -1769445007 > Class108_Sub10.myPlayer.anInt2681 * -1769445007) {
                            var5 = 2000;
                         }
 
-                        if(0 != Class108_Sub10.myPlayer.playerTeamID * -1623092945 && 0 != player.playerTeamID * -1623092945) {
-                           if(player.playerTeamID * -1623092945 == Class108_Sub10.myPlayer.playerTeamID * -1623092945) {
+                        if(0 != Class108_Sub10.myPlayer.playerTeamID * -1623092945 && 0 != var0.playerTeamID * -1623092945) {
+                           if(var0.playerTeamID * -1623092945 == Class108_Sub10.myPlayer.playerTeamID * -1623092945) {
                               var5 = 2000;
                            } else {
                               var5 = 0;

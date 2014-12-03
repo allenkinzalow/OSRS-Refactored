@@ -28,10 +28,10 @@ public class Class56 {
 
    static final int method745(int var0) {
       if(!Ignore.aClass37_386.aBool528) {
-         int var1 = ClientScript.getFloorDrawHeight(BZip2Context.anInt279 * 1217916071, CacheFileAccessor.anInt1490 * 1498802843, VarpBit.plane * -570926309, 1561513194);
-         return var1 - ClientScript.anInt1645 * 699100371 < 800 && (RegionReference.mapTileSettings[VarpBit.plane * -570926309][BZip2Context.anInt279 * 1217916071 >> 7][CacheFileAccessor.anInt1490 * 1498802843 >> 7] & 4) != 0?VarpBit.plane * -570926309:3;
+         int var1 = ClientScript.getFloorDrawHeight(BZip2Context.anInt279 * 1217916071, CacheFileAccessor.anInt1490 * 1498802843, Class108_Sub20_Sub2.plane * -570926309, 1561513194);
+         return var1 - ClientScript.anInt1645 * 699100371 < 800 && (RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][BZip2Context.anInt279 * 1217916071 >> 7][CacheFileAccessor.anInt1490 * 1498802843 >> 7] & 4) != 0?Class108_Sub20_Sub2.plane * -570926309:3;
       } else {
-         return VarpBit.plane * -570926309;
+         return Class108_Sub20_Sub2.plane * -570926309;
       }
    }
 }

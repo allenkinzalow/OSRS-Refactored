@@ -30,7 +30,7 @@ public final class NPC extends Entity {
 
 		int var14;
 		for (Projectile projectile = (Projectile) Client.projectileDeque.getFront(); null != projectile; projectile = (Projectile) Client.projectileDeque.getNext()) {
-			if (projectile.anInt2524 * -464324267 == VarpBit.plane * -570926309 && Client.cycle * -637317861 <= projectile.anInt2527 * -976369325) {
+			if (projectile.anInt2524 * -464324267 == Class108_Sub20_Sub2.plane * -570926309 && Client.cycle * -637317861 <= projectile.anInt2527 * -976369325) {
 				if (Client.cycle * -637317861 >= projectile.anInt2528 * 2111882005) {
 					if (projectile.anInt2533 * 47163971 > 0) {
 						NPC var9 = Client.localNPCs[projectile.anInt2533 * 47163971 - 1];
@@ -54,7 +54,7 @@ public final class NPC extends Entity {
 					}
 
 					projectile.process(Client.anInt2780 * 468305965, -1743142671);
-					Class56.gameScene.method412(VarpBit.plane * -570926309, (int) projectile.xPosition, (int) projectile.yPosition, (int) projectile.zPosition, 60, projectile, projectile.rotationY * -1160487113, -1, false);
+					Class56.gameScene.method412(Class108_Sub20_Sub2.plane * -570926309, (int) projectile.xPosition, (int) projectile.yPosition, (int) projectile.zPosition, 60, projectile, projectile.rotationY * -1160487113, -1, false);
 				}
 			} else {
 				projectile.unlink();
@@ -74,7 +74,7 @@ public final class NPC extends Entity {
 			}
 
 			var28 = Client.anInt2771 * -44898889 + Client.anInt2772 * -1122254441 & 2047;
-			GroundItem.method583(Item.anInt2616 * -1461479521, ClientScript.getFloorDrawHeight(Class108_Sub10.myPlayer.anInt2394 * 171470795, Class108_Sub10.myPlayer.anInt2339 * 826764905, VarpBit.plane * -570926309, 1152296478) - 50, GroundItem.anInt480 * -1594540275, var7, var28, var7 * 3 + 600, (byte) -124);
+			GroundItem.method583(Item.anInt2616 * -1461479521, ClientScript.getFloorDrawHeight(Class108_Sub10.myPlayer.anInt2394 * 171470795, Class108_Sub10.myPlayer.anInt2339 * 826764905, Class108_Sub20_Sub2.plane * -570926309, 1152296478) - 50, GroundItem.anInt480 * -1594540275, var7, var28, var7 * 3 + 600, (byte) -124);
 		}
 
 		int var6;
@@ -86,7 +86,7 @@ public final class NPC extends Entity {
 		int var21;
 		if (!Client.aBool2886) {
 			if (Ignore.aClass37_386.aBool528) {
-				var28 = VarpBit.plane * -570926309;
+				var28 = Class108_Sub20_Sub2.plane * -570926309;
 			} else {
 				var14 = 3;
 				if (RuntimeException_Sub1.anInt2625 * -611182019 < 310) {
@@ -94,8 +94,8 @@ public final class NPC extends Entity {
 					var19 = CacheFileAccessor.anInt1490 * 1498802843 >> 7;
 					var12 = Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7;
 					var21 = Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7;
-					if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][var11][var19] & 4)) {
-						var14 = VarpBit.plane * -570926309;
+					if (0 != (RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][var11][var19] & 4)) {
+						var14 = Class108_Sub20_Sub2.plane * -570926309;
 					}
 
 					if (var12 > var11) {
@@ -122,8 +122,8 @@ public final class NPC extends Entity {
 								--var11;
 							}
 
-							if ((RegionReference.mapTileSettings[VarpBit.plane * -570926309][var11][var19] & 4) != 0) {
-								var14 = VarpBit.plane * -570926309;
+							if ((RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][var11][var19] & 4) != 0) {
+								var14 = Class108_Sub20_Sub2.plane * -570926309;
 							}
 
 							var6 += var15;
@@ -135,8 +135,8 @@ public final class NPC extends Entity {
 									--var19;
 								}
 
-								if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][var11][var19] & 4)) {
-									var14 = VarpBit.plane * -570926309;
+								if (0 != (RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][var11][var19] & 4)) {
+									var14 = Class108_Sub20_Sub2.plane * -570926309;
 								}
 							}
 						}
@@ -151,8 +151,8 @@ public final class NPC extends Entity {
 								--var19;
 							}
 
-							if ((RegionReference.mapTileSettings[VarpBit.plane * -570926309][var11][var19] & 4) != 0) {
-								var14 = VarpBit.plane * -570926309;
+							if ((RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][var11][var19] & 4) != 0) {
+								var14 = Class108_Sub20_Sub2.plane * -570926309;
 							}
 
 							var6 += var15;
@@ -164,16 +164,16 @@ public final class NPC extends Entity {
 									--var11;
 								}
 
-								if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][var11][var19] & 4)) {
-									var14 = VarpBit.plane * -570926309;
+								if (0 != (RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][var11][var19] & 4)) {
+									var14 = Class108_Sub20_Sub2.plane * -570926309;
 								}
 							}
 						}
 					}
 				}
 
-				if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7][Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7] & 4)) {
-					var14 = VarpBit.plane * -570926309;
+				if (0 != (RegionReference.mapTileSettings[Class108_Sub20_Sub2.plane * -570926309][Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7][Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7] & 4)) {
+					var14 = Class108_Sub20_Sub2.plane * -570926309;
 				}
 
 				var28 = var14;
@@ -418,7 +418,7 @@ public final class NPC extends Entity {
 			return null;
 		} else {
 			AnimationDefinition var5 = -1 != this.anInt2368 * 1647325343 && 0 == this.anInt2371 * 843883743 ? CullingCluster.method672(this.anInt2368 * 1647325343, 2106941754) : null;
-			AnimationDefinition var6 = -1 != this.anInt2365 * 1103885695 && (this.anInt2365 * 1103885695 != this.standAnimationID * -532414055 || null == var5) ? CullingCluster.method672(this.anInt2365 * 1103885695, 2104925215) : null;
+			AnimationDefinition var6 = -1 != this.anInt2365 * 1103885695 && (this.anInt2365 * 1103885695 != this.anInt2343 * -532414055 || null == var5) ? CullingCluster.method672(this.anInt2365 * 1103885695, 2104925215) : null;
 			ModelRasterizer rasterizer = this.definition.method2288(var5, this.anInt2341 * -2111206063, var6, this.anInt2366 * -65543943, (byte) 1);
 			if (null != rasterizer) {
 				rasterizer.method2855();
@@ -494,7 +494,7 @@ public final class NPC extends Entity {
 
 		for (xTile = 0; xTile < 104; ++xTile) {
 			for (yTile = 0; yTile < 104; ++yTile) {
-				int var6 = Class56.gameScene.fetchGroundTileDecorationHash(VarpBit.plane * -570926309, xTile, yTile);
+				int var6 = Class56.gameScene.fetchGroundTileDecorationHash(Class108_Sub20_Sub2.plane * -570926309, xTile, yTile);
 				if (var6 != 0) {
 					var6 = var6 >> 14 & 32767;
 					int mapIconID = ChatMessagesContainer.getObjectDefForID(var6, (byte) 0).mapIconID * 334594829;
@@ -502,7 +502,7 @@ public final class NPC extends Entity {
 						int xClip = xTile;
 						int yClip = yTile;
 						if (mapIconID != 22 && mapIconID != 29 && mapIconID != 34 && mapIconID != 36 && 46 != mapIconID && mapIconID != 47 && mapIconID != 48) {
-							int[][] clipData = Client.clippingPlanes[VarpBit.plane * -570926309].clipData;
+							int[][] clipData = Client.clippingPlanes[Class108_Sub20_Sub2.plane * -570926309].clipData;
 
 							for (int clipIndex = 0; clipIndex < 10; ++clipIndex) {
 								int var9 = (int) (Math.random() * 4.0D);
@@ -524,7 +524,7 @@ public final class NPC extends Entity {
 							}
 						}
 
-						Client.visibleMapIcons[Client.mapIconAmt * 396638539] = VarpBit.mapFunctionIcons[mapIconID];
+						Client.visibleMapIcons[Client.mapIconAmt * 396638539] = Class108_Sub20_Sub2.mapFunctionIcons[mapIconID];
 						Client.mapIconTileX[Client.mapIconAmt * 396638539] = xClip;
 						Client.mapIconTileY[Client.mapIconAmt * 396638539] = yClip;
 						Client.mapIconAmt += 745179235;
@@ -537,7 +537,7 @@ public final class NPC extends Entity {
 	}
 
 	static RGBSprite[] method3167(AbstractIndex var0, int var1, int var2, int var3) {
-		if (!FriendsChatMember.method1686(var0, var1, var2, -1626517407)) {
+		if (!Class108_Sub11.method1686(var0, var1, var2, -1626517407)) {
 			return null;
 		} else {
 			RGBSprite[] var7 = new RGBSprite[Class9.anInt125 * 2039617935];
@@ -607,12 +607,12 @@ public final class NPC extends Entity {
 					}
 
 					var4.anInt2357 = var4.definition.walkAnimation * 1834238161;
-					var4.turn180AnimationID = var4.definition.rotate180Animation * -1799278961;
-					var4.turn90RightAnimationID = var4.definition.rotate90RightAnimation * 1104470195;
-					var4.turn90LeftAnimationID = var4.definition.rotate90LeftAnimation * -1117812389;
-					var4.standAnimationID = var4.definition.stanceAnimation * -517518475;
-					var4.nextAnimationID = var4.definition.anInt2165 * -1414070185;
-					var4.walkAnimationID = var4.definition.anInt2189 * -2025131807;
+					var4.anInt2347 = var4.definition.rotate180Animation * -1799278961;
+					var4.anInt2376 = var4.definition.rotate90RightAnimation * 1104470195;
+					var4.anInt2378 = var4.definition.rotate90LeftAnimation * -1117812389;
+					var4.anInt2343 = var4.definition.stanceAnimation * -517518475;
+					var4.anInt2344 = var4.definition.anInt2165 * -1414070185;
+					var4.anInt2370 = var4.definition.anInt2189 * -2025131807;
 					var4.method2720(Class108_Sub10.myPlayer.anIntArray2391[0] + var2, var5 + Class108_Sub10.myPlayer.anIntArray2392[0], var6 == 1, 1073159);
 					continue;
 				}

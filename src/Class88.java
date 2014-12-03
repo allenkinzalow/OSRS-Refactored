@@ -3,7 +3,7 @@ public class Class88 {
 
    static final int anInt1313 = 4;
    public static int[] anIntArray1314 = new int[32];
-   public static int[] configSettings;
+   public static int[] anIntArray1315;
    static int[] anIntArray1316;
    public static int[] anIntArray1317;
    public static short[] aShortArray1318;
@@ -19,7 +19,7 @@ public class Class88 {
       }
 
       anIntArray1317 = new int[2000];
-      configSettings = new int[2000];
+      anIntArray1315 = new int[2000];
    }
 
    Class88() throws Throwable {
