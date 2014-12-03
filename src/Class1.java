@@ -263,7 +263,7 @@ public class Class1 {
 									hue = xPos * 256 / hueDivisor;
 									saturation = xHeightDifference / blendedDirection;
 									luminosity = yHeightDifference / blendedDirection;
-									var18 = Class108_Sub20_Sub6.packHSL(hue, saturation, luminosity, 1298455127);
+									var18 = Varp.packHSL(hue, saturation, luminosity, 1298455127);
 									hue = hue + RegionReference.hueRandomizer * -2073023565 & 255;
 									luminosity += RegionReference.lightnessRandomizer * -1983624965;
 									if (luminosity < 0) {
@@ -272,7 +272,7 @@ public class Class1 {
 										luminosity = 255;
 									}
 
-									hslBitset = Class108_Sub20_Sub6.packHSL(hue, saturation, luminosity, 1802545195);
+									hslBitset = Varp.packHSL(hue, saturation, luminosity, 1802545195);
 								}
 
 								FloorDefinition floorDef;
@@ -349,7 +349,7 @@ public class Class1 {
 										var56 = -1;
 										var41 = -2;
 									} else {
-										var44 = Class108_Sub20_Sub6.packHSL(floorDef.hue * 1297919561, floorDef.saturation * -24553127, floorDef.luminosity * -715881191, 1552822455);
+										var44 = Varp.packHSL(floorDef.hue * 1297919561, floorDef.saturation * -24553127, floorDef.luminosity * -715881191, 1552822455);
 										var43 = floorDef.hue * 1297919561 + RegionReference.hueRandomizer * -2073023565 & 255;
 										var38 = floorDef.luminosity * -715881191 + RegionReference.lightnessRandomizer * -1983624965;
 										if (var38 < 0) {
@@ -358,7 +358,7 @@ public class Class1 {
 											var38 = 255;
 										}
 
-										var41 = Class108_Sub20_Sub6.packHSL(var43, floorDef.saturation * -24553127, var38, 1506801862);
+										var41 = Varp.packHSL(var43, floorDef.saturation * -24553127, var38, 1506801862);
 									}
 
 									var43 = 0;
@@ -375,7 +375,7 @@ public class Class1 {
 											var40 = 255;
 										}
 
-										var41 = Class108_Sub20_Sub6.packHSL(var38, floorDef.anInt2224 * -1327914801, var40, 1654676153);
+										var41 = Varp.packHSL(var38, floorDef.anInt2224 * -1327914801, var40, 1654676153);
 										var43 = Rasterizer3D.rgbTable[Class108_Sub16.method1927(var41, 96, 1171927012)];
 									}
 

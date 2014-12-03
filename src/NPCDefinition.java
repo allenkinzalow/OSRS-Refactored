@@ -52,7 +52,7 @@ public class NPCDefinition extends CacheableNode {
          if(-1 != this.anInt2174 * 1518197609) {
             var2 = BuildType.method1094(this.anInt2174 * 1518197609, -511913587);
          } else if(-1 != this.anInt2187 * -1146999519) {
-            var2 = Class88.anIntArray1315[this.anInt2187 * -1146999519];
+            var2 = Class88.configSettings[this.anInt2187 * -1146999519];
          }
 
          return var2 >= 0 && var2 < this.anIntArray2185.length && this.anIntArray2185[var2] != -1;
@@ -296,7 +296,7 @@ public class NPCDefinition extends CacheableNode {
       if(this.anInt2174 * 1518197609 != -1) {
          var2 = BuildType.method1094(this.anInt2174 * 1518197609, -511913587);
       } else if(this.anInt2187 * -1146999519 != -1) {
-         var2 = Class88.anIntArray1315[this.anInt2187 * -1146999519];
+         var2 = Class88.configSettings[this.anInt2187 * -1146999519];
       }
 
       return var2 >= 0 && var2 < this.anIntArray2185.length && this.anIntArray2185[var2] != -1?Class108_Sub12.getNPCDefForID(this.anIntArray2185[var2], -606019968):null;

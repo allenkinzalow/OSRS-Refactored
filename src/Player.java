@@ -7,7 +7,7 @@ public final class Player extends Entity {
 	int anInt2665 = 0;
 	int prayicon = 2079409549;
 	int playerTeamID = 0;
-	int anInt2668 = 0;
+	int skillLevel = 0;
 	int anInt2669;
 	int anInt2670 = 0;
 	EquipmentKit bodyEquipmentKit;
@@ -20,7 +20,7 @@ public final class Player extends Entity {
 	int anInt2678;
 	int anInt2679;
 	boolean aBool2680 = false;
-	int anInt2681 = 0;
+	int combatLevel = 0;
 	boolean aBool2682 = false;
 	static final int anInt2683 = 512;
 	public static final int anInt2684 = 213;
@@ -70,46 +70,46 @@ public final class Player extends Entity {
 		}
 
 		int a;
-		this.anInt2343 = (a=buffer.readUShort(551750758)) * 1915601577;
-		if (this.anInt2343 * -532414055 == '\uffff') {
-			this.anInt2343 = -1915601577;
+		this.standAnimationID = (a=buffer.readUShort(551750758)) * 1915601577;
+		if (this.standAnimationID * -532414055 == '\uffff') {
+			this.standAnimationID = -1915601577;
 		}
 		System.out.println("Anim1: " + a);
 
-		this.anInt2344 = (a=buffer.readUShort(-914742090)) * 1771909735;
-		if ('\uffff' == this.anInt2344 * 1113049431) {
-			this.anInt2344 = -1771909735;
+		this.nextAnimationID = (a=buffer.readUShort(-914742090)) * 1771909735;
+		if ('\uffff' == this.nextAnimationID * 1113049431) {
+			this.nextAnimationID = -1771909735;
 		}
 		System.out.println("Anim2: " + (a));
 
-		this.anInt2370 = this.anInt2344 * 858874001;
+		this.walkAnimationID = this.nextAnimationID * 858874001;
 		this.anInt2357 = (a=buffer.readUShort(1492975448)) * 645107359;
 		if (this.anInt2357 * 1461718367 == '\uffff') {
 			this.anInt2357 = -645107359;
 		}
 		System.out.println("Anim3: " + a);
 
-		this.anInt2347 = (a=buffer.readUShort(-442040505)) * -1371640443;
-		if ('\uffff' == this.anInt2347 * 953582413) {
-			this.anInt2347 = 1371640443;
+		this.turn180AnimationID = (a=buffer.readUShort(-442040505)) * -1371640443;
+		if ('\uffff' == this.turn180AnimationID * 953582413) {
+			this.turn180AnimationID = 1371640443;
 		}
 		System.out.println("Anim4: " + a);
 
-		this.anInt2376 = (a=buffer.readUShort(1572878172)) * -514284795;
-		if ('\uffff' == this.anInt2376 * -2059161139) {
-			this.anInt2376 = 514284795;
+		this.turn90RightAnimationID = (a=buffer.readUShort(1572878172)) * -514284795;
+		if ('\uffff' == this.turn90RightAnimationID * -2059161139) {
+			this.turn90RightAnimationID = 514284795;
 		}
 		System.out.println("Anim5: " + a);
 
-		this.anInt2378 = (a=buffer.readUShort(-1792950317)) * -1417997611;
-		if ('\uffff' == this.anInt2378 * 568563325) {
-			this.anInt2378 = 1417997611;
+		this.turn90LeftAnimationID = (a=buffer.readUShort(-1792950317)) * -1417997611;
+		if ('\uffff' == this.turn90LeftAnimationID * 568563325) {
+			this.turn90LeftAnimationID = 1417997611;
 		}
 		System.out.println("Anim6: " + a);
 
-		this.anInt2350 = (a=buffer.readUShort(-1023182423)) * -479130233;
-		if (this.anInt2350 * -790681545 == '\uffff') {
-			this.anInt2350 = 479130233;
+		this.runAnimationID = (a=buffer.readUShort(-1023182423)) * -479130233;
+		if (this.runAnimationID * -790681545 == '\uffff') {
+			this.runAnimationID = 479130233;
 		}
 		System.out.println("Anim7: " + a);
 
@@ -118,8 +118,8 @@ public final class Player extends Entity {
 			RuntimeException_Sub1.aString2626 = this.playerName;
 		}
 
-		this.anInt2681 = buffer.readUByte() * -588957807;
-		this.anInt2668 = buffer.readUShort(-1212976341) * -1134855835;
+		this.combatLevel = buffer.readUByte() * -588957807;
+		this.skillLevel = buffer.readUShort(-1212976341) * -1134855835;
 		this.aBool2682 = buffer.readUByte() == 1;
 
 		/*
@@ -131,7 +131,7 @@ public final class Player extends Entity {
 		Anim6: 809
 		Last: false, 70, 0
 		 */
-		System.out.println("Last: " + aBool2682 + ", " + (anInt2681 * -1769445007) + ", " + (-1817505683 * anInt2668));
+		System.out.println("Last: " + aBool2682 + ", " + (combatLevel * -1769445007) + ", " + (-1817505683 * skillLevel));
 
 		if (0 == Client.anInt2708 * -759629273 && Client.rights * 171939335 >= 2) {
 			this.aBool2682 = false;
@@ -201,7 +201,7 @@ public final class Player extends Entity {
 			return null;
 		} else {
 			AnimationDefinition var2 = this.anInt2368 * 1647325343 != -1 && 0 == this.anInt2371 * 843883743 ? CullingCluster.method672(this.anInt2368 * 1647325343, 1639954209) : null;
-			AnimationDefinition var4 = this.anInt2365 * 1103885695 != -1 && !this.aBool2680 && (this.anInt2365 * 1103885695 != this.anInt2343 * -532414055 || null == var2) ? CullingCluster.method672(this.anInt2365 * 1103885695, 1617260319) : null;
+			AnimationDefinition var4 = this.anInt2365 * 1103885695 != -1 && !this.aBool2680 && (this.anInt2365 * 1103885695 != this.standAnimationID * -532414055 || null == var2) ? CullingCluster.method672(this.anInt2365 * 1103885695, 1617260319) : null;
 			ModelRasterizer rasterizer = this.bodyEquipmentKit.getModelRasterizer(var2, this.anInt2341 * -2111206063, var4, this.anInt2366 * -65543943, 677402337);
 			if (null == rasterizer) {
 				return null;

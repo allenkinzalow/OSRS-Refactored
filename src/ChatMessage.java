@@ -82,7 +82,7 @@ public class ChatMessage extends CacheableNode {
    }
 
    public static RGBSprite method2016(AbstractIndex index, int archiveId, int fileId, byte var3) {
-      if(!Class108_Sub11.method1686(index, archiveId, fileId, -1593817854)) {
+      if(!FriendsChatMember.method1686(index, archiveId, fileId, -1593817854)) {
          return null;
       } else {
          RGBSprite sprite = new RGBSprite();
@@ -107,7 +107,7 @@ public class ChatMessage extends CacheableNode {
 
    static final void method2017(int var0, int var1, int var2, short var3) {
       if(var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-         int var4 = ClientScript.getFloorDrawHeight(var0, var1, Class108_Sub20_Sub2.plane * -570926309, 1332864502) - var2;
+         int var4 = ClientScript.getFloorDrawHeight(var0, var1, VarpBit.plane * -570926309, 1332864502) - var2;
          var0 -= BZip2Context.anInt279 * 1217916071;
          var4 -= ClientScript.anInt1645 * 699100371;
          var1 -= CacheFileAccessor.anInt1490 * 1498802843;
@@ -135,7 +135,7 @@ public class ChatMessage extends CacheableNode {
 
    static final void method2018(byte var0) {
       for(Class108_Sub20_Sub14_Sub6 var1 = (Class108_Sub20_Sub14_Sub6) Client.aClass105_2928.getFront(); var1 != null; var1 = (Class108_Sub20_Sub14_Sub6) Client.aClass105_2928.getNext()) {
-         if(var1.anInt2603 * -1644198771 == Class108_Sub20_Sub2.plane * -570926309 && !var1.aBool2612) {
+         if(var1.anInt2603 * -1644198771 == VarpBit.plane * -570926309 && !var1.aBool2612) {
             if(Client.cycle * -637317861 >= var1.anInt2602 * 813112785) {
                var1.method3073(Client.anInt2780 * 468305965, 65919374);
                if(var1.aBool2612) {

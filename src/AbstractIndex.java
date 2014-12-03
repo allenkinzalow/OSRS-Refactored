@@ -239,7 +239,7 @@ public abstract class AbstractIndex {
       return this.fileArray.length;
    }
 
-   public void method1017(int var1) {
+   public void resetCachedIndex(int var1) {
       for(int archiveID = 0; archiveID < this.fileArray.length; ++archiveID) {
          if(null != this.fileArray[archiveID]) {
             for(int fileID = 0; fileID < this.fileArray[archiveID].length; ++fileID) {

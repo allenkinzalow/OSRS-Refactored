@@ -195,7 +195,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                }
 
                if(var7 == 5) {
-                  var8 = Class88.anIntArray1315[var3[var5++]];
+                  var8 = Class88.configSettings[var3[var5++]];
                }
 
                if(6 == var7) {
@@ -203,11 +203,11 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                }
 
                if(var7 == 7) {
-                  var8 = Class88.anIntArray1315[var3[var5++]] * 100 / '\ub71b';
+                  var8 = Class88.configSettings[var3[var5++]] * 100 / '\ub71b';
                }
 
                if(var7 == 8) {
-                  var8 = Class108_Sub10.myPlayer.anInt2681 * -1769445007;
+                  var8 = Class108_Sub10.myPlayer.combatLevel * -1769445007;
                }
 
                if(var7 == 9) {
@@ -242,7 +242,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                }
 
                if(13 == var7) {
-                  var10 = Class88.anIntArray1315[var3[var5++]];
+                  var10 = Class88.configSettings[var3[var5++]];
                   int var15 = var3[var5++];
                   var8 = 0 != (var10 & 1 << var15)?1:0;
                }

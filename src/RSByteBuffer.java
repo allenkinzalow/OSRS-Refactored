@@ -645,7 +645,7 @@ public class RSByteBuffer extends Node {
             Class91.anInt1329 = var8 * -2020957493;
             OnlineFriend.anInt1511 = var9 * -1300146319;
             Class27.anInt362 = 1805356111;
-            Class108_Sub11.aBool1669 = false;
+            FriendsChatMember.aBool1669 = false;
             ClientScriptDefinition.anInt2281 = -1589655618;
          } else {
             Class15.method288(2, 1880141009);

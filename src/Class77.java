@@ -12,16 +12,16 @@ public class Class77 {
    public static final int anInt1211 = 246;
 
 
-   static final void drawMapScenes(int var0, int var1, int var2, int var3, int var4, int var5) {
-      int var6 = Class56.gameScene.method427(var0, var1, var2);
+   static final void drawMapScenes(int var0, int xPos, int yPos, int var3, int var4, int var5) {
+      int var6 = Class56.gameScene.method427(var0, xPos, yPos);
       int var7;
       int var8;
       int var9;
       int var10;
       int var11;
-      int var12;
+      int objectID;
       if(var6 != 0) {
-         var8 = Class56.gameScene.method431(var0, var1, var2, var6);
+         var8 = Class56.gameScene.method431(var0, xPos, yPos, var6);
          var9 = var8 >> 6 & 3;
          var7 = var8 & 31;
          var10 = var3;
@@ -29,94 +29,94 @@ public class Class77 {
             var10 = var4;
          }
 
-         int[] var14 = Class80.miniMapSprite.pixels;
-         var11 = var1 * 4 + 24624 + (103 - var2) * 2048;
-         var12 = var6 >> 14 & 32767;
-         ObjectDefinition var13 = ChatMessagesContainer.getObjectDefForID(var12, (byte)0);
-         if(var13.mapSceneID * -368925089 != -1) {
-            PaletteSprite var15 = ChatMessagesContainer.mapSceneIcons[var13.mapSceneID * -368925089];
-            if(var15 != null) {
-               int var16 = (var13.sizeX * -1409758236 - var15.anInt2413) / 2;
-               int var17 = (var13.sizeY * 921357316 - var15.anInt2414) / 2;
-               var15.drawSprite(var16 + 48 + var1 * 4, (104 - var2 - var13.sizeY * -1917144319) * 4 + 48 + var17);
+         int[] pixels = Class80.miniMapSprite.pixels;
+         var11 = xPos * 4 + 24624 + (103 - yPos) * 2048;
+         objectID = var6 >> 14 & 32767;
+         ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(objectID, (byte)0);
+         if(objectDef.mapSceneID * -368925089 != -1) {
+            PaletteSprite sprite = ChatMessagesContainer.mapSceneIcons[objectDef.mapSceneID * -368925089];
+            if(sprite != null) {
+               int var16 = (objectDef.sizeX * -1409758236 - sprite.anInt2413) / 2;
+               int var17 = (objectDef.sizeY * 921357316 - sprite.anInt2414) / 2;
+               sprite.drawSprite(var16 + 48 + xPos * 4, (104 - yPos - objectDef.sizeY * -1917144319) * 4 + 48 + var17);
             }
          } else {
             if(0 == var7 || 2 == var7) {
                if(var9 == 0) {
-                  var14[var11] = var10;
-                  var14[var11 + 512] = var10;
-                  var14[1024 + var11] = var10;
-                  var14[var11 + 1536] = var10;
+                  pixels[var11] = var10;
+                  pixels[var11 + 512] = var10;
+                  pixels[1024 + var11] = var10;
+                  pixels[var11 + 1536] = var10;
                } else if(var9 == 1) {
-                  var14[var11] = var10;
-                  var14[var11 + 1] = var10;
-                  var14[var11 + 2] = var10;
-                  var14[3 + var11] = var10;
+                  pixels[var11] = var10;
+                  pixels[var11 + 1] = var10;
+                  pixels[var11 + 2] = var10;
+                  pixels[3 + var11] = var10;
                } else if(2 == var9) {
-                  var14[var11 + 3] = var10;
-                  var14[512 + 3 + var11] = var10;
-                  var14[1024 + var11 + 3] = var10;
-                  var14[var11 + 3 + 1536] = var10;
+                  pixels[var11 + 3] = var10;
+                  pixels[512 + 3 + var11] = var10;
+                  pixels[1024 + var11 + 3] = var10;
+                  pixels[var11 + 3 + 1536] = var10;
                } else if(3 == var9) {
-                  var14[var11 + 1536] = var10;
-                  var14[1 + var11 + 1536] = var10;
-                  var14[2 + var11 + 1536] = var10;
-                  var14[3 + 1536 + var11] = var10;
+                  pixels[var11 + 1536] = var10;
+                  pixels[1 + var11 + 1536] = var10;
+                  pixels[2 + var11 + 1536] = var10;
+                  pixels[3 + 1536 + var11] = var10;
                }
             }
 
             if(var7 == 3) {
                if(var9 == 0) {
-                  var14[var11] = var10;
+                  pixels[var11] = var10;
                } else if(var9 == 1) {
-                  var14[3 + var11] = var10;
+                  pixels[3 + var11] = var10;
                } else if(var9 == 2) {
-                  var14[1536 + var11 + 3] = var10;
+                  pixels[1536 + var11 + 3] = var10;
                } else if(3 == var9) {
-                  var14[var11 + 1536] = var10;
+                  pixels[var11 + 1536] = var10;
                }
             }
 
             if(2 == var7) {
                if(3 == var9) {
-                  var14[var11] = var10;
-                  var14[512 + var11] = var10;
-                  var14[var11 + 1024] = var10;
-                  var14[var11 + 1536] = var10;
+                  pixels[var11] = var10;
+                  pixels[512 + var11] = var10;
+                  pixels[var11 + 1024] = var10;
+                  pixels[var11 + 1536] = var10;
                } else if(var9 == 0) {
-                  var14[var11] = var10;
-                  var14[1 + var11] = var10;
-                  var14[var11 + 2] = var10;
-                  var14[var11 + 3] = var10;
+                  pixels[var11] = var10;
+                  pixels[1 + var11] = var10;
+                  pixels[var11 + 2] = var10;
+                  pixels[var11 + 3] = var10;
                } else if(1 == var9) {
-                  var14[var11 + 3] = var10;
-                  var14[var11 + 3 + 512] = var10;
-                  var14[1024 + var11 + 3] = var10;
-                  var14[var11 + 3 + 1536] = var10;
+                  pixels[var11 + 3] = var10;
+                  pixels[var11 + 3 + 512] = var10;
+                  pixels[1024 + var11 + 3] = var10;
+                  pixels[var11 + 3 + 1536] = var10;
                } else if(var9 == 2) {
-                  var14[var11 + 1536] = var10;
-                  var14[1 + var11 + 1536] = var10;
-                  var14[var11 + 1536 + 2] = var10;
-                  var14[3 + 1536 + var11] = var10;
+                  pixels[var11 + 1536] = var10;
+                  pixels[1 + var11 + 1536] = var10;
+                  pixels[var11 + 1536 + 2] = var10;
+                  pixels[3 + 1536 + var11] = var10;
                }
             }
          }
       }
 
-      var6 = Class56.gameScene.method429(var0, var1, var2);
+      var6 = Class56.gameScene.method429(var0, xPos, yPos);
       if(0 != var6) {
-         var8 = Class56.gameScene.method431(var0, var1, var2, var6);
+         var8 = Class56.gameScene.method431(var0, xPos, yPos, var6);
          var9 = var8 >> 6 & 3;
          var7 = var8 & 31;
          var10 = var6 >> 14 & 32767;
-         ObjectDefinition var23 = ChatMessagesContainer.getObjectDefForID(var10, (byte)0);
+         ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(var10, (byte)0);
          int var22;
-         if(-1 != var23.mapSceneID * -368925089) {
-            PaletteSprite var20 = ChatMessagesContainer.mapSceneIcons[var23.mapSceneID * -368925089];
-            if(var20 != null) {
-               var12 = (var23.sizeX * -1409758236 - var20.anInt2413) / 2;
-               var22 = (var23.sizeY * 921357316 - var20.anInt2414) / 2;
-               var20.drawSprite(var12 + var1 * 4 + 48, (104 - var2 - var23.sizeY * -1917144319) * 4 + 48 + var22);
+         if(-1 != objectDef.mapSceneID * -368925089) {
+            PaletteSprite sprite = ChatMessagesContainer.mapSceneIcons[objectDef.mapSceneID * -368925089];
+            if(sprite != null) {
+               int xOFf = (objectDef.sizeX * -1409758236 - sprite.anInt2413) / 2;
+               int yOff = (objectDef.sizeY * 921357316 - sprite.anInt2414) / 2;
+               sprite.drawSprite(xOFf + xPos * 4 + 48, (104 - yPos - objectDef.sizeY * -1917144319) * 4 + 48 + yOff);
             }
          } else if(9 == var7) {
             var11 = 15658734;
@@ -125,7 +125,7 @@ public class Class77 {
             }
 
             int[] var21 = Class80.miniMapSprite.pixels;
-            var22 = (103 - var2) * 2048 + var1 * 4 + 24624;
+            var22 = (103 - yPos) * 2048 + xPos * 4 + 24624;
             if(var9 != 0 && var9 != 2) {
                var21[var22] = var11;
                var21[var22 + 512 + 1] = var11;
@@ -140,7 +140,7 @@ public class Class77 {
          }
       }
 
-      var6 = Class56.gameScene.fetchGroundTileDecorationHash(var0, var1, var2);
+      var6 = Class56.gameScene.fetchGroundTileDecorationHash(var0, xPos, yPos);
       if(var6 != 0) {
          var8 = var6 >> 14 & 32767;
          ObjectDefinition var19 = ChatMessagesContainer.getObjectDefForID(var8, (byte)0);
@@ -149,7 +149,7 @@ public class Class77 {
             if(null != var18) {
                var10 = (var19.sizeX * -1409758236 - var18.anInt2413) / 2;
                int var24 = (var19.sizeY * 921357316 - var18.anInt2414) / 2;
-               var18.drawSprite(var1 * 4 + 48 + var10, var24 + (104 - var2 - var19.sizeY * -1917144319) * 4 + 48);
+               var18.drawSprite(xPos * 4 + 48 + var10, var24 + (104 - yPos - var19.sizeY * -1917144319) * 4 + 48);
             }
          }
       }

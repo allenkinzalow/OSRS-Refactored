@@ -295,8 +295,8 @@ public class MouseCapturer implements Runnable {
             var16 = Class108_Sub16.method1926(var1, 1584549312);
             if(var16.opcodes != null && var16.opcodes[0][0] == 5) {
                var10 = var16.opcodes[0][1];
-               if(Class88.anIntArray1315[var10] != var16.conditionValues[0]) {
-                  Class88.anIntArray1315[var10] = var16.conditionValues[0];
+               if(Class88.configSettings[var10] != var16.conditionValues[0]) {
+                  Class88.configSettings[var10] = var16.conditionValues[0];
                   CacheConstants.method1097(var10, (byte)-13);
                }
             }
@@ -317,7 +317,7 @@ public class MouseCapturer implements Runnable {
          }
 
          if(23 == action) {
-            Class56.gameScene.method438(Class108_Sub20_Sub2.plane * -570926309, var0, var1);
+            Class56.gameScene.method438(VarpBit.plane * -570926309, var0, var1);
          }
 
          if(action == 38) {
@@ -871,7 +871,7 @@ public class MouseCapturer implements Runnable {
                var16 = Class108_Sub16.method1926(var1, 1644616497);
                if(var16.opcodes != null && 5 == var16.opcodes[0][0]) {
                   var10 = var16.opcodes[0][1];
-                  Class88.anIntArray1315[var10] = 1 - Class88.anIntArray1315[var10];
+                  Class88.configSettings[var10] = 1 - Class88.configSettings[var10];
                   CacheConstants.method1097(var10, (byte)-110);
                }
             }

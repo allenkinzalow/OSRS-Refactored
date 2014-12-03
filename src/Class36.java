@@ -7,7 +7,7 @@ public class Class36 {
    static Timer aClass53_515;
    public static final int anInt516 = 30;
    static final int anInt517 = 37;
-   static AbstractIndex aClass74_518;
+   static AbstractIndex configIndex_ref;
 	static IndexTable cache255Index;
    public static final int anInt521 = 172;
    static final int anInt522 = 7;

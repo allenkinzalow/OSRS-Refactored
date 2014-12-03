@@ -86,7 +86,7 @@ public class Class51 {
          var10.anInt1679 = var3 * -1614814877;
          var10.anInt1692 = var1 * 341929743;
          var10.anInt1681 = var2 * 1934863019;
-         Class108_Sub11.method1685(var10, (byte)0);
+         FriendsChatMember.method1685(var10, (byte)0);
          Client.aClass105_2939.insertBack(var10);
       }
 

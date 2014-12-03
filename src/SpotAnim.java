@@ -166,7 +166,7 @@ public class SpotAnim extends CacheableNode {
                if(!npcDef.aBool2190 || var1 == Client.anInt2789 * -1399758439) {
                   String var7 = npcDef.name;
                   if(npcDef.combatLevel * -1840374219 != 0) {
-                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Class108_Sub10.myPlayer.anInt2681 * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringConstants.aString1069 + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
+                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Class108_Sub10.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
                   }
 
                   if(1 == Client.anInt2858 * -968945719) {
@@ -215,7 +215,7 @@ public class SpotAnim extends CacheableNode {
                         for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
                            if(npcOptions[optionIndex] != null && npcOptions[optionIndex].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
                               short var10 = 0;
-                              if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Class108_Sub10.myPlayer.anInt2681 * -1769445007) {
+                              if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Class108_Sub10.myPlayer.combatLevel * -1769445007) {
                                  var10 = 2000;
                               }
 
@@ -253,19 +253,19 @@ public class SpotAnim extends CacheableNode {
       }
    }
 
-   public static Class108_Sub20_Sub6 method2149(int var0, byte var1) {
-      Class108_Sub20_Sub6 var2 = (Class108_Sub20_Sub6)Class108_Sub20_Sub6.aClass106_2040.get((long)var0);
-      if(null != var2) {
-         return var2;
+   public static Varp method2149(int var0, byte var1) {
+      Varp varp = (Varp)Varp.varpCacheMap.get((long)var0);
+      if(null != varp) {
+         return varp;
       } else {
-         byte[] var3 = Class36.aClass74_518.getFile(16, var0, (byte) 7);
-         var2 = new Class108_Sub20_Sub6();
+         byte[] var3 = Class36.configIndex_ref.getFile(16, var0, (byte) 7);
+         varp = new Varp();
          if(var3 != null) {
-            var2.method2151(new RSByteBuffer(var3), -1057715015);
+            varp.decode(new RSByteBuffer(var3), -1057715015);
          }
 
-         Class108_Sub20_Sub6.aClass106_2040.put(var2, (long)var0);
-         return var2;
+         Varp.varpCacheMap.put(varp, (long)var0);
+         return varp;
       }
    }
 }

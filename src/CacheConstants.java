@@ -30,9 +30,9 @@ public class CacheConstants {
    static final void method1097(int configID, byte var1) {
       Client.method3554(-1192704029);
       ChatMessagesContainer.method346(151864213);
-      int config = SpotAnim.method2149(configID, (byte)4).anInt2041 * -1110014191;
+      int config = SpotAnim.method2149(configID, (byte)4).configType * -1110014191;
       if(0 != config) {
-         int value = Class88.anIntArray1315[configID];
+         int value = Class88.configSettings[configID];
          if(1 == config) { // adjust lighting
             if(1 == value) {
                Rasterizer3D.method2976(0.9D);
