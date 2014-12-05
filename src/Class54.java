@@ -44,7 +44,7 @@ public final class Class54 {
          }
 
          int var10 = var2 - Client.anInt2883 * -651460611 + Client.aClass108_Sub17_2878.anInt1784 * -133270367;
-         int var9 = var3 - Client.anInt2884 * 1677738499 + Client.aClass108_Sub17_2878.anInt1785 * -643576081;
+         int var9 = var3 - Client.anInt2884 * 1677738499 + Client.aClass108_Sub17_2878.scrollPosition * -643576081;
          ClientScript script;
          if(null != Client.aClass108_Sub17_2877.anObjectArray1847 && Client.aBool2888) {
             script = new ClientScript();
@@ -103,7 +103,7 @@ public final class Class54 {
                   }
                }
             } else if((1 == Client.anInt2765 * -1978050497 || Class32.method577(Client.menuActionRow * 391839991 - 1, 1315292886)) && Client.menuActionRow * 391839991 > 2) {
-               Applet_Sub1.method3281(Client.anInt2879 * 1247450239 + Client.anInt2915 * 1257174125, Client.anInt2880 * 781803909 + Client.anInt2786 * 1625164373, (byte)125);
+               Applet_Sub1.setMenuPosAndDimmension(Client.anInt2879 * 1247450239 + Client.anInt2915 * 1257174125, Client.anInt2880 * 781803909 + Client.anInt2786 * 1625164373, (byte)125);
             } else if(Client.menuActionRow * 391839991 > 0) {
                Client.method3552(Client.anInt2915 * 1257174125 + Client.anInt2879 * 1247450239, Client.anInt2786 * 1625164373 + Client.anInt2880 * 781803909, -1806912840);
             }

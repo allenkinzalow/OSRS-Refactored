@@ -25,11 +25,11 @@ public final class Client extends Applet_Sub1 {
 	static int loginLoadingStage = 0;
 	static int anInt2714 = -1445469673;
 	static int cycle = 0;
-	static long aLong2716 = 5205271143587660129L;
-	static int anInt2717 = -1762238273;
-	static int anInt2718 = -91399121;
+	static long lastMousePressTime = 5205271143587660129L;
+	static int lastXCoord = -1762238273;
+	static int lastYCoord = -91399121;
 	static boolean aBool2719 = false;
-	static boolean aBool2720 = true;
+	static boolean lastSentFocusGained = true;
 	static boolean aBool2721 = false;
 	static int anInt2722 = 0;
 	static int anInt2723 = 0;
@@ -113,7 +113,7 @@ public final class Client extends Applet_Sub1 {
 	static int[] anIntArray2799 = new int[anInt2797 * -797118177];
 	static int[] anIntArray2800 = new int[anInt2797 * -797118177];
 	static int[] indicesPendingRemoval = new int[1000];
-	static boolean aBool2802 = true;
+	static boolean captureMouse = true;
 	static int anInt2803 = 0;
 	static int anInt2804 = 0;
 	static String[] aStringArray2805 = new String[anInt2797 * -797118177];
@@ -213,7 +213,7 @@ public final class Client extends Applet_Sub1 {
 	static int anInt2899 = 0;
 	static int anInt2900 = 0;
 	static String[] aStringArray2901 = new String[1000];
-	static int anInt2902 = 0;
+	static int mouseWheelRotation = 0;
 	static int anInt2903 = 0;
 	static Deque aClass105_2904 = new Deque();
 	static int[] anIntArray2905 = new int[100];
@@ -285,7 +285,7 @@ public final class Client extends Applet_Sub1 {
 	}
 
 	public final void init() {
-		if (this.method3268(-1976950418)) {
+		if (this.hasCorrectHost(-1976950418)) {
 			ClientParameter[] paramters = RSByteBuffer.getClientParameterArray(452864001);
 
 			int var33;
@@ -756,7 +756,7 @@ public final class Client extends Applet_Sub1 {
 				Entity.method2738(1637071795);
 				if (null != Class108_Sub6.aClass71_1585) {
 					var61 = Class108_Sub6.aClass71_1585.method974(2062591642);
-					anInt2902 = var61 * 964402881;
+					mouseWheelRotation = var61 * 964402881;
 				}
 
 				if (loginLoadingStage * 1315883169 == 0) {
@@ -807,7 +807,7 @@ public final class Client extends Applet_Sub1 {
 					menuActionRow = -1954561849;
 				}
 
-				int mouseXPos;
+				int value4;
 				String stringValue;
 				int value2;
 				int var7;
@@ -832,8 +832,8 @@ public final class Client extends Applet_Sub1 {
 						label2607:
 						{
 							try {
-								mouseXPos = Varp.loginConnection.available();
-								if (0 == mouseXPos) {
+								value4 = Varp.loginConnection.available();
+								if (0 == value4) {
 									var62 = false;
 									break label2607;
 								}
@@ -843,22 +843,22 @@ public final class Client extends Applet_Sub1 {
 									packetBuffer.position = 0;
 									packetID = packetBuffer.readPacket(-1684324366) * -859744123;
 									anInt2927 = Class104.anIntArray1427[packetID * -1441472435] * 1182625323;
-									--mouseXPos;
+									--value4;
 								}
 
 								if (-1 == anInt2927 * -574496637) {
-									if (mouseXPos <= 0) {
+									if (value4 <= 0) {
 										var62 = false;
 										break label2607;
 									}
 
 									Varp.loginConnection.read(packetBuffer.buf, 0, 1);
 									anInt2927 = (packetBuffer.buf[0] & 255) * 1182625323;
-									--mouseXPos;
+									--value4;
 								}
 
 								if (anInt2927 * -574496637 == -2) {
-									if (mouseXPos <= 1) {
+									if (value4 <= 1) {
 										var62 = false;
 										break label2607;
 									}
@@ -866,10 +866,10 @@ public final class Client extends Applet_Sub1 {
 									Varp.loginConnection.read(packetBuffer.buf, 0, 2);
 									packetBuffer.position = 0;
 									anInt2927 = packetBuffer.readUShort(1350542105) * 1182625323;
-									mouseXPos -= 2;
+									value4 -= 2;
 								}
 
-								if (mouseXPos < anInt2927 * -574496637) {
+								if (value4 < anInt2927 * -574496637) {
 									var62 = false;
 									break label2607;
 								}
@@ -1874,8 +1874,8 @@ public final class Client extends Applet_Sub1 {
 											value2 = 0;
 										}
 
-										if (var70.anInt1785 * -643576081 != value2) {
-											var70.anInt1785 = value2 * -1291378673;
+										if (var70.scrollPosition * -643576081 != value2) {
+											var70.scrollPosition = value2 * -1291378673;
 											MouseInputHandler.method775(var70, -16054773);
 										}
 									}
@@ -2722,59 +2722,59 @@ public final class Client extends Applet_Sub1 {
 
 				while (true) {
 					ClientVerifier clientVerifier = (ClientVerifier) Class109.aClass92_1447.method1155();
-					boolean var65;
+					boolean clientVerified;
 					if (null == clientVerifier) {
-						var65 = false;
+						clientVerified = false;
 					} else {
-						var65 = true;
+						clientVerified = true;
 					}
 
-					if (!var65) {
-						Object var67 = ClientScript.mouseCapturer.objectLock;
-						synchronized (var67) {
-							if (aBool2802) {
-								if (0 != MouseInputHandler.anInt780 * 1629072957 || ClientScript.mouseCapturer.coord * 649608097 >= 40) {
+					if (!clientVerified) {
+						Object objectLock = ClientScript.mouseCapturer.objectLock;
+						synchronized (objectLock) {
+							if (captureMouse) {
+								if (0 != MouseInputHandler.clickType * 1629072957 || ClientScript.mouseCapturer.coordIndex * 649608097 >= 40) {
 									secureBuffer.writePacket(59);
 									secureBuffer.writeByte(0);
-									var60 = secureBuffer.position * 798331555;
-									mouseXPos = 0;
+									int buffPos = secureBuffer.position * 798331555;
+									int index = 0;
 
-									for (value = 0; value < ClientScript.mouseCapturer.coord * 649608097 && secureBuffer.position * 798331555 - var60 < 240; ++value) {
-										++mouseXPos;
-										value2 = ClientScript.mouseCapturer.coordsY[value];
-										if (value2 < 0) {
-											value2 = 0;
-										} else if (value2 > 502) {
-											value2 = 502;
+									for (int coordIndex = 0; coordIndex < ClientScript.mouseCapturer.coordIndex * 649608097 && secureBuffer.position * 798331555 - buffPos < 240; ++coordIndex) {
+										++index;
+										int mouseYCoord = ClientScript.mouseCapturer.coordsY[coordIndex];
+										if (mouseYCoord < 0) {
+											mouseYCoord = 0;
+										} else if (mouseYCoord > 502) {
+											mouseYCoord = 502;
 										}
 
-										var7 = ClientScript.mouseCapturer.coordsX[value];
-										if (var7 < 0) {
-											var7 = 0;
-										} else if (var7 > 764) {
-											var7 = 764;
+										int mouseXCoord = ClientScript.mouseCapturer.coordsX[coordIndex];
+										if (mouseXCoord < 0) {
+											mouseXCoord = 0;
+										} else if (mouseXCoord > 764) {
+											mouseXCoord = 764;
 										}
 
-										verifyIndex = var7 + value2 * 765;
-										if (ClientScript.mouseCapturer.coordsY[value] == -1 && -1 == ClientScript.mouseCapturer.coordsX[value]) {
-											var7 = -1;
-											value2 = -1;
+										verifyIndex = mouseXCoord + mouseYCoord * 765;
+										if (ClientScript.mouseCapturer.coordsY[coordIndex] == -1 && -1 == ClientScript.mouseCapturer.coordsX[coordIndex]) {
+											mouseXCoord = -1;
+											mouseYCoord = -1;
 											verifyIndex = 524287;
 										}
 
-										if (anInt2717 * 2146627777 == var7 && value2 == anInt2718 * 1540789553) {
-											if (anInt2714 * -776041895 < 2047) {
+										if (lastXCoord * 2146627777 == mouseXCoord && mouseYCoord == lastYCoord * 1540789553) {
+											if (anInt2714 * -776041895 < 2047) { // possibly something to do with speed?
 												anInt2714 += 1445469673;
 											}
 										} else {
-											type = var7 - anInt2717 * 2146627777;
-											anInt2717 = var7 * 1762238273;
-											var10 = value2 - anInt2718 * 1540789553;
-											anInt2718 = value2 * 91399121;
-											if (anInt2714 * -776041895 < 8 && type >= -32 && type <= 31 && var10 >= -32 && var10 <= 31) {
-												type += 32;
-												var10 += 32;
-												secureBuffer.writeShort(var10 + (type << 6) + (anInt2714 * -776041895 << 12));
+											int xMoveDistance = mouseXCoord - lastXCoord * 2146627777; // x move distance
+											lastXCoord = mouseXCoord * 1762238273;
+											int yMoveDistance = mouseYCoord - lastYCoord * 1540789553; // y move distance
+											lastYCoord = mouseYCoord * 91399121;
+											if (anInt2714 * -776041895 < 8 && xMoveDistance >= -32 && xMoveDistance <= 31 && yMoveDistance >= -32 && yMoveDistance <= 31) {
+												xMoveDistance += 32;
+												yMoveDistance += 32;
+												secureBuffer.writeShort(yMoveDistance + (xMoveDistance << 6) + (anInt2714 * -776041895 << 12));
 												anInt2714 = 0;
 											} else if (anInt2714 * -776041895 < 8) {
 												secureBuffer.writeTriByte((anInt2714 * -776041895 << 19) + 8388608 + verifyIndex);
@@ -2786,60 +2786,60 @@ public final class Client extends Applet_Sub1 {
 										}
 									}
 
-									secureBuffer.endByte(secureBuffer.position * 798331555 - var60, (short) -28281);
-									if (mouseXPos >= ClientScript.mouseCapturer.coord * 649608097) {
-										ClientScript.mouseCapturer.coord = 0;
+									secureBuffer.endByte(secureBuffer.position * 798331555 - buffPos, (short) -28281);
+									if (index >= ClientScript.mouseCapturer.coordIndex * 649608097) {
+										ClientScript.mouseCapturer.coordIndex = 0;
 									} else {
-										ClientScript.mouseCapturer.coord -= mouseXPos * -1191679903;
+										ClientScript.mouseCapturer.coordIndex -= index * -1191679903;
 
-										for (value = 0; value < ClientScript.mouseCapturer.coord * 649608097; ++value) {
-											ClientScript.mouseCapturer.coordsX[value] = ClientScript.mouseCapturer.coordsX[value + mouseXPos];
-											ClientScript.mouseCapturer.coordsY[value] = ClientScript.mouseCapturer.coordsY[mouseXPos + value];
+										for (value = 0; value < ClientScript.mouseCapturer.coordIndex * 649608097; ++value) { // shift the values
+											ClientScript.mouseCapturer.coordsX[value] = ClientScript.mouseCapturer.coordsX[value + index];
+											ClientScript.mouseCapturer.coordsY[value] = ClientScript.mouseCapturer.coordsY[index + value];
 										}
 									}
 								}
 							} else {
-								ClientScript.mouseCapturer.coord = 0;
+								ClientScript.mouseCapturer.coordIndex = 0;
 							}
 						}
 
-						if (MouseInputHandler.anInt780 * 1629072957 == 1 || !Class100.aBool1391 && MouseInputHandler.anInt780 * 1629072957 == 4 || MouseInputHandler.anInt780 * 1629072957 == 2) {
-							long var40 = (MouseInputHandler.aLong779 * -4237770012721490031L - aLong2716 * 3485140636980075871L) / 50L;
-							if (var40 > 4095L) {
-								var40 = 4095L;
+						if (MouseInputHandler.clickType * 1629072957 == 1 || !Class100.aBool1391 && MouseInputHandler.clickType * 1629072957 == 4 || MouseInputHandler.clickType * 1629072957 == 2) {
+							long mousePressTimeOffset = (MouseInputHandler.mousePressTime * -4237770012721490031L - lastMousePressTime * 3485140636980075871L) / 50L;
+							if (mousePressTimeOffset > 4095L) {
+								mousePressTimeOffset = 4095L;
 							}
 
-							aLong2716 = MouseInputHandler.aLong779 * 6979520447360696591L;
-							mouseXPos = MouseInputHandler.anInt778 * 1498262827;
-							if (mouseXPos < 0) {
-								mouseXPos = 0;
-							} else if (mouseXPos > 502) {
-								mouseXPos = 502;
+							lastMousePressTime = MouseInputHandler.mousePressTime * 6979520447360696591L; // 
+							int mousePressX = MouseInputHandler.mousePressY * 1498262827;
+							if (mousePressX < 0) {
+								mousePressX = 0;
+							} else if (mousePressX > 502) {
+								mousePressX = 502;
 							}
 
-							int mouseYPos = MouseInputHandler.anInt774 * 472132205;
-							if (mouseYPos < 0) {
-								mouseYPos = 0;
-							} else if (mouseYPos > 764) {
-								mouseYPos = 764;
+							int mousePressY = MouseInputHandler.mousePressX * 472132205;
+							if (mousePressY < 0) {
+								mousePressY = 0;
+							} else if (mousePressY > 764) {
+								mousePressY = 764;
 							}
 
-							value2 = mouseYPos + mouseXPos * 765;
-							byte var133 = 0;
-							if (2 == MouseInputHandler.anInt780 * 1629072957) {
+							value2 = mousePressY + mousePressX * 765;
+							byte var133 = 0; 
+							if (2 == MouseInputHandler.clickType * 1629072957) {
 								var133 = 1;
 							}
 
-							verifyIndex = (int) var40;
+							int mousePressTimeOffsetI = (int) mousePressTimeOffset;
 							secureBuffer.writePacket(163);
-							secureBuffer.writeInt((var133 << 19) + (verifyIndex << 20) + value2);
+							secureBuffer.writeInt((var133 << 19) + (mousePressTimeOffsetI << 20) + value2);
 						}
 
 						if (KeyFocusListener.anInt897 * 1132688297 > 0) {
 							secureBuffer.writePacket(42);
 							secureBuffer.writeShort(0);
-							var61 = secureBuffer.position * 798331555;
-							long var42 = Player.method3175(849846164);
+							int buffPos = secureBuffer.position * 798331555;
+							long var42 = Player.getCurrentTimeMillis(849846164);
 
 							for (value = 0; value < KeyFocusListener.anInt897 * 1132688297; ++value) {
 								var27 = var42 - -8541562598439053681L * aLong2925;
@@ -2852,7 +2852,7 @@ public final class Client extends Applet_Sub1 {
 								secureBuffer.method1739(KeyFocusListener.anIntArray890[value], (byte) 64);
 							}
 
-							secureBuffer.endShort(secureBuffer.position * 798331555 - var61, -2807659);
+							secureBuffer.endShort(secureBuffer.position * 798331555 - buffPos, -2807659);
 						}
 
 						if (anInt2738 * 307156137 > 0) {
@@ -2871,14 +2871,14 @@ public final class Client extends Applet_Sub1 {
 							secureBuffer.method1749(anInt2771 * -44898889, -772878231);
 						}
 
-						if (LoginHandler.aBool844 && !aBool2720) {
-							aBool2720 = true;
+						if (LoginHandler.focusGained && !lastSentFocusGained) { //if focus gained was last sent as false, send true (1)
+							lastSentFocusGained = true;
 							secureBuffer.writePacket(201);
 							secureBuffer.writeByte(1);
 						}
 
-						if (!LoginHandler.aBool844 && aBool2720) {
-							aBool2720 = false;
+						if (!LoginHandler.focusGained && lastSentFocusGained) { // if focused lost and last sent was true, send false (0)
+							lastSentFocusGained = false;
 							secureBuffer.writePacket(201);
 							secureBuffer.writeByte(0);
 						}
@@ -2922,9 +2922,9 @@ public final class Client extends Applet_Sub1 {
 
 								if (0 == var68.anInt1689 * 1313217029 && var68.anInt1692 * -1711169553 >= 1 && var68.anInt1681 * -233897981 >= 1 && var68.anInt1692 * -1711169553 <= 102 && var68.anInt1681 * -233897981 <= 102) {
 									if (var68.anInt1682 * -1193219799 >= 0) {
-										mouseXPos = var68.anInt1682 * -1193219799;
+										value4 = var68.anInt1682 * -1193219799;
 										value = var68.anInt1688 * 1399604537;
-										var137 = ChatMessagesContainer.getObjectDefForID(mouseXPos, (byte) 0);
+										var137 = ChatMessagesContainer.getObjectDefForID(value4, (byte) 0);
 										if (11 == value) {
 											value = 10;
 										}
@@ -2959,15 +2959,15 @@ public final class Client extends Applet_Sub1 {
 
 						ObjectDefinition.method2224((byte) 70);
 
-						for (var61 = 0; var61 < anInt2749 * -1829405175; ++var61) {
-							var60 = npcIndices[var61];
-							NPC var72 = localNPCs[var60];
-							if (var72 != null) {
-								KeyFocusListener.method904(var72, var72.definition.tileSpacesOccupied * -87058581, -95967059);
+						for (int npcIndex = 0; npcIndex < anInt2749 * -1829405175; ++npcIndex) {
+							int npcIndice = npcIndices[npcIndex];
+							NPC npc = localNPCs[npcIndice];
+							if (npc != null) {
+								KeyFocusListener.method904(npc, npc.definition.tileSpacesOccupied * -87058581, -95967059);
 							}
 						}
 
-						GraphicsBuffer.method262(2073836407);
+						GraphicsBuffer.processEntityTextSpoken(2073836407);
 						anInt2780 += 2046019493;
 						if (0 != anInt2813 * -1596091641) {
 							anInt2829 += 1054535436;
@@ -2997,9 +2997,9 @@ public final class Client extends Applet_Sub1 {
 							if (rights * 171939335 >= 2 && KeyFocusListener.aBoolArray895[82] && 66 == Class9.anInt124 * 1025603675) {
 								stringValue = "";
  
-								ChatMessage var135;
-								for (Iterator var138 = Class26.aClass95_348.iterator(); var138.hasNext(); stringValue = stringValue + var135.messagePrefix + ':' + var135.messageSuffix + '\n') {
-									var135 = (ChatMessage) var138.next();
+								ChatMessage chatMessage;
+								for (Iterator var138 = Class26.aClass95_348.iterator(); var138.hasNext(); stringValue = stringValue + chatMessage.messagePrefix + ':' + chatMessage.messageSuffix + '\n') {
+									chatMessage = (ChatMessage) var138.next();
 								}
 
 								Friend.aClipboard625.setContents(new StringSelection(stringValue), (ClipboardOwner) null);
@@ -3010,9 +3010,9 @@ public final class Client extends Applet_Sub1 {
 							}
 						}
 
-						mouseXPos = openInterfaceID * 1523906617;
-						if (AbstractIndex.method1073(mouseXPos, 698314354)) {
-							Ignore.buildRightClickMenu(RSInterface.interface_cache[mouseXPos], -1, 0, 0, 765, 503, 0, 0, -1861351226);
+						value4 = openInterfaceID * 1523906617;
+						if (AbstractIndex.method1073(value4, 698314354)) {
+							Ignore.buildRightClickMenu(RSInterface.interface_cache[value4], -1, 0, 0, 765, 503, 0, 0, -1861351226);
 						}
 
 						anInt2731 += 1649299627;
@@ -3028,7 +3028,7 @@ public final class Client extends Applet_Sub1 {
 											if (script == null) {
 												RegionReference.method608((byte) -123);
 												if (IsaacRandomGen.aClass108_Sub17_745 == null && null == aClass108_Sub17_2877) {
-													value = MouseInputHandler.anInt780 * 1629072957;
+													value = MouseInputHandler.clickType * 1629072957;
 													if (actionMenuOpen) {
 														if (1 != value && (Class100.aBool1391 || value != 4)) {
 															value2 = MouseInputHandler.mouseX * -367052265;
@@ -3043,8 +3043,8 @@ public final class Client extends Applet_Sub1 {
 															value2 = Class51.actionMenuX * -745630459;
 															var7 = MouseInputHandler.actionMenuY * -740301953;
 															verifyIndex = Class54.actionMenuWidth * 1703965243;
-															type = MouseInputHandler.anInt774 * 472132205;
-															var10 = MouseInputHandler.anInt778 * 1498262827;
+															type = MouseInputHandler.mousePressX * 472132205;
+															var10 = MouseInputHandler.mousePressY * 1498262827;
 															var83 = -1;
 
 															for (variousValue = 0; variousValue < menuActionRow * 391839991; ++variousValue) {
@@ -3092,8 +3092,8 @@ public final class Client extends Applet_Sub1 {
 
 																		IsaacRandomGen.aClass108_Sub17_745 = Class108_Sub16.method1926(verifyIndex, -1169230931);
 																		anInt2863 = var7 * 1510333713;
-																		anInt2900 = MouseInputHandler.anInt774 * -258582887;
-																		anInt2903 = MouseInputHandler.anInt778 * -472109811;
+																		anInt2900 = MouseInputHandler.mousePressX * -258582887;
+																		anInt2903 = MouseInputHandler.mousePressY * -472109811;
 																		if (menuActionRow * 391839991 > 0) {
 																			Tile.method1676(menuActionRow * 391839991 - 1, 734161922);
 																		}
@@ -3113,7 +3113,7 @@ public final class Client extends Applet_Sub1 {
 															}
 
 															if (2 == value && menuActionRow * 391839991 > 0) {
-																Applet_Sub1.method3281(MouseInputHandler.anInt774 * 472132205, MouseInputHandler.anInt778 * 1498262827, (byte) 76);
+																Applet_Sub1.setMenuPosAndDimmension(MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, (byte) 76);
 															}
 														}
 													}
@@ -3172,7 +3172,7 @@ public final class Client extends Applet_Sub1 {
 																secureBuffer.method1756(IsaacRandomGen.aClass108_Sub17_745.interfaceHash * -1081473899, -1853537390);
 															}
 														} else if ((1 == anInt2765 * -1978050497 || Class32.method577(menuActionRow * 391839991 - 1, 1315292886)) && menuActionRow * 391839991 > 2) {
-															Applet_Sub1.method3281(anInt2900 * 785242869, anInt2903 * 685630743, (byte) 54);
+															Applet_Sub1.setMenuPosAndDimmension(anInt2900 * 785242869, anInt2903 * 685630743, (byte) 54);
 														} else if (menuActionRow * 391839991 > 0) {
 															value = anInt2900 * 785242869;
 															value2 = anInt2903 * 685630743;
@@ -3181,7 +3181,7 @@ public final class Client extends Applet_Sub1 {
 														}
 
 														anInt2814 = 1493661290;
-														MouseInputHandler.anInt780 = 0;
+														MouseInputHandler.clickType = 0;
 														IsaacRandomGen.aClass108_Sub17_745 = null;
 													} else if (anInt2841 * 1113333989 >= 5 && (MouseInputHandler.mouseX * -367052265 > anInt2900 * 785242869 + 5 || MouseInputHandler.mouseX * -367052265 < anInt2900 * 785242869 - 5 || MouseInputHandler.mouseY * 1533395117 > anInt2903 * 685630743 + 5 || MouseInputHandler.mouseY * 1533395117 < anInt2903 * 685630743 - 5)) {
 														aBool2860 = true;
@@ -3197,8 +3197,8 @@ public final class Client extends Applet_Sub1 {
 													secureBuffer.writeAShortLE(Class15.anInt201 * -1743142671 + value2, (byte) 23);
 													secureBuffer.writeAShortLE(value + Class100.anInt1388 * 263051377, (byte) 33);
 													Scene.anInt437 = -1;
-													anInt2810 = MouseInputHandler.anInt774 * 1998835879;
-													anInt2811 = MouseInputHandler.anInt778 * 2079836155;
+													anInt2810 = MouseInputHandler.mousePressX * 1998835879;
+													anInt2811 = MouseInputHandler.mousePressY * 2079836155;
 													anInt2813 = 565013175;
 													anInt2829 = 0;
 													anInt2933 = value * -18058427;
@@ -3430,7 +3430,7 @@ public final class Client extends Applet_Sub1 {
 												}
 
 												for (OnlineFriend onlineFriend = (OnlineFriend) aClass102_2956.getBack(); onlineFriend != null; onlineFriend = (OnlineFriend) aClass102_2956.getPrevious()) {
-													if ((long) (onlineFriend.anInt1517 * -398102129) < Player.method3175(849846164) / 1000L - 5L) {
+													if ((long) (onlineFriend.anInt1517 * -398102129) < Player.getCurrentTimeMillis(849846164) / 1000L - 5L) {
 														if (onlineFriend.status > 0) {
 															AnimationSkeletonSet.pushMessage(5, "", onlineFriend.username + StringConstants.BLANK_HAS_LOGGED_IN, -429113441);
 														}
@@ -3727,7 +3727,7 @@ public final class Client extends Applet_Sub1 {
 
 	protected final void method3228(int var1) {
 		if (ClientScript.mouseCapturer != null) {
-			ClientScript.mouseCapturer.aBool381 = false;
+			ClientScript.mouseCapturer.isRunning = false;
 		}
 
 		ClientScript.mouseCapturer = null;
@@ -3772,12 +3772,12 @@ public final class Client extends Applet_Sub1 {
 
 	void method3287(int var1) {
 		if (Class78.anInt1229 * -1053722643 >= 4) {
-			this.method3246("js5crc", -1271013870);
+			this.sendError("js5crc", -1271013870);
 			loginLoadingStage = 1924330216;
 		} else {
 			if (Class78.anInt1230 * -1905143543 >= 4) {
 				if (loginLoadingStage * 1315883169 <= 5) {
-					this.method3246("js5io", -1271013870);
+					this.sendError("js5io", -1271013870);
 					loginLoadingStage = 1924330216;
 					return;
 				}
@@ -3811,12 +3811,12 @@ public final class Client extends Applet_Sub1 {
 						var2.writeInt(60);
 						SpotAnim.aGameConnection_2037.writeBytes(var2.buf, 0, 5);
 						anInt2702 += 1642505445;
-						Class108_Sub12.aLong1672 = Player.method3175(849846164) * -6175035716183725541L;
+						Class108_Sub12.aLong1672 = Player.getCurrentTimeMillis(849846164) * -6175035716183725541L;
 					}
 
 					if (3 == anInt2702 * -90801939) {
 						if (loginLoadingStage * 1315883169 > 5 && SpotAnim.aGameConnection_2037.available() <= 0) {
-							if (Player.method3175(849846164) - Class108_Sub12.aLong1672 * -6521459471039733741L > 30000L) {
+							if (Player.getCurrentTimeMillis(849846164) - Class108_Sub12.aLong1672 * -6521459471039733741L > 30000L) {
 								this.method3415(-2, (byte) 87);
 								return;
 							}
@@ -3867,17 +3867,17 @@ public final class Client extends Applet_Sub1 {
 		anInt2839 += 1440494247;
 		if (anInt2839 * -617982697 >= 2 && (var1 == 7 || var1 == 9)) {
 			if (loginLoadingStage * 1315883169 <= 5) {
-				this.method3246("js5connect_full", -1271013870);
+				this.sendError("js5connect_full", -1271013870);
 				loginLoadingStage = 1924330216;
 			} else {
 				anInt2736 = -2065650632;
 			}
 		} else if (anInt2839 * -617982697 >= 2 && 6 == var1) {
-			this.method3246("js5connect_outofdate", -1271013870);
+			this.sendError("js5connect_outofdate", -1271013870);
 			loginLoadingStage = 1924330216;
 		} else if (anInt2839 * -617982697 >= 4) {
 			if (loginLoadingStage * 1315883169 <= 5) {
-				this.method3246("js5connect", -1271013870);
+				this.sendError("js5connect", -1271013870);
 				loginLoadingStage = 1924330216;
 			} else {
 				anInt2736 = -2065650632;

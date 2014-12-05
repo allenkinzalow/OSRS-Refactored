@@ -34,7 +34,7 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
       if(Class4.worldListOpen) {
          GameObject.method2846(var0, (byte)-11);
       } else {
-         if((MouseInputHandler.anInt780 * 1629072957 == 1 || !Class100.aBool1391 && MouseInputHandler.anInt780 * 1629072957 == 4) && MouseInputHandler.anInt774 * 472132205 >= 715 && MouseInputHandler.anInt778 * 1498262827 >= 453) {
+         if((MouseInputHandler.clickType * 1629072957 == 1 || !Class100.aBool1391 && MouseInputHandler.clickType * 1629072957 == 4) && MouseInputHandler.mousePressX * 472132205 >= 715 && MouseInputHandler.mousePressY * 1498262827 >= 453) {
             Ignore.aClass37_386.aBool529 = !Ignore.aClass37_386.aBool529;
             Timer.method713(-1567766695);
             if(!Ignore.aClass37_386.aBool529) {
@@ -50,12 +50,12 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
             Class4.anInt50 -= 1909601071;
             if(Client.loginLoadingStage * 1315883169 == 10 || Client.loginLoadingStage * 1315883169 == 11) {
                if(0 == Client.anInt2712 * 148074329) {
-                  if(1 == MouseInputHandler.anInt780 * 1629072957 || !Class100.aBool1391 && 4 == MouseInputHandler.anInt780 * 1629072957) {
+                  if(1 == MouseInputHandler.clickType * 1629072957 || !Class100.aBool1391 && 4 == MouseInputHandler.clickType * 1629072957) {
                      byte var2 = 5;
                      short var4 = 463;
                      byte var6 = 100;
                      byte var5 = 35;
-                     if(MouseInputHandler.anInt774 * 472132205 >= var2 && MouseInputHandler.anInt774 * 472132205 <= var2 + var6 && MouseInputHandler.anInt778 * 1498262827 >= var4 && MouseInputHandler.anInt778 * 1498262827 <= var5 + var4) {
+                     if(MouseInputHandler.mousePressX * 472132205 >= var2 && MouseInputHandler.mousePressX * 472132205 <= var2 + var6 && MouseInputHandler.mousePressY * 1498262827 >= var4 && MouseInputHandler.mousePressY * 1498262827 <= var5 + var4) {
                         Player.method3180(-525999435);
                         return;
                      }
@@ -66,9 +66,9 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   }
                }
 
-               int var10 = MouseInputHandler.anInt780 * 1629072957;
-               int var12 = MouseInputHandler.anInt774 * 472132205;
-               int var14 = MouseInputHandler.anInt778 * 1498262827;
+               int var10 = MouseInputHandler.clickType * 1629072957;
+               int var12 = MouseInputHandler.mousePressX * 472132205;
+               int var14 = MouseInputHandler.mousePressY * 1498262827;
                if(!Class100.aBool1391 && 4 == var10) {
                   var10 = 1;
                }

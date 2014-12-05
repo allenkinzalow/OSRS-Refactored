@@ -576,7 +576,7 @@ public class Class108_Sub22 extends Node {
          int var5 = Client.menuActionParameters[var0];
          String var6 = Client.menuActionNamePrefix[var0];
          String var2 = Client.menuActionNames[var0];
-         MouseCapturer.processClickAction(var7, var3, var4, var5, var6, var2, MouseInputHandler.anInt774 * 472132205, MouseInputHandler.anInt778 * 1498262827, 1721706574);
+         MouseCapturer.processClickAction(var7, var3, var4, var5, var6, var2, MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, 1721706574);
       }
    }
 

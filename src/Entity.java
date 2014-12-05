@@ -18,7 +18,7 @@ public abstract class Entity extends Renderable {
    int runAnimationID = 479130233;
    int anInt2351;
    boolean aBool2352;
-   int anInt2353 = 1424062716;
+   int textSpokenTime = 1424062716;
    int anInt2354;
    int anInt2355 = 0;
    int[] anIntArray2356 = new int[4];
@@ -218,15 +218,15 @@ public abstract class Entity extends Renderable {
    } 
 
    public static void method2738(int var0) {
-      MouseInputHandler var1 = MouseInputHandler.aClass58_775;
+      MouseInputHandler var1 = MouseInputHandler.mouseInputHandler;
       synchronized(var1) {
          MouseInputHandler.anInt769 = MouseInputHandler.anInt766 * -858751625;
-         MouseInputHandler.mouseX = MouseInputHandler.anInt767 * 32439049;
-         MouseInputHandler.mouseY = MouseInputHandler.anInt777 * 798849249;
-         MouseInputHandler.anInt780 = MouseInputHandler.anInt772 * -1523567063;
-         MouseInputHandler.anInt774 = MouseInputHandler.anInt773 * -483110349;
-         MouseInputHandler.anInt778 = MouseInputHandler.anInt776 * -126237837;
-         MouseInputHandler.aLong779 = 5391577938838581487L * MouseInputHandler.aLong768;
+         MouseInputHandler.mouseX = MouseInputHandler.lastMouseX * 32439049;
+         MouseInputHandler.mouseY = MouseInputHandler.lastMouseY * 798849249;
+         MouseInputHandler.clickType = MouseInputHandler.anInt772 * -1523567063;
+         MouseInputHandler.mousePressX = MouseInputHandler.lastMousePressX * -483110349;
+         MouseInputHandler.mousePressY = MouseInputHandler.lastMousePressY * -126237837;
+         MouseInputHandler.mousePressTime = 5391577938838581487L * MouseInputHandler.lastMousePressTime;
          MouseInputHandler.anInt772 = 0;
       }
    }

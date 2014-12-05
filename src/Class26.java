@@ -17,10 +17,10 @@ public class Class26 {
 
 
    public static void method367(int var0) {
-      if(null != MouseInputHandler.aClass58_775) {
-         MouseInputHandler var1 = MouseInputHandler.aClass58_775;
+      if(null != MouseInputHandler.mouseInputHandler) {
+         MouseInputHandler var1 = MouseInputHandler.mouseInputHandler;
          synchronized(var1) {
-            MouseInputHandler.aClass58_775 = null;
+            MouseInputHandler.mouseInputHandler = null;
          }
       }
    }

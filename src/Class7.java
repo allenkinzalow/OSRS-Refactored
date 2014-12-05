@@ -7,7 +7,7 @@ public class Class7 {
    static final int anInt95 = 256;
    long aLong96 = 0L;
    Class108_Sub4 aClass108_Sub4_97;
-   long aLong98 = Player.method3175(849846164) * -4011733572368827733L;
+   long aLong98 = Player.getCurrentTimeMillis(849846164) * -4011733572368827733L;
    static boolean aBool99;
    int anInt100;
    int anInt101;
@@ -32,7 +32,7 @@ public class Class7 {
 
    public final synchronized void method118(int var1) {
       if(null != this.anIntArray109) {
-         long var2 = Player.method3175(849846164);
+         long var2 = Player.getCurrentTimeMillis(849846164);
 
          try {
             if(7456707046250421593L * this.aLong96 != 0L) {
@@ -128,7 +128,7 @@ public class Class7 {
          this.method130();
       } catch (Exception var3) {
          this.method129();
-         this.aLong96 = (Player.method3175(849846164) + 2000L) * -3313475961159951639L;
+         this.aLong96 = (Player.getCurrentTimeMillis(849846164) + 2000L) * -3313475961159951639L;
       }
    }
 
@@ -301,7 +301,7 @@ public class Class7 {
          this.aClass108_Sub4_97.method1601(var1, 0, var2);
       }
 
-      this.aLong98 = Player.method3175(849846164) * -4011733572368827733L;
+      this.aLong98 = Player.getCurrentTimeMillis(849846164) * -4011733572368827733L;
    }
 
    static final void method180(int var0) {

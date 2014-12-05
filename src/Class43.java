@@ -22,11 +22,11 @@ public class Class43 {
    Class43(PingRequester var1, URL var2) {
       this.aClass85_608 = var1.method822(var2, (short)128);
       this.anInt618 = 0;
-      this.aLong614 = (Player.method3175(849846164) + 30000L) * 7909828926640958115L;
+      this.aLong614 = (Player.getCurrentTimeMillis(849846164) + 30000L) * 7909828926640958115L;
    }
 
    byte[] method650(byte var1) throws IOException {
-      if(Player.method3175(849846164) > this.aLong614 * -2717684605281117941L) {
+      if(Player.getCurrentTimeMillis(849846164) > this.aLong614 * -2717684605281117941L) {
          throw new IOException();
       } else {
          if(this.anInt618 * 230308155 == 0) {
@@ -91,10 +91,10 @@ public class Class43 {
       int var8;
       if(MouseInputHandler.anInt769 * 1251070677 == 1 || !Class100.aBool1391 && MouseInputHandler.anInt769 * 1251070677 == 4) {
          if(var5 >= var1 && var5 < 16 + var1 && var6 >= var2 && var6 < var2 + 16) {
-            var0.anInt1785 += 870547396;
+            var0.scrollPosition += 870547396;
             MouseInputHandler.method775(var0, -16054773);
          } else if(var5 >= var1 && var5 < 16 + var1 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
-            var0.anInt1785 -= 870547396;
+            var0.scrollPosition -= 870547396;
             MouseInputHandler.method775(var0, -16054773);
          } else if(var5 >= var1 - Client.anInt2876 * -342560631 && var5 < Client.anInt2876 * -342560631 + 16 + var1 && var6 >= 16 + var2 && var6 < var2 + var3 - 16) {
             var8 = var3 * (var3 - 32) / var4;
@@ -103,20 +103,20 @@ public class Class43 {
             }
 
             int var9 = var6 - var2 - 16 - var8 / 2;
-            int var10 = var3 - 32 - var8;
-            var0.anInt1785 = (var4 - var3) * var9 / var10 * -1291378673;
+            int var10 = var3 - 32 - var8; 
+            var0.scrollPosition = (var4 - var3) * var9 / var10 * -1291378673;
             MouseInputHandler.method775(var0, -16054773);
             Client.aBool2785 = true;
          }
       }
 
-      if(0 != Client.anInt2902 * 1785327937) {
+      if(0 != Client.mouseWheelRotation * 1785327937) {
          var8 = var0.height * -1281443035;
          if(var5 >= var1 - var8) {
             if(var6 >= var2) {
                if(var5 < var1 + 16) {
                   if(var6 <= var2 + var3) {
-                     var0.anInt1785 += Client.anInt2902 * -1805664669;
+                     var0.scrollPosition += Client.mouseWheelRotation * -1805664669;
                      MouseInputHandler.method775(var0, -16054773);
                   }
                }

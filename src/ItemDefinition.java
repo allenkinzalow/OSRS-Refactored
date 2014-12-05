@@ -511,7 +511,7 @@ public class ItemDefinition extends CacheableNode {
 				player.aBool2352 = false;
 				player.anInt2377 = 0;
 				player.anInt2355 = 0;
-				player.anInt2353 = -11389574;
+				player.textSpokenTime = -11389574;
 			}
 
 			int var5;
@@ -626,7 +626,7 @@ public class ItemDefinition extends CacheableNode {
 						player.textSpoken = textSpoken.trim();
 						player.anInt2377 = (var5 >> 8) * 1753400645;
 						player.anInt2355 = (var5 & 255) * 562856027;
-						player.anInt2353 = -11389574;
+						player.textSpokenTime = -11389574;
 						player.aBool2352 = var19;
 						if (2 != var6 && 3 != var6) {
 							if (1 == var6) {

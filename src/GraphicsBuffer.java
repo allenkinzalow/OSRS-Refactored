@@ -23,32 +23,32 @@ public abstract class GraphicsBuffer {
 
    public abstract void method261(Graphics var1, int var2, int var3, int var4);
 
-   static final void method262(int var0) {
-      int var1;
-      int var3;
-      for(var1 = -1; var1 < Client.numLocalPlayers * -43742683; ++var1) {
-         if(var1 == -1) {
-            var3 = 2047;
+   static final void processEntityTextSpoken(int var0) {
+      int index;
+      int entityIndex;
+      for(index = -1; index < Client.numLocalPlayers * -43742683; ++index) {
+         if(index == -1) {
+            entityIndex = 2047;
          } else {
-            var3 = Client.playerIndices[var1];
+            entityIndex = Client.playerIndices[index];
          }
 
-         Player var2 = Client.localPlayers[var3];
-         if(var2 != null && var2.anInt2353 * 419314599 > 0) {
-            var2.anInt2353 -= 1259781143;
-            if(0 == var2.anInt2353 * 419314599) {
-               var2.textSpoken = null;
+         Player player = Client.localPlayers[entityIndex];
+         if(player != null && player.textSpokenTime * 419314599 > 0) {
+            player.textSpokenTime -= 1259781143;
+            if(0 == player.textSpokenTime * 419314599) {
+               player.textSpoken = null;
             }
          }
       }
 
-      for(var1 = 0; var1 < Client.anInt2749 * -1829405175; ++var1) {
-         var3 = Client.npcIndices[var1];
-         NPC var4 = Client.localNPCs[var3];
-         if(var4 != null && var4.anInt2353 * 419314599 > 0) {
-            var4.anInt2353 -= 1259781143;
-            if(0 == var4.anInt2353 * 419314599) {
-               var4.textSpoken = null;
+      for(index = 0; index < Client.anInt2749 * -1829405175; ++index) {
+         entityIndex = Client.npcIndices[index];
+         NPC npc = Client.localNPCs[entityIndex];
+         if(npc != null && npc.textSpokenTime * 419314599 > 0) {
+            npc.textSpokenTime -= 1259781143;
+            if(0 == npc.textSpokenTime * 419314599) {
+               npc.textSpoken = null;
             }
          }
       }

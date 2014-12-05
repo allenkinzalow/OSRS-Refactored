@@ -4,7 +4,7 @@ public class Class53_Sub1 extends Timer {
    long[] aLongArray1702 = new long[10];
    int anInt1703 = 1398825216;
    static final int anInt1704 = 17;
-   long aLong1705 = Player.method3175(849846164) * 7952023716220594927L;
+   long aLong1705 = Player.getCurrentTimeMillis(849846164) * 7952023716220594927L;
    int anInt1706 = 0;
    int anInt1707;
    static final int anInt1708 = 3;
@@ -16,7 +16,7 @@ public class Class53_Sub1 extends Timer {
       int var6 = this.anInt1709 * -1255266961;
       this.anInt1703 = -441126484;
       this.anInt1709 = -1218258545;
-      this.aLong1705 = Player.method3175(849846164) * 7952023716220594927L;
+      this.aLong1705 = Player.getCurrentTimeMillis(849846164) * 7952023716220594927L;
       if(0L == this.aLongArray1702[this.anInt1707 * 2084947525]) {
          this.anInt1703 = var4 * 55795809;
          this.anInt1709 = var6 * -1218258545;

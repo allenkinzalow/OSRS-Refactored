@@ -247,7 +247,7 @@ public final class IsaacRandomGen {
 	}
 
 	public static boolean method734(int var0) {
-		long var1 = Player.method3175(849846164);
+		long var1 = Player.getCurrentTimeMillis(849846164);
 		int var3 = (int) (var1 - Class78.aLong1225 * -8021066364014913945L);
 		Class78.aLong1225 = var1 * 347508540560254295L;
 		if (var3 > 200) {

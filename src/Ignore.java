@@ -82,9 +82,9 @@ public class Ignore {
             if(!component.aBool1855 || var13 < var11 && var19 < var20) {
                var10 = MouseInputHandler.mouseX * -367052265;
                var22 = MouseInputHandler.mouseY * 1533395117;
-               if(0 != MouseInputHandler.anInt780 * 1629072957) {
-                  var10 = MouseInputHandler.anInt774 * 472132205;
-                  var22 = MouseInputHandler.anInt778 * 1498262827;
+               if(0 != MouseInputHandler.clickType * 1629072957) {
+                  var10 = MouseInputHandler.mousePressX * 472132205;
+                  var22 = MouseInputHandler.mousePressY * 1498262827;
                }
 
                int yPos;
@@ -281,9 +281,9 @@ public class Ignore {
                         continue;
                      }
 
-                     buildRightClickMenu(components, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.anInt1785 * -643576081, 66663869);
+                     buildRightClickMenu(components, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.scrollPosition * -643576081, 66663869);
                      if(component.aClass108_Sub17Array1879 != null) {
-                        buildRightClickMenu(component.aClass108_Sub17Array1879, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.anInt1785 * -643576081, 121975215);
+                        buildRightClickMenu(component.aClass108_Sub17Array1879, component.interfaceHash * -1081473899, var13, var19, var11, var20, var18 - component.anInt1784 * -133270367, var14 - component.scrollPosition * -643576081, 121975215);
                      }
 
                      Class108_Sub10 var37 = (Class108_Sub10) Client.aClass101_2866.get((long) (component.interfaceHash * -1081473899));
@@ -337,12 +337,12 @@ public class Ignore {
                      }
 
                      boolean var23 = false;
-                     if((MouseInputHandler.anInt780 * 1629072957 == 1 || !Class100.aBool1391 && 4 == MouseInputHandler.anInt780 * 1629072957) && MouseInputHandler.anInt774 * 472132205 >= var13 && MouseInputHandler.anInt778 * 1498262827 >= var19 && MouseInputHandler.anInt774 * 472132205 < var11 && MouseInputHandler.anInt778 * 1498262827 < var20) {
+                     if((MouseInputHandler.clickType * 1629072957 == 1 || !Class100.aBool1391 && 4 == MouseInputHandler.clickType * 1629072957) && MouseInputHandler.mousePressX * 472132205 >= var13 && MouseInputHandler.mousePressY * 1498262827 >= var19 && MouseInputHandler.mousePressX * 472132205 < var11 && MouseInputHandler.mousePressY * 1498262827 < var20) {
                         var23 = true;
                      }
 
                      if(var23) {
-                        RSPacketBuffer.method2598(component, MouseInputHandler.anInt774 * 472132205 - var18, MouseInputHandler.anInt778 * 1498262827 - var14, (byte)-25);
+                        RSPacketBuffer.method2598(component, MouseInputHandler.mousePressX * 472132205 - var18, MouseInputHandler.mousePressY * 1498262827 - var14, (byte)-25);
                      }
 
                      if(Client.aClass108_Sub17_2877 != null && component != Client.aClass108_Sub17_2877 && var39) {
@@ -361,11 +361,11 @@ public class Ignore {
 
                      if(component.hasScript) {
                         ClientScript script;
-                        if(var39 && 0 != Client.anInt2902 * 1785327937 && null != component.anObjectArray1859) {
+                        if(var39 && 0 != Client.mouseWheelRotation * 1785327937 && null != component.anObjectArray1859) {
                            script = new ClientScript();
                            script.aBool1636 = true;
                            script.parentInterface = component;
-                           script.mouseY = Client.anInt2902 * 1433290219;
+                           script.mouseY = Client.mouseWheelRotation * 1433290219;
                            script.parameters = component.anObjectArray1859;
                            Client.aClass105_2737.insertBack(script);
                         }
@@ -382,8 +382,8 @@ public class Ignore {
                               script = new ClientScript();
                               script.aBool1636 = true;
                               script.parentInterface = component;
-                              script.mouseX = (MouseInputHandler.anInt774 * 472132205 - var18) * 710802815;
-                              script.mouseY = (MouseInputHandler.anInt778 * 1498262827 - var14) * 1647493163;
+                              script.mouseX = (MouseInputHandler.mousePressX * 472132205 - var18) * 710802815;
+                              script.mouseY = (MouseInputHandler.mousePressY * 1498262827 - var14) * 1647493163;
                               script.parameters = component.anObjectArray1794;
                               Client.aClass105_2737.insertBack(script);
                            }

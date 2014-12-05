@@ -161,7 +161,7 @@ public class Class47 {
                   }
 
                   Class78.anInt1212 = 0;
-                  Class78.aLong1225 = Player.method3175(849846164) * 347508540560254295L;
+                  Class78.aLong1225 = Player.getCurrentTimeMillis(849846164) * 347508540560254295L;
                   return;
                }
 

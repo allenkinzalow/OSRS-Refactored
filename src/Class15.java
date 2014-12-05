@@ -520,7 +520,7 @@ public class Class15 {
    }
 
    protected static final void method296(byte var0) {
-      Class36.aClass53_515.method720(51940008);
+      Class36.clientTimer.method720(51940008);
 
       int var1;
       for(var1 = 0; var1 < 32; ++var1) {

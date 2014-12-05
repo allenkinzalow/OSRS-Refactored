@@ -224,9 +224,9 @@ public final class NPC extends Entity {
 
 		var21 = MouseInputHandler.mouseX * -367052265;
 		var8 = MouseInputHandler.mouseY * 1533395117;
-		if (0 != MouseInputHandler.anInt780 * 1629072957) {
-			var21 = MouseInputHandler.anInt774 * 472132205;
-			var8 = MouseInputHandler.anInt778 * 1498262827;
+		if (0 != MouseInputHandler.clickType * 1629072957) {
+			var21 = MouseInputHandler.mousePressX * 472132205;
+			var8 = MouseInputHandler.mousePressY * 1498262827;
 		}
 
 		if (var21 >= var0 && var21 < var2 + var0 && var8 >= var1 && var8 < var1 + var3) {

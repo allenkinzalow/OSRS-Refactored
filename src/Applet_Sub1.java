@@ -24,23 +24,23 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    protected static int clientFPS = 0;
    static long[] aLongArray2696 = new long[32];
    static volatile long aLong2697 = 0L;
-   static Applet_Sub1 anApplet_Sub1_2698 = null;
-   static volatile boolean aBool2699 = true;
+   static Applet_Sub1 currentApplet = null;
+   static volatile boolean focusGained = true;
    public static final int anInt2700 = 154;
    static String aString2701;
 
 
    protected final void method3184(int width, int height, int var3, int var4) {
       try {
-         if(null != anApplet_Sub1_2698) {
+         if(null != currentApplet) {
             anInt2686 += 962032645;
             if(anInt2686 * 401291469 >= 3) {
-               this.method3246("alreadyloaded", -1271013870);
+               this.sendError("alreadyloaded", -1271013870);
             } else {
                this.getAppletContext().showDocument(this.getDocumentBase(), "_self");
             }
          } else {
-            anApplet_Sub1_2698 = this;
+            currentApplet = this;
             ProducingGraphicsBuffer.clientWidth = width * -722659069;
             ProducingGraphicsBuffer.clientHeight = height * -1515364509;
             RuntimeException_Sub1.anInt2627 = var3 * -1328331175;
@@ -53,7 +53,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          }
       } catch (Exception var6) {
          World.method647((String)null, var6, 926745782);
-         this.method3246("crash", -1271013870);
+         this.sendError("crash", -1271013870);
       }
    }
 
@@ -85,7 +85,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       Class1.aCanvas3.requestFocus();
       aBool2688 = true;
       aBool2693 = false;
-      aLong2697 = Player.method3175(849846164) * 516356414042863577L;
+      aLong2697 = Player.getCurrentTimeMillis(849846164) * 516356414042863577L;
    }
 
    final synchronized void method3188(byte var1) {
@@ -125,13 +125,13 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    void process(short var1) {
-      long var2 = Player.method3175(849846164);
-      long var5 = aLongArray2696[Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033];
-      aLongArray2696[Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033] = var2;
+      long currentTime = Player.getCurrentTimeMillis(849846164);
+      long lastTime = aLongArray2696[Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033];
+      aLongArray2696[Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033] = currentTime;
       Class108_Sub20_Sub14_Sub6.anInt2607 = (Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033 + 1 & 31) * 737600601;
-      if(0L != var5 && var2 > var5) {
-         int var4 = (int)(var2 - var5);
-         clientFPS = ((var4 >> 1) + 32000) / var4 * 1664500787;
+      if(0L != lastTime && currentTime > lastTime) {
+         int timeElapsed = (int)(currentTime - lastTime);
+         clientFPS = ((timeElapsed >> 1) + 32000) / timeElapsed * 1664500787;
       }
 
       if((anInt2691 += 1265438097) * 310858609 - 1 > 50) {
@@ -151,7 +151,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    public void start() {
-      if(this == anApplet_Sub1_2698) {
+      if(this == currentApplet) {
          if(!aBool2692) {
             aLong2687 = 0L;
          }
@@ -161,9 +161,9 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    public final void windowClosed(WindowEvent var1) {}
 
    public void destroy() {
-      if(this == anApplet_Sub1_2698) {
+      if(this == currentApplet) {
          if(!aBool2692) {
-            aLong2687 = Player.method3175(849846164) * 258775077807745085L;
+            aLong2687 = Player.getCurrentTimeMillis(849846164) * 258775077807745085L;
             Class108_Sub22.sleep(5000L);
             this.method3188((byte)95);
          }
@@ -175,12 +175,12 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    public final synchronized void paint(Graphics var1) {
-      if(this == anApplet_Sub1_2698) {
+      if(this == currentApplet) {
          if(!aBool2692) {
             aBool2688 = true;
             if(null != Class71.aString916) {
                if(Class71.aString916.startsWith("1.5")) {
-                  if(Player.method3175(849846164) - -3473457553222264727L * aLong2697 > 1000L) {
+                  if(Player.getCurrentTimeMillis(849846164) - -3473457553222264727L * aLong2697 > 1000L) {
                      Rectangle var2 = var1.getClipBounds();
                      if(var2 != null) {
                         if(var2.width < ProducingGraphicsBuffer.clientWidth * 1080367531) {
@@ -229,7 +229,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             if(var1.indexOf("sun") != -1 || var1.indexOf("apple") != -1) {
                String var2 = Class71.aString916;
                if(var2.equals("1.1") || var2.startsWith("1.1.") || var2.equals("1.2") || var2.startsWith("1.2.") || var2.equals("1.3") || var2.startsWith("1.3.") || var2.equals("1.4") || var2.startsWith("1.4.") || var2.equals("1.5") || var2.startsWith("1.5.") || var2.equals("1.6.0")) {
-                  this.method3246("wrongjava", -1271013870);
+                  this.sendError("wrongjava", -1271013870);
                   return;
                }
 
@@ -303,7 +303,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
                   }
 
                   if(var11 && VertexNormal.method692(var4, 1850671615) < 10) {
-                     this.method3246("wrongjava", -1271013870);
+                     this.sendError("wrongjava", -1271013870);
                      return;
                   }
                }
@@ -324,10 +324,10 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             var16 = new Class53_Sub1();
          }
 
-         Class36.aClass53_515 = (Timer)var16;
+         Class36.clientTimer = (Timer)var16;
 
-         while(0L == 3640810457273822997L * aLong2687 || Player.method3175(849846164) < 3640810457273822997L * aLong2687) {
-            Class100.anInt1384 = Class36.aClass53_515.method714(anInt2690 * -2113736069, anInt2685 * -328177131, -665517638) * -244555733;
+         while(0L == 3640810457273822997L * aLong2687 || Player.getCurrentTimeMillis(849846164) < 3640810457273822997L * aLong2687) {
+            Class100.anInt1384 = Class36.clientTimer.method714(anInt2690 * -2113736069, anInt2685 * -328177131, -665517638) * -244555733;
 
             for(int var17 = 0; var17 < Class100.anInt1384 * -969843069; ++var17) {
                this.method3224(760507799);
@@ -338,14 +338,14 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          }
       } catch (Exception var15) {
          World.method647((String)null, var15, 926745782);
-         this.method3246("crash", -1271013870);
+         this.sendError("crash", -1271013870);
       }
 
       this.method3188((byte)20);
    }
 
    void method3224(int var1) {
-      long var2 = Player.method3175(849846164);
+      long var2 = Player.getCurrentTimeMillis(849846164);
       long var4 = aLongArray2694[Timer.anInt723 * -1099924813];
       aLongArray2694[Timer.anInt723 * -1099924813] = var2;
       Timer.anInt723 = (1 + Timer.anInt723 * -1099924813 & 31) * 669828219;
@@ -354,7 +354,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       }
 
       synchronized(this) {
-         LoginHandler.aBool844 = aBool2699;
+         LoginHandler.focusGained = focusGained;
       }
 
       this.method3210(353301511);
@@ -363,14 +363,14 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    protected abstract void method3228(int var1);
 
    public void stop() {
-      if(anApplet_Sub1_2698 == this) {
+      if(currentApplet == this) {
          if(!aBool2692) {
-            aLong2687 = (Player.method3175(849846164) + 4000L) * 258775077807745085L;
+            aLong2687 = (Player.getCurrentTimeMillis(849846164) + 4000L) * 258775077807745085L;
          }
       }
    }
 
-   protected void method3246(String var1, int var2) {
+   protected void sendError(String var1, int var2) {
       if(!this.aBool2689) {
          this.aBool2689 = true;
          System.out.println("error_game_" + var1);
@@ -384,27 +384,27 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    public final void focusLost(FocusEvent var1) {
-      aBool2699 = false;
+      focusGained = false;
    }
 
    public final void focusGained(FocusEvent var1) {
-      aBool2699 = true;
+      focusGained = true;
       aBool2688 = true;
    }
 
-   protected final boolean method3268(int var1) {
-      String var2 = this.getDocumentBase().getHost().toLowerCase();
-      if(!var2.equals("jagex.com") && !var2.endsWith(".jagex.com")) {
-         if(!var2.equals("runescape.com") && !var2.endsWith(".runescape.com")) {
-            if(!var2.equals("mechscape.com") && !var2.endsWith(".mechscape.com")) {
-               if(var2.endsWith("127.0.0.1")) {
+   protected final boolean hasCorrectHost(int var1) {
+      String host = this.getDocumentBase().getHost().toLowerCase();
+      if(!host.equals("jagex.com") && !host.endsWith(".jagex.com")) {
+         if(!host.equals("runescape.com") && !host.endsWith(".runescape.com")) {
+            if(!host.equals("mechscape.com") && !host.endsWith(".mechscape.com")) {
+               if(host.endsWith("127.0.0.1")) {
                   return true;
                } else {
-                  while(var2.length() > 0 && var2.charAt(var2.length() - 1) >= 48 && var2.charAt(var2.length() - 1) <= 57) {
-                     var2 = var2.substring(0, var2.length() - 1);
+                  while(host.length() > 0 && host.charAt(host.length() - 1) >= 48 && host.charAt(host.length() - 1) <= 57) {
+                     host = host.substring(0, host.length() - 1);
                   }
 
-                  if(var2.endsWith("192.168.1.")) {
+                  if(host.endsWith("192.168.1.")) {
                      return true;
                   } else {
                      return true;
@@ -423,56 +423,56 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
 
    public abstract void init();
 
-   static final void method3281(int var0, int var1, byte var2) {
-      int var3 = Class94.b12_full_font.getTextWidth(StringConstants.CHOOSE_OPTION);
+   static final void setMenuPosAndDimmension(int x, int y, byte var2) {
+      int maxWidth = Class94.b12_full_font.getTextWidth(StringConstants.CHOOSE_OPTION);
 
-      int var5;
-      for(var5 = 0; var5 < Client.menuActionRow * 391839991; ++var5) {
-         RSFont var4 = Class94.b12_full_font;
-         String var6;
-         if(Client.menuActionNames[var5].length() > 0) {
-            var6 = Client.menuActionNamePrefix[var5] + StringConstants.aString1109 + Client.menuActionNames[var5];
+      int menuActionIndex;
+      for(menuActionIndex = 0; menuActionIndex < Client.menuActionRow * 391839991; ++menuActionIndex) {
+         RSFont b12_full = Class94.b12_full_font;
+         String menuAction;
+         if(Client.menuActionNames[menuActionIndex].length() > 0) {
+            menuAction = Client.menuActionNamePrefix[menuActionIndex] + StringConstants.aString1109 + Client.menuActionNames[menuActionIndex];
          } else {
-            var6 = Client.menuActionNamePrefix[var5];
+            menuAction = Client.menuActionNamePrefix[menuActionIndex];
          }
 
-         int var7 = var4.getTextWidth(var6);
-         if(var7 > var3) {
-            var3 = var7;
+         int menuActionWidth = b12_full.getTextWidth(menuAction);
+         if(menuActionWidth > maxWidth) {
+            maxWidth = menuActionWidth;
          }
       }
 
-      var3 += 8;
-      var5 = Client.menuActionRow * 1582632569 + 21;
-      int var8 = var0 - var3 / 2;
-      if(var8 + var3 > 765) {
-         var8 = 765 - var3;
+      maxWidth += 8;
+      int height = Client.menuActionRow * 1582632569 + 21;
+      int xPos = x - maxWidth / 2;
+      if(xPos + maxWidth > 765) {
+         xPos = 765 - maxWidth;
       }
 
-      if(var8 < 0) {
-         var8 = 0;
+      if(xPos < 0) {
+         xPos = 0;
       }
 
-      int var9 = var1;
-      if(var5 + var1 > 503) {
-         var9 = 503 - var5;
+      int yPos = y;
+      if(height + y > 503) {
+         yPos = 503 - height;
       }
 
-      if(var9 < 0) {
-         var9 = 0;
+      if(yPos < 0) {
+         yPos = 0;
       }
 
       Client.actionMenuOpen = true;
-      Class51.actionMenuX = var8 * -1856507955;
-      MouseInputHandler.actionMenuY = var9 * 1712577663;
-      Class54.actionMenuWidth = var3 * 311400179;
+      Class51.actionMenuX = xPos * -1856507955;
+      MouseInputHandler.actionMenuY = yPos * 1712577663;
+      Class54.actionMenuWidth = maxWidth * 311400179;
       Item.actionMenuHeight = Client.menuActionRow * 1309415031 - 1473975926;
    }
 
    static void method3282(byte var0) {
       for(int var1 = 0; var1 < Client.menuActionRow * 391839991; ++var1) {
-         int var3 = Client.menuActionIdentifiers[var1];
-         boolean var4 = var3 == 57 || var3 == 58 || 1007 == var3 || var3 == 25 || 30 == var3;
+         int identifier = Client.menuActionIdentifiers[var1];
+         boolean var4 = identifier == 57 || identifier == 58 || 1007 == identifier || identifier == 25 || 30 == identifier;
          if(var4) {
             if(var1 < Client.menuActionRow * 391839991 - 1) {
                for(int var2 = var1; var2 < Client.menuActionRow * 391839991 - 1; ++var2) {

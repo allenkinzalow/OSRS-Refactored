@@ -9,32 +9,32 @@ public class MouseInputHandler implements MouseListener, MouseMotionListener, Fo
    public static int mouseY = 0;
    static volatile int anInt765 = 0;
    static volatile int anInt766 = 0;
-   static volatile int anInt767 = 1660809425;
-   static volatile long aLong768 = 0L;
+   static volatile int lastMouseX = 1660809425;
+   static volatile long lastMousePressTime = 0L;
    public static int anInt769 = 0;
    public static int mouseX = 0;
    static int actionMenuY;
    static volatile int anInt772 = 0;
-   static volatile int anInt773 = 0;
-   public static int anInt774 = 0;
-   static MouseInputHandler aClass58_775 = new MouseInputHandler();
-   static volatile int anInt776 = 0;
-   static volatile int anInt777 = 1505665339;
-   public static int anInt778 = 0;
-   public static long aLong779 = 0L;
-   public static int anInt780 = 0;
+   static volatile int lastMousePressX = 0;
+   public static int mousePressX = 0;
+   static MouseInputHandler mouseInputHandler = new MouseInputHandler();
+   static volatile int lastMousePressY = 0;
+   static volatile int lastMouseY = 1505665339;
+   public static int mousePressY = 0;
+   public static long mousePressTime = 0L;
+   public static int clickType = 0;
 
 
-   public final synchronized void mousePressed(MouseEvent var1) {
-      if(null != aClass58_775) {
-         anInt765 = 0;
-         anInt773 = var1.getX() * 1143934983;
-         anInt776 = var1.getY() * -71262799;
-         aLong768 = Player.method3175(849846164) * 8929978800836815775L;
-         if(var1.isAltDown()) {
+   public final synchronized void mousePressed(MouseEvent event) {
+      if(null != mouseInputHandler) {
+         anInt765 = 0; 
+         lastMousePressX = event.getX() * 1143934983;
+         lastMousePressY = event.getY() * -71262799;
+         lastMousePressTime = Player.getCurrentTimeMillis(849846164) * 8929978800836815775L;
+         if(event.isAltDown()) {
             anInt772 = -2026519500;
             anInt766 = 714924716;
-         } else if(var1.isMetaDown()) {
+         } else if(event.isMetaDown()) {
             anInt772 = 1134223898;
             anInt766 = 357462358;
          } else {
@@ -43,13 +43,13 @@ public class MouseInputHandler implements MouseListener, MouseMotionListener, Fo
          }
       }
 
-      if(var1.isPopupTrigger()) {
-         var1.consume();
+      if(event.isPopupTrigger()) {
+         event.consume();
       }
    }
 
    public final synchronized void mouseReleased(MouseEvent var1) {
-      if(aClass58_775 != null) {
+      if(mouseInputHandler != null) {
          anInt765 = 0;
          anInt766 = 0;
       }
@@ -65,34 +65,34 @@ public class MouseInputHandler implements MouseListener, MouseMotionListener, Fo
       }
    }
 
-   public final synchronized void mouseEntered(MouseEvent var1) {
-      if(null != aClass58_775) {
+   public final synchronized void mouseEntered(MouseEvent event) {
+      if(null != mouseInputHandler) {
          anInt765 = 0;
-         anInt767 = var1.getX() * -1660809425;
-         anInt777 = var1.getY() * -1505665339;
+         lastMouseX = event.getX() * -1660809425;
+         lastMouseY = event.getY() * -1505665339;
       }
    }
 
    public final synchronized void mouseExited(MouseEvent var1) {
-      if(aClass58_775 != null) {
+      if(mouseInputHandler != null) {
          anInt765 = 0;
-         anInt767 = 1660809425;
-         anInt777 = 1505665339;
+         lastMouseX = 1660809425;
+         lastMouseY = 1505665339;
       }
    }
 
    public final synchronized void mouseMoved(MouseEvent var1) {
-      if(null != aClass58_775) {
+      if(null != mouseInputHandler) {
          anInt765 = 0;
-         anInt767 = var1.getX() * -1660809425;
-         anInt777 = var1.getY() * -1505665339;
+         lastMouseX = var1.getX() * -1660809425;
+         lastMouseY = var1.getY() * -1505665339;
       }
    }
 
    public final void focusGained(FocusEvent var1) {}
 
    public final synchronized void focusLost(FocusEvent var1) {
-      if(null != aClass58_775) {
+      if(null != mouseInputHandler) {
          anInt766 = 0;
       }
    }
@@ -109,10 +109,10 @@ public class MouseInputHandler implements MouseListener, MouseMotionListener, Fo
    }
 
    public final synchronized void mouseDragged(MouseEvent var1) {
-      if(aClass58_775 != null) {
+      if(mouseInputHandler != null) {
          anInt765 = 0;
-         anInt767 = var1.getX() * -1660809425;
-         anInt777 = var1.getY() * -1505665339;
+         lastMouseX = var1.getX() * -1660809425;
+         lastMouseY = var1.getY() * -1505665339;
       }
    }
 

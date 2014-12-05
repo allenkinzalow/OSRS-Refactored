@@ -779,7 +779,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
 
                                  if(instruction == 1601) {
-                                    Class5.intStack[iStackPtr++] = var35.anInt1785 * -643576081;
+                                    Class5.intStack[iStackPtr++] = var35.scrollPosition * -643576081;
                                     continue;
                                  }
 
@@ -906,7 +906,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
 
                                  if(instruction == 2601) {
-                                    Class5.intStack[iStackPtr++] = var35.anInt1785 * -643576081;
+                                    Class5.intStack[iStackPtr++] = var35.scrollPosition * -643576081;
                                     continue;
                                  }
 
@@ -2796,13 +2796,13 @@ public class ClientScriptMap extends CacheableNode {
                               var35.anInt1784 = 0;
                            }
 
-                           var35.anInt1785 = Class5.intStack[iStackPtr + 1] * -1291378673;
-                           if(var35.anInt1785 * -643576081 > var35.anInt1787 * -1108406155 - var35.width * 334099177) {
-                              var35.anInt1785 = var35.anInt1787 * 1162057435 - var35.width * -126788697;
+                           var35.scrollPosition = Class5.intStack[iStackPtr + 1] * -1291378673;
+                           if(var35.scrollPosition * -643576081 > var35.anInt1787 * -1108406155 - var35.width * 334099177) {
+                              var35.scrollPosition = var35.anInt1787 * 1162057435 - var35.width * -126788697;
                            }
 
-                           if(var35.anInt1785 * -643576081 < 0) {
-                              var35.anInt1785 = 0;
+                           if(var35.scrollPosition * -643576081 < 0) {
+                              var35.scrollPosition = 0;
                            }
 
                            MouseInputHandler.method775(var35, -16054773);

@@ -213,7 +213,7 @@ public class Class19 {
 
          if(0 != (var5 & 2)) {
             var1.textSpoken = Client.packetBuffer.getString_2((byte)8);
-            var1.anInt2353 = 1424062716;
+            var1.textSpokenTime = 1424062716;
          }
 
          if(0 != (var5 & 128)) {

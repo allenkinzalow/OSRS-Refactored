@@ -4,7 +4,7 @@ public class Class36 {
 
    static final int anInt513 = 2;
    static int[] anIntArray514;
-   static Timer aClass53_515;
+   static Timer clientTimer;
    public static final int anInt516 = 30;
    static final int anInt517 = 37;
    static AbstractIndex configIndex_ref;

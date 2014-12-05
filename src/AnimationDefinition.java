@@ -222,9 +222,9 @@ public class AnimationDefinition extends CacheableNode {
    }
 
    public static void method2237(Component var0, byte var1) {
-      var0.addMouseListener(MouseInputHandler.aClass58_775);
-      var0.addMouseMotionListener(MouseInputHandler.aClass58_775);
-      var0.addFocusListener(MouseInputHandler.aClass58_775);
+      var0.addMouseListener(MouseInputHandler.mouseInputHandler);
+      var0.addMouseMotionListener(MouseInputHandler.mouseInputHandler);
+      var0.addFocusListener(MouseInputHandler.mouseInputHandler);
    }
 
    public static ItemDefinition getItemDefinition(int itemID, int var1) {

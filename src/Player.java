@@ -186,14 +186,14 @@ public final class Player extends Entity {
 		}
 	}
 
-	public static synchronized long method3175(int var0) {
-		long var1 = System.currentTimeMillis();
-		if (var1 < -3666040911483064549L * Class27.aLong361) {
-			Class27.aLong359 += (-3666040911483064549L * Class27.aLong361 - var1) * 3120880967327051097L;
+	public static synchronized long getCurrentTimeMillis(int var0) {
+		long currentTime = System.currentTimeMillis();
+		if (currentTime < -3666040911483064549L * Class27.lastSetTime) {
+			Class27.someTimeLeft += (-3666040911483064549L * Class27.lastSetTime - currentTime) * 3120880967327051097L;
 		}
 
-		Class27.aLong361 = 8990033128397214483L * var1;
-		return 1395227801606490857L * Class27.aLong359 + var1;
+		Class27.lastSetTime = 8990033128397214483L * currentTime;
+		return 1395227801606490857L * Class27.someTimeLeft + currentTime;
 	}
 
 	protected final ModelRasterizer getModelRasterizer(byte var1) {

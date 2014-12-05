@@ -24,7 +24,7 @@ public class RSInterface extends Node {
    public int hoverPopup = -2102936727;
    public boolean aBool1783 = false;
    public int anInt1784 = 0;
-   public int anInt1785 = 0;
+   public int scrollPosition = 0;
    public int anInt1786 = 0;
    public int anInt1787 = 0;
    public int componentColor = 0;

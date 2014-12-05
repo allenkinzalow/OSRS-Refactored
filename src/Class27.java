@@ -3,9 +3,9 @@ import java.applet.Applet;
 public class Class27 {
 
    public static final int anInt358 = 4;
-   static long aLong359;
+   static long someTimeLeft;
    static final int anInt360 = 1;
-   static long aLong361;
+   static long lastSetTime;
    public static int anInt362;
    static int anInt363;
    static final int anInt364 = 21;

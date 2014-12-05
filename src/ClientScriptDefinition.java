@@ -256,18 +256,18 @@ public class ClientScriptDefinition extends CacheableNode {
 							}
 
 							if (!component.aBool1855) {
-								if (component.anInt1785 * -643576081 > component.anInt1787 * -1108406155 - component.width * 334099177) {
-									component.anInt1785 = component.anInt1787 * 1162057435 - component.width * -126788697;
+								if (component.scrollPosition * -643576081 > component.anInt1787 * -1108406155 - component.width * 334099177) {
+									component.scrollPosition = component.anInt1787 * 1162057435 - component.width * -126788697;
 								}
 
-								if (component.anInt1785 * -643576081 < 0) {
-									component.anInt1785 = 0;
+								if (component.scrollPosition * -643576081 < 0) {
+									component.scrollPosition = 0;
 								}
 							}
 
-							renderInterfaceComponents(components, component.interfaceHash * -1081473899, var24, var29, var28, var25, var21 - component.anInt1784 * -133270367, var12 - component.anInt1785 * -643576081, var19, 199691778);
+							renderInterfaceComponents(components, component.interfaceHash * -1081473899, var24, var29, var28, var25, var21 - component.anInt1784 * -133270367, var12 - component.scrollPosition * -643576081, var19, 199691778);
 							if (component.aClass108_Sub17Array1879 != null) {
-								renderInterfaceComponents(component.aClass108_Sub17Array1879, component.interfaceHash * -1081473899, var24, var29, var28, var25, var21 - component.anInt1784 * -133270367, var12 - component.anInt1785 * -643576081, var19, -1149084430);
+								renderInterfaceComponents(component.aClass108_Sub17Array1879, component.interfaceHash * -1081473899, var24, var29, var28, var25, var21 - component.anInt1784 * -133270367, var12 - component.scrollPosition * -643576081, var19, -1149084430);
 							}
 
 							Class108_Sub10 var45 = (Class108_Sub10) Client.aClass101_2866.get((long) (component.interfaceHash * -1081473899));
@@ -281,7 +281,7 @@ public class ClientScriptDefinition extends CacheableNode {
 
 						if (Client.aBoolArray2831[var19] || Client.anInt2916 * 1531358553 > 1) {
 							if (component.componentType * 942877543 == 0 && !component.aBool1855 && component.anInt1787 * -1108406155 > component.width * 334099177) {
-								Class84.method1120(var21 + component.height * -1281443035, var12, component.anInt1785 * -643576081, component.width * 334099177, component.anInt1787 * -1108406155, -785175456);
+								Class84.method1120(var21 + component.height * -1281443035, var12, component.scrollPosition * -643576081, component.width * 334099177, component.anInt1787 * -1108406155, -785175456);
 							}
 
 							if (1 != component.componentType * 942877543) {
@@ -335,32 +335,32 @@ public class ClientScriptDefinition extends CacheableNode {
 															itemSprite.method2818(var47 + var20, var16 + var41, 128);
 															if (var1 != -1) {
 																RSInterface var50 = components[var1 & '\uffff'];
-																if (var41 + var16 < Rasterizer2D.topY && var50.anInt1785 * -643576081 > 0) {
+																if (var41 + var16 < Rasterizer2D.topY && var50.scrollPosition * -643576081 > 0) {
 																	var18 = Client.anInt2780 * 468305965 * (Rasterizer2D.topY - var41 - var16) / 3;
 																	if (var18 > Client.anInt2780 * 388092354) {
 																		var18 = Client.anInt2780 * 388092354;
 																	}
 
-																	if (var18 > var50.anInt1785 * -643576081) {
-																		var18 = var50.anInt1785 * -643576081;
+																	if (var18 > var50.scrollPosition * -643576081) {
+																		var18 = var50.scrollPosition * -643576081;
 																	}
 
-																	var50.anInt1785 -= var18 * -1291378673;
+																	var50.scrollPosition -= var18 * -1291378673;
 																	Client.anInt2903 += var18 * 273785511;
 																	MouseInputHandler.method775(var50, -16054773);
 																}
 
-																if (var16 + var41 + 32 > Rasterizer2D.bottomY && var50.anInt1785 * -643576081 < var50.anInt1787 * -1108406155 - var50.width * 334099177) {
+																if (var16 + var41 + 32 > Rasterizer2D.bottomY && var50.scrollPosition * -643576081 < var50.anInt1787 * -1108406155 - var50.width * 334099177) {
 																	var18 = (var16 + var41 + 32 - Rasterizer2D.bottomY) * Client.anInt2780 * 468305965 / 3;
 																	if (var18 > Client.anInt2780 * 388092354) {
 																		var18 = Client.anInt2780 * 388092354;
 																	}
 
-																	if (var18 > var50.anInt1787 * -1108406155 - var50.width * 334099177 - var50.anInt1785 * -643576081) {
-																		var18 = var50.anInt1787 * -1108406155 - var50.width * 334099177 - var50.anInt1785 * -643576081;
+																	if (var18 > var50.anInt1787 * -1108406155 - var50.width * 334099177 - var50.scrollPosition * -643576081) {
+																		var18 = var50.anInt1787 * -1108406155 - var50.width * 334099177 - var50.scrollPosition * -643576081;
 																	}
 
-																	var50.anInt1785 += var18 * -1291378673;
+																	var50.scrollPosition += var18 * -1291378673;
 																	Client.anInt2903 -= var18 * 273785511;
 																	MouseInputHandler.method775(var50, -16054773);
 																}

@@ -5,14 +5,14 @@ import java.awt.image.ImageObserver;
 
 public class MouseCapturer implements Runnable {
 
-   int coord = 0;
+   int coordIndex = 0;
    static final int anInt375 = 1004;
    static final int anInt376 = 11;
    int[] coordsX = new int[500];
    int[] coordsY = new int[500];
    static final int anInt379 = 100;
    public static final int anInt380 = 64;
-   boolean aBool381 = true;
+   boolean isRunning = true;
    static int[] anIntArray382;
    static PaletteSprite[] aClass108_Sub20_Sub15_Sub2Array383;
    Object objectLock = new Object();
@@ -20,13 +20,13 @@ public class MouseCapturer implements Runnable {
 
 
    public void run() {
-      for(; this.aBool381; Class108_Sub22.sleep(50L)) {
+      for(; this.isRunning; Class108_Sub22.sleep(50L)) {
          Object var1 = this.objectLock;
          synchronized(var1) {
-            if(this.coord * 649608097 < 500) {
-               this.coordsX[this.coord * 649608097] = MouseInputHandler.mouseX * -367052265;
-               this.coordsY[this.coord * 649608097] = MouseInputHandler.mouseY * 1533395117;
-               this.coord -= 1191679903;
+            if(this.coordIndex * 649608097 < 500) {
+               this.coordsX[this.coordIndex * 649608097] = MouseInputHandler.mouseX * -367052265;
+               this.coordsY[this.coordIndex * 649608097] = MouseInputHandler.mouseY * 1533395117;
+               this.coordIndex -= 1191679903;
             }
          }
       }

@@ -134,7 +134,7 @@ public class Class32 {
                   Client.anIntArray2799[Client.anInt2804 * 1837064243] = Client.anInt2809 * -2062084395;
                   Client.anIntArray2776[Client.anInt2804 * 1837064243] = var0.anInt2377 * 638780813;
                   Client.anIntArray2763[Client.anInt2804 * 1837064243] = var0.anInt2355 * 580693971;
-                  Client.anIntArray2947[Client.anInt2804 * 1837064243] = var0.anInt2353 * 419314599;
+                  Client.anIntArray2947[Client.anInt2804 * 1837064243] = var0.textSpokenTime * 419314599;
                   Client.aStringArray2805[Client.anInt2804 * 1837064243] = var0.textSpoken;
                   Client.anInt2804 += 1959435003;
                }

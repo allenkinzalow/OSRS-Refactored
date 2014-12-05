@@ -13,7 +13,7 @@ public class LoginHandler {
 	public static char aChar841;
 	static final int anInt842 = 21;
 	static int[] blendedHueDivisor;
-	protected static boolean aBool844;
+	protected static boolean focusGained;
 	static int anInt845 = 0;
 	static byte[][] aByteArrayArray846 = new byte[50][];
 	public static final int anInt847 = 30;
@@ -374,11 +374,11 @@ public class LoginHandler {
 				} else if (Varp.loginConnection.available() >= Client.anInt2927 * -574496637) {
 					Client.packetBuffer.position = 0;
 					Varp.loginConnection.read(Client.packetBuffer.buf, 0, Client.anInt2927 * -574496637);
-					Client.aLong2716 = 5205271143587660129L;
+					Client.lastMousePressTime = 5205271143587660129L;
 					Client.anInt2714 = -1445469673;
-					ClientScript.mouseCapturer.coord = 0;
-					aBool844 = true;
-					Client.aBool2720 = true;
+					ClientScript.mouseCapturer.coordIndex = 0;
+					focusGained = true;
+					Client.lastSentFocusGained = true;
 					Client.aLong2925 = -1524832735365646447L;
 					Class119.method1480((byte) 3);
 					Client.secureBuffer.position = 0;
