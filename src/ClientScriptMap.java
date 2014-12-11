@@ -19,18 +19,34 @@ public class ClientScriptMap extends CacheableNode {
    public int[] csMapIntValues;
 
 
-   static boolean method2161(RSInterface var0, byte var1) {
+   static boolean isComponentHidden(RSInterface component, byte var1) {
       if(Client.aBool2875) {
-         if(Class32.method576(var0, 321089465) != 0) {
+         if(Class32.method576(component, 321089465) != 0) {
             return false;
          }
 
-         if(var0.componentType * 942877543 == 0) {
+         if(component.componentType * 942877543 == 0) {
             return false;
          }
       }
 
-      return var0.aBool1783;
+      return component.hidden;
+   }
+
+   public static ClientScriptMap getCSMapForID(int csMapID, int var1) {
+      ClientScriptMap csMap = (ClientScriptMap) csMapCache.get((long) csMapID);
+      if(csMap != null) {
+         return csMap;
+      } else {
+         byte[] csMapData = configIndexReference.getFile(8, csMapID, (byte) 7);
+         csMap = new ClientScriptMap();
+         if(null != csMapData) {
+            csMap.decode(new RSByteBuffer(csMapData), (short)-599);
+         }
+
+         csMapCache.put(csMap, (long) csMapID);
+         return csMap;
+      }
    }
 
    void decode(RSByteBuffer buffer, short var2) {
@@ -514,7 +530,7 @@ public class ClientScriptMap extends CacheableNode {
                         throw new RuntimeException();
                      }
 
-                     var19 = Class108_Sub16.method1926(var16, 1581710715);
+                     var19 = CacheIndexRequest.getInterfaceComponentForHash(var16, 1581710715);
                      if(null == var19.aClass108_Sub17Array1879) {
                         var19.aClass108_Sub17Array1879 = new RSInterface[var38 + 1];
                      }
@@ -551,7 +567,7 @@ public class ClientScriptMap extends CacheableNode {
 
                   if(instruction == 101) {
                      var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
-                     RSInterface var36 = Class108_Sub16.method1926(var35.interfaceHash * -1081473899, 32288499);
+                     RSInterface var36 = CacheIndexRequest.getInterfaceComponentForHash(var35.interfaceHash * -1081473899, 32288499);
                      var36.aClass108_Sub17Array1879[var35.anInt1772 * -490007465] = null;
                      MouseInputHandler.method775(var36, -16054773);
                      continue;
@@ -559,7 +575,7 @@ public class ClientScriptMap extends CacheableNode {
 
                   if(102 == instruction) {
                      --iStackPtr;
-                     var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 1687596111);
+                     var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 1687596111);
                      var35.aClass108_Sub17Array1879 = null;
                      MouseInputHandler.method775(var35, -16054773);
                      continue;
@@ -595,7 +611,7 @@ public class ClientScriptMap extends CacheableNode {
                                  if(instruction >= 2000) {
                                     instruction -= 1000;
                                     --iStackPtr;
-                                    var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 708182564);
+                                    var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 708182564);
                                  } else {
                                     var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                                  }
@@ -763,7 +779,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
 
                                  if(1504 == instruction) {
-                                    Class5.intStack[iStackPtr++] = var35.aBool1783?1:0;
+                                    Class5.intStack[iStackPtr++] = var35.hidden?1:0;
                                     continue;
                                  }
 
@@ -867,7 +883,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
                               } else if(instruction < 2600) {
                                  --iStackPtr;
-                                 var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], -752744204);
+                                 var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], -752744204);
                                  if(2500 == instruction) {
                                     Class5.intStack[iStackPtr++] = var35.anInt1776 * 985647797;
                                     continue;
@@ -889,7 +905,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
 
                                  if(2504 == instruction) {
-                                    Class5.intStack[iStackPtr++] = var35.aBool1783?1:0;
+                                    Class5.intStack[iStackPtr++] = var35.hidden?1:0;
                                     continue;
                                  }
 
@@ -899,7 +915,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
                               } else if(instruction < 2700) {
                                  --iStackPtr;
-                                 var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], -524821673);
+                                 var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], -524821673);
                                  if(instruction == 2600) {
                                     Class5.intStack[iStackPtr++] = var35.anInt1784 * -133270367;
                                     continue;
@@ -947,14 +963,14 @@ public class ClientScriptMap extends CacheableNode {
                               } else if(instruction < 2800) {
                                  if(2700 == instruction) {
                                     --iStackPtr;
-                                    var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 1340521286);
+                                    var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 1340521286);
                                     Class5.intStack[iStackPtr++] = var35.itemID * 703308511;
                                     continue;
                                  }
 
                                  if(2701 == instruction) {
                                     --iStackPtr;
-                                    var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 1279379118);
+                                    var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 1279379118);
                                     if(var35.itemID * 703308511 != -1) {
                                        Class5.intStack[iStackPtr++] = var35.anInt1775 * 1939717269;
                                     } else {
@@ -976,7 +992,7 @@ public class ClientScriptMap extends CacheableNode {
                                  }
                               } else if(instruction < 2900) {
                                  --iStackPtr;
-                                 var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 1776721817);
+                                 var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 1776721817);
                                  if(instruction == 2800) {
                                     Class5.intStack[iStackPtr++] = Class2.method41(Class32.method576(var35, 1757488985), -1909973330);
                                     continue;
@@ -1019,7 +1035,7 @@ public class ClientScriptMap extends CacheableNode {
 
                                     if(instruction == 3101) {
                                        iStackPtr -= 2;
-                                       Class51.method703(Class108_Sub10.myPlayer, Class5.intStack[iStackPtr], Class5.intStack[1 + iStackPtr], (short)-24527);
+                                       Class51.method703(Player.myPlayer, Class5.intStack[iStackPtr], Class5.intStack[1 + iStackPtr], (short)-24527);
                                        continue;
                                     }
 
@@ -1163,7 +1179,7 @@ public class ClientScriptMap extends CacheableNode {
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
                                        var38 = Class5.intStack[iStackPtr + 2];
-                                       var19 = Class108_Sub16.method1926(var38, 1214080440);
+                                       var19 = CacheIndexRequest.getInterfaceComponentForHash(var38, 1214080440);
                                        RSPacketBuffer.method2598(var19, var16, var17, (byte)-68);
                                        continue;
                                     }
@@ -1331,8 +1347,8 @@ public class ClientScriptMap extends CacheableNode {
 
                                     if(instruction == 3308) {
                                        var16 = VarpBit.plane * -570926309;
-                                       var17 = Class100.anInt1388 * 263051377 + (Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7);
-                                       var38 = (Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
+                                       var17 = Class100.anInt1388 * 263051377 + (Player.myPlayer.anInt2394 * 171470795 >> 7);
+                                       var38 = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
                                        Class5.intStack[iStackPtr++] = var38 + (var16 << 28) + (var17 << 14);
                                        continue;
                                     }
@@ -1456,7 +1472,7 @@ public class ClientScriptMap extends CacheableNode {
                                        iStackPtr -= 2;
                                        int csMapID = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
-                                       ClientScriptMap csMap = Class104.getCSMapForID(csMapID, 1493960293);
+                                       ClientScriptMap csMap = getCSMapForID(csMapID, 1493960293);
                                        if(115 != csMap.aChar2055) {
                                           ;
                                        }
@@ -1481,7 +1497,7 @@ public class ClientScriptMap extends CacheableNode {
                                        var17 = Class5.intStack[1 + iStackPtr];
                                        int csMapID = Class5.intStack[2 + iStackPtr];
                                        var41 = Class5.intStack[iStackPtr + 3];
-                                       ClientScriptMap csMap = Class104.getCSMapForID(csMapID, 519898347);
+                                       ClientScriptMap csMap = getCSMapForID(csMapID, 519898347);
                                        if(var16 == csMap.aChar2053 && var17 == csMap.aChar2055) {
                                           for(int csMapValue = 0; csMapValue < csMap.csMapValueCount * -1484660039; ++csMapValue) {
                                              if(csMap.anIntArray2058[csMapValue] == var41) {
@@ -1621,7 +1637,7 @@ public class ClientScriptMap extends CacheableNode {
                                              }
                                           }
 
-                                          if(Class108_Sub10.method1683(Class108_Sub10.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1935156967).equals(enteredUser)) {
+                                          if(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1935156967).equals(enteredUser)) {
                                              AnimationSkeletonSet.pushMessage(30, "", StringConstants.aString1025, 306905076);
                                           } else {
                                              Client.secureBuffer.writePacket(229);
@@ -1703,7 +1719,7 @@ public class ClientScriptMap extends CacheableNode {
                                     if(instruction == 3609) {
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
-                                       if(var83.startsWith(Class108_Sub16.getIconTag(0, 480603646)) || var83.startsWith(Class108_Sub16.getIconTag(1, 480603646))) {
+                                       if(var83.startsWith(CacheIndexRequest.getIconTag(0, 480603646)) || var83.startsWith(CacheIndexRequest.getIconTag(1, 480603646))) {
                                           var83 = var83.substring(7);
                                        }
 
@@ -1794,7 +1810,7 @@ public class ClientScriptMap extends CacheableNode {
                                     }
 
                                     if(3620 == instruction) {
-                                       Class89.method1130(2018912427);
+                                       Class89.method1130();
                                        continue;
                                     }
 
@@ -1824,7 +1840,7 @@ public class ClientScriptMap extends CacheableNode {
                                     if(3623 == instruction) {
                                        --stringStackPtr;
                                        String name = Class5.stringStack[stringStackPtr];
-                                       if(name.startsWith(Class108_Sub16.getIconTag(0, 480603646)) || name.startsWith(Class108_Sub16.getIconTag(1, 480603646))) {
+                                       if(name.startsWith(CacheIndexRequest.getIconTag(0, 480603646)) || name.startsWith(CacheIndexRequest.getIconTag(1, 480603646))) {
                                           name = name.substring(7);
                                        }
 
@@ -1835,7 +1851,7 @@ public class ClientScriptMap extends CacheableNode {
                                     if(3624 == instruction) {
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       if(null != Class50.friendsChatList && var16 < Class27.anInt363 * 1727166727 && Class50.friendsChatList[var16].username.equalsIgnoreCase(Class108_Sub10.myPlayer.playerName)) {
+                                       if(null != Class50.friendsChatList && var16 < Class27.anInt363 * 1727166727 && Class50.friendsChatList[var16].username.equalsIgnoreCase(Player.myPlayer.playerName)) {
                                           Class5.intStack[iStackPtr++] = 1;
                                           continue;
                                        }
@@ -2076,7 +2092,7 @@ public class ClientScriptMap extends CacheableNode {
                                        stringStackPtr -= 2;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        var39 = Class5.stringStack[stringStackPtr + 1];
-                                       if(null != Class108_Sub10.myPlayer.bodyEquipmentKit && Class108_Sub10.myPlayer.bodyEquipmentKit.isFemale) {
+                                       if(null != Player.myPlayer.bodyEquipmentKit && Player.myPlayer.bodyEquipmentKit.isFemale) {
                                           Class5.stringStack[stringStackPtr++] = var39;
                                           continue;
                                        }
@@ -2605,8 +2621,8 @@ public class ClientScriptMap extends CacheableNode {
                                     }
 
                                     if(instruction == 5015) {
-                                       if(null != Class108_Sub10.myPlayer && Class108_Sub10.myPlayer.playerName != null) {
-                                          var83 = Class108_Sub10.myPlayer.playerName;
+                                       if(null != Player.myPlayer && Player.myPlayer.playerName != null) {
+                                          var83 = Player.myPlayer.playerName;
                                        } else {
                                           var83 = "";
                                        }
@@ -2673,7 +2689,7 @@ public class ClientScriptMap extends CacheableNode {
                               if(instruction >= 2000) {
                                  instruction -= 1000;
                                  --iStackPtr;
-                                 var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], -463278670);
+                                 var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], -463278670);
                               } else {
                                  var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                               }
@@ -2738,7 +2754,7 @@ public class ClientScriptMap extends CacheableNode {
                            if(instruction >= 2000) {
                               instruction -= 1000;
                               --iStackPtr;
-                              var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 1557099649);
+                              var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 1557099649);
                            } else {
                               var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                            }
@@ -2772,7 +2788,7 @@ public class ClientScriptMap extends CacheableNode {
 
                            if(1202 == instruction) {
                               var35.mediaType = 1259598271;
-                              var35.mediaID = Class108_Sub10.myPlayer.bodyEquipmentKit.method1168(-167707527) * 1321013799;
+                              var35.mediaID = Player.myPlayer.bodyEquipmentKit.method1168(-167707527) * 1321013799;
                               continue;
                            }
                         }
@@ -2780,7 +2796,7 @@ public class ClientScriptMap extends CacheableNode {
                         if(instruction >= 2000) {
                            instruction -= 1000;
                            --iStackPtr;
-                           var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 317874019);
+                           var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 317874019);
                         } else {
                            var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                         }
@@ -2981,7 +2997,7 @@ public class ClientScriptMap extends CacheableNode {
                      if(instruction >= 2000) {
                         instruction -= 1000;
                         --iStackPtr;
-                        var35 = Class108_Sub16.method1926(Class5.intStack[iStackPtr], 111384445);
+                        var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], 111384445);
                      } else {
                         var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                      }
@@ -3005,8 +3021,8 @@ public class ClientScriptMap extends CacheableNode {
                      if(1003 == instruction) {
                         --iStackPtr;
                         var37 = Class5.intStack[iStackPtr] == 1;
-                        if(var35.aBool1783 != var37) {
-                           var35.aBool1783 = var37;
+                        if(var35.hidden != var37) {
+                           var35.hidden = var37;
                            MouseInputHandler.method775(var35, -16054773);
                         }
                         continue;

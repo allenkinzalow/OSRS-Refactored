@@ -12,12 +12,9 @@ public class Class5 {
    static PaletteSprite[] aClass108_Sub20_Sub15_Sub2Array83;
    static String[] dateString = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
    static RGBSprite[] headPrayerSprites;
-   static final int anInt86 = 200000;
-   static final int anInt87 = 43;
-   static final int anInt88 = 28;
 
 
-   public static void method92(int interID, int var1) {
+   public static void method92(int interID) {
       if(-1 != interID) {
          if(RSInterface.interfacesLoadedArray[interID]) {
             RSInterface.interfaceIndexReference.method1026(interID, (byte)70);

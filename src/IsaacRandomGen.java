@@ -57,7 +57,7 @@ public final class IsaacRandomGen {
 						MouseCapturer.aClass108_Sub20_Sub15_Sub2Array383 = null;
 						Class4.radioButtonOptions = null;
 						GroundItem.radioButtonOptions_2 = null;
-						FloorDecoration.worldBackSprites = null;
+						World.worldBackSprites = null;
 						World.worldFlagSprites = null;
 						RuntimeException_Sub1.worldSortArrowSprites = null;
 						KeyFocusListener.worldTypeSprites = null;
@@ -416,7 +416,7 @@ public final class IsaacRandomGen {
 
 									Class78.anInt1229 = 0;
 									Class78.anInt1230 = 0;
-									activeJs5Job.aClass74_Sub1_2300.method1900((int) (activeJs5Job.key & 65535L), js5WorkBuffer.buf, (activeJs5Job.key & 16711680L) == 16711680L, isUrgentRequest, 418822511);
+									activeJs5Job.aClass74_Sub1_2300.pushCacheIndexRequest((int) (activeJs5Job.key & 65535L), js5WorkBuffer.buf, (activeJs5Job.key & 16711680L) == 16711680L, isUrgentRequest, 418822511);
 								}
 
 								activeJs5Job.unlink();

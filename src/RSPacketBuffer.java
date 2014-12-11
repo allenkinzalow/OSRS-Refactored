@@ -1,15 +1,9 @@
 
 public final class RSPacketBuffer extends RSByteBuffer {
 
-   public static final int anInt2289 = 181;
    static int[] anIntArray2290 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, '\uffff', 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, Integer.MAX_VALUE, -1};
    int anInt2291;
-   public static final int anInt2292 = 232;
-   public static final int anInt2293 = 23;
-   public static final int anInt2294 = 219;
    IsaacRandomGen aIsaacRandomGen_2295;
-   public static final int anInt2296 = 55;
-   public static final int anInt2297 = 198;
 
 
    public RSPacketBuffer(int var1) {
@@ -78,7 +72,7 @@ public final class RSPacketBuffer extends RSByteBuffer {
                         break;
                      }
 
-                     var8 = Class108_Sub16.method1926(var8.hoverPopup * -867206361, 204830061);
+                     var8 = CacheIndexRequest.getInterfaceComponentForHash(var8.hoverPopup * -867206361, 204830061);
                      if(null == var8) {
                         var6 = null;
                         break;
@@ -108,7 +102,7 @@ public final class RSPacketBuffer extends RSByteBuffer {
                            break;
                         }
 
-                        var8 = Class108_Sub16.method1926(var8.hoverPopup * -867206361, -1130139015);
+                        var8 = CacheIndexRequest.getInterfaceComponentForHash(var8.hoverPopup * -867206361, -1130139015);
                         if(var8 == null) {
                            var6 = null;
                            break;

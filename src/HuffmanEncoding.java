@@ -1,13 +1,9 @@
 
 public class HuffmanEncoding {
 
-   static final int anInt677 = 262144;
    int[] chatMask;
    int[] chatDecryptKeys;
    static CacheIndex soundEffectsIndex_2;
-   static final int anInt681 = 65;
-   static final int anInt682 = 69;
-   public static final int anInt683 = 81;
    byte[] chatBitSizes;
 
 

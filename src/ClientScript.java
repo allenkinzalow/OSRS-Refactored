@@ -13,10 +13,7 @@ public class ClientScript extends Node {
    RSInterface parentInterface;
    static int anInt1645;
    int keyCode;
-   static final int anInt1647 = 26;
-   static final int anInt1648 = 22;
-   static int[] anIntArray1649;
-   public static final int anInt1650 = 246;
+   static int[] objectLandscapeIDs;
 
 
    static final int getFloorDrawHeight(int var0, int var1, int var2, int var3) {

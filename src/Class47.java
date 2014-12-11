@@ -11,21 +11,17 @@ public class Class47 {
    static String aString668 = "->";
    static String COL_END = "</col>";
    static CacheIndex modelIndex;
-   static final int anInt671 = 48;
-   static final int anInt672 = 40;
-   static int[][] anIntArrayArray673;
-   static final int anInt674 = 20;
-   static final int anInt675 = 25;
+   static int[][] xteaMapKeys;
    static int anInt676;
 
 
    static final void method673(RSInterface[] var0, int var1, int var2) {
       for(int var3 = 0; var3 < var0.length; ++var3) {
          RSInterface var4 = var0[var3];
-         if(null != var4 && var4.hoverPopup * -867206361 == var1 && (!var4.aBool1855 || !ClientScriptMap.method2161(var4, (byte)38))) {
+         if(null != var4 && var4.hoverPopup * -867206361 == var1 && (!var4.aBool1855 || !ClientScriptMap.isComponentHidden(var4, (byte)38))) {
             int var6;
             if(0 == var4.componentType * 942877543) {
-               if(!var4.aBool1855 && ClientScriptMap.method2161(var4, (byte)13) && Class72.aClass108_Sub17_924 != var4) {
+               if(!var4.aBool1855 && ClientScriptMap.isComponentHidden(var4, (byte)13) && Class72.aClass108_Sub17_924 != var4) {
                   continue;
                }
 

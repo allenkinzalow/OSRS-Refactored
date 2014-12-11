@@ -3,7 +3,6 @@ import java.awt.Component;
 public class GameObject extends Renderable {
 
    int anInt2419;
-   static final int anInt2420 = 2;
    int anInt2421;
    int anInt2422;
    int anInt2423;
@@ -13,7 +12,6 @@ public class GameObject extends Renderable {
    int animationCycleDelay;
    static Class19 aClass19_2428;
    int anInt2429;
-   static final int anInt2430 = 64;
 
 
    public static void method2845(Component var0, int var1) {
@@ -184,8 +182,8 @@ public class GameObject extends Renderable {
                         var8 = var8 * (Client.anInt2957 * 331969371 + 256) >> 8;
                         int var9 = var8 * var5 + var4 * var7 >> 11;
                         int var10 = var4 * var8 - var7 * var5 >> 11;
-                        int var3 = var9 + Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7;
-                        int var11 = Class108_Sub10.myPlayer.anInt2339 * 826764905 - var10 >> 7;
+                        int var3 = var9 + Player.myPlayer.anInt2394 * 171470795 >> 7;
+                        int var11 = Player.myPlayer.anInt2339 * 826764905 - var10 >> 7;
                         Client.secureBuffer.writePacket(52);
                         Client.secureBuffer.writeByte(18);
                         Client.secureBuffer.writeByteN(!KeyFocusListener.aBoolArray895[82] ? 0 : (KeyFocusListener.aBoolArray895[81] ? 2 : 1), (byte) 1);
@@ -198,8 +196,8 @@ public class GameObject extends Renderable {
                         Client.secureBuffer.writeByte(Client.anInt2775 * 1889215063);
                         Client.secureBuffer.writeByte(Client.anInt2957 * 331969371);
                         Client.secureBuffer.writeByte(89);
-                        Client.secureBuffer.writeShort(Class108_Sub10.myPlayer.anInt2394 * 171470795);
-                        Client.secureBuffer.writeShort(Class108_Sub10.myPlayer.anInt2339 * 826764905);
+                        Client.secureBuffer.writeShort(Player.myPlayer.anInt2394 * 171470795);
+                        Client.secureBuffer.writeShort(Player.myPlayer.anInt2339 * 826764905);
                         Client.secureBuffer.writeByte(63);
                         Client.anInt2933 = var3 * -18058427;
                         Client.anInt2894 = var11 * 1849977017;

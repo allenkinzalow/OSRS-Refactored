@@ -24,9 +24,9 @@ public final class NPC extends Entity {
 			Class108_Sub21.method1989(Class2.aClass2_24, 2002112236);
 		}
 
-		Class108_Sub16.method1928(true, -2006823826);
+		CacheIndexRequest.method1928(true, -2006823826);
 		Class108_Sub21.method1989(var5 ? Class2.aClass2_15 : Class2.aClass2_14, -1381521255);
-		Class108_Sub16.method1928(false, -2006823826);
+		CacheIndexRequest.method1928(false, -2006823826);
 
 		int var14;
 		for (Projectile projectile = (Projectile) Client.projectileDeque.getFront(); null != projectile; projectile = (Projectile) Client.projectileDeque.getNext()) {
@@ -43,7 +43,7 @@ public final class NPC extends Entity {
 						var14 = -(projectile.anInt2533 * 47163971) - 1;
 						Player player;
 						if (var14 == Client.anInt2823 * 1800645115) {
-							player = Class108_Sub10.myPlayer;
+							player = Player.myPlayer;
 						} else {
 							player = Client.localPlayers[var14];
 						}
@@ -74,7 +74,7 @@ public final class NPC extends Entity {
 			}
 
 			var28 = Client.anInt2771 * -44898889 + Client.anInt2772 * -1122254441 & 2047;
-			GroundItem.method583(Item.anInt2616 * -1461479521, ClientScript.getFloorDrawHeight(Class108_Sub10.myPlayer.anInt2394 * 171470795, Class108_Sub10.myPlayer.anInt2339 * 826764905, VarpBit.plane * -570926309, 1152296478) - 50, GroundItem.anInt480 * -1594540275, var7, var28, var7 * 3 + 600, (byte) -124);
+			GroundItem.method583(Item.anInt2616 * -1461479521, ClientScript.getFloorDrawHeight(Player.myPlayer.anInt2394 * 171470795, Player.myPlayer.anInt2339 * 826764905, VarpBit.plane * -570926309, 1152296478) - 50, GroundItem.anInt480 * -1594540275, var7, var28, var7 * 3 + 600, (byte) -124);
 		}
 
 		int var6;
@@ -92,8 +92,8 @@ public final class NPC extends Entity {
 				if (RuntimeException_Sub1.anInt2625 * -611182019 < 310) {
 					var11 = BZip2Context.anInt279 * 1217916071 >> 7;
 					var19 = CacheFileAccessor.anInt1490 * 1498802843 >> 7;
-					var12 = Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7;
-					var21 = Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7;
+					var12 = Player.myPlayer.anInt2394 * 171470795 >> 7;
+					var21 = Player.myPlayer.anInt2339 * 826764905 >> 7;
 					if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][var11][var19] & 4)) {
 						var14 = VarpBit.plane * -570926309;
 					}
@@ -172,7 +172,7 @@ public final class NPC extends Entity {
 					}
 				}
 
-				if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7][Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7] & 4)) {
+				if (0 != (RegionReference.mapTileSettings[VarpBit.plane * -570926309][Player.myPlayer.anInt2394 * 171470795 >> 7][Player.myPlayer.anInt2339 * 826764905 >> 7] & 4)) {
 					var14 = VarpBit.plane * -570926309;
 				}
 
@@ -252,7 +252,7 @@ public final class NPC extends Entity {
 		for (var6 = -1; var6 < Client.anInt2749 * -1829405175 + Client.numLocalPlayers * -43742683; ++var6) {
 			Object var22;
 			if (-1 == var6) {
-				var22 = Class108_Sub10.myPlayer;
+				var22 = Player.myPlayer;
 			} else if (var6 < Client.numLocalPlayers * -43742683) {
 				var22 = Client.localPlayers[Client.playerIndices[var6]];
 				if (Client.anInt2837 * 310098017 == Client.playerIndices[var6]) {
@@ -345,25 +345,25 @@ public final class NPC extends Entity {
 				}
 
 				if (Client.anIntArray2763[var6] == 0) {
-					Class94.b12_full_font.drawStringCenter(var31, Client.anInt2808 * 1642143199 + var0, var1 + Client.anInt2809 * -2062084395, var18, 0);
+					RSTypeFace.b12_full_font.drawStringCenter(var31, Client.anInt2808 * 1642143199 + var0, var1 + Client.anInt2809 * -2062084395, var18, 0);
 				}
 
 				if (Client.anIntArray2763[var6] == 1) {
-					Class94.b12_full_font.method3107(var31, var0 + Client.anInt2808 * 1642143199, var1 + Client.anInt2809 * -2062084395, var18, 0, Client.anInt2807 * 1693763895);
+					RSTypeFace.b12_full_font.method3107(var31, var0 + Client.anInt2808 * 1642143199, var1 + Client.anInt2809 * -2062084395, var18, 0, Client.anInt2807 * 1693763895);
 				}
 
 				if (2 == Client.anIntArray2763[var6]) {
-					Class94.b12_full_font.method3131(var31, Client.anInt2808 * 1642143199 + var0, Client.anInt2809 * -2062084395 + var1, var18, 0, Client.anInt2807 * 1693763895);
+					RSTypeFace.b12_full_font.method3131(var31, Client.anInt2808 * 1642143199 + var0, Client.anInt2809 * -2062084395 + var1, var18, 0, Client.anInt2807 * 1693763895);
 				}
 
 				if (Client.anIntArray2763[var6] == 3) {
-					Class94.b12_full_font.method3100(var31, var0 + Client.anInt2808 * 1642143199, var1 + Client.anInt2809 * -2062084395, var18, 0, Client.anInt2807 * 1693763895, 150 - Client.anIntArray2947[var6]);
+					RSTypeFace.b12_full_font.method3100(var31, var0 + Client.anInt2808 * 1642143199, var1 + Client.anInt2809 * -2062084395, var18, 0, Client.anInt2807 * 1693763895, 150 - Client.anIntArray2947[var6]);
 				}
 
 				if (Client.anIntArray2763[var6] == 4) {
-					var20 = (150 - Client.anIntArray2947[var6]) * (Class94.b12_full_font.getTextWidth(var31) + 100) / 150;
+					var20 = (150 - Client.anIntArray2947[var6]) * (RSTypeFace.b12_full_font.getTextWidth(var31) + 100) / 150;
 					Rasterizer2D.method2497(var0 + Client.anInt2808 * 1642143199 - 50, var1, 50 + var0 + Client.anInt2808 * 1642143199, var1 + var3);
-					Class94.b12_full_font.drawString(var31, 50 + var0 + Client.anInt2808 * 1642143199 - var20, Client.anInt2809 * -2062084395 + var1, var18, 0);
+					RSTypeFace.b12_full_font.drawString(var31, 50 + var0 + Client.anInt2808 * 1642143199 - var20, Client.anInt2809 * -2062084395 + var1, var18, 0);
 					Rasterizer2D.setRasterizationRect(var0, var1, var0 + var2, var3 + var1);
 				}
 
@@ -376,12 +376,12 @@ public final class NPC extends Entity {
 						var17 = var20 - 125;
 					}
 
-					Rasterizer2D.method2497(var0, Client.anInt2809 * -2062084395 + var1 - Class94.b12_full_font.anInt2643 - 1, var2 + var0, 5 + Client.anInt2809 * -2062084395 + var1);
-					Class94.b12_full_font.drawStringCenter(var31, var0 + Client.anInt2808 * 1642143199, var17 + var1 + Client.anInt2809 * -2062084395, var18, 0);
+					Rasterizer2D.method2497(var0, Client.anInt2809 * -2062084395 + var1 - RSTypeFace.b12_full_font.anInt2643 - 1, var2 + var0, 5 + Client.anInt2809 * -2062084395 + var1);
+					RSTypeFace.b12_full_font.drawStringCenter(var31, var0 + Client.anInt2808 * 1642143199, var17 + var1 + Client.anInt2809 * -2062084395, var18, 0);
 					Rasterizer2D.setRasterizationRect(var0, var1, var2 + var0, var3 + var1);
 				}
 			} else {
-				Class94.b12_full_font.drawStringCenter(var31, var0 + Client.anInt2808 * 1642143199, Client.anInt2809 * -2062084395 + var1, 16776960, 0);
+				RSTypeFace.b12_full_font.drawStringCenter(var31, var0 + Client.anInt2808 * 1642143199, Client.anInt2809 * -2062084395 + var1, 16776960, 0);
 			}
 		}
 
@@ -424,7 +424,7 @@ public final class NPC extends Entity {
 				rasterizer.method2855();
 				this.anInt2386 = rasterizer.modelHeight * 1878279385;
 				if (this.anInt2373 * 1305815823 != -1 && -1 != this.anInt2374 * -766701345) {
-					ModelRasterizer var3 = Class2.getSpotAnimForID(this.anInt2373 * 1305815823, (byte) 0).getModelRasterizer(this.anInt2374 * -766701345, -380943559);
+					ModelRasterizer var3 = SpotAnim.getSpotAnimForID(this.anInt2373 * 1305815823, (byte) 0).getModelRasterizer(this.anInt2374 * -766701345, -380943559);
 					if (var3 != null) {
 						var3.method2865(0, -(this.anInt2388 * 833972513), 0);
 						ModelRasterizer[] var4 = new ModelRasterizer[]{rasterizer, var3};
@@ -613,7 +613,7 @@ public final class NPC extends Entity {
 					var4.standAnimationID = var4.definition.stanceAnimation * -517518475;
 					var4.nextAnimationID = var4.definition.anInt2165 * -1414070185;
 					var4.walkAnimationID = var4.definition.anInt2189 * -2025131807;
-					var4.method2720(Class108_Sub10.myPlayer.anIntArray2391[0] + var2, var5 + Class108_Sub10.myPlayer.anIntArray2392[0], var6 == 1, 1073159);
+					var4.method2720(Player.myPlayer.anIntArray2391[0] + var2, var5 + Player.myPlayer.anIntArray2392[0], var6 == 1, 1073159);
 					continue;
 				}
 			}

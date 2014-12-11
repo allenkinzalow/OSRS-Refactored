@@ -1,14 +1,9 @@
 
 public class Class108_Sub15 extends Node {
 
-   static final int anInt1723 = 1;
    String aString1724;
    boolean aBool1725;
    int anInt1726;
-   static final int anInt1727 = 4;
-   static final int anInt1728 = 5;
-   static final int anInt1729 = 6;
-   static final int anInt1730 = 9;
    int anInt1731;
    int anInt1732;
    int anInt1733;
@@ -17,14 +12,12 @@ public class Class108_Sub15 extends Node {
    String aString1736;
    int anInt1737;
    int anInt1738;
-   static final int anInt1739 = 0;
    int anInt1740;
    int anInt1741;
    String aString1742;
    int[] anIntArray1743 = new int[3];
    boolean aBool1744;
    String aString1745;
-   static final int anInt1746 = 6;
    String aString1747;
    int anInt1748;
    int anInt1749;

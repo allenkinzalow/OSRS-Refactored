@@ -6,11 +6,6 @@ public class Rasterizer3D extends Rasterizer2D {
    static boolean aBool2500 = false;
    public static Interface2 anInterface2_2501;
    static int anInt2502;
-   static final int anInt2503 = 50;
-   static final int anInt2504 = 3500;
-   static final int anInt2505 = 16;
-   public static final int anInt2506 = 9;
-   static final int anInt2507 = 3;
    static int centerX;
    static int centerY;
    public static int[] SINE = new int[2048];

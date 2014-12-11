@@ -49,9 +49,6 @@ public class ItemDefinition extends CacheableNode {
 	public int ambient;
 	public int contrast;
 	public int team;
-	public static final int anInt2019 = 98;
-	static final int anInt2020 = 100;
-	public static final int anInt2021 = 95;
 
 
 	public static RSFont loadFont(AbstractIndex spriteIndex, AbstractIndex fontIndex, int archiveID, int fileID, int var4) {
@@ -504,7 +501,7 @@ public class ItemDefinition extends CacheableNode {
 				if (player.textSpoken.charAt(0) == 126) {
 					player.textSpoken = player.textSpoken.substring(1);
 					AnimationSkeletonSet.pushMessage(2, player.playerName, player.textSpoken, -501145397);
-				} else if (Class108_Sub10.myPlayer == player) {
+				} else if (Player.myPlayer == player) {
 					AnimationSkeletonSet.pushMessage(2, player.playerName, player.textSpoken, 779446530);
 				}
 
@@ -630,12 +627,12 @@ public class ItemDefinition extends CacheableNode {
 						player.aBool2352 = var19;
 						if (2 != var6 && 3 != var6) {
 							if (1 == var6) {
-								AnimationSkeletonSet.pushMessage(var19 ? 91 : 1, Class108_Sub16.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
+								AnimationSkeletonSet.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
 							} else {
 								AnimationSkeletonSet.pushMessage(var19 ? 90 : 2, player.playerName, textSpoken, 243104464);
 							}
 						} else {
-							AnimationSkeletonSet.pushMessage(var19 ? 91 : 1, Class108_Sub16.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
+							AnimationSkeletonSet.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
 						}
 					}
 				}

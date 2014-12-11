@@ -2,6 +2,7 @@
 public class AnimationSkin extends Node {
 
    static final int anInt1628 = 8;
+   static CacheIndex skinIndex;
    int count;
    int anInt1630;
    int[][] skinList;

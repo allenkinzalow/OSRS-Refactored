@@ -2,11 +2,8 @@ import java.awt.Component;
 
 public abstract class Class71 {
 
-   static final int anInt915 = 2048;
-   static String aString916;
-   public static final int anInt917 = 231;
+   static String javaVersion;
    static int anInt918;
-   public static final int anInt919 = 250;
 
 
    static final void sendText(String text, int var1) {

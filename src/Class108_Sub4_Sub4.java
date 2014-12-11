@@ -1,11 +1,8 @@
 
 public class Class108_Sub4_Sub4 extends Class108_Sub4 {
 
-   public static final int anInt2332 = 226;
    Deque aClass105_2333 = new Deque();
    Class108_Sub4_Sub1 aClass108_Sub4_Sub1_2334 = new Class108_Sub4_Sub1();
-   static final int anInt2335 = 15;
-   public static final int anInt2336 = 14;
    Class108_Sub4_Sub3 aClass108_Sub4_Sub3_2337;
 
 
@@ -183,7 +180,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                if(4 == var7) {
                   var10 = var3[var5++] << 16;
                   var10 += var3[var5++];
-                  var11 = Class108_Sub16.method1926(var10, 1426632239);
+                  var11 = CacheIndexRequest.getInterfaceComponentForHash(var10, 1426632239);
                   var12 = var3[var5++];
                   if(var12 != -1 && (!AnimationDefinition.getItemDefinition(var12, 14463529).members || Client.aBool2710)) {
                      for(var13 = 0; var13 < var11.widgetItems.length; ++var13) {
@@ -207,7 +204,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                }
 
                if(var7 == 8) {
-                  var8 = Class108_Sub10.myPlayer.combatLevel * -1769445007;
+                  var8 = Player.myPlayer.combatLevel * -1769445007;
                }
 
                if(var7 == 9) {
@@ -221,7 +218,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                if(var7 == 10) {
                   var10 = var3[var5++] << 16;
                   var10 += var3[var5++];
-                  var11 = Class108_Sub16.method1926(var10, 77589357);
+                  var11 = CacheIndexRequest.getInterfaceComponentForHash(var10, 77589357);
                   var12 = var3[var5++];
                   if(-1 != var12 && (!AnimationDefinition.getItemDefinition(var12, -1377973379).members || Client.aBool2710)) {
                      for(var13 = 0; var13 < var11.widgetItems.length; ++var13) {
@@ -265,11 +262,11 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                }
 
                if(18 == var7) {
-                  var8 = (Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7) + Class100.anInt1388 * 263051377;
+                  var8 = (Player.myPlayer.anInt2394 * 171470795 >> 7) + Class100.anInt1388 * 263051377;
                }
 
                if(19 == var7) {
-                  var8 = (Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
+                  var8 = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
                }
 
                if(20 == var7) {

@@ -8,8 +8,6 @@ public class Class108_Sub22 extends Node {
    byte[] aByteArray1922 = new byte[128];
    int anInt1923;
    byte[] aByteArray1924 = new byte[128];
-   static final int anInt1925 = 71;
-   public static final int anInt1926 = 37;
    Class100[] aClass100Array1927 = new Class100[128];
 
 
@@ -79,13 +77,13 @@ public class Class108_Sub22 extends Node {
                if(0 != Client.anIntArray2704[var1]) {
                   int var2 = (Client.anIntArray2704[var1] & 255) * 128;
                   int var6 = Client.anIntArray2704[var1] >> 16 & 255;
-                  int var5 = 64 + var6 * 128 - Class108_Sub10.myPlayer.anInt2394 * 171470795;
+                  int var5 = 64 + var6 * 128 - Player.myPlayer.anInt2394 * 171470795;
                   if(var5 < 0) {
                      var5 = -var5;
                   }
 
                   int var7 = Client.anIntArray2704[var1] >> 8 & 255;
-                  int var4 = 64 + var7 * 128 - Class108_Sub10.myPlayer.anInt2339 * 826764905;
+                  int var4 = 64 + var7 * 128 - Player.myPlayer.anInt2339 * 826764905;
                   if(var4 < 0) {
                      var4 = -var4;
                   }

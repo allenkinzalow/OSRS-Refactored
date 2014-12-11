@@ -25,7 +25,6 @@ public class ModelRasterizer extends Renderable {
    static byte[] aByteArray2452 = new byte[1];
    int[] anIntArray2453;
    int[] anIntArray2454;
-   static final int anInt2455 = 50;
    int[][] anIntArrayArray2456;
    public boolean aBool2457 = false;
    int anInt2458 = 0;
@@ -33,7 +32,6 @@ public class ModelRasterizer extends Renderable {
    int anInt2460;
    int anInt2461;
    int[] anIntArray2462;
-   static final int anInt2463 = 9;
    static boolean[] aBoolArray2464 = new boolean[4096];
    static boolean[] aBoolArray2465 = new boolean[4096];
    int anInt2466;
@@ -42,7 +40,6 @@ public class ModelRasterizer extends Renderable {
    static int[] cameraVertexX = new int[4096];
    static int[] cameraVertexY = new int[4096];
    static int[] cameraVertexZ = new int[4096];
-   static final int anInt2472 = 1600;
    static int[] anIntArray2473 = Rasterizer3D.rgbTable;
    static int[] anIntArray2474 = new int[1600];
    static int[] anIntArray2475 = new int[12];
@@ -63,11 +60,9 @@ public class ModelRasterizer extends Renderable {
    public static int anInt2490 = 0;
    static int[] SINE = Rasterizer3D.SINE;
    static int[] COSINE = Rasterizer3D.COSINE;
-   static final int anInt2493 = 4096;
    static int[] anIntArray2494 = Rasterizer3D.anIntArray2520;
    public static int[] anIntArray2495 = new int[1000];
    static ModelRasterizer aClass108_Sub20_Sub14_Sub3_2496 = new ModelRasterizer();
-   static final int anInt2497 = 3500;
 
 
    public ModelRasterizer method2852(boolean var1) {

@@ -6,7 +6,6 @@ public class FloorDefinition extends CacheableNode {
    public int rgbColor = 0;
    public int textureID = 1132421109;
    public boolean hideUnderlay = true;
-   static final int anInt2216 = 2;
    public int hue;
    public int saturation;
    public int luminosity;
@@ -15,8 +14,7 @@ public class FloorDefinition extends CacheableNode {
    public int anInt2222;
    static int anInt2223;
    public int anInt2224;
-   public static AbstractIndex aClass74_2225;
-   static final int anInt2226 = 104;
+   public static AbstractIndex configArchive_ref_floor;
    static CacheIndex interfaceIndex;
 
 

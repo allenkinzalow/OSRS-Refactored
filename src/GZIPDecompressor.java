@@ -4,10 +4,7 @@ import java.util.zip.Inflater;
 
 public class GZIPDecompressor {
 
-   static final int anInt635 = 26;
    static byte[][][] underlayFloorIds;
-   public static final int anInt637 = 214;
-   static final int anInt638 = 1;
    Inflater anInflater639;
 
 

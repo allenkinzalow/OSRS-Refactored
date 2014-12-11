@@ -11,6 +11,10 @@ public class GameDefinition implements Interface3 {
    public String gameName;
    int gameID;
 
+   public static GameDefinition[] getGameDefinitions() {
+      return new GameDefinition[]{aClass82_1274, aClass82_1271, aClass82_1270, aClass82_1275, aClass82_1272, aClass82_1273};
+   }
+
 
    public int method32(int var1) {
       return this.gameID * -1083017933;

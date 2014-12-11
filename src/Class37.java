@@ -4,16 +4,10 @@ import java.util.Map.Entry;
 
 public class Class37 {
 
-   static final int anInt526 = 50;
    static int anInt527 = 328827591;
    boolean aBool528;
    boolean aBool529;
    LinkedHashMap aLinkedHashMap530 = new LinkedHashMap();
-   static final int anInt531 = 10;
-   public static final int anInt532 = 84;
-   public static final int anInt533 = 99;
-   static final int anInt534 = 16;
-   public static final int anInt535 = 105;
 
 
    Class37(RSByteBuffer var1) {

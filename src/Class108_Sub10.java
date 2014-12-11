@@ -1,16 +1,11 @@
 
 public class Class108_Sub10 extends Node {
 
-   public static final int anInt1651 = 5;
    int anInt1652;
    int anInt1653;
-   static final int anInt1654 = 15;
    static int[] anIntArray1655;
    static RSInterface aClass108_Sub17_1656;
    boolean aBool1657 = false;
-   static Player myPlayer;
-   static CacheIndex skinIndex;
-   static final int anInt1660 = 1;
 
 
    public static void method1681(int var0) {
@@ -25,11 +20,11 @@ public class Class108_Sub10 extends Node {
       int var4 = (int)var0.key;
       var0.unlink();
       if(var1) {
-         Class5.method92(var3, -4448520);
+         Class5.method92(var3);
       }
 
       HuffmanEncoding.method691(var3, 1744562904);
-      RSInterface var5 = Class108_Sub16.method1926(var4, 1444513607);
+      RSInterface var5 = CacheIndexRequest.getInterfaceComponentForHash(var4, 1444513607);
       if(var5 != null) {
          MouseInputHandler.method775(var5, -16054773);
       }

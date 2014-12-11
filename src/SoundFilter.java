@@ -10,9 +10,6 @@ public class SoundFilter {
    static int[][] anIntArrayArray140 = new int[2][8];
    static float aFloat141;
    int[] anIntArray142 = new int[2];
-   static final float aFloat143 = 100.0F;
-   static final float aFloat144 = 8.0F;
-   static final float aFloat145 = 32.703197F;
 
 
    final void method232(RSByteBuffer var1, SoundTrackEnvelope var2) {

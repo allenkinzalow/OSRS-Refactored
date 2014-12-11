@@ -17,11 +17,6 @@ public class Friend {
    static int anInt627;
    int friendHash;
    String username;
-   static final int anInt630 = 56;
-   public static final int anInt631 = 13;
-   static final int anInt632 = 90;
-   public static final int anInt633 = 144;
-   static final int anInt634 = 33;
 
 
    static final void method658(Entity var0, int var1, int var2) {
@@ -29,11 +24,11 @@ public class Friend {
    }
 
    static final void method659(Player player, int var1, int var2, int var3, short var4) {
-      if(player != Class108_Sub10.myPlayer) {
+      if(player != Player.myPlayer) {
          if(Client.menuActionRow * 391839991 < 400) {
             String var6;
             if(player.skillLevel * -1817505683 == 0) {
-               var6 = player.playerName + Class108_Sub13.method1702(player.combatLevel * -1769445007, Class108_Sub10.myPlayer.combatLevel * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + player.combatLevel * -1769445007 + Class47.CLOSE_PAREN;
+               var6 = player.playerName + Class108_Sub13.method1702(player.combatLevel * -1769445007, Player.myPlayer.combatLevel * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + player.combatLevel * -1769445007 + Class47.CLOSE_PAREN;
             } else {
                var6 = player.playerName + " " + Class47.OPEN_PAREN + StringConstants.SKILL_LEVEL + player.skillLevel * -1817505683 + Class47.CLOSE_PAREN;
             }
@@ -50,12 +45,12 @@ public class Friend {
                   if(null != Client.aStringArray2834[var7]) {
                      short var5 = 0;
                      if(Client.aStringArray2834[var7].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
-                        if(Client.aClass50_2733 == Class50.aClass50_701 || Class50.aClass50_698 == Client.aClass50_2733 && player.combatLevel * -1769445007 > Class108_Sub10.myPlayer.combatLevel * -1769445007) {
+                        if(Client.aClass50_2733 == Class50.aClass50_701 || Class50.aClass50_698 == Client.aClass50_2733 && player.combatLevel * -1769445007 > Player.myPlayer.combatLevel * -1769445007) {
                            var5 = 2000;
                         }
 
-                        if(0 != Class108_Sub10.myPlayer.playerTeamID * -1623092945 && 0 != player.playerTeamID * -1623092945) {
-                           if(player.playerTeamID * -1623092945 == Class108_Sub10.myPlayer.playerTeamID * -1623092945) {
+                        if(0 != Player.myPlayer.playerTeamID * -1623092945 && 0 != player.playerTeamID * -1623092945) {
+                           if(player.playerTeamID * -1623092945 == Player.myPlayer.playerTeamID * -1623092945) {
                               var5 = 2000;
                            } else {
                               var5 = 0;

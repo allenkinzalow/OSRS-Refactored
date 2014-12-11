@@ -11,7 +11,6 @@ public class ClientVerifier extends Node {
    public int[] fieldValues;
    public Method[] clientMethods;
    public byte[][][] methodByteArray;
-   static final int anInt1938 = 2;
 
 
 }

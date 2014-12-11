@@ -2,7 +2,6 @@
 public class Class110 {
 
    public static HuffmanEncoding huffmanEncoding;
-   static final int anInt1450 = 2000000;
 
 
    Class110() throws Throwable {

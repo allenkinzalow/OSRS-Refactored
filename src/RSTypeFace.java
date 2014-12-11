@@ -3,6 +3,7 @@ import java.util.Random;
 public abstract class RSTypeFace extends Rasterizer2D {
 
    static int anInt2635 = 0;
+   static RSFont b12_full_font;
    int[] anIntArray2636;
    int[] characterWidths;
    static int alpha = 256;

@@ -5,24 +5,10 @@ import java.awt.event.KeyListener;
 
 public final class KeyFocusListener implements KeyListener, FocusListener {
 
-   public static final int anInt866 = 158;
-   public static final int anInt867 = 13;
-   static final int anInt868 = 2;
-   static final int anInt869 = 3;
-   static final int anInt870 = 6;
    public static int anInt871 = 0;
-   static final int anInt872 = 8;
-   static final int anInt873 = 10;
-   static final int anInt874 = 17;
    public static volatile int anInt875 = 0;
    static int[] anIntArray876 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 13, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
    public static int anInt877 = 0;
-   static final int anInt878 = 55;
-   static final int anInt879 = 68;
-   static final int anInt880 = 131072;
-   static final int anInt881 = 103;
-   static final int anInt882 = 105;
-   static final int anInt883 = 128;
    static PaletteSprite[] worldTypeSprites;
    public static int[] anIntArray885 = new int[128];
    public static KeyFocusListener keyFocusListener = new KeyFocusListener();
@@ -30,17 +16,10 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
    static char[] aCharArray888 = new char[128];
    static int[] anIntArray889 = new int[128];
    public static int[] anIntArray890 = new int[128];
-   static final int anInt891 = 40;
    public static int anInt892 = 0;
-   public static final int anInt893 = 12;
    public static int anInt894 = 0;
    public static boolean[] aBoolArray895 = new boolean[112];
-   static final int anInt896 = 33;
    public static int anInt897 = 0;
-   static final int anInt898 = 87;
-   static final int anInt899 = 7;
-   static final int anInt900 = 49;
-   static final int anInt901 = 32;
 
 
    public final synchronized void keyReleased(KeyEvent var1) {
@@ -253,7 +232,7 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
          var0.method2723(409009331);
       }
 
-      if(Class108_Sub10.myPlayer == var0 && (var0.anInt2394 * 171470795 < 1536 || var0.anInt2339 * 826764905 < 1536 || var0.anInt2394 * 171470795 >= 11776 || var0.anInt2339 * 826764905 >= 11776)) {
+      if(Player.myPlayer == var0 && (var0.anInt2394 * 171470795 < 1536 || var0.anInt2339 * 826764905 < 1536 || var0.anInt2394 * 171470795 >= 11776 || var0.anInt2339 * 826764905 >= 11776)) {
          var0.anInt2368 = 821761185;
          var0.anInt2373 = -1279943663;
          var0.anInt2382 = 0;

@@ -6,8 +6,6 @@ public class Class52 {
    static boolean aBool717 = false;
    static File aFile718;
    static Hashtable aHashtable719 = new Hashtable(16);
-   static final int anInt720 = 16384;
-   public static final int anInt721 = 32;
 
 
    Class52() throws Throwable {

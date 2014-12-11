@@ -7,7 +7,6 @@ public final class InteractableObject {
    int anInt573;
    public Renderable renderableObject;
    int anInt575;
-   static final int anInt576 = 8;
    int xPos;
    int yPos;
    int anInt579;
@@ -16,7 +15,6 @@ public final class InteractableObject {
    int anInt582;
    int anInt583 = 0;
    static int[] anIntArray584;
-   static final int anInt585 = 27;
    public int anInt586 = 0;
 
 

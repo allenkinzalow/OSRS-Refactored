@@ -4,17 +4,19 @@ import java.io.DataInputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-
+/**
+ * This is actually something beyond just a ping requester - will be refactored later.
+ */
 public class PingRequester implements Runnable {
 
 	Interface1 anInterface1_814;
 	PingRequest aClass85_815 = null;
 	PingRequest aClass85_816 = null;
 	Thread thread;
-	boolean aBool818 = false;
+	boolean shutdown = false;
 	static CacheIndex landscapeIndex;
 	EventQueue eventQueue;
-	static String aString823;
+	static String javaVendor;
 
 
 	public final PingRequest method816(String var1, int var2, int var3) {
@@ -26,7 +28,7 @@ public class PingRequester implements Runnable {
 			PingRequest var2;
 			synchronized (this) {
 				while (true) {
-					if (this.aBool818) {
+					if (this.shutdown) {
 						return;
 					}
 
@@ -48,20 +50,20 @@ public class PingRequester implements Runnable {
 			}
 
 			try {
-				int var1 = var2.anInt1293 * 664810861;
-				if (var1 == 1) {
+				int type = var2.anInt1293 * 664810861;
+				if (type == 1) {
 					var2.anObject1294 = new Socket(InetAddress.getByName((String) var2.anObject1295), var2.anInt1296);
-				} else if (var1 == 2) {
+				} else if (type == 2) {
 					Thread var3 = new Thread((Runnable) var2.anObject1295);
 					var3.setDaemon(true);
 					var3.start();
 					var3.setPriority(var2.anInt1296);
 					var2.anObject1294 = var3;
-				} else if (4 == var1) {
+				} else if (4 == type) {
 					var2.anObject1294 = new DataInputStream(((URL) var2.anObject1295).openStream());
-				} else if (var1 == 3) {
-					String var8 = (var2.anInt1296 >> 24 & 255) + "." + (var2.anInt1296 >> 16 & 255) + "." + (var2.anInt1296 >> 8 & 255) + "." + (var2.anInt1296 & 255);
-					var2.anObject1294 = InetAddress.getByName(var8).getHostName();
+				} else if (type == 3) {
+					String ipAddress = (var2.anInt1296 >> 24 & 255) + "." + (var2.anInt1296 >> 16 & 255) + "." + (var2.anInt1296 >> 8 & 255) + "." + (var2.anInt1296 & 255);
+					var2.anObject1294 = InetAddress.getByName(ipAddress).getHostName();
 				}
 
 				var2.anInt1292 = 1;
@@ -185,7 +187,7 @@ public class PingRequester implements Runnable {
 
 	final void method839(int var1) {
 		synchronized (this) {
-			this.aBool818 = true;
+			this.shutdown = true;
 			this.notifyAll();
 		}
 
@@ -197,12 +199,12 @@ public class PingRequester implements Runnable {
 	}
 
 	PingRequester() {
-		aString823 = "Unknown";
-		Class71.aString916 = "1.1";
+		javaVendor = "Unknown";
+		Class71.javaVersion = "1.1";
 
 		try {
-			aString823 = System.getProperty("java.vendor");
-			Class71.aString916 = System.getProperty("java.version");
+			javaVendor = System.getProperty("java.vendor");
+			Class71.javaVersion = System.getProperty("java.version");
 		} catch (Exception var3) {
 			;
 		}
@@ -213,7 +215,7 @@ public class PingRequester implements Runnable {
 			;
 		}
 
-		this.aBool818 = false;
+		this.shutdown = false;
 		this.thread = new Thread(this);
 		this.thread.setPriority(10);
 		this.thread.setDaemon(true);

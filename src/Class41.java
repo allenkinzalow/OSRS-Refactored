@@ -1,15 +1,7 @@
 
 public class Class41 {
 
-   static final int anInt587 = 1;
    static RGBSprite aClass108_Sub20_Sub15_Sub1_588;
-   static final int anInt589 = 256;
-   static final int anInt590 = 11;
-   public static final int anInt591 = 93;
-   public static final int anInt592 = 108;
-   static final int anInt593 = 34;
-   public static final int anInt594 = 50;
-   static final int anInt595 = 128;
 
 
    static final void method649(byte var0) {
@@ -138,7 +130,7 @@ public class Class41 {
                   if(var3 < 103) {
                      if(var4 < 103) {
                         if(var10 == 0) {
-                           Wall var30 = Class56.gameScene.method493(VarpBit.plane * -570926309, var3, var4);
+                           Wall var30 = Class56.gameScene.getWall(VarpBit.plane * -570926309, var3, var4);
                            if(null != var30) {
                               var43 = var30.anInt337 * 639818003 >> 14 & 32767;
                               if(var9 == 2) {
@@ -256,7 +248,7 @@ public class Class41 {
                var5 = Client.packetBuffer.readUByte();
                if(var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
                   var1 = var2 + 1;
-                  if(Class108_Sub10.myPlayer.anIntArray2391[0] >= var3 - var1 && Class108_Sub10.myPlayer.anIntArray2391[0] <= var3 + var1 && Class108_Sub10.myPlayer.anIntArray2392[0] >= var4 - var1 && Class108_Sub10.myPlayer.anIntArray2392[0] <= var4 + var1 && Client.anInt2940 * 769647509 != 0 && var10 > 0 && Client.anInt2895 * 348809069 < 50) {
+                  if(Player.myPlayer.anIntArray2391[0] >= var3 - var1 && Player.myPlayer.anIntArray2391[0] <= var3 + var1 && Player.myPlayer.anIntArray2392[0] >= var4 - var1 && Player.myPlayer.anIntArray2392[0] <= var4 + var1 && Client.anInt2940 * 769647509 != 0 && var10 > 0 && Client.anInt2895 * 348809069 < 50) {
                      Client.anIntArray2942[Client.anInt2895 * 348809069] = var8;
                      Client.anIntArray2757[Client.anInt2895 * 348809069] = var10;
                      Client.anIntArray2944[Client.anInt2895 * 348809069] = var5;
@@ -285,7 +277,7 @@ public class Class41 {
                int var18 = GraphicsBuffer.anInt185 * -1392404635 + (var16 & 7);
                Player var19;
                if(var3 == Client.anInt2823 * 1800645115) {
-                  var19 = Class108_Sub10.myPlayer;
+                  var19 = Player.myPlayer;
                } else {
                   var19 = Client.localPlayers[var3];
                }

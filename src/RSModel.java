@@ -1612,9 +1612,9 @@ public class RSModel extends Renderable {
       this.aBool2579 = false;
    }
 
-   static void method3069(RSModel var0, RSModel var1, int var2, int var3, int var4, boolean var5) {
-      var0.method3010();
-      var0.method3008();
+   static void method3069(RSModel model, RSModel var1, int var2, int var3, int var4, boolean var5) {
+      model.method3010();
+      model.method3008();
       var1.method3010();
       var1.method3008();
       ++anInt2576;
@@ -1623,29 +1623,29 @@ public class RSModel extends Renderable {
       int var10 = var1.vertexCount;
 
       int var8;
-      for(var8 = 0; var8 < var0.vertexCount; ++var8) {
-         VertexNormal var12 = var0.vertexNormalArray[var8];
+      for(var8 = 0; var8 < model.vertexCount; ++var8) {
+         VertexNormal var12 = model.vertexNormalArray[var8];
          if(var12.magnitude * -1235990359 != 0) {
-            int var14 = var0.vertexY[var8] - var3;
+            int var14 = model.vertexY[var8] - var3;
             if(var14 <= var1.shadowIntensity) {
-               int var13 = var0.vertexX[var8] - var2;
+               int var13 = model.vertexX[var8] - var2;
                if(var13 >= var1.anInt2592 && var13 <= var1.anInt2593) {
-                  int var11 = var0.vertexZ[var8] - var4;
+                  int var11 = model.vertexZ[var8] - var4;
                   if(var11 >= var1.anInt2595 && var11 <= var1.anInt2562) {
                      for(int var9 = 0; var9 < var10; ++var9) {
                         VertexNormal var6 = var1.vertexNormalArray[var9];
                         if(var13 == var15[var9] && var11 == var1.vertexZ[var9] && var14 == var1.vertexY[var9] && var6.magnitude * -1235990359 != 0) {
-                           if(var0.aClass49Array2587 == null) {
-                              var0.aClass49Array2587 = new VertexNormal[var0.vertexCount];
+                           if(model.aClass49Array2587 == null) {
+                              model.aClass49Array2587 = new VertexNormal[model.vertexCount];
                            }
 
                            if(var1.aClass49Array2587 == null) {
                               var1.aClass49Array2587 = new VertexNormal[var10];
                            }
 
-                           VertexNormal var16 = var0.aClass49Array2587[var8];
-                           if(var16 == null) {
-                              var16 = var0.aClass49Array2587[var8] = new VertexNormal(var12);
+                           VertexNormal vertexNormal = model.aClass49Array2587[var8];
+                           if(vertexNormal == null) {
+                              vertexNormal = model.aClass49Array2587[var8] = new VertexNormal(var12);
                            }
 
                            VertexNormal var17 = var1.aClass49Array2587[var9];
@@ -1653,10 +1653,10 @@ public class RSModel extends Renderable {
                               var17 = var1.aClass49Array2587[var9] = new VertexNormal(var6);
                            }
 
-                           var16.x += var6.x * 1;
-                           var16.y += var6.y * 1;
-                           var16.z += var6.z * 1;
-                           var16.magnitude += var6.magnitude * 1;
+                           vertexNormal.x += var6.x * 1;
+                           vertexNormal.y += var6.y * 1;
+                           vertexNormal.z += var6.z * 1;
+                           vertexNormal.magnitude += var6.magnitude * 1;
                            var17.x += var12.x * 1;
                            var17.y += var12.y * 1;
                            var17.z += var12.z * 1;
@@ -1674,13 +1674,13 @@ public class RSModel extends Renderable {
 
       if(var7 >= 3) {
          if(var5) {
-            for(var8 = 0; var8 < var0.triangleFaceCount; ++var8) {
-               if(anIntArray2596[var0.trianglePointsX[var8]] == anInt2576 && anIntArray2596[var0.trianglePointsY[var8]] == anInt2576 && anIntArray2596[var0.trianglePointsZ[var8]] == anInt2576) {
-                  if(var0.faceRenderType == null) {
-                     var0.faceRenderType = new byte[var0.triangleFaceCount];
+            for(var8 = 0; var8 < model.triangleFaceCount; ++var8) {
+               if(anIntArray2596[model.trianglePointsX[var8]] == anInt2576 && anIntArray2596[model.trianglePointsY[var8]] == anInt2576 && anIntArray2596[model.trianglePointsZ[var8]] == anInt2576) {
+                  if(model.faceRenderType == null) {
+                     model.faceRenderType = new byte[model.triangleFaceCount];
                   }
 
-                  var0.faceRenderType[var8] = 2;
+                  model.faceRenderType[var8] = 2;
                }
             }
 

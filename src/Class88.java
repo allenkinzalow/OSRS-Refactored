@@ -1,13 +1,11 @@
 
 public class Class88 {
 
-   static final int anInt1313 = 4;
    public static int[] anIntArray1314 = new int[32];
    public static int[] configSettings;
    static int[] anIntArray1316;
    public static int[] anIntArray1317;
    public static short[] aShortArray1318;
-   public static final int anInt1319 = 75;
 
 
    static {

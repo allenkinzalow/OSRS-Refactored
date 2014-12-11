@@ -11,7 +11,6 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
    int anInt2608;
    int anInt2609;
    int anInt2610 = 0;
-   static final int anInt2611 = 39;
    boolean aBool2612 = false;
 
 
@@ -46,7 +45,7 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
    }
 
    protected final ModelRasterizer getModelRasterizer(byte var1) {
-      SpotAnim spotAnim = Class2.getSpotAnimForID(this.anInt2608 * -217366671, (byte)0);
+      SpotAnim spotAnim = SpotAnim.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0);
       ModelRasterizer var3;
       if(this.aBool2612) {
          var3 = spotAnim.getModelRasterizer(-1, -380943559);
@@ -64,7 +63,7 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
       this.anInt2605 = var4 * -1986090103;
       this.anInt2606 = var5 * -818243291;
       this.anInt2602 = (var7 + var6) * 1819958065;
-      int animationID = Class2.getSpotAnimForID(this.anInt2608 * -217366671, (byte)0).animationID * 338579353;
+      int animationID = SpotAnim.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0).animationID * 338579353;
       if(animationID != -1) {
          this.aBool2612 = false;
          this.animDefinition = CullingCluster.method672(animationID, 1927934523);

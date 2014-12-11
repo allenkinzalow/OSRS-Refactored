@@ -1,18 +1,11 @@
 
 public class Class2 {
 
-   static final int anInt12 = 89;
    static RSFont p11_full_font;
    static Class2 aClass2_14 = new Class2();
    static Class2 aClass2_15 = new Class2();
    static byte[][] terrainData;
    static Class7 aClass7_17;
-   public static final int anInt18 = 6;
-   static final int anInt19 = 2;
-   public static final int anInt20 = 61;
-   static final int anInt21 = 0;
-   static final int anInt22 = 1024;
-   static final int anInt23 = 2097152;
    static Class2 aClass2_24 = new Class2();
    static Class2 aClass2_25 = new Class2();
 
@@ -51,15 +44,15 @@ public class Class2 {
                break;
             }
 
-            String var8 = "";
+            String ipAddress = "";
             if(null != Client.aClass85_2732) {
-               var8 = IndexTable.method783(Client.aClass85_2732.anInt1296, -1219476815);
+               ipAddress = IndexTable.getIPAddress(Client.aClass85_2732.anInt1296, -1219476815);
                if(Client.aClass85_2732.anObject1294 != null) {
-                  var8 = (String) Client.aClass85_2732.anObject1294;
+                  ipAddress = (String) Client.aClass85_2732.anObject1294;
                }
             }
 
-            var0 = var0.substring(0, var4) + var8 + var0.substring(var4 + 4);
+            var0 = var0.substring(0, var4) + ipAddress + var0.substring(var4 + 4);
          }
       }
 
@@ -68,23 +61,6 @@ public class Class2 {
 
    public static int method41(int var0, int var1) {
       return var0 >> 11 & 63;
-   }
-
-   public static SpotAnim getSpotAnimForID(int spotAnimID, byte var1) {
-      SpotAnim gfx = (SpotAnim)SpotAnim.spotAnimCache.get((long)spotAnimID);
-      if(null == gfx) {
-         byte[] gfxData = SpotAnim.aClass74_2029.getFile(13, spotAnimID, (byte) 7);
-         gfx = new SpotAnim();
-         gfx.gfxID = spotAnimID * 409213277;
-         if(null != gfxData) {
-            gfx.decode(new RSByteBuffer(gfxData), (short)2000);
-         }
-
-         SpotAnim.spotAnimCache.put(gfx, (long)spotAnimID);
-         return gfx;
-      } else {
-         return gfx;
-      }
    }
 
    static int method43(char var0, int var1, int var2) {

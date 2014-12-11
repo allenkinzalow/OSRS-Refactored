@@ -1,16 +1,13 @@
 
 public class VarpBit extends CacheableNode {
 
-   static final int anInt1947 = 38;
    static RGBSprite[] mapFunctionIcons;
    public int mostSigBit;
    public int leastSigBit;
    static AbstractIndex aClass74_1951;
-   public static final int anInt1952 = 80;
    static int plane;
    public static AbstractIndex aClass74_1954;
    static CacheableNodeMap aClass106_1955 = new CacheableNodeMap(64);
-   public static final int anInt1956 = 39;
    public int configId;
 
 

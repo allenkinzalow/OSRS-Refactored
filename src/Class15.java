@@ -7,7 +7,6 @@ public class Class15 {
    HashTable aClass101_200 = new HashTable(256);
    static int anInt201;
    HashTable aClass101_202 = new HashTable(256);
-   public static final int anInt203 = 57;
 
 
    public static final Class7 method284(PingRequester var0, Component var1, int var2, int var3, int var4) {
@@ -133,16 +132,16 @@ public class Class15 {
 
       int var4;
       for(var4 = 0; var4 < Class2.terrainData.length; ++var4) {
-         if(Class32.anIntArray466[var4] != -1 && Class2.terrainData[var4] == null) {
-            Class2.terrainData[var4] = PingRequester.landscapeIndex.getFile(Class32.anIntArray466[var4], 0, (byte) 7);
+         if(Class32.terrainLandscapeIDs[var4] != -1 && Class2.terrainData[var4] == null) {
+            Class2.terrainData[var4] = PingRequester.landscapeIndex.getFile(Class32.terrainLandscapeIDs[var4], 0, (byte) 7);
             if(null == Class2.terrainData[var4]) {
                var6 = false;
                Client.anInt2759 -= 903859995;
             }
          }
 
-         if(-1 != ClientScript.anIntArray1649[var4] && ClientScriptDefinition.objectData[var4] == null) {
-            ClientScriptDefinition.objectData[var4] = PingRequester.landscapeIndex.getFileData(ClientScript.anIntArray1649[var4], 0, Class47.anIntArrayArray673[var4], -1241964609);
+         if(-1 != ClientScript.objectLandscapeIDs[var4] && ClientScriptDefinition.objectData[var4] == null) {
+            ClientScriptDefinition.objectData[var4] = PingRequester.landscapeIndex.getFileData(ClientScript.objectLandscapeIDs[var4], 0, Class47.xteaMapKeys[var4], -1241964609);
             if(ClientScriptDefinition.objectData[var4] == null) {
                var6 = false;
                Client.anInt2759 -= 903859995;

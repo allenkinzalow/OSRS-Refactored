@@ -4,11 +4,7 @@ public class Class108_Sub12 extends Node {
    int[] anIntArray1671 = new int[]{-1};
    static long aLong1672;
    static HashTable aClass101_1673 = new HashTable(32);
-   public static final int anInt1674 = 20;
    int[] anIntArray1675 = new int[]{0};
-   public static final int anInt1676 = 96;
-   public static final int anInt1677 = 163;
-   public static final int anInt1678 = 224;
 
 
    public static Object method1688(byte[] var0, boolean var1, int var2) {

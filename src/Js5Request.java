@@ -10,10 +10,8 @@ import java.lang.reflect.Method;
 
 public class Js5Request extends CacheableNode {
 
-   static final int anInt2298 = 400;
    byte aByte2299;
    CacheIndex aClass74_Sub1_2300;
-   public static final int anInt2301 = 167;
    int assumedCRC;
 
 
@@ -119,8 +117,8 @@ public class Js5Request extends CacheableNode {
       }
 
       Client.anInt2822 = 0;
-      int xPos = Class100.anInt1388 * 263051377 + (Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7);
-      int yPos = Class15.anInt201 * -1743142671 + (Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7);
+      int xPos = Class100.anInt1388 * 263051377 + (Player.myPlayer.anInt2394 * 171470795 >> 7);
+      int yPos = Class15.anInt201 * -1743142671 + (Player.myPlayer.anInt2339 * 826764905 >> 7);
       if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136) {
          Client.anInt2822 = 949480073;
       }

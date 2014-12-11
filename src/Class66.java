@@ -2,7 +2,6 @@
 public abstract class Class66 {
 
    static boolean aBool864 = false;
-   static final int anInt865 = 23;
 
 
    abstract byte[] method891(byte var1);

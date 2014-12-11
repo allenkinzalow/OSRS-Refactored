@@ -13,7 +13,6 @@ public class Class108_Sub4_Sub3 extends Class108_Sub4 {
    int[] anIntArray2312 = new int[16];
    Class108_Sub21[][] aClass108_Sub21ArrayArray2313 = new Class108_Sub21[16][128];
    int[] anIntArray2314 = new int[16];
-   static final int anInt2315 = 2;
    int[] anIntArray2316 = new int[16];
    long aLong2317;
    int[] anIntArray2318 = new int[16];
@@ -29,7 +28,6 @@ public class Class108_Sub4_Sub3 extends Class108_Sub4 {
    HashTable aClass101_2328 = new HashTable(128);
    long aLong2329;
    Class108_Sub4_Sub4 aClass108_Sub4_Sub4_2330 = new Class108_Sub4_Sub4(this);
-   static final int anInt2331 = 1003;
 
 
    public synchronized void method2603(int var1, int var2, short var3) {

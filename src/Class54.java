@@ -1,13 +1,9 @@
 
 public final class Class54 {
 
-   public static final String aString727 = "#";
    static String[] stringLocals;
    public static String operatingSystem;
    static int actionMenuWidth;
-   static final int anInt731 = 41;
-   public static final int anInt732 = 100;
-   public static final int anInt733 = 204;
    static AbstractIndex aClass74_734;
    static CacheIndex fontIndex;
 
@@ -82,7 +78,7 @@ public final class Class54 {
                            break;
                         }
 
-                        var1 = Class108_Sub16.method1926(var1.hoverPopup * -867206361, -1084920447);
+                        var1 = CacheIndexRequest.getInterfaceComponentForHash(var1.hoverPopup * -867206361, -1084920447);
                         if(null == var1) {
                            var12 = null;
                            break;

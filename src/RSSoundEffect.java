@@ -2,7 +2,6 @@
 public class RSSoundEffect {
 
    int anInt89;
-   static final int anInt90 = 22050;
    int anInt91;
    SoundTrackInstrument[] soundTrackInstruments = new SoundTrackInstrument[10];
 

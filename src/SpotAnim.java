@@ -20,7 +20,23 @@ public class SpotAnim extends CacheableNode {
    int modelID;
    int contrast = 0;
    static GameConnection aGameConnection_2037;
-   static final int anInt2038 = 32;
+
+   public static SpotAnim getSpotAnimForID(int spotAnimID, byte var1) {
+      SpotAnim gfx = (SpotAnim) spotAnimCache.get((long) spotAnimID);
+      if(null == gfx) {
+         byte[] gfxData = aClass74_2029.getFile(13, spotAnimID, (byte) 7);
+         gfx = new SpotAnim();
+         gfx.gfxID = spotAnimID * 409213277;
+         if(null != gfxData) {
+            gfx.decode(new RSByteBuffer(gfxData), (short)2000);
+         }
+
+         spotAnimCache.put(gfx, (long) spotAnimID);
+         return gfx;
+      } else {
+         return gfx;
+      }
+   }
 
 
    void decodeReadValues(RSByteBuffer buffer, int opcode, short var3) {
@@ -134,7 +150,7 @@ public class SpotAnim extends CacheableNode {
 
    public static void method2137(String var0, boolean var1, boolean var2, byte var3) {
       if(!var1) {
-         Class108_Sub13.method1703(var0, 3, "openjs", 1913475607);
+         Class108_Sub13.openDocument(var0, 3, "openjs", 1913475607);
       } else {
          if(!var2 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
             try {
@@ -145,12 +161,12 @@ public class SpotAnim extends CacheableNode {
             }
          }
 
-         if(Class56.aString750.startsWith("win") && !var2) {
-            Class108_Sub13.method1703(var0, 0, "openjs", -76807875);
-         } else if(Class56.aString750.startsWith("mac")) {
-            Class108_Sub13.method1703(var0, 1, "openjs", 397857714);
+         if(Class56.operatingSystem.startsWith("win") && !var2) {
+            Class108_Sub13.openDocument(var0, 0, "openjs", -76807875);
+         } else if(Class56.operatingSystem.startsWith("mac")) {
+            Class108_Sub13.openDocument(var0, 1, "openjs", 397857714);
          } else {
-            Class108_Sub13.method1703(var0, 2, "openjs", 1248309380);
+            Class108_Sub13.openDocument(var0, 2, "openjs", 1248309380);
          }
       }
    }
@@ -166,7 +182,7 @@ public class SpotAnim extends CacheableNode {
                if(!npcDef.aBool2190 || var1 == Client.anInt2789 * -1399758439) {
                   String var7 = npcDef.name;
                   if(npcDef.combatLevel * -1840374219 != 0) {
-                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Class108_Sub10.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
+                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Player.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
                   }
 
                   if(1 == Client.anInt2858 * -968945719) {
@@ -215,7 +231,7 @@ public class SpotAnim extends CacheableNode {
                         for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
                            if(npcOptions[optionIndex] != null && npcOptions[optionIndex].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
                               short var10 = 0;
-                              if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Class108_Sub10.myPlayer.combatLevel * -1769445007) {
+                              if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Player.myPlayer.combatLevel * -1769445007) {
                                  var10 = 2000;
                               }
 

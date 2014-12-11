@@ -10,11 +10,8 @@ public class Class100 {
    int anInt1383;
    static int anInt1384;
    int anInt1385;
-   static final int anInt1386 = 13;
    byte[] aByteArray1387;
    static int anInt1388;
-   public static final int anInt1389 = 44;
-   public static final int anInt1390 = 53;
    static boolean aBool1391;
 
 

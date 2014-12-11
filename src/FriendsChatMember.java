@@ -4,18 +4,14 @@ public class FriendsChatMember extends Node {
    byte rank;
    String username;
    int anInt1663;
-   public static final int anInt1664 = 82;
-   static final int anInt1665 = 25;
-   static final int anInt1666 = 32;
-   static final int anInt1667 = 256;
    public static short[] aShortArray1668;
    public static boolean aBool1669;
    String aString1670;
 
 
-   static final void method1684(int var0, int var1, int var2, int var3, int var4, byte var5) {
+   static final void method1684(int var0, int var1, int localX, int var3, int localY, byte var5) {
       if(Friend.anInt620 * 687278457 == var0 && var1 == BuildType.anInt1238 * -365008633) {
-         if(Client.anInt2890 * -158871381 == var2) {
+         if(Client.anInt2890 * -158871381 == localX) {
             return;
          }
 
@@ -26,7 +22,7 @@ public class FriendsChatMember extends Node {
 
       Friend.anInt620 = var0 * -964554551;
       BuildType.anInt1238 = var1 * -1482246985;
-      Client.anInt2890 = var2 * -1987728893;
+      Client.anInt2890 = localX * -1987728893;
       if(!Client.lowMemory) {
          Client.anInt2890 = 0;
       }
@@ -42,10 +38,10 @@ public class FriendsChatMember extends Node {
       var10 = Class100.anInt1388 * 263051377;
       var9 = Class15.anInt201 * -1743142671;
 
-      int var8;
+      int entityIndex;
       int var13;
-      for(var8 = 0; var8 < '\u8000'; ++var8) {
-         NPC var12 = Client.localNPCs[var8];
+      for(entityIndex = 0; entityIndex < '\u8000'; ++entityIndex) {
+         NPC var12 = Client.localNPCs[entityIndex];
          if(null != var12) {
             for(var13 = 0; var13 < 10; ++var13) {
                var12.anIntArray2391[var13] -= var11;
@@ -57,21 +53,21 @@ public class FriendsChatMember extends Node {
          }
       }
 
-      for(var8 = 0; var8 < 2048; ++var8) {
-         Player var23 = Client.localPlayers[var8];
-         if(null != var23) {
+      for(entityIndex = 0; entityIndex < 2048; ++entityIndex) {
+         Player player = Client.localPlayers[entityIndex];
+         if(null != player) {
             for(var13 = 0; var13 < 10; ++var13) {
-               var23.anIntArray2391[var13] -= var11;
-               var23.anIntArray2392[var13] -= var7;
+               player.anIntArray2391[var13] -= var11;
+               player.anIntArray2392[var13] -= var7;
             }
 
-            var23.anInt2394 -= var11 * 1650389376;
-            var23.anInt2339 -= var7 * 511765632;
+            player.anInt2394 -= var11 * 1650389376;
+            player.anInt2339 -= var7 * 511765632;
          }
       }
 
-      VarpBit.plane = var2 * 1039304467;
-      Class108_Sub10.myPlayer.method2720(var3, var4, false, 1160284584);
+      VarpBit.plane = localX * 1039304467;
+      Player.myPlayer.method2720(var3, localY, false, 1160284584);
       byte var22 = 0;
       byte var24 = 104;
       byte var25 = 1;
@@ -90,16 +86,16 @@ public class FriendsChatMember extends Node {
          var20 = -1;
       }
 
-      for(int var6 = var22; var24 != var6; var6 += var25) {
-         for(int var14 = var18; var14 != var19; var14 += var20) {
-            int var17 = var11 + var6;
-            int var15 = var7 + var14;
+      for(int x = var22; var24 != x; x += var25) {
+         for(int y = var18; y != var19; y += var20) {
+            int offX = var11 + x;
+            int offY = var7 + y;
 
-            for(int var16 = 0; var16 < 4; ++var16) {
-               if(var17 >= 0 && var15 >= 0 && var17 < 104 && var15 < 104) {
-                  Client.groundItemArray[var16][var6][var14] = Client.groundItemArray[var16][var17][var15];
+            for(int plane = 0; plane < 4; ++plane) {
+               if(offX >= 0 && offY >= 0 && offX < 104 && offY < 104) {
+                  Client.groundItemArray[plane][x][y] = Client.groundItemArray[plane][offX][offY];
                } else {
-                  Client.groundItemArray[var16][var6][var14] = null;
+                  Client.groundItemArray[plane][x][y] = null;
                }
             }
          }

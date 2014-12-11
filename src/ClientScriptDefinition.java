@@ -6,16 +6,10 @@ public class ClientScriptDefinition extends CacheableNode {
 	String[] aStringArray2272;
 	static byte[][] objectData;
 	int localStringCount;
-	public static final int anInt2275 = 21;
 	int anInt2276;
-	static final int anInt2277 = 2047;
-	static final int anInt2278 = 18;
 	static CacheableNodeMap clientScriptMap = new CacheableNodeMap(128);
-	static final int anInt2280 = 83;
 	public static int anInt2281;
 	int localIntCount;
-	public static final int anInt2283 = 106;
-	public static final int anInt2284 = 156;
 
 
 	static final void method2566(RSByteBuffer buffer, int plane, int localX, int localY, int var4, int var5, int rotation, byte var7) {
@@ -90,12 +84,12 @@ public class ClientScriptDefinition extends CacheableNode {
 		}
 	}
 
-	static final void renderInterfaceComponents(RSInterface[] components, int var1, int mapx, int mapy, int var4, int var5, int var6, int var7, int var8, int var9) {
-		Rasterizer2D.setRasterizationRect(mapx, mapy, var4, var5);
+	static final void renderInterfaceComponents(RSInterface[] components, int var1, int xRender, int yRender, int renderWidth, int renderHeight, int var6, int var7, int var8, int var9) {
+		Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 		Rasterizer3D.method2970();
 
-		for (int var14 = 0; var14 < components.length; ++var14) {
-			RSInterface component = components[var14];
+		for (int componentIndex = 0; componentIndex < components.length; ++componentIndex) {
+			RSInterface component = components[componentIndex];
 			if (null != component && (var1 == component.hoverPopup * -867206361 || var1 == -1412584499 && component == Client.aClass108_Sub17_2877)) {
 				int var19;
 				if (-1 == var8) {
@@ -110,11 +104,11 @@ public class ClientScriptDefinition extends CacheableNode {
 
 				component.anInt1780 = var19 * 1057491055;
 				component.cycle = Client.cycle * 1800650659;
-				if (!component.aBool1855 || !ClientScriptMap.method2161(component, (byte) 82)) {
+				if (!component.aBool1855 || !ClientScriptMap.isComponentHidden(component, (byte) 82)) {
 					int var21;
 					if (component.anInt1886 * -917776085 > 0) {
-						var21 = component.anInt1886 * -917776085;
-						if (324 == var21) {
+						int mediaRenderType = component.anInt1886 * -917776085; // this is how the media is displayed
+						if (324 == mediaRenderType) {
 							if (-1 == Client.anInt2960 * 598950917) {
 								Client.anInt2960 = component.anInt1870 * -1668832973;
 								Client.anInt2961 = component.anInt1796 * 227063943;
@@ -125,7 +119,7 @@ public class ClientScriptDefinition extends CacheableNode {
 							} else {
 								component.anInt1870 = Client.anInt2961 * -1353870173;
 							}
-						} else if (325 == var21) {
+						} else if (325 == mediaRenderType) {
 							if (-1 == Client.anInt2960 * 598950917) {
 								Client.anInt2960 = component.anInt1870 * -1668832973;
 								Client.anInt2961 = component.anInt1796 * 227063943;
@@ -136,12 +130,12 @@ public class ClientScriptDefinition extends CacheableNode {
 							} else {
 								component.anInt1870 = Client.anInt2960 * 2056077819;
 							}
-						} else if (var21 == 327) {
+						} else if (mediaRenderType == 327) {
 							component.mediaRotationX = -771359726;
 							component.mediaRotationY = ((int) (Math.sin((double) (Client.cycle * -637317861) / 40.0D) * 256.0D) & 2047) * 40361315;
 							component.mediaType = -763981079;
 							component.mediaID = 0;
-						} else if (var21 == 328) {
+						} else if (mediaRenderType == 328) {
 							component.mediaRotationX = -771359726;
 							component.mediaRotationY = ((int) (Math.sin((double) (Client.cycle * -637317861) / 40.0D) * 256.0D) & 2047) * 40361315;
 							component.mediaType = -763981079;
@@ -199,10 +193,10 @@ public class ClientScriptDefinition extends CacheableNode {
 					int var28;
 					int var30;
 					if (component.componentType * 942877543 == 2) {
-						var24 = mapx;
-						var29 = mapy;
-						var28 = var4;
-						var25 = var5;
+						var24 = xRender;
+						var29 = yRender;
+						var28 = renderWidth;
+						var25 = renderHeight;
 					} else if (component.componentType * 942877543 == 9) {
 						var22 = var21;
 						var30 = var12;
@@ -220,17 +214,17 @@ public class ClientScriptDefinition extends CacheableNode {
 
 						++var15;
 						++var20;
-						var24 = var22 > mapx ? var22 : mapx;
-						var29 = var30 > mapy ? var30 : mapy;
-						var28 = var15 < var4 ? var15 : var4;
-						var25 = var20 < var5 ? var20 : var5;
+						var24 = var22 > xRender ? var22 : xRender;
+						var29 = var30 > yRender ? var30 : yRender;
+						var28 = var15 < renderWidth ? var15 : renderWidth;
+						var25 = var20 < renderHeight ? var20 : renderHeight;
 					} else {
 						var22 = var21 + component.height * -1281443035;
 						var30 = var12 + component.width * 334099177;
-						var24 = var21 > mapx ? var21 : mapx;
-						var29 = var12 > mapy ? var12 : mapy;
-						var28 = var22 < var4 ? var22 : var4;
-						var25 = var30 < var5 ? var30 : var5;
+						var24 = var21 > xRender ? var21 : xRender;
+						var29 = var12 > yRender ? var12 : yRender;
+						var28 = var22 < renderWidth ? var22 : renderWidth;
+						var25 = var30 < renderHeight ? var30 : renderHeight;
 					}
 
 					if (!component.aBool1855 || var24 < var28 && var29 < var25) {
@@ -239,19 +233,19 @@ public class ClientScriptDefinition extends CacheableNode {
 								Client.anInt2735 = var21 * 735852373;
 								Client.anInt2820 = var12 * -1949788625;
 								NPC.method3165(var21, var12, component.height * -1281443035, component.width * 334099177, 2061404552);
-								Rasterizer2D.setRasterizationRect(mapx, mapy, var4, var5);
+								Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 								continue;
 							}
 
 							if (component.anInt1886 * -917776085 == 1338) {
 								Class50.method699(var21, var12, var19, (short) -4901);
-								Rasterizer2D.setRasterizationRect(mapx, mapy, var4, var5);
+								Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 								continue;
 							}
 						}
 
-						if (0 == component.componentType * 942877543) { // container
-							if (!component.aBool1855 && ClientScriptMap.method2161(component, (byte) 83) && component != Class72.aClass108_Sub17_924) {
+						if (0 == component.componentType * 942877543) { // container or scrolling container?
+							if (!component.aBool1855 && ClientScriptMap.isComponentHidden(component, (byte) 83) && component != Class72.aClass108_Sub17_924) {
 								continue;
 							}
 
@@ -275,7 +269,7 @@ public class ClientScriptDefinition extends CacheableNode {
 								Class50.renderInterface(var45.anInt1653 * 1557246219, var24, var29, var28, var25, var21, var12, var19, 1300032424);
 							}
 
-							Rasterizer2D.setRasterizationRect(mapx, mapy, var4, var5);
+							Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 							Rasterizer3D.method2970();
 						}
 
@@ -291,31 +285,31 @@ public class ClientScriptDefinition extends CacheableNode {
 								int var41;
 								int var47;
 								if (component.componentType * 942877543 == 2) {
-									var22 = 0;
+									int itemIndex = 0;
 
 									for (var30 = 0; var30 < component.width * 334099177; ++var30) {
 										for (var15 = 0; var15 < component.height * -1281443035; ++var15) {
-											var20 = (component.widgetItemPaddingX * 876962455 + 32) * var15 + var21;
-											var41 = var30 * (32 + component.widgetItemPaddingY * -448462053) + var12;
-											if (var22 < 20) {
-												var20 += component.spritesX[var22];
-												var41 += component.spritesY[var22];
+											int xPos = (component.widgetItemPaddingX * 876962455 + 32) * var15 + var21;
+											int yPos = var30 * (32 + component.widgetItemPaddingY * -448462053) + var12;
+											if (itemIndex < 20) {
+												xPos += component.spritesX[itemIndex];
+												yPos += component.spritesY[itemIndex];
 											}
 
-											if (component.widgetItems[var22] > 0) {
+											if (component.widgetItems[itemIndex] > 0) {
 												boolean var52 = false;
 												boolean var40 = false;
-												var10 = component.widgetItems[var22] - 1;
-												if (var20 + 32 > mapx && var20 < var4 && var41 + 32 > mapy && var41 < var5 || IsaacRandomGen.aClass108_Sub17_745 == component && var22 == Client.anInt2863 * -664226831) {
+												int itemID = component.widgetItems[itemIndex] - 1;
+												if (xPos + 32 > xRender && xPos < renderWidth && yPos + 32 > yRender && yPos < renderHeight || IsaacRandomGen.aClass108_Sub17_745 == component && itemIndex == Client.anInt2863 * -664226831) {
 													RGBSprite itemSprite;
-													if (1 == Client.anInt2858 * -968945719 && Class51.anInt716 * 347376265 == var22 && component.interfaceHash * -1081473899 == Class50.anInt699 * -932350913) {
-														itemSprite = Class5.getItemSprite(var10, component.widgetItemAmounts[var22], 2, 0, false, 1256224427);
+													if (1 == Client.anInt2858 * -968945719 && Class51.anInt716 * 347376265 == itemIndex && component.interfaceHash * -1081473899 == Class50.anInt699 * -932350913) {
+														itemSprite = Class5.getItemSprite(itemID, component.widgetItemAmounts[itemIndex], 2, 0, false, 1256224427);
 													} else {
-														itemSprite = Class5.getItemSprite(var10, component.widgetItemAmounts[var22], 1, 3153952, false, -1431232517);
+														itemSprite = Class5.getItemSprite(itemID, component.widgetItemAmounts[itemIndex], 1, 3153952, false, -1431232517);
 													}
 
 													if (itemSprite != null) {
-														if (component == IsaacRandomGen.aClass108_Sub17_745 && Client.anInt2863 * -664226831 == var22) {
+														if (component == IsaacRandomGen.aClass108_Sub17_745 && Client.anInt2863 * -664226831 == itemIndex) {
 															var47 = MouseInputHandler.mouseX * -367052265 - Client.anInt2900 * 785242869;
 															var16 = MouseInputHandler.mouseY * 1533395117 - Client.anInt2903 * 685630743;
 															if (var47 < 5 && var47 > -5) {
@@ -332,11 +326,11 @@ public class ClientScriptDefinition extends CacheableNode {
 																var16 = 0;
 															}
 
-															itemSprite.method2818(var47 + var20, var16 + var41, 128);
+															itemSprite.method2818(var47 + xPos, var16 + yPos, 128);
 															if (var1 != -1) {
 																RSInterface var50 = components[var1 & '\uffff'];
-																if (var41 + var16 < Rasterizer2D.topY && var50.scrollPosition * -643576081 > 0) {
-																	var18 = Client.anInt2780 * 468305965 * (Rasterizer2D.topY - var41 - var16) / 3;
+																if (yPos + var16 < Rasterizer2D.topY && var50.scrollPosition * -643576081 > 0) {
+																	var18 = Client.anInt2780 * 468305965 * (Rasterizer2D.topY - yPos - var16) / 3;
 																	if (var18 > Client.anInt2780 * 388092354) {
 																		var18 = Client.anInt2780 * 388092354;
 																	}
@@ -350,8 +344,8 @@ public class ClientScriptDefinition extends CacheableNode {
 																	MouseInputHandler.method775(var50, -16054773);
 																}
 
-																if (var16 + var41 + 32 > Rasterizer2D.bottomY && var50.scrollPosition * -643576081 < var50.anInt1787 * -1108406155 - var50.width * 334099177) {
-																	var18 = (var16 + var41 + 32 - Rasterizer2D.bottomY) * Client.anInt2780 * 468305965 / 3;
+																if (var16 + yPos + 32 > Rasterizer2D.bottomY && var50.scrollPosition * -643576081 < var50.anInt1787 * -1108406155 - var50.width * 334099177) {
+																	var18 = (var16 + yPos + 32 - Rasterizer2D.bottomY) * Client.anInt2780 * 468305965 / 3;
 																	if (var18 > Client.anInt2780 * 388092354) {
 																		var18 = Client.anInt2780 * 388092354;
 																	}
@@ -365,25 +359,25 @@ public class ClientScriptDefinition extends CacheableNode {
 																	MouseInputHandler.method775(var50, -16054773);
 																}
 															}
-														} else if (Class4.aClass108_Sub17_75 == component && var22 == Client.anInt2815 * -1269538377) {
-															itemSprite.method2818(var20, var41, 128);
+														} else if (Class4.aClass108_Sub17_75 == component && itemIndex == Client.anInt2815 * -1269538377) {
+															itemSprite.method2818(xPos, yPos, 128);
 														} else {
-															itemSprite.method2746(var20, var41);
+															itemSprite.method2746(xPos, yPos);
 														}
 													} else {
 														MouseInputHandler.method775(component, -16054773);
 													}
 												}
-											} else if (null != component.sprites && var22 < 20) {
-												RGBSprite var53 = component.method1959(var22, 682458473);
+											} else if (null != component.sprites && itemIndex < 20) {
+												RGBSprite var53 = component.method1959(itemIndex, 682458473);
 												if (var53 != null) {
-													var53.method2746(var20, var41);
+													var53.method2746(xPos, yPos);
 												} else if (RSInterface.mediaUnavailable) {
 													MouseInputHandler.method775(component, -16054773);
 												}
 											}
 
-											++var22;
+											++itemIndex;
 										}
 									}
 								} else if (3 == component.componentType * 942877543) {
@@ -411,10 +405,10 @@ public class ClientScriptDefinition extends CacheableNode {
 										Rasterizer2D.method2505(var21, var12, component.height * -1281443035, component.width * 334099177, var22, 256 - (transparency & 255));
 									}
 								} else {
-									RSFont var46;
+									RSFont interfaceFont;
 									if (component.componentType * 942877543 == 4) {
-										var46 = component.getWidgetFont(192256567);
-										if (var46 == null) {
+										interfaceFont = component.getWidgetFont(192256567);
+										if (interfaceFont == null) {
 											if (RSInterface.mediaUnavailable) {
 												MouseInputHandler.method775(component, -16054773);
 											}
@@ -458,7 +452,7 @@ public class ClientScriptDefinition extends CacheableNode {
 												componentString = Class2.method40(componentString, component, 586397057);
 											}
 
-											var46.method3097(componentString, var21, var12, component.height * -1281443035, component.width * 334099177, var30, component.textCentered ? 0 : -1, component.anInt1863 * -164762721, component.anInt1862 * 1189093849, component.anInt1820 * -861430413);
+											interfaceFont.method3097(componentString, var21, var12, component.height * -1281443035, component.width * 334099177, var30, component.textCentered ? 0 : -1, component.anInt1863 * -164762721, component.anInt1862 * 1189093849, component.anInt1820 * -861430413);
 										}
 									} else if (component.componentType * 942877543 == 5) {
 										RGBSprite var49;
@@ -511,7 +505,7 @@ public class ClientScriptDefinition extends CacheableNode {
 														}
 													}
 
-													Rasterizer2D.setRasterizationRect(mapx, mapy, var4, var5);
+													Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 												}
 											}
 										}
@@ -543,16 +537,16 @@ public class ClientScriptDefinition extends CacheableNode {
 												if (component.mediaID * 2030124439 == 0) {
 													rasterizer = Client.aClass93_2926.getModelRasterizer((AnimationDefinition) null, -1, (AnimationDefinition) null, -1, -1132359552);
 												} else {
-													rasterizer = Class108_Sub10.myPlayer.getModelRasterizer((byte) 62);
+													rasterizer = Player.myPlayer.getModelRasterizer((byte) 62);
 												}
 											} else if (var30 == -1) {
-												rasterizer = component.getInterfaceMediaRasterizer((AnimationDefinition) null, -1, var48, Class108_Sub10.myPlayer.bodyEquipmentKit, -1286694344);
+												rasterizer = component.getInterfaceMediaRasterizer((AnimationDefinition) null, -1, var48, Player.myPlayer.bodyEquipmentKit, -1286694344);
 												if (null == rasterizer && RSInterface.mediaUnavailable) {
 													MouseInputHandler.method775(component, -16054773);
 												}
 											} else {
 												AnimationDefinition var43 = CullingCluster.method672(var30, 1658041042);
-												rasterizer = component.getInterfaceMediaRasterizer(var43, component.anInt1877 * -1365409805, var48, Class108_Sub10.myPlayer.bodyEquipmentKit, -1695743692);
+												rasterizer = component.getInterfaceMediaRasterizer(var43, component.anInt1877 * -1365409805, var48, Player.myPlayer.bodyEquipmentKit, -1695743692);
 												if (rasterizer == null && RSInterface.mediaUnavailable) {
 													MouseInputHandler.method775(component, -16054773);
 												}
@@ -577,8 +571,8 @@ public class ClientScriptDefinition extends CacheableNode {
 											Rasterizer3D.method2925();
 										} else {
 											if (7 == component.componentType * 942877543) {
-												var46 = component.getWidgetFont(192256567);
-												if (null == var46) {
+												interfaceFont = component.getWidgetFont(192256567);
+												if (null == interfaceFont) {
 													if (RSInterface.mediaUnavailable) {
 														MouseInputHandler.method775(component, -16054773);
 													}
@@ -601,11 +595,11 @@ public class ClientScriptDefinition extends CacheableNode {
 															var16 = (component.widgetItemPaddingX * 876962455 + 115) * var20 + var21;
 															var10 = var12 + var15 * (component.widgetItemPaddingY * -448462053 + 12);
 															if (component.anInt1863 * -164762721 == 0) {
-																var46.drawString(var23, var16, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
+																interfaceFont.drawString(var23, var16, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
 															} else if (component.anInt1863 * -164762721 == 1) {
-																var46.drawStringCenter(var23, var16 + component.height * -1281443035 / 2, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
+																interfaceFont.drawStringCenter(var23, var16 + component.height * -1281443035 / 2, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
 															} else {
-																var46.method3095(var23, var16 + component.height * -1281443035 - 1, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
+																interfaceFont.method3095(var23, var16 + component.height * -1281443035 - 1, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
 															}
 														}
 
@@ -618,11 +612,11 @@ public class ClientScriptDefinition extends CacheableNode {
 											if (8 == component.componentType * 942877543 && component == NPCDefinition.aClass108_Sub17_2193 && Client.anInt2856 * 1284119235 == Client.anInt2857 * -1887483549) {
 												var22 = 0;
 												var30 = 0;
-												RSFont var37 = ObjectDefinition.p12_full_font;
+												RSFont p12_full = ObjectDefinition.p12_full_font;
 												String var44 = component.componentString;
 
 												String var38;
-												for (var44 = Class2.method40(var44, component, -1385023527); var44.length() > 0; var30 += 1 + var37.anInt2643) {
+												for (var44 = Class2.method40(var44, component, -1385023527); var44.length() > 0; var30 += 1 + p12_full.anInt2643) {
 													var47 = var44.indexOf(Class47.LINE_BREAK);
 													if (var47 != -1) {
 														var38 = var44.substring(0, var47);
@@ -632,7 +626,7 @@ public class ClientScriptDefinition extends CacheableNode {
 														var44 = "";
 													}
 
-													var16 = var37.getTextWidth(var38);
+													var16 = p12_full.getTextWidth(var38);
 													if (var16 > var22) {
 														var22 = var16;
 													}
@@ -646,20 +640,20 @@ public class ClientScriptDefinition extends CacheableNode {
 													var47 = 5 + var21;
 												}
 
-												if (var22 + var47 > var4) {
-													var47 = var4 - var22;
+												if (var22 + var47 > renderWidth) {
+													var47 = renderWidth - var22;
 												}
 
-												if (var16 + var30 > var5) {
-													var16 = var5 - var30;
+												if (var16 + var30 > renderHeight) {
+													var16 = renderHeight - var30;
 												}
 
 												Rasterizer2D.drawFilledRectangle(var47, var16, var22, var30, 16777120);
 												Rasterizer2D.drawUnfilledRectangle(var47, var16, var22, var30, 0);
 												var44 = component.componentString;
-												var10 = var16 + var37.anInt2643 + 2;
+												var10 = var16 + p12_full.anInt2643 + 2;
 
-												for (var44 = Class2.method40(var44, component, 1044987450); var44.length() > 0; var10 += 1 + var37.anInt2643) {
+												for (var44 = Class2.method40(var44, component, 1044987450); var44.length() > 0; var10 += 1 + p12_full.anInt2643) {
 													var32 = var44.indexOf(Class47.LINE_BREAK);
 													if (var32 != -1) {
 														var38 = var44.substring(0, var32);
@@ -669,7 +663,7 @@ public class ClientScriptDefinition extends CacheableNode {
 														var44 = "";
 													}
 
-													var37.drawString(var38, 3 + var47, var10, 0, -1);
+													p12_full.drawString(var38, 3 + var47, var10, 0, -1);
 												}
 											}
 

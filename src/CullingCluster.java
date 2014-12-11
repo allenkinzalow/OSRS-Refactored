@@ -10,7 +10,6 @@ public final class CullingCluster {
    int anInt645;
    static Image anImage646;
    int anInt647;
-   public static final int anInt648 = 134;
    int anInt649;
    int anInt650;
    int anInt651;
@@ -21,8 +20,6 @@ public final class CullingCluster {
    int anInt656;
    int anInt657;
    int anInt658;
-   static final int anInt659 = 1;
-   public static final int anInt660 = 135;
    int anInt661;
 
 

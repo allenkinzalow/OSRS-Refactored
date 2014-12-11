@@ -4,33 +4,31 @@ public class Class86 implements Runnable {
    public static Object anObject1297 = new Object();
    public static Deque aClass105_1298 = new Deque();
    public static int anInt1299 = 0;
-   public static Deque aClass105_1300 = new Deque();
-   public static final int anInt1301 = 174;
-   static final int anInt1302 = 286331153;
+   public static Deque cacheIndexRequests = new Deque();
 
 
    public void run() {
       try {
          while(true) {
-            Deque var1 = aClass105_1300;
-            Class108_Sub16 var2;
+            Deque var1 = cacheIndexRequests;
+            CacheIndexRequest cacheIndexRequest;
             synchronized(var1) {
-               var2 = (Class108_Sub16)aClass105_1300.getFront();
+               cacheIndexRequest = (CacheIndexRequest) cacheIndexRequests.getFront();
             }
 
             Object var14;
-            if(null != var2) {
-               if(var2.anInt1759 * -612139703 == 0) {
-                  var2.aClass59_1757.method785((int)var2.key, var2.aByteArray1754, var2.aByteArray1754.length, -309250583);
-                  var1 = aClass105_1300;
+            if(null != cacheIndexRequest) {
+               if(cacheIndexRequest.anInt1759 * -612139703 == 0) {
+                  cacheIndexRequest.cacheIndexTable.putDataAttempt((int) cacheIndexRequest.key, cacheIndexRequest.indexData, cacheIndexRequest.indexData.length, -309250583);
+                  var1 = cacheIndexRequests;
                   synchronized(var1) {
-                     var2.unlink();
+                     cacheIndexRequest.unlink();
                   }
-               } else if(var2.anInt1759 * -612139703 == 1) {
-                  var2.aByteArray1754 = var2.aClass59_1757.get((int)var2.key, (byte)20);
-                  var1 = aClass105_1300;
+               } else if(cacheIndexRequest.anInt1759 * -612139703 == 1) {
+                  cacheIndexRequest.indexData = cacheIndexRequest.cacheIndexTable.get((int)cacheIndexRequest.key, (byte)20);
+                  var1 = cacheIndexRequests;
                   synchronized(var1) {
-                     aClass105_1298.insertBack(var2);
+                     aClass105_1298.insertBack(cacheIndexRequest);
                   }
                }
 

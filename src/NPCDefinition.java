@@ -41,7 +41,6 @@ public class NPCDefinition extends CacheableNode {
    static final int anInt2192 = 39;
    static RSInterface aClass108_Sub17_2193;
    static byte aByte2194;
-   public static final int anInt2195 = 2;
 
 
    public boolean method2284(byte var1) {

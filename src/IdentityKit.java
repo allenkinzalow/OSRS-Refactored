@@ -5,7 +5,6 @@ public class IdentityKit extends CacheableNode {
    static AbstractIndex aClass74_2197;
    public static int anInt2198;
    static CacheableNodeMap identityKitMap = new CacheableNodeMap(64);
-   static final int anInt2200 = 22;
    static AbstractIndex aClass74_2201;
    short[] recolorToFind;
    short[] recolorToReplace;
@@ -15,7 +14,6 @@ public class IdentityKit extends CacheableNode {
    public int bodyPartID = -1546880297;
    static RGBSprite mapEdgeSprite;
    int[] bodyModels;
-   public static final int anInt2210 = 133;
 
 
    void decode(RSByteBuffer buffer, int var2) {

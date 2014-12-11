@@ -52,9 +52,7 @@ public class ObjectDefinition extends CacheableNode {
    public int anInt2112 = 0;
    public int anInt2113 = 0;
    public boolean aBool2114 = true;
-   public static final int anInt2115 = 66;
    static RSFont p12_full_font;
-   public static final int anInt2117 = 76;
 
 
    void method2174(int var1) {
@@ -574,8 +572,8 @@ public class ObjectDefinition extends CacheableNode {
       Graphics var40;
       int var41;
       if(Class4.worldListOpen) {
-         if(FloorDecoration.worldBackSprites == null) {
-            FloorDecoration.worldBackSprites = RegionReference.loadImageSet(Class23.spriteIndex, "sl_back", "", (short) 10222);
+         if(World.worldBackSprites == null) {
+            World.worldBackSprites = RegionReference.loadImageSet(Class23.spriteIndex, "sl_back", "", (short) 10222);
          }
 
          if(null == World.worldFlagSprites) {
@@ -663,7 +661,7 @@ public class ObjectDefinition extends CacheableNode {
          Rasterizer2D.drawFilledRectangle(708, 4, 50, 16, 0);
          p11_full.drawStringCenter(StringConstants.CANCEL_OPTION, 733, 16, 16777215, -1);
          Class4.hoveredWorldID = 2115622661;
-         if(null != FloorDecoration.worldBackSprites) {
+         if(null != World.worldBackSprites) {
             var3 = 88;
             byte var34 = 19;
             var26 = 765 / (1 + var3);
@@ -732,10 +730,10 @@ public class ObjectDefinition extends CacheableNode {
 
                if(MouseInputHandler.mouseX * -367052265 >= xPos && MouseInputHandler.mouseY * 1533395117 >= yPos && MouseInputHandler.mouseX * -367052265 < var3 + xPos && MouseInputHandler.mouseY * 1533395117 < var34 + yPos && canHover) {
                   Class4.hoveredWorldID = worldID * -2115622661;
-                  FloorDecoration.worldBackSprites[worldBackSpriteID].drawSpriteAlpha(xPos, yPos, 128, 16777215);
+                  World.worldBackSprites[worldBackSpriteID].drawSpriteAlpha(xPos, yPos, 128, 16777215);
                   hovering = true;
                } else {
-                  FloorDecoration.worldBackSprites[worldBackSpriteID].drawSprite(xPos, yPos);
+                  World.worldBackSprites[worldBackSpriteID].drawSprite(xPos, yPos);
                }
 
                if(null != World.worldFlagSprites) {
@@ -1057,8 +1055,8 @@ public class ObjectDefinition extends CacheableNode {
    }
 
    static final void method2223(byte var0) {
-      int var1 = Client.anInt2768 * -2022691021 + Class108_Sub10.myPlayer.anInt2394 * 171470795;
-      int var5 = Client.anInt2770 * 2011548015 + Class108_Sub10.myPlayer.anInt2339 * 826764905;
+      int var1 = Client.anInt2768 * -2022691021 + Player.myPlayer.anInt2394 * 171470795;
+      int var5 = Client.anInt2770 * 2011548015 + Player.myPlayer.anInt2339 * 826764905;
       if(Item.anInt2616 * -1461479521 - var1 < -500 || Item.anInt2616 * -1461479521 - var1 > 500 || GroundItem.anInt480 * -1594540275 - var5 < -500 || GroundItem.anInt480 * -1594540275 - var5 > 500) {
          Item.anInt2616 = var1 * -865352609;
          GroundItem.anInt480 = var5 * 1115269061;

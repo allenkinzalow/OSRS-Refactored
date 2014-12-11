@@ -31,16 +31,16 @@ public final class CacheFileAccessor {
       return this.aRandomAccessFile1489.length();
    }
 
-   public CacheFileAccessor(File var1, String var2, long var3) throws IOException {
+   public CacheFileAccessor(File file, String var2, long var3) throws IOException {
       if(var3 == -1L) {
          var3 = Long.MAX_VALUE;
       }
 
-      if(var1.length() >= var3) {
-         var1.delete();
+      if(file.length() >= var3) {
+         file.delete();
       }
 
-      this.aRandomAccessFile1489 = new RandomAccessFile(var1, var2);
+      this.aRandomAccessFile1489 = new RandomAccessFile(file, var2);
       this.aLong1492 = var3 * -3106111808613875751L;
       this.aLong1491 = 0L;
       int var5 = this.aRandomAccessFile1489.read();

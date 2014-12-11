@@ -2,8 +2,6 @@
 public class Texture extends Node {
 
    int[] pixels;
-   static final int anInt1522 = 3;
-   static final int anInt1523 = 0;
    int anInt1524;
    boolean aBool1525 = false;
    boolean aBool1526;
@@ -13,8 +11,6 @@ public class Texture extends Node {
    int[] anIntArray1530;
    int anInt1531;
    int anInt1532;
-   static final int anInt1533 = 2;
-   static final int anInt1534 = 1;
    static int[] anIntArray1535;
 
 

@@ -3,9 +3,6 @@ public class Class68 {
 
    static int anInt902;
    public static RSSong aClass108_Sub23_903;
-   public static final int anInt904 = 8;
-   static final int anInt905 = 14;
-   static final int anInt906 = 32;
 
 
    Class68() throws Throwable {
@@ -32,7 +29,7 @@ public class Class68 {
       ((TextureLoader)Rasterizer3D.anInterface2_2501).method379(304324233);
       ClientScriptDefinition.clientScriptMap.method1371();
       Projectile.skeletonIndex.resetCachedIndex(-563500780);
-      Class108_Sub10.skinIndex.resetCachedIndex(-1872137171);
+      AnimationSkin.skinIndex.resetCachedIndex(-1872137171);
       FloorDefinition.interfaceIndex.resetCachedIndex(-1461018176);
       Class118.soundEffectsIndex_1.resetCachedIndex(-1707603336);
       PingRequester.landscapeIndex.resetCachedIndex(-1525003540);

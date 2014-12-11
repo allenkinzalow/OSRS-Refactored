@@ -3,17 +3,16 @@ import java.net.URL;
 
 public class World {
 
+   static RGBSprite[] worldBackSprites;
    int anInt558;
    int playerCount;
    int worldID;
    String aString561;
    String tooltip;
    int flagID;
-   public static final int anInt564 = 169;
    static int[] anIntArray565;
    public static final String aString566 = "random.dat";
    static PaletteSprite[] worldFlagSprites;
-   static final int anInt568 = 32768;
    int anInt569;
 
 
@@ -67,7 +66,7 @@ public class World {
                         }
 
                         if(var1 == 1) {
-                           Class56.gameScene.method495(var0, var2, var3);
+                           Class56.gameScene.resetWallDecoration(var0, var2, var3);
                         }
 
                         if(var1 == 2) {
@@ -360,7 +359,7 @@ public class World {
          var3 = var3.replace('&', '_');
          var3 = var3.replace('#', '_');
          if(RuntimeException_Sub1.anApplet2631 != null) {
-            URL var4 = new URL(RuntimeException_Sub1.anApplet2631.getCodeBase(), "clienterror.ws?c=" + RuntimeException_Sub1.anInt2627 * -212885015 + "&u=" + RuntimeException_Sub1.aString2626 + "&v1=" + PingRequester.aString823 + "&v2=" + Class71.aString916 + "&e=" + var3);
+            URL var4 = new URL(RuntimeException_Sub1.anApplet2631.getCodeBase(), "clienterror.ws?c=" + RuntimeException_Sub1.anInt2627 * -212885015 + "&u=" + RuntimeException_Sub1.aString2626 + "&v1=" + PingRequester.javaVendor + "&v2=" + Class71.javaVersion + "&e=" + var3);
             DataInputStream var5 = new DataInputStream(var4.openStream());
             var5.read();
             var5.close();

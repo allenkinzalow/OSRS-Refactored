@@ -2,9 +2,6 @@ import java.awt.Component;
 
 public interface Interface1 {
 
-   int anInt1 = 2;
-
-
    void method1(int var1, int[] var2, int var3);
 
    void method2(int var1, int var2, int var3) throws Exception;

@@ -3,11 +3,9 @@ public class Class53_Sub1 extends Timer {
 
    long[] aLongArray1702 = new long[10];
    int anInt1703 = 1398825216;
-   static final int anInt1704 = 17;
    long aLong1705 = Player.getCurrentTimeMillis(849846164) * 7952023716220594927L;
    int anInt1706 = 0;
    int anInt1707;
-   static final int anInt1708 = 3;
    int anInt1709 = -1218258545;
 
 

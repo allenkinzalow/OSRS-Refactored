@@ -22,7 +22,6 @@ public class Class108_Sub21 extends Node {
    Class108_Sub4_Sub2 aClass108_Sub4_Sub2_1913;
    int anInt1914;
    int anInt1915;
-   static final int anInt1916 = 23;
    int anInt1917;
 
 
@@ -34,7 +33,7 @@ public class Class108_Sub21 extends Node {
    }
 
    static final void method1989(Class2 var0, int var1) {
-      if(Class108_Sub10.myPlayer.anInt2394 * 171470795 >> 7 == Client.anInt2933 * -1708054643 && Class108_Sub10.myPlayer.anInt2339 * 826764905 >> 7 == Client.anInt2894 * 943660425) {
+      if(Player.myPlayer.anInt2394 * 171470795 >> 7 == Client.anInt2933 * -1708054643 && Player.myPlayer.anInt2339 * 826764905 >> 7 == Client.anInt2894 * 943660425) {
          Client.anInt2933 = 0;
       }
 
@@ -47,7 +46,7 @@ public class Class108_Sub21 extends Node {
          Player player;
          int var5;
          if(var0 == Class2.aClass2_25) {
-            player = Class108_Sub10.myPlayer;
+            player = Player.myPlayer;
             var5 = 33538048;
          } else if(var0 == Class2.aClass2_24) {
             player = Client.localPlayers[Client.anInt2837 * 310098017];

@@ -11,8 +11,6 @@ public class Class116 {
    public static Class116 aClass116_1479 = new Class116(6, 0, "", "");
    public int anInt1480;
    public static Class116 aClass116_1481 = new Class116(7, -1, "", "", true, new Class116[]{aClass116_1479, aClass116_1473, aClass116_1474, aClass116_1476, aClass116_1472});
-   static final int anInt1482 = 50;
-   public static final int anInt1483 = 85;
 
 
    Class116(int var1, int var2, String var3, String var4, boolean var5, Class116[] var6) {

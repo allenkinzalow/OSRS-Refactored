@@ -12,9 +12,6 @@ public class Scene {
 	int[][][] anIntArrayArrayArray410;
 	public static boolean aBool411 = true;
 	static Deque aClass105_412 = new Deque();
-	static final int anInt413 = 25;
-	static final int anInt414 = 50;
-	static final int anInt415 = 9;
 	static int anInt416 = 0;
 	static int plane = 0;
 	static int cycle;
@@ -28,7 +25,6 @@ public class Scene {
 	static int zCameraPos;
 	static int[] anIntArray427 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
 	static int anInt428;
-	static final int anInt429 = 32;
 	static int anInt430;
 	static int anInt431;
 	static InteractableObject[] aClass40Array432 = new InteractableObject[100];
@@ -37,7 +33,6 @@ public class Scene {
 	static int anInt435 = 0;
 	static int anInt436 = 0;
 	public static int anInt437 = -1;
-	static final int anInt438 = 128;
 	static boolean[][] visibleTiles;
 	static boolean[][][][] visibilityTilesMap = new boolean[8][32][51][51];
 	static int[] anIntArray441 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
@@ -47,7 +42,6 @@ public class Scene {
 	static int anInt444 = 0;
 	static CullingCluster[] aClass46Array445 = new CullingCluster[500];
 	InteractableObject[] interfactableObjectCache = new InteractableObject[5000];
-	static final int anInt447 = 128;
 	static int anInt449 = 0;
 	static int[] anIntArray450 = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
 	static int[] anIntArray451 = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
@@ -56,7 +50,6 @@ public class Scene {
 	int[][] tileShapes = new int[][]{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
 	int[][] tileRotations = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
 	static int anInt456;
-	static final int anInt457 = 64;
 	static int anInt458;
 	static int xCameraPos;
 	static int[] anIntArray460 = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
@@ -65,41 +58,41 @@ public class Scene {
 	static int anInt463;
 
 
-	void method401(RSModel var1, int var2, int var3, int var4) {
-		Tile var5;
-		RSModel var6;
-		if (var3 < this.xMapSize) {
-			var5 = this.tileArray[var2][var3 + 1][var4];
-			if (var5 != null && var5.floorDecoration != null && var5.floorDecoration.renderable instanceof RSModel) {
-				var6 = (RSModel) var5.floorDecoration.renderable;
-				RSModel.method3069(var1, var6, 128, 0, 0, true);
+	void method401(RSModel model, int var2, int xPos, int yPos) {
+		Tile tile; 
+		RSModel floorDecModel;
+		if (xPos < this.xMapSize) {
+			tile = this.tileArray[var2][xPos + 1][yPos];
+			if (tile != null && tile.floorDecoration != null && tile.floorDecoration.renderable instanceof RSModel) {
+				floorDecModel = (RSModel) tile.floorDecoration.renderable;
+				RSModel.method3069(model, floorDecModel, 128, 0, 0, true);
 			}
 		}
 
-		if (var4 < this.xMapSize) {
-			var5 = this.tileArray[var2][var3][var4 + 1];
-			if (var5 != null && var5.floorDecoration != null && var5.floorDecoration.renderable instanceof RSModel) {
-				var6 = (RSModel) var5.floorDecoration.renderable;
-				RSModel.method3069(var1, var6, 0, 0, 128, true);
+		if (yPos < this.xMapSize) {
+			tile = this.tileArray[var2][xPos][yPos + 1];
+			if (tile != null && tile.floorDecoration != null && tile.floorDecoration.renderable instanceof RSModel) {
+				floorDecModel = (RSModel) tile.floorDecoration.renderable;
+				RSModel.method3069(model, floorDecModel, 0, 0, 128, true);
 			}
 		}
 
-		if (var3 < this.xMapSize && var4 < this.yMapSize) {
-			var5 = this.tileArray[var2][var3 + 1][var4 + 1];
-			if (var5 != null && var5.floorDecoration != null && var5.floorDecoration.renderable instanceof RSModel) {
-				var6 = (RSModel) var5.floorDecoration.renderable;
-				RSModel.method3069(var1, var6, 128, 0, 128, true);
+		if (xPos < this.xMapSize && yPos < this.yMapSize) {
+			tile = this.tileArray[var2][xPos + 1][yPos + 1];
+			if (tile != null && tile.floorDecoration != null && tile.floorDecoration.renderable instanceof RSModel) {
+				floorDecModel = (RSModel) tile.floorDecoration.renderable;
+				RSModel.method3069(model, floorDecModel, 128, 0, 128, true);
 			}
 		}
 
-		if (var3 < this.xMapSize) {
-			if (var4 > 0) {
-				var5 = this.tileArray[var2][var3 + 1][var4 - 1];
-				if (var5 != null) {
-					if (var5.floorDecoration != null) {
-						if (var5.floorDecoration.renderable instanceof RSModel) {
-							var6 = (RSModel) var5.floorDecoration.renderable;
-							RSModel.method3069(var1, var6, 128, 0, -128, true);
+		if (xPos < this.xMapSize) {
+			if (yPos > 0) {
+				tile = this.tileArray[var2][xPos + 1][yPos - 1];
+				if (tile != null) {
+					if (tile.floorDecoration != null) {
+						if (tile.floorDecoration.renderable instanceof RSModel) {
+							floorDecModel = (RSModel) tile.floorDecoration.renderable;
+							RSModel.method3069(model, floorDecModel, 128, 0, -128, true);
 						}
 					}
 				}
@@ -107,111 +100,111 @@ public class Scene {
 		}
 	}
 
-	public void method403(int var1, int var2) {
-		Tile var3 = this.tileArray[0][var1][var2];
+	public void method403(int x, int y) {
+		Tile var3 = this.tileArray[0][x][y];
 
 		for (int var5 = 0; var5 < 3; ++var5) {
-			Tile var4 = this.tileArray[var5][var1][var2] = this.tileArray[var5 + 1][var1][var2];
+			Tile var4 = this.tileArray[var5][x][y] = this.tileArray[var5 + 1][x][y];
 			if (var4 != null) {
 				var4.anInt1621 -= 477941017;
 
 				for (int var7 = 0; var7 < var4.anInt1612 * -1912292193; ++var7) {
-					InteractableObject var6 = var4.interactableObjects[var7];
-					if ((var6.anInt586 * 380600017 >> 29 & 3) == 2 && var6.xPos * 1316787257 == var1 && var6.yPos * 922395151 == var2) {
-						var6.anInt575 -= 85696413;
+					InteractableObject io = var4.interactableObjects[var7];
+					if ((io.anInt586 * 380600017 >> 29 & 3) == 2 && io.xPos * 1316787257 == x && io.yPos * 922395151 == y) {
+						io.anInt575 -= 85696413;
 					}
 				}
 			}
 		}
 
-		if (this.tileArray[0][var1][var2] == null) {
-			this.tileArray[0][var1][var2] = new Tile(0, var1, var2);
+		if (this.tileArray[0][x][y] == null) {
+			this.tileArray[0][x][y] = new Tile(0, x, y);
 		}
 
-		this.tileArray[0][var1][var2].aClass108_Sub7_1624 = var3;
-		this.tileArray[3][var1][var2] = null;
+		this.tileArray[0][x][y].aClass108_Sub7_1624 = var3;
+		this.tileArray[3][x][y] = null;
 	}
 
 	public static void method404(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		CullingCluster var8 = new CullingCluster();
-		var8.anInt649 = var2 / 128 * 239408893;
-		var8.anInt641 = var3 / 128 * -1329582725;
-		var8.anInt642 = var4 / 128 * 753324809;
-		var8.anInt661 = var5 / 128 * 2102927027;
-		var8.anInt644 = var1 * -1912383863;
-		var8.anInt645 = var2 * 878628031;
-		var8.anInt652 = var3 * -989357617;
-		var8.anInt647 = var4 * 744926381;
-		var8.anInt643 = var5 * 1262606337;
-		var8.anInt658 = var6 * -2024080395;
-		var8.anInt650 = var7 * 1247166013;
-		cullingClusters[var0][cullingClusterPointer[var0]++] = var8;
+		CullingCluster cullingCluster = new CullingCluster();
+		cullingCluster.anInt649 = var2 / 128 * 239408893;
+		cullingCluster.anInt641 = var3 / 128 * -1329582725;
+		cullingCluster.anInt642 = var4 / 128 * 753324809;
+		cullingCluster.anInt661 = var5 / 128 * 2102927027;
+		cullingCluster.anInt644 = var1 * -1912383863;
+		cullingCluster.anInt645 = var2 * 878628031;
+		cullingCluster.anInt652 = var3 * -989357617;
+		cullingCluster.anInt647 = var4 * 744926381;
+		cullingCluster.anInt643 = var5 * 1262606337;
+		cullingCluster.anInt658 = var6 * -2024080395;
+		cullingCluster.anInt650 = var7 * 1247166013;
+		cullingClusters[var0][cullingClusterPointer[var0]++] = cullingCluster;
 	}
 
-	public void method406(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int color) {
-		int var21;
-		PlainTile var22;
-		if (var4 == 0) {
-			var22 = new PlainTile(var11, var12, var13, var14, -1, var19, false);
+	public void method406(int startPlane, int x, int y, int shape, int rotation, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int color) {
+		int plane;
+		PlainTile plainTile;
+		if (shape == 0) {
+			plainTile = new PlainTile(var11, var12, var13, var14, -1, var19, false);
 
-			for (var21 = var1; var21 >= 0; --var21) {
-				if (this.tileArray[var21][var2][var3] == null) {
-					this.tileArray[var21][var2][var3] = new Tile(var21, var2, var3);
+			for (plane = startPlane; plane >= 0; --plane) {
+				if (this.tileArray[plane][x][y] == null) {
+					this.tileArray[plane][x][y] = new Tile(plane, x, y);
 				}
 			}
 
-			this.tileArray[var1][var2][var3].aClass35_1626 = var22;
-		} else if (var4 != 1) {
-			ShapedTile var23 = new ShapedTile(var4, var5, var6, var2, var3, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, color);
+			this.tileArray[startPlane][x][y].plainTile = plainTile;
+		} else if (shape != 1) {
+			ShapedTile shapedTile = new ShapedTile(shape, rotation, var6, x, y, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18, var19, color);
 
-			for (var21 = var1; var21 >= 0; --var21) {
-				if (this.tileArray[var21][var2][var3] == null) {
-					this.tileArray[var21][var2][var3] = new Tile(var21, var2, var3);
+			for (plane = startPlane; plane >= 0; --plane) {
+				if (this.tileArray[plane][x][y] == null) {
+					this.tileArray[plane][x][y] = new Tile(plane, x, y);
 				}
 			}
 
-			this.tileArray[var1][var2][var3].shapedTile = var23;
+			this.tileArray[startPlane][x][y].shapedTile = shapedTile;
 		} else {
-			var22 = new PlainTile(var15, var16, var17, var18, var6, color, var7 == var8 && var7 == var9 && var7 == var10);
+			plainTile = new PlainTile(var15, var16, var17, var18, var6, color, var7 == var8 && var7 == var9 && var7 == var10);
 
-			for (var21 = var1; var21 >= 0; --var21) {
-				if (this.tileArray[var21][var2][var3] == null) {
-					this.tileArray[var21][var2][var3] = new Tile(var21, var2, var3);
+			for (plane = startPlane; plane >= 0; --plane) {
+				if (this.tileArray[plane][x][y] == null) {
+					this.tileArray[plane][x][y] = new Tile(plane, x, y);
 				}
 			}
 
-			this.tileArray[var1][var2][var3].aClass35_1626 = var22;
+			this.tileArray[startPlane][x][y].plainTile = plainTile;
 		}
 	}
 
-	public void method407(int var1, int var2, int var3, int var4, Renderable var5, int var6, int var7) {
-		if (var5 != null) {
-			FloorDecoration var8 = new FloorDecoration();
-			var8.renderable = var5;
-			var8.xPos = var2 * 1331793792 + 665896896;
-			var8.yPos = var3 * -478985344 - 239492672;
-			var8.plane = var4 * 1558338899;
-			var8.hash = var6 * 1846832023;
-			var8.anInt285 = var7 * -524297561;
-			if (this.tileArray[var1][var2][var3] == null) {
-				this.tileArray[var1][var2][var3] = new Tile(var1, var2, var3);
+	public void method407(int plane, int x, int y, int var4, Renderable renderable, int hash, int var7) {
+		if (renderable != null) {
+			FloorDecoration decoration = new FloorDecoration();
+			decoration.renderable = renderable;
+			decoration.xPos = x * 1331793792 + 665896896;
+			decoration.yPos = y * -478985344 - 239492672;
+			decoration.plane = var4 * 1558338899;
+			decoration.hash = hash * 1846832023;
+			decoration.anInt285 = var7 * -524297561;
+			if (this.tileArray[plane][x][y] == null) {
+				this.tileArray[plane][x][y] = new Tile(plane, x, y);
 			}
 
-			this.tileArray[var1][var2][var3].floorDecoration = var8;
+			this.tileArray[plane][x][y].floorDecoration = decoration;
 		}
 	}
 
-	public void addGroundItemTile(int var1, int var2, int var3, int var4, Renderable var5, int var6, Renderable var7, Renderable var8) {
+	public void addGroundItemTile(int plane, int x, int y, int var4, Renderable var5, int var6, Renderable var7, Renderable var8) {
 		GroundItem groundItem = new GroundItem();
 		groundItem.firstGroundItem = var5;
-		groundItem.xPos = var2 * -1088697728 - 544348864;
-		groundItem.anInt474 = var3 * 172330880 + 86165440;
+		groundItem.xPos = x * -1088697728 - 544348864;
+		groundItem.yPos = y * 172330880 + 86165440;
 		groundItem.anInt472 = var4 * 1211246617;
 		groundItem.anInt477 = var6 * -1956090305;
 		groundItem.aClass108_Sub20_Sub14_476 = var7;
 		groundItem.aClass108_Sub20_Sub14_475 = var8;
 		int var11 = 0;
-		Tile var12 = this.tileArray[var1][var2][var3];
+		Tile var12 = this.tileArray[plane][x][y];
 		if (var12 != null) {
 			for (int var13 = 0; var13 < var12.anInt1612 * -1912292193; ++var13) {
 				if ((var12.interactableObjects[var13].anInt583 * -1925665473 & 256) == 256 && var12.interactableObjects[var13].renderableObject instanceof ModelRasterizer) {
@@ -225,11 +218,11 @@ public class Scene {
 		}
 
 		groundItem.anInt478 = var11 * 1524279305;
-		if (this.tileArray[var1][var2][var3] == null) {
-			this.tileArray[var1][var2][var3] = new Tile(var1, var2, var3);
+		if (this.tileArray[plane][x][y] == null) {
+			this.tileArray[plane][x][y] = new Tile(plane, x, y);
 		}
 
-		this.tileArray[var1][var2][var3].groundItem = groundItem;
+		this.tileArray[plane][x][y].groundItem = groundItem;
 	}
 
 	public void method409(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10) {
@@ -562,11 +555,20 @@ public class Scene {
 
 	}
 
+	/**
+	 * Draw minimap tile
+	 * @param map
+	 * @param var2
+	 * @param var3
+	 * @param var4
+	 * @param var5
+	 * @param var6
+	 */
 	public void drawMinimapTile(int[] map, int var2, int var3, int var4, int var5, int var6) {
 		Tile tile = this.tileArray[var4][var5][var6];
 
 		if (tile != null) {
-			PlainTile plainTile = tile.aClass35_1626;
+			PlainTile plainTile = tile.plainTile;
 			int var15;
 			if (plainTile == null) {
 				ShapedTile shapedTile = tile.shapedTile;
@@ -636,6 +638,15 @@ public class Scene {
 		anInt424 = -1;
 	}
 
+	/**
+	 * Render scene
+	 * @param xCam
+	 * @param zCam
+	 * @param yCam
+	 * @param yCurve
+	 * @param xCurve
+	 * @param plane_
+	 */
 	public void method439(int xCam, int zCam, int yCam, int yCurve, int xCurve, int plane_) {
 		if (xCam < 0) {
 			xCam = 0;
@@ -895,9 +906,9 @@ public class Scene {
 					tile.aBool1617 = false;
 					if (tile.aClass108_Sub7_1624 != null) {
 						var9 = tile.aClass108_Sub7_1624;
-						if (var9.aClass35_1626 != null) {
+						if (var9.plainTile != null) {
 							if (!this.isTileCulled(0, var4, var5)) {
-								this.method490(var9.aClass35_1626, 0, anInt428, anInt434, anInt430, anInt431, var4, var5);
+								this.method490(var9.plainTile, 0, anInt428, anInt434, anInt430, anInt431, var4, var5);
 							}
 						} else if (var9.shapedTile != null && !this.isTileCulled(0, var4, var5)) {
 							this.method442(var9.shapedTile, anInt428, anInt434, anInt430, anInt431, var4, var5);
@@ -917,11 +928,11 @@ public class Scene {
 					}
 
 					var22 = false;
-					if (tile.aClass35_1626 != null) {
+					if (tile.plainTile != null) {
 						if (!this.isTileCulled(var7, var4, var5)) {
 							var22 = true;
-							if (tile.aClass35_1626.anInt505 * 22178081 != 12345678 || aBool433 && var6 <= anInt449) {
-								this.method490(tile.aClass35_1626, var7, anInt428, anInt434, anInt430, anInt431, var4, var5);
+							if (tile.plainTile.anInt505 * 22178081 != 12345678 || aBool433 && var6 <= anInt449) {
+								this.method490(tile.plainTile, var7, anInt428, anInt434, anInt430, anInt431, var4, var5);
 							}
 						}
 					} else if (tile.shapedTile != null && !this.isTileCulled(var7, var4, var5)) {
@@ -1020,15 +1031,15 @@ public class Scene {
 						GroundItem groundItem = tile.groundItem;
 						if (groundItem != null && groundItem.anInt478 * 414541369 == 0) {
 							if (groundItem.aClass108_Sub20_Sub14_476 != null) {
-								groundItem.aClass108_Sub20_Sub14_476.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos, groundItem.anInt474 * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
+								groundItem.aClass108_Sub20_Sub14_476.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos, groundItem.yPos * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
 							}
 
 							if (groundItem.aClass108_Sub20_Sub14_475 != null) {
-								groundItem.aClass108_Sub20_Sub14_475.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos, groundItem.anInt474 * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
+								groundItem.aClass108_Sub20_Sub14_475.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos, groundItem.yPos * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
 							}
 
 							if (groundItem.firstGroundItem != null) {
-								groundItem.firstGroundItem.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos, groundItem.anInt474 * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
+								groundItem.firstGroundItem.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos, groundItem.yPos * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
 							}
 						}
 					}
@@ -1234,15 +1245,15 @@ public class Scene {
 					GroundItem groundItem = tile.groundItem;
 					if (groundItem != null && groundItem.anInt478 * 414541369 != 0) {
 						if (groundItem.aClass108_Sub20_Sub14_476 != null) {
-							groundItem.aClass108_Sub20_Sub14_476.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos - groundItem.anInt478 * 414541369, groundItem.anInt474 * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
+							groundItem.aClass108_Sub20_Sub14_476.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos - groundItem.anInt478 * 414541369, groundItem.yPos * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
 						}
 
 						if (groundItem.aClass108_Sub20_Sub14_475 != null) {
-							groundItem.aClass108_Sub20_Sub14_475.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos - groundItem.anInt478 * 414541369, groundItem.anInt474 * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
+							groundItem.aClass108_Sub20_Sub14_475.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos - groundItem.anInt478 * 414541369, groundItem.yPos * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
 						}
 
 						if (groundItem.firstGroundItem != null) {
-							groundItem.firstGroundItem.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos - groundItem.anInt478 * 414541369, groundItem.anInt474 * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
+							groundItem.firstGroundItem.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, groundItem.xPos * -703374403 - xCameraPos, groundItem.anInt472 * 985052201 - zCameraPos - groundItem.anInt478 * 414541369, groundItem.yPos * -195350305 - yCameraPos, groundItem.anInt477 * 1350074815);
 						}
 					}
 
@@ -2145,31 +2156,31 @@ public class Scene {
 		}
 	}
 
-	public Wall method493(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		return var4 != null ? var4.wall : null;
+	public Wall getWall(int plane, int x, int y) {
+		Tile tile = this.tileArray[plane][x][y];
+		return tile != null ? tile.wall : null;
 	}
 
-	public void method495(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		if (var4 != null) {
-			var4.wallDecoration = null;
+	public void resetWallDecoration(int plane, int x, int y) {
+		Tile tile = this.tileArray[plane][x][y];
+		if (tile != null) {
+			tile.wallDecoration = null;
 		}
 	}
 
-	public InteractableObject method502(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		if (var4 == null) {
+	public InteractableObject method502(int plane, int x, int y) {
+		Tile tile = this.tileArray[plane][x][y];
+		if (tile == null) {
 			return null;
 		} else {
-			for (int var6 = 0; var6 < var4.anInt1612 * -1912292193; ++var6) {
-				InteractableObject var5 = var4.interactableObjects[var6];
-				if ((var5.anInt586 * 380600017 >> 29 & 3) == 2 && var5.xPos * 1316787257 == var2 && var5.yPos * 922395151 == var3) {
-					return var5;
+			for (int var6 = 0; var6 < tile.anInt1612 * -1912292193; ++var6) {
+				InteractableObject io = tile.interactableObjects[var6];
+				if ((io.anInt586 * 380600017 >> 29 & 3) == 2 && io.xPos * 1316787257 == x && io.yPos * 922395151 == y) {
+					return io;
 				}
 			}
 
-			return null;
+			return null; 
 		}
 	}
 
@@ -2204,30 +2215,30 @@ public class Scene {
 		}
 	}
 
-	void method560(InteractableObject var1) {
-		for (int var2 = var1.xPos * 1316787257; var2 <= var1.anInt582 * 1424354129; ++var2) {
-			for (int var3 = var1.yPos * 922395151; var3 <= var1.anInt579 * 1215390305; ++var3) {
-				Tile var4 = this.tileArray[var1.anInt575 * -1461264715][var2][var3];
-				if (var4 != null) {
-					int var5;
-					for (var5 = 0; var5 < var4.anInt1612 * -1912292193; ++var5) {
-						if (var4.interactableObjects[var5] == var1) {
-							var4.anInt1612 += 1369350305;
+	void method560(InteractableObject io) {
+		for (int var2 = io.xPos * 1316787257; var2 <= io.anInt582 * 1424354129; ++var2) {
+			for (int var3 = io.yPos * 922395151; var3 <= io.anInt579 * 1215390305; ++var3) {
+				Tile tile = this.tileArray[io.anInt575 * -1461264715][var2][var3];
+				if (tile != null) {
+					int ioIndex;
+					for (ioIndex = 0; ioIndex < tile.anInt1612 * -1912292193; ++ioIndex) {
+						if (tile.interactableObjects[ioIndex] == io) {
+							tile.anInt1612 += 1369350305;
 
-							for (int var6 = var5; var6 < var4.anInt1612 * -1912292193; ++var6) {
-								var4.interactableObjects[var6] = var4.interactableObjects[var6 + 1];
-								var4.objectFlags[var6] = var4.objectFlags[var6 + 1];
+							for (int var6 = ioIndex; var6 < tile.anInt1612 * -1912292193; ++var6) {
+								tile.interactableObjects[var6] = tile.interactableObjects[var6 + 1];
+								tile.objectFlags[var6] = tile.objectFlags[var6 + 1];
 							}
 
-							var4.interactableObjects[var4.anInt1612 * -1912292193] = null;
+							tile.interactableObjects[tile.anInt1612 * -1912292193] = null;
 							break;
 						}
 					}
 
-					var4.anInt1608 = 0;
+					tile.anInt1608 = 0;
 
-					for (var5 = 0; var5 < var4.anInt1612 * -1912292193; ++var5) {
-						var4.anInt1608 = (var4.anInt1608 * 1322616499 | var4.objectFlags[var5]) * 1373280379;
+					for (ioIndex = 0; ioIndex < tile.anInt1612 * -1912292193; ++ioIndex) {
+						tile.anInt1608 = (tile.anInt1608 * 1322616499 | tile.objectFlags[ioIndex]) * 1373280379;
 					}
 				}
 			}

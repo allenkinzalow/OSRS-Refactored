@@ -9,7 +9,6 @@ public abstract class GraphicsBuffer {
    int anInt181;
    Image image;
    static int anInt183;
-   static final int anInt184 = 5;
    static int anInt185;
    static int anInt186;
    int anInt187;

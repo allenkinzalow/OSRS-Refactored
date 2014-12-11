@@ -2,6 +2,7 @@ import java.net.URL;
 
 public final class Player extends Entity {
 
+	static Player myPlayer;
 	int pkicon = 1024554621;
 	int anInt2664;
 	int anInt2665 = 0;
@@ -22,8 +23,6 @@ public final class Player extends Entity {
 	boolean aBool2680 = false;
 	int combatLevel = 0;
 	boolean aBool2682 = false;
-	static final int anInt2683 = 512;
-	public static final int anInt2684 = 213;
 
 
 	final void decodeAppearance(RSByteBuffer buffer) {
@@ -114,7 +113,7 @@ public final class Player extends Entity {
 		System.out.println("Anim7: " + a);
 
 		this.playerName = buffer.getString_2((byte) 8);
-		if (Class108_Sub10.myPlayer == this) {
+		if (myPlayer == this) {
 			RuntimeException_Sub1.aString2626 = this.playerName;
 		}
 
@@ -211,7 +210,7 @@ public final class Player extends Entity {
 				ModelRasterizer completeRasterizer;
 				ModelRasterizer[] rasterizerPieces;
 				if (!this.aBool2680 && -1 != this.anInt2373 * 1305815823 && -1 != this.anInt2374 * -766701345) {
-					completeRasterizer = Class2.getSpotAnimForID(this.anInt2373 * 1305815823, (byte) 0).getModelRasterizer(this.anInt2374 * -766701345, -380943559);
+					completeRasterizer = SpotAnim.getSpotAnimForID(this.anInt2373 * 1305815823, (byte) 0).getModelRasterizer(this.anInt2374 * -766701345, -380943559);
 					if (null != completeRasterizer) {
 						completeRasterizer.method2865(0, -(this.anInt2388 * 833972513), 0);
 						rasterizerPieces = new ModelRasterizer[]{rasterizer, completeRasterizer};
@@ -262,22 +261,22 @@ public final class Player extends Entity {
 	}
 
 	static final String method3177(int var0, byte var1) {
-		String var2 = Integer.toString(var0);
+		String amountAsString = Integer.toString(var0);
 
-		for (int var3 = var2.length() - 3; var3 > 0; var3 -= 3) {
-			var2 = var2.substring(0, var3) + Class47.COMMA_LITERAL + var2.substring(var3);
+		for (int var3 = amountAsString.length() - 3; var3 > 0; var3 -= 3) {
+			amountAsString = amountAsString.substring(0, var3) + Class47.COMMA_LITERAL + amountAsString.substring(var3);
 		}
 
-		return var2.length() > 9 ? " " + HuffmanEncoding.method690('\uff80', -2142918227) + var2.substring(0, var2.length() - 8) + StringConstants.aString1097 + " " + Class47.OPEN_PAREN + var2 + Class47.CLOSE_PAREN + Class47.COL_END : (var2.length() > 6 ? " " + HuffmanEncoding.method690(16777215, -818471386) + var2.substring(0, var2.length() - 4) + StringConstants.K + " " + Class47.OPEN_PAREN + var2 + Class47.CLOSE_PAREN + Class47.COL_END : " " + HuffmanEncoding.method690(16776960, -1154832985) + var2 + Class47.COL_END);
+		return amountAsString.length() > 9 ? " " + HuffmanEncoding.method690('\uff80', -2142918227) + amountAsString.substring(0, amountAsString.length() - 8) + StringConstants.aString1097 + " " + Class47.OPEN_PAREN + amountAsString + Class47.CLOSE_PAREN + Class47.COL_END : (amountAsString.length() > 6 ? " " + HuffmanEncoding.method690(16777215, -818471386) + amountAsString.substring(0, amountAsString.length() - 4) + StringConstants.K + " " + Class47.OPEN_PAREN + amountAsString + Class47.CLOSE_PAREN + Class47.COL_END : " " + HuffmanEncoding.method690(16776960, -1154832985) + amountAsString + Class47.COL_END);
 	}
 
-	static CacheIndex method3178(int index, boolean var1, boolean var2, boolean var3, int var4) {
-		IndexTable var5 = null;
+	static CacheIndex initCacheIndex(int index, boolean var1, boolean var2, boolean var3, int var4) {
+		IndexTable indexTable = null;
 		if (CacheConstants.cacheDataFile != null) { 
-			var5 = new IndexTable(index, CacheConstants.cacheDataFile, CacheConstants.indexFileArray[index], 1000000);
+			indexTable = new IndexTable(index, CacheConstants.cacheDataFile, CacheConstants.indexFileArray[index], 1000000);
 		}
 
-		return new CacheIndex(var5, Class36.cache255Index, index, var1, var2, var3);
+		return new CacheIndex(indexTable, Class36.cache255Index, index, var1, var2, var3);
 	}
 
 	public static void method3179(AbstractIndex var0, AbstractIndex var1, boolean var2, int var3) {

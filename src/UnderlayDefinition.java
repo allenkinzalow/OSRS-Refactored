@@ -8,13 +8,9 @@ public class UnderlayDefinition extends CacheableNode {
 	public int hue;
 	public int saturation;
 	public static AbstractIndex aClass74_2147;
-	public static final int anInt2148 = 16;
 	public int hueDivisor;
 	protected static Frame aFrame2150;
 	int color = 0;
-	public static final int anInt2152 = 128;
-	public static final int anInt2153 = 124;
-	public static final int anInt2154 = 145;
 
 
 	void decode(RSByteBuffer var1, int var2, int var3, int var4) {
@@ -111,7 +107,7 @@ public class UnderlayDefinition extends CacheableNode {
 
 	static final void method2279(int var0) {
 		if (Client.lowMemory && Client.anInt2890 * -158871381 != VarpBit.plane * -570926309) {
-			FriendsChatMember.method1684(Friend.anInt620 * 687278457, BuildType.anInt1238 * -365008633, VarpBit.plane * -570926309, Class108_Sub10.myPlayer.anIntArray2391[0], Class108_Sub10.myPlayer.anIntArray2392[0], (byte) 23);
+			FriendsChatMember.method1684(Friend.anInt620 * 687278457, BuildType.anInt1238 * -365008633, VarpBit.plane * -570926309, Player.myPlayer.anIntArray2391[0], Player.myPlayer.anIntArray2392[0], (byte) 23);
 		} else if (VarpBit.plane * -570926309 != Client.lastKnownPlane * -313360225) {
 			Client.lastKnownPlane = VarpBit.plane * -220387323;
 			NPC.renderMinimap(VarpBit.plane * -570926309, (byte) 82);

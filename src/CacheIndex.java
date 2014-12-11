@@ -57,15 +57,15 @@ public class CacheIndex extends AbstractIndex {
 
          for(var2 = 0; var2 < this.aBoolArray1713.length; ++var2) {
             if(this.fileCount[var2] > 0) {
-               IndexTable var3 = this.aClass59_1719;
-               Class108_Sub16 var5 = new Class108_Sub16();
-               var5.anInt1759 = -1275722503;
-               var5.key = (long)var2;
-               var5.aClass59_1757 = var3;
-               var5.aClass74_Sub1_1756 = this;
-               Deque var6 = Class86.aClass105_1300;
+               IndexTable indexTable = this.aClass59_1719;
+               CacheIndexRequest cacheIndexRequest = new CacheIndexRequest();
+               cacheIndexRequest.anInt1759 = -1275722503;
+               cacheIndexRequest.key = (long)var2;
+               cacheIndexRequest.cacheIndexTable = indexTable;
+               cacheIndexRequest.cacheIndex = this;
+               Deque var6 = Class86.cacheIndexRequests;
                synchronized(var6) {
-                  Class86.aClass105_1300.insertBack(var5);
+                  Class86.cacheIndexRequests.insertBack(cacheIndexRequest);
                }
 
                Class68.method930(2121484272);
@@ -118,7 +118,7 @@ public class CacheIndex extends AbstractIndex {
       }
    }
 
-   void method1900(int var1, byte[] var2, boolean var3, boolean var4, int var5) {
+   void pushCacheIndexRequest(int archiveID, byte[] data, boolean var3, boolean var4, int var5) {
       if(var3) {
          if(this.aBool1715) {
             throw new RuntimeException();
@@ -126,59 +126,59 @@ public class CacheIndex extends AbstractIndex {
             if(null != this.aClass59_1716) {
                int var14 = this.indexID * 663669877;
                IndexTable var15 = this.aClass59_1716;
-               Class108_Sub16 var16 = new Class108_Sub16();
-               var16.anInt1759 = 0;
-               var16.key = (long)var14;
-               var16.aByteArray1754 = var2;
-               var16.aClass59_1757 = var15;
-               Deque var9 = Class86.aClass105_1300;
+               CacheIndexRequest cacheIndexRequest = new CacheIndexRequest();
+               cacheIndexRequest.anInt1759 = 0;
+               cacheIndexRequest.key = (long)var14;
+               cacheIndexRequest.indexData = data;
+               cacheIndexRequest.cacheIndexTable = var15;
+               Deque var9 = Class86.cacheIndexRequests;
                synchronized(var9) {
-                  Class86.aClass105_1300.insertBack(var16);
+                  Class86.cacheIndexRequests.insertBack(cacheIndexRequest);
                }
 
                Class68.method930(1610251632);
             }
 
-            this.method1002(var2, -1851065155);
+            this.method1002(data, -1851065155);
             this.method1895(1252554325);
          }
       } else {
-         var2[var2.length - 2] = (byte)(this.anIntArray934[var1] >> 8);
-         var2[var2.length - 1] = (byte)this.anIntArray934[var1];
+         data[data.length - 2] = (byte)(this.anIntArray934[archiveID] >> 8);
+         data[data.length - 1] = (byte)this.anIntArray934[archiveID];
          if(this.aClass59_1719 != null) {
             IndexTable var6 = this.aClass59_1719;
-            Class108_Sub16 var7 = new Class108_Sub16();
-            var7.anInt1759 = 0;
-            var7.key = (long)var1;
-            var7.aByteArray1754 = var2;
-            var7.aClass59_1757 = var6;
-            Deque var8 = Class86.aClass105_1300;
+            CacheIndexRequest cacheIndexRequest = new CacheIndexRequest();
+            cacheIndexRequest.anInt1759 = 0;
+            cacheIndexRequest.key = (long)archiveID;
+            cacheIndexRequest.indexData = data;
+            cacheIndexRequest.cacheIndexTable = var6;
+            Deque var8 = Class86.cacheIndexRequests;
             synchronized(var8) {
-               Class86.aClass105_1300.insertBack(var7);
+               Class86.cacheIndexRequests.insertBack(cacheIndexRequest);
             }
 
             Class68.method930(779777068);
-            this.aBoolArray1713[var1] = true;
+            this.aBoolArray1713[archiveID] = true;
          }
 
          if(var4) {
-            this.archiveArray[var1] = Class108_Sub12.method1688(var2, false, -2005327714);
+            this.archiveArray[archiveID] = Class108_Sub12.method1688(data, false, -2005327714);
          }
       }
    }
 
-   public void method1906(IndexTable var1, int var2, byte[] var3, boolean var4, int var5) {
+   public void method1906(IndexTable indexTable, int indexID, byte[] data, boolean var4, int var5) {
       int var6;
-      if(this.aClass59_1716 == var1) {
+      if(this.aClass59_1716 == indexTable) {
          if(this.aBool1715) {
             throw new RuntimeException();
-         } else if(var3 == null) {
+         } else if(data == null) {
             GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 122);
          } else {
             aCRC32_1718.reset();
-            aCRC32_1718.update(var3, 0, var3.length);
+            aCRC32_1718.update(data, 0, data.length);
             var6 = (int)aCRC32_1718.getValue();
-            RSByteBuffer var10 = new RSByteBuffer(RegionReference.method618(var3, (byte)-54));
+            RSByteBuffer var10 = new RSByteBuffer(RegionReference.method618(data, (byte)-54));
             int var8 = var10.readUByte();
             if(5 != var8 && 6 != var8) {
                throw new RuntimeException("");
@@ -189,7 +189,7 @@ public class CacheIndex extends AbstractIndex {
                }
 
                if(var6 == this.anInt1717 * 366281907 && var9 == this.anInt1720 * -1004552077) {
-                  this.method1002(var3, -1942605956);
+                  this.method1002(data, -1942605956);
                   this.method1895(-983603587);
                } else {
                   GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 80);
@@ -197,30 +197,30 @@ public class CacheIndex extends AbstractIndex {
             }
          }
       } else {
-         if(!var4 && var2 == this.anInt1721 * -1163272681) {
+         if(!var4 && indexID == this.anInt1721 * -1163272681) {
             this.aBool1715 = true;
          }
 
-         if(var3 != null && var3.length > 2) {
+         if(data != null && data.length > 2) {
             aCRC32_1718.reset();
-            aCRC32_1718.update(var3, 0, var3.length - 2);
+            aCRC32_1718.update(data, 0, data.length - 2);
             var6 = (int)aCRC32_1718.getValue();
-            int var7 = ((var3[var3.length - 2] & 255) << 8) + (var3[var3.length - 1] & 255);
-            if(var6 == this.anIntArray933[var2] && var7 == this.anIntArray934[var2]) {
-               this.aBoolArray1713[var2] = true;
+            int var7 = ((data[data.length - 2] & 255) << 8) + (data[data.length - 1] & 255);
+            if(var6 == this.anIntArray933[indexID] && var7 == this.anIntArray934[indexID]) {
+               this.aBoolArray1713[indexID] = true;
                if(var4) {
-                  this.archiveArray[var2] = Class108_Sub12.method1688(var3, false, -2005327714);
+                  this.archiveArray[indexID] = Class108_Sub12.method1688(data, false, -2005327714);
                }
             } else {
-               this.aBoolArray1713[var2] = false;
+               this.aBoolArray1713[indexID] = false;
                if(this.aBool1714 || var4) {
-                  GroundItem.submitJs5Request(this, this.indexID * 663669877, var2, this.anIntArray933[var2], (byte) 2, var4, (byte) 30);
+                  GroundItem.submitJs5Request(this, this.indexID * 663669877, indexID, this.anIntArray933[indexID], (byte) 2, var4, (byte) 30);
                }
             }
          } else {
-            this.aBoolArray1713[var2] = false;
+            this.aBoolArray1713[indexID] = false;
             if(this.aBool1714 || var4) {
-               GroundItem.submitJs5Request(this, this.indexID * 663669877, var2, this.anIntArray933[var2], (byte) 2, var4, (byte) 20);
+               GroundItem.submitJs5Request(this, this.indexID * 663669877, indexID, this.anIntArray933[indexID], (byte) 2, var4, (byte) 20);
             }
          }
       }

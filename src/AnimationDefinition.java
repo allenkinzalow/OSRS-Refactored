@@ -265,7 +265,7 @@ public class AnimationDefinition extends CacheableNode {
       Rasterizer2D.drawFilledRectangle(xPos, yPos, width, height, chooseColor);
       Rasterizer2D.drawFilledRectangle(1 + xPos, 1 + yPos, width - 2, 16, 0);
       Rasterizer2D.drawUnfilledRectangle(xPos + 1, yPos + 18, width - 2, height - 19, 0);
-      Class94.b12_full_font.drawString(StringConstants.CHOOSE_OPTION, 3 + xPos, yPos + 14, chooseColor, -1);
+      RSTypeFace.b12_full_font.drawString(StringConstants.CHOOSE_OPTION, 3 + xPos, yPos + 14, chooseColor, -1);
       int mouseX = MouseInputHandler.mouseX * -367052265;
       int mouseY = MouseInputHandler.mouseY * 1533395117;
 
@@ -279,7 +279,7 @@ public class AnimationDefinition extends CacheableNode {
             color = 16776960;
          }
 
-         RSFont b12_full = Class94.b12_full_font;
+         RSFont b12_full = RSTypeFace.b12_full_font;
          String menuActionName;
          if(Client.menuActionNames[var10].length() > 0) {
             menuActionName = Client.menuActionNamePrefix[var10] + StringConstants.aString1109 + Client.menuActionNames[var10];

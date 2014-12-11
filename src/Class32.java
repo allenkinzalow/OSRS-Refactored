@@ -3,13 +3,9 @@ import java.math.BigInteger;
 public class Class32 {
 
    public static Class108_Sub4_Sub3 aClass108_Sub4_Sub3_464;
-   static final int anInt465 = 1006;
-   static int[] anIntArray466;
-   static final int anInt467 = 31;
-   static BigInteger aBigInteger468 = new BigInteger("aead8fe7a0e8b2255e84597f391815600a4e02746698fea7bfe1b20b5a1f7ba47a2d9af413facda26925eafa2f7be93e3354d67a1210bf67beec2251eafacfe7a819be666c900843421e009ec16529131893fba57528dab31ff64013cdabc00c35e832ada7da6aca3d8cd18100fe79f2133c07be414142d8ba636d49f30b25cb", 16);
-   static BigInteger aBigInteger469 = new BigInteger("10001", 16);
-   static final int anInt470 = 86;
-   public static final int anInt471 = 136;
+   static int[] terrainLandscapeIDs;
+   static BigInteger rsaModulus = new BigInteger("aead8fe7a0e8b2255e84597f391815600a4e02746698fea7bfe1b20b5a1f7ba47a2d9af413facda26925eafa2f7be93e3354d67a1210bf67beec2251eafacfe7a819be666c900843421e009ec16529131893fba57528dab31ff64013cdabc00c35e832ada7da6aca3d8cd18100fe79f2133c07be414142d8ba636d49f30b25cb", 16);
+   static BigInteger rsaExponent = new BigInteger("10001", 16);
 
 
    static void method575(int var0, int var1, int var2, ObjectDefinition var3, int var4, int var5) {
@@ -128,8 +124,8 @@ public class Class32 {
             if(var0.textSpoken != null && (var1 >= Client.numLocalPlayers * -43742683 || Client.anInt2779 * 220652897 == 4 || !var0.aBool2352 && (Client.anInt2779 * 220652897 == 0 || 3 == Client.anInt2779 * 220652897 || 1 == Client.anInt2779 * 220652897 && GroundItem.isFriend(((Player)var0).playerName, false, (byte)-77)))) {
                Friend.method658(var0, var0.anInt2386 * 2106405885, 798331555);
                if(Client.anInt2808 * 1642143199 > -1 && Client.anInt2804 * 1837064243 < Client.anInt2797 * -797118177) {
-                  Client.anIntArray2817[Client.anInt2804 * 1837064243] = Class94.b12_full_font.getTextWidth(var0.textSpoken) / 2;
-                  Client.anIntArray2800[Client.anInt2804 * 1837064243] = Class94.b12_full_font.anInt2643;
+                  Client.anIntArray2817[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.getTextWidth(var0.textSpoken) / 2;
+                  Client.anIntArray2800[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.anInt2643;
                   Client.anIntArray2798[Client.anInt2804 * 1837064243] = Client.anInt2808 * 1642143199;
                   Client.anIntArray2799[Client.anInt2804 * 1837064243] = Client.anInt2809 * -2062084395;
                   Client.anIntArray2776[Client.anInt2804 * 1837064243] = var0.anInt2377 * 638780813;

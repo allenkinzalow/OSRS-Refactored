@@ -3,11 +3,8 @@ import java.io.RandomAccessFile;
 
 public abstract class Timer {
 
-   public static final int anInt722 = 6;
    static int anInt723;
    public static Class15 aClass15_724;
-   public static final int anInt725 = 206;
-   public static final int anInt726 = 94;
 
 
    static void method713(int var0) {

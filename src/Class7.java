@@ -2,9 +2,7 @@ import java.awt.Component;
 
 public class Class7 {
 
-   static final int anInt93 = 3;
    public static int anInt94;
-   static final int anInt95 = 256;
    long aLong96 = 0L;
    Class108_Sub4 aClass108_Sub4_97;
    long aLong98 = Player.getCurrentTimeMillis(849846164) * -4011733572368827733L;
@@ -22,8 +20,6 @@ public class Class7 {
    int anInt110 = 0;
    Class108_Sub4[] aClass108_Sub4Array111 = new Class108_Sub4[8];
    Class108_Sub4[] aClass108_Sub4Array112 = new Class108_Sub4[8];
-   static final int anInt113 = 52;
-   public static final int anInt114 = 86;
 
 
    public final synchronized void method117(Class108_Sub4 var1, byte var2) {

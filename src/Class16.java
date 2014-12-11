@@ -2,14 +2,10 @@
 public class Class16 {
 
    static int[] anIntArray204;
-   public static final int anInt205 = 11;
    int anInt206;
    static byte aByte207;
-   static final int anInt208 = 18;
    int anInt209;
-   static final int anInt210 = 23;
    static GameConnection aGameConnection_211;
-   public static final int anInt212 = 5000;
    int anInt213;
 
 

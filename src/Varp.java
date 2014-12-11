@@ -6,13 +6,7 @@ public class Varp extends CacheableNode {
    public int configType = 0;
    static int anInt2042;
    static int[] anIntArray2043;
-   static final int anInt2044 = 28;
    public static int anInt2045;
-   static final int anInt2046 = 1048576;
-   public static final int anInt2047 = 155;
-   public static final int anInt2048 = 164;
-   static final int anInt2049 = 104;
-   public static final int anInt2050 = 0;
 
 
    void decode(RSByteBuffer buffer, int var2) {

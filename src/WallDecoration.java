@@ -4,7 +4,6 @@ public final class WallDecoration {
 
    int anInt293;
    int anInt294;
-   public static final int anInt295 = 96;
    int anInt296;
    static RGBSprite[] crossSprites;
    int anInt298;
@@ -15,7 +14,6 @@ public final class WallDecoration {
    int anInt303 = 0;
    int anInt304;
    static Font aFont305;
-   public static final int anInt306 = 120;
    int face;
 
 

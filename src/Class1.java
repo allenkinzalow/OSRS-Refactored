@@ -289,7 +289,7 @@ public class Class1 {
 										if (null != floorDef) {
 											floor = floorDef;
 										} else {
-											byte[] floorData = FloorDefinition.aClass74_2225.getFile(4, overlayID, (byte) 7);
+											byte[] floorData = FloorDefinition.configArchive_ref_floor.getFile(4, overlayID, (byte) 7);
 											floorDef = new FloorDefinition();
 											if (floorData != null) {
 												floorDef.decode(new RSByteBuffer(floorData), overlayID, 198180841);
@@ -319,34 +319,34 @@ public class Class1 {
 									scene.method406(plane, yPos, var8, 0, 0, -1, vertexSouthWest, vertexSouthEast, vertexNorthEast, vertexNorthWest, PlainTile.method622(var18, var19, -1685737298), PlainTile.method622(var18, var20, -1685737298), PlainTile.method622(var18, var21, -1685737298), PlainTile.method622(var18, var22, -1685737298), 0, 0, 0, 0, hue, 0);
 								} else {
 									saturation = 1 + RegionReference.overlayClippingPaths[plane][yPos][var8];
-									byte var55 = AnimationSkeletonSet.overlayRotations[plane][yPos][var8];
-									int var54 = overlayFloorID - 1;
-									FloorDefinition var39 = (FloorDefinition) FloorDefinition.floorMap.get((long) var54);
-									if (var39 != null) {
-										floorDef = var39;
+									byte rotation = AnimationSkeletonSet.overlayRotations[plane][yPos][var8];
+									int floorID = overlayFloorID - 1;
+									FloorDefinition overlayFloorDef = (FloorDefinition) FloorDefinition.floorMap.get((long) floorID);
+									if (overlayFloorDef != null) {
+										floorDef = overlayFloorDef;
 									} else {
-										byte[] var33 = FloorDefinition.aClass74_2225.getFile(4, var54, (byte) 7);
-										var39 = new FloorDefinition();
-										if (null != var33) {
-											var39.decode(new RSByteBuffer(var33), var54, -656471882);
+										byte[] floorData = FloorDefinition.configArchive_ref_floor.getFile(4, floorID, (byte) 7);
+										overlayFloorDef = new FloorDefinition();
+										if (null != floorData) {
+											overlayFloorDef.decode(new RSByteBuffer(floorData), floorID, -656471882);
 										}
 
-										var39.method2344((byte) -37);
-										FloorDefinition.floorMap.put(var39, (long) var54);
-										floorDef = var39;
+										overlayFloorDef.method2344((byte) -37);
+										FloorDefinition.floorMap.put(overlayFloorDef, (long) floorID);
+										floorDef = overlayFloorDef;
 									}
 
-									int var56 = floorDef.textureID * 1133570979;
+									int textureID = floorDef.textureID * 1133570979;
 									int var38;
 									int var41;
 									int var43;
 									int var44;
-									if (var56 >= 0) {
-										var41 = Rasterizer3D.anInterface2_2501.method21(var56, 72614764);
+									if (textureID >= 0) {
+										var41 = Rasterizer3D.anInterface2_2501.method21(textureID, 72614764);
 										var44 = -1;
 									} else if (floorDef.rgbColor * 308395211 == 16711935) {
 										var44 = -2;
-										var56 = -1;
+										textureID = -1;
 										var41 = -2;
 									} else {
 										var44 = Varp.packHSL(floorDef.hue * 1297919561, floorDef.saturation * -24553127, floorDef.luminosity * -715881191, 1552822455);
@@ -363,7 +363,7 @@ public class Class1 {
 
 									var43 = 0;
 									if (-2 != var41) {
-										var43 = Rasterizer3D.rgbTable[Class108_Sub16.method1927(var41, 96, 1263009375)];
+										var43 = Rasterizer3D.rgbTable[CacheIndexRequest.method1927(var41, 96, 1263009375)];
 									}
 
 									if (floorDef.anInt2211 * 839525211 != -1) {
@@ -376,10 +376,10 @@ public class Class1 {
 										}
 
 										var41 = Varp.packHSL(var38, floorDef.anInt2224 * -1327914801, var40, 1654676153);
-										var43 = Rasterizer3D.rgbTable[Class108_Sub16.method1927(var41, 96, 1171927012)];
+										var43 = Rasterizer3D.rgbTable[CacheIndexRequest.method1927(var41, 96, 1171927012)];
 									}
 
-									scene.method406(plane, yPos, var8, saturation, var55, var56, vertexSouthWest, vertexSouthEast, vertexNorthEast, vertexNorthWest, PlainTile.method622(var18, var19, -1685737298), PlainTile.method622(var18, var20, -1685737298), PlainTile.method622(var18, var21, -1685737298), PlainTile.method622(var18, var22, -1685737298), Class108_Sub16.method1927(var44, var19, 499533796), Class108_Sub16.method1927(var44, var20, 953040577), Class108_Sub16.method1927(var44, var21, 523883285), Class108_Sub16.method1927(var44, var22, 659891708), hue, var43);
+									scene.method406(plane, yPos, var8, saturation, rotation, textureID, vertexSouthWest, vertexSouthEast, vertexNorthEast, vertexNorthWest, PlainTile.method622(var18, var19, -1685737298), PlainTile.method622(var18, var20, -1685737298), PlainTile.method622(var18, var21, -1685737298), PlainTile.method622(var18, var22, -1685737298), CacheIndexRequest.method1927(var44, var19, 499533796), CacheIndexRequest.method1927(var44, var20, 953040577), CacheIndexRequest.method1927(var44, var21, 523883285), CacheIndexRequest.method1927(var44, var22, 659891708), hue, var43);
 								}
 							}
 						}

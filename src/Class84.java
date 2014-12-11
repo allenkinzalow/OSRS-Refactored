@@ -2,11 +2,7 @@
 public class Class84 {
 
    public static boolean[] aBoolArray1282 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false};
-   public static final int anInt1283 = 100;
    public static int[] anIntArray1284 = new int[99];
-   public static final int anInt1285 = 25;
-   static final int anInt1286 = 102;
-   static final int anInt1287 = 8192;
 
 
    static void method1119(CacheIndex var0, int var1, int var2) {

@@ -27,12 +27,8 @@ public final class Projectile extends Renderable {
    static PaletteSprite[] crownSprites;
    int currentFrame = 0;
    double totalSpeed;
-   static final int anInt2548 = 44;
    int gfxId;
    double timeLeftZ;
-   static final int anInt2551 = 41;
-   public static final int anInt2552 = 205;
-   public static final int anInt2553 = 173;
 
 
    final void method2979(int finalX, int finalY, int var3, int var4, byte var5) {
@@ -70,7 +66,7 @@ public final class Projectile extends Renderable {
       this.anInt2533 = var10 * -626069;
       this.anInt2542 = var11 * -949372975;
       this.isMoving = false;
-      int var12 = Class2.getSpotAnimForID(this.gfxId * 1528063247, (byte)0).animationID * 338579353;
+      int var12 = SpotAnim.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0).animationID * 338579353;
       if(var12 != -1) {
          this.animation = CullingCluster.method672(var12, 2017863609);
       } else {
@@ -104,7 +100,7 @@ public final class Projectile extends Renderable {
    }
 
    protected final ModelRasterizer getModelRasterizer(byte var1) {
-      SpotAnim spotAnim = Class2.getSpotAnimForID(this.gfxId * 1528063247, (byte)0);
+      SpotAnim spotAnim = SpotAnim.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0);
       ModelRasterizer rasterizer = spotAnim.getModelRasterizer(this.currentFrame * -1472651671, -380943559);
       if(null == rasterizer) {
          return null;
@@ -132,7 +128,7 @@ public final class Projectile extends Renderable {
    }
 
    public static void method2987(AbstractIndex var0, int var1) {
-      FloorDefinition.aClass74_2225 = var0;
+      FloorDefinition.configArchive_ref_floor = var0;
    }
 
    static final int method2988(int var0, int var1, byte var2) {

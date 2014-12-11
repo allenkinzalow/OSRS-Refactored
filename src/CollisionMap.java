@@ -3,13 +3,8 @@ public class CollisionMap {
 
    int anInt1457 = 0;
    int anInt1458;
-   static final int anInt1459 = 4;
-   static final int anInt1460 = 8;
-   public static final int anInt1461 = 19136770;
    int anInt1462;
    int anInt1463 = 0;
-   static final int anInt1464 = 1;
-   static final int anInt1465 = 2;
    public int[][] clipData;
 
 

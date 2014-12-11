@@ -1,16 +1,10 @@
 
 public class Class108_Sub20_Sub3 extends CacheableNode {
 
-   static final int anInt1962 = 4;
    static CacheableNodeMap aClass106_1963 = new CacheableNodeMap(64);
    public int anInt1964 = 0;
    static Class14 aClass14_1965;
-   static final int anInt1966 = 51;
    public static AbstractIndex configIndexReference;
-   static final int anInt1968 = 24624;
-   static final int anInt1969 = 400;
-   public static final int anInt1970 = 32;
-   public static final int anInt1971 = 45;
 
 
    void method2060(RSByteBuffer var1, short var2) {

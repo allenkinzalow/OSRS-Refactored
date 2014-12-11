@@ -4,7 +4,6 @@ public class EquipmentKit {
    long equipmentHash;
    int[] bodyPartColors;
    public boolean isFemale;
-   static final int anInt1335 = 34;
    long aLong1336;
    public static short[][] aShortArrayArray1337;
    public static short[][] aShortArrayArray1338;
@@ -12,9 +11,7 @@ public class EquipmentKit {
    static int[] anIntArray1340 = new int[]{8, 11, 4, 6, 9, 7, 10};
    public static CacheableNodeMap equipmentMap = new CacheableNodeMap(260);
    int anInt1342;
-   static final int anInt1343 = 22;
    static int anInt1344;
-   public static final int anInt1345 = 15;
 
 
    public int method1168(int var1) {

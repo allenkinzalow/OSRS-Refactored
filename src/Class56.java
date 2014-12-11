@@ -2,18 +2,12 @@ import java.applet.Applet;
 
 public class Class56 {
 
-   public static final int anInt749 = 63;
-   static String aString750 = null;
-   static final int anInt751 = 1;
+   static String operatingSystem = null;
    static Scene gameScene;
-   static final int anInt753 = 3;
-   public static final int anInt754 = 121;
    static int[] anIntArray755;
    static Applet anApplet756 = null;
    static int[] anIntArray757;
-   public static final int anInt758 = 47;
    static RGBSprite[] mapMarkerSprites;
-   static final int anInt760 = 2;
 
 
    Class56() throws Throwable {

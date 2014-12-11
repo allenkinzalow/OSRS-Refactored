@@ -2,7 +2,7 @@ public final class GroundItem {
 
 	int anInt472;
 	int xPos;
-	int anInt474;
+	int yPos;
 	Renderable aClass108_Sub20_Sub14_475;
 	Renderable aClass108_Sub20_Sub14_476;
 	int anInt477;
@@ -10,7 +10,6 @@ public final class GroundItem {
 	Renderable firstGroundItem;
 	static int anInt480;
 	static PaletteSprite radioButtonOptions_2;
-	public static final int anInt482 = 132;
 
 
 	public static int method580(int var0) {
@@ -29,7 +28,7 @@ public final class GroundItem {
 				}
 			}
 
-			if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Class108_Sub10.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -2108261163))) {
+			if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -2108261163))) {
 				return true;
 			} else {
 				return false;
@@ -323,7 +322,6 @@ public final class GroundItem {
 									Class4.method91(StringConstants.USE_OPTION, HuffmanEncoding.method690(16748608, -1608586132) + itemDef.name, 38, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2079440851);
 								}
 
-								Class73 var10000 = (Class73) null;
 								int var4;
 								byte var7;
 								if (Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, 1655510312), -302394358) && null != var12) {

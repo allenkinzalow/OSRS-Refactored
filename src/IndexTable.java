@@ -3,27 +3,18 @@ import java.io.IOException;
 
 public final class IndexTable {
 
-   public static final int anInt781 = 115;
    CacheFile dataFile = null;
    CacheFile indexFile = null;
-   public static final int anInt784 = 201;
    int index;
    static PaletteSprite clientLogo;
-   static final int anInt787 = 2;
-   public static final int anInt788 = 99;
    static int[] blendedLightness;
    static int anInt790;
    int descsriptorIndex = -1391642344;
-   public static final int anInt792 = 87;
    static byte[] buffer = new byte[520];
    static PaletteSprite[] scrollBarSprites;
-   public static final int anInt795 = 107;
-   public static final int anInt796 = 71;
-   public static final int anInt797 = 179;
-   public static final int anInt798 = 104;
 
 
-   public static String method783(int var0, int var1) {
+   public static String getIPAddress(int var0, int var1) {
       return (var0 >> 24 & 255) + "." + (var0 >> 16 & 255) + "." + (var0 >> 8 & 255) + "." + (var0 & 255);
    }
 
@@ -91,16 +82,24 @@ public final class IndexTable {
       }
    }
 
-   public boolean method785(int var1, byte[] var2, int var3, int var4) {
-      CacheFile var5 = this.dataFile;
-      synchronized(var5) {
+   /**
+    * This attempts to put data into the index - tries to do it twice.
+    * @param indexID
+    * @param var2
+    * @param var3
+    * @param var4
+    * @return
+    */
+   public boolean putDataAttempt(int indexID, byte[] var2, int var3, int var4) {
+      CacheFile dataFile = this.dataFile;
+      synchronized(dataFile) {
          if(var3 >= 0 && var3 <= this.descsriptorIndex * -1073808481) {
-            boolean var6 = this.put(var1, var2, var3, true, (byte)16);
-            if(!var6) {
-               var6 = this.put(var1, var2, var3, false, (byte)16);
+            boolean success = this.put(indexID, var2, var3, true, (byte)16);
+            if(!success) {
+               success = this.put(indexID, var2, var3, false, (byte)16);
             }
 
-            return var6;
+            return success;
          } else {
             throw new IllegalArgumentException();
          }

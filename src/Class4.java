@@ -6,8 +6,6 @@ public class Class4 {
    static PaletteSprite titleButton;
    static RGBSprite aClass108_Sub20_Sub15_Sub1_40;
    static boolean worldListOpen = false;
-   static final int anInt42 = 202;
-   static final int anInt43 = 171;
    static PaletteSprite radioButtonOptions;
    static int[] anIntArray45 = new int[256];
    static String aString46 = "1234567890";
@@ -32,12 +30,8 @@ public class Class4 {
    static Class76 aClass76_65 = Class76.aClass76_1199;
    static int worldCount = 0;
    static int anInt67 = 0;
-   static final int anInt68 = 200;
    static int hoveredWorldID = 2115622661;
    static CacheIndex textureIndex;
-   static final int anInt71 = 57;
-   static final int anInt72 = 59;
-   static final int anInt73 = 51;
    static String aString74 = "";
    static RSInterface aClass108_Sub17_75;
 
@@ -97,7 +91,7 @@ public class Class4 {
             entity.anInt2374 = 0;
          }
 
-         int spotAnimEmoteID = Class2.getSpotAnimForID(entity.anInt2373 * 1305815823, (byte)0).animationID * 338579353;
+         int spotAnimEmoteID = SpotAnim.getSpotAnimForID(entity.anInt2373 * 1305815823, (byte) 0).animationID * 338579353;
          if(-1 != spotAnimEmoteID) {
             AnimationDefinition spotAnimDef = CullingCluster.method672(spotAnimEmoteID, 1789980921);
             if(null != spotAnimDef && null != spotAnimDef.frameDelays) {

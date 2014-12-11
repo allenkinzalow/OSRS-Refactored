@@ -1,16 +1,10 @@
 
 public class Class14 implements Runnable {
 
-   public static final int anInt188 = 2;
    volatile Class7[] aClass7Array189 = new Class7[2];
    volatile boolean aBool190 = false;
    volatile boolean aBool191 = false;
    PingRequester aClass61_192;
-   static final int anInt193 = 91;
-   public static final int anInt194 = 90;
-   public static final int anInt195 = 200;
-   static final int anInt196 = 6;
-   public static final int anInt197 = 178;
 
 
    public static int method281(int var0, byte var1) {

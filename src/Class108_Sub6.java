@@ -16,7 +16,6 @@ public final class Class108_Sub6 extends Node {
    int anInt1597;
    Class108_Sub4_Sub2 aClass108_Sub4_Sub2_1598;
    ObjectDefinition aClass108_Sub20_Sub8_1599;
-   static final int anInt1600 = 0;
    int anInt1601;
 
 

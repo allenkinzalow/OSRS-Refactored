@@ -13,7 +13,6 @@ public class ClientParameter {
    static CacheIndex musicIndex_2;
    public String paramIdentifier;
    static ClientParameter aClass103_1410 = new ClientParameter("8", "8");
-   public static final int anInt1411 = 38;
 
 
    ClientParameter(String paramID_unused, String paramID) {

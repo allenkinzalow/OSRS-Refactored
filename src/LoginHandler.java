@@ -5,23 +5,19 @@ import java.util.Iterator;
 
 public class LoginHandler {
 
-	static final int anInt836 = 4;
 	static int anInt837 = 0;
 	static int anInt838 = 0;
 	static byte[][] aByteArrayArray839 = new byte[1000][];
 	static byte[][] aByteArrayArray840 = new byte[250][];
 	public static char aChar841;
-	static final int anInt842 = 21;
 	static int[] blendedHueDivisor;
 	protected static boolean focusGained;
 	static int anInt845 = 0;
 	static byte[][] aByteArrayArray846 = new byte[50][];
-	public static final int anInt847 = 30;
-	public static final int anInt848 = 73;
 
 
 	public static RSInterface method878(int var0, int var1, int var2) {
-		RSInterface var3 = Class108_Sub16.method1926(var0, 2146838109);
+		RSInterface var3 = CacheIndexRequest.getInterfaceComponentForHash(var0, 2146838109);
 		return var1 == -1 ? var3 : (null != var3 && null != var3.aClass108_Sub17Array1879 && var1 < var3.aClass108_Sub17Array1879.length ? var3.aClass108_Sub17Array1879[var1] : null);
 	}
 
@@ -154,7 +150,7 @@ public class LoginHandler {
 				Client.secureBuffer.writeString(Class4.typedPassword);
 
 				if (!Loader.local)
-					Client.secureBuffer.doRSA(Class32.aBigInteger469, Class32.aBigInteger468, (byte) 1);
+					Client.secureBuffer.doRSA(Class32.rsaExponent, Class32.rsaModulus, (byte) 1);
 
 				Client.loginBuffer.position = 0;
 
@@ -200,7 +196,7 @@ public class LoginHandler {
 
 				Client.loginBuffer.writeBytes(machineBUf.buf, 0, machineBUf.buf.length, (byte) -53);
 				Client.loginBuffer.writeInt(Projectile.skeletonIndex.anInt935 * -1983334491);
-				Client.loginBuffer.writeInt(Class108_Sub10.skinIndex.anInt935 * -1983334491);
+				Client.loginBuffer.writeInt(AnimationSkin.skinIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(AbstractIndex.configIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(FloorDefinition.interfaceIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(Class118.soundEffectsIndex_1.anInt935 * -1983334491);
@@ -421,7 +417,7 @@ public class LoginHandler {
 						Client.localNPCs[var1] = null;
 					}
 
-					Class108_Sub10.myPlayer = Client.localPlayers[2047] = new Player();
+					Player.myPlayer = Client.localPlayers[2047] = new Player();
 					Client.anInt2837 = 739185759;
 					Client.projectileDeque.method1333();
 					Client.aClass105_2928.method1333();
@@ -453,7 +449,7 @@ public class LoginHandler {
 
 					Client.anInt2789 = 801480023;
 					if (-1 != Client.openInterfaceID * 1523906617) {
-						Class5.method92(Client.openInterfaceID * 1523906617, 999499983);
+						Class5.method92(Client.openInterfaceID * 1523906617);
 					}
 
 					for (Class108_Sub10 var17 = (Class108_Sub10) Client.aClass101_2866.method1304(); null != var17; var17 = (Class108_Sub10) Client.aClass101_2866.method1303()) {
@@ -483,7 +479,7 @@ public class LoginHandler {
 					Class27.anInt363 = 0;
 					Class50.friendsChatList = null;
 					Friend.anInt620 = 964554551;
-					PlainTile.method624(false, (byte) 117);
+					PlainTile.loadIncomingMap(false, (byte) 117);
 					Client.packetID = 859744123;
 				}
 			}

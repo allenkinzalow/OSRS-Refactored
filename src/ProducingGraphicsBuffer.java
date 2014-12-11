@@ -20,7 +20,6 @@ public final class ProducingGraphicsBuffer extends GraphicsBuffer implements Ima
    ImageConsumer imageConsumer;
    static int clientWidth;
    static int clientHeight;
-   static final int anInt1541 = 1170;
 
 
    public final void method261(Graphics var1, int var2, int var3, int var4) {
@@ -92,7 +91,7 @@ public final class ProducingGraphicsBuffer extends GraphicsBuffer implements Ima
                   }
                }
 
-               if(Class108_Sub10.method1683(Class108_Sub10.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1968874516).equals(var4)) {
+               if(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1968874516).equals(var4)) {
                   AnimationSkeletonSet.pushMessage(31, "", StringConstants.aString1105, -1446835517);
                } else {
                   Client.secureBuffer.writePacket(222);

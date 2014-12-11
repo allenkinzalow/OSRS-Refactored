@@ -3,8 +3,6 @@ import java.awt.event.ActionEvent;
 public abstract class Renderable extends CacheableNode {
 
    static RGBSprite[] mapDotSprites;
-   public static final int anInt2244 = 76;
-   public static final int anInt2245 = 229;
    public int modelHeight = 1465659208;
 
 

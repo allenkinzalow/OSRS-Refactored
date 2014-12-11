@@ -6,17 +6,9 @@ public class Ignore {
    String aString387;
    static PingRequest aClass85_388;
    static Class65 aClass65_389;
-   static final int anInt390 = 12;
-   static final int anInt391 = 38;
-   static final int anInt392 = 1536;
-   static final int anInt393 = 58;
-   static final int anInt394 = 4;
    String username;
-   static final int anInt396 = 67;
    static int[] anIntArray397;
    static FontMetrics aFontMetrics398;
-   static final int anInt399 = 9;
-   static final int anInt400 = 4; 
 
 
    static ChatMessage method396(int var0, int var1, byte var2) {
@@ -27,7 +19,7 @@ public class Ignore {
    static final void buildRightClickMenu(RSInterface[] components, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       for(int componentID = 0; componentID < components.length; ++componentID) {
          RSInterface component = components[componentID];
-         if(null != component && (!component.aBool1855 || 0 == component.componentType * 942877543 || component.hasScript || Class32.method576(component, -1267315198) != 0 || Client.aClass108_Sub17_2878 == component) && var1 == component.hoverPopup * -867206361 && (!component.aBool1855 || !ClientScriptMap.method2161(component, (byte)8))) {
+         if(null != component && (!component.aBool1855 || 0 == component.componentType * 942877543 || component.hasScript || Class32.method576(component, -1267315198) != 0 || Client.aClass108_Sub17_2878 == component) && var1 == component.hoverPopup * -867206361 && (!component.aBool1855 || !ClientScriptMap.isComponentHidden(component, (byte)8))) {
             int var18 = var6 + component.anInt1776 * 985647797;
             int var14 = var7 + component.anInt1824 * 1730176157;
             int var10;
@@ -277,7 +269,7 @@ public class Ignore {
                   }
 
                   if(0 == component.componentType * 942877543) {
-                     if(!component.aBool1855 && ClientScriptMap.method2161(component, (byte)37) && Class72.aClass108_Sub17_924 != component) {
+                     if(!component.aBool1855 && ClientScriptMap.isComponentHidden(component, (byte)37) && Class72.aClass108_Sub17_924 != component) {
                         continue;
                      }
 

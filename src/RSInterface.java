@@ -22,7 +22,7 @@ public class RSInterface extends Node {
    public int anInt1780;
    public Object[] anObjectArray1781;
    public int hoverPopup = -2102936727;
-   public boolean aBool1783 = false;
+   public boolean hidden = false;
    public int anInt1784 = 0;
    public int scrollPosition = 0;
    public int anInt1786 = 0;
@@ -129,7 +129,6 @@ public class RSInterface extends Node {
    public int cycle;
    int activeMediaType = -1227663423;
    public static AbstractIndex aClass74_1889;
-   public static final int anInt1890 = 58;
 
 
    void decodeInterface(RSByteBuffer buffer, int var2) {
@@ -188,7 +187,7 @@ public class RSInterface extends Node {
 
       if(0 == this.componentType * 942877543) {
          this.anInt1787 = buffer.readUShort(-384474177) * 1930051549;
-         this.aBool1783 = buffer.readUByte() == 1;
+         this.hidden = buffer.readUByte() == 1;
       }
 
       if(1 == this.componentType * 942877543) {
@@ -403,7 +402,7 @@ public class RSInterface extends Node {
          this.hoverPopup = (this.hoverPopup * -867206361 + (this.interfaceHash * -1081473899 & -65536)) * 2102936727;
       }
 
-      this.aBool1783 = buffer.readUByte() == 1;
+      this.hidden = buffer.readUByte() == 1;
       if(0 == this.componentType * 942877543) {
          this.anInt1786 = buffer.readUShort(562998060) * -1473181593;
          this.anInt1787 = buffer.readUShort(1204256843) * 1930051549;

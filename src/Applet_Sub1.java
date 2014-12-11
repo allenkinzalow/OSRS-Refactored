@@ -178,8 +178,8 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       if(this == currentApplet) {
          if(!aBool2692) {
             aBool2688 = true;
-            if(null != Class71.aString916) {
-               if(Class71.aString916.startsWith("1.5")) {
+            if(null != Class71.javaVersion) {
+               if(Class71.javaVersion.startsWith("1.5")) {
                   if(Player.getCurrentTimeMillis(849846164) - -3473457553222264727L * aLong2697 > 1000L) {
                      Rectangle var2 = var1.getClipBounds();
                      if(var2 != null) {
@@ -224,10 +224,10 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
 
    public void run() {
       try {
-         if(null != PingRequester.aString823) {
-            String var1 = PingRequester.aString823.toLowerCase();
+         if(null != PingRequester.javaVendor) {
+            String var1 = PingRequester.javaVendor.toLowerCase();
             if(var1.indexOf("sun") != -1 || var1.indexOf("apple") != -1) {
-               String var2 = Class71.aString916;
+               String var2 = Class71.javaVersion;
                if(var2.equals("1.1") || var2.startsWith("1.1.") || var2.equals("1.2") || var2.startsWith("1.2.") || var2.equals("1.3") || var2.startsWith("1.3.") || var2.equals("1.4") || var2.startsWith("1.4.") || var2.equals("1.5") || var2.startsWith("1.5.") || var2.equals("1.6.0")) {
                   this.sendError("wrongjava", -1271013870);
                   return;
@@ -424,11 +424,11 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    public abstract void init();
 
    static final void setMenuPosAndDimmension(int x, int y, byte var2) {
-      int maxWidth = Class94.b12_full_font.getTextWidth(StringConstants.CHOOSE_OPTION);
+      int maxWidth = RSTypeFace.b12_full_font.getTextWidth(StringConstants.CHOOSE_OPTION);
 
       int menuActionIndex;
       for(menuActionIndex = 0; menuActionIndex < Client.menuActionRow * 391839991; ++menuActionIndex) {
-         RSFont b12_full = Class94.b12_full_font;
+         RSFont b12_full = RSTypeFace.b12_full_font;
          String menuAction;
          if(Client.menuActionNames[menuActionIndex].length() > 0) {
             menuAction = Client.menuActionNamePrefix[menuActionIndex] + StringConstants.aString1109 + Client.menuActionNames[menuActionIndex];

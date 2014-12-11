@@ -1,14 +1,10 @@
 
 public class Class51 {
 
-   static final int anInt707 = 100;
    int anInt708 = -948638743;
    int[] anIntArray709;
    static int actionMenuX;
    ClientScriptDefinition aClass108_Sub20_Sub17_711;
-   static final int anInt712 = 104;
-   static final int anInt713 = 16;
-   static final int anInt714 = 10;
    String[] aStringArray715;
    static int anInt716;
 

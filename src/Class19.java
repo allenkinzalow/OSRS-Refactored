@@ -4,13 +4,9 @@ public class Class19 {
    static RSInterface aClass108_Sub17_230;
    static int[][] tileLightingIntensity;
    int anInt232;
-   static final int anInt233 = 7;
    int[][] anIntArrayArray234;
    public static String cacheDirectory;
    static int[][][] tileCullingBitset;
-   public static final int anInt237 = 1;
-   public static final int anInt238 = 37;
-   public static final int anInt239 = 19136896;
    int anInt240;
 
 

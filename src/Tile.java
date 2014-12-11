@@ -8,11 +8,9 @@ public final class Tile extends Node {
    Wall wall;
    ShapedTile shapedTile;
    int anInt1608 = 0;
-   public static final int anInt1609 = 236;
    FloorDecoration floorDecoration;
    InteractableObject[] interactableObjects = new InteractableObject[5];
    int anInt1612;
-   static final int anInt1613 = 45;
    int[] objectFlags = new int[5];
    WallDecoration wallDecoration;
    int anInt1616;
@@ -25,8 +23,7 @@ public final class Tile extends Node {
    int anInt1623;
    Tile aClass108_Sub7_1624;
    int anInt1625;
-   PlainTile aClass35_1626;
-   public static final int anInt1627 = 240;
+   PlainTile plainTile;
 
 
    Tile(int var1, int var2, int var3) {

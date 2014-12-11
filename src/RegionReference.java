@@ -7,7 +7,6 @@ public final class RegionReference {
    static byte[][][] overlayFloorIds;
    static byte[][][] overlayClippingPaths;
    static byte[][][] aByteArrayArrayArray488;
-   static final int anInt489 = 12;
    static int[] blendedSaturation;
    static int[] anIntArray491 = new int[]{1, 2, 4, 8};
    static int[] anIntArray492 = new int[]{1, -1, -1, 1};
@@ -18,32 +17,29 @@ public final class RegionReference {
    static int[][][] tileHeights = new int[4][105][105];
    static int lightnessRandomizer = ((int)(Math.random() * 33.0D) - 16) * 1990361651;
    static int hueRandomizer = ((int)(Math.random() * 17.0D) - 8) * -1535870085;
-   static final int anInt500 = 74;
-   public static final int anInt501 = 96;
-   static final int anInt502 = 2340;
 
 
-   static void method587(int var0, IndexTable var1, CacheIndex var2, int var3) {
+   static void method587(int indexID, IndexTable indexTable, CacheIndex cacheIndex, int var3) {
       byte[] var4 = null;
-      Deque var5 = Class86.aClass105_1300;
+      Deque var5 = Class86.cacheIndexRequests;
       synchronized(var5) {
-         Class108_Sub16 var6 = (Class108_Sub16)Class86.aClass105_1300.getFront();
+         CacheIndexRequest var6 = (CacheIndexRequest)Class86.cacheIndexRequests.getFront();
 
          while(var6 != null) {
-            if((long)var0 != var6.key || var6.aClass59_1757 != var1 || var6.anInt1759 * -612139703 != 0) {
-               var6 = (Class108_Sub16)Class86.aClass105_1300.getNext();
+            if((long)indexID != var6.key || var6.cacheIndexTable != indexTable || var6.anInt1759 * -612139703 != 0) {
+               var6 = (CacheIndexRequest)Class86.cacheIndexRequests.getNext();
             } else {
-               var4 = var6.aByteArray1754;
+               var4 = var6.indexData;
                break;
             }
          }
       }
 
       if(null != var4) {
-         var2.method1906(var1, var0, var4, true, 579837078);
+         cacheIndex.method1906(indexTable, indexID, var4, true, 579837078);
       } else {
-         byte[] var9 = var1.get(var0, (byte)39);
-         var2.method1906(var1, var0, var9, true, -1957699113);
+         byte[] data = indexTable.get(indexID, (byte)39);
+         cacheIndex.method1906(indexTable, indexID, data, true, -1957699113);
       }
    }
 

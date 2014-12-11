@@ -2,13 +2,10 @@ import java.applet.Applet;
 
 public class Class27 {
 
-   public static final int anInt358 = 4;
    static long someTimeLeft;
-   static final int anInt360 = 1;
    static long lastSetTime;
    public static int anInt362;
    static int anInt363;
-   static final int anInt364 = 21;
 
 
    Class27() throws Throwable {
@@ -22,6 +19,6 @@ public class Class27 {
 
    public static void method377(Applet var0, String var1, int var2) {
       Class56.anApplet756 = var0;
-      Class56.aString750 = var1;
+      Class56.operatingSystem = var1;
    }
 }

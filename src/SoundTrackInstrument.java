@@ -22,7 +22,6 @@ public class SoundTrackInstrument {
    static int[] buffer;
    static int[] phases;
    static int[] anIntArray165;
-   static final double aDouble166 = 1.0057929410678534D;
    SoundTrackEnvelope pitchModEnvelope;
    static int[] delays;
    static int[] volumeStep;

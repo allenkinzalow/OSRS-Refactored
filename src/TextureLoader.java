@@ -3,12 +3,10 @@ public class TextureLoader implements Interface2 {
 
    Texture[] loadedTextures;
    Deque aClass105_366 = new Deque();
-   public static final int anInt367 = 189;
    AbstractIndex spriteIndexReference;
    double brightness = 1.0D;
    int anInt370 = -100758912;
    int anInt371;
-   public static final int anInt372 = 171;
    int anInt373 = 0;
 
 
@@ -96,7 +94,7 @@ public class TextureLoader implements Interface2 {
    }
 
    public static void method389(int var0) {
-      if(PingRequester.aString823.toLowerCase().indexOf("microsoft") != -1) {
+      if(PingRequester.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
          KeyFocusListener.anIntArray876[186] = 57;
          KeyFocusListener.anIntArray876[187] = 27;
          KeyFocusListener.anIntArray876[188] = 71;

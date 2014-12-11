@@ -2,22 +2,8 @@ import java.io.IOException;
 
 public class Class23 {
 
-   static final int anInt308 = 7;
-   static final int anInt309 = 49;
-   static final int anInt310 = 3;
-   static final int anInt311 = 4;
    static int anInt312;
-   static final int anInt313 = 8;
-   static final int anInt314 = 14;
-   static final int anInt315 = 16;
-   static final int anInt316 = 19;
-   static final int anInt317 = 20;
    static CacheIndex spriteIndex;
-   static final int anInt319 = 2;
-   public static final int anInt320 = 19136800;
-   public static final int anInt321 = 112;
-   static final int anInt322 = 1;
-   public static final int anInt323 = 215;
 
 
    public static RGBSprite method340(AbstractIndex var0, String var1, String var2, int var3) {

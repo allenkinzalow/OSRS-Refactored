@@ -7,9 +7,7 @@ public class VertexNormal {
    int y;
    int magnitude;
    int x;
-   static final int anInt689 = 36;
    public static String lowerOperatingSystem;
-   public static final int anInt691 = 31;
 
 
    public static int method692(CharSequence var0, int var1) {

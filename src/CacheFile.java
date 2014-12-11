@@ -3,7 +3,7 @@ import java.io.IOException;
 
 public class CacheFile {
 
-   CacheFileAccessor aClass120_1498;
+   CacheFileAccessor cacheFileAccessor;
    long aLong1499 = -4316677163942414309L;
    long aLong1500 = 6583202258336159595L;
    static final int anInt1501 = 20;
@@ -19,7 +19,7 @@ public class CacheFile {
 
 
    public CacheFile(CacheFileAccessor var1, int var2, int var3) throws IOException {
-      this.aClass120_1498 = var1;
+      this.cacheFileAccessor = var1;
       this.aLong1507 = (this.aLong1506 = var1.method1485(1566313123) * -5815471396468035689L) * 3614884796060269301L;
       this.aByteArray1503 = new byte[var2];
       this.aByteArray1502 = new byte[var3];
@@ -58,10 +58,10 @@ public class CacheFile {
          }
 
          if(var3 > this.aByteArray1503.length) {
-            this.aClass120_1498.method1482(this.aLong1505 * 7400071599797034781L);
+            this.cacheFileAccessor.method1482(this.aLong1505 * 7400071599797034781L);
 
             for(this.aLong1508 = this.aLong1505 * -7890134494393983685L; var3 > 0; var3 -= var9) {
-               var9 = this.aClass120_1498.method1488(var1, var2, var3, -174141677);
+               var9 = this.cacheFileAccessor.method1488(var1, var2, var3, -174141677);
                if(var9 == -1) {
                   break;
                }
@@ -133,13 +133,13 @@ public class CacheFile {
    void method1525(int var1) throws IOException {
       this.anInt1510 = 0;
       if(8691187415774072711L * this.aLong1508 != 7400071599797034781L * this.aLong1505) {
-         this.aClass120_1498.method1482(7400071599797034781L * this.aLong1505);
+         this.cacheFileAccessor.method1482(7400071599797034781L * this.aLong1505);
          this.aLong1508 = -7890134494393983685L * this.aLong1505;
       }
 
       int var2;
       for(this.aLong1499 = this.aLong1505 * -2359950226173960207L; this.anInt1510 * 990224099 < this.aByteArray1503.length; this.anInt1510 += var2 * 1399232203) {
-         var2 = this.aClass120_1498.method1488(this.aByteArray1503, this.anInt1510 * 990224099, this.aByteArray1503.length - this.anInt1510 * 990224099, -1384003402);
+         var2 = this.cacheFileAccessor.method1488(this.aByteArray1503, this.anInt1510 * 990224099, this.aByteArray1503.length - this.anInt1510 * 990224099, -1384003402);
          if(var2 == -1) {
             return;
          }
@@ -183,11 +183,11 @@ public class CacheFile {
             }
          } else {
             if(this.aLong1505 * 7400071599797034781L != 8691187415774072711L * this.aLong1508) {
-               this.aClass120_1498.method1482(this.aLong1505 * 7400071599797034781L);
+               this.cacheFileAccessor.method1482(this.aLong1505 * 7400071599797034781L);
                this.aLong1508 = this.aLong1505 * -7890134494393983685L;
             }
 
-            this.aClass120_1498.method1491(var1, var2, var3, 473414132);
+            this.cacheFileAccessor.method1491(var1, var2, var3, 473414132);
             this.aLong1508 += -8947236717274495433L * (long)var3;
             if(8691187415774072711L * this.aLong1508 > this.aLong1506 * 7307487033181437991L) {
                this.aLong1506 = this.aLong1508 * 3279243787635143073L;
@@ -235,11 +235,11 @@ public class CacheFile {
    void method1540(int var1) throws IOException {
       if(this.aLong1500 * 1799848982431441597L != -1L) {
          if(this.aLong1500 * 1799848982431441597L != this.aLong1508 * 8691187415774072711L) {
-            this.aClass120_1498.method1482(1799848982431441597L * this.aLong1500);
+            this.cacheFileAccessor.method1482(1799848982431441597L * this.aLong1500);
             this.aLong1508 = -2713947974098557797L * this.aLong1500;
          }
 
-         this.aClass120_1498.method1491(this.aByteArray1502, 0, this.anInt1504 * 659965443, 473414132);
+         this.cacheFileAccessor.method1491(this.aByteArray1502, 0, this.anInt1504 * 659965443, 473414132);
          this.aLong1508 += (long)this.anInt1504 * 2708852145318108325L;
          if(8691187415774072711L * this.aLong1508 > 7307487033181437991L * this.aLong1506) {
             this.aLong1506 = this.aLong1508 * 3279243787635143073L;
@@ -271,6 +271,6 @@ public class CacheFile {
 
    public void method1547(byte var1) throws IOException {
       this.method1540(-682893432);
-      this.aClass120_1498.method1484(-1554189696);
+      this.cacheFileAccessor.method1484(-1554189696);
    }
 }
