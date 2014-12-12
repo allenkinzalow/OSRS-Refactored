@@ -1,5 +1,5 @@
 
-public class StringConstants {
+public class StringUtilities {
 
    public static String RELOAD_PAGE = "Please reload this page.";
    public static String SELECT_WORLD = "Select a world";
@@ -77,7 +77,7 @@ public class StringConstants {
    public static String glow2_effect = "glow2:";
    public static String aString1023 = "";
    public static String PLEASE_REMOVE_2 = "Please remove ";
-   public static String aString1025 = "You can\'t add yourself to your own friend list";
+   public static String CANT_ADD_SELF = "You can\'t add yourself to your own friend list";
    public static String PIN_ENTER = "PIN: ";
    public static String aString1027 = "Could not complete login.";
    public static String aString1028 = "";
@@ -249,9 +249,13 @@ public class StringConstants {
    public static String WORLD_FULL = "FULL";
    public static String K = "K";
    public static String CLICK_TO_SWITCH = "Click to switch";
+   public static char[] aCharArray1455 = new char[]{'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+   public static char[] aCharArray1496 = new char[]{'\u20ac', '\u0000', '\u201a', '\u0192', '\u201e', '\u2026', '\u2020', '\u2021', '\u02c6', '\u2030', '\u0160', '\u2039', '\u0152', '\u0000', '\u017d', '\u0000', '\u0000', '\u2018', '\u2019', '\u201c', '\u201d', '\u2022', '\u2013', '\u2014', '\u02dc', '\u2122', '\u0161', '\u203a', '\u0153', '\u0000', '\u017e', '\u0178'};
+   static char[] aCharArray1486 = new char[]{' ', '\u00a0', '_', '-', '\u00e0', '\u00e1', '\u00e2', '\u00e4', '\u00e3', '\u00c0', '\u00c1', '\u00c2', '\u00c4', '\u00c3', '\u00e8', '\u00e9', '\u00ea', '\u00eb', '\u00c8', '\u00c9', '\u00ca', '\u00cb', '\u00ed', '\u00ee', '\u00ef', '\u00cd', '\u00ce', '\u00cf', '\u00f2', '\u00f3', '\u00f4', '\u00f6', '\u00f5', '\u00d2', '\u00d3', '\u00d4', '\u00d6', '\u00d5', '\u00f9', '\u00fa', '\u00fb', '\u00fc', '\u00d9', '\u00da', '\u00db', '\u00dc', '\u00e7', '\u00c7', '\u00ff', '\u0178', '\u00f1', '\u00d1', '\u00df'};
+   static char[] aCharArray1485 = new char[]{'[', ']', '#'};
 
 
-   StringConstants() throws Throwable {
+   StringUtilities() throws Throwable {
       throw new Error();
    }
 

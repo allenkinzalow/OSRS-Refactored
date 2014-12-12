@@ -28,7 +28,7 @@ public class FriendsChatMember extends Node {
       }
 
       IsaacRandomGen.method725(25, 1943042855);
-      GameDefinition.method1107(StringConstants.LOADING_PLEASE_WAIT, true, 488043270);
+      GameDefinition.method1107(StringUtilities.LOADING_PLEASE_WAIT, true, 488043270);
       int var10 = Class100.anInt1388 * 263051377;
       int var9 = Class15.anInt201 * -1743142671;
       Class100.anInt1388 = (var0 - 6) * -870890360;

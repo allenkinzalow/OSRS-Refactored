@@ -63,7 +63,7 @@ public class Class5 {
          }
       }
 
-      ItemDefinition itemDef = AnimationDefinition.getItemDefinition(itemID, -221675425);
+      ItemDefinition itemDef = ItemDefinition.getItemDefinition(itemID, -221675425);
       if(amount > 1 && null != itemDef.countObj) {
          int countChangeID = -1;
 
@@ -74,7 +74,7 @@ public class Class5 {
          }
 
          if(countChangeID != -1) {
-            itemDef = AnimationDefinition.getItemDefinition(countChangeID, -1934683345);
+            itemDef = ItemDefinition.getItemDefinition(countChangeID, -1934683345);
          }
       }
 
@@ -135,9 +135,9 @@ public class Class5 {
             if(amount < 100000) {
                amountString = "<col=ffff00>" + amount + "</col>";
             } else if(amount < 10000000) {
-               amountString = "<col=ffffff>" + amount / 1000 + StringConstants.ITEM_AMOUNT_K + "</col>";
+               amountString = "<col=ffffff>" + amount / 1000 + StringUtilities.ITEM_AMOUNT_K + "</col>";
             } else {
-               amountString = "<col=00ff80>" + amount / 1000000 + StringConstants.ITEM_AMOUNT_M + "</col>";
+               amountString = "<col=00ff80>" + amount / 1000000 + StringUtilities.ITEM_AMOUNT_M + "</col>";
             }
 
             itemFont.drawString(amountString, 0, 9, 16776960, 1);
@@ -158,7 +158,7 @@ public class Class5 {
    static final void method102(String var0, int var1) {
       if(!var0.equals("")) {
          Client.secureBuffer.writePacket(107);
-         Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(var0, (byte) 64));
+         Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(var0));
          Client.secureBuffer.writeString(var0);
       }
    }

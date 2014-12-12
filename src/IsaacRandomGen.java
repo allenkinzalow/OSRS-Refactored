@@ -457,8 +457,8 @@ public final class IsaacRandomGen {
 	}
 
 	public static void method735(AbstractIndex var0, String var1, String var2, int var3, boolean var4, byte var5) {
-		int var6 = var0.method1005(var1, 1723285154);
-		int var7 = var0.getFileForName(var6, var2, (byte) 0);
+		int var6 = var0.getArchiveIDForName(var1, 1723285154);
+		int var7 = var0.getFileIDForName(var6, var2);
 		AnimationSkin.method1677(var0, var6, var7, var3, var4, 1390637341);
 	}
 

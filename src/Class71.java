@@ -11,9 +11,9 @@ public abstract class Class71 {
          Ignore.aClass37_386.aBool528 = !Ignore.aClass37_386.aBool528;
          Timer.method713(-563726063);
          if(Ignore.aClass37_386.aBool528) {
-            AnimationSkeletonSet.pushMessage(99, "", "Roofs are now all hidden", -1992448970);
+            ChatMessagesContainer.pushMessage(99, "", "Roofs are now all hidden", -1992448970);
          } else {
-            AnimationSkeletonSet.pushMessage(99, "", "Roofs will only be removed selectively", -594140255);
+            ChatMessagesContainer.pushMessage(99, "", "Roofs will only be removed selectively", -594140255);
          }
       }
 

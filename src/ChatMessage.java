@@ -161,6 +161,6 @@ public class ChatMessage extends CacheableNode {
    }
 
    public static int method2021(int var0, byte var1) {
-      return var0 > 0?1:(var0 < 0?-1:0);
+      return var0 > 0 ? 1 : (var0 <  0  ?-1 : 0);
    }
 }

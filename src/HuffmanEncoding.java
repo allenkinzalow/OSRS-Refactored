@@ -1,6 +1,7 @@
 
 public class HuffmanEncoding {
 
+   public static HuffmanEncoding huffmanEncoding;
    int[] chatMask;
    int[] chatDecryptKeys;
    static CacheIndex soundEffectsIndex_2;

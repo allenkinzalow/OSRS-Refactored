@@ -49,62 +49,6 @@ public final class ProducingGraphicsBuffer extends GraphicsBuffer implements Ima
       }
    }
 
-   static final void addToIgnoreList(String toAdd, boolean var1, int var2) {
-      if(null != toAdd) {
-         if((Client.ignoreListCount * -1283681697 < 100 || Client.anInt2758 * -1950682749 == 1) && Client.ignoreListCount * -1283681697 < 400) {
-            String var4 = Class108_Sub10.method1683(toAdd, UnderlayDefinition.aClass116_2142, -2116168234);
-            if(var4 != null) {
-               String var3;
-               int var5;
-               String var6;
-               for(var5 = 0; var5 < Client.ignoreListCount * -1283681697; ++var5) {
-                  Ignore ignore = Client.ignoreList[var5];
-                  var6 = Class108_Sub10.method1683(ignore.username, UnderlayDefinition.aClass116_2142, -2090939739);
-                  if(var6 != null && var6.equals(var4)) {
-                     AnimationSkeletonSet.pushMessage(31, "", toAdd + StringConstants.ALREADY_ON_IGNORE, -448196024);
-                     return;
-                  }
-
-                  if(ignore.aString387 != null) {
-                     var3 = Class108_Sub10.method1683(ignore.aString387, UnderlayDefinition.aClass116_2142, -1955095237);
-                     if(null != var3 && var3.equals(var4)) {
-                        AnimationSkeletonSet.pushMessage(31, "", toAdd + StringConstants.ALREADY_ON_IGNORE, 7202132);
-                        return;
-                     }
-                  }
-               }
-
-               for(var5 = 0; var5 < Client.friendListCount * -163737695; ++var5) {
-                  Friend friend = Client.friendList[var5];
-                  var6 = Class108_Sub10.method1683(friend.username, UnderlayDefinition.aClass116_2142, -2065261776);
-                  if(null != var6 && var6.equals(var4)) {
-                     AnimationSkeletonSet.pushMessage(31, "", StringConstants.PLEASE_REMOVE_2 + toAdd + StringConstants.aString1124, 123811380);
-                     return;
-                  }
-
-                  if(null != friend.aString621) {
-                     var3 = Class108_Sub10.method1683(friend.aString621, UnderlayDefinition.aClass116_2142, -1855974988);
-                     if(null != var3 && var3.equals(var4)) {
-                        AnimationSkeletonSet.pushMessage(31, "", StringConstants.PLEASE_REMOVE_2 + toAdd + StringConstants.aString1124, -855994111);
-                        return;
-                     }
-                  }
-               }
-
-               if(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1968874516).equals(var4)) {
-                  AnimationSkeletonSet.pushMessage(31, "", StringConstants.aString1105, -1446835517);
-               } else {
-                  Client.secureBuffer.writePacket(222);
-                  Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(toAdd, (byte) 64));
-                  Client.secureBuffer.writeString(toAdd);
-               }
-            }
-         } else {
-            AnimationSkeletonSet.pushMessage(31, "", StringConstants.aString1063, 300930071);
-         }
-      }
-   }
-
    public void requestTopDownLeftRightResend(ImageConsumer var1) {}
 
    synchronized void method1572(int var1, int var2, int var3, int var4, short var5) {

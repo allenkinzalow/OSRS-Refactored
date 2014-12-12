@@ -11,7 +11,7 @@ public abstract class Timer {
       CacheFileAccessor var1 = null;
 
       try {
-         var1 = Entity.method2730("", Client.gameDefinition.gameName, true, (byte)70);
+         var1 = Entity.getPreferencesFileAccessor("", Client.gameDefinition.gameName, true, (byte) 70);
          RSByteBuffer var2 = Ignore.aClass37_386.method631(2045058579);
          var1.method1491(var2.buf, 0, var2.position * 798331555, 473414132);
       } catch (Exception var4) {

@@ -139,7 +139,7 @@ public class NPCDefinition extends CacheableNode {
          this.rotate90LeftAnimation = buffer.readUShort(1585988243) * -107633;
       } else if(opcode >= 30 && opcode < 35) {
          this.options[opcode - 30] = buffer.getString_2((byte)8);
-         if(this.options[opcode - 30].equalsIgnoreCase(StringConstants.hidden)) {
+         if(this.options[opcode - 30].equalsIgnoreCase(StringUtilities.hidden)) {
             this.options[opcode - 30] = null;
          }
       } else if(opcode == 40) {
@@ -302,7 +302,7 @@ public class NPCDefinition extends CacheableNode {
    }
 
    static final void method2293(Entity var0, short var1) {
-      if(var0.anInt2383 * -1116714413 == Client.cycle * -637317861 || var0.anInt2368 * 1647325343 == -1 || var0.anInt2371 * 843883743 != 0 || 1 + var0.anInt2396 * -1771177583 > CullingCluster.method672(var0.anInt2368 * 1647325343, 1579955150).frameLengths[var0.anInt2341 * -2111206063]) {
+      if(var0.anInt2383 * -1116714413 == Client.cycle * -637317861 || var0.anInt2368 * 1647325343 == -1 || var0.anInt2371 * 843883743 != 0 || 1 + var0.anInt2396 * -1771177583 > AnimationDefinition.getAnimDefForID(var0.anInt2368 * 1647325343, 1579955150).frameLengths[var0.anInt2341 * -2111206063]) {
          int var2 = var0.anInt2383 * -1116714413 - var0.anInt2382 * 651118561;
          int var7 = Client.cycle * -637317861 - var0.anInt2382 * 651118561;
          int var3 = var0.anInt2346 * -433366912 + var0.anInt2349 * -316782016;

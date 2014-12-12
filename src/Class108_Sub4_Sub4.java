@@ -145,149 +145,149 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
       var1.aClass108_Sub4_Sub2_1913.method1601(var2, var3, var4);
    }
 
-   static final int method2713(RSInterface var0, int var1, short var2) {
-      if(var0.opcodes != null && var1 < var0.opcodes.length) {
+   static final int method2713(RSInterface rsinter, int var1, short var2) {
+      if(rsinter.opcodes != null && var1 < rsinter.opcodes.length) {
          try {
-            int[] var3 = var0.opcodes[var1];
+            int[] rsinter_opcodes = rsinter.opcodes[var1];
             int var4 = 0;
-            int var5 = 0;
+            int opcode_index = 0;
             byte var6 = 0;
 
             while(true) {
-               int var7 = var3[var5++];
-               int var8 = 0;
+               int opcode = rsinter_opcodes[opcode_index++];
+               int opcodeValue = 0;
                byte var9 = 0;
-               if(0 == var7) {
+               if(0 == opcode) {
                   return var4;
                }
 
-               if(var7 == 1) {
-                  var8 = Client.skillLevels[var3[var5++]];
+               if(opcode == 1) {
+                  opcodeValue = Client.skillLevels[rsinter_opcodes[opcode_index++]];
                }
 
-               if(2 == var7) {
-                  var8 = Client.anIntArray2843[var3[var5++]];
+               if(2 == opcode) {
+                  opcodeValue = Client.anIntArray2843[rsinter_opcodes[opcode_index++]];
                }
 
-               if(var7 == 3) {
-                  var8 = Client.skillXPs[var3[var5++]];
+               if(opcode == 3) {
+                  opcodeValue = Client.skillXPs[rsinter_opcodes[opcode_index++]];
                }
 
                int var10;
                RSInterface var11;
                int var12;
                int var13;
-               if(4 == var7) {
-                  var10 = var3[var5++] << 16;
-                  var10 += var3[var5++];
+               if(4 == opcode) {
+                  var10 = rsinter_opcodes[opcode_index++] << 16;
+                  var10 += rsinter_opcodes[opcode_index++];
                   var11 = CacheIndexRequest.getInterfaceComponentForHash(var10, 1426632239);
-                  var12 = var3[var5++];
-                  if(var12 != -1 && (!AnimationDefinition.getItemDefinition(var12, 14463529).members || Client.aBool2710)) {
+                  var12 = rsinter_opcodes[opcode_index++];
+                  if(var12 != -1 && (!ItemDefinition.getItemDefinition(var12, 14463529).members || Client.aBool2710)) {
                      for(var13 = 0; var13 < var11.widgetItems.length; ++var13) {
                         if(var11.widgetItems[var13] == var12 + 1) {
-                           var8 += var11.widgetItemAmounts[var13];
+                           opcodeValue += var11.widgetItemAmounts[var13];
                         }
                      }
                   }
                }
 
-               if(var7 == 5) {
-                  var8 = Class88.configSettings[var3[var5++]];
+               if(opcode == 5) {
+                  opcodeValue = Class88.configSettings[rsinter_opcodes[opcode_index++]];
                }
 
-               if(6 == var7) {
-                  var8 = Class84.anIntArray1284[Client.anIntArray2843[var3[var5++]] - 1];
+               if(6 == opcode) {
+                  opcodeValue = Class84.anIntArray1284[Client.anIntArray2843[rsinter_opcodes[opcode_index++]] - 1];
                }
 
-               if(var7 == 7) {
-                  var8 = Class88.configSettings[var3[var5++]] * 100 / '\ub71b';
+               if(opcode == 7) {
+                  opcodeValue = Class88.configSettings[rsinter_opcodes[opcode_index++]] * 100 / '\ub71b';
                }
 
-               if(var7 == 8) {
-                  var8 = Player.myPlayer.combatLevel * -1769445007;
+               if(opcode == 8) {
+                  opcodeValue = Player.myPlayer.combatLevel * -1769445007;
                }
 
-               if(var7 == 9) {
+               if(opcode == 9) {
                   for(var10 = 0; var10 < 25; ++var10) {
                      if(Class84.aBoolArray1282[var10]) {
-                        var8 += Client.anIntArray2843[var10];
+                        opcodeValue += Client.anIntArray2843[var10];
                      }
                   }
                }
 
-               if(var7 == 10) {
-                  var10 = var3[var5++] << 16;
-                  var10 += var3[var5++];
+               if(opcode == 10) {
+                  var10 = rsinter_opcodes[opcode_index++] << 16;
+                  var10 += rsinter_opcodes[opcode_index++];
                   var11 = CacheIndexRequest.getInterfaceComponentForHash(var10, 77589357);
-                  var12 = var3[var5++];
-                  if(-1 != var12 && (!AnimationDefinition.getItemDefinition(var12, -1377973379).members || Client.aBool2710)) {
+                  var12 = rsinter_opcodes[opcode_index++];
+                  if(-1 != var12 && (!ItemDefinition.getItemDefinition(var12, -1377973379).members || Client.aBool2710)) {
                      for(var13 = 0; var13 < var11.widgetItems.length; ++var13) {
                         if(var11.widgetItems[var13] == 1 + var12) {
-                           var8 = 999999999;
+                           opcodeValue = 999999999;
                            break;
                         }
                      }
                   }
                }
 
-               if(var7 == 11) {
-                  var8 = Client.anInt2870 * -459978045;
+               if(opcode == 11) {
+                  opcodeValue = Client.anInt2870 * -459978045;
                }
 
-               if(12 == var7) {
-                  var8 = Client.anInt2871 * -409161997;
+               if(12 == opcode) {
+                  opcodeValue = Client.anInt2871 * -409161997;
                }
 
-               if(13 == var7) {
-                  var10 = Class88.configSettings[var3[var5++]];
-                  int var15 = var3[var5++];
-                  var8 = 0 != (var10 & 1 << var15)?1:0;
+               if(13 == opcode) {
+                  var10 = Class88.configSettings[rsinter_opcodes[opcode_index++]];
+                  int var15 = rsinter_opcodes[opcode_index++];
+                  opcodeValue = 0 != (var10 & 1 << var15)?1:0;
                }
 
-               if(14 == var7) {
-                  var10 = var3[var5++];
-                  var8 = BuildType.method1094(var10, -511913587);
+               if(14 == opcode) {
+                  var10 = rsinter_opcodes[opcode_index++];
+                  opcodeValue = BuildType.method1094(var10, -511913587);
                }
 
-               if(var7 == 15) {
+               if(opcode == 15) {
                   var9 = 1;
                }
 
-               if(16 == var7) {
+               if(16 == opcode) {
                   var9 = 2;
                }
 
-               if(var7 == 17) {
+               if(opcode == 17) {
                   var9 = 3;
                }
 
-               if(18 == var7) {
-                  var8 = (Player.myPlayer.anInt2394 * 171470795 >> 7) + Class100.anInt1388 * 263051377;
+               if(18 == opcode) {
+                  opcodeValue = (Player.myPlayer.anInt2394 * 171470795 >> 7) + Class100.anInt1388 * 263051377;
                }
 
-               if(19 == var7) {
-                  var8 = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
+               if(19 == opcode) {
+                  opcodeValue = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
                }
 
-               if(20 == var7) {
-                  var8 = var3[var5++];
+               if(20 == opcode) {
+                  opcodeValue = rsinter_opcodes[opcode_index++];
                }
 
                if(var9 == 0) {
                   if(var6 == 0) {
-                     var4 += var8;
+                     var4 += opcodeValue;
                   }
 
                   if(1 == var6) {
-                     var4 -= var8;
+                     var4 -= opcodeValue;
                   }
 
-                  if(2 == var6 && var8 != 0) {
-                     var4 /= var8;
+                  if(2 == var6 && opcodeValue != 0) {
+                     var4 /= opcodeValue;
                   }
 
                   if(var6 == 3) {
-                     var4 *= var8;
+                     var4 *= opcodeValue;
                   }
 
                   var6 = 0;

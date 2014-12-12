@@ -1,7 +1,7 @@
 
 public abstract class AbstractIndex {
 
-   int[] fileCount;
+   int[] fileCounts;
    int[] archiveIDs;
    public static final int anInt931 = 237;
    LookupTable aClass99_932;
@@ -18,7 +18,7 @@ public abstract class AbstractIndex {
    boolean aBool943;
    boolean aBool944;
    static int anInt945 = 0;
-   int anInt946;
+   int archiveCount;
    Object[][] fileArray;
    static CacheIndex configIndex;
 
@@ -34,106 +34,106 @@ public abstract class AbstractIndex {
 
    void method1002(byte[] var1, int var2) {
       this.anInt935 = ItemDefinition.method2124(var1, var1.length, 334099177) * 713775149;
-      RSByteBuffer buffer = new RSByteBuffer(RegionReference.method618(var1, (byte)-125));
-      int var6 = buffer.readUByte();
-      if(var6 >= 5 && var6 <= 7) {
-         if(var6 >= 6) {
+      RSByteBuffer buffer = new RSByteBuffer(RegionReference.method618(var1));
+      int type = buffer.readUByte();
+      if(type >= 5 && type <= 7) {
+         if(type >= 6) {
             buffer.readInt();
          }
 
          int var8 = buffer.readUByte();
-         if(var6 >= 7) {
-            this.anInt946 = buffer.method1776(278227056) * -1937958079;
+         if(type >= 7) {
+            this.archiveCount = buffer.method1776(278227056) * -1937958079;
          } else {
-            this.anInt946 = buffer.readUShort(1381211110) * -1937958079;
+            this.archiveCount = buffer.readUShort(1381211110) * -1937958079;
          }
 
          int var4 = 0;
          int var7 = -1;
-         this.archiveIDs = new int[this.anInt946 * -384469823];
-         int var3;
-         if(var6 >= 7) {
-            for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-               this.archiveIDs[var3] = var4 += buffer.method1776(126510212);
-               if(this.archiveIDs[var3] > var7) {
-                  var7 = this.archiveIDs[var3];
+         this.archiveIDs = new int[this.archiveCount * -384469823];
+         int archiveIDIndex;
+         if(type >= 7) {
+            for(int archiveIndex = 0; archiveIndex < this.archiveCount * -384469823; ++archiveIndex) {
+               this.archiveIDs[archiveIndex] = var4 += buffer.method1776(126510212);
+               if(this.archiveIDs[archiveIndex] > var7) {
+                  var7 = this.archiveIDs[archiveIndex];
                }
             }
          } else {
-            for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-               this.archiveIDs[var3] = var4 += buffer.readUShort(1921229882);
-               if(this.archiveIDs[var3] > var7) {
-                  var7 = this.archiveIDs[var3];
+            for(int archiveIndex = 0; archiveIndex < this.archiveCount * -384469823; ++archiveIndex) {
+               this.archiveIDs[archiveIndex] = var4 += buffer.readUShort(1921229882);
+               if(this.archiveIDs[archiveIndex] > var7) {
+                  var7 = this.archiveIDs[archiveIndex];
                }
             }
          }
 
          this.anIntArray933 = new int[1 + var7];
          this.anIntArray934 = new int[var7 + 1];
-         this.fileCount = new int[1 + var7];
+         this.fileCounts = new int[1 + var7];
          this.anIntArrayArray940 = new int[1 + var7][];
          this.archiveArray = new Object[var7 + 1];
          this.fileArray = new Object[1 + var7][];
          if(var8 != 0) {
             this.anIntArray941 = new int[var7 + 1];
 
-            for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-               this.anIntArray941[this.archiveIDs[var3]] = buffer.readInt();
+            for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+               this.anIntArray941[this.archiveIDs[archiveIDIndex]] = buffer.readInt();
             }
 
             this.aClass99_932 = new LookupTable(this.anIntArray941);
          }
 
-         for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-            this.anIntArray933[this.archiveIDs[var3]] = buffer.readInt();
+         for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+            this.anIntArray933[this.archiveIDs[archiveIDIndex]] = buffer.readInt();
          }
 
-         for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-            this.anIntArray934[this.archiveIDs[var3]] = buffer.readInt();
+         for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+            this.anIntArray934[this.archiveIDs[archiveIDIndex]] = buffer.readInt();
          }
 
-         for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-            this.fileCount[this.archiveIDs[var3]] = buffer.readUShort(-1459374212);
+         for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+            this.fileCounts[this.archiveIDs[archiveIDIndex]] = buffer.readUShort(-1459374212);
          }
 
          int var9;
          int var10;
          int var11;
          int var12;
-         int var13;
-         if(var6 >= 7) {
-            for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-               var12 = this.archiveIDs[var3];
-               var10 = this.fileCount[var12];
+         int fileArraySize;
+         if(type >= 7) {
+            for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+               var12 = this.archiveIDs[archiveIDIndex];
+               int fileCount = this.fileCounts[var12];
                var4 = 0;
-               var11 = -1;
-               this.anIntArrayArray940[var12] = new int[var10];
+               int maxFileArraySize = -1;
+               this.anIntArrayArray940[var12] = new int[fileCount];
 
-               for(var9 = 0; var9 < var10; ++var9) {
-                  var13 = this.anIntArrayArray940[var12][var9] = var4 += buffer.method1776(2143095027);
-                  if(var13 > var11) {
-                     var11 = var13;
+               for(var9 = 0; var9 < fileCount; ++var9) {
+                  fileArraySize = this.anIntArrayArray940[var12][var9] = var4 += buffer.method1776(2143095027);
+                  if(fileArraySize > maxFileArraySize) {
+                     maxFileArraySize = fileArraySize;
                   }
                }
 
-               this.fileArray[var12] = new Object[1 + var11];
+               this.fileArray[var12] = new Object[1 + maxFileArraySize];
             }
          } else {
-            for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-               var12 = this.archiveIDs[var3];
-               var10 = this.fileCount[var12];
+            for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+               int archiveID = this.archiveIDs[archiveIDIndex];
+               int fileCount = this.fileCounts[archiveID];
                var4 = 0;
-               var11 = -1;
-               this.anIntArrayArray940[var12] = new int[var10];
+               int maxFileArraySize = -1;
+               this.anIntArrayArray940[archiveID] = new int[fileCount];
 
-               for(var9 = 0; var9 < var10; ++var9) {
-                  var13 = this.anIntArrayArray940[var12][var9] = var4 += buffer.readUShort(99864165);
-                  if(var13 > var11) {
-                     var11 = var13;
+               for(int fileID = 0; fileID < fileCount; ++fileID) {
+                  fileArraySize = this.anIntArrayArray940[archiveID][fileID] = var4 += buffer.readUShort(99864165);
+                  if(fileArraySize > maxFileArraySize) {
+                     maxFileArraySize = fileArraySize;
                   }
                }
 
-               this.fileArray[var12] = new Object[var11 + 1];
+               this.fileArray[archiveID] = new Object[maxFileArraySize + 1];
             }
          }
 
@@ -141,9 +141,9 @@ public abstract class AbstractIndex {
             this.anIntArrayArray942 = new int[1 + var7][];
             this.aClass99Array938 = new LookupTable[var7 + 1];
 
-            for(var3 = 0; var3 < this.anInt946 * -384469823; ++var3) {
-               var12 = this.archiveIDs[var3];
-               var10 = this.fileCount[var12];
+            for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
+               var12 = this.archiveIDs[archiveIDIndex];
+               var10 = this.fileCounts[var12];
                this.anIntArrayArray942[var12] = new int[this.fileArray[var12].length];
 
                for(var11 = 0; var11 < var10; ++var11) {
@@ -162,10 +162,10 @@ public abstract class AbstractIndex {
    void method1003(int var1, int var2) {}
 
    public byte[] getFile(int var1, int var2, byte var3) {
-      return this.getFileData(var1, var2, (int[])null, 116632074);
+      return this.getFileData(var1, var2, (int[])null);
    }
 
-   public int method1005(String var1, int var2) {
+   public int getArchiveIDForName(String var1, int var2) {
       var1 = var1.toLowerCase();
       return this.aClass99_932.method1297(MouseInputHandler.method769(var1, 1236215295));
    }
@@ -200,10 +200,10 @@ public abstract class AbstractIndex {
    public byte[] getFileData(int archiveID, int fileID, int var3) {
       if(archiveID >= 0 && archiveID < this.fileArray.length && this.fileArray[archiveID] != null && fileID >= 0 && fileID < this.fileArray[archiveID].length) {
          if(null == this.fileArray[archiveID][fileID]) {
-            boolean var4 = this.method1018(archiveID, (int[])null, 3443778);
+            boolean var4 = this.method1018(archiveID, (int[])null);
             if(!var4) {
                this.submitArchiveRequest(archiveID, 1582464033);
-               var4 = this.method1018(archiveID, (int[])null, -11145031);
+               var4 = this.method1018(archiveID, (int[])null);
                if(!var4) {
                   return null;
                }
@@ -227,19 +227,19 @@ public abstract class AbstractIndex {
       }
    }
 
-   public int[] method1013(int var1, int var2) {
+   public int[] method1013(int var1) {
       return this.anIntArrayArray940[var1];
    }
 
-   public int getFileCount(int archiveID, byte var2) {
+   public int getFileCount(int archiveID) {
       return this.fileArray[archiveID].length;
    }
 
-   public int getArchiveCount(int var1) {
+   public int getArchiveCount() {
       return this.fileArray.length;
    }
 
-   public void resetCachedIndex(int var1) {
+   public void resetCachedIndex() {
       for(int archiveID = 0; archiveID < this.fileArray.length; ++archiveID) {
          if(null != this.fileArray[archiveID]) {
             for(int fileID = 0; fileID < this.fileArray[archiveID].length; ++fileID) {
@@ -250,11 +250,11 @@ public abstract class AbstractIndex {
 
    }
 
-   boolean method1018(int archiveID, int[] var2, int var3) {
+   boolean method1018(int archiveID, int[] var2) {
       if(null == this.archiveArray[archiveID]) {
          return false;
       } else {
-         int fileCount = this.fileCount[archiveID];
+         int fileCount = this.fileCounts[archiveID];
          int[] var5 = this.anIntArrayArray940[archiveID];
          Object[] files = this.fileArray[archiveID];
          boolean loaded = true;
@@ -278,7 +278,7 @@ public abstract class AbstractIndex {
                fileData = PlainTile.fileToByteArray(this.archiveArray[archiveID], false, -1516256446);
             }
 
-            byte[] var20 = RegionReference.method618(fileData, (byte)-28);
+            byte[] var20 = RegionReference.method618(fileData);
             if(this.aBool943) {
                this.archiveArray[archiveID] = null;
             }
@@ -358,12 +358,12 @@ public abstract class AbstractIndex {
       return loaded;
    }
 
-   public int getFileForName(int archiveID, String fileName, byte var3) {
+   public int getFileIDForName(int archiveID, String fileName) {
       fileName = fileName.toLowerCase();
       return this.aClass99Array938[archiveID].method1297(MouseInputHandler.method769(fileName, 1781542716));
    }
 
-   public byte[] getFileForArchiveFileName(String archiveName, String fileName, int var3) {
+   public byte[] getFileForArchiveFileName(String archiveName, String fileName) {
       archiveName = archiveName.toLowerCase(); 
       fileName = fileName.toLowerCase();
       int archiveID = this.aClass99_932.method1297(MouseInputHandler.method769(archiveName, 1686405236));
@@ -371,7 +371,7 @@ public abstract class AbstractIndex {
       return this.getFile(archiveID, fileID, (byte) 7);
    }
 
-   public boolean containsFileForAFName(String archiveName, String fileName, int var3) {
+   public boolean containsFileForAFName(String archiveName, String fileName) {
       archiveName = archiveName.toLowerCase();
       fileName = fileName.toLowerCase();
       int archiveID = this.aClass99_932.method1297(MouseInputHandler.method769(archiveName, 666119525));
@@ -379,12 +379,12 @@ public abstract class AbstractIndex {
       return this.containsFile(archiveID, fileID, 1151584293);
    }
 
-   public boolean containsFileForEmptyArchiveName(String fileName, int var2) {
-      int var3 = this.method1005("", 1723285154);
-      return -1 != var3 ? this.containsFileForAFName("", fileName, 1762783011) : this.containsFileForAFName(fileName, "", 1762783011);
+   public boolean containsFileForEmptyArchiveName(String fileName) {
+      int var3 = this.getArchiveIDForName("", 1723285154);
+      return -1 != var3 ? this.containsFileForAFName("", fileName) : this.containsFileForAFName(fileName, "");
    }
 
-   public void method1024(String archiveName, int var2) {
+   public void method1024(String archiveName) {
       archiveName = archiveName.toLowerCase();
       int archiveID = this.aClass99_932.method1297(MouseInputHandler.method769(archiveName, 1938534825));
       if(archiveID >= 0) {
@@ -393,23 +393,23 @@ public abstract class AbstractIndex {
    }
 
    public void method1026(int archiveID, byte var2) {
-      for(int var3 = 0; var3 < this.fileArray[archiveID].length; ++var3) {
+      for(int fileID = 0; fileID < this.fileArray[archiveID].length; ++fileID) {
          if(var2 <= -1) {
             return;
          }
 
-         this.fileArray[archiveID][var3] = null;
+         this.fileArray[archiveID][fileID] = null;
       }
 
    }
 
-   public byte[] getFileData(int archiveID, int fileID, int[] var3, int var4) {
+   public byte[] getFileData(int archiveID, int fileID, int[] var3) {
       if(archiveID >= 0 && archiveID < this.fileArray.length && null != this.fileArray[archiveID] && fileID >= 0 && fileID < this.fileArray[archiveID].length) {
          if(this.fileArray[archiveID][fileID] == null) {
-            boolean found = this.method1018(archiveID, var3, 44065684);
+            boolean found = this.method1018(archiveID, var3);
             if(!found) {
                this.submitArchiveRequest(archiveID, 1582464033);
-               found = this.method1018(archiveID, var3, 1814808561);
+               found = this.method1018(archiveID, var3);
                if(!found) {
                   return null;
                }
@@ -440,7 +440,7 @@ public abstract class AbstractIndex {
       } else if(!RSInterface.interfaceIndexReference.containsArchive(interfaceID, (byte)-25)) {
          return false;
       } else {
-         int componentCount = RSInterface.interfaceIndexReference.getFileCount(interfaceID, (byte)-48);
+         int componentCount = RSInterface.interfaceIndexReference.getFileCount(interfaceID);
          if(componentCount == 0) {
             RSInterface.interfacesLoadedArray[interfaceID] = true;
             return true;

@@ -2,6 +2,7 @@ import java.util.Iterator;
 
 public class Class92 implements Iterable {
 
+   public static Class92 aClass92_1447 = new Class92();
    Node current = new Node();
 
 

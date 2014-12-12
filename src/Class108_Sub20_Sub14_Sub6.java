@@ -19,7 +19,7 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
       if(null != skeletonSet) {
          return skeletonSet;
       } else {
-         skeletonSet = RegionReference.method617(AnimationDefinition.skeletonIndexReference, AnimationDefinition.skinIndexReference, animationID, false, 949323318);
+         skeletonSet = AnimationSkeletonSet.initAnimSkeletonSet(AnimationDefinition.skeletonIndexReference, AnimationDefinition.skinIndexReference, animationID, false, 949323318);
          if(null != skeletonSet) {
             AnimationDefinition.animDefCache.put(skeletonSet, (long)animationID);
          }
@@ -66,7 +66,7 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
       int animationID = SpotAnim.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0).animationID * 338579353;
       if(animationID != -1) {
          this.aBool2612 = false;
-         this.animDefinition = CullingCluster.method672(animationID, 1927934523);
+         this.animDefinition = AnimationDefinition.getAnimDefForID(animationID, 1927934523);
       } else {
          this.aBool2612 = true;
       }

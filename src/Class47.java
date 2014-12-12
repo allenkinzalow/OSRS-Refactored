@@ -49,7 +49,7 @@ public class Class47 {
                   }
 
                   if(var6 != -1) {
-                     AnimationDefinition var7 = CullingCluster.method672(var6, 1404113681);
+                     AnimationDefinition var7 = AnimationDefinition.getAnimDefForID(var6, 1404113681);
 
                      for(var4.anInt1805 += Client.anInt2780 * 1677688223; var4.anInt1805 * 443666099 > var7.frameLengths[var4.anInt1877 * -1365409805]; MouseInputHandler.method775(var4, -16054773)) {
                         var4.anInt1805 -= var7.frameLengths[var4.anInt1877 * -1365409805] * 1933545595;

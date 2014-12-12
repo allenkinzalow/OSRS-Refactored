@@ -142,7 +142,7 @@ public class ObjectDefinition extends CacheableNode {
          this.contrast = buffer.readByte() * 1640621175;
       } else if(opcode >= 30 && opcode < 35) {
          this.actions[opcode - 30] = buffer.getString_2((byte)8);
-         if(this.actions[opcode - 30].equalsIgnoreCase(StringConstants.hidden)) {
+         if(this.actions[opcode - 30].equalsIgnoreCase(StringUtilities.hidden)) {
             this.actions[opcode - 30] = null;
          }
       } else if(opcode == 40) {
@@ -245,7 +245,7 @@ public class ObjectDefinition extends CacheableNode {
 
       ModelRasterizer rasterizer = (ModelRasterizer)objectRasterizerMap.get(var11);
       if(null == rasterizer) {
-         RSModel model = this.getModel(var1, var2, -726412822);
+         RSModel model = this.getModel(var1, var2);
          if(model == null) {
             return null;
          }
@@ -295,7 +295,7 @@ public class ObjectDefinition extends CacheableNode {
 
       Object var10 = (Renderable)aClass106_2079.get(var8);
       if(var10 == null) {
-         RSModel var11 = this.getModel(var1, var2, 589895878);
+         RSModel var11 = this.getModel(var1, var2);
          if(var11 == null) {
             return null;
          }
@@ -337,7 +337,7 @@ public class ObjectDefinition extends CacheableNode {
 
       ModelRasterizer var11 = (ModelRasterizer)objectRasterizerMap.get(var8);
       if(null == var11) {
-         RSModel var10 = this.getModel(var1, var2, 903402345);
+         RSModel var10 = this.getModel(var1, var2);
          if(var10 == null) {
             return null;
          }
@@ -400,11 +400,11 @@ public class ObjectDefinition extends CacheableNode {
       }
    }
 
-   public static void method2199(byte var0) {
-      FloorDefinition.floorMap.method1371();
+   public static void method2199() {
+      OverlayFloorDefinition.overlayFloorMap.method1371();
    }
 
-   public boolean method2206(byte var1) {
+   public boolean method2206() {
       if(null == this.configChangeDest) {
          return -1 != this.anInt2110 * 849129685 || null != this.anIntArray2084;
       } else {
@@ -421,7 +421,7 @@ public class ObjectDefinition extends CacheableNode {
       }
    }
 
-   final RSModel getModel(int type, int face, int var3) {
+   final RSModel getModel(int type, int face) {
       RSModel model = null;
       int modelID;
       boolean var7;
@@ -573,30 +573,30 @@ public class ObjectDefinition extends CacheableNode {
       int var41;
       if(Class4.worldListOpen) {
          if(World.worldBackSprites == null) {
-            World.worldBackSprites = RegionReference.loadImageSet(Class23.spriteIndex, "sl_back", "", (short) 10222);
+            World.worldBackSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "sl_back", "", (short) 10222);
          }
 
          if(null == World.worldFlagSprites) {
-            World.worldFlagSprites = Client.method3553(Class23.spriteIndex, "sl_flags", "", (byte) -85);
+            World.worldFlagSprites = PaletteSprite.loadPaletteSpriteSet(Class23.spriteIndex, "sl_flags", "", (byte) -85);
          }
 
          if(null == RuntimeException_Sub1.worldSortArrowSprites) {
-            RuntimeException_Sub1.worldSortArrowSprites = Client.method3553(Class23.spriteIndex, "sl_arrows", "", (byte) -42);
+            RuntimeException_Sub1.worldSortArrowSprites = PaletteSprite.loadPaletteSpriteSet(Class23.spriteIndex, "sl_arrows", "", (byte) -42);
          }
 
          if(null == KeyFocusListener.worldTypeSprites) {
-            KeyFocusListener.worldTypeSprites = Client.method3553(Class23.spriteIndex, "sl_stars", "", (byte) -111);
+            KeyFocusListener.worldTypeSprites = PaletteSprite.loadPaletteSpriteSet(Class23.spriteIndex, "sl_stars", "", (byte) -111);
          }
 
          Rasterizer2D.drawFilledRectangle(0, 23, 765, 480, 0);
          Rasterizer2D.method2503(0, 0, 125, 23, 12425273, 9135624);
          Rasterizer2D.method2503(125, 0, 640, 23, 5197647, 2697513);
-         b12_full.drawStringCenter(StringConstants.SELECT_WORLD, 62, 15, 0, -1);
+         b12_full.drawStringCenter(StringUtilities.SELECT_WORLD, 62, 15, 0, -1);
          if(KeyFocusListener.worldTypeSprites != null) {
             KeyFocusListener.worldTypeSprites[1].drawSprite(140, 1);
-            p11_full.drawString(StringConstants.MEMBERS_WORLD, 152, 10, 16777215, -1);
+            p11_full.drawString(StringUtilities.MEMBERS_WORLD, 152, 10, 16777215, -1);
             KeyFocusListener.worldTypeSprites[0].drawSprite(140, 12);
-            p11_full.drawString(StringConstants.FREE_WORLD, 152, 21, 16777215, -1);
+            p11_full.drawString(StringUtilities.FREE_WORLD, 152, 21, 16777215, -1);
          }
 
          if(RuntimeException_Sub1.worldSortArrowSprites != null) {
@@ -613,7 +613,7 @@ public class ObjectDefinition extends CacheableNode {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(var22 + 15, 4);
             }
 
-            b12_full.drawString(StringConstants.WORLD_ID, 32 + var22, 17, 16777215, -1);
+            b12_full.drawString(StringUtilities.WORLD_ID, 32 + var22, 17, 16777215, -1);
             var24 = 390;
             if(1 == Class4.anIntArray56[0] && 0 == Class4.anIntArray63[0]) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(var24, 4);
@@ -627,7 +627,7 @@ public class ObjectDefinition extends CacheableNode {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(15 + var24, 4);
             }
 
-            b12_full.drawString(StringConstants.WORLD_PLAYERS, var24 + 32, 17, 16777215, -1);
+            b12_full.drawString(StringUtilities.WORLD_PLAYERS, var24 + 32, 17, 16777215, -1);
             var25 = 500;
             if(2 == Class4.anIntArray56[0] && Class4.anIntArray63[0] == 0) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(var25, 4);
@@ -641,7 +641,7 @@ public class ObjectDefinition extends CacheableNode {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(15 + var25, 4);
             }
 
-            b12_full.drawString(StringConstants.WORLD_LOCATION, var25 + 32, 17, 16777215, -1);
+            b12_full.drawString(StringUtilities.WORLD_LOCATION, var25 + 32, 17, 16777215, -1);
             short xOffset = 610;
             if(3 == Class4.anIntArray56[0] && Class4.anIntArray63[0] == 0) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(xOffset, 4);
@@ -655,11 +655,11 @@ public class ObjectDefinition extends CacheableNode {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(15 + xOffset, 4);
             }
 
-            b12_full.drawString(StringConstants.WORLD_TYPE, 32 + xOffset, 17, 16777215, -1);
+            b12_full.drawString(StringUtilities.WORLD_TYPE, 32 + xOffset, 17, 16777215, -1);
          }
 
          Rasterizer2D.drawFilledRectangle(708, 4, 50, 16, 0);
-         p11_full.drawStringCenter(StringConstants.CANCEL_OPTION, 733, 16, 16777215, -1);
+         p11_full.drawStringCenter(StringUtilities.CANCEL_OPTION, 733, 16, 16777215, -1);
          Class4.hoveredWorldID = 2115622661;
          if(null != World.worldBackSprites) {
             var3 = 88;
@@ -708,10 +708,10 @@ public class ObjectDefinition extends CacheableNode {
                boolean canHover = true;
                String playerCount = Integer.toString(world.playerCount * 649230499);
                if(world.playerCount * 649230499 == -1) {
-                  playerCount = StringConstants.WORLD_OFF;
+                  playerCount = StringUtilities.WORLD_OFF;
                   canHover = false;
                } else if(world.playerCount * 649230499 > 1980) {
-                  playerCount = StringConstants.WORLD_FULL;
+                  playerCount = StringUtilities.WORLD_FULL;
                   canHover = false;
                }
 
@@ -770,7 +770,7 @@ public class ObjectDefinition extends CacheableNode {
          int var4;
          if(Client.loginLoadingStage * 1315883169 == 0 || 5 == Client.loginLoadingStage * 1315883169) {
             var3 = 20;
-            b12_full.drawStringCenter(StringConstants.RUNESCAPE_LOADING_PLEASE_WAIT, 382, 245 - var3, 16777215, -1);
+            b12_full.drawStringCenter(StringUtilities.RUNESCAPE_LOADING_PLEASE_WAIT, 382, 245 - var3, 16777215, -1);
             var4 = 253 - var3;
             Rasterizer2D.drawUnfilledRectangle(230, var4, 304, 34, 9179409);
             Rasterizer2D.drawUnfilledRectangle(231, 1 + var4, 302, 32, 0);
@@ -796,16 +796,16 @@ public class ObjectDefinition extends CacheableNode {
             yPos_1 += 15;
             yPos_1 += 10;
             if(4 != Class4.anInt54 * 2105711249) {
-               b12_full.drawString(StringConstants.LOGIN, 272, yPos_1, 16777215, 0);
+               b12_full.drawString(StringUtilities.LOGIN, 272, yPos_1, 16777215, 0);
                var24 = 200;
 
                for(enterUsername = Class4.typedUsername; b12_full.getTextWidth(enterUsername) > var24; enterUsername = enterUsername.substring(0, enterUsername.length() - 1)) {
                   ; 
                }
 
-               b12_full.drawString(RSTypeFace.method3093(enterUsername), 312, yPos_1, 16777215, 0);
+               b12_full.drawString(RSTypeFace.appendLTGTTags(enterUsername), 312, yPos_1, 16777215, 0);
                yPos_1 += 15;
-               enterPassword = StringConstants.PASSWORD;
+               enterPassword = StringUtilities.PASSWORD;
                typedPassword = Class4.typedPassword;
                passwordLength = typedPassword.length();
                hiddenCharacters = new char[passwordLength];
@@ -824,17 +824,17 @@ public class ObjectDefinition extends CacheableNode {
             Class4.titleBox.drawSprite(202, 171);
             if(Class4.anInt54 * 2105711249 == 0) {
                var22 = 251;
-               b12_full.drawStringCenter(StringConstants.WELCOME_TO_RUNESCAPE, 382, var22, 16776960, 0);
+               b12_full.drawStringCenter(StringUtilities.WELCOME_TO_RUNESCAPE, 382, var22, 16776960, 0);
                var23 = var22 + 30;
                var24 = 302;
                var25 = 291;
                Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
-               b12_full.method3097(StringConstants.NEW_USER_BUTTON, var24 - 73, var25 - 20, 144, 40, 16777215, 0, 1, 1, 0);
+               b12_full.method3097(StringUtilities.NEW_USER_BUTTON, var24 - 73, var25 - 20, 144, 40, 16777215, 0, 1, 1, 0);
                var24 = 462;
                Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
-               b12_full.method3097(StringConstants.EXISTING_USER_BUTTON, var24 - 73, var25 - 20, 144, 40, 16777215, 0, 1, 1, 0);
+               b12_full.method3097(StringUtilities.EXISTING_USER_BUTTON, var24 - 73, var25 - 20, 144, 40, 16777215, 0, 1, 1, 0);
             } else if(Class4.anInt54 * 2105711249 == 1) {
-               b12_full.drawStringCenter(StringConstants.WARNING, 382, 211, 16776960, 0);
+               b12_full.drawStringCenter(StringUtilities.WARNING, 382, 211, 16776960, 0);
                var22 = 236;
                b12_full.drawStringCenter(Class4.aString74, 382, var22, 16777215, 0);
                var23 = var22 + 15;
@@ -845,10 +845,10 @@ public class ObjectDefinition extends CacheableNode {
                var24 = 302;
                var25 = 321;
                Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
-               b12_full.drawStringCenter(StringConstants.CONTINUE_MENU, var24, var25 + 5, 16777215, 0);
+               b12_full.drawStringCenter(StringUtilities.CONTINUE_MENU, var24, var25 + 5, 16777215, 0);
                var24 = 462;
                Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
-               b12_full.drawStringCenter(StringConstants.CANCEL_OPTION, var24, var25 + 5, 16777215, 0);
+               b12_full.drawStringCenter(StringUtilities.CANCEL_OPTION, var24, var25 + 5, 16777215, 0);
             } else {
                short var36;
                if(Class4.anInt54 * 2105711249 == 2) {
@@ -860,16 +860,16 @@ public class ObjectDefinition extends CacheableNode {
                   b12_full.drawStringCenter(Class4.aString55, 382, var23, 16776960, 0);
                   var23 += 15;
                   var23 += 10;
-                  b12_full.drawString(StringConstants.LOGIN, 272, var23, 16777215, 0);
+                  b12_full.drawString(StringUtilities.LOGIN, 272, var23, 16777215, 0);
                   var24 = 200;
 
                   for(enterUsername = Class4.typedUsername; b12_full.getTextWidth(enterUsername) > var24; enterUsername = enterUsername.substring(1)) {
                      ;
                   }
 
-                  b12_full.drawString(RSTypeFace.method3093(enterUsername) + (0 == Class4.anInt62 * 1502041601 & Client.cycle * -637317861 % 40 < 20?HuffmanEncoding.method690(16776960, -638653094) + Class47.FLASHING_CURSOR:""), 312, var23, 16777215, 0);
+                  b12_full.drawString(RSTypeFace.appendLTGTTags(enterUsername) + (0 == Class4.anInt62 * 1502041601 & Client.cycle * -637317861 % 40 < 20?HuffmanEncoding.method690(16776960, -638653094) + Class47.FLASHING_CURSOR:""), 312, var23, 16777215, 0);
                   var23 += 15;
-                  enterPassword = StringConstants.PASSWORD;
+                  enterPassword = StringUtilities.PASSWORD;
                   typedPassword = Class4.typedPassword;
                   passwordLength = typedPassword.length();
                   hiddenCharacters = new char[passwordLength];
@@ -884,12 +884,12 @@ public class ObjectDefinition extends CacheableNode {
                   short var33 = 302;
                   var36 = 321;
                   Class4.titleButton.drawSprite(var33 - 73, var36 - 20);
-                  b12_full.drawStringCenter(StringConstants.LOGIN_BUTTON, var33, var36 + 5, 16777215, 0);
+                  b12_full.drawStringCenter(StringUtilities.LOGIN_BUTTON, var33, var36 + 5, 16777215, 0);
                   var33 = 462;
                   Class4.titleButton.drawSprite(var33 - 73, var36 - 20);
-                  b12_full.drawStringCenter(StringConstants.CANCEL_OPTION, var33, 5 + var36, 16777215, 0);
+                  b12_full.drawStringCenter(StringUtilities.CANCEL_OPTION, var33, 5 + var36, 16777215, 0);
                } else if(4 == Class4.anInt54 * 2105711249) { // authenticaor
-                  b12_full.drawStringCenter(StringConstants.AUTHENTICATOR, 382, 211, 16776960, 0);
+                  b12_full.drawStringCenter(StringUtilities.AUTHENTICATOR, 382, 211, 16776960, 0);
                   var22 = 236;
                   b12_full.drawStringCenter(Class4.aString74, 382, var22, 16777215, 0);
                   var23 = var22 + 15;
@@ -897,7 +897,7 @@ public class ObjectDefinition extends CacheableNode {
                   var23 += 15;
                   b12_full.drawStringCenter(Class4.aString55, 382, var23, 16777215, 0);
                   var23 += 15;
-                  String enterPin = StringConstants.PIN_ENTER;
+                  String enterPin = StringUtilities.PIN_ENTER;
                   String typedPin = BuildType.enteredPin;
                   pinLength = typedPin.length();
                   char[] hiddenPin = new char[pinLength];
@@ -909,10 +909,10 @@ public class ObjectDefinition extends CacheableNode {
                   String hiddenPinString = new String(hiddenPin);
                   b12_full.drawString(enterPin + hiddenPinString + (Client.cycle * -637317861 % 40 < 20 ? HuffmanEncoding.method690(16776960, -1546608071) + Class47.FLASHING_CURSOR : ""), 274, var23, 16777215, 0);
                   var23 -= 8;
-                  b12_full.drawString(StringConstants.TRUST_COMPUTER, 373, var23, 16776960, 0);
+                  b12_full.drawString(StringUtilities.TRUST_COMPUTER, 373, var23, 16776960, 0);
                   var23 += 15;
-                  b12_full.drawString(StringConstants.THIRTY_DAYS, 373, var23, 16776960, 0);
-                  int radioX = 373 + b12_full.getTextWidth(StringConstants.THIRTY_DAYS) + 15;
+                  b12_full.drawString(StringUtilities.THIRTY_DAYS, 373, var23, 16776960, 0);
+                  int radioX = 373 + b12_full.getTextWidth(StringUtilities.THIRTY_DAYS) + 15;
                   int radioY = var23 - b12_full.anInt2643;
                   PaletteSprite radioButton;
                   if(Class4.trustComputer) {
@@ -926,11 +926,11 @@ public class ObjectDefinition extends CacheableNode {
                   var36 = 302;
                   short var38 = 321;
                   Class4.titleButton.drawSprite(var36 - 73, var38 - 20);
-                  b12_full.drawStringCenter(StringConstants.CONTINUE_MENU, var36, 5 + var38, 16777215, 0);
+                  b12_full.drawStringCenter(StringUtilities.CONTINUE_MENU, var36, 5 + var38, 16777215, 0);
                   var36 = 462;
                   Class4.titleButton.drawSprite(var36 - 73, var38 - 20);
-                  b12_full.drawStringCenter(StringConstants.CANCEL_OPTION, var36, 5 + var38, 16777215, 0);
-                  p11_full.drawStringCenter(StringConstants.CANT_LOGIN_QUESTION, 382, 36 + var38, 255, 0);
+                  b12_full.drawStringCenter(StringUtilities.CANCEL_OPTION, var36, 5 + var38, 16777215, 0);
+                  p11_full.drawStringCenter(StringUtilities.CANT_LOGIN_QUESTION, 382, 36 + var38, 255, 0);
                }
             }
          }
@@ -1034,11 +1034,11 @@ public class ObjectDefinition extends CacheableNode {
                byte var32 = 100;
                byte var27 = 35;
                Class50.aClass108_Sub20_Sub15_Sub2_702.drawSprite(var3, var24);
-               b12_full.drawStringCenter(StringConstants.aString1114 + " " + Client.worldID * 292541855, var3 + var32 / 2, var24 + var27 / 2 - 2, 16777215, 0);
+               b12_full.drawStringCenter(StringUtilities.aString1114 + " " + Client.worldID * 292541855, var3 + var32 / 2, var24 + var27 / 2 - 2, 16777215, 0);
                if(null != Class77.aClass43_1203) {
-                  p11_full.drawStringCenter(StringConstants.LOADING, var32 / 2 + var3, 12 + var24 + var27 / 2, 16777215, 0);
+                  p11_full.drawStringCenter(StringUtilities.LOADING, var32 / 2 + var3, 12 + var24 + var27 / 2, 16777215, 0);
                } else {
-                  p11_full.drawStringCenter(StringConstants.CLICK_TO_SWITCH, var32 / 2 + var3, 12 + var24 + var27 / 2, 16777215, 0);
+                  p11_full.drawStringCenter(StringUtilities.CLICK_TO_SWITCH, var32 / 2 + var3, 12 + var24 + var27 / 2, 16777215, 0);
                }
             } else {
                Class50.aClass108_Sub20_Sub15_Sub2_702 = Renderable.method2488(Class23.spriteIndex, "sl_button", "", (byte)2);

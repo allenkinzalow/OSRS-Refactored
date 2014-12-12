@@ -1,6 +1,8 @@
 
 public class RSSoundEffect {
 
+   public static AbstractIndex soundEffectIndex_R1;
+   static CacheIndex soundEffectsIndex_1;
    int anInt89;
    int anInt91;
    SoundTrackInstrument[] soundTrackInstruments = new SoundTrackInstrument[10];

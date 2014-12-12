@@ -235,7 +235,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
 
                if(var2.startsWith("1.6.0_")) {
                   int var3;
-                  for(var3 = 6; var3 < var2.length() && UnderlayDefinition.method2282(var2.charAt(var3), 1285636105); ++var3) {
+                  for(var3 = 6; var3 < var2.length() && UnderlayDefinition.isNumber(var2.charAt(var3), 1285636105); ++var3) {
                      ;
                   }
 
@@ -424,14 +424,14 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    public abstract void init();
 
    static final void setMenuPosAndDimmension(int x, int y, byte var2) {
-      int maxWidth = RSTypeFace.b12_full_font.getTextWidth(StringConstants.CHOOSE_OPTION);
+      int maxWidth = RSTypeFace.b12_full_font.getTextWidth(StringUtilities.CHOOSE_OPTION);
 
       int menuActionIndex;
       for(menuActionIndex = 0; menuActionIndex < Client.menuActionRow * 391839991; ++menuActionIndex) {
          RSFont b12_full = RSTypeFace.b12_full_font;
          String menuAction;
          if(Client.menuActionNames[menuActionIndex].length() > 0) {
-            menuAction = Client.menuActionNamePrefix[menuActionIndex] + StringConstants.aString1109 + Client.menuActionNames[menuActionIndex];
+            menuAction = Client.menuActionNamePrefix[menuActionIndex] + StringUtilities.aString1109 + Client.menuActionNames[menuActionIndex];
          } else {
             menuAction = Client.menuActionNamePrefix[menuActionIndex];
          }

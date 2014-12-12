@@ -84,27 +84,27 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                               if(var14 <= var7 + 20) {
                                  if((Client.worldType * 164398169 & 4) != 0) {
                                     if(0 != (Client.worldType * 164398169 & 1024)) {
-                                       Class4.aString74 = StringConstants.HIGH_RISK_PVP_WORLD;
-                                       Class4.aString64 = StringConstants.aString1171;
-                                       Class4.aString55 = StringConstants.aString1185;
+                                       Class4.aString74 = StringUtilities.HIGH_RISK_PVP_WORLD;
+                                       Class4.aString64 = StringUtilities.aString1171;
+                                       Class4.aString55 = StringUtilities.aString1185;
                                     } else {
-                                       Class4.aString74 = StringConstants.HIGH_RISK_PVP_WORLD;
-                                       Class4.aString64 = StringConstants.aString1165;
-                                       Class4.aString55 = StringConstants.aString1166;
+                                       Class4.aString74 = StringUtilities.HIGH_RISK_PVP_WORLD;
+                                       Class4.aString64 = StringUtilities.aString1165;
+                                       Class4.aString55 = StringUtilities.aString1166;
                                     }
 
                                     Class4.anInt54 = -1920702863;
                                     Class4.anInt62 = 0;
                                  } else if((Client.worldType * 164398169 & 1024) != 0) {
-                                    Class4.aString74 = StringConstants.aString1167;
-                                    Class4.aString64 = StringConstants.aString1168;
-                                    Class4.aString55 = StringConstants.aString1169;
+                                    Class4.aString74 = StringUtilities.aString1167;
+                                    Class4.aString64 = StringUtilities.aString1168;
+                                    Class4.aString55 = StringUtilities.aString1169;
                                     Class4.anInt54 = -1920702863;
                                     Class4.anInt62 = 0;
                                  } else {
-                                    Class4.aString74 = StringConstants.aString1160;
-                                    Class4.aString64 = StringConstants.aString1101;
-                                    Class4.aString55 = StringConstants.aString1162;
+                                    Class4.aString74 = StringUtilities.aString1160;
+                                    Class4.aString64 = StringUtilities.aString1101;
+                                    Class4.aString55 = StringUtilities.aString1162;
                                     Class4.anInt54 = 453561570;
                                     Class4.anInt62 = 0;
                                  }
@@ -116,9 +116,9 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                } else if(Class4.anInt54 * 2105711249 == 1) {
                   while(GraphicsBuffer.method278(1941552803)) {
                      if(Class9.anInt124 * 1025603675 == 84) {
-                        Class4.aString74 = StringConstants.aString1160;
-                        Class4.aString64 = StringConstants.aString1101;
-                        Class4.aString55 = StringConstants.aString1162;
+                        Class4.aString74 = StringUtilities.aString1160;
+                        Class4.aString64 = StringUtilities.aString1101;
+                        Class4.aString55 = StringUtilities.aString1162;
                         Class4.anInt54 = 453561570;
                         Class4.anInt62 = 0;
                      } else if(Class9.anInt124 * 1025603675 == 13) {
@@ -129,9 +129,9 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   var13 = 302;
                   var7 = 321;
                   if(1 == var10 && var12 >= var13 - 75 && var12 <= 75 + var13 && var14 >= var7 - 20 && var14 <= var7 + 20) {
-                     Class4.aString74 = StringConstants.aString1160;
-                     Class4.aString64 = StringConstants.aString1101;
-                     Class4.aString55 = StringConstants.aString1162;
+                     Class4.aString74 = StringUtilities.aString1160;
+                     Class4.aString64 = StringUtilities.aString1101;
+                     Class4.aString55 = StringUtilities.aString1162;
                      Class4.anInt54 = 453561570;
                      Class4.anInt62 = 0;
                   }
@@ -166,11 +166,11 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   if(var10 == 1 && var12 >= var7 - 75 && var12 <= var7 + 75 && var14 >= var11 - 20 && var14 <= var11 + 20) {
                      Class4.typedUsername = Class4.typedUsername.trim();
                      if(Class4.typedUsername.length() == 0) {
-                        World.method646(StringConstants.aString1066, StringConstants.PLEASE_ENTER_USER_EMAIL, StringConstants.aString982, 2129771750);
+                        World.method646(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 2129771750);
                      } else if(Class4.typedPassword.length() == 0) {
-                        World.method646(StringConstants.aString1096, StringConstants.PLEASE_ENTER_PASS, StringConstants.aString1071, 1994617895);
+                        World.method646(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1994617895);
                      } else {
-                        World.method646(StringConstants.aString1175, StringConstants.aString1176, StringConstants.aString1094, 1896835022);
+                        World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1896835022);
                         Class4.aClass76_65 = Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(ProducingGraphicsBuffer.method1595(Class4.typedUsername, 698639797)))?Class76.aClass76_1200:Class76.aClass76_1199;
                         IsaacRandomGen.method725(20, 1805521706);
                      }
@@ -239,16 +239,16 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                            if(84 == Class9.anInt124 * 1025603675) {
                               Class4.typedUsername = Class4.typedUsername.trim();
                               if(Class4.typedUsername.length() == 0) {
-                                 World.method646(StringConstants.aString1066, StringConstants.PLEASE_ENTER_USER_EMAIL, StringConstants.aString982, 1994248243);
+                                 World.method646(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 1994248243);
                                  return;
                               }
 
                               if(Class4.typedPassword.length() == 0) {
-                                 World.method646(StringConstants.aString1096, StringConstants.PLEASE_ENTER_PASS, StringConstants.aString1071, 1951485667);
+                                 World.method646(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1951485667);
                                  return;
                               }
 
-                              World.method646(StringConstants.aString1175, StringConstants.aString1176, StringConstants.aString1094, 1956224355);
+                              World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1956224355);
                               Class4.aClass76_65 = Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(ProducingGraphicsBuffer.method1595(Class4.typedUsername, 698639797)))?Class76.aClass76_1200:Class76.aClass76_1199;
                               IsaacRandomGen.method725(20, 1408783702);
                               return;
@@ -268,12 +268,12 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   if(1 == var10 && var12 >= var13 - 75 && var12 <= 75 + var13 && var14 >= var7 - 20 && var14 <= 20 + var7) {
                      BuildType.enteredPin.trim();
                      if(BuildType.enteredPin.length() != 6) {
-                        World.method646(StringConstants.aString1153, StringConstants.AUTH_PIN_ENTER, StringConstants.aString984, 2140301062);
+                        World.method646(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2140301062);
                      } else {
                         AnimationSkeletonSet.anInt2260 = Integer.parseInt(BuildType.enteredPin) * -1042182137;
                         BuildType.enteredPin = "";
                         Class4.aClass76_65 = Class4.trustComputer?Class76.aClass76_1198:Class76.aClass76_1201;
-                        World.method646(StringConstants.aString1175, StringConstants.aString1176, StringConstants.aString1094, 1981202273);
+                        World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1981202273);
                         IsaacRandomGen.method725(20, 1910610971);
                      }
                   } else {
@@ -322,14 +322,14 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                               if(84 == Class9.anInt124 * 1025603675) {
                                  BuildType.enteredPin.trim();
                                  if(BuildType.enteredPin.length() != 6) {
-                                    World.method646(StringConstants.aString1153, StringConstants.AUTH_PIN_ENTER, StringConstants.aString984, 2014560043);
+                                    World.method646(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2014560043);
                                     return;
                                  }
 
                                  AnimationSkeletonSet.anInt2260 = Integer.parseInt(BuildType.enteredPin) * -1042182137;
                                  BuildType.enteredPin = "";
                                  Class4.aClass76_65 = Class4.trustComputer?Class76.aClass76_1198:Class76.aClass76_1201;
-                                 World.method646(StringConstants.aString1175, StringConstants.aString1176, StringConstants.aString1094, 2071091536);
+                                 World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 2071091536);
                                  IsaacRandomGen.method725(20, 1944863421);
                                  return;
                               }
@@ -349,7 +349,7 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
       }
    }
 
-   public static int method2069(String var0, byte var1) {
+   public static int getStringLengthPlusOne(String var0) {
       return var0.length() + 1;
    }
 

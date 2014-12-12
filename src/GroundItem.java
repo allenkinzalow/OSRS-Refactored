@@ -16,26 +16,6 @@ public final class GroundItem {
 		return (MouseInputHandler.anInt765 += 1238703313) * -1622361039 - 1;
 	}
 
-	static boolean isFriend(String rawUsername, boolean var1, byte var2) {
-		if (null == rawUsername) {
-			return false;
-		} else {
-			String decodedUsername = Class108_Sub10.method1683(rawUsername, UnderlayDefinition.aClass116_2142, -2105432968);
-
-			for (int friendIndex = 0; friendIndex < Client.friendListCount * -163737695; ++friendIndex) {
-				if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Client.friendList[friendIndex].username, UnderlayDefinition.aClass116_2142, -1893730066)) && (!var1 || Client.friendList[friendIndex].friendHash * -62644779 != 0)) {
-					return true;
-				}
-			}
-
-			if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -2108261163))) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-
 	static final void method582(int var0, short var1) {
 		short var2 = 256;
 		Class4.anInt48 += var0 * -1982538112;
@@ -251,7 +231,7 @@ public final class GroundItem {
 		}
 
 		if (3 == var0.actionType * -2005807019) {
-			Class4.method91(StringConstants.aString1108, "", 26, 0, 0, var0.interfaceHash * -1081473899, 1930894399);
+			Class4.method91(StringUtilities.aString1108, "", 26, 0, 0, var0.interfaceHash * -1081473899, 1930894399);
 		}
 
 		if (4 == var0.actionType * -2005807019) {
@@ -284,10 +264,10 @@ public final class GroundItem {
 						Client.anInt2911 = var15 * -1844234207;
 						Class108_Sub10.aClass108_Sub17_1656 = var0;
 						if (var0.widgetItems[var15] > 0) {
-							ItemDefinition itemDef = AnimationDefinition.getItemDefinition(var0.widgetItems[var15] - 1, -1008729094);
+							ItemDefinition itemDef = ItemDefinition.getItemDefinition(var0.widgetItems[var15] - 1, -1008729094);
 							if (Client.anInt2858 * -968945719 == 1 && Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, 618724156), 1422902481)) {
 								if (Class50.anInt699 * -932350913 != var0.interfaceHash * -1081473899 || var15 != Class51.anInt716 * 347376265) {
-									Class4.method91(StringConstants.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -950562409) + itemDef.name, 31, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2028186126);
+									Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -950562409) + itemDef.name, 31, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2028186126);
 								}
 							} else if (Client.aBool2881 && Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, -1016511227), 77070691)) {
 								if (16 == (Class68.anInt902 * 401025055 & 16)) {
@@ -311,7 +291,7 @@ public final class GroundItem {
 
 											Class4.method91(var12[var13], HuffmanEncoding.method690(16748608, -618418833) + itemDef.name, var14, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2124552684);
 										} else if (4 == var13) {
-											Class4.method91(StringConstants.DROP_OPTION, HuffmanEncoding.method690(16748608, -1522975852) + itemDef.name, 37, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2096358408);
+											Class4.method91(StringUtilities.DROP_OPTION, HuffmanEncoding.method690(16748608, -1522975852) + itemDef.name, 37, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2096358408);
 										}
 									}
 								}
@@ -319,7 +299,7 @@ public final class GroundItem {
 								int var19 = Class32.method576(var0, -1004510541);
 								boolean var18 = (var19 >> 31 & 1) != 0;
 								if (var18) {
-									Class4.method91(StringConstants.USE_OPTION, HuffmanEncoding.method690(16748608, -1608586132) + itemDef.name, 38, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2079440851);
+									Class4.method91(StringUtilities.USE_OPTION, HuffmanEncoding.method690(16748608, -1608586132) + itemDef.name, 38, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2079440851);
 								}
 
 								int var4;
@@ -379,7 +359,7 @@ public final class GroundItem {
 									}
 								}
 
-								Class4.method91(StringConstants.EXAMINE_OPTION, HuffmanEncoding.method690(16748608, -1806251069) + itemDef.name, 1005, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2048146797);
+								Class4.method91(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16748608, -1806251069) + itemDef.name, 1005, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2048146797);
 							}
 						}
 					}
@@ -433,7 +413,7 @@ public final class GroundItem {
 				}
 
 				if (Class1.method37(Class32.method576(var0, -251089339), -437064376)) {
-					Class4.method91(StringConstants.CONTINUE_MENU, "", 30, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1939368166);
+					Class4.method91(StringUtilities.CONTINUE_MENU, "", 30, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1939368166);
 				}
 			}
 		}

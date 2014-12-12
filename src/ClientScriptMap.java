@@ -114,15 +114,15 @@ public class ClientScriptMap extends CacheableNode {
       if(null != definition) {
          int iStackPtr = 0;
          int stringStackPtr = 0;
-         int var8 = -1; 
+         int var8 = -1;
          int[] instructions = definition.instructions;
          int[] intOperands = definition.intOperands;
-         byte var11 = -1; 
+         byte var11 = -1;
          Class5.anInt81 = 0;
 
          int paramIndex;
          try {
-            Class119.intLocals = new int[definition.localIntCount * 1956269049];
+            ClientScript.intLocals = new int[definition.localIntCount * 1956269049];
             int var12 = 0;
             Class54.stringLocals = new String[definition.localStringCount * -741147275];
             int var34 = 0;
@@ -168,7 +168,7 @@ public class ClientScriptMap extends CacheableNode {
                      parameter = script.keyChar * 1510972659;
                   }
 
-                  Class119.intLocals[var12++] = parameter;
+                  ClientScript.intLocals[var12++] = parameter;
                } else if(parameters[paramIndex] instanceof String) {
                   strInstr = (String)parameters[paramIndex];
                   if(strInstr.equals("event_opbase")) {
@@ -203,12 +203,12 @@ public class ClientScriptMap extends CacheableNode {
                String var83;
                int[] var84;
                if(instruction < 100) {
-                  if(instruction == 0) {
+                  if(instruction == 0) { // get operand
                      Class5.intStack[iStackPtr++] = intOperands[var8];
                      continue;
                   }
 
-                  if(1 == instruction) {
+                  if(1 == instruction) { // get config settings
                      parameter = intOperands[var8];
                      Class5.intStack[iStackPtr++] = Class88.configSettings[parameter];
                      continue;
@@ -232,7 +232,7 @@ public class ClientScriptMap extends CacheableNode {
                      continue;
                   }
 
-                  if(7 == instruction) {
+                  if(7 == instruction) { // conditional !=
                      iStackPtr -= 2;
                      if(Class5.intStack[iStackPtr + 1] != Class5.intStack[iStackPtr]) {
                         var8 += intOperands[var8];
@@ -240,7 +240,7 @@ public class ClientScriptMap extends CacheableNode {
                      continue;
                   }
 
-                  if(instruction == 8) {
+                  if(instruction == 8) { // conditional ==
                      iStackPtr -= 2;
                      if(Class5.intStack[iStackPtr] == Class5.intStack[iStackPtr + 1]) {
                         var8 += intOperands[var8];
@@ -248,7 +248,7 @@ public class ClientScriptMap extends CacheableNode {
                      continue;
                   }
 
-                  if(instruction == 9) {
+                  if(instruction == 9) { // conditional <
                      iStackPtr -= 2;
                      if(Class5.intStack[iStackPtr] < Class5.intStack[iStackPtr + 1]) {
                         var8 += intOperands[var8];
@@ -256,7 +256,7 @@ public class ClientScriptMap extends CacheableNode {
                      continue;
                   }
 
-                  if(instruction == 10) {
+                  if(instruction == 10) { // conditional >
                      iStackPtr -= 2;
                      if(Class5.intStack[iStackPtr] > Class5.intStack[1 + iStackPtr]) {
                         var8 += intOperands[var8];
@@ -274,21 +274,21 @@ public class ClientScriptMap extends CacheableNode {
                      instructions = definition.instructions;
                      intOperands = definition.intOperands;
                      var8 = var70.anInt708 * 52913063;
-                     Class119.intLocals = var70.anIntArray709;
+                     ClientScript.intLocals = var70.anIntArray709;
                      Class54.stringLocals = var70.aStringArray715;
                      continue;
                   }
 
-                  if(25 == instruction) {
+                  if(25 == instruction) { // get varbit setting
                      parameter = intOperands[var8];
                      Class5.intStack[iStackPtr++] = BuildType.method1094(parameter, -511913587);
                      continue;
                   }
 
-                  if(instruction == 27) {
+                  if(instruction == 27) { // set varbit value
                      parameter = intOperands[var8];
                      --iStackPtr;
-                     var16 = Class5.intStack[iStackPtr];
+                     var16 = Class5.intStack[iStackPtr]; // value
                      VarpBit var92 = ChatMessagesContainer.method358(parameter, 2117507523);
                      var38 = var92.configId * 863090207;
                      var41 = var92.leastSigBit * 194527281;
@@ -319,32 +319,32 @@ public class ClientScriptMap extends CacheableNode {
                      continue;
                   }
 
-                  if(instruction == 33) {
-                     Class5.intStack[iStackPtr++] = Class119.intLocals[intOperands[var8]];
+                  if(instruction == 33) { // send local ints to stack
+                     Class5.intStack[iStackPtr++] = ClientScript.intLocals[intOperands[var8]];
                      continue;
                   }
 
                   int var10001;
-                  if(34 == instruction) {
+                  if(34 == instruction) { // set local ints
                      var10001 = intOperands[var8];
                      --iStackPtr;
-                     Class119.intLocals[var10001] = Class5.intStack[iStackPtr];
+                     ClientScript.intLocals[var10001] = Class5.intStack[iStackPtr];
                      continue;
                   }
 
-                  if(instruction == 35) {
+                  if(instruction == 35) { // send local strings to stck
                      Class5.stringStack[stringStackPtr++] = Class54.stringLocals[intOperands[var8]];
                      continue;
                   }
 
-                  if(36 == instruction) {
+                  if(36 == instruction) { // set local strings
                      var10001 = intOperands[var8];
                      --stringStackPtr;
                      Class54.stringLocals[var10001] = Class5.stringStack[stringStackPtr];
                      continue;
                   }
 
-                  if(instruction == 37) {
+                  if(instruction == 37) { // build parameters?
                      parameter = intOperands[var8];
                      stringStackPtr -= parameter;
                      String[] stringStack = Class5.stringStack;
@@ -417,14 +417,14 @@ public class ClientScriptMap extends CacheableNode {
                      Class51 var93 = new Class51();
                      var93.aClass108_Sub20_Sub17_711 = definition;
                      var93.anInt708 = var8 * 948638743;
-                     var93.anIntArray709 = Class119.intLocals;
+                     var93.anIntArray709 = ClientScript.intLocals;
                      var93.aStringArray715 = Class54.stringLocals;
                      Class5.aClass51Array82[(Class5.anInt81 -= 2005320131) * 2146486549 - 1] = var93;
                      definition = var95;
                      instructions = var95.instructions;
                      intOperands = var95.intOperands;
                      var8 = -1;
-                     Class119.intLocals = var84;
+                     ClientScript.intLocals = var84;
                      Class54.stringLocals = var71;
                      continue;
                   }
@@ -706,12 +706,12 @@ public class ClientScriptMap extends CacheableNode {
                                     var35.anObjectArray1845 = var90;
                                  }
 
-                                 if(1414 == instruction) {
+                                 if(1414 == instruction) { // set item update triggers
                                     var35.onItemUpdateTrigger = var90;
                                     var35.itemUpdateTriggers = var51;
                                  }
 
-                                 if(1415 == instruction) {
+                                 if(1415 == instruction) { // set skill update triggers
                                     var35.onSkillUpdateTrigger = var90;
                                     var35.anIntArray1856 = var51;
                                  }
@@ -768,22 +768,22 @@ public class ClientScriptMap extends CacheableNode {
                                     continue;
                                  }
 
-                                 if(instruction == 1502) {
+                                 if(instruction == 1502) { // get component height
                                     Class5.intStack[iStackPtr++] = var35.height * -1281443035;
                                     continue;
                                  }
 
-                                 if(instruction == 1503) {
+                                 if(instruction == 1503) { // get component width
                                     Class5.intStack[iStackPtr++] = var35.width * 334099177;
                                     continue;
                                  }
 
-                                 if(1504 == instruction) {
+                                 if(1504 == instruction) { // is component hidden
                                     Class5.intStack[iStackPtr++] = var35.hidden?1:0;
                                     continue;
                                  }
 
-                                 if(instruction == 1505) {
+                                 if(instruction == 1505) { // get component tooltip
                                     Class5.intStack[iStackPtr++] = var35.hoverPopup * -867206361;
                                     continue;
                                  }
@@ -794,12 +794,12 @@ public class ClientScriptMap extends CacheableNode {
                                     continue;
                                  }
 
-                                 if(instruction == 1601) {
+                                 if(instruction == 1601) { // compononent scroll pos
                                     Class5.intStack[iStackPtr++] = var35.scrollPosition * -643576081;
                                     continue;
                                  }
 
-                                 if(1602 == instruction) {
+                                 if(1602 == instruction) { // component string
                                     Class5.stringStack[stringStackPtr++] = var35.componentString;
                                     continue;
                                  }
@@ -881,7 +881,7 @@ public class ClientScriptMap extends CacheableNode {
                                     }
                                     continue;
                                  }
-                              } else if(instruction < 2600) {
+                              } else if(instruction < 2600) { // component for intstack - render variables
                                  --iStackPtr;
                                  var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], -752744204);
                                  if(2500 == instruction) {
@@ -913,7 +913,7 @@ public class ClientScriptMap extends CacheableNode {
                                     Class5.intStack[iStackPtr++] = var35.hoverPopup * -867206361;
                                     continue;
                                  }
-                              } else if(instruction < 2700) {
+                              } else if(instruction < 2700) { // get component for intstack - media variables
                                  --iStackPtr;
                                  var35 = CacheIndexRequest.getInterfaceComponentForHash(Class5.intStack[iStackPtr], -524821673);
                                  if(instruction == 2600) {
@@ -1026,16 +1026,16 @@ public class ClientScriptMap extends CacheableNode {
                                  boolean var44;
                                  int var62;
                                  if(instruction < 3200) {
-                                    if(3100 == instruction) {
+                                    if(3100 == instruction) { // send chat message
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
-                                       AnimationSkeletonSet.pushMessage(0, "", var83, -819691502);
+                                       ChatMessagesContainer.pushMessage(0, "", var83, -819691502);
                                        continue;
                                     }
 
-                                    if(instruction == 3101) {
+                                    if(instruction == 3101) { // something with player and animation
                                        iStackPtr -= 2;
-                                       Class51.method703(Player.myPlayer, Class5.intStack[iStackPtr], Class5.intStack[1 + iStackPtr], (short)-24527);
+                                       Player.method703(Player.myPlayer, Class5.intStack[iStackPtr], Class5.intStack[1 + iStackPtr], (short) -24527);
                                        continue;
                                     }
 
@@ -1117,7 +1117,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3105 == instruction) {
+                                    if(3105 == instruction) { // write user
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        Client.secureBuffer.writePacket(58);
@@ -1126,7 +1126,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3106 == instruction) {
+                                    if(3106 == instruction) { // write user
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        Client.secureBuffer.writePacket(65);
@@ -1135,7 +1135,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3107 == instruction) {
+                                    if(3107 == instruction) { // click action type in chatbox - trade, duel, etc..
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        --stringStackPtr;
@@ -1169,12 +1169,12 @@ public class ClientScriptMap extends CacheableNode {
                                        }
 
                                        if(!var43) {
-                                          AnimationSkeletonSet.pushMessage(4, "", StringConstants.UNABLE_TO_FIND + var39, -594294711);
+                                          ChatMessagesContainer.pushMessage(4, "", StringUtilities.UNABLE_TO_FIND + var39, -594294711);
                                        }
                                        continue;
                                     }
 
-                                    if(3108 == instruction) {
+                                    if(3108 == instruction) { // something with interface components & hover
                                        iStackPtr -= 3;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
@@ -1188,12 +1188,12 @@ public class ClientScriptMap extends CacheableNode {
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
-                                       var18 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
+                                       var18 = var52 ? Class19.aClass108_Sub17_230 : BuildType.aClass108_Sub17_1231;
                                        RSPacketBuffer.method2598(var18, var16, var17, (byte)-39);
                                        continue;
                                     }
 
-                                    if(3110 == instruction) {
+                                    if(3110 == instruction) { // something to do with mouse & right click
                                        --iStackPtr;
                                        Class100.aBool1391 = Class5.intStack[iStackPtr] == 1;
                                        continue;
@@ -1204,14 +1204,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3112 == instruction) {
+                                    if(3112 == instruction) { // possibly load cache file preferences? or save
                                        --iStackPtr;
                                        Ignore.aClass37_386.aBool528 = Class5.intStack[iStackPtr] == 1;
                                        Timer.method713(-1212311019);
                                        continue;
                                     }
 
-                                    if(3113 == instruction) {
+                                    if(3113 == instruction) { // open link, i believe
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        --iStackPtr;
@@ -1236,7 +1236,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3201 == instruction) {
+                                    if(3201 == instruction) { // something to do with sound/music
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        if(var16 == -1 && !Client.aBool2938) {
@@ -1259,12 +1259,12 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3202 == instruction) {
+                                    if(3202 == instruction) { // play song?
                                        iStackPtr -= 2;
                                        Timer.method722(Class5.intStack[iStackPtr], Class5.intStack[iStackPtr + 1], 292227973);
                                        continue;
                                     }
-                                 } else if(instruction < 3400) {
+                                 } else if(instruction < 3400) { // get client cycle
                                     if(instruction == 3300) {
                                        Class5.intStack[iStackPtr++] = Client.cycle * -637317861;
                                        continue;
@@ -1317,14 +1317,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3304 == instruction) {
+                                    if(3304 == instruction) { // this gets something from the config index, not sure what yet
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = KeyFocusListener.method919(var16, -239277023).anInt1964 * -244340163;
                                        continue;
                                     }
 
-                                    if(instruction == 3305) { 
+                                    if(instruction == 3305) {  // get level for skill id
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = Client.skillLevels[var16];
@@ -1334,21 +1334,21 @@ public class ClientScriptMap extends CacheableNode {
                                     if(3306 == instruction) {
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       Class5.intStack[iStackPtr++] = Client.anIntArray2843[var16];
+                                       Class5.intStack[iStackPtr++] = Client.anIntArray2843[var16]; // something to do with skills
                                        continue;
                                     }
 
-                                    if(3307 == instruction) {
+                                    if(3307 == instruction) { // get xp for skill id
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = Client.skillXPs[var16];
                                        continue;
                                     }
 
-                                    if(instruction == 3308) {
-                                       var16 = VarpBit.plane * -570926309;
-                                       var17 = Class100.anInt1388 * 263051377 + (Player.myPlayer.anInt2394 * 171470795 >> 7);
-                                       var38 = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
+                                    if(instruction == 3308) { // location hash
+                                       var16 = VarpBit.plane * -570926309; // plane
+                                       var17 = Class100.anInt1388 * 263051377 + (Player.myPlayer.anInt2394 * 171470795 >> 7); // local x
+                                       var38 = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671; // local y
                                        Class5.intStack[iStackPtr++] = var38 + (var16 << 28) + (var17 << 14);
                                        continue;
                                     }
@@ -1360,14 +1360,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3310) {
+                                    if(instruction == 3310) { // intstack >> 28
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = var16 >> 28;
                                        continue;
                                     }
 
-                                    if(instruction == 3311) {
+                                    if(instruction == 3311) { // int stack & 16383
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = var16 & 16383;
@@ -1439,17 +1439,17 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3318 == instruction) {
+                                    if(3318 == instruction) { // get world id
                                        Class5.intStack[iStackPtr++] = Client.worldID * 292541855;
                                        continue;
                                     }
 
-                                    if(3321 == instruction) {
+                                    if(3321 == instruction) { // something sent from server
                                        Class5.intStack[iStackPtr++] = Client.anInt2870 * -459978045;
                                        continue;
                                     }
 
-                                    if(instruction == 3322) {
+                                    if(instruction == 3322) { // current window id? maybe
                                        Class5.intStack[iStackPtr++] = Client.anInt2871 * -409161997;
                                        continue;
                                     }
@@ -1491,7 +1491,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3408) { // cs map int values
+                                    if(instruction == 3408) { // cs map int values - cool shit ye
                                        iStackPtr -= 4;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
@@ -1529,7 +1529,7 @@ public class ClientScriptMap extends CacheableNode {
                                        }
                                        continue;
                                     }
-                                 } else if(instruction < 3700) {
+                                 } else if(instruction < 3700) { // get friend list count
                                     if(3600 == instruction) {
                                        if(Client.anInt2954 * 1676461513 == 0) {
                                           Class5.intStack[iStackPtr++] = -2;
@@ -1541,12 +1541,12 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3601) {
+                                    if(instruction == 3601) { // get username and display name for friend index
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        if(2 == Client.anInt2954 * 1676461513 && var16 < Client.friendListCount * -163737695) {
                                           Class5.stringStack[stringStackPtr++] = Client.friendList[var16].username;
-                                          Class5.stringStack[stringStackPtr++] = Client.friendList[var16].aString621;
+                                          Class5.stringStack[stringStackPtr++] = Client.friendList[var16].displayName;
                                           continue;
                                        }
 
@@ -1555,7 +1555,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3602) {
+                                    if(instruction == 3602) { // get friend hash for index
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        if(Client.anInt2954 * 1676461513 == 2 && var16 < Client.friendListCount * -163737695) {
@@ -1567,7 +1567,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3603 == instruction) {
+                                    if(3603 == instruction) { // get some variable from friend list
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        if(2 == Client.anInt2954 * 1676461513 && var16 < Client.friendListCount * -163737695) {
@@ -1590,7 +1590,7 @@ public class ClientScriptMap extends CacheableNode {
 
                                     Ignore ignore;
                                     String actualUsername;
-                                    if(instruction == 3605) {
+                                    if(instruction == 3605) { // add to friend list
                                        --stringStackPtr;
                                        String username = Class5.stringStack[stringStackPtr];
                                        if(username == null) {
@@ -1607,14 +1607,14 @@ public class ClientScriptMap extends CacheableNode {
                                              Friend friend = Client.friendList[friendIndex];
                                              actualUsername = Class108_Sub10.method1683(friend.username, UnderlayDefinition.aClass116_2142, -1988298806);
                                              if(actualUsername != null && actualUsername.equals(enteredUser)) {
-                                                AnimationSkeletonSet.pushMessage(30, "", username + StringConstants.ALREADY_ON_FL, -788791347);
+                                                ChatMessagesContainer.pushMessage(30, "", username + StringUtilities.ALREADY_ON_FL, -788791347);
                                                 continue label2481;
                                              }
 
-                                             if(friend.aString621 != null) {
-                                                String actualFriendUser = Class108_Sub10.method1683(friend.aString621, UnderlayDefinition.aClass116_2142, -1958821332);
+                                             if(friend.displayName != null) {
+                                                String actualFriendUser = Class108_Sub10.method1683(friend.displayName, UnderlayDefinition.aClass116_2142, -1958821332);
                                                 if(null != actualFriendUser && actualFriendUser.equals(enteredUser)) {
-                                                   AnimationSkeletonSet.pushMessage(30, "", username + StringConstants.ALREADY_ON_FL, -350611114);
+                                                   ChatMessagesContainer.pushMessage(30, "", username + StringUtilities.ALREADY_ON_FL, -350611114);
                                                    continue label2481;
                                                 }
                                              }
@@ -1624,48 +1624,48 @@ public class ClientScriptMap extends CacheableNode {
                                              ignore = Client.ignoreList[ignoreIndex];
                                              actualUsername = Class108_Sub10.method1683(ignore.username, UnderlayDefinition.aClass116_2142, -1991729949);
                                              if(null != actualUsername && actualUsername.equals(enteredUser)) {
-                                                AnimationSkeletonSet.pushMessage(30, "", StringConstants.PLEASE_REMOVE + username + StringConstants.aString1122, -1000356271);
+                                                ChatMessagesContainer.pushMessage(30, "", StringUtilities.PLEASE_REMOVE + username + StringUtilities.aString1122, -1000356271);
                                                 continue label2481;
                                              }
 
-                                             if(null != ignore.aString387) {
-                                                var58 = Class108_Sub10.method1683(ignore.aString387, UnderlayDefinition.aClass116_2142, -2046995173);
+                                             if(null != ignore.displayName) {
+                                                var58 = Class108_Sub10.method1683(ignore.displayName, UnderlayDefinition.aClass116_2142, -2046995173);
                                                 if(var58 != null && var58.equals(enteredUser)) {
-                                                   AnimationSkeletonSet.pushMessage(30, "", StringConstants.PLEASE_REMOVE + username + StringConstants.aString1122, 75027476);
+                                                   ChatMessagesContainer.pushMessage(30, "", StringUtilities.PLEASE_REMOVE + username + StringUtilities.aString1122, 75027476);
                                                    continue label2481;
                                                 }
                                              }
                                           }
 
                                           if(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1935156967).equals(enteredUser)) {
-                                             AnimationSkeletonSet.pushMessage(30, "", StringConstants.aString1025, 306905076);
+                                             ChatMessagesContainer.pushMessage(30, "", StringUtilities.CANT_ADD_SELF, 306905076);
                                           } else {
                                              Client.secureBuffer.writePacket(229);
-                                             Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(username, (byte) 64));
+                                             Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(username));
                                              Client.secureBuffer.writeString(username);
                                           }
                                           continue;
                                        }
 
-                                       AnimationSkeletonSet.pushMessage(30, "", StringConstants.FRIEND_LIST_FULL, -675163460);
+                                       ChatMessagesContainer.pushMessage(30, "", StringUtilities.FRIEND_LIST_FULL, -675163460);
                                        continue;
                                     }
 
-                                    if(instruction == 3606) {
+                                    if(instruction == 3606) { // remove friend
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
-                                       Player.removeFriend(var83, 1604645946);
+                                       Friend.removeFriend(var83, 1604645946);
                                        continue;
                                     }
 
-                                    if(3607 == instruction) {
+                                    if(3607 == instruction) { // add string to ignore list
                                        --stringStackPtr;
                                        String name = Class5.stringStack[stringStackPtr];
-                                       ProducingGraphicsBuffer.addToIgnoreList(name, false, -1320321926);
+                                       Ignore.addToIgnoreList(name, false, -1320321926);
                                        continue;
                                     }
 
-                                    if(3608 == instruction) {
+                                    if(3608 == instruction) { // editing something with ignore list
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        if(var83 == null) {
@@ -1707,7 +1707,7 @@ public class ClientScriptMap extends CacheableNode {
 
                                              Client.anInt2897 = Client.anInt2731 * 1946037095;
                                              Client.secureBuffer.writePacket(157);
-                                             Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(var83, (byte) 64));
+                                             Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(var83));
                                              Client.secureBuffer.writeString(var83);
                                              continue label2481;
                                           }
@@ -1716,14 +1716,14 @@ public class ClientScriptMap extends CacheableNode {
                                        }
                                     }
 
-                                    if(instruction == 3609) {
+                                    if(instruction == 3609) { // is username friend
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        if(var83.startsWith(CacheIndexRequest.getIconTag(0, 480603646)) || var83.startsWith(CacheIndexRequest.getIconTag(1, 480603646))) {
                                           var83 = var83.substring(7);
                                        }
 
-                                       Class5.intStack[iStackPtr++] = GroundItem.isFriend(var83, false, (byte)-34)?1:0;
+                                       Class5.intStack[iStackPtr++] = Friend.isFriend(var83, false, (byte) -34)?1:0;
                                        continue;
                                     }
 
@@ -1736,19 +1736,19 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3612) {
+                                    if(instruction == 3612) { // gets amount of members in friends chat
                                        if(Client.aString2967 != null) {
-                                          Class5.intStack[iStackPtr++] = Class27.anInt363 * 1727166727;
+                                          Class5.intStack[iStackPtr++] = Class27.friendsChatListCount * 1727166727;
                                        } else {
                                           Class5.intStack[iStackPtr++] = 0;
                                        }
                                        continue;
                                     }
 
-                                    if(instruction == 3613) {
+                                    if(instruction == 3613) { // gets username of friends chat member for index
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       if(Client.aString2967 != null && var16 < Class27.anInt363 * 1727166727) {
+                                       if(Client.aString2967 != null && var16 < Class27.friendsChatListCount * 1727166727) {
                                           Class5.stringStack[stringStackPtr++] = Class50.friendsChatList[var16].username;
                                           continue;
                                        }
@@ -1757,10 +1757,10 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3614) {
+                                    if(instruction == 3614) { // gets some variable of friends chat member for index
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       if(null != Client.aString2967 && var16 < Class27.anInt363 * 1727166727) {
+                                       if(null != Client.aString2967 && var16 < Class27.friendsChatListCount * 1727166727) {
                                           Class5.intStack[iStackPtr++] = Class50.friendsChatList[var16].anInt1663 * -23557543;
                                           continue;
                                        }
@@ -1769,10 +1769,10 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3615) {
+                                    if(instruction == 3615) { // get rank of friends chat member for index
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       if(Client.aString2967 != null && var16 < Class27.anInt363 * 1727166727) {
+                                       if(Client.aString2967 != null && var16 < Class27.friendsChatListCount * 1727166727) {
                                           Class5.intStack[iStackPtr++] = Class50.friendsChatList[var16].rank;
                                           continue;
                                        }
@@ -1786,35 +1786,35 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 3617) {
+                                    if(instruction == 3617) { // same as instr 3619, except packet 22
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        if(null != Class50.friendsChatList) {
                                           Client.secureBuffer.writePacket(22);
-                                          Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(var83, (byte) 64));
+                                          Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(var83));
                                           Client.secureBuffer.writeString(var83);
                                        }
                                        continue;
                                     }
 
-                                    if(3618 == instruction) {
+                                    if(3618 == instruction) { // sets this byte to the stack, its only used here..
                                        Class5.intStack[iStackPtr++] = NPCDefinition.aByte2194;
                                        continue;
                                     }
 
-                                    if(instruction == 3619) {
+                                    if(instruction == 3619) { // writes packet 107: var83.length + 1, var83
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        Class5.method102(var83, -1545607057);
                                        continue;
                                     }
 
-                                    if(3620 == instruction) {
+                                    if(3620 == instruction) { // writes packet 107
                                        Class89.method1130();
                                        continue;
                                     }
 
-                                    if(instruction == 3621) {
+                                    if(instruction == 3621) { // get ignore list count
                                        if(Client.anInt2954 * 1676461513 == 0) {
                                           Class5.intStack[iStackPtr++] = -1;
                                        } else {
@@ -1823,12 +1823,12 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3622 == instruction) {
+                                    if(3622 == instruction) { // get username and display name for ignore index
                                        --iStackPtr;
-                                       var16 = Class5.intStack[iStackPtr];
+                                       var16 = Class5.intStack[iStackPtr]; // ignoreindex
                                        if(0 != Client.anInt2954 * 1676461513 && var16 < Client.ignoreListCount * -1283681697) {
                                           Class5.stringStack[stringStackPtr++] = Client.ignoreList[var16].username;
-                                          Class5.stringStack[stringStackPtr++] = Client.ignoreList[var16].aString387;
+                                          Class5.stringStack[stringStackPtr++] = Client.ignoreList[var16].displayName;
                                           continue;
                                        }
 
@@ -1837,21 +1837,21 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(3623 == instruction) {
+                                    if(3623 == instruction) { // check if username is on ignore list
                                        --stringStackPtr;
                                        String name = Class5.stringStack[stringStackPtr];
-                                       if(name.startsWith(CacheIndexRequest.getIconTag(0, 480603646)) || name.startsWith(CacheIndexRequest.getIconTag(1, 480603646))) {
+                                       if(name.startsWith(CacheIndexRequest.getIconTag(0, 480603646)) || name.startsWith(CacheIndexRequest.getIconTag(1, 480603646))) { // remove crown
                                           name = name.substring(7);
                                        }
 
-                                       Class5.intStack[iStackPtr++] = WallDecoration.isOnIgnore(name, 697716039)?1:0;
+                                       Class5.intStack[iStackPtr++] = Ignore.isOnIgnore(name, 697716039)?1:0;
                                        continue;
                                     }
 
-                                    if(3624 == instruction) {
+                                    if(3624 == instruction) { // does friends chat list contain myplayer user
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       if(null != Class50.friendsChatList && var16 < Class27.anInt363 * 1727166727 && Class50.friendsChatList[var16].username.equalsIgnoreCase(Player.myPlayer.playerName)) {
+                                       if(null != Class50.friendsChatList && var16 < Class27.friendsChatListCount * 1727166727 && Class50.friendsChatList[var16].username.equalsIgnoreCase(Player.myPlayer.playerName)) {
                                           Class5.intStack[iStackPtr++] = 1;
                                           continue;
                                        }
@@ -1868,7 +1868,7 @@ public class ClientScriptMap extends CacheableNode {
                                        }
                                        continue;
                                     }
-                                 } else if(instruction < 4100) {
+                                 } else if(instruction < 4100) { // addition
                                     if(4000 == instruction) {
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
@@ -1877,7 +1877,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4001 == instruction) {
+                                    if(4001 == instruction) { // subtraction
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
@@ -1885,7 +1885,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4002) {
+                                    if(instruction == 4002) { // multiplication
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
@@ -1893,7 +1893,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4003) {
+                                    if(instruction == 4003) { // division
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[iStackPtr + 1];
@@ -1901,14 +1901,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4004 == instruction) {
+                                    if(4004 == instruction) { // random number between 0 and var16
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = (int)(Math.random() * (double)var16);
                                        continue;
                                     }
 
-                                    if(instruction == 4005) {
+                                    if(instruction == 4005) { // random number between 0 and var16+1
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = (int)(Math.random() * (double)(var16 + 1));
@@ -1954,11 +1954,11 @@ public class ClientScriptMap extends CacheableNode {
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[iStackPtr + 1];
-                                       Class5.intStack[iStackPtr++] = (var16 & 1 << var17) != 0?1:0;
+                                       Class5.intStack[iStackPtr++] = (var16 & 1 << var17) != 0 ? 1 : 0;
                                        continue;
                                     }
 
-                                    if(instruction == 4011) {
+                                    if(instruction == 4011) { // modulus/remainder operator
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
@@ -1966,7 +1966,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4012) {
+                                    if(instruction == 4012) { // number_1 ^ number_2
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[iStackPtr + 1];
@@ -1978,7 +1978,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4013 == instruction) {
+                                    if(4013 == instruction) { // number_1 ^ (1 / number_2)
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[iStackPtr + 1];
@@ -1992,7 +1992,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4014) {
+                                    if(instruction == 4014) { // AND operation
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
@@ -2000,14 +2000,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4015) {
+                                    if(instruction == 4015) { // OR inclusive operation
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
                                        Class5.intStack[iStackPtr++] = var16 | var17;
                                        continue;
                                     }
-                                 } else if(instruction < 4200) {
+                                 } else if(instruction < 4200) { // append int to string
                                     if(4100 == instruction) {
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
@@ -2017,7 +2017,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4101) {
+                                    if(instruction == 4101) { // append two strings
                                        stringStackPtr -= 2;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        var39 = Class5.stringStack[1 + stringStackPtr];
@@ -2069,14 +2069,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4103) {
+                                    if(instruction == 4103) { // string to lowercase
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        Class5.stringStack[stringStackPtr++] = var83.toLowerCase();
                                        continue;
                                     }
 
-                                    if(4104 == instruction) {
+                                    if(4104 == instruction) { // get date for time in ms
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        long var30 = (11745L + (long)var16) * 86400000L;
@@ -2088,7 +2088,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4105 == instruction) {
+                                    if(4105 == instruction) { // add string to stack if female, another string if male
                                        stringStackPtr -= 2;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        var39 = Class5.stringStack[stringStackPtr + 1];
@@ -2101,7 +2101,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4106 == instruction) {
+                                    if(4106 == instruction) { // int to string
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.stringStack[stringStackPtr++] = Integer.toString(var16);
@@ -2116,7 +2116,7 @@ public class ClientScriptMap extends CacheableNode {
 
                                     byte[] var68;
                                     RSFont var72;
-                                    if(4108 == instruction) {
+                                    if(4108 == instruction) { // get some kind of length related to font, either length with tags or without.
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        iStackPtr -= 2;
@@ -2128,19 +2128,19 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4109 == instruction) {
+                                    if(4109 == instruction) { // get text width with tags
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        iStackPtr -= 2;
                                        var17 = Class5.intStack[iStackPtr];
-                                       var38 = Class5.intStack[1 + iStackPtr];
-                                       var68 = Class54.fontIndex.getFile(var38, 0, (byte) 7);
+                                       var38 = Class5.intStack[1 + iStackPtr]; // file id
+                                       var68 = Class54.fontIndex.getFile(var38, 0, (byte) 7); // font data
                                        var72 = new RSFont(var68);
                                        Class5.intStack[iStackPtr++] = var72.method3091(var83, var17);
                                        continue;
                                     }
 
-                                    if(4110 == instruction) {
+                                    if(4110 == instruction) { // if intstack =  1 set string stack 1st string else 2nd string ...?
                                        stringStackPtr -= 2;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        var39 = Class5.stringStack[1 + stringStackPtr];
@@ -2153,14 +2153,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4111) {
+                                    if(instruction == 4111) { // append <lt> <gt> tags
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = RSTypeFace.method3093(var83);
+                                       Class5.stringStack[stringStackPtr++] = RSTypeFace.appendLTGTTags(var83);
                                        continue;
                                     }
 
-                                    if(instruction == 4112) {
+                                    if(instruction == 4112) { // append char to string
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        --iStackPtr;
@@ -2170,7 +2170,7 @@ public class ClientScriptMap extends CacheableNode {
                                     }
 
                                     char var69;
-                                    if(4113 == instruction) {
+                                    if(4113 == instruction) { // is char any character and then something else @marked
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        var84 = Class5.intStack;
@@ -2180,7 +2180,7 @@ public class ClientScriptMap extends CacheableNode {
                                           var44 = true;
                                        } else if(var69 >= 160 && var69 <= 255) {
                                           var44 = true;
-                                       } else if(8364 != var69 && var69 != 338 && 8212 != var69 && var69 != 339 && var69 != 376) {
+                                       } else if(8364 != var69 && var69 != 338 && 8212 != var69 && var69 != 339 && var69 != 376) { // marked
                                           var44 = false;
                                        } else {
                                           var44 = true;
@@ -2190,7 +2190,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4114) {
+                                    if(instruction == 4114) { // is char alphabet letter caps/lowercase or number
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        var84 = Class5.intStack;
@@ -2201,7 +2201,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4115 == instruction) {
+                                    if(4115 == instruction) { // is char alphabet letter caps or lowercase
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        var84 = Class5.intStack;
@@ -2212,14 +2212,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4116 == instruction) {
+                                    if(4116 == instruction) { // check if a char is a number
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       Class5.intStack[iStackPtr++] = UnderlayDefinition.method2282((char) var16, 993015549)?1:0;
+                                       Class5.intStack[iStackPtr++] = UnderlayDefinition.isNumber((char) var16, 993015549)?1:0;
                                        continue;
                                     }
 
-                                    if(4117 == instruction) {
+                                    if(4117 == instruction) { // get string length
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        if(var83 != null) {
@@ -2230,7 +2230,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4118 == instruction) {
+                                    if(4118 == instruction) { // substring arg1,arg2
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        iStackPtr -= 2;
@@ -2240,10 +2240,10 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4119 == instruction) {
+                                    if(4119 == instruction) { // rebuild a string excluding char 60
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
-                                       StringBuilder var82 = new StringBuilder(var83.length());
+                                       StringBuilder builtString = new StringBuilder(var83.length());
                                        var43 = false;
 
                                        for(var41 = 0; var41 < var83.length(); ++var41) {
@@ -2253,15 +2253,15 @@ public class ClientScriptMap extends CacheableNode {
                                           } else if(62 == var69) {
                                              var43 = false;
                                           } else if(!var43) {
-                                             var82.append(var69);
+                                             builtString.append(var69);
                                           }
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = var82.toString();
+                                       Class5.stringStack[stringStackPtr++] = builtString.toString();
                                        continue;
                                     }
 
-                                    if(instruction == 4120) {
+                                    if(instruction == 4120) { // get a string at indexof #
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        --iStackPtr;
@@ -2270,7 +2270,7 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4121 == instruction) {
+                                    if(4121 == instruction) { //get a string at indexof string,#
                                        stringStackPtr -= 2;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        var39 = Class5.stringStack[1 + stringStackPtr];
@@ -2279,20 +2279,20 @@ public class ClientScriptMap extends CacheableNode {
                                        Class5.intStack[iStackPtr++] = var83.indexOf(var39, var38);
                                        continue;
                                     }
-                                 } else if(instruction < 4300) {
+                                 } else if(instruction < 4300) { // get item name
                                     if(instruction == 4200) {
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = AnimationDefinition.getItemDefinition(var16, -13500590).name;
+                                       Class5.stringStack[stringStackPtr++] = ItemDefinition.getItemDefinition(var16, -13500590).name;
                                        continue;
                                     }
 
                                     ItemDefinition var73;
-                                    if(4201 == instruction) {
+                                    if(4201 == instruction) { //get item ground items
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[iStackPtr + 1];
-                                       var73 = AnimationDefinition.getItemDefinition(var16, -1642198338);
+                                       var73 = ItemDefinition.getItemDefinition(var16, -1642198338);
                                        if(var17 >= 1 && var17 <= 5 && null != var73.options[var17 - 1]) {
                                           Class5.stringStack[stringStackPtr++] = var73.options[var17 - 1];
                                           continue;
@@ -2302,11 +2302,11 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4202) {
+                                    if(instruction == 4202) { // get item interface options
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[1 + iStackPtr];
-                                       var73 = AnimationDefinition.getItemDefinition(var16, -1925560779);
+                                       var73 = ItemDefinition.getItemDefinition(var16, -1925560779);
                                        if(var17 >= 1 && var17 <= 5 && null != var73.interfaceOptions[var17 - 1]) {
                                           Class5.stringStack[stringStackPtr++] = var73.interfaceOptions[var17 - 1];
                                           continue;
@@ -2316,25 +2316,25 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(4203 == instruction) {
+                                    if(4203 == instruction) { // get item cost
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       Class5.intStack[iStackPtr++] = AnimationDefinition.getItemDefinition(var16, -1105612786).cost * -1794880833;
+                                       Class5.intStack[iStackPtr++] = ItemDefinition.getItemDefinition(var16, -1105612786).cost * -1794880833;
                                        continue;
                                     }
 
-                                    if(instruction == 4204) {
+                                    if(instruction == 4204) { // check if an item is stackable
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       Class5.intStack[iStackPtr++] = AnimationDefinition.getItemDefinition(var16, -161037532).stackable * 1548462817 == 1?1:0;
+                                       Class5.intStack[iStackPtr++] = ItemDefinition.getItemDefinition(var16, -161037532).stackable * 1548462817 == 1 ? 1 : 0;
                                        continue;
                                     }
 
                                     ItemDefinition var88;
-                                    if(instruction == 4205) {
+                                    if(instruction == 4205) { // get item note id with no template
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       var88 = AnimationDefinition.getItemDefinition(var16, -931291652);
+                                       var88 = ItemDefinition.getItemDefinition(var16, -931291652);
                                        if(-1 == var88.notedTemplate * -910205763 && var88.notedID * -616959653 >= 0) {
                                           Class5.intStack[iStackPtr++] = var88.notedID * -616959653;
                                           continue;
@@ -2344,10 +2344,10 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4206) {
+                                    if(instruction == 4206) { // get item note id
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       var88 = AnimationDefinition.getItemDefinition(var16, -1637769624);
+                                       var88 = ItemDefinition.getItemDefinition(var16, -1637769624);
                                        if(var88.notedTemplate * -910205763 >= 0 && var88.notedID * -616959653 >= 0) {
                                           Class5.intStack[iStackPtr++] = var88.notedID * -616959653;
                                           continue;
@@ -2357,10 +2357,10 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 4207) {
+                                    if(instruction == 4207) { // check if an item is members or not
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       Class5.intStack[iStackPtr++] = AnimationDefinition.getItemDefinition(var16, -1286914239).members?1:0;
+                                       Class5.intStack[iStackPtr++] = ItemDefinition.getItemDefinition(var16, -1286914239).members ? 1 : 0;
                                        continue;
                                     }
                                  } else if(instruction < 5100) {
@@ -2412,18 +2412,18 @@ public class ClientScriptMap extends CacheableNode {
                                        var17 = Class5.intStack[iStackPtr];
                                        var38 = Class5.intStack[iStackPtr + 1];
                                        Client.secureBuffer.writePacket(96);
-                                       Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(var83, (byte) 64) + 2);
+                                       Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(var83) + 2);
                                        Client.secureBuffer.writeString(var83);
                                        Client.secureBuffer.writeByte(var17 - 1);
                                        Client.secureBuffer.writeByte(var38);
                                        continue;
                                     }
 
-                                    if(5003 == instruction) {
+                                    if(5003 == instruction) { // get chat details from specific container
                                        iStackPtr -= 2;
                                        var16 = Class5.intStack[iStackPtr];
                                        var17 = Class5.intStack[iStackPtr + 1];
-                                       ChatMessage var80 = Ignore.method396(var16, var17, (byte)-55);
+                                       ChatMessage var80 = ChatMessagesContainer.getChatMessageFromContainer(var16, var17, (byte) -55);
                                        if(var80 != null) {
                                           Class5.intStack[iStackPtr++] = var80.anInt1944 * -1818271001;
                                           Class5.intStack[iStackPtr++] = var80.messagePushTime * -1204791759;
@@ -2440,16 +2440,16 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 5004) {
+                                    if(instruction == 5004) { // add latest message details to stack for given message index
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
-                                       ChatMessage var89 = (ChatMessage)Class26.aClass95_348.method1202((long)var16);
-                                       if(var89 != null) {
-                                          Class5.intStack[iStackPtr++] = var89.messageType * 1488157137;
-                                          Class5.intStack[iStackPtr++] = var89.messagePushTime * -1204791759;
-                                          Class5.stringStack[stringStackPtr++] = null != var89.messagePrefix?var89.messagePrefix:"";
-                                          Class5.stringStack[stringStackPtr++] = var89.messageString != null?var89.messageString:"";
-                                          Class5.stringStack[stringStackPtr++] = null != var89.messageSuffix?var89.messageSuffix:"";
+                                       ChatMessage chatMessage = (ChatMessage)Class26.aClass95_348.method1202((long)var16);
+                                       if(chatMessage != null) {
+                                          Class5.intStack[iStackPtr++] = chatMessage.messageType * 1488157137;
+                                          Class5.intStack[iStackPtr++] = chatMessage.messagePushTime * -1204791759;
+                                          Class5.stringStack[stringStackPtr++] = null != chatMessage.messagePrefix? chatMessage.messagePrefix : "";
+                                          Class5.stringStack[stringStackPtr++] = chatMessage.messageString != null?chatMessage.messageString : "";
+                                          Class5.stringStack[stringStackPtr++] = null != chatMessage.messageSuffix?chatMessage.messageSuffix : "";
                                        } else {
                                           Class5.intStack[iStackPtr++] = -1;
                                           Class5.intStack[iStackPtr++] = 0;
@@ -2469,122 +2469,122 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(5008 == instruction) {
+                                    if(5008 == instruction) { // write chat packet
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = Class5.intStack[iStackPtr];
                                        var76 = var83.toLowerCase();
                                        byte var79 = 0;
-                                       if(var76.startsWith(StringConstants.aString1125)) {
+                                       if(var76.startsWith(StringUtilities.aString1125)) {
                                           var79 = 0;
-                                          var83 = var83.substring(StringConstants.aString1125.length());
-                                       } else if(var76.startsWith(StringConstants.red_effect)) {
+                                          var83 = var83.substring(StringUtilities.aString1125.length());
+                                       } else if(var76.startsWith(StringUtilities.red_effect)) {
                                           var79 = 1;
-                                          var83 = var83.substring(StringConstants.red_effect.length());
-                                       } else if(var76.startsWith(StringConstants.green_effect)) {
+                                          var83 = var83.substring(StringUtilities.red_effect.length());
+                                       } else if(var76.startsWith(StringUtilities.green_effect)) {
                                           var79 = 2;
-                                          var83 = var83.substring(StringConstants.green_effect.length());
-                                       } else if(var76.startsWith(StringConstants.aString1131)) {
+                                          var83 = var83.substring(StringUtilities.green_effect.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1131)) {
                                           var79 = 3;
-                                          var83 = var83.substring(StringConstants.aString1131.length());
-                                       } else if(var76.startsWith(StringConstants.aString1135)) {
+                                          var83 = var83.substring(StringUtilities.aString1131.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1135)) {
                                           var79 = 4;
-                                          var83 = var83.substring(StringConstants.aString1135.length());
-                                       } else if(var76.startsWith(StringConstants.white_effect)) {
+                                          var83 = var83.substring(StringUtilities.aString1135.length());
+                                       } else if(var76.startsWith(StringUtilities.white_effect)) {
                                           var79 = 5;
-                                          var83 = var83.substring(StringConstants.white_effect.length());
-                                       } else if(var76.startsWith(StringConstants.aString1180)) {
+                                          var83 = var83.substring(StringUtilities.white_effect.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1180)) {
                                           var79 = 6;
-                                          var83 = var83.substring(StringConstants.aString1180.length());
-                                       } else if(var76.startsWith(StringConstants.aString1139)) {
+                                          var83 = var83.substring(StringUtilities.aString1180.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1139)) {
                                           var79 = 7;
-                                          var83 = var83.substring(StringConstants.aString1139.length());
-                                       } else if(var76.startsWith(StringConstants.FLASH_3_EFFECT)) {
+                                          var83 = var83.substring(StringUtilities.aString1139.length());
+                                       } else if(var76.startsWith(StringUtilities.FLASH_3_EFFECT)) {
                                           var79 = 8;
-                                          var83 = var83.substring(StringConstants.FLASH_3_EFFECT.length());
-                                       } else if(var76.startsWith(StringConstants.GLOW_1_EFFECT)) {
+                                          var83 = var83.substring(StringUtilities.FLASH_3_EFFECT.length());
+                                       } else if(var76.startsWith(StringUtilities.GLOW_1_EFFECT)) {
                                           var79 = 9;
-                                          var83 = var83.substring(StringConstants.GLOW_1_EFFECT.length());
-                                       } else if(var76.startsWith(StringConstants.glow2_effect)) {
+                                          var83 = var83.substring(StringUtilities.GLOW_1_EFFECT.length());
+                                       } else if(var76.startsWith(StringUtilities.glow2_effect)) {
                                           var79 = 10;
-                                          var83 = var83.substring(StringConstants.glow2_effect.length());
-                                       } else if(var76.startsWith(StringConstants.aString1144)) {
+                                          var83 = var83.substring(StringUtilities.glow2_effect.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1144)) {
                                           var79 = 11;
-                                          var83 = var83.substring(StringConstants.aString1144.length());
+                                          var83 = var83.substring(StringUtilities.aString1144.length());
                                        } else if(0 != Client.anInt2712 * 148074329) {
-                                          if(var76.startsWith(StringConstants.aString1126)) {
+                                          if(var76.startsWith(StringUtilities.aString1126)) {
                                              var79 = 0;
-                                             var83 = var83.substring(StringConstants.aString1126.length());
-                                          } else if(var76.startsWith(StringConstants.aString1128)) {
+                                             var83 = var83.substring(StringUtilities.aString1126.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1128)) {
                                              var79 = 1;
-                                             var83 = var83.substring(StringConstants.aString1128.length());
-                                          } else if(var76.startsWith(StringConstants.aString1130)) {
+                                             var83 = var83.substring(StringUtilities.aString1128.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1130)) {
                                              var79 = 2;
-                                             var83 = var83.substring(StringConstants.aString1130.length());
-                                          } else if(var76.startsWith(StringConstants.aString1107)) {
+                                             var83 = var83.substring(StringUtilities.aString1130.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1107)) {
                                              var79 = 3;
-                                             var83 = var83.substring(StringConstants.aString1107.length());
-                                          } else if(var76.startsWith(StringConstants.aString1134)) {
+                                             var83 = var83.substring(StringUtilities.aString1107.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1134)) {
                                              var79 = 4;
-                                             var83 = var83.substring(StringConstants.aString1134.length());
-                                          } else if(var76.startsWith(StringConstants.aString1136)) {
+                                             var83 = var83.substring(StringUtilities.aString1134.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1136)) {
                                              var79 = 5;
-                                             var83 = var83.substring(StringConstants.aString1136.length());
-                                          } else if(var76.startsWith(StringConstants.aString1138)) {
+                                             var83 = var83.substring(StringUtilities.aString1136.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1138)) {
                                              var79 = 6;
-                                             var83 = var83.substring(StringConstants.aString1138.length());
-                                          } else if(var76.startsWith(StringConstants.aString1036)) {
+                                             var83 = var83.substring(StringUtilities.aString1138.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1036)) {
                                              var79 = 7;
-                                             var83 = var83.substring(StringConstants.aString1036.length());
-                                          } else if(var76.startsWith(StringConstants.aString1142)) {
+                                             var83 = var83.substring(StringUtilities.aString1036.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1142)) {
                                              var79 = 8;
-                                             var83 = var83.substring(StringConstants.aString1142.length());
-                                          } else if(var76.startsWith(StringConstants.aString1132)) {
+                                             var83 = var83.substring(StringUtilities.aString1142.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1132)) {
                                              var79 = 9;
-                                             var83 = var83.substring(StringConstants.aString1132.length());
-                                          } else if(var76.startsWith(StringConstants.aString1060)) {
+                                             var83 = var83.substring(StringUtilities.aString1132.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1060)) {
                                              var79 = 10;
-                                             var83 = var83.substring(StringConstants.aString1060.length());
-                                          } else if(var76.startsWith(StringConstants.aString1148)) {
+                                             var83 = var83.substring(StringUtilities.aString1060.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1148)) {
                                              var79 = 11;
-                                             var83 = var83.substring(StringConstants.aString1148.length());
+                                             var83 = var83.substring(StringUtilities.aString1148.length());
                                           }
                                        }
 
                                        var76 = var83.toLowerCase();
                                        byte var78 = 0;
-                                       if(var76.startsWith(StringConstants.aString1149)) {
+                                       if(var76.startsWith(StringUtilities.aString1149)) {
                                           var78 = 1;
-                                          var83 = var83.substring(StringConstants.aString1149.length());
-                                       } else if(var76.startsWith(StringConstants.aString1003)) {
+                                          var83 = var83.substring(StringUtilities.aString1149.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1003)) {
                                           var78 = 2;
-                                          var83 = var83.substring(StringConstants.aString1003.length());
-                                       } else if(var76.startsWith(StringConstants.aString1045)) {
+                                          var83 = var83.substring(StringUtilities.aString1003.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1045)) {
                                           var78 = 3;
-                                          var83 = var83.substring(StringConstants.aString1045.length());
-                                       } else if(var76.startsWith(StringConstants.aString1084)) {
+                                          var83 = var83.substring(StringUtilities.aString1045.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1084)) {
                                           var78 = 4;
-                                          var83 = var83.substring(StringConstants.aString1084.length());
-                                       } else if(var76.startsWith(StringConstants.aString1157)) {
+                                          var83 = var83.substring(StringUtilities.aString1084.length());
+                                       } else if(var76.startsWith(StringUtilities.aString1157)) {
                                           var78 = 5;
-                                          var83 = var83.substring(StringConstants.aString1157.length());
+                                          var83 = var83.substring(StringUtilities.aString1157.length());
                                        } else if(Client.anInt2712 * 148074329 != 0) {
-                                          if(var76.startsWith(StringConstants.aString1172)) {
+                                          if(var76.startsWith(StringUtilities.aString1172)) {
                                              var78 = 1;
-                                             var83 = var83.substring(StringConstants.aString1172.length());
-                                          } else if(var76.startsWith(StringConstants.aString1104)) {
+                                             var83 = var83.substring(StringUtilities.aString1172.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1104)) {
                                              var78 = 2;
-                                             var83 = var83.substring(StringConstants.aString1104.length());
-                                          } else if(var76.startsWith(StringConstants.SHAKE_EFFECT)) {
+                                             var83 = var83.substring(StringUtilities.aString1104.length());
+                                          } else if(var76.startsWith(StringUtilities.SHAKE_EFFECT)) {
                                              var78 = 3;
-                                             var83 = var83.substring(StringConstants.SHAKE_EFFECT.length());
-                                          } else if(var76.startsWith(StringConstants.aString1156)) {
+                                             var83 = var83.substring(StringUtilities.SHAKE_EFFECT.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1156)) {
                                              var78 = 4;
-                                             var83 = var83.substring(StringConstants.aString1156.length());
-                                          } else if(var76.startsWith(StringConstants.aString1158)) {
+                                             var83 = var83.substring(StringUtilities.aString1156.length());
+                                          } else if(var76.startsWith(StringUtilities.aString1158)) {
                                              var78 = 5;
-                                             var83 = var83.substring(StringConstants.aString1158.length());
+                                             var83 = var83.substring(StringUtilities.aString1158.length());
                                           }
                                        }
 
@@ -2592,13 +2592,13 @@ public class ClientScriptMap extends CacheableNode {
                                        Client.secureBuffer.writeByte(0);
                                        var21 = Client.secureBuffer.position * 798331555;
                                        Client.secureBuffer.writeByte(var17);
-                                       Client.secureBuffer.writeByte(var79);
-                                       Client.secureBuffer.writeByte(var78);
+                                       Client.secureBuffer.writeByte(var79); // text color effect
+                                       Client.secureBuffer.writeByte(var78); // text effect
                                        RSPacketBuffer var61 = Client.secureBuffer;
                                        var23 = var61.position * 798331555;
                                        byte[] var63 = Class108_Sub6.method1675(var83, (byte)1);
                                        var61.method1708(var63.length, 1636133046);
-                                       var61.position += Class110.huffmanEncoding.encrypt(var63, 0, var63.length, var61.buf, var61.position * 798331555, 965537425) * 537964811;
+                                       var61.position += HuffmanEncoding.huffmanEncoding.encrypt(var63, 0, var63.length, var61.buf, var61.position * 798331555, 965537425) * 537964811;
                                        Client.secureBuffer.endByte(Client.secureBuffer.position * 798331555 - var21, (short) -12708);
                                        continue;
                                     }
@@ -2615,12 +2615,12 @@ public class ClientScriptMap extends CacheableNode {
                                        var50 = var77.position * 798331555;
                                        byte[] var65 = Class108_Sub6.method1675(var39, (byte)1);
                                        var77.method1708(var65.length, 1331900876);
-                                       var77.position += Class110.huffmanEncoding.encrypt(var65, 0, var65.length, var77.buf, var77.position * 798331555, -1015637038) * 537964811;
+                                       var77.position += HuffmanEncoding.huffmanEncoding.encrypt(var65, 0, var65.length, var77.buf, var77.position * 798331555, -1015637038) * 537964811;
                                        Client.secureBuffer.endShort(Client.secureBuffer.position * 798331555 - var38, 949409914);
                                        continue;
                                     }
 
-                                    if(instruction == 5015) {
+                                    if(instruction == 5015) { // set my player name to string stack
                                        if(null != Player.myPlayer && Player.myPlayer.playerName != null) {
                                           var83 = Player.myPlayer.playerName;
                                        } else {
@@ -2636,23 +2636,23 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(instruction == 5017) {
+                                    if(instruction == 5017) { // get the last chat message index and set to int stack
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        var84 = Class5.intStack;
                                        var38 = iStackPtr++;
-                                       ChatMessagesContainer var75 = (ChatMessagesContainer)Class26.chatMessageMap.get(Integer.valueOf(var16));
-                                       if(null == var75) {
+                                       ChatMessagesContainer chatMessageContainer = (ChatMessagesContainer)Class26.chatMessageMap.get(Integer.valueOf(var16));
+                                       if(null == chatMessageContainer) {
                                           var41 = 0;
                                        } else {
-                                          var41 = var75.method351(-1295187518);
+                                          var41 = chatMessageContainer.method351(-1295187518);
                                        }
 
                                        var84[var38] = var41;
                                        continue;
                                     }
 
-                                    if(5018 == instruction) {
+                                    if(5018 == instruction) { // get some variable from a chat message
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        var84 = Class5.intStack;
@@ -2670,14 +2670,14 @@ public class ClientScriptMap extends CacheableNode {
                                        continue;
                                     }
 
-                                    if(5019 == instruction) {
+                                    if(5019 == instruction) { // get something from a chat message
                                        --iStackPtr;
                                        var16 = Class5.intStack[iStackPtr];
                                        Class5.intStack[iStackPtr++] = Player.method3181(var16, (byte) 126);
                                        continue;
                                     }
 
-                                    if(5020 == instruction) {
+                                    if(5020 == instruction) { // talk
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        Class71.sendText(var83, -2117328929);
@@ -2694,7 +2694,7 @@ public class ClientScriptMap extends CacheableNode {
                                  var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                               }
 
-                              if(instruction == 1300) {
+                              if(instruction == 1300) { // set some string array in a component, perhaps options?
                                  --iStackPtr;
                                  var17 = Class5.intStack[iStackPtr] - 1;
                                  if(var17 >= 0 && var17 <= 9) {
@@ -2715,7 +2715,7 @@ public class ClientScriptMap extends CacheableNode {
                                  continue;
                               }
 
-                              if(instruction == 1302) {
+                              if(instruction == 1302) { // set boolean in component
                                  --iStackPtr;
                                  var35.aBool1836 = Class5.intStack[iStackPtr] == 1;
                                  continue;
@@ -2739,7 +2739,7 @@ public class ClientScriptMap extends CacheableNode {
                                  continue;
                               }
 
-                              if(1306 == instruction) {
+                              if(1306 == instruction) { // set selected action name in component
                                  --stringStackPtr;
                                  var35.selectedActionName = Class5.stringStack[stringStackPtr];
                                  continue;
@@ -2760,13 +2760,13 @@ public class ClientScriptMap extends CacheableNode {
                            }
 
                            MouseInputHandler.method775(var35, -16054773);
-                           if(1200 == instruction) {
+                           if(1200 == instruction) { // set item on interface settings
                               iStackPtr -= 2;
                               var17 = Class5.intStack[iStackPtr];
                               var38 = Class5.intStack[iStackPtr + 1];
                               var35.itemID = var17 * 199268639;
                               var35.anInt1775 = var38 * -154849603;
-                              ItemDefinition var40 = AnimationDefinition.getItemDefinition(var17, -1326366724);
+                              ItemDefinition var40 = ItemDefinition.getItemDefinition(var17, -1326366724);
                               var35.mediaRotationX = var40.xan2d * 547018395;
                               var35.mediaRotationY = var40.yan2d * -1292543953;
                               var35.anInt1813 = var40.zan2d * 2079954531;
@@ -2779,7 +2779,7 @@ public class ClientScriptMap extends CacheableNode {
                               continue;
                            }
 
-                           if(instruction == 1201) {
+                           if(instruction == 1201) { // set media id
                               var35.mediaType = -2023579350;
                               --iStackPtr;
                               var35.mediaID = Class5.intStack[iStackPtr] * 1321013799;
@@ -2882,7 +2882,7 @@ public class ClientScriptMap extends CacheableNode {
                            continue;
                         }
 
-                        if(instruction == 1109) {
+                        if(instruction == 1109) { // set media settings
                            iStackPtr -= 6;
                            var35.anInt1809 = Class5.intStack[iStackPtr] * -1402493637;
                            var35.anInt1810 = Class5.intStack[iStackPtr + 1] * -1786754887;
@@ -2894,7 +2894,7 @@ public class ClientScriptMap extends CacheableNode {
                            continue;
                         }
 
-                        if(instruction == 1110) {
+                        if(instruction == 1110) { // media animation related
                            --iStackPtr;
                            var17 = Class5.intStack[iStackPtr];
                            if(var17 != var35.mediaAnimID * 866704807) {
@@ -2982,7 +2982,7 @@ public class ClientScriptMap extends CacheableNode {
                            continue;
                         }
 
-                        if(instruction == 1121) {
+                        if(instruction == 1121) { // write interface something
                            var17 = var35.interfaceHash * -1081473899;
                            var38 = var35.anInt1772 * -490007465;
                            Client.secureBuffer.writePacket(250);

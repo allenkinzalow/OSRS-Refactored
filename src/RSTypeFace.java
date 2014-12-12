@@ -4,6 +4,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    static int anInt2635 = 0;
    static RSFont b12_full_font;
+   static RSFont p11_full_font;
    int[] anIntArray2636;
    int[] characterWidths;
    static int alpha = 256;
@@ -301,23 +302,23 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    public int method3091(String var1, int var2) {
       int var3 = this.method3090(var1, new int[]{var2}, aStringArray2652);
-      int var4 = 0;
+      int maxWidth = 0;
 
       for(int var5 = 0; var5 < var3; ++var5) {
-         int var6 = this.getTextWidth(aStringArray2652[var5]);
-         if(var6 > var4) {
-            var4 = var6;
+         int charWidth = this.getTextWidth(aStringArray2652[var5]);
+         if(charWidth > maxWidth) {
+            maxWidth = charWidth;
          }
       }
 
-      return var4;
+      return maxWidth;
    }
 
    public int method3092(String var1, int var2) {
       return this.method3090(var1, new int[]{var2}, aStringArray2652);
    }
 
-   public static String method3093(String message) {
+   public static String appendLTGTTags(String message) {
       int messageLength = message.length();
       int var5 = 0;
 

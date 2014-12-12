@@ -59,7 +59,7 @@ public class Class4 {
    }
 
    public static void method89(byte var0) {
-      AnimationDefinition.aClass106_2135.method1371();
+      AnimationDefinition.animationDefMap.method1371();
       AnimationDefinition.animDefCache.method1371();
    }
 
@@ -67,7 +67,7 @@ public class Class4 {
       entity.aBool2348 = false;
       AnimationDefinition animDef;
       if(-1 != entity.anInt2365 * 1103885695) {
-         animDef = CullingCluster.method672(entity.anInt2365 * 1103885695, 1736575732);
+         animDef = AnimationDefinition.getAnimDefForID(entity.anInt2365 * 1103885695, 1736575732);
          if(null != animDef && animDef.frameDelays != null) {
             entity.anInt2367 -= 1278050191;
             if(entity.anInt2366 * -65543943 < animDef.frameDelays.length && entity.anInt2367 * -189185903 > animDef.frameLengths[entity.anInt2366 * -65543943]) {
@@ -93,7 +93,7 @@ public class Class4 {
 
          int spotAnimEmoteID = SpotAnim.getSpotAnimForID(entity.anInt2373 * 1305815823, (byte) 0).animationID * 338579353;
          if(-1 != spotAnimEmoteID) {
-            AnimationDefinition spotAnimDef = CullingCluster.method672(spotAnimEmoteID, 1789980921);
+            AnimationDefinition spotAnimDef = AnimationDefinition.getAnimDefForID(spotAnimEmoteID, 1789980921);
             if(null != spotAnimDef && null != spotAnimDef.frameDelays) {
                entity.anInt2375 += 662771301;
                if(entity.anInt2374 * -766701345 < spotAnimDef.frameDelays.length && entity.anInt2375 * 1216654189 > spotAnimDef.frameLengths[entity.anInt2374 * -766701345]) {
@@ -114,7 +114,7 @@ public class Class4 {
       }
 
       if(-1 != entity.anInt2368 * 1647325343 && entity.anInt2371 * 843883743 <= 1) {
-         animDef = CullingCluster.method672(entity.anInt2368 * 1647325343, 1694780201);
+         animDef = AnimationDefinition.getAnimDefForID(entity.anInt2368 * 1647325343, 1694780201);
          if(animDef.resetWhenWalk * 1194451065 == 1 && entity.anInt2395 * 2007914849 > 0 && entity.anInt2382 * 651118561 <= Client.cycle * -637317861 && entity.anInt2383 * -1116714413 < Client.cycle * -637317861) {
             entity.anInt2371 = -1894246625;
             return;
@@ -122,7 +122,7 @@ public class Class4 {
       }
 
       if(entity.anInt2368 * 1647325343 != -1 && 0 == entity.anInt2371 * 843883743) {
-         animDef = CullingCluster.method672(entity.anInt2368 * 1647325343, 1724689337);
+         animDef = AnimationDefinition.getAnimDefForID(entity.anInt2368 * 1647325343, 1724689337);
          if(null != animDef && animDef.frameDelays != null) {
             entity.anInt2396 -= 1617696911;
             if(entity.anInt2341 * -2111206063 < animDef.frameDelays.length && entity.anInt2396 * -1771177583 > animDef.frameLengths[entity.anInt2341 * -2111206063]) {

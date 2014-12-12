@@ -32,7 +32,7 @@ public class Class50 implements Interface3 {
 			int var9 = Player.myPlayer.anInt2394 * 171470795 / 32 + 48;
 			int var10 = 464 - Player.myPlayer.anInt2339 * 826764905 / 32;
 
-			Class80.miniMapSprite.method2755(25 + xPos, 5 + yPos, 146, 151, var9, var10, rotation, 256 + Client.anInt2957 * 331969371, FloorDefinition.anIntArray2221, Varp.anIntArray2043);
+			Class80.miniMapSprite.method2755(25 + xPos, 5 + yPos, 146, 151, var9, var10, rotation, 256 + Client.anInt2957 * 331969371, OverlayFloorDefinition.anIntArray2221, Varp.anIntArray2043);
 
 			int var5;
 			int var6;
@@ -80,13 +80,13 @@ public class Class50 implements Interface3 {
 					var7 = player.anInt2394 * 171470795 / 32 - Player.myPlayer.anInt2394 * 171470795 / 32;
 					var11 = player.anInt2339 * 826764905 / 32 - Player.myPlayer.anInt2339 * 826764905 / 32;
 					boolean isFriend = false;
-					if (GroundItem.isFriend(player.playerName, true, (byte) 1)) {
+					if (Friend.isFriend(player.playerName, true, (byte) 1)) {
 						isFriend = true;
 					}
 
 					boolean isFriendsChat = false;
 
-					for (int friendsChatIndex = 0; friendsChatIndex < Class27.anInt363 * 1727166727; ++friendsChatIndex) {
+					for (int friendsChatIndex = 0; friendsChatIndex < Class27.friendsChatListCount * 1727166727; ++friendsChatIndex) {
 						if (player.playerName.equals(friendsChatList[friendsChatIndex].username)) {
 							isFriendsChat = true;
 							break;
@@ -146,7 +146,7 @@ public class Class50 implements Interface3 {
 				Rasterizer2D.drawFilledRectangle(xPos + 93 + 4, 82 + yPos - 4, 3, 3, 16777215);
 			}
 		} else {
-			Rasterizer2D.method2511(25 + xPos, 5 + yPos, 0, FloorDefinition.anIntArray2221, Varp.anIntArray2043);
+			Rasterizer2D.method2511(25 + xPos, 5 + yPos, 0, OverlayFloorDefinition.anIntArray2221, Varp.anIntArray2043);
 		}
 
 		if (Client.anInt2935 * -1279723019 < 3) {

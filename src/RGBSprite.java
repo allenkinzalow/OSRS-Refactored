@@ -19,6 +19,40 @@ public final class RGBSprite extends Rasterizer2D {
    public int[] pixels;
    static final int anInt2410 = 4;
 
+   public static RGBSprite[] loadRGBSpriteSetForNames(AbstractIndex spriteIndex, String archiveName, String fileName, short var3) {
+      int archiveID = spriteIndex.getArchiveIDForName(archiveName, 1723285154);
+      int fileID = spriteIndex.getFileIDForName(archiveID, fileName);
+      return loadRGBSpriteSet(spriteIndex, archiveID, fileID, -893370861);
+   }
+
+   static RGBSprite[] loadRGBSpriteSet(AbstractIndex var0, int var1, int var2, int var3) {
+       if (!FriendsChatMember.method1686(var0, var1, var2, -1626517407)) {
+           return null;
+       } else {
+           RGBSprite[] var7 = new RGBSprite[Class9.anInt125 * 2039617935];
+
+           for (int var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
+               RGBSprite var8 = var7[var6] = new RGBSprite();
+               var8.maxWidth = Class9.anInt122 * 93011449;
+               var8.maxHeight = Class9.anInt121 * -1272520477;
+               var8.offsetX = Class88.anIntArray1316[var6];
+               var8.offsetY = Class9.anIntArray123[var6];
+               var8.width = Class36.anIntArray514[var6];
+               var8.height = Class9.anIntArray126[var6];
+               int var5 = var8.width * var8.height;
+               byte[] var9 = AnimationSkeletonSet.loadedCharacterPixels[var6];
+               var8.pixels = new int[var5];
+
+               for (int var4 = 0; var4 < var5; ++var4) {
+                   var8.pixels[var4] = Class9.anIntArray130[var9[var4] & 255];
+               }
+           }
+
+           ClientScript.method1679((byte) 93);
+           return var7;
+       }
+   }
+
 
    void method2741(int var1, int var2, int var3, int var4, int var5, int var6) {
       if(var6 != 0) {

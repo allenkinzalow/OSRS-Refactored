@@ -19,7 +19,7 @@ public class AnimationDefinition extends CacheableNode {
    static final int anInt2132 = 72;
    public int anInt2133 = -646022153;
    public int rightHandItem = -1102454537;
-   static CacheableNodeMap aClass106_2135 = new CacheableNodeMap(64);
+   static CacheableNodeMap animationDefMap = new CacheableNodeMap(64);
    public int delayType = 1420123926;
    static final int anInt2137 = 46;
    static final int anInt2138 = 500;
@@ -27,8 +27,25 @@ public class AnimationDefinition extends CacheableNode {
    public static AbstractIndex configIndexReference;
    public int resetWhenWalk = 1662613047;
 
+   public static AnimationDefinition getAnimDefForID(int animationID, int var1) {
+      AnimationDefinition animDef = (AnimationDefinition) animationDefMap.get((long) animationID);
+      if(animDef != null) {
+         return animDef;
+      } else {
+         byte[] var3 = configIndexReference.getFile(12, animationID, (byte) 7);
+         animDef = new AnimationDefinition();
+         if(var3 != null) {
+            animDef.decode(new RSByteBuffer(var3), (byte) 55);
+         }
 
-   void method2227(RSByteBuffer buffer, int opcode, int var3) {
+         animDef.method2228(1399039780);
+         animationDefMap.put(animDef, (long) animationID);
+         return animDef;
+      }
+   }
+
+
+   void decodeReadValues(RSByteBuffer buffer, int opcode, int var3) {
       int var4;
       int index;
       if(1 == opcode) {
@@ -143,10 +160,10 @@ public class AnimationDefinition extends CacheableNode {
       }
    }
 
-   void method2232(RSByteBuffer var1, byte var2) {
+   void decode(RSByteBuffer buffer, byte var2) {
       while(true) {
-         int var3 = var1.readUByte();
-         if(var3 == 0) {
+         int opcode = buffer.readUByte();
+         if(opcode == 0) {
             if(var2 == 55) {
                return;
             }
@@ -154,7 +171,7 @@ public class AnimationDefinition extends CacheableNode {
             return;
          }
 
-         this.method2227(var1, var3, 2136357157);
+         this.decodeReadValues(buffer, opcode, 2136357157);
       }
    }
 
@@ -227,35 +244,6 @@ public class AnimationDefinition extends CacheableNode {
       var0.addFocusListener(MouseInputHandler.mouseInputHandler);
    }
 
-   public static ItemDefinition getItemDefinition(int itemID, int var1) {
-      ItemDefinition definition = (ItemDefinition) ItemDefinition.itemDefinitionMap.get((long)itemID);
-      if(definition != null) {
-         return definition;
-      } else {
-         byte[] byteArray = ItemDefinition.configIndexReference.getFile(10, itemID, (byte) 7);
-         definition = new ItemDefinition();
-         definition.itemID = itemID * 803537925;
-         if(null != byteArray) {
-            definition.decode(new RSByteBuffer(byteArray), (byte) 104);
-         }
-
-         definition.method2089((byte)-97);
-         if(definition.notedTemplate * -910205763 != -1) {
-            definition.method2123(getItemDefinition(definition.notedTemplate * -910205763, -702304258), getItemDefinition(definition.notedID * -616959653, -471384956), 2075734647);
-         }
-
-         if(!ItemDefinition.aBool1974 && definition.members) {
-            definition.name = StringConstants.MEMBERS_OBJECT;
-            definition.options = null;
-            definition.interfaceOptions = null;
-            definition.team = 0;
-         }
-
-         ItemDefinition.itemDefinitionMap.put(definition, (long)itemID);
-         return definition;
-      }
-   }
-
    static final void renderActionMenu(byte var0) {
       int xPos = Class51.actionMenuX * -745630459;
       int yPos = MouseInputHandler.actionMenuY * -740301953;
@@ -265,7 +253,7 @@ public class AnimationDefinition extends CacheableNode {
       Rasterizer2D.drawFilledRectangle(xPos, yPos, width, height, chooseColor);
       Rasterizer2D.drawFilledRectangle(1 + xPos, 1 + yPos, width - 2, 16, 0);
       Rasterizer2D.drawUnfilledRectangle(xPos + 1, yPos + 18, width - 2, height - 19, 0);
-      RSTypeFace.b12_full_font.drawString(StringConstants.CHOOSE_OPTION, 3 + xPos, yPos + 14, chooseColor, -1);
+      RSTypeFace.b12_full_font.drawString(StringUtilities.CHOOSE_OPTION, 3 + xPos, yPos + 14, chooseColor, -1);
       int mouseX = MouseInputHandler.mouseX * -367052265;
       int mouseY = MouseInputHandler.mouseY * 1533395117;
 
@@ -282,7 +270,7 @@ public class AnimationDefinition extends CacheableNode {
          RSFont b12_full = RSTypeFace.b12_full_font;
          String menuActionName;
          if(Client.menuActionNames[var10].length() > 0) {
-            menuActionName = Client.menuActionNamePrefix[var10] + StringConstants.aString1109 + Client.menuActionNames[var10];
+            menuActionName = Client.menuActionNamePrefix[var10] + StringUtilities.aString1109 + Client.menuActionNames[var10];
          } else {
             menuActionName = Client.menuActionNamePrefix[var10];
          }

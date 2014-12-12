@@ -16,9 +16,9 @@ public class TextureLoader implements Interface2 {
       this.anInt373 = this.anInt371 * -1593709107;
       this.brightness = var4;
       this.anInt370 = var6 * -1712063211;
-      int[] files = textureIndex.method1013(0, 928100031);
+      int[] files = textureIndex.method1013(0);
       int fileCount = files.length;
-      this.loadedTextures = new Texture[textureIndex.getFileCount(0, (byte)-101)];
+      this.loadedTextures = new Texture[textureIndex.getFileCount(0)];
 
       for(int file = 0; file < fileCount; ++file) {
          RSByteBuffer buffer = new RSByteBuffer(textureIndex.getFile(0, files[file], (byte) 7));

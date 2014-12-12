@@ -56,7 +56,7 @@ public class CacheIndex extends AbstractIndex {
          this.anInt1721 = -1749760423;
 
          for(var2 = 0; var2 < this.aBoolArray1713.length; ++var2) {
-            if(this.fileCount[var2] > 0) {
+            if(this.fileCounts[var2] > 0) {
                IndexTable indexTable = this.aClass59_1719;
                CacheIndexRequest cacheIndexRequest = new CacheIndexRequest();
                cacheIndexRequest.anInt1759 = -1275722503;
@@ -89,7 +89,7 @@ public class CacheIndex extends AbstractIndex {
 
       int var4;
       for(var4 = 0; var4 < this.archiveArray.length; ++var4) {
-         if(this.fileCount[var4] > 0) {
+         if(this.fileCounts[var4] > 0) {
             var2 += 100;
             var3 += this.method1897(var4, -1548587273);
          }
@@ -178,7 +178,7 @@ public class CacheIndex extends AbstractIndex {
             aCRC32_1718.reset();
             aCRC32_1718.update(data, 0, data.length);
             var6 = (int)aCRC32_1718.getValue();
-            RSByteBuffer var10 = new RSByteBuffer(RegionReference.method618(data, (byte)-54));
+            RSByteBuffer var10 = new RSByteBuffer(RegionReference.method618(data));
             int var8 = var10.readUByte();
             if(5 != var8 && 6 != var8) {
                throw new RuntimeException("");

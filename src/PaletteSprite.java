@@ -10,6 +10,34 @@ public final class PaletteSprite extends Rasterizer2D {
    public byte[] pixels;
    public int anInt2418;
 
+   public static PaletteSprite[] loadPaletteSpriteSet(AbstractIndex var0, String var1, String var2, byte var3) {
+       int var4 = var0.getArchiveIDForName(var1, 1723285154);
+       int var6 = var0.getFileIDForName(var4, var2);
+       PaletteSprite[] var5;
+       if (!FriendsChatMember.method1686(var0, var4, var6, -1818735158)) {
+           var5 = null;
+       } else {
+           PaletteSprite[] var8 = new PaletteSprite[Class9.anInt125 * 2039617935];
+
+           for (int var9 = 0; var9 < Class9.anInt125 * 2039617935; ++var9) {
+               PaletteSprite var7 = var8[var9] = new PaletteSprite();
+               var7.anInt2418 = Class9.anInt122 * 93011449;
+               var7.anInt2412 = Class9.anInt121 * -1272520477;
+               var7.anInt2415 = Class88.anIntArray1316[var9];
+               var7.anInt2411 = Class9.anIntArray123[var9];
+               var7.anInt2413 = Class36.anIntArray514[var9];
+               var7.anInt2414 = Class9.anIntArray126[var9];
+               var7.palette = Class9.anIntArray130;
+               var7.pixels = AnimationSkeletonSet.loadedCharacterPixels[var9];
+           }
+
+           ClientScript.method1679((byte) 82);
+           var5 = var8;
+       }
+
+       return var5;
+   }
+
 
    public void drawSprite(int var1, int var2) {
       var1 += this.anInt2415;

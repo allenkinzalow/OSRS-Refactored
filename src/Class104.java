@@ -19,7 +19,7 @@ public class Class104 {
 
          Item item;
          for(item = (Item)itemDeque.getFront(); item != null; item = (Item)itemDeque.getNext()) {
-            ItemDefinition definition = AnimationDefinition.getItemDefinition(item.itemID * -1672318173, -215276823);
+            ItemDefinition definition = ItemDefinition.getItemDefinition(item.itemID * -1672318173, -215276823);
             long value = (long)(definition.cost * -1794880833);
             if(1 == definition.stackable * 1548462817) {
                value *= (long)(item.anInt2614 * -767037133 + 1);

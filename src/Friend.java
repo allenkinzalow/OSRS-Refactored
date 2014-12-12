@@ -8,7 +8,7 @@ import java.io.StringWriter;
 public class Friend {
 
    static int anInt620;
-   String aString621;
+   String displayName;
    boolean aBool622;
    int anInt623;
    boolean aBool624;
@@ -28,14 +28,14 @@ public class Friend {
          if(Client.menuActionRow * 391839991 < 400) {
             String var6;
             if(player.skillLevel * -1817505683 == 0) {
-               var6 = player.playerName + Class108_Sub13.method1702(player.combatLevel * -1769445007, Player.myPlayer.combatLevel * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + player.combatLevel * -1769445007 + Class47.CLOSE_PAREN;
+               var6 = player.playerName + Class108_Sub13.method1702(player.combatLevel * -1769445007, Player.myPlayer.combatLevel * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringUtilities.COMBAT_LEVEL + player.combatLevel * -1769445007 + Class47.CLOSE_PAREN;
             } else {
-               var6 = player.playerName + " " + Class47.OPEN_PAREN + StringConstants.SKILL_LEVEL + player.skillLevel * -1817505683 + Class47.CLOSE_PAREN;
+               var6 = player.playerName + " " + Class47.OPEN_PAREN + StringUtilities.SKILL_LEVEL + player.skillLevel * -1817505683 + Class47.CLOSE_PAREN;
             }
 
             int var7;
             if(Client.anInt2858 * -968945719 == 1) {
-               Class4.method91(StringConstants.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1661035400) + var6, 14, var1, var2, var3, 2121988882);
+               Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1661035400) + var6, 14, var1, var2, var3, 2121988882);
             } else if(Client.aBool2881) {
                if((Class68.anInt902 * 401025055 & 8) == 8) {
                   Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1562299690) + var6, 15, var1, var2, var3, 1855827336);
@@ -44,7 +44,7 @@ public class Friend {
                for(var7 = 7; var7 >= 0; --var7) {
                   if(null != Client.aStringArray2834[var7]) {
                      short var5 = 0;
-                     if(Client.aStringArray2834[var7].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
+                     if(Client.aStringArray2834[var7].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
                         if(Client.aClass50_2733 == Class50.aClass50_701 || Class50.aClass50_698 == Client.aClass50_2733 && player.combatLevel * -1769445007 > Player.myPlayer.combatLevel * -1769445007) {
                            var5 = 2000;
                         }
@@ -90,81 +90,81 @@ public class Friend {
 
    static void method661(int var0, int var1) {
       if(var0 == -3) {
-         World.method646(StringConstants.CONNECTION_TIMED, StringConstants.aString1186, StringConstants.aString1137, 2040055828);
+         World.method646(StringUtilities.CONNECTION_TIMED, StringUtilities.aString1186, StringUtilities.aString1137, 2040055828);
       } else if(var0 == -2) {
-         World.method646(StringConstants.aString1032, StringConstants.ERROR_CONNECTING, StringConstants.aString1037, 2087566694);
+         World.method646(StringUtilities.aString1032, StringUtilities.ERROR_CONNECTING, StringUtilities.aString1037, 2087566694);
       } else if(-1 == var0) {
-         World.method646(StringConstants.aString1145, StringConstants.USE_DIFF_WORLD, StringConstants.aString996, 2016404146);
+         World.method646(StringUtilities.aString1145, StringUtilities.USE_DIFF_WORLD, StringUtilities.aString996, 2016404146);
       } else if(var0 == 3) {
-         World.method646(StringConstants.aString997, StringConstants.invalid_credentials, StringConstants.aString999, 2010710776);
+         World.method646(StringUtilities.aString997, StringUtilities.invalid_credentials, StringUtilities.aString999, 2010710776);
       } else if(var0 == 4) {
-         World.method646(StringConstants.ACCOUNT_DISABLED, StringConstants.checkMessages, StringConstants.aString1061, 1999852017);
+         World.method646(StringUtilities.ACCOUNT_DISABLED, StringUtilities.checkMessages, StringUtilities.aString1061, 1999852017);
       } else if(var0 == 5) {
-         World.method646(StringConstants.ALREADY_LOGGED_IN, StringConstants.TRY_AGAIN_60, StringConstants.aString1005, 1904325528);
+         World.method646(StringUtilities.ALREADY_LOGGED_IN, StringUtilities.TRY_AGAIN_60, StringUtilities.aString1005, 1904325528);
       } else if(6 == var0) {
-         World.method646(StringConstants.RUNESCAPE_UPDATED, StringConstants.RELOAD_PAGE, StringConstants.aString1008, 2074988600);
+         World.method646(StringUtilities.RUNESCAPE_UPDATED, StringUtilities.RELOAD_PAGE, StringUtilities.aString1008, 2074988600);
       } else if(var0 == 7) {
-         World.method646(StringConstants.aString1140, StringConstants.aString1010, StringConstants.aString1028, 2009116862);
+         World.method646(StringUtilities.aString1140, StringUtilities.aString1010, StringUtilities.aString1028, 2009116862);
       } else if(8 == var0) {
-         World.method646(StringConstants.aString1012, StringConstants.aString1110, StringConstants.aString1014, 2121975743);
+         World.method646(StringUtilities.aString1012, StringUtilities.aString1110, StringUtilities.aString1014, 2121975743);
       } else if(var0 == 9) {
-         World.method646(StringConstants.aString1123, StringConstants.aString1016, StringConstants.aString1017, 2098644501);
+         World.method646(StringUtilities.aString1123, StringUtilities.aString1016, StringUtilities.aString1017, 2098644501);
       } else if(10 == var0) {
-         World.method646(StringConstants.aString1121, StringConstants.aString1019, StringConstants.aString1020, 2000279502);
+         World.method646(StringUtilities.aString1121, StringUtilities.aString1019, StringUtilities.aString1020, 2000279502);
       } else if(var0 == 11) {
-         World.method646(StringConstants.aString1099, StringConstants.aString1073, StringConstants.aString1023, 2035660147);
+         World.method646(StringUtilities.aString1099, StringUtilities.aString1073, StringUtilities.aString1023, 2035660147);
       } else if(var0 == 12) {
-         World.method646(StringConstants.aString1006, StringConstants.aString1178, StringConstants.aString1150, 1920138736);
+         World.method646(StringUtilities.aString1006, StringUtilities.aString1178, StringUtilities.aString1150, 1920138736);
       } else if(13 == var0) {
-         World.method646(StringConstants.aString1027, StringConstants.aString1177, StringConstants.aString1029, 1857228447);
+         World.method646(StringUtilities.aString1027, StringUtilities.aString1177, StringUtilities.aString1029, 1857228447);
       } else if(var0 == 14) {
-         World.method646(StringConstants.SERVER_IS_UPDATING, StringConstants.aString1031, StringConstants.aString957, 2116486952);
+         World.method646(StringUtilities.SERVER_IS_UPDATING, StringUtilities.aString1031, StringUtilities.aString957, 2116486952);
       } else if(var0 == 16) {
-         World.method646(StringConstants.aString1033, StringConstants.aString1034, StringConstants.aString1035, 1940128662);
+         World.method646(StringUtilities.aString1033, StringUtilities.aString1034, StringUtilities.aString1035, 1940128662);
       } else if(17 == var0) {
-         World.method646(StringConstants.aString1103, StringConstants.aString1011, StringConstants.aString1038, 1941692847);
+         World.method646(StringUtilities.aString1103, StringUtilities.aString1011, StringUtilities.aString1038, 1941692847);
       } else if(var0 == 18) {
-         World.method646(StringConstants.aString1039, StringConstants.aString1040, StringConstants.aString1058, 1944674963);
+         World.method646(StringUtilities.aString1039, StringUtilities.aString1040, StringUtilities.aString1058, 1944674963);
       } else if(19 == var0) {
-         World.method646(StringConstants.aString1042, StringConstants.aString1043, StringConstants.aString1120, 2133334204);
+         World.method646(StringUtilities.aString1042, StringUtilities.aString1043, StringUtilities.aString1120, 2133334204);
       } else if(20 == var0) {
-         World.method646(StringConstants.aString1049, StringConstants.aString1052, StringConstants.aString1047, 2009880585);
+         World.method646(StringUtilities.aString1049, StringUtilities.aString1052, StringUtilities.aString1047, 2009880585);
       } else if(var0 == 22) {
-         World.method646(StringConstants.aString1048, StringConstants.aString993, StringConstants.aString1050, 1961904868);
+         World.method646(StringUtilities.aString1048, StringUtilities.aString993, StringUtilities.aString1050, 1961904868);
       } else if(23 == var0) {
-         World.method646(StringConstants.aString1051, StringConstants.aString1100, StringConstants.aString1053, 2131800705);
+         World.method646(StringUtilities.aString1051, StringUtilities.aString1100, StringUtilities.aString1053, 2131800705);
       } else if(24 == var0) {
-         World.method646(StringConstants.aString1054, StringConstants.aString1115, StringConstants.aString1056, 2133872138);
+         World.method646(StringUtilities.aString1054, StringUtilities.aString1115, StringUtilities.aString1056, 2133872138);
       } else if(var0 == 25) {
-         World.method646(StringConstants.aString1057, StringConstants.aString1013, StringConstants.aString1059, 1919699222);
+         World.method646(StringUtilities.aString1057, StringUtilities.aString1013, StringUtilities.aString1059, 1919699222);
       } else if(26 == var0) {
-         World.method646(StringConstants.BLOCKED_ADDRESS, StringConstants.aString1015, StringConstants.aString1077, 2014140630);
+         World.method646(StringUtilities.BLOCKED_ADDRESS, StringUtilities.aString1015, StringUtilities.aString1077, 2014140630);
       } else if(var0 == 27) {
-         World.method646(StringConstants.aString1112, StringConstants.aString1064, StringConstants.aString1065, 2098083073);
+         World.method646(StringUtilities.aString1112, StringUtilities.aString1064, StringUtilities.aString1065, 2098083073);
       } else if(31 == var0) {
-         World.method646(StringConstants.aString1072, StringConstants.aString1046, StringConstants.aString1074, 2043189195);
+         World.method646(StringUtilities.aString1072, StringUtilities.aString1046, StringUtilities.aString1074, 2043189195);
       } else if(var0 == 32) {
-         World.method646(StringConstants.aString1146, StringConstants.aString1076, StringConstants.aString1151, 2024856893);
+         World.method646(StringUtilities.aString1146, StringUtilities.aString1076, StringUtilities.aString1151, 2024856893);
       } else if(37 == var0) {
-         World.method646(StringConstants.aString1078, StringConstants.aString1079, StringConstants.aString1080, 1888437246);
+         World.method646(StringUtilities.aString1078, StringUtilities.aString1079, StringUtilities.aString1080, 1888437246);
       } else if(38 == var0) {
-         World.method646(StringConstants.aString1081, StringConstants.aString1082, StringConstants.aString1083, 2063699946);
+         World.method646(StringUtilities.aString1081, StringUtilities.aString1082, StringUtilities.aString1083, 2063699946);
       } else if(var0 == 55) {
-         World.method646(StringConstants.aString1116, StringConstants.aString1085, StringConstants.aString1086, 2045399584);
+         World.method646(StringUtilities.aString1116, StringUtilities.aString1085, StringUtilities.aString1086, 2045399584);
       } else {
          if(56 == var0) {
-            World.method646(StringConstants.aString1087, StringConstants.AUTHENTICATOR_APP, StringConstants.aString1089, 1934315757);
+            World.method646(StringUtilities.aString1087, StringUtilities.AUTHENTICATOR_APP, StringUtilities.aString1089, 1934315757);
             IsaacRandomGen.method725(11, 1815863780);
             return;
          }
 
          if(var0 == 57) {
-            World.method646(StringConstants.aString1090, StringConstants.aString1091, StringConstants.aString1092, 2055770067);
+            World.method646(StringUtilities.aString1090, StringUtilities.aString1091, StringUtilities.aString1092, 2055770067);
             IsaacRandomGen.method725(11, 1816939995);
             return;
          }
 
-         World.method646(StringConstants.aString1093, StringConstants.aString1030, StringConstants.aString1117, 1963559549);
+         World.method646(StringUtilities.aString1093, StringUtilities.aString1030, StringUtilities.aString1117, 1963559549);
       }
 
       IsaacRandomGen.method725(10, 1388576886);
@@ -174,7 +174,7 @@ public class Friend {
       try {
          CacheConstants.cacheDataFile.method1547((byte)-124);
 
-         for(int var1 = 0; var1 < Class112.anInt1454 * -607702267; ++var1) {
+         for(int var1 = 0; var1 < CacheConstants.indexCount * -607702267; ++var1) {
             CacheConstants.indexFileArray[var1].method1547((byte)-51);
          }
 
@@ -250,5 +250,63 @@ public class Friend {
          var4 = var4.substring(var4.lastIndexOf(9) + 1);
          var3 = var3 + var4 + ' ';
       }
+   }
+
+   static boolean isFriend(String rawUsername, boolean var1, byte var2) {
+       if (null == rawUsername) {
+           return false;
+       } else {
+           String decodedUsername = Class108_Sub10.method1683(rawUsername, UnderlayDefinition.aClass116_2142, -2105432968);
+
+           for (int friendIndex = 0; friendIndex < Client.friendListCount * -163737695; ++friendIndex) {
+               if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Client.friendList[friendIndex].username, UnderlayDefinition.aClass116_2142, -1893730066)) && (!var1 || Client.friendList[friendIndex].friendHash * -62644779 != 0)) {
+                   return true;
+               }
+           }
+
+           if (decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -2108261163))) {
+               return true;
+           } else {
+               return false;
+           }
+       }
+   }
+
+   static final void removeFriend(String toRemove, int var1) {
+       if (toRemove != null) {
+           String decodedToRemove = Class108_Sub10.method1683(toRemove, UnderlayDefinition.aClass116_2142, -1914708884);
+           if (null != decodedToRemove) {
+               for (int friendIndex = 0; friendIndex < Client.friendListCount * -163737695; ++friendIndex) {
+                   Friend friend = Client.friendList[friendIndex];
+                   String username = friend.username;
+                   String var6 = Class108_Sub10.method1683(username, UnderlayDefinition.aClass116_2142, -1984290654);
+                   boolean containsFriend;
+                   if (null != toRemove && username != null) {
+                       if (!toRemove.startsWith("#") && !username.startsWith("#")) {
+                           containsFriend = decodedToRemove.equals(var6);
+                       } else {
+                           containsFriend = toRemove.equals(username);
+                       }
+                   } else {
+                       containsFriend = false;
+                   }
+
+                   if (containsFriend) {
+                       Client.friendListCount -= 1056183393;
+
+                       for (int shiftIndex = friendIndex; shiftIndex < Client.friendListCount * -163737695; ++shiftIndex) {
+                           Client.friendList[shiftIndex] = Client.friendList[shiftIndex + 1];
+                       }
+
+                       Client.anInt2897 = Client.anInt2731 * 1946037095;
+                       Client.secureBuffer.writePacket(39);
+                       Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(toRemove));
+                       Client.secureBuffer.writeString(toRemove);
+                       return;
+                   }
+               }
+
+           }
+       }
    }
 }

@@ -13,6 +13,21 @@ public class MouseCapturer implements Runnable {
    static PaletteSprite[] aClass108_Sub20_Sub15_Sub2Array383;
    Object objectLock = new Object();
 
+   static void method1117() {
+      if(Client.aBool2881) {
+         RSInterface var1 = LoginHandler.method878(Class43.anInt607 * 550337065, Client.anInt2936 * 1150893973, 1596774930);
+         if(null != var1 && var1.anObjectArray1773 != null) {
+            ClientScript var2 = new ClientScript();
+            var2.parentInterface = var1;
+            var2.parameters = var1.anObjectArray1773;
+            GameObject.executeScript(var2, -1545456412);
+         }
+
+         Client.aBool2881 = false;
+         MouseInputHandler.method775(var1, -16054773);
+      }
+   }
+
 
    public void run() {
       for(; this.isRunning; Class108_Sub22.sleep(50L)) {
@@ -199,7 +214,7 @@ public class MouseCapturer implements Runnable {
       if(25 == action) {
          var16 = LoginHandler.method878(var1, var0, 1652667486);
          if(var16 != null) {
-            Class83.method1117();
+            method1117();
             var10 = Class2.method41(Class32.method576(var16, 2018318857), -455189452);
             int var11 = var16.itemID * 703308511;
             RSInterface var12 = LoginHandler.method878(var1, var0, 1557189892);
@@ -316,14 +331,14 @@ public class MouseCapturer implements Runnable {
          }
 
          if(action == 38) {
-            Class83.method1117();
+            method1117();
             var16 = CacheIndexRequest.getInterfaceComponentForHash(var1, 85390855);
             Client.anInt2858 = 145635961;
             Class51.anInt716 = var0 * 368315321;
             Class50.anInt699 = var1 * 1367636927;
             GraphicsBuffer.anInt186 = var3 * 1301691411;
             MouseInputHandler.method775(var16, -16054773);
-            Client.aString2859 = HuffmanEncoding.method690(16748608, -1314495165) + AnimationDefinition.getItemDefinition(var3, -1261910875).name + HuffmanEncoding.method690(16777215, -1950959351);
+            Client.aString2859 = HuffmanEncoding.method690(16748608, -1314495165) + ItemDefinition.getItemDefinition(var3, -1261910875).name + HuffmanEncoding.method690(16777215, -1950959351);
             if(null == Client.aString2859) {
                Client.aString2859 = "null";
             }
@@ -487,7 +502,7 @@ public class MouseCapturer implements Runnable {
             if(action == 1005) {
                var16 = CacheIndexRequest.getInterfaceComponentForHash(var1, 1369089814);
                if(var16 != null && var16.widgetItemAmounts[var0] >= 100000) {
-                  AnimationSkeletonSet.pushMessage(27, "", var16.widgetItemAmounts[var0] + " x " + AnimationDefinition.getItemDefinition(var3, -1527750240).name, -796549522);
+                  ChatMessagesContainer.pushMessage(27, "", var16.widgetItemAmounts[var0] + " x " + ItemDefinition.getItemDefinition(var3, -1527750240).name, -796549522);
                } else {
                   Client.secureBuffer.writePacket(138);
                   Client.secureBuffer.writeAShortLE(var3, (byte) 121);
@@ -877,7 +892,7 @@ public class MouseCapturer implements Runnable {
             }
 
             if(Client.aBool2881) {
-               Class83.method1117();
+               method1117();
             }
 
             if(Class4.aClass108_Sub17_75 != null) {

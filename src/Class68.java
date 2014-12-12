@@ -10,7 +10,7 @@ public class Class68 {
    }
 
    static final void method929(int var0) {
-      ObjectDefinition.method2199((byte)32);
+      ObjectDefinition.method2199();
       UnderlayDefinition.aClass106_2143.method1371();
       Class65.method889((byte)-123);
       Class108_Sub10.method1681(-1081694593);
@@ -28,18 +28,18 @@ public class Class68 {
       RSInterface.fontMap.method1371();
       ((TextureLoader)Rasterizer3D.anInterface2_2501).method379(304324233);
       ClientScriptDefinition.clientScriptMap.method1371();
-      Projectile.skeletonIndex.resetCachedIndex(-563500780);
-      AnimationSkin.skinIndex.resetCachedIndex(-1872137171);
-      FloorDefinition.interfaceIndex.resetCachedIndex(-1461018176);
-      Class118.soundEffectsIndex_1.resetCachedIndex(-1707603336);
-      PingRequester.landscapeIndex.resetCachedIndex(-1525003540);
-      Friend.musicIndex_1.resetCachedIndex(-1673169891);
-      Class47.modelIndex.resetCachedIndex(-1724607254);
-      Class23.spriteIndex.resetCachedIndex(-1262001320);
-      Class4.textureIndex.resetCachedIndex(-627064502);
-      RuntimeException_Sub1.huffmanIndex.resetCachedIndex(-2010882466);
-      ClientParameter.musicIndex_2.resetCachedIndex(-779015851);
-      Class108_Sub13.clientScriptIndex.resetCachedIndex(-1143832158);
+      Projectile.skeletonIndex.resetCachedIndex();
+      AnimationSkin.skinIndex.resetCachedIndex();
+      OverlayFloorDefinition.interfaceIndex.resetCachedIndex();
+      RSSoundEffect.soundEffectsIndex_1.resetCachedIndex();
+      PingRequester.landscapeIndex.resetCachedIndex();
+      Friend.musicIndex_1.resetCachedIndex();
+      Class47.modelIndex.resetCachedIndex();
+      Class23.spriteIndex.resetCachedIndex();
+      Class4.textureIndex.resetCachedIndex();
+      RuntimeException_Sub1.huffmanIndex.resetCachedIndex();
+      ClientParameter.musicIndex_2.resetCachedIndex();
+      Class108_Sub13.clientScriptIndex.resetCachedIndex();
    }
 
    static void method930(int var0) {

@@ -2,6 +2,7 @@
 public class ClientScript extends Node {
 
    static MouseCapturer mouseCapturer;
+   static int[] intLocals;
    boolean aBool1636;
    int mouseX;
    Object[] parameters;
@@ -60,7 +61,7 @@ public class ClientScript extends Node {
             for(var5 = new StringBuilder(var6); 0L != var0; var5.append(var4)) {
                long var8 = var0;
                var0 /= 37L;
-               var4 = Class112.aCharArray1455[(int)(var8 - 37L * var0)];
+               var4 = StringUtilities.aCharArray1455[(int)(var8 - 37L * var0)];
                if(95 == var4) {
                   int var7 = var5.length() - 1;
                   var5.setCharAt(var7, Character.toUpperCase(var5.charAt(var7)));

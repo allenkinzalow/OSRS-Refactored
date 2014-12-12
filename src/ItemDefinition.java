@@ -69,6 +69,35 @@ public class ItemDefinition extends CacheableNode {
 		}
 	}
 
+	public static ItemDefinition getItemDefinition(int itemID, int var1) {
+       ItemDefinition definition = (ItemDefinition) itemDefinitionMap.get((long) itemID);
+       if(definition != null) {
+          return definition;
+       } else {
+          byte[] byteArray = configIndexReference.getFile(10, itemID, (byte) 7);
+          definition = new ItemDefinition();
+          definition.itemID = itemID * 803537925;
+          if(null != byteArray) {
+             definition.decode(new RSByteBuffer(byteArray), (byte) 104);
+          }
+
+          definition.method2089((byte)-97);
+          if(definition.notedTemplate * -910205763 != -1) {
+             definition.method2123(getItemDefinition(definition.notedTemplate * -910205763, -702304258), getItemDefinition(definition.notedID * -616959653, -471384956), 2075734647);
+          }
+
+          if(!aBool1974 && definition.members) {
+             definition.name = StringUtilities.MEMBERS_OBJECT;
+             definition.options = null;
+             definition.interfaceOptions = null;
+             definition.team = 0;
+          }
+
+          itemDefinitionMap.put(definition, (long) itemID);
+          return definition;
+       }
+    }
+
 	public final RSModel getInventoryModel(int var1, int var2) {
 		int index;
 		if (this.countObj != null && var1 > 1) {
@@ -81,7 +110,7 @@ public class ItemDefinition extends CacheableNode {
 			}
 
 			if (transformID != -1) {
-				return AnimationDefinition.getItemDefinition(transformID, 81085730).getInventoryModel(1, 2062198482);
+				return getItemDefinition(transformID, 81085730).getInventoryModel(1, 2062198482);
 			}
 		}
 
@@ -120,7 +149,7 @@ public class ItemDefinition extends CacheableNode {
 			}
 
 			if (transformID != -1) {
-				return AnimationDefinition.getItemDefinition(transformID, -756290420).renderItem(1, (byte) 24);
+				return getItemDefinition(transformID, -756290420).renderItem(1, (byte) 24);
 			}
 		}
 
@@ -320,7 +349,7 @@ public class ItemDefinition extends CacheableNode {
 			this.femaleModel1 = buffer.readUShort(-791889173) * 1576879403;
 		} else if (opcode >= 30 && opcode < 35) {
 			this.options[opcode - 30] = buffer.getString_2((byte) 8);
-			if (this.options[opcode - 30].equalsIgnoreCase(StringConstants.hidden)) {
+			if (this.options[opcode - 30].equalsIgnoreCase(StringUtilities.hidden)) {
 				this.options[opcode - 30] = null;
 			}
 		} else if (opcode >= 35 && opcode < 40) {
@@ -427,8 +456,8 @@ public class ItemDefinition extends CacheableNode {
 	}
 
 	ItemDefinition() {
-		this.options = new String[]{null, null, StringConstants.TAKE_OPTION, null, null};
-		this.interfaceOptions = new String[]{null, null, null, null, StringConstants.DROP_OPTION};
+		this.options = new String[]{null, null, StringUtilities.TAKE_OPTION, null, null};
+		this.interfaceOptions = new String[]{null, null, null, null, StringUtilities.DROP_OPTION};
 		this.maleModel0 = -533096775;
 		this.maleModel1 = -260759381;
 		this.maleOffset = 0;
@@ -500,9 +529,9 @@ public class ItemDefinition extends CacheableNode {
 				player.textSpoken = Client.packetBuffer.getString_2((byte) 8);
 				if (player.textSpoken.charAt(0) == 126) {
 					player.textSpoken = player.textSpoken.substring(1);
-					AnimationSkeletonSet.pushMessage(2, player.playerName, player.textSpoken, -501145397);
+					ChatMessagesContainer.pushMessage(2, player.playerName, player.textSpoken, -501145397);
 				} else if (Player.myPlayer == player) {
-					AnimationSkeletonSet.pushMessage(2, player.playerName, player.textSpoken, 779446530);
+					ChatMessagesContainer.pushMessage(2, player.playerName, player.textSpoken, 779446530);
 				}
 
 				player.aBool2352 = false;
@@ -562,7 +591,7 @@ public class ItemDefinition extends CacheableNode {
 
 				var6 = Client.packetBuffer.readUNegByte((byte) 24);
 				System.out.println("Nigger orel " + var5 + ", " + var6);
-				Class51.method703(player, var5, var6, (short) -7028);
+				Player.method703(player, var5, var6, (short) -7028);
 			}
 
 			if ((var4 & 512) != 0) {
@@ -594,7 +623,7 @@ public class ItemDefinition extends CacheableNode {
 				int var9 = Client.packetBuffer.position * 798331555;
 				if (null != player.playerName && null != player.bodyEquipmentKit) {
 					boolean var10 = false;
-					if (var6 <= 1 && WallDecoration.isOnIgnore(player.playerName, 1393039656)) {
+					if (var6 <= 1 && Ignore.isOnIgnore(player.playerName, 1393039656)) {
 						var10 = true;
 					}
 
@@ -612,14 +641,14 @@ public class ItemDefinition extends CacheableNode {
 							}
 
 							byte[] var13 = new byte[var12];
-							textBuffer.position += Class110.huffmanEncoding.decrypt(textBuffer.buf, textBuffer.position * 798331555, var13, 0, var12, -797949548) * 537964811;
+							textBuffer.position += HuffmanEncoding.huffmanEncoding.decrypt(textBuffer.buf, textBuffer.position * 798331555, var13, 0, var12, -797949548) * 537964811;
 							String var14 = ClientScriptDefinition.method2569(var13, 0, var12, (short) 23990);
 							textSpoken = var14;
 						} catch (Exception var17) {
 							textSpoken = "Cabbage";
 						}
 
-						textSpoken = RSTypeFace.method3093(Class66.method896(textSpoken, (byte) 0));
+						textSpoken = RSTypeFace.appendLTGTTags(Class66.method896(textSpoken, (byte) 0));
 						player.textSpoken = textSpoken.trim();
 						player.anInt2377 = (var5 >> 8) * 1753400645;
 						player.anInt2355 = (var5 & 255) * 562856027;
@@ -627,12 +656,12 @@ public class ItemDefinition extends CacheableNode {
 						player.aBool2352 = var19;
 						if (2 != var6 && 3 != var6) {
 							if (1 == var6) {
-								AnimationSkeletonSet.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
+								ChatMessagesContainer.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
 							} else {
-								AnimationSkeletonSet.pushMessage(var19 ? 90 : 2, player.playerName, textSpoken, 243104464);
+								ChatMessagesContainer.pushMessage(var19 ? 90 : 2, player.playerName, textSpoken, 243104464);
 							}
 						} else {
-							AnimationSkeletonSet.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
+							ChatMessagesContainer.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
 						}
 					}
 				}
@@ -660,7 +689,7 @@ public class ItemDefinition extends CacheableNode {
 			}
 
 			if (-1 != transformID) {
-				return AnimationDefinition.getItemDefinition(transformID, -555570209);
+				return getItemDefinition(transformID, -555570209);
 			}
 		}
 

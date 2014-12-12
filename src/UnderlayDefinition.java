@@ -114,7 +114,7 @@ public class UnderlayDefinition extends CacheableNode {
 		}
 	}
 
-	public static boolean method2282(char var0, int var1) {
+	public static boolean isNumber(char var0, int var1) {
 		return var0 >= 48 && var0 <= 57;
 	}
 }

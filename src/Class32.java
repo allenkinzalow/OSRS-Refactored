@@ -121,7 +121,7 @@ public class Class32 {
                }
             }
 
-            if(var0.textSpoken != null && (var1 >= Client.numLocalPlayers * -43742683 || Client.anInt2779 * 220652897 == 4 || !var0.aBool2352 && (Client.anInt2779 * 220652897 == 0 || 3 == Client.anInt2779 * 220652897 || 1 == Client.anInt2779 * 220652897 && GroundItem.isFriend(((Player)var0).playerName, false, (byte)-77)))) {
+            if(var0.textSpoken != null && (var1 >= Client.numLocalPlayers * -43742683 || Client.anInt2779 * 220652897 == 4 || !var0.aBool2352 && (Client.anInt2779 * 220652897 == 0 || 3 == Client.anInt2779 * 220652897 || 1 == Client.anInt2779 * 220652897 && Friend.isFriend(((Player) var0).playerName, false, (byte) -77)))) {
                Friend.method658(var0, var0.anInt2386 * 2106405885, 798331555);
                if(Client.anInt2808 * 1642143199 > -1 && Client.anInt2804 * 1837064243 < Client.anInt2797 * -797118177) {
                   Client.anIntArray2817[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.getTextWidth(var0.textSpoken) / 2;
@@ -177,7 +177,7 @@ public class Class32 {
                      }
 
                      Client.hitmarkSprites[var0.anIntArray2356[var9]].method2746(Client.anInt2808 * 1642143199 + var2 - 12, var3 + Client.anInt2809 * -2062084395 - 12);
-                     Class2.p11_full_font.drawStringCenter(Integer.toString(var0.anIntArray2358[var9]), Client.anInt2808 * 1642143199 + var2 - 1, 3 + var3 + Client.anInt2809 * -2062084395, 16777215, 0);
+                     RSTypeFace.p11_full_font.drawStringCenter(Integer.toString(var0.anIntArray2358[var9]), Client.anInt2808 * 1642143199 + var2 - 1, 3 + var3 + Client.anInt2809 * -2062084395, 16777215, 0);
                   }
                }
             }

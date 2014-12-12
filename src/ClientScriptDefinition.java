@@ -431,7 +431,7 @@ public class ClientScriptDefinition extends CacheableNode {
 											}
 
 											if (component.aBool1855 && -1 != component.itemID * 703308511) {
-												ItemDefinition itemDef = AnimationDefinition.getItemDefinition(component.itemID * 703308511, -2007508026);
+												ItemDefinition itemDef = ItemDefinition.getItemDefinition(component.itemID * 703308511, -2007508026);
 												componentString = itemDef.name;
 												if (null == componentString) {
 													componentString = "null";
@@ -443,8 +443,8 @@ public class ClientScriptDefinition extends CacheableNode {
 											}
 
 											if (Client.aClass108_Sub17_2869 == component) {
-												StringConstants var10000 = (StringConstants) null;
-												componentString = StringConstants.aString1041;
+												StringUtilities var10000 = (StringUtilities) null;
+												componentString = StringUtilities.aString1041;
 												var30 = component.componentColor * -1484361639;
 											}
 
@@ -522,7 +522,7 @@ public class ClientScriptDefinition extends CacheableNode {
 											ModelRasterizer rasterizer = null;
 											var20 = 0;
 											if (component.itemID * 703308511 != -1) {
-												itemDef = AnimationDefinition.getItemDefinition(component.itemID * 703308511, -2022329629);
+												itemDef = ItemDefinition.getItemDefinition(component.itemID * 703308511, -2022329629);
 												if (itemDef != null) {
 													itemDef = itemDef.transformItemByAmount(component.anInt1775 * 1939717269, 108017835);
 													rasterizer = itemDef.renderItem(1, (byte) -116);
@@ -545,7 +545,7 @@ public class ClientScriptDefinition extends CacheableNode {
 													MouseInputHandler.method775(component, -16054773);
 												}
 											} else {
-												AnimationDefinition var43 = CullingCluster.method672(var30, 1658041042);
+												AnimationDefinition var43 = AnimationDefinition.getAnimDefForID(var30, 1658041042);
 												rasterizer = component.getInterfaceMediaRasterizer(var43, component.anInt1877 * -1365409805, var48, Player.myPlayer.bodyEquipmentKit, -1695743692);
 												if (rasterizer == null && RSInterface.mediaUnavailable) {
 													MouseInputHandler.method775(component, -16054773);
@@ -584,7 +584,7 @@ public class ClientScriptDefinition extends CacheableNode {
 												for (var15 = 0; var15 < component.width * 334099177; ++var15) {
 													for (var20 = 0; var20 < component.height * -1281443035; ++var20) {
 														if (component.widgetItems[var30] > 0) {
-															itemDef = AnimationDefinition.getItemDefinition(component.widgetItems[var30] - 1, -1172020220);
+															itemDef = ItemDefinition.getItemDefinition(component.widgetItems[var30] - 1, -1172020220);
 															String var23;
 															if (1 != itemDef.stackable * 1548462817 && component.widgetItemAmounts[var30] == 1) {
 																var23 = HuffmanEncoding.method690(16748608, -995591797) + itemDef.name + Class47.COL_END;
@@ -726,7 +726,7 @@ public class ClientScriptDefinition extends CacheableNode {
 			int var6 = var0[var1 + var8] & 255;
 			if (var6 != 0) {
 				if (var6 >= 128 && var6 < 160) {
-					char var7 = Class121.aCharArray1496[var6 - 128];
+					char var7 = StringUtilities.aCharArray1496[var6 - 128];
 					if (0 == var7) {
 						var7 = 63;
 					}

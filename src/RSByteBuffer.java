@@ -377,7 +377,7 @@ public class RSByteBuffer extends Node {
    }
 
    public int method1776(int var1) {
-      return this.buf[this.position * 798331555] < 0?this.readInt() & Integer.MAX_VALUE:this.readUShort(-138525507);
+      return this.buf[this.position * 798331555] < 0 ? this.readInt() & Integer.MAX_VALUE : this.readUShort(-138525507);
    }
 
    public void method1781(byte[] var1, int var2, int var3, int var4) {
@@ -556,14 +556,14 @@ public class RSByteBuffer extends Node {
       } else {
          Class4.anInt54 = var4 * -1920702863;
          Rasterizer2D.resetPixels();
-         byte[] var6 = index.getFileForArchiveFileName("title.jpg", "", -128292021);
+         byte[] var6 = index.getFileForArchiveFileName("title.jpg", "");
          Class4.aClass108_Sub20_Sub15_Sub1_40 = new RGBSprite(var6, var0);
          Class41.aClass108_Sub20_Sub15_Sub1_588 = Class4.aClass108_Sub20_Sub15_Sub1_40.method2743();
          IndexTable.clientLogo = Renderable.method2488(var2, "logo", "", (byte)2);
          Class4.titleBox = Renderable.method2488(var2, "titlebox", "", (byte)2);
          Class4.titleButton = Renderable.method2488(var2, "titlebutton", "", (byte)2);
-         Class5.aClass108_Sub20_Sub15_Sub2Array83 = Client.method3553(var2, "runes", "", (byte) -13);
-         MouseCapturer.aClass108_Sub20_Sub15_Sub2Array383 = Client.method3553(var2, "title_mute", "", (byte) -15);
+         Class5.aClass108_Sub20_Sub15_Sub2Array83 = PaletteSprite.loadPaletteSpriteSet(var2, "runes", "", (byte) -13);
+         MouseCapturer.aClass108_Sub20_Sub15_Sub2Array383 = PaletteSprite.loadPaletteSpriteSet(var2, "title_mute", "", (byte) -15);
          Class4.radioButtonOptions = Renderable.method2488(var2, "options_radio_buttons,0", "", (byte)2);
          GroundItem.radioButtonOptions_2 = Renderable.method2488(var2, "options_radio_buttons,2", "", (byte)2);
          MouseCapturer.anIntArray382 = new int[256];
@@ -638,8 +638,8 @@ public class RSByteBuffer extends Node {
          Class4.worldListOpen = false;
          if(!Ignore.aClass37_386.aBool529) {
             CacheIndex musicIndex = Friend.musicIndex_1;
-            int var8 = musicIndex.method1005("scape main", 1723285154);
-            int var9 = musicIndex.getFileForName(var8, "", (byte)0);
+            int var8 = musicIndex.getArchiveIDForName("scape main", 1723285154);
+            int var9 = musicIndex.getFileIDForName(var8, "");
             Class91.anInt1325 = -771978757;
             RSInterface.aClass74_1889 = musicIndex;
             Class91.anInt1329 = var8 * -2020957493;

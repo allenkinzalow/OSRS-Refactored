@@ -29,7 +29,7 @@ public class GameObject extends Renderable {
       this.anInt2423 = var5 * 1844025323;
       this.anInt2422 = var6 * 1013731623;
       if(-1 != animationId) {
-         this.animationSequence = CullingCluster.method672(animationId, 2098064037);
+         this.animationSequence = AnimationDefinition.getAnimDefForID(animationId, 2098064037);
          this.animationFrame = 0;
          this.animationCycleDelay = Client.cycle * -238286763 + 1355118769;
          if(this.animationSequence.delayType * -95027165 == 0 && null != var9 && var9 instanceof GameObject) {

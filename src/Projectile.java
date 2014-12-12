@@ -68,7 +68,7 @@ public final class Projectile extends Renderable {
       this.isMoving = false;
       int var12 = SpotAnim.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0).animationID * 338579353;
       if(var12 != -1) {
-         this.animation = CullingCluster.method672(var12, 2017863609);
+         this.animation = AnimationDefinition.getAnimDefForID(var12, 2017863609);
       } else {
          this.animation = null;
       }
@@ -128,7 +128,7 @@ public final class Projectile extends Renderable {
    }
 
    public static void method2987(AbstractIndex var0, int var1) {
-      FloorDefinition.configArchive_ref_floor = var0;
+      OverlayFloorDefinition.configArchive_ref_floor = var0;
    }
 
    static final int method2988(int var0, int var1, byte var2) {

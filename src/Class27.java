@@ -5,7 +5,7 @@ public class Class27 {
    static long someTimeLeft;
    static long lastSetTime;
    public static int anInt362;
-   static int anInt363;
+   static int friendsChatListCount;
 
 
    Class27() throws Throwable {

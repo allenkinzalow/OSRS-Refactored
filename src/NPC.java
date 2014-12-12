@@ -409,7 +409,7 @@ public final class NPC extends Entity {
 
 		if (Client.aBool2874) {
 			Rasterizer2D.drawFilledRectangle(var0, var1, var2, var3, 0);
-			GameDefinition.method1107(StringConstants.LOADING_PLEASE_WAIT, false, -448477091);
+			GameDefinition.method1107(StringUtilities.LOADING_PLEASE_WAIT, false, -448477091);
 		}
 	}
 
@@ -417,8 +417,8 @@ public final class NPC extends Entity {
 		if (this.definition == null) {
 			return null;
 		} else {
-			AnimationDefinition var5 = -1 != this.anInt2368 * 1647325343 && 0 == this.anInt2371 * 843883743 ? CullingCluster.method672(this.anInt2368 * 1647325343, 2106941754) : null;
-			AnimationDefinition var6 = -1 != this.anInt2365 * 1103885695 && (this.anInt2365 * 1103885695 != this.standAnimationID * -532414055 || null == var5) ? CullingCluster.method672(this.anInt2365 * 1103885695, 2104925215) : null;
+			AnimationDefinition var5 = -1 != this.anInt2368 * 1647325343 && 0 == this.anInt2371 * 843883743 ? AnimationDefinition.getAnimDefForID(this.anInt2368 * 1647325343, 2106941754) : null;
+			AnimationDefinition var6 = -1 != this.anInt2365 * 1103885695 && (this.anInt2365 * 1103885695 != this.standAnimationID * -532414055 || null == var5) ? AnimationDefinition.getAnimDefForID(this.anInt2365 * 1103885695, 2104925215) : null;
 			ModelRasterizer rasterizer = this.definition.method2288(var5, this.anInt2341 * -2111206063, var6, this.anInt2366 * -65543943, (byte) 1);
 			if (null != rasterizer) {
 				rasterizer.method2855();
@@ -534,34 +534,6 @@ public final class NPC extends Entity {
 		}
 
 		Class63.aClass13_830.method260(-1763862346);
-	}
-
-	static RGBSprite[] method3167(AbstractIndex var0, int var1, int var2, int var3) {
-		if (!FriendsChatMember.method1686(var0, var1, var2, -1626517407)) {
-			return null;
-		} else {
-			RGBSprite[] var7 = new RGBSprite[Class9.anInt125 * 2039617935];
-
-			for (int var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
-				RGBSprite var8 = var7[var6] = new RGBSprite();
-				var8.maxWidth = Class9.anInt122 * 93011449;
-				var8.maxHeight = Class9.anInt121 * -1272520477;
-				var8.offsetX = Class88.anIntArray1316[var6];
-				var8.offsetY = Class9.anIntArray123[var6];
-				var8.width = Class36.anIntArray514[var6];
-				var8.height = Class9.anIntArray126[var6];
-				int var5 = var8.width * var8.height;
-				byte[] var9 = AnimationSkeletonSet.loadedCharacterPixels[var6];
-				var8.pixels = new int[var5];
-
-				for (int var4 = 0; var4 < var5; ++var4) {
-					var8.pixels[var4] = Class9.anIntArray130[var9[var4] & 255];
-				}
-			}
-
-			ClientScript.method1679((byte) 93);
-			return var7;
-		}
 	}
 
 	static final void method3168(int var0) {

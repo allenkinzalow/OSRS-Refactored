@@ -111,7 +111,7 @@ public final class PlainTile {
 					rid = (rx << 8) + ry;
 					if (!var17 || 49 != ry && ry != 149 && ry != 147 && rx != 50 && (rx != 49 || 47 != ry)) {
 						GraphicsBuffer.mapCoordinates[nummaps] = rid;
-						Class32.terrainLandscapeIDs[nummaps] = PingRequester.landscapeIndex.method1005("m" + rx + "_" + ry, 1723285154);
+						Class32.terrainLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("m" + rx + "_" + ry, 1723285154);
 						System.out.println("Keys for region " + rid + ": " + Arrays.toString(Class47.xteaMapKeys[nummaps]));
 
 						try {
@@ -121,7 +121,7 @@ public final class PlainTile {
 						} catch (Exception orel) {
 							orel.printStackTrace();
 						}
-						ClientScript.objectLandscapeIDs[nummaps] = PingRequester.landscapeIndex.method1005("l" + rx + "_" + ry, 1723285154);
+						ClientScript.objectLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("l" + rx + "_" + ry, 1723285154);
 						++nummaps;
 					}
 				}
@@ -188,8 +188,8 @@ public final class PlainTile {
 								GraphicsBuffer.mapCoordinates[cx] = var13;
 								var12 = var13 >> 8 & 255;
 								int var16 = var13 & 255;
-								Class32.terrainLandscapeIDs[cx] = PingRequester.landscapeIndex.method1005("m" + var12 + "_" + var16, 1723285154);
-								ClientScript.objectLandscapeIDs[cx] = PingRequester.landscapeIndex.method1005("l" + var12 + "_" + var16, 1723285154);
+								Class32.terrainLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("m" + var12 + "_" + var16, 1723285154);
+								ClientScript.objectLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("l" + var12 + "_" + var16, 1723285154);
 								try {
 									FileOutputStream fos = new FileOutputStream("keys/" + var13 + ".txt");
 									fos.write((Class47.xteaMapKeys[cx][0] + "\n" + Class47.xteaMapKeys[cx][1] + "\n" + Class47.xteaMapKeys[cx][2] + "\n" + Class47.xteaMapKeys[cx][3]).getBytes());

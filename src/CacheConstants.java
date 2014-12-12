@@ -20,8 +20,8 @@ public class CacheConstants {
    public static CacheFile cache255File = null;
    public static final String CACHE_INDEX = "main_file_cache.idx";
    public static final int anInt1269 = 1048576000;
+   public static int indexCount;
 
-   
 
    CacheConstants() throws Throwable {
       throw new Error();

@@ -14,6 +14,28 @@ public class ChatMessagesContainer {
 		}
 	}
 
+	static void pushMessage(int type, String var1, String var2, int var3) {
+		pushDirectMessage(type, var1, var2, (String) null, 403249369);
+	}
+
+	static void pushDirectMessage(int messageType, String messagePrefix, String messageString, String messageSuffix, int var4) {
+       ChatMessagesContainer messageContainer = (ChatMessagesContainer)Class26.chatMessageMap.get(Integer.valueOf(messageType));
+       if(messageContainer == null) {
+          messageContainer = new ChatMessagesContainer();
+          Class26.chatMessageMap.put(Integer.valueOf(messageType), messageContainer);
+       }
+
+       ChatMessage chatMessage = messageContainer.submitNewMessage(messageType, messagePrefix, messageString, messageSuffix, -1626872444);
+       Class26.aClass95_348.method1203(chatMessage, (long)(chatMessage.anInt1944 * -1818271001));
+       Class26.aClass97_349.method1273(chatMessage);
+       Client.anInt2896 = Client.anInt2731 * 2056637341;
+    }
+
+	static ChatMessage getChatMessageFromContainer(int chatMessageContainerID, int chatMessageIndex, byte var2) {
+       ChatMessagesContainer chatContainer = (ChatMessagesContainer)Class26.chatMessageMap.get(Integer.valueOf(chatMessageContainerID));
+       return chatContainer.getChatMessageForIndex(chatMessageIndex, 143975474);
+    }
+
 	/**
 	 * Submits a chat message and returns the created ChatMessage
 	 * -Allen
@@ -142,8 +164,8 @@ public class ChatMessagesContainer {
 		Wall.blendedDirectionTracker = new int[104];
 	}
 
-	ChatMessage method356(int var1, int var2) {
-		return var1 >= 0 && var1 < this.lastMessageIndex * 993019301 ? this.chatMessages[var1] : null;
+	ChatMessage getChatMessageForIndex(int chatMessageIndex, int var2) {
+		return chatMessageIndex >= 0 && chatMessageIndex < this.lastMessageIndex * 993019301 ? this.chatMessages[chatMessageIndex] : null;
 	}
 
 	public static VarpBit method358(int fileID, int var1) {

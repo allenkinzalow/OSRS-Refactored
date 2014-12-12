@@ -80,7 +80,7 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
          } else {
             label427: {
                if(-1 != var0.anInt2368 * 1647325343 && 0 == var0.anInt2371 * 843883743) {
-                  AnimationDefinition var13 = CullingCluster.method672(var0.anInt2368 * 1647325343, 1651080421);
+                  AnimationDefinition var13 = AnimationDefinition.getAnimDefForID(var0.anInt2368 * 1647325343, 1651080421);
                   if(var0.anInt2395 * 2007914849 > 0 && var13.resetWhenWalk * 1194451065 == 0) {
                      var0.anInt2338 += 617941433;
                      break label427;
@@ -396,7 +396,7 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
             if((var3 <= 0 || var3 >= 128) && (var3 < 160 || var3 > 255)) {
                label66: {
                   if(var3 != 0) {
-                     char[] var2 = Class121.aCharArray1496;
+                     char[] var2 = StringUtilities.aCharArray1496;
 
                      for(int var5 = 0; var5 < var2.length; ++var5) {
                         char var6 = var2[var5];

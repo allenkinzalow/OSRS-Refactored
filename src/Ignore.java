@@ -3,18 +3,13 @@ import java.awt.FontMetrics;
 public class Ignore {
 
    static Class37 aClass37_386;
-   String aString387;
+   String displayName;
    static PingRequest aClass85_388;
    static Class65 aClass65_389;
    String username;
    static int[] anIntArray397;
    static FontMetrics aFontMetrics398;
 
-
-   static ChatMessage method396(int var0, int var1, byte var2) {
-      ChatMessagesContainer var3 = (ChatMessagesContainer)Class26.chatMessageMap.get(Integer.valueOf(var0));
-      return var3.method356(var1, 143975474);
-   }
 
    static final void buildRightClickMenu(RSInterface[] components, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       for(int componentID = 0; componentID < components.length; ++componentID) {
@@ -86,7 +81,7 @@ public class Ignore {
                   MouseInputHandler.method775(component, -16054773);
                   if(!Client.aBool2874 && !Client.actionMenuOpen && var10 >= var13 && var22 >= var19 && var10 < var11 && var22 < var20) {
                      if(Client.anInt2858 * -968945719 == 0 && !Client.aBool2881) {
-                        Class4.method91(StringConstants.WALK_HERE_OPTION, "", 23, 0, var10 - var13, var22 - var19, 2130786187);
+                        Class4.method91(StringUtilities.WALK_HERE_OPTION, "", 23, 0, var10 - var13, var22 - var19, 2130786187);
                      }
 
                      var21 = -1;
@@ -110,7 +105,7 @@ public class Ignore {
                               }
 
                               if(1 == Client.anInt2858 * -968945719) {
-                                 Class4.method91(StringConstants.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690('\uffff', -801617009) + objectDef.name, 1, menuHash, xPos, yPos, 1819037691);
+                                 Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690('\uffff', -801617009) + objectDef.name, 1, menuHash, xPos, yPos, 1819037691);
                               } else if(Client.aBool2881) {
                                  if((Class68.anInt902 * 401025055 & 4) == 4) {
                                     Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690('\uffff', -1359989676) + objectDef.name, 2, menuHash, xPos, yPos, 2083916982);
@@ -150,7 +145,7 @@ public class Ignore {
                                     }
                                  }
 
-                                 Class4.method91(StringConstants.EXAMINE_OPTION, HuffmanEncoding.method690('\uffff', -1833201687) + objectDef.name, 1002, objectDef.objectID * 1809503247 << 14, xPos, yPos, 1898491160);
+                                 Class4.method91(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690('\uffff', -1833201687) + objectDef.name, 1002, objectDef.objectID * 1809503247 << 14, xPos, yPos, 1898491160);
                               }
                            }
 
@@ -211,15 +206,15 @@ public class Ignore {
                               Deque groundItems = Client.groundItemArray[VarpBit.plane * -570926309][xPos][yPos];
                               if(null != groundItems) {
                                  for(Item item = (Item)groundItems.method1332(); null != item; item = (Item)groundItems.method1342()) {
-                                    ItemDefinition itemDef = AnimationDefinition.getItemDefinition(item.itemID * -1672318173, -873033053);
+                                    ItemDefinition itemDef = ItemDefinition.getItemDefinition(item.itemID * -1672318173, -873033053);
                                     if(1 == Client.anInt2858 * -968945719) {
-                                       Class4.method91(StringConstants.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -1615976121) + itemDef.name, 16, item.itemID * -1672318173, xPos, yPos, 1998508462);
+                                       Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -1615976121) + itemDef.name, 16, item.itemID * -1672318173, xPos, yPos, 1998508462);
                                     } else if(Client.aBool2881) {
                                        if((Class68.anInt902 * 401025055 & 1) == 1) {
                                           Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -1065088866) + itemDef.name, 17, item.itemID * -1672318173, xPos, yPos, 1897480675);
                                        }
                                     } else {
-                                       String[] itemActions = itemDef.options;
+                                       String[] itemActions = itemDef.options; // this is ground item options -- different than interface options
                                        if(Client.aBool2744) {
                                           itemActions = Class23.method341(itemActions, -1102727925);
                                        }
@@ -249,11 +244,11 @@ public class Ignore {
 
                                              Class4.method91(itemActions[actionIndex], HuffmanEncoding.method690(16748608, -1028803737) + itemDef.name, actionIdentifier, item.itemID * -1672318173, xPos, yPos, 2060114851);
                                           } else if(actionIndex == 2) {
-                                             Class4.method91(StringConstants.TAKE_OPTION, HuffmanEncoding.method690(16748608, -569315472) + itemDef.name, 20, item.itemID * -1672318173, xPos, yPos, 2093640735);
+                                             Class4.method91(StringUtilities.TAKE_OPTION, HuffmanEncoding.method690(16748608, -569315472) + itemDef.name, 20, item.itemID * -1672318173, xPos, yPos, 2093640735);
                                           }
                                        }
 
-                                       Class4.method91(StringConstants.EXAMINE_OPTION, HuffmanEncoding.method690(16748608, -435158535) + itemDef.name, 1004, item.itemID * -1672318173, xPos, yPos, 1816176229);
+                                       Class4.method91(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16748608, -435158535) + itemDef.name, 1004, item.itemID * -1672318173, xPos, yPos, 1816176229);
                                     }
                                  }
                               }
@@ -281,7 +276,7 @@ public class Ignore {
                      Class108_Sub10 var37 = (Class108_Sub10) Client.aClass101_2866.get((long) (component.interfaceHash * -1081473899));
                      if(var37 != null) {
                         if(var37.anInt1652 * 1197757387 == 0 && MouseInputHandler.mouseX * -367052265 >= var13 && MouseInputHandler.mouseY * 1533395117 >= var19 && MouseInputHandler.mouseX * -367052265 < var11 && MouseInputHandler.mouseY * 1533395117 < var20 && !Client.actionMenuOpen && !Client.aBool2875) {
-                           Client.menuActionNamePrefix[0] = StringConstants.CANCEL_OPTION;
+                           Client.menuActionNamePrefix[0] = StringUtilities.CANCEL_OPTION;
                            Client.menuActionNames[0] = "";
                            Client.menuActionIdentifiers[0] = 1006;
                            Client.menuActionRow = -1954561849;
@@ -309,7 +304,7 @@ public class Ignore {
                         }
 
                         if(!Client.actionMenuOpen) {
-                           Client.menuActionNamePrefix[0] = StringConstants.CANCEL_OPTION;
+                           Client.menuActionNamePrefix[0] = StringUtilities.CANCEL_OPTION;
                            Client.menuActionNames[0] = "";
                            Client.menuActionIdentifiers[0] = 1006;
                            Client.menuActionRow = -1954561849;
@@ -709,5 +704,82 @@ public class Ignore {
 
    public static void method399(AbstractIndex var0, byte var1) {
       VarpBit.aClass74_1951 = var0;
+   }
+
+   static boolean isOnIgnore(String rawUsername, int var1) {
+      if(null == rawUsername) {
+         return false;
+      } else {
+         String decodedUsername = Class108_Sub10.method1683(rawUsername, UnderlayDefinition.aClass116_2142, -1906056421);
+
+         for(int var4 = 0; var4 < Client.ignoreListCount * -1283681697; ++var4) {
+            Ignore ignore = Client.ignoreList[var4];
+            if(decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(ignore.username, UnderlayDefinition.aClass116_2142, -1974944439))) {
+               return true;
+            }
+
+            if(decodedUsername.equalsIgnoreCase(Class108_Sub10.method1683(ignore.displayName, UnderlayDefinition.aClass116_2142, -1976347131))) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   static final void addToIgnoreList(String toAdd, boolean var1, int var2) {
+      if(null != toAdd) {
+         if((Client.ignoreListCount * -1283681697 < 100 || Client.anInt2758 * -1950682749 == 1) && Client.ignoreListCount * -1283681697 < 400) {
+            String var4 = Class108_Sub10.method1683(toAdd, UnderlayDefinition.aClass116_2142, -2116168234);
+            if(var4 != null) {
+               String var3;
+               int var5;
+               String var6;
+               for(var5 = 0; var5 < Client.ignoreListCount * -1283681697; ++var5) {
+                  Ignore ignore = Client.ignoreList[var5];
+                  var6 = Class108_Sub10.method1683(ignore.username, UnderlayDefinition.aClass116_2142, -2090939739);
+                  if(var6 != null && var6.equals(var4)) {
+                     ChatMessagesContainer.pushMessage(31, "", toAdd + StringUtilities.ALREADY_ON_IGNORE, -448196024);
+                     return;
+                  }
+
+                  if(ignore.displayName != null) {
+                     var3 = Class108_Sub10.method1683(ignore.displayName, UnderlayDefinition.aClass116_2142, -1955095237);
+                     if(null != var3 && var3.equals(var4)) {
+                        ChatMessagesContainer.pushMessage(31, "", toAdd + StringUtilities.ALREADY_ON_IGNORE, 7202132);
+                        return;
+                     }
+                  }
+               }
+
+               for(var5 = 0; var5 < Client.friendListCount * -163737695; ++var5) {
+                  Friend friend = Client.friendList[var5];
+                  var6 = Class108_Sub10.method1683(friend.username, UnderlayDefinition.aClass116_2142, -2065261776);
+                  if(null != var6 && var6.equals(var4)) {
+                     ChatMessagesContainer.pushMessage(31, "", StringUtilities.PLEASE_REMOVE_2 + toAdd + StringUtilities.aString1124, 123811380);
+                     return;
+                  }
+
+                  if(null != friend.displayName) {
+                     var3 = Class108_Sub10.method1683(friend.displayName, UnderlayDefinition.aClass116_2142, -1855974988);
+                     if(null != var3 && var3.equals(var4)) {
+                        ChatMessagesContainer.pushMessage(31, "", StringUtilities.PLEASE_REMOVE_2 + toAdd + StringUtilities.aString1124, -855994111);
+                        return;
+                     }
+                  }
+               }
+
+               if(Class108_Sub10.method1683(Player.myPlayer.playerName, UnderlayDefinition.aClass116_2142, -1968874516).equals(var4)) {
+                  ChatMessagesContainer.pushMessage(31, "", StringUtilities.aString1105, -1446835517);
+               } else {
+                  Client.secureBuffer.writePacket(222);
+                  Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(toAdd));
+                  Client.secureBuffer.writeString(toAdd);
+               }
+            }
+         } else {
+            ChatMessagesContainer.pushMessage(31, "", StringUtilities.aString1063, 300930071);
+         }
+      }
    }
 }

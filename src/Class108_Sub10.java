@@ -42,11 +42,11 @@ public class Class108_Sub10 extends Node {
          int var5 = 0;
 
          int var6;
-         for(var6 = var0.length(); var5 < var6 && Class110.method1394(var0.charAt(var5), 848678187); ++var5) {
+         for(var6 = var0.length(); var5 < var6 && method1394(var0.charAt(var5), 848678187); ++var5) {
             ;
          }
 
-         while(var6 > var5 && Class110.method1394(var0.charAt(var6 - 1), -1938358645)) {
+         while(var6 > var5 && method1394(var0.charAt(var6 - 1), -1938358645)) {
             --var6;
          }
 
@@ -78,14 +78,14 @@ public class Class108_Sub10 extends Node {
                      if(var3) {
                         var11 = true;
                      } else {
-                        char[] var4 = Class118.aCharArray1486;
+                        char[] var4 = StringUtilities.aCharArray1486;
                         int var12 = 0;
 
                         label108:
                         while(true) {
                            char var13;
                            if(var12 >= var4.length) {
-                              var4 = Class118.aCharArray1485;
+                              var4 = StringUtilities.aCharArray1485;
 
                               for(var12 = 0; var12 < var4.length; ++var12) {
                                  var13 = var4[var12];
@@ -211,5 +211,9 @@ public class Class108_Sub10 extends Node {
 
          return null;
       }
+   }
+
+   static final boolean method1394(char var0, int var1) {
+      return 160 == var0 || 32 == var0 || var0 == 95 || 45 == var0;
    }
 }

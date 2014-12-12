@@ -1,8 +1,8 @@
 
-public class FloorDefinition extends CacheableNode {
+public class OverlayFloorDefinition extends CacheableNode {
 
    public int anInt2211 = -1326535891;
-   public static CacheableNodeMap floorMap = new CacheableNodeMap(64);
+   public static CacheableNodeMap overlayFloorMap = new CacheableNodeMap(64);
    public int rgbColor = 0;
    public int textureID = 1132421109;
    public boolean hideUnderlay = true;
@@ -17,19 +17,6 @@ public class FloorDefinition extends CacheableNode {
    public static AbstractIndex configArchive_ref_floor;
    static CacheIndex interfaceIndex;
 
-
-   static void pushDirectMessage(int messageType, String messagePrefix, String messageString, String messageSuffix, int var4) {
-      ChatMessagesContainer messageContainer = (ChatMessagesContainer)Class26.chatMessageMap.get(Integer.valueOf(messageType));
-      if(messageContainer == null) {
-         messageContainer = new ChatMessagesContainer();
-         Class26.chatMessageMap.put(Integer.valueOf(messageType), messageContainer);
-      }
-
-      ChatMessage chatMessage = messageContainer.submitNewMessage(messageType, messagePrefix, messageString, messageSuffix, -1626872444);
-      Class26.aClass95_348.method1203(chatMessage, (long)(chatMessage.anInt1944 * -1818271001));
-      Class26.aClass97_349.method1273(chatMessage);
-      Client.anInt2896 = Client.anInt2731 * 2056637341;
-   }
 
    public void method2344(byte var1) {
       if(-1 != this.anInt2211 * 839525211) {

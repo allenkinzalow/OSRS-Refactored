@@ -198,8 +198,8 @@ public class LoginHandler {
 				Client.loginBuffer.writeInt(Projectile.skeletonIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(AnimationSkin.skinIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(AbstractIndex.configIndex.anInt935 * -1983334491);
-				Client.loginBuffer.writeInt(FloorDefinition.interfaceIndex.anInt935 * -1983334491);
-				Client.loginBuffer.writeInt(Class118.soundEffectsIndex_1.anInt935 * -1983334491);
+				Client.loginBuffer.writeInt(OverlayFloorDefinition.interfaceIndex.anInt935 * -1983334491);
+				Client.loginBuffer.writeInt(RSSoundEffect.soundEffectsIndex_1.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(PingRequester.landscapeIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(Friend.musicIndex_1.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(Class47.modelIndex.anInt935 * -1983334491);
@@ -291,7 +291,7 @@ public class LoginHandler {
 
 			if (8 == Client.loginStage * -1241953979) {
 				Client.anInt2739 = 0;
-				World.method646(StringConstants.RECENT_WORLD, StringConstants.TRANSFER_TIMER, Client.anInt2751 * -1211848589 / 60 + StringConstants.TRANSFER_SECONDS, 2038890483);
+				World.method646(StringUtilities.RECENT_WORLD, StringUtilities.TRANSFER_TIMER, Client.anInt2751 * -1211848589 / 60 + StringUtilities.TRANSFER_SECONDS, 2038890483);
 				if ((Client.anInt2751 += 1825948485) * -1211848589 <= 0) {
 					Client.loginStage = 0;
 				}
@@ -376,7 +376,7 @@ public class LoginHandler {
 					focusGained = true;
 					Client.lastSentFocusGained = true;
 					Client.aLong2925 = -1524832735365646447L;
-					Class119.method1480((byte) 3);
+					method1480((byte) 3);
 					Client.secureBuffer.position = 0;
 					Client.packetBuffer.position = 0;
 					Client.packetID = 859744123;
@@ -476,7 +476,7 @@ public class LoginHandler {
 					}
 
 					Client.aString2967 = null;
-					Class27.anInt363 = 0;
+					Class27.friendsChatListCount = 0;
 					Class50.friendsChatList = null;
 					Friend.anInt620 = 964554551;
 					PlainTile.loadIncomingMap(false, (byte) 117);
@@ -498,4 +498,8 @@ public class LoginHandler {
 			}
 		}
 	}
+
+	public static void method1480(byte var0) {
+       Class92.aClass92_1447 = new Class92();
+    }
 }

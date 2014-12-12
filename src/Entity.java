@@ -67,7 +67,7 @@ public abstract class Entity extends Renderable {
 
 
    final void method2720(int var1, int var2, boolean var3, int var4) {
-      if(-1 != this.anInt2368 * 1647325343 && CullingCluster.method672(this.anInt2368 * 1647325343, 1641627705).priority * -741149777 == 1) {
+      if(-1 != this.anInt2368 * 1647325343 && AnimationDefinition.getAnimDefForID(this.anInt2368 * 1647325343, 1641627705).priority * -741149777 == 1) {
          this.anInt2368 = 821761185;
       }
 
@@ -140,7 +140,7 @@ public abstract class Entity extends Renderable {
          --var6;
       }
 
-      if(-1 != this.anInt2368 * 1647325343 && CullingCluster.method672(this.anInt2368 * 1647325343, 1655630672).priority * -741149777 == 1) {
+      if(-1 != this.anInt2368 * 1647325343 && AnimationDefinition.getAnimDefForID(this.anInt2368 * 1647325343, 1655630672).priority * -741149777 == 1) {
          this.anInt2368 = 821761185;
       }
 
@@ -176,12 +176,12 @@ public abstract class Entity extends Renderable {
 
    }
 
-   public static CacheFileAccessor method2730(String var0, String var1, boolean var2, byte var3) {
-      File var4 = new File(CacheConstants.aFile1252, "preferences" + var0 + ".dat");
-      if(var4.exists()) {
+   public static CacheFileAccessor getPreferencesFileAccessor(String var0, String var1, boolean var2, byte var3) {
+      File preferencesFile = new File(CacheConstants.aFile1252, "preferences" + var0 + ".dat");
+      if(preferencesFile.exists()) {
          try {
-            CacheFileAccessor var11 = new CacheFileAccessor(var4, "rw", 10000L);
-            return var11;
+            CacheFileAccessor preferencesFileAccessor = new CacheFileAccessor(preferencesFile, "rw", 10000L);
+            return preferencesFileAccessor;
          } catch (IOException var10) {
             ;
          }
@@ -206,7 +206,7 @@ public abstract class Entity extends Renderable {
       }
 
       try {
-         var7 = new CacheFileAccessor(var4, "rw", 10000L);
+         var7 = new CacheFileAccessor(preferencesFile, "rw", 10000L);
          return var7;
       } catch (IOException var8) {
          throw new RuntimeException();
@@ -234,7 +234,7 @@ public abstract class Entity extends Renderable {
    public static boolean method2740(AbstractIndex soundEffect3, AbstractIndex soundEffect2, AbstractIndex soundEffect1, Class108_Sub4_Sub3 var3, int var4) {
       Class91.soundEffectIndex_R3 = soundEffect3;
       Class91.soundEffectIndex_R2 = soundEffect2;
-      Class109.soundEffectIndex_R1 = soundEffect1;
+      RSSoundEffect.soundEffectIndex_R1 = soundEffect1;
       Class32.aClass108_Sub4_Sub3_464 = var3;
       return true;
    }

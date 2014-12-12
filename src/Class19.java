@@ -52,7 +52,7 @@ public class Class19 {
 
    static final void method327(String var0, int var1, byte var2) {
       Client.secureBuffer.writePacket(114);
-      Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(var0, (byte) 64) + 1);
+      Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(var0) + 1);
       Client.secureBuffer.writeString(var0);
       Client.secureBuffer.method1741(var1, -1571002127);
    }
@@ -186,7 +186,7 @@ public class Class19 {
 
             var6 = Client.packetBuffer.method1751((byte)54);
             if(var1.anInt2368 * 1647325343 == var3 && var3 != -1) {
-               int var7 = CullingCluster.method672(var3, 2127154089).delayType * -95027165;
+               int var7 = AnimationDefinition.getAnimDefForID(var3, 2127154089).delayType * -95027165;
                if(var7 == 1) {
                   var1.anInt2341 = 0;
                   var1.anInt2396 = 0;
@@ -197,7 +197,7 @@ public class Class19 {
                if(2 == var7) {
                   var1.anInt2372 = 0;
                }
-            } else if(var3 == -1 || var1.anInt2368 * 1647325343 == -1 || CullingCluster.method672(var3, 1639282697).forcedPriority * -1435646185 >= CullingCluster.method672(var1.anInt2368 * 1647325343, 2071546293).forcedPriority * -1435646185) {
+            } else if(var3 == -1 || var1.anInt2368 * 1647325343 == -1 || AnimationDefinition.getAnimDefForID(var3, 1639282697).forcedPriority * -1435646185 >= AnimationDefinition.getAnimDefForID(var1.anInt2368 * 1647325343, 2071546293).forcedPriority * -1435646185) {
                var1.anInt2368 = var3 * -821761185;
                var1.anInt2341 = 0;
                var1.anInt2396 = 0;

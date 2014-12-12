@@ -16,7 +16,7 @@ public class Js5Request extends CacheableNode {
 
 
    public static void writeClassVerifierResults(RSPacketBuffer buffer, int var1/*unused*/) {
-      ClientVerifier verifier = (ClientVerifier)Class109.aClass92_1447.method1155();
+      ClientVerifier verifier = (ClientVerifier) Class92.aClass92_1447.method1155();
       if(verifier != null) {
          int position = buffer.position * 798331555;
          buffer.writeInt(verifier.anInt1932 * 461892307);

@@ -107,7 +107,7 @@ public class EquipmentKit {
                   hasModel = true;
                }
 
-               if(bodyPartId >= 512 && !AnimationDefinition.getItemDefinition(bodyPartId - 512, -1578938847).hasModel(this.isFemale, 294627738)) {
+               if(bodyPartId >= 512 && !ItemDefinition.getItemDefinition(bodyPartId - 512, -1578938847).hasModel(this.isFemale, 294627738)) {
                   hasModel = true;
                }
             }
@@ -138,7 +138,7 @@ public class EquipmentKit {
                   }
 
                   if(bodyPartID >= 512) {
-                     bodyPartModel = AnimationDefinition.getItemDefinition(bodyPartID - 512, -1930723805).getModel(this.isFemale, (byte)-119);
+                     bodyPartModel = ItemDefinition.getItemDefinition(bodyPartID - 512, -1930723805).getModel(this.isFemale, (byte)-119);
                      if(null != bodyPartModel) {
                         bodyParts[bodyPartId++] = bodyPartModel;
                      }
@@ -193,7 +193,7 @@ public class EquipmentKit {
                hasModel = true;
             }
 
-            if(bodyPartId >= 512 && !AnimationDefinition.getItemDefinition(bodyPartId - 512, -645591119).hasHeadModel(this.isFemale, (byte)-113)) {
+            if(bodyPartId >= 512 && !ItemDefinition.getItemDefinition(bodyPartId - 512, -645591119).hasHeadModel(this.isFemale, (byte)-113)) {
                hasModel = true;
             }
          }
@@ -216,7 +216,7 @@ public class EquipmentKit {
                }
 
                if(bodyPartID >= 512) {
-                  bodyModel = AnimationDefinition.getItemDefinition(bodyPartID - 512, -2036828498).getHeadModel(this.isFemale, -935663576);
+                  bodyModel = ItemDefinition.getItemDefinition(bodyPartID - 512, -2036828498).getHeadModel(this.isFemale, -935663576);
                   if(bodyModel != null) {
                      bodyPartModels[bodyPartId++] = bodyModel;
                   }

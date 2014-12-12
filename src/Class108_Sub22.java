@@ -63,7 +63,7 @@ public class Class108_Sub22 extends Node {
             RSSoundEffect var11 = Client.aClass6Array2741[var1];
             if(null == var11) {
                RSSoundEffect var10000 = (RSSoundEffect)null;
-               var11 = RSSoundEffect.getSoundEffect(Class118.soundEffectsIndex_1, Client.anIntArray2942[var1], 0);
+               var11 = RSSoundEffect.getSoundEffect(RSSoundEffect.soundEffectsIndex_1, Client.anIntArray2942[var1], 0);
                if(var11 == null) {
                   continue;
                }

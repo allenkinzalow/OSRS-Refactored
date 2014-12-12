@@ -143,7 +143,7 @@ public class Class53_Sub1 extends Timer {
          var24 += 256;
       }
 
-      if(objectDef.method2206((byte)-84)) {
+      if(objectDef.method2206()) {
          Class32.method575(plane, localX, localY, objectDef, var4, 1297756197);
       }
 

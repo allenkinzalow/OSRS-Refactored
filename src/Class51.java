@@ -24,29 +24,6 @@ public class Class51 {
       return VertexNormal.method695(var14, var10, var8, var2, 1000914462);
    }
 
-   static void method703(Player var0, int var1, int var2, short var3) {
-      if(var1 == var0.anInt2368 * 1647325343 && -1 != var1) {
-         int var4 = CullingCluster.method672(var1, 1866864408).delayType * -95027165;
-         if(1 == var4) {
-            var0.anInt2341 = 0;
-            var0.anInt2396 = 0;
-            var0.anInt2371 = var2 * -1894246625;
-            var0.anInt2372 = 0;
-         }
-
-         if(2 == var4) {
-            var0.anInt2372 = 0;
-         }
-      } else if(-1 == var1 || var0.anInt2368 * 1647325343 == -1 || CullingCluster.method672(var1, 1805243537).forcedPriority * -1435646185 >= CullingCluster.method672(var0.anInt2368 * 1647325343, 1489363310).forcedPriority * -1435646185) {
-         var0.anInt2368 = var1 * -821761185;
-         var0.anInt2341 = 0;
-         var0.anInt2396 = 0;
-         var0.anInt2371 = var2 * -1894246625;
-         var0.anInt2372 = 0;
-         var0.anInt2395 = var0.anInt2390 * 1986639247;
-      }
-   }
-
    static int method704(int var0, int var1, int var2) {
       Class108_Sub12 var3 = (Class108_Sub12)Class108_Sub12.aClass101_1673.get((long) var0);
       if(var3 == null) {

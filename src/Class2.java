@@ -1,7 +1,6 @@
 
 public class Class2 {
 
-   static RSFont p11_full_font;
    static Class2 aClass2_14 = new Class2();
    static Class2 aClass2_15 = new Class2();
    static byte[][] terrainData;
@@ -12,7 +11,7 @@ public class Class2 {
 
    public static void method39(AbstractIndex var0, int var1) {
       Class36.configIndex_ref = var0;
-      Varp.anInt2045 = Class36.configIndex_ref.getFileCount(16, (byte)-29) * -564083269;
+      Varp.anInt2045 = Class36.configIndex_ref.getFileCount(16) * -564083269;
    }
 
    static String method40(String var0, RSInterface var1, int var2) {

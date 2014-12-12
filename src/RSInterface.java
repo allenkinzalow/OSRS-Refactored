@@ -1,6 +1,7 @@
 
 public class RSInterface extends Node {
 
+   public static AbstractIndex modelIndexRef_intermedia;
    public int[] spritesY;
    public static boolean[] interfacesLoadedArray;
    public static AbstractIndex interfaceIndexReference;
@@ -355,19 +356,19 @@ public class RSInterface extends Node {
          this.tooltip = buffer.getString_2((byte)8);
          if(this.tooltip.length() == 0) {
             if(this.actionType * -2005807019 == 1) {
-               this.tooltip = StringConstants.aString1021;
+               this.tooltip = StringUtilities.aString1021;
             }
 
             if(4 == this.actionType * -2005807019) {
-               this.tooltip = StringConstants.SELECT_MENU;
+               this.tooltip = StringUtilities.SELECT_MENU;
             }
 
             if(this.actionType * -2005807019 == 5) {
-               this.tooltip = StringConstants.SELECT_MENU;
+               this.tooltip = StringUtilities.SELECT_MENU;
             }
 
             if(this.actionType * -2005807019 == 6) {
-               this.tooltip = StringConstants.CONTINUE_MENU;
+               this.tooltip = StringUtilities.CONTINUE_MENU;
             }
          }
       }
@@ -665,7 +666,7 @@ public class RSInterface extends Node {
    }
 
    public RSInterface() {
-      this.tooltip = StringConstants.aString1021;
+      this.tooltip = StringUtilities.aString1021;
       this.itemID = -199268639;
       this.anInt1775 = 0;
       this.anInt1877 = 0;
@@ -702,7 +703,7 @@ public class RSInterface extends Node {
          if(rasterizer == null) {
             RSModel model;
             if(mediaType == 1) { // regular model
-               model = RSModel.decodeModel(Class121.aClass74_1495, modelID, 0);
+               model = RSModel.decodeModel(modelIndexRef_intermedia, modelID, 0);
                if(model == null) {
                   mediaUnavailable = true;
                   return null;
@@ -736,7 +737,7 @@ public class RSInterface extends Node {
             }
 
             if(mediaType == 4) { // item definition
-               ItemDefinition definition = AnimationDefinition.getItemDefinition(modelID, -376950111);
+               ItemDefinition definition = ItemDefinition.getItemDefinition(modelID, -376950111);
                model = definition.getInventoryModel(10, 1826612898);
                if(null == model) {
                   mediaUnavailable = true;

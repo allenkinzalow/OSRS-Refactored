@@ -383,7 +383,7 @@ public final class Client extends Applet_Sub1 {
 			byte var25 = 0;
 
 			try {
-				Class112.anInt1454 = -1695933232;
+				CacheConstants.indexCount = -1695933232;
 				Class108_Sub13.anInt1686 = var25 * 1716101927;
 
 				try {
@@ -603,9 +603,9 @@ public final class Client extends Applet_Sub1 {
 
 				CacheConstants.cacheDataFile = new CacheFile(new CacheFileAccessor(Timer.method715("main_file_cache.dat2", (byte) 52), "rw", 1048576000L), 5200, 0);
 				CacheConstants.cache255File = new CacheFile(new CacheFileAccessor(Timer.method715("main_file_cache.idx255", (byte) 54), "rw", 1048576L), 6000, 0);
-				CacheConstants.indexFileArray = new CacheFile[Class112.anInt1454 * -607702267];
+				CacheConstants.indexFileArray = new CacheFile[CacheConstants.indexCount * -607702267];
 
-				for (indices = 0; indices < Class112.anInt1454 * -607702267; ++indices) {
+				for (indices = 0; indices < CacheConstants.indexCount * -607702267; ++indices) {
 					CacheConstants.indexFileArray[indices] = new CacheFile(new CacheFileAccessor(Timer.method715("main_file_cache.idx" + indices, (byte) 86), "rw", 1048576L), 6000, 0);
 				}
 			} catch (Exception var23) {
@@ -642,7 +642,7 @@ public final class Client extends Applet_Sub1 {
 		Class37 var4 = new Class37();
 
 		try {
-			var3 = Entity.method2730("", gameDefinition.gameName, false, (byte) 73);
+			var3 = Entity.getPreferencesFileAccessor("", gameDefinition.gameName, false, (byte) 73);
 			byte[] var5 = new byte[(int) var3.method1485(1833944889)];
 
 			int var7;
@@ -769,7 +769,7 @@ public final class Client extends Applet_Sub1 {
 						Class108_Sub20_Sub3.method2067(this, -1254698849);
 						LoginHandler.method884(-1857786071);
 					} else if (loginLoadingStage * 1315883169 == 25) {
-						Class15.loadAndRenderRegion((byte) 3);
+						RegionReference.loadAndRenderRegion((byte) 3);
 					}
 				} else {
 					Class108_Sub20_Sub3.method2067(this, -966283044);
@@ -799,7 +799,7 @@ public final class Client extends Applet_Sub1 {
 				}
 
 				if (!actionMenuOpen) {
-					menuActionNamePrefix[0] = StringConstants.CANCEL_OPTION;
+					menuActionNamePrefix[0] = StringUtilities.CANCEL_OPTION;
 					menuActionNames[0] = "";
 					menuActionIdentifiers[0] = 1006;
 					menuActionRow = -1954561849;
@@ -913,7 +913,7 @@ public final class Client extends Applet_Sub1 {
 									}
 
 									if (var98) {
-										if (Class27.anInt363 * 1727166727 == 0) {
+										if (Class27.friendsChatListCount * 1727166727 == 0) {
 											packetID = 859744123;
 											var62 = true;
 											break label2607;
@@ -921,18 +921,18 @@ public final class Client extends Applet_Sub1 {
 
 										boolean var115 = false;
 
-										for (type = 0; type < Class27.anInt363 * 1727166727 && (!Class50.friendsChatList[type].username.equals(stringValue) || value2 != Class50.friendsChatList[type].anInt1663 * -23557543); ++type) {
+										for (type = 0; type < Class27.friendsChatListCount * 1727166727 && (!Class50.friendsChatList[type].username.equals(stringValue) || value2 != Class50.friendsChatList[type].anInt1663 * -23557543); ++type) {
 											;
 										}
 
-										if (type < Class27.anInt363 * 1727166727) {
-											while (type < Class27.anInt363 * 1727166727 - 1) {
+										if (type < Class27.friendsChatListCount * 1727166727) {
+											while (type < Class27.friendsChatListCount * 1727166727 - 1) {
 												Class50.friendsChatList[type] = Class50.friendsChatList[type + 1];
 												++type;
 											}
 
-											Class27.anInt363 -= 436577463;
-											Class50.friendsChatList[Class27.anInt363 * 1727166727] = null;
+											Class27.friendsChatListCount -= 436577463;
+											Class50.friendsChatList[Class27.friendsChatListCount * 1727166727] = null;
 										}
 									} else {
 										packetBuffer.getString_2((byte) 8);
@@ -942,7 +942,7 @@ public final class Client extends Applet_Sub1 {
 										var121.anInt1663 = value2 * -810672663;
 										var121.rank = var131;
 
-										for (var10 = Class27.anInt363 * 1727166727 - 1; var10 >= 0; --var10) {
+										for (var10 = Class27.friendsChatListCount * 1727166727 - 1; var10 >= 0; --var10) {
 											var83 = Class50.friendsChatList[var10].aString1670.compareTo(var121.username);
 											if (var83 == 0) {
 												Class50.friendsChatList[var10].anInt1663 = value2 * -810672663;
@@ -962,22 +962,22 @@ public final class Client extends Applet_Sub1 {
 											}
 										}
 
-										if (Class27.anInt363 * 1727166727 >= Class50.friendsChatList.length) {
+										if (Class27.friendsChatListCount * 1727166727 >= Class50.friendsChatList.length) {
 											packetID = 859744123;
 											var62 = true;
 											break label2607;
 										}
 
-										for (var83 = Class27.anInt363 * 1727166727 - 1; var83 > var10; --var83) {
+										for (var83 = Class27.friendsChatListCount * 1727166727 - 1; var83 > var10; --var83) {
 											Class50.friendsChatList[var83 + 1] = Class50.friendsChatList[var83];
 										}
 
-										if (Class27.anInt363 * 1727166727 == 0) {
+										if (Class27.friendsChatListCount * 1727166727 == 0) {
 											Class50.friendsChatList = new FriendsChatMember[100];
 										}
 
 										Class50.friendsChatList[var10 + 1] = var121;
-										Class27.anInt363 += 436577463;
+										Class27.friendsChatListCount += 436577463;
 										if (stringValue.equals(Player.myPlayer.playerName)) {
 											NPCDefinition.aByte2194 = var131;
 										}
@@ -995,8 +995,8 @@ public final class Client extends Applet_Sub1 {
 									Class23.anInt312 = packetBuffer.readUByte() * 151661741;
 									FloorDecoration.anInt288 = packetBuffer.readUShort(-1200394381) * -1132629983;
 									Friend.anInt627 = packetBuffer.readUByte() * -555568623;
-									FloorDefinition.anInt2223 = packetBuffer.readUByte() * 34594141;
-									if (FloorDefinition.anInt2223 * -1608687883 >= 100) {
+									OverlayFloorDefinition.anInt2223 = packetBuffer.readUByte() * 34594141;
+									if (OverlayFloorDefinition.anInt2223 * -1608687883 >= 100) {
 										BZip2Context.anInt279 = Varp.anInt2042 * 1179406976 + 398378432;
 										CacheFileAccessor.anInt1490 = Class23.anInt312 * 2099289984 + 1924850880;
 										ClientScript.anInt1645 = (ClientScript.getFloorDrawHeight(BZip2Context.anInt279 * 1217916071, CacheFileAccessor.anInt1490 * 1498802843, VarpBit.plane * -570926309, 931351323) - FloorDecoration.anInt288 * -793898015) * 1023920987;
@@ -1182,7 +1182,7 @@ public final class Client extends Applet_Sub1 {
 										}
 									}
 
-									AnimationSkeletonSet.decodeOtherMovement();
+									Player.decodeOtherMovement();
 
 									for (Player player; packetBuffer.readableBits(anInt2927 * -574496637) >= 11; player.method2720(Player.myPlayer.anIntArray2391[0] + var10, variousValue + Player.myPlayer.anIntArray2392[0], type == 1, 2018962908)) {
 										int index = packetBuffer.readBits(11);
@@ -1268,15 +1268,15 @@ public final class Client extends Applet_Sub1 {
 										}
 
 										byte[] var103 = new byte[type];
-										var127.position += Class110.huffmanEncoding.decrypt(var127.buf, var127.position * 798331555, var103, 0, type, -1788362320) * 537964811;
+										var127.position += HuffmanEncoding.huffmanEncoding.decrypt(var127.buf, var127.position * 798331555, var103, 0, type, -1788362320) * 537964811;
 										fieldName = ClientScriptDefinition.method2569(var103, 0, type, (short) -31289);
 										var91 = fieldName;
 									} catch (Exception var47) {
 										var91 = "Cabbage";
 									}
 
-									var91 = RSTypeFace.method3093(Class66.method896(var91, (byte) 0));
-									AnimationSkeletonSet.pushMessage(6, stringValue, var91, 210566856);
+									var91 = RSTypeFace.appendLTGTTags(Class66.method896(var91, (byte) 0));
+									ChatMessagesContainer.pushMessage(6, stringValue, var91, 210566856);
 									packetID = 859744123;
 									var62 = true;
 									break label2607;
@@ -1382,7 +1382,7 @@ public final class Client extends Applet_Sub1 {
 									var98 = false;
 									if (var69) {
 										var71 = packetBuffer.getString_2((byte) 8); //""
-										if (WallDecoration.isOnIgnore(var71, -1031726770)) {
+										if (Ignore.isOnIgnore(var71, -1031726770)) {
 											var98 = true;
 										}
 									}
@@ -1390,7 +1390,7 @@ public final class Client extends Applet_Sub1 {
 									String message = packetBuffer.getString_2((byte) 8); //Msg
 									System.out.printf("Korea %d, %b, %s, %s%n", messageType, var69, var71, message);
 									if (!var98) {
-										AnimationSkeletonSet.pushMessage(messageType, var71, message, -1081283548);
+										ChatMessagesContainer.pushMessage(messageType, var71, message, -1081283548);
 									}
 
 									packetID = 859744123;
@@ -1540,7 +1540,7 @@ public final class Client extends Applet_Sub1 {
 														friend.friendHash = verifyIndex * 1201419133;
 													}
 
-													friend.aString621 = var71;
+													friend.displayName = var71;
 													friend.anInt623 = type * -1258673293;
 													friend.aBool624 = var94;
 													friend.aBool622 = var96;
@@ -1549,7 +1549,7 @@ public final class Client extends Applet_Sub1 {
 												}
 											} else if (var71.equals(friend.username)) {
 												friend.username = var117;
-												friend.aString621 = var71;
+												friend.displayName = var71;
 												var117 = null;
 												break;
 											}
@@ -1559,7 +1559,7 @@ public final class Client extends Applet_Sub1 {
 											Friend friend = new Friend();
 											friendList[friendListCount * -163737695] = friend;
 											friend.username = var117;
-											friend.aString621 = var71;
+											friend.displayName = var71;
 											friend.friendHash = verifyIndex * 1201419133;
 											friend.anInt623 = type * -1258673293;
 											friend.aBool624 = var94;
@@ -1653,13 +1653,13 @@ public final class Client extends Applet_Sub1 {
 											if (var69) {
 												if (var91.equals(var95.username)) {
 													var95.username = var71;
-													var95.aString387 = var91;
+													var95.displayName = var91;
 													var71 = null;
 													break;
 												}
 											} else if (var71.equals(var95.username)) {
 												var95.username = var71;
-												var95.aString387 = var91;
+												var95.displayName = var91;
 												var71 = null;
 												break;
 											}
@@ -1669,7 +1669,7 @@ public final class Client extends Applet_Sub1 {
 											Ignore var88 = new Ignore();
 											ignoreList[ignoreListCount * -1283681697] = var88;
 											var88.username = var71;
-											var88.aString387 = var91;
+											var88.displayName = var91;
 											ignoreListCount -= 224638561;
 										}
 									}
@@ -1694,7 +1694,7 @@ public final class Client extends Applet_Sub1 {
 									if (anInt2927 * -574496637 == 0) {
 										aString2967 = null;
 										aString2934 = null;
-										Class27.anInt363 = 0;
+										Class27.friendsChatListCount = 0;
 										Class50.friendsChatList = null;
 										packetID = 859744123;
 										var62 = true;
@@ -1717,7 +1717,7 @@ public final class Client extends Applet_Sub1 {
 												while (0L != var21) {
 													long var25 = var21;
 													var21 /= 37L;
-													var107.append(Class112.aCharArray1455[(int) (var25 - 37L * var21)]);
+													var107.append(StringUtilities.aCharArray1455[(int) (var25 - 37L * var21)]);
 												}
 
 												var71 = var107.reverse().toString();
@@ -1733,10 +1733,10 @@ public final class Client extends Applet_Sub1 {
 											packetID = 859744123;
 											var62 = true;
 										} else {
-											Class27.anInt363 = var10 * 436577463;
+											Class27.friendsChatListCount = var10 * 436577463;
 											FriendsChatMember[] var92 = new FriendsChatMember[100];
 
-											for (variousValue = 0; variousValue < Class27.anInt363 * 1727166727; ++variousValue) {
+											for (variousValue = 0; variousValue < Class27.friendsChatListCount * 1727166727; ++variousValue) {
 												var92[variousValue] = new FriendsChatMember();
 												var92[variousValue].username = packetBuffer.getString_2((byte) 8);
 												var92[variousValue].aString1670 = Class108_Sub10.method1683(var92[variousValue].username, UnderlayDefinition.aClass116_2142, -1909536491);
@@ -1749,7 +1749,7 @@ public final class Client extends Applet_Sub1 {
 											}
 
 											var96 = false;
-											nameIndex = Class27.anInt363 * 1727166727;
+											nameIndex = Class27.friendsChatListCount * 1727166727;
 
 											while (nameIndex > 0) {
 												var96 = true;
@@ -1802,7 +1802,7 @@ public final class Client extends Applet_Sub1 {
 										}
 									}
 
-									if (variousValue <= 1 && WallDecoration.isOnIgnore(stringValue, -1722969014)) {
+									if (variousValue <= 1 && Ignore.isOnIgnore(stringValue, -1722969014)) {
 										isFriend = true;
 									}
 
@@ -1819,22 +1819,22 @@ public final class Client extends Applet_Sub1 {
 											}
 
 											byte[] var146 = new byte[var142];
-											var144.position += Class110.huffmanEncoding.decrypt(var144.buf, var144.position * 798331555, var146, 0, var142, -1610411650) * 537964811;
+											var144.position += HuffmanEncoding.huffmanEncoding.decrypt(var144.buf, var144.position * 798331555, var146, 0, var142, -1610411650) * 537964811;
 											String var147 = ClientScriptDefinition.method2569(var146, 0, var142, (short) 3766);
 											var149 = var147;
 										} catch (Exception var46) {
 											var149 = "Cabbage";
 										}
 
-										var149 = RSTypeFace.method3093(Class66.method896(var149, (byte) 0));
+										var149 = RSTypeFace.appendLTGTTags(Class66.method896(var149, (byte) 0));
 										if (2 != variousValue && 3 != variousValue) {
 											if (variousValue == 1) {
-												FloorDefinition.pushDirectMessage(9, CacheIndexRequest.getIconTag(0, 480603646) + stringValue, var149, ClientScript.method1680(var27), 403249369);
+												ChatMessagesContainer.pushDirectMessage(9, CacheIndexRequest.getIconTag(0, 480603646) + stringValue, var149, ClientScript.method1680(var27), 403249369);
 											} else {
-												FloorDefinition.pushDirectMessage(9, stringValue, var149, ClientScript.method1680(var27), 403249369);
+												ChatMessagesContainer.pushDirectMessage(9, stringValue, var149, ClientScript.method1680(var27), 403249369);
 											}
 										} else {
-											FloorDefinition.pushDirectMessage(9, CacheIndexRequest.getIconTag(1, 480603646) + stringValue, var149, ClientScript.method1680(var27), 403249369);
+											ChatMessagesContainer.pushDirectMessage(9, CacheIndexRequest.getIconTag(1, 480603646) + stringValue, var149, ClientScript.method1680(var27), 403249369);
 										}
 									}
 
@@ -1972,7 +1972,7 @@ public final class Client extends Applet_Sub1 {
 											break label2607;
 										}
 
-										itemDef = AnimationDefinition.getItemDefinition(value, -66621041);
+										itemDef = ItemDefinition.getItemDefinition(value, -66621041);
 										var87.mediaType = 247808596;
 										var87.mediaID = value * 1321013799;
 										var87.mediaRotationX = itemDef.xan2d * 547018395;
@@ -1982,7 +1982,7 @@ public final class Client extends Applet_Sub1 {
 									} else {
 										var87.itemID = value * 199268639;
 										var87.anInt1775 = var7 * -154849603;
-										itemDef = AnimationDefinition.getItemDefinition(value, -649138297);
+										itemDef = ItemDefinition.getItemDefinition(value, -649138297);
 										var87.mediaRotationX = itemDef.xan2d * 547018395;
 										var87.mediaRotationY = itemDef.yan2d * -1292543953;
 										var87.anInt1813 = itemDef.zan2d * 2079954531;
@@ -2141,7 +2141,7 @@ public final class Client extends Applet_Sub1 {
 									}
 								}
 
-								Class109.aClass92_1447.method1153(verifier);
+								Class92.aClass92_1447.method1153(verifier);
 								packetID = 859744123;
 								var62 = true;
 								break label2607;
@@ -2235,7 +2235,7 @@ public final class Client extends Applet_Sub1 {
 										}
 									}
 
-									if (WallDecoration.isOnIgnore(stringValue, -722235874)) {
+									if (Ignore.isOnIgnore(stringValue, -722235874)) {
 										var100 = true;
 									}
 
@@ -2252,22 +2252,22 @@ public final class Client extends Applet_Sub1 {
 											}
 
 											byte[] var35 = new byte[methodNameIndex];
-											var109.position += Class110.huffmanEncoding.decrypt(var109.buf, var109.position * 798331555, var35, 0, methodNameIndex, -1458649550) * 537964811;
+											var109.position += HuffmanEncoding.huffmanEncoding.decrypt(var109.buf, var109.position * 798331555, var35, 0, methodNameIndex, -1458649550) * 537964811;
 											String var32 = ClientScriptDefinition.method2569(var35, 0, methodNameIndex, (short) 22002);
 											var18 = var32;
 										} catch (Exception var45) {
 											var18 = "Cabbage";
 										}
 
-										var18 = RSTypeFace.method3093(Class66.method896(var18, (byte) 0));
+										var18 = RSTypeFace.appendLTGTTags(Class66.method896(var18, (byte) 0));
 										if (var10 != 2 && var10 != 3) {
 											if (var10 == 1) {
-												AnimationSkeletonSet.pushMessage(7, CacheIndexRequest.getIconTag(0, 480603646) + stringValue, var18, -568108351);
+												ChatMessagesContainer.pushMessage(7, CacheIndexRequest.getIconTag(0, 480603646) + stringValue, var18, -568108351);
 											} else {
-												AnimationSkeletonSet.pushMessage(3, stringValue, var18, -508835604);
+												ChatMessagesContainer.pushMessage(3, stringValue, var18, -508835604);
 											}
 										} else {
-											AnimationSkeletonSet.pushMessage(7, CacheIndexRequest.getIconTag(1, 480603646) + stringValue, var18, 465625599);
+											ChatMessagesContainer.pushMessage(7, CacheIndexRequest.getIconTag(1, 480603646) + stringValue, var18, 465625599);
 										}
 									}
 
@@ -2719,7 +2719,7 @@ public final class Client extends Applet_Sub1 {
 				}
 
 				while (true) {
-					ClientVerifier clientVerifier = (ClientVerifier) Class109.aClass92_1447.method1155();
+					ClientVerifier clientVerifier = (ClientVerifier) Class92.aClass92_1447.method1155();
 					boolean clientVerified;
 					if (null == clientVerifier) {
 						clientVerified = false;
@@ -3024,7 +3024,7 @@ public final class Client extends Applet_Sub1 {
 										while (true) {
 											script = (ClientScript) aClass105_2737.method1337();
 											if (script == null) {
-												RegionReference.method608((byte) -123);
+												RegionReference.method608();
 												if (IsaacRandomGen.aClass108_Sub17_745 == null && null == aClass108_Sub17_2877) {
 													value = MouseInputHandler.clickType * 1629072957;
 													if (actionMenuOpen) {
@@ -3240,42 +3240,42 @@ public final class Client extends Applet_Sub1 {
 													value2 = Class23.anInt312 * 168530560 + 64;
 													var7 = ClientScript.getFloorDrawHeight(value, value2, VarpBit.plane * -570926309, 1362004752) - FloorDecoration.anInt288 * -793898015;
 													if (BZip2Context.anInt279 * 1217916071 < value) {
-														BZip2Context.anInt279 += ((value - BZip2Context.anInt279 * 1217916071) * FloorDefinition.anInt2223 * -1608687883 / 1000 + Friend.anInt627 * 399671025) * 1616837399;
+														BZip2Context.anInt279 += ((value - BZip2Context.anInt279 * 1217916071) * OverlayFloorDefinition.anInt2223 * -1608687883 / 1000 + Friend.anInt627 * 399671025) * 1616837399;
 														if (BZip2Context.anInt279 * 1217916071 > value) {
 															BZip2Context.anInt279 = value * 1616837399;
 														}
 													}
 
 													if (BZip2Context.anInt279 * 1217916071 > value) {
-														BZip2Context.anInt279 -= (Friend.anInt627 * 399671025 + FloorDefinition.anInt2223 * -1608687883 * (BZip2Context.anInt279 * 1217916071 - value) / 1000) * 1616837399;
+														BZip2Context.anInt279 -= (Friend.anInt627 * 399671025 + OverlayFloorDefinition.anInt2223 * -1608687883 * (BZip2Context.anInt279 * 1217916071 - value) / 1000) * 1616837399;
 														if (BZip2Context.anInt279 * 1217916071 < value) {
 															BZip2Context.anInt279 = value * 1616837399;
 														}
 													}
 
 													if (ClientScript.anInt1645 * 699100371 < var7) {
-														ClientScript.anInt1645 += (Friend.anInt627 * 399671025 + FloorDefinition.anInt2223 * -1608687883 * (var7 - ClientScript.anInt1645 * 699100371) / 1000) * 1023920987;
+														ClientScript.anInt1645 += (Friend.anInt627 * 399671025 + OverlayFloorDefinition.anInt2223 * -1608687883 * (var7 - ClientScript.anInt1645 * 699100371) / 1000) * 1023920987;
 														if (ClientScript.anInt1645 * 699100371 > var7) {
 															ClientScript.anInt1645 = var7 * 1023920987;
 														}
 													}
 
 													if (ClientScript.anInt1645 * 699100371 > var7) {
-														ClientScript.anInt1645 -= ((ClientScript.anInt1645 * 699100371 - var7) * FloorDefinition.anInt2223 * -1608687883 / 1000 + Friend.anInt627 * 399671025) * 1023920987;
+														ClientScript.anInt1645 -= ((ClientScript.anInt1645 * 699100371 - var7) * OverlayFloorDefinition.anInt2223 * -1608687883 / 1000 + Friend.anInt627 * 399671025) * 1023920987;
 														if (ClientScript.anInt1645 * 699100371 < var7) {
 															ClientScript.anInt1645 = var7 * 1023920987;
 														}
 													}
 
 													if (CacheFileAccessor.anInt1490 * 1498802843 < value2) {
-														CacheFileAccessor.anInt1490 += ((value2 - CacheFileAccessor.anInt1490 * 1498802843) * FloorDefinition.anInt2223 * -1608687883 / 1000 + Friend.anInt627 * 399671025) * 365620115;
+														CacheFileAccessor.anInt1490 += ((value2 - CacheFileAccessor.anInt1490 * 1498802843) * OverlayFloorDefinition.anInt2223 * -1608687883 / 1000 + Friend.anInt627 * 399671025) * 365620115;
 														if (CacheFileAccessor.anInt1490 * 1498802843 > value2) {
 															CacheFileAccessor.anInt1490 = value2 * 365620115;
 														}
 													}
 
 													if (CacheFileAccessor.anInt1490 * 1498802843 > value2) {
-														CacheFileAccessor.anInt1490 -= (Friend.anInt627 * 399671025 + FloorDefinition.anInt2223 * -1608687883 * (CacheFileAccessor.anInt1490 * 1498802843 - value2) / 1000) * 365620115;
+														CacheFileAccessor.anInt1490 -= (Friend.anInt627 * 399671025 + OverlayFloorDefinition.anInt2223 * -1608687883 * (CacheFileAccessor.anInt1490 * 1498802843 - value2) / 1000) * 365620115;
 														if (CacheFileAccessor.anInt1490 * 1498802843 < value2) {
 															CacheFileAccessor.anInt1490 = value2 * 365620115;
 														}
@@ -3430,11 +3430,11 @@ public final class Client extends Applet_Sub1 {
 												for (OnlineFriend onlineFriend = (OnlineFriend) aClass102_2956.getBack(); onlineFriend != null; onlineFriend = (OnlineFriend) aClass102_2956.getPrevious()) {
 													if ((long) (onlineFriend.anInt1517 * -398102129) < Player.getCurrentTimeMillis(849846164) / 1000L - 5L) {
 														if (onlineFriend.status > 0) {
-															AnimationSkeletonSet.pushMessage(5, "", onlineFriend.username + StringConstants.BLANK_HAS_LOGGED_IN, -429113441);
+															ChatMessagesContainer.pushMessage(5, "", onlineFriend.username + StringUtilities.BLANK_HAS_LOGGED_IN, -429113441);
 														}
 
 														if (onlineFriend.status == 0) {
-															AnimationSkeletonSet.pushMessage(5, "", onlineFriend.username + StringConstants.HAS_LOGGED_OUT, -1228500567);
+															ChatMessagesContainer.pushMessage(5, "", onlineFriend.username + StringUtilities.HAS_LOGGED_OUT, -1228500567);
 														}
 
 														onlineFriend.remove();
@@ -3528,7 +3528,7 @@ public final class Client extends Applet_Sub1 {
 					}
 
 					if (Timer.aClass15_724 == null) {
-						Timer.aClass15_724 = new Class15(Class109.soundEffectIndex_R1, Class91.soundEffectIndex_R2);
+						Timer.aClass15_724 = new Class15(RSSoundEffect.soundEffectIndex_R1, Class91.soundEffectIndex_R2);
 					}
 
 					if (Class32.aClass108_Sub4_Sub3_464.method2668(Class68.aClass108_Sub23_903, Class91.soundEffectIndex_R3, Timer.aClass15_724, 22050, -1625330588)) {
@@ -3584,10 +3584,10 @@ public final class Client extends Applet_Sub1 {
 		if (loginLoadingStage * 1315883169 == 0) {
 			MouseCapturer.method392(Class4.anInt52 * 2070155241, Class4.currentLoadingStatus, (Color) null, -230014244);
 		} else if (loginLoadingStage * 1315883169 == 5) {
-			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, Class2.p11_full_font, -91833970);
+			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -91833970);
 		} else if (loginLoadingStage * 1315883169 != 10 && loginLoadingStage * 1315883169 != 11) {
 			if (loginLoadingStage * 1315883169 == 20) {
-				ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, Class2.p11_full_font, -768421256);
+				ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -768421256);
 			} else {
 				int xPos;
 				if (loginLoadingStage * 1315883169 == 25) {
@@ -3597,16 +3597,16 @@ public final class Client extends Applet_Sub1 {
 						}
 
 						xPos = (anInt2830 * -52220298 - anInt2759 * -1793948086) / (anInt2830 * 1115647091);
-						GameDefinition.method1107(StringConstants.LOADING_PLEASE_WAIT + Class47.LINE_BREAK + Class47.OPEN_PAREN + xPos + "%" + Class47.CLOSE_PAREN, false, 794128364);
+						GameDefinition.method1107(StringUtilities.LOADING_PLEASE_WAIT + Class47.LINE_BREAK + Class47.OPEN_PAREN + xPos + "%" + Class47.CLOSE_PAREN, false, 794128364);
 					} else if (2 == anInt2943 * 1299172531) {
 						if (anInt2761 * -1818752631 > anInt2762 * -204390075) {
 							anInt2762 = anInt2761 * -74763915;
 						}
 
 						xPos = 50 + (anInt2762 * -1629569158 - anInt2761 * -743318334) / (anInt2762 * -204390075);
-						GameDefinition.method1107(StringConstants.LOADING_PLEASE_WAIT + Class47.LINE_BREAK + Class47.OPEN_PAREN + xPos + "%" + Class47.CLOSE_PAREN, false, 1059283875);
+						GameDefinition.method1107(StringUtilities.LOADING_PLEASE_WAIT + Class47.LINE_BREAK + Class47.OPEN_PAREN + xPos + "%" + Class47.CLOSE_PAREN, false, 1059283875);
 					} else {
-						GameDefinition.method1107(StringConstants.LOADING_PLEASE_WAIT, false, 29897996);
+						GameDefinition.method1107(StringUtilities.LOADING_PLEASE_WAIT, false, 29897996);
 					}
 				} else if (30 == loginLoadingStage * 1315883169) {
 					if (-1 != openInterfaceID * 1523906617) {
@@ -3642,14 +3642,14 @@ public final class Client extends Applet_Sub1 {
 							if (menuActionRow * 391839991 >= 2 || 0 != anInt2858 * -968945719 || aBool2881) {
 								String tooltip;
 								if (anInt2858 * -968945719 == 1 && menuActionRow * 391839991 < 2) {
-									tooltip = StringConstants.USE_OPTION + StringConstants.aString1109 + aString2859 + " " + Class47.aString668; //use SOMETHING with...
+									tooltip = StringUtilities.USE_OPTION + StringUtilities.aString1109 + aString2859 + " " + Class47.aString668; //use SOMETHING with...
 								} else if (aBool2881 && menuActionRow * 391839991 < 2) {
-									tooltip = aString2941 + StringConstants.aString1109 + aString2819 + " " + Class47.aString668; // ...
+									tooltip = aString2941 + StringUtilities.aString1109 + aString2819 + " " + Class47.aString668; // ...
 								} else {
 									int highestMenuActionRow = menuActionRow * 391839991 - 1;
 									String secondMenuName;
 									if (menuActionNames[highestMenuActionRow].length() > 0) {
-										secondMenuName = menuActionNamePrefix[highestMenuActionRow] + StringConstants.aString1109 + menuActionNames[highestMenuActionRow];
+										secondMenuName = menuActionNamePrefix[highestMenuActionRow] + StringUtilities.aString1109 + menuActionNames[highestMenuActionRow];
 									} else {
 										secondMenuName = menuActionNamePrefix[highestMenuActionRow];
 									}
@@ -3658,7 +3658,7 @@ public final class Client extends Applet_Sub1 {
 								}
 
 								if (menuActionRow * 391839991 > 2) {
-									tooltip = tooltip + HuffmanEncoding.method690(16777215, -598146062) + " " + '/' + " " + (menuActionRow * 391839991 - 2) + StringConstants.aString1044;
+									tooltip = tooltip + HuffmanEncoding.method690(16777215, -598146062) + " " + '/' + " " + (menuActionRow * 391839991 - 2) + StringUtilities.aString1044;
 								}
 
 								RSTypeFace.b12_full_font.drawShadedSeededAlphaString(tooltip, xPos + 4, 15 + yPos, 16777215, 0, cycle * -637317861 / 1000);
@@ -3683,13 +3683,13 @@ public final class Client extends Applet_Sub1 {
 					Class43.method655(VarpBit.plane * -570926309, Player.myPlayer.anInt2394 * 171470795, Player.myPlayer.anInt2339 * 826764905, anInt2780 * 468305965, -518827825);
 					anInt2780 = 0;
 				} else if (40 == loginLoadingStage * 1315883169) {
-					GameDefinition.method1107(StringConstants.CONNECTION_LOST + Class47.LINE_BREAK + StringConstants.PLEASE_WAIT_ESTABLISHING, false, -507251184);
+					GameDefinition.method1107(StringUtilities.CONNECTION_LOST + Class47.LINE_BREAK + StringUtilities.PLEASE_WAIT_ESTABLISHING, false, -507251184);
 				} else if (loginLoadingStage * 1315883169 == 45) {
-					GameDefinition.method1107(StringConstants.aString1041, false, 2056448493);
+					GameDefinition.method1107(StringUtilities.aString1041, false, 2056448493);
 				}
 			}
 		} else {
-			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, Class2.p11_full_font, 1086962024);
+			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, 1086962024);
 		}
 
 		Graphics var14;
@@ -3886,34 +3886,6 @@ public final class Client extends Applet_Sub1 {
 	static void method3552(int var0, int var1, int var2) {
 		Class15.method298(Class108_Sub21.aClass1_1895, var0, var1, (short) 16256);
 		Class108_Sub21.aClass1_1895 = null;
-	}
-
-	public static PaletteSprite[] method3553(AbstractIndex var0, String var1, String var2, byte var3) {
-		int var4 = var0.method1005(var1, 1723285154);
-		int var6 = var0.getFileForName(var4, var2, (byte) 0);
-		PaletteSprite[] var5;
-		if (!FriendsChatMember.method1686(var0, var4, var6, -1818735158)) {
-			var5 = null;
-		} else {
-			PaletteSprite[] var8 = new PaletteSprite[Class9.anInt125 * 2039617935];
-
-			for (int var9 = 0; var9 < Class9.anInt125 * 2039617935; ++var9) {
-				PaletteSprite var7 = var8[var9] = new PaletteSprite();
-				var7.anInt2418 = Class9.anInt122 * 93011449;
-				var7.anInt2412 = Class9.anInt121 * -1272520477;
-				var7.anInt2415 = Class88.anIntArray1316[var9];
-				var7.anInt2411 = Class9.anIntArray123[var9];
-				var7.anInt2413 = Class36.anIntArray514[var9];
-				var7.anInt2414 = Class9.anIntArray126[var9];
-				var7.palette = Class9.anIntArray130;
-				var7.pixels = AnimationSkeletonSet.loadedCharacterPixels[var9];
-			}
-
-			ClientScript.method1679((byte) 82);
-			var5 = var8;
-		}
-
-		return var5;
 	}
 
 	static void method3554(int var0) {

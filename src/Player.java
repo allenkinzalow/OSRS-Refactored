@@ -24,6 +24,91 @@ public final class Player extends Entity {
 	int combatLevel = 0;
 	boolean aBool2682 = false;
 
+	static final void decodeOtherMovement() {
+		int numLocalPlayers = Client.packetBuffer.readBits(8);
+		System.out.println("Local players: " + numLocalPlayers);
+		int ptr;
+		if (numLocalPlayers < Client.numLocalPlayers * -43742683) {
+			for (ptr = numLocalPlayers; ptr < Client.numLocalPlayers * -43742683; ++ptr) {
+				Client.indicesPendingRemoval[(Client.removedCounter += 1906858221) * 104842469 - 1] = Client.playerIndices[ptr];
+			}
+		}
+
+		if (numLocalPlayers > Client.numLocalPlayers * -43742683) {
+			throw new RuntimeException("");
+		} else {
+			Client.numLocalPlayers = 0;
+
+			for (ptr = 0; ptr < numLocalPlayers; ++ptr) {
+				int index = Client.playerIndices[ptr];
+				Player var5 = Client.localPlayers[index];
+				int moved = Client.packetBuffer.readBits(1);
+				if (moved == 0) {
+					Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
+					var5.lastUpdated = Client.cycle * 1761958407;
+				} else {
+					int movetype = Client.packetBuffer.readBits(2);
+					if (0 == movetype) {
+						Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
+						var5.lastUpdated = Client.cycle * 1761958407;
+						Client.playersNeedingUpdating[(Client.updateReqCount -= 472402375) * -184592375 - 1] = index;
+					} else {
+						int var7;
+						int var8;
+						if (movetype == 1) {
+							Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
+							var5.lastUpdated = Client.cycle * 1761958407;
+							var8 = Client.packetBuffer.readBits(3);
+							var5.moveInDirection(var8, false, -548715931);
+							var7 = Client.packetBuffer.readBits(1);
+							if (1 == var7) {
+								Client.playersNeedingUpdating[(Client.updateReqCount -= 472402375) * -184592375 - 1] = index;
+							}
+						} else if (2 == movetype) {
+							Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
+							var5.lastUpdated = Client.cycle * 1761958407;
+							var8 = Client.packetBuffer.readBits(3);
+							var5.moveInDirection(var8, true, -548715931);
+							var7 = Client.packetBuffer.readBits(3);
+							var5.moveInDirection(var7, true, -548715931);
+							int maskUpdate = Client.packetBuffer.readBits(1);
+							if (1 == maskUpdate) {
+								Client.playersNeedingUpdating[(Client.updateReqCount -= 472402375) * -184592375 - 1] = index;
+							}
+						} else if (movetype == 3) {
+							Client.indicesPendingRemoval[(Client.removedCounter += 1906858221) * 104842469 - 1] = index;
+							System.out.println("Removed " + index);
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	static void method703(Player myPlayer, int animationID, int var2, short var3) {
+       if(animationID == myPlayer.anInt2368 * 1647325343 && -1 != animationID) {
+          int var4 = AnimationDefinition.getAnimDefForID(animationID, 1866864408).delayType * -95027165;
+          if(1 == var4) {
+             myPlayer.anInt2341 = 0;
+             myPlayer.anInt2396 = 0;
+             myPlayer.anInt2371 = var2 * -1894246625;
+             myPlayer.anInt2372 = 0;
+          }
+
+          if(2 == var4) {
+             myPlayer.anInt2372 = 0;
+          }
+       } else if(-1 == animationID || myPlayer.anInt2368 * 1647325343 == -1 || AnimationDefinition.getAnimDefForID(animationID, 1805243537).forcedPriority * -1435646185 >= AnimationDefinition.getAnimDefForID(myPlayer.anInt2368 * 1647325343, 1489363310).forcedPriority * -1435646185) {
+          myPlayer.anInt2368 = animationID * -821761185;
+          myPlayer.anInt2341 = 0;
+          myPlayer.anInt2396 = 0;
+          myPlayer.anInt2371 = var2 * -1894246625;
+          myPlayer.anInt2372 = 0;
+          myPlayer.anInt2395 = myPlayer.anInt2390 * 1986639247;
+       }
+    }
+
 
 	final void decodeAppearance(RSByteBuffer buffer) {
 		buffer.position = 0;
@@ -49,7 +134,7 @@ public final class Player extends Entity {
 				}
 
 				if (equips[slot] >= 512) {
-					int team = AnimationDefinition.getItemDefinition(equips[slot] - 512, -437621212).team * 989158985;
+					int team = ItemDefinition.getItemDefinition(equips[slot] - 512, -437621212).team * 989158985;
 					if (team != 0) {
 						this.playerTeamID = team * 2145998287;
 					}
@@ -147,44 +232,6 @@ public final class Player extends Entity {
 		return this.bodyEquipmentKit != null;
 	}
 
-	static final void removeFriend(String toRemove, int var1) {
-		if (toRemove != null) {
-			String decodedToRemove = Class108_Sub10.method1683(toRemove, UnderlayDefinition.aClass116_2142, -1914708884);
-			if (null != decodedToRemove) {
-				for (int friendIndex = 0; friendIndex < Client.friendListCount * -163737695; ++friendIndex) {
-					Friend friend = Client.friendList[friendIndex];
-					String username = friend.username;
-					String var6 = Class108_Sub10.method1683(username, UnderlayDefinition.aClass116_2142, -1984290654);
-					boolean containsFriend;
-					if (null != toRemove && username != null) {
-						if (!toRemove.startsWith("#") && !username.startsWith("#")) {
-							containsFriend = decodedToRemove.equals(var6);
-						} else {
-							containsFriend = toRemove.equals(username);
-						}
-					} else {
-						containsFriend = false;
-					}
-
-					if (containsFriend) {
-						Client.friendListCount -= 1056183393;
-
-						for (int shiftIndex = friendIndex; shiftIndex < Client.friendListCount * -163737695; ++shiftIndex) {
-							Client.friendList[shiftIndex] = Client.friendList[shiftIndex + 1];
-						}
-
-						Client.anInt2897 = Client.anInt2731 * 1946037095;
-						Client.secureBuffer.writePacket(39);
-						Client.secureBuffer.writeByte(Class108_Sub20_Sub3.method2069(toRemove, (byte) 64));
-						Client.secureBuffer.writeString(toRemove);
-						return;
-					}
-				}
-
-			}
-		}
-	}
-
 	public static synchronized long getCurrentTimeMillis(int var0) {
 		long currentTime = System.currentTimeMillis();
 		if (currentTime < -3666040911483064549L * Class27.lastSetTime) {
@@ -199,8 +246,8 @@ public final class Player extends Entity {
 		if (null == this.bodyEquipmentKit) {
 			return null;
 		} else {
-			AnimationDefinition var2 = this.anInt2368 * 1647325343 != -1 && 0 == this.anInt2371 * 843883743 ? CullingCluster.method672(this.anInt2368 * 1647325343, 1639954209) : null;
-			AnimationDefinition var4 = this.anInt2365 * 1103885695 != -1 && !this.aBool2680 && (this.anInt2365 * 1103885695 != this.standAnimationID * -532414055 || null == var2) ? CullingCluster.method672(this.anInt2365 * 1103885695, 1617260319) : null;
+			AnimationDefinition var2 = this.anInt2368 * 1647325343 != -1 && 0 == this.anInt2371 * 843883743 ? AnimationDefinition.getAnimDefForID(this.anInt2368 * 1647325343, 1639954209) : null;
+			AnimationDefinition var4 = this.anInt2365 * 1103885695 != -1 && !this.aBool2680 && (this.anInt2365 * 1103885695 != this.standAnimationID * -532414055 || null == var2) ? AnimationDefinition.getAnimDefForID(this.anInt2365 * 1103885695, 1617260319) : null;
 			ModelRasterizer rasterizer = this.bodyEquipmentKit.getModelRasterizer(var2, this.anInt2341 * -2111206063, var4, this.anInt2366 * -65543943, 677402337);
 			if (null == rasterizer) {
 				return null;
@@ -267,7 +314,7 @@ public final class Player extends Entity {
 			amountAsString = amountAsString.substring(0, var3) + Class47.COMMA_LITERAL + amountAsString.substring(var3);
 		}
 
-		return amountAsString.length() > 9 ? " " + HuffmanEncoding.method690('\uff80', -2142918227) + amountAsString.substring(0, amountAsString.length() - 8) + StringConstants.aString1097 + " " + Class47.OPEN_PAREN + amountAsString + Class47.CLOSE_PAREN + Class47.COL_END : (amountAsString.length() > 6 ? " " + HuffmanEncoding.method690(16777215, -818471386) + amountAsString.substring(0, amountAsString.length() - 4) + StringConstants.K + " " + Class47.OPEN_PAREN + amountAsString + Class47.CLOSE_PAREN + Class47.COL_END : " " + HuffmanEncoding.method690(16776960, -1154832985) + amountAsString + Class47.COL_END);
+		return amountAsString.length() > 9 ? " " + HuffmanEncoding.method690('\uff80', -2142918227) + amountAsString.substring(0, amountAsString.length() - 8) + StringUtilities.aString1097 + " " + Class47.OPEN_PAREN + amountAsString + Class47.CLOSE_PAREN + Class47.COL_END : (amountAsString.length() > 6 ? " " + HuffmanEncoding.method690(16777215, -818471386) + amountAsString.substring(0, amountAsString.length() - 4) + StringUtilities.K + " " + Class47.OPEN_PAREN + amountAsString + Class47.CLOSE_PAREN + Class47.COL_END : " " + HuffmanEncoding.method690(16776960, -1154832985) + amountAsString + Class47.COL_END);
 	}
 
 	static CacheIndex initCacheIndex(int index, boolean var1, boolean var2, boolean var3, int var4) {
@@ -319,8 +366,8 @@ public final class Player extends Entity {
 	}
 
 	static int method3181(int var0, byte var1) {
-		ChatMessage var2 = (ChatMessage) Class26.aClass95_348.method1202((long) var0);
-		return var2 == null ? -1 : (Class26.aClass97_349.aClass108_Sub20_1374 == var2.previousNode ? -1 : ((ChatMessage) var2.previousNode).anInt1944 * -1818271001);
+		ChatMessage chatMessage = (ChatMessage) Class26.aClass95_348.method1202((long) var0);
+		return chatMessage == null ? -1 : (Class26.aClass97_349.aClass108_Sub20_1374 == chatMessage.previousNode ? -1 : ((ChatMessage) chatMessage.previousNode).anInt1944 * -1818271001);
 	}
 
 	public static boolean method3182(int var0) {

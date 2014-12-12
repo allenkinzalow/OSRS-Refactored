@@ -14,9 +14,9 @@ public class AnimationSkeletonSet extends CacheableNode {
 
 	AnimationSkeletonSet(AbstractIndex var1, AbstractIndex var2, int archiveID, boolean var4) {
 		Deque var12 = new Deque();
-		int var6 = var1.getFileCount(archiveID, (byte) -61);
+		int var6 = var1.getFileCount(archiveID);
 		this.animations = new AnimationSkeleton[var6];
-		int[] fileList = var1.method1013(archiveID, -140913151);
+		int[] fileList = var1.method1013(archiveID);
 		int fileID = 0;
 
 		while (fileID < fileList.length) {
@@ -62,76 +62,45 @@ public class AnimationSkeletonSet extends CacheableNode {
 	public static void method2562(AbstractIndex var0, AbstractIndex var1, int var2) {
 		IdentityKit.aClass74_2197 = var0;
 		IdentityKit.aClass74_2201 = var1;
-		IdentityKit.anInt2198 = IdentityKit.aClass74_2197.getFileCount(3, (byte) -64) * -1574854679;
+		IdentityKit.anInt2198 = IdentityKit.aClass74_2197.getFileCount(3) * -1574854679;
 	}
+
+	public static AnimationSkeletonSet initAnimSkeletonSet(AbstractIndex skeletonIndex, AbstractIndex skinIndex, int animationID, boolean firstArchive, int var4) {
+       boolean shouldContinue = true;
+       int[] fileIDs = skeletonIndex.method1013(animationID);
+
+       for(int fileIndex = 0; fileIndex < fileIDs.length; ++fileIndex) {
+          byte[] skeletonData = skeletonIndex.getFileData(animationID, fileIDs[fileIndex], -1906233178);
+          if(skeletonData == null) {
+             shouldContinue = false;
+          } else {
+             int skinID = (skeletonData[0] & 255) << 8 | skeletonData[1] & 255;
+             byte[] skinData;
+             if(firstArchive) {
+                skinData = skinIndex.getFileData(0, skinID, -1658429547);
+             } else {
+                skinData = skinIndex.getFileData(skinID, 0, 288212166);
+             }
+
+             if(null == skinData) {
+                shouldContinue = false;
+             }
+          }
+       }
+
+       if(!shouldContinue) {
+          return null;
+       } else {
+          try {
+             return new AnimationSkeletonSet(skeletonIndex, skinIndex, animationID, firstArchive);
+          } catch (Exception var11) {
+             return null;
+          }
+       }
+    }
 
 	public boolean method2563(int var1, byte var2) {
 		return this.animations[var1].aBool606;
 	}
 
-	static final void decodeOtherMovement() {
-		int numLocalPlayers = Client.packetBuffer.readBits(8);
-		System.out.println("Local players: " + numLocalPlayers);
-		int ptr;
-		if (numLocalPlayers < Client.numLocalPlayers * -43742683) {
-			for (ptr = numLocalPlayers; ptr < Client.numLocalPlayers * -43742683; ++ptr) {
-				Client.indicesPendingRemoval[(Client.removedCounter += 1906858221) * 104842469 - 1] = Client.playerIndices[ptr];
-			}
-		}
-
-		if (numLocalPlayers > Client.numLocalPlayers * -43742683) {
-			throw new RuntimeException("");
-		} else {
-			Client.numLocalPlayers = 0;
-
-			for (ptr = 0; ptr < numLocalPlayers; ++ptr) {
-				int index = Client.playerIndices[ptr];
-				Player var5 = Client.localPlayers[index];
-				int moved = Client.packetBuffer.readBits(1);
-				if (moved == 0) {
-					Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
-					var5.lastUpdated = Client.cycle * 1761958407;
-				} else {
-					int movetype = Client.packetBuffer.readBits(2);
-					if (0 == movetype) {
-						Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
-						var5.lastUpdated = Client.cycle * 1761958407;
-						Client.playersNeedingUpdating[(Client.updateReqCount -= 472402375) * -184592375 - 1] = index;
-					} else {
-						int var7;
-						int var8;
-						if (movetype == 1) {
-							Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
-							var5.lastUpdated = Client.cycle * 1761958407;
-							var8 = Client.packetBuffer.readBits(3);
-							var5.moveInDirection(var8, false, -548715931);
-							var7 = Client.packetBuffer.readBits(1);
-							if (1 == var7) {
-								Client.playersNeedingUpdating[(Client.updateReqCount -= 472402375) * -184592375 - 1] = index;
-							}
-						} else if (2 == movetype) {
-							Client.playerIndices[(Client.numLocalPlayers -= 1542815315) * -43742683 - 1] = index;
-							var5.lastUpdated = Client.cycle * 1761958407;
-							var8 = Client.packetBuffer.readBits(3);
-							var5.moveInDirection(var8, true, -548715931);
-							var7 = Client.packetBuffer.readBits(3);
-							var5.moveInDirection(var7, true, -548715931);
-							int maskUpdate = Client.packetBuffer.readBits(1);
-							if (1 == maskUpdate) {
-								Client.playersNeedingUpdating[(Client.updateReqCount -= 472402375) * -184592375 - 1] = index;
-							}
-						} else if (movetype == 3) {
-							Client.indicesPendingRemoval[(Client.removedCounter += 1906858221) * 104842469 - 1] = index;
-							System.out.println("Removed " + index);
-						}
-					}
-				}
-			}
-
-		}
-	}
-
-	static void pushMessage(int type, String var1, String var2, int var3) {
-		FloorDefinition.pushDirectMessage(type, var1, var2, (String) null, 403249369);
-	}
 }

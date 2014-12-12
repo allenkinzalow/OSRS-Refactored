@@ -275,7 +275,7 @@ public class Class1 {
 									hslBitset = Varp.packHSL(hue, saturation, luminosity, 1802545195);
 								}
 
-								FloorDefinition floorDef;
+								OverlayFloorDefinition overlayDef;
 								if (plane > 0) {
 									boolean hideUnderlay = true;
 									if (underlayFloorID == 0 && RegionReference.overlayClippingPaths[plane][yPos][var8] != 0) {
@@ -284,20 +284,20 @@ public class Class1 {
 
 									if (overlayFloorID > 0) {
 										int overlayID = overlayFloorID - 1;
-										floorDef = (FloorDefinition) FloorDefinition.floorMap.get((long) overlayID);
-										FloorDefinition floor;
-										if (null != floorDef) {
-											floor = floorDef;
+										overlayDef = (OverlayFloorDefinition) OverlayFloorDefinition.overlayFloorMap.get((long) overlayID);
+										OverlayFloorDefinition floor;
+										if (null != overlayDef) {
+											floor = overlayDef;
 										} else {
-											byte[] floorData = FloorDefinition.configArchive_ref_floor.getFile(4, overlayID, (byte) 7);
-											floorDef = new FloorDefinition();
+											byte[] floorData = OverlayFloorDefinition.configArchive_ref_floor.getFile(4, overlayID, (byte) 7);
+											overlayDef = new OverlayFloorDefinition();
 											if (floorData != null) {
-												floorDef.decode(new RSByteBuffer(floorData), overlayID, 198180841);
+												overlayDef.decode(new RSByteBuffer(floorData), overlayID, 198180841);
 											}
 
-											floorDef.method2344((byte) -47);
-											FloorDefinition.floorMap.put(floorDef, (long) overlayID);
-											floor = floorDef;
+											overlayDef.method2344((byte) -47);
+											OverlayFloorDefinition.overlayFloorMap.put(overlayDef, (long) overlayID);
+											floor = overlayDef;
 										}
 
 										if (!floor.hideUnderlay) {
@@ -321,22 +321,22 @@ public class Class1 {
 									saturation = 1 + RegionReference.overlayClippingPaths[plane][yPos][var8];
 									byte rotation = AnimationSkeletonSet.overlayRotations[plane][yPos][var8];
 									int floorID = overlayFloorID - 1;
-									FloorDefinition overlayFloorDef = (FloorDefinition) FloorDefinition.floorMap.get((long) floorID);
+									OverlayFloorDefinition overlayFloorDef = (OverlayFloorDefinition) OverlayFloorDefinition.overlayFloorMap.get((long) floorID);
 									if (overlayFloorDef != null) {
-										floorDef = overlayFloorDef;
+										overlayDef = overlayFloorDef;
 									} else {
-										byte[] floorData = FloorDefinition.configArchive_ref_floor.getFile(4, floorID, (byte) 7);
-										overlayFloorDef = new FloorDefinition();
+										byte[] floorData = OverlayFloorDefinition.configArchive_ref_floor.getFile(4, floorID, (byte) 7);
+										overlayFloorDef = new OverlayFloorDefinition();
 										if (null != floorData) {
 											overlayFloorDef.decode(new RSByteBuffer(floorData), floorID, -656471882);
 										}
 
 										overlayFloorDef.method2344((byte) -37);
-										FloorDefinition.floorMap.put(overlayFloorDef, (long) floorID);
-										floorDef = overlayFloorDef;
+										OverlayFloorDefinition.overlayFloorMap.put(overlayFloorDef, (long) floorID);
+										overlayDef = overlayFloorDef;
 									}
 
-									int textureID = floorDef.textureID * 1133570979;
+									int textureID = overlayDef.textureID * 1133570979;
 									int var38;
 									int var41;
 									int var43;
@@ -344,21 +344,21 @@ public class Class1 {
 									if (textureID >= 0) {
 										var41 = Rasterizer3D.anInterface2_2501.method21(textureID, 72614764);
 										var44 = -1;
-									} else if (floorDef.rgbColor * 308395211 == 16711935) {
+									} else if (overlayDef.rgbColor * 308395211 == 16711935) {
 										var44 = -2;
 										textureID = -1;
 										var41 = -2;
 									} else {
-										var44 = Varp.packHSL(floorDef.hue * 1297919561, floorDef.saturation * -24553127, floorDef.luminosity * -715881191, 1552822455);
-										var43 = floorDef.hue * 1297919561 + RegionReference.hueRandomizer * -2073023565 & 255;
-										var38 = floorDef.luminosity * -715881191 + RegionReference.lightnessRandomizer * -1983624965;
+										var44 = Varp.packHSL(overlayDef.hue * 1297919561, overlayDef.saturation * -24553127, overlayDef.luminosity * -715881191, 1552822455);
+										var43 = overlayDef.hue * 1297919561 + RegionReference.hueRandomizer * -2073023565 & 255;
+										var38 = overlayDef.luminosity * -715881191 + RegionReference.lightnessRandomizer * -1983624965;
 										if (var38 < 0) {
 											var38 = 0;
 										} else if (var38 > 255) {
 											var38 = 255;
 										}
 
-										var41 = Varp.packHSL(var43, floorDef.saturation * -24553127, var38, 1506801862);
+										var41 = Varp.packHSL(var43, overlayDef.saturation * -24553127, var38, 1506801862);
 									}
 
 									var43 = 0;
@@ -366,16 +366,16 @@ public class Class1 {
 										var43 = Rasterizer3D.rgbTable[CacheIndexRequest.method1927(var41, 96, 1263009375)];
 									}
 
-									if (floorDef.anInt2211 * 839525211 != -1) {
-										var38 = RegionReference.hueRandomizer * -2073023565 + floorDef.anInt2220 * -1618940341 & 255;
-										int var40 = floorDef.anInt2222 * -1393574217 + RegionReference.lightnessRandomizer * -1983624965;
+									if (overlayDef.anInt2211 * 839525211 != -1) {
+										var38 = RegionReference.hueRandomizer * -2073023565 + overlayDef.anInt2220 * -1618940341 & 255;
+										int var40 = overlayDef.anInt2222 * -1393574217 + RegionReference.lightnessRandomizer * -1983624965;
 										if (var40 < 0) {
 											var40 = 0;
 										} else if (var40 > 255) {
 											var40 = 255;
 										}
 
-										var41 = Varp.packHSL(var38, floorDef.anInt2224 * -1327914801, var40, 1654676153);
+										var41 = Varp.packHSL(var38, overlayDef.anInt2224 * -1327914801, var40, 1654676153);
 										var43 = Rasterizer3D.rgbTable[CacheIndexRequest.method1927(var41, 96, 1171927012)];
 									}
 

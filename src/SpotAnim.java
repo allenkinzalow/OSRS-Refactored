@@ -108,7 +108,7 @@ public class SpotAnim extends CacheableNode {
 
       ModelRasterizer modifiedRasterizer;
       if(-1 != this.animationID * 338579353 && -1 != var1) {
-         modifiedRasterizer = CullingCluster.method672(this.animationID * 338579353, 1824710055).method2231(rasterizer, var1, 728619396);
+         modifiedRasterizer = AnimationDefinition.getAnimDefForID(this.animationID * 338579353, 1824710055).method2231(rasterizer, var1, 728619396);
       } else {
          modifiedRasterizer = rasterizer.method2907(true);
       }
@@ -182,11 +182,11 @@ public class SpotAnim extends CacheableNode {
                if(!npcDef.aBool2190 || var1 == Client.anInt2789 * -1399758439) {
                   String var7 = npcDef.name;
                   if(npcDef.combatLevel * -1840374219 != 0) {
-                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Player.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringConstants.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
+                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Player.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringUtilities.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
                   }
 
                   if(1 == Client.anInt2858 * -968945719) {
-                     Class4.method91(StringConstants.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1747962050) + var7, 7, var1, var2, var3, 1892745466);
+                     Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1747962050) + var7, 7, var1, var2, var3, 1892745466);
                   } else if(Client.aBool2881) {
                      if((Class68.anInt902 * 401025055 & 2) == 2) {
                         Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1649201849) + var7, 8, var1, var2, var3, 1878248083);
@@ -200,7 +200,7 @@ public class SpotAnim extends CacheableNode {
                      int optionIndex;
                      if(npcOptions != null) {
                         for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
-                           if(npcOptions[optionIndex] != null && !npcOptions[optionIndex].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
+                           if(npcOptions[optionIndex] != null && !npcOptions[optionIndex].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
                               byte var5 = 0;
                               if(0 == optionIndex) {
                                  var5 = 9;
@@ -229,7 +229,7 @@ public class SpotAnim extends CacheableNode {
 
                      if(null != npcOptions) {
                         for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
-                           if(npcOptions[optionIndex] != null && npcOptions[optionIndex].equalsIgnoreCase(StringConstants.ATTACK_OPTION)) {
+                           if(npcOptions[optionIndex] != null && npcOptions[optionIndex].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
                               short var10 = 0;
                               if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Player.myPlayer.combatLevel * -1769445007) {
                                  var10 = 2000;
@@ -261,7 +261,7 @@ public class SpotAnim extends CacheableNode {
                         }
                      }
 
-                     Class4.method91(StringConstants.EXAMINE_OPTION, HuffmanEncoding.method690(16776960, -769408508) + var7, 1003, var1, var2, var3, 1961932451);
+                     Class4.method91(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16776960, -769408508) + var7, 1003, var1, var2, var3, 1961932451);
                   }
                }
             }
