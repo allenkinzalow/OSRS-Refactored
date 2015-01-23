@@ -1,6 +1,7 @@
 
 public final class PaletteSprite extends Rasterizer2D {
 
+   static int[] lastLoadedPaletteSpriteWidth;
    public int anInt2411;
    public int anInt2412;
    public int anInt2413;
@@ -14,7 +15,7 @@ public final class PaletteSprite extends Rasterizer2D {
        int var4 = var0.getArchiveIDForName(var1, 1723285154);
        int var6 = var0.getFileIDForName(var4, var2);
        PaletteSprite[] var5;
-       if (!FriendsChatMember.method1686(var0, var4, var6, -1818735158)) {
+       if (!FriendsChatMember.loadPaletteSprite(var0, var4, var6, -1818735158)) {
            var5 = null;
        } else {
            PaletteSprite[] var8 = new PaletteSprite[Class9.anInt125 * 2039617935];
@@ -25,17 +26,110 @@ public final class PaletteSprite extends Rasterizer2D {
                var7.anInt2412 = Class9.anInt121 * -1272520477;
                var7.anInt2415 = Class88.anIntArray1316[var9];
                var7.anInt2411 = Class9.anIntArray123[var9];
-               var7.anInt2413 = Class36.anIntArray514[var9];
+               var7.anInt2413 = lastLoadedPaletteSpriteWidth[var9];
                var7.anInt2414 = Class9.anIntArray126[var9];
                var7.palette = Class9.anIntArray130;
                var7.pixels = AnimationSkeletonSet.loadedCharacterPixels[var9];
            }
 
-           ClientScript.method1679((byte) 82);
+           resetLastPaletteValues((byte) 82);
            var5 = var8;
        }
 
        return var5;
+   }
+
+   public static PaletteSprite getLastLoadedPaletteSprite(int var0) {
+      PaletteSprite paletteSprite = new PaletteSprite();
+      paletteSprite.anInt2418 = Class9.anInt122 * 93011449;
+      paletteSprite.anInt2412 = Class9.anInt121 * -1272520477;
+      paletteSprite.anInt2415 = Class88.anIntArray1316[0];
+      paletteSprite.anInt2411 = Class9.anIntArray123[0];
+      paletteSprite.anInt2413 = lastLoadedPaletteSpriteWidth[0];
+      paletteSprite.anInt2414 = Class9.anIntArray126[0];
+      paletteSprite.palette = Class9.anIntArray130;
+      paletteSprite.pixels = AnimationSkeletonSet.loadedCharacterPixels[0];
+      resetLastPaletteValues((byte) 112);
+      return paletteSprite;
+   }
+
+   public static void decodePaletteSprite(byte[] data, int var1) {
+      RSByteBuffer buffer = new RSByteBuffer(data);
+      buffer.position = (data.length - 2) * 537964811;
+      Class9.anInt125 = buffer.readUShort(635512719) * -241769105;
+      Class88.anIntArray1316 = new int[Class9.anInt125 * 2039617935];
+      Class9.anIntArray123 = new int[Class9.anInt125 * 2039617935];
+      lastLoadedPaletteSpriteWidth = new int[Class9.anInt125 * 2039617935];
+      Class9.anIntArray126 = new int[Class9.anInt125 * 2039617935];
+      AnimationSkeletonSet.loadedCharacterPixels = new byte[Class9.anInt125 * 2039617935][];
+      buffer.position = (data.length - 7 - Class9.anInt125 * -862925704) * 537964811;
+      Class9.anInt122 = buffer.readUShort(-821144934) * -1400179639;
+      Class9.anInt121 = buffer.readUShort(-1985241913) * -187603765;
+      int var3 = (buffer.readUByte() & 255) + 1;
+
+      int var6;
+      for(var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
+         Class88.anIntArray1316[var6] = buffer.readUShort(-517797873);
+      }
+
+      for(var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
+         Class9.anIntArray123[var6] = buffer.readUShort(119520541);
+      }
+
+      for(var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
+         lastLoadedPaletteSpriteWidth[var6] = buffer.readUShort(-1397296091);
+      }
+
+      for(var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
+         Class9.anIntArray126[var6] = buffer.readUShort(-1007194691);
+      }
+
+      buffer.position = (data.length - 7 - Class9.anInt125 * -862925704 - (var3 - 1) * 3) * 537964811;
+      Class9.anIntArray130 = new int[var3];
+
+      for(var6 = 1; var6 < var3; ++var6) {
+         Class9.anIntArray130[var6] = buffer.method1809(-263273200);
+         if(0 == Class9.anIntArray130[var6]) {
+            Class9.anIntArray130[var6] = 1;
+         }
+      }
+
+      buffer.position = 0;
+
+      for(var6 = 0; var6 < Class9.anInt125 * 2039617935; ++var6) {
+         int var7 = lastLoadedPaletteSpriteWidth[var6];
+         int var9 = Class9.anIntArray126[var6];
+         int var10 = var7 * var9;
+         byte[] var11 = new byte[var10];
+         AnimationSkeletonSet.loadedCharacterPixels[var6] = var11;
+         int var4 = buffer.readUByte();
+         int var5;
+         if(var4 == 0) {
+            for(var5 = 0; var5 < var10; ++var5) {
+               var11[var5] = buffer.readByte();
+            }
+         } else if(1 == var4) {
+            for(var5 = 0; var5 < var7; ++var5) {
+               for(int var8 = 0; var8 < var9; ++var8) {
+                  var11[var7 * var8 + var5] = buffer.readByte();
+               }
+            }
+         }
+      }
+
+   }
+
+   static PaletteSprite getPaletteSprite(AbstractIndex spriteIndex, int archiveID, int fileID, byte var3) {
+      return !FriendsChatMember.loadPaletteSprite(spriteIndex, archiveID, fileID, -1425645056) ? null : getLastLoadedPaletteSprite(1969691175);
+   }
+
+   static void resetLastPaletteValues(byte var0) {
+      Class88.anIntArray1316 = null;
+      Class9.anIntArray123 = null;
+      lastLoadedPaletteSpriteWidth = null;
+      Class9.anIntArray126 = null;
+      Class9.anIntArray130 = null;
+      AnimationSkeletonSet.loadedCharacterPixels = (byte[][])null;
    }
 
 

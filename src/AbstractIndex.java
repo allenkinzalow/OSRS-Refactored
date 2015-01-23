@@ -4,15 +4,15 @@ public abstract class AbstractIndex {
    int[] fileCounts;
    int[] archiveIDs;
    public static final int anInt931 = 237;
-   LookupTable aClass99_932;
+   IndexVerifyTable indexVerifyTable;
    int[] anIntArray933;
    int[] anIntArray934;
    public int anInt935;
    static GZIPDecompressor aClass45_936 = new GZIPDecompressor();
    static final int anInt937 = 0;
-   LookupTable[] aClass99Array938;
+   IndexVerifyTable[] aClass99Array938;
    Object[] archiveArray;
-   int[][] anIntArrayArray940;
+   int[][] fileSizes;
    int[] anIntArray941;
    int[][] anIntArrayArray942;
    boolean aBool943;
@@ -48,40 +48,40 @@ public abstract class AbstractIndex {
             this.archiveCount = buffer.readUShort(1381211110) * -1937958079;
          }
 
-         int var4 = 0;
-         int var7 = -1;
+         int archivePosition = 0;
+         int maxArchiveID = -1;
          this.archiveIDs = new int[this.archiveCount * -384469823];
          int archiveIDIndex;
          if(type >= 7) {
             for(int archiveIndex = 0; archiveIndex < this.archiveCount * -384469823; ++archiveIndex) {
-               this.archiveIDs[archiveIndex] = var4 += buffer.method1776(126510212);
-               if(this.archiveIDs[archiveIndex] > var7) {
-                  var7 = this.archiveIDs[archiveIndex];
+               this.archiveIDs[archiveIndex] = archivePosition += buffer.method1776(126510212);
+               if(this.archiveIDs[archiveIndex] > maxArchiveID) {
+                  maxArchiveID = this.archiveIDs[archiveIndex];
                }
             }
          } else {
             for(int archiveIndex = 0; archiveIndex < this.archiveCount * -384469823; ++archiveIndex) {
-               this.archiveIDs[archiveIndex] = var4 += buffer.readUShort(1921229882);
-               if(this.archiveIDs[archiveIndex] > var7) {
-                  var7 = this.archiveIDs[archiveIndex];
+               this.archiveIDs[archiveIndex] = archivePosition += buffer.readUShort(1921229882);
+               if(this.archiveIDs[archiveIndex] > maxArchiveID) {
+                  maxArchiveID = this.archiveIDs[archiveIndex];
                }
             }
          }
 
-         this.anIntArray933 = new int[1 + var7];
-         this.anIntArray934 = new int[var7 + 1];
-         this.fileCounts = new int[1 + var7];
-         this.anIntArrayArray940 = new int[1 + var7][];
-         this.archiveArray = new Object[var7 + 1];
-         this.fileArray = new Object[1 + var7][];
+         this.anIntArray933 = new int[1 + maxArchiveID];
+         this.anIntArray934 = new int[maxArchiveID + 1];
+         this.fileCounts = new int[1 + maxArchiveID];
+         this.fileSizes = new int[1 + maxArchiveID][];
+         this.archiveArray = new Object[maxArchiveID + 1];
+         this.fileArray = new Object[1 + maxArchiveID][];
          if(var8 != 0) {
-            this.anIntArray941 = new int[var7 + 1];
+            this.anIntArray941 = new int[maxArchiveID + 1];
 
             for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
                this.anIntArray941[this.archiveIDs[archiveIDIndex]] = buffer.readInt();
             }
 
-            this.aClass99_932 = new LookupTable(this.anIntArray941);
+            this.indexVerifyTable = new IndexVerifyTable(this.anIntArray941);
          }
 
          for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
@@ -96,38 +96,38 @@ public abstract class AbstractIndex {
             this.fileCounts[this.archiveIDs[archiveIDIndex]] = buffer.readUShort(-1459374212);
          }
 
-         int var9;
+         int fileID;
          int var10;
          int var11;
-         int var12;
+         int archiveID;
          int fileArraySize;
          if(type >= 7) {
             for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
-               var12 = this.archiveIDs[archiveIDIndex];
-               int fileCount = this.fileCounts[var12];
-               var4 = 0;
+               archiveID = this.archiveIDs[archiveIDIndex];
+               int fileCount = this.fileCounts[archiveID];
+               archivePosition = 0;
                int maxFileArraySize = -1;
-               this.anIntArrayArray940[var12] = new int[fileCount];
+               this.fileSizes[archiveID] = new int[fileCount];
 
-               for(var9 = 0; var9 < fileCount; ++var9) {
-                  fileArraySize = this.anIntArrayArray940[var12][var9] = var4 += buffer.method1776(2143095027);
+               for(fileID = 0; fileID < fileCount; ++fileID) {
+                  fileArraySize = this.fileSizes[archiveID][fileID] = archivePosition += buffer.method1776(2143095027);
                   if(fileArraySize > maxFileArraySize) {
                      maxFileArraySize = fileArraySize;
                   }
                }
 
-               this.fileArray[var12] = new Object[1 + maxFileArraySize];
+               this.fileArray[archiveID] = new Object[1 + maxFileArraySize];
             }
          } else {
             for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
-               int archiveID = this.archiveIDs[archiveIDIndex];
+               archiveID = this.archiveIDs[archiveIDIndex];
                int fileCount = this.fileCounts[archiveID];
-               var4 = 0;
+               archivePosition = 0;
                int maxFileArraySize = -1;
-               this.anIntArrayArray940[archiveID] = new int[fileCount];
+               this.fileSizes[archiveID] = new int[fileCount];
 
-               for(int fileID = 0; fileID < fileCount; ++fileID) {
-                  fileArraySize = this.anIntArrayArray940[archiveID][fileID] = var4 += buffer.readUShort(99864165);
+               for(fileID = 0; fileID < fileCount; ++fileID) {
+                  fileArraySize = this.fileSizes[archiveID][fileID] = archivePosition += buffer.readUShort(99864165);
                   if(fileArraySize > maxFileArraySize) {
                      maxFileArraySize = fileArraySize;
                   }
@@ -138,19 +138,19 @@ public abstract class AbstractIndex {
          }
 
          if(0 != var8) {
-            this.anIntArrayArray942 = new int[1 + var7][];
-            this.aClass99Array938 = new LookupTable[var7 + 1];
+            this.anIntArrayArray942 = new int[1 + maxArchiveID][];
+            this.aClass99Array938 = new IndexVerifyTable[maxArchiveID + 1];
 
             for(archiveIDIndex = 0; archiveIDIndex < this.archiveCount * -384469823; ++archiveIDIndex) {
-               var12 = this.archiveIDs[archiveIDIndex];
-               var10 = this.fileCounts[var12];
-               this.anIntArrayArray942[var12] = new int[this.fileArray[var12].length];
+               archiveID = this.archiveIDs[archiveIDIndex];
+               var10 = this.fileCounts[archiveID];
+               this.anIntArrayArray942[archiveID] = new int[this.fileArray[archiveID].length];
 
                for(var11 = 0; var11 < var10; ++var11) {
-                  this.anIntArrayArray942[var12][this.anIntArrayArray940[var12][var11]] = buffer.readInt();
+                  this.anIntArrayArray942[archiveID][this.fileSizes[archiveID][var11]] = buffer.readInt();
                }
 
-               this.aClass99Array938[var12] = new LookupTable(this.anIntArrayArray942[var12]);
+               this.aClass99Array938[archiveID] = new IndexVerifyTable(this.anIntArrayArray942[archiveID]);
             }
 
          }
@@ -167,7 +167,7 @@ public abstract class AbstractIndex {
 
    public int getArchiveIDForName(String var1, int var2) {
       var1 = var1.toLowerCase();
-      return this.aClass99_932.method1297(MouseInputHandler.method769(var1, 1236215295));
+      return this.indexVerifyTable.method1297(MouseInputHandler.method769(var1, 1236215295));
    }
 
    public boolean containsFile(int archiveID, int fileID, int var3) {
@@ -228,7 +228,7 @@ public abstract class AbstractIndex {
    }
 
    public int[] method1013(int var1) {
-      return this.anIntArrayArray940[var1];
+      return this.fileSizes[var1];
    }
 
    public int getFileCount(int archiveID) {
@@ -255,7 +255,7 @@ public abstract class AbstractIndex {
          return false;
       } else {
          int fileCount = this.fileCounts[archiveID];
-         int[] var5 = this.anIntArrayArray940[archiveID];
+         int[] var5 = this.fileSizes[archiveID];
          Object[] files = this.fileArray[archiveID];
          boolean loaded = true;
 
@@ -366,7 +366,7 @@ public abstract class AbstractIndex {
    public byte[] getFileForArchiveFileName(String archiveName, String fileName) {
       archiveName = archiveName.toLowerCase(); 
       fileName = fileName.toLowerCase();
-      int archiveID = this.aClass99_932.method1297(MouseInputHandler.method769(archiveName, 1686405236));
+      int archiveID = this.indexVerifyTable.method1297(MouseInputHandler.method769(archiveName, 1686405236));
       int fileID = this.aClass99Array938[archiveID].method1297(MouseInputHandler.method769(fileName, 1980045206));
       return this.getFile(archiveID, fileID, (byte) 7);
    }
@@ -374,7 +374,7 @@ public abstract class AbstractIndex {
    public boolean containsFileForAFName(String archiveName, String fileName) {
       archiveName = archiveName.toLowerCase();
       fileName = fileName.toLowerCase();
-      int archiveID = this.aClass99_932.method1297(MouseInputHandler.method769(archiveName, 666119525));
+      int archiveID = this.indexVerifyTable.method1297(MouseInputHandler.method769(archiveName, 666119525));
       int fileID = this.aClass99Array938[archiveID].method1297(MouseInputHandler.method769(fileName, 1596686626));
       return this.containsFile(archiveID, fileID, 1151584293);
    }
@@ -384,9 +384,9 @@ public abstract class AbstractIndex {
       return -1 != var3 ? this.containsFileForAFName("", fileName) : this.containsFileForAFName(fileName, "");
    }
 
-   public void method1024(String archiveName) {
+   public void loadArchiveForName(String archiveName) {
       archiveName = archiveName.toLowerCase();
-      int archiveID = this.aClass99_932.method1297(MouseInputHandler.method769(archiveName, 1938534825));
+      int archiveID = this.indexVerifyTable.method1297(MouseInputHandler.method769(archiveName, 1938534825));
       if(archiveID >= 0) {
          this.method1003(archiveID, -2065170626);
       }
@@ -434,39 +434,4 @@ public abstract class AbstractIndex {
 
    void submitArchiveRequest(int var1, int var2) {}
 
-   public static boolean method1073(int interfaceID, int var1) {
-      if(RSInterface.interfacesLoadedArray[interfaceID]) {
-         return true;
-      } else if(!RSInterface.interfaceIndexReference.containsArchive(interfaceID, (byte)-25)) {
-         return false;
-      } else {
-         int componentCount = RSInterface.interfaceIndexReference.getFileCount(interfaceID);
-         if(componentCount == 0) {
-            RSInterface.interfacesLoadedArray[interfaceID] = true;
-            return true;
-         } else {
-            if(null == RSInterface.interface_cache[interfaceID]) {
-               RSInterface.interface_cache[interfaceID] = new RSInterface[componentCount];
-            }
-
-            for(int component = 0; component < componentCount; ++component) {
-               if(null == RSInterface.interface_cache[interfaceID][component]) {
-                  byte[] componentData = RSInterface.interfaceIndexReference.getFile(interfaceID, component, (byte) 7);
-                  if(null != componentData) {
-                     RSInterface.interface_cache[interfaceID][component] = new RSInterface();
-                     RSInterface.interface_cache[interfaceID][component].interfaceHash = (component + (interfaceID << 16)) * -585455939;
-                     if(componentData[0] == -1) {
-                        RSInterface.interface_cache[interfaceID][component].decodeActiveInterface(new RSByteBuffer(componentData), 1019707415);
-                     } else {
-                        RSInterface.interface_cache[interfaceID][component].decodeInterface(new RSByteBuffer(componentData), 1016246501);
-                     }
-                  }
-               }
-            }
-
-            RSInterface.interfacesLoadedArray[interfaceID] = true;
-            return true;
-         }
-      }
-   }
 }

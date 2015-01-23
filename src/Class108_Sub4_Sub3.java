@@ -703,7 +703,7 @@ public class Class108_Sub4_Sub3 extends Class108_Sub4 {
       }
    }
 
-   public synchronized boolean method2668(RSSong var1, AbstractIndex var2, Class15 var3, int var4, int var5) {
+   public synchronized boolean method2668(RSSong var1, AbstractIndex var2, SoundEffectWorker var3, int var4, int var5) {
       var1.method2001();
       boolean var12 = true;
       int[] var11 = null;

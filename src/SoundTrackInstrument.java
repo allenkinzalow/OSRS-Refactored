@@ -1,5 +1,8 @@
 import java.util.Random;
 
+/**
+ * Credits to someoen else for this class.
+ */
 public class SoundTrackInstrument {
 
    int delayTime = 0;

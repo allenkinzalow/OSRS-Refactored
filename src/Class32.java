@@ -88,7 +88,7 @@ public class Class32 {
                      }
 
                      if(var8.prayicon * -497976645 != -1) {
-                        Class5.headPrayerSprites[var8.prayicon * -497976645].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - var9);
+                        Entity.headPrayerSprites[var8.prayicon * -497976645].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - var9);
                         var9 += 25;
                      }
                   }
@@ -106,10 +106,10 @@ public class Class32 {
                   var7 = var7.method2290(1942286194);
                }
 
-               if(var7.headIcon * 1203154221 >= 0 && var7.headIcon * 1203154221 < Class5.headPrayerSprites.length) {
+               if(var7.headIcon * 1203154221 >= 0 && var7.headIcon * 1203154221 < Entity.headPrayerSprites.length) {
                   Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
                   if(Client.anInt2808 * 1642143199 > -1) {
-                     Class5.headPrayerSprites[var7.headIcon * 1203154221].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - 30);
+                     Entity.headPrayerSprites[var7.headIcon * 1203154221].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - 30);
                   }
                }
 

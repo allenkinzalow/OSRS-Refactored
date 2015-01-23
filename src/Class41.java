@@ -44,8 +44,8 @@ public class Class41 {
                                     var4 = 64 + var4 * 128;
                                     var8 = var8 * 128 + 64;
                                     var9 = var9 * 128 + 64;
-                                    Projectile var41 = new Projectile(var10, VarpBit.plane * -570926309, var3, var4, ClientScript.getFloorDrawHeight(var3, var4, VarpBit.plane * -570926309, 671885400) - var5, var43 + Client.cycle * -637317861, Client.cycle * -637317861 + var14, var42, var16, var2, var1);
-                                    var41.method2979(var8, var9, ClientScript.getFloorDrawHeight(var8, var9, VarpBit.plane * -570926309, 1440857988) - var1, Client.cycle * -637317861 + var43, (byte)0);
+                                    Projectile var41 = new Projectile(var10, VarpBit.plane * -570926309, var3, var4, RegionReference.getFloorDrawHeight(var3, var4, VarpBit.plane * -570926309, 671885400) - var5, var43 + Client.cycle * -637317861, Client.cycle * -637317861 + var14, var42, var16, var2, var1);
+                                    var41.method2979(var8, var9, RegionReference.getFloorDrawHeight(var8, var9, VarpBit.plane * -570926309, 1440857988) - var1, Client.cycle * -637317861 + var43, (byte)0);
                                     Client.projectileDeque.insertBack(var41);
                                  }
                               }
@@ -69,7 +69,7 @@ public class Class41 {
             if(var4 >= 0) {
                if(var3 < 104) {
                   if(var4 < 104) {
-                     Class51.method705(VarpBit.plane * -570926309, var3, var4, var10, var5, var9, var2, 0, -1, (byte)86);
+                     ClientScriptReference.method705(VarpBit.plane * -570926309, var3, var4, var10, var5, var9, var2, 0, -1, (byte) 86);
                   }
                }
             }
@@ -94,7 +94,7 @@ public class Class41 {
                         }
 
                         Client.groundItemArray[VarpBit.plane * -570926309][var3][var4].insertBack(var34);
-                        Class104.spawnGroundItem(var3, var4, (byte)-83);
+                        Scene.spawnGroundItem(var3, var4, (byte) -83);
                      }
                   }
                }
@@ -111,7 +111,7 @@ public class Class41 {
                if(var4 >= 0) {
                   if(var3 < 104) {
                      if(var4 < 104) {
-                        Class51.method705(VarpBit.plane * -570926309, var3, var4, var10, -1, var9, var2, 0, -1, (byte)86);
+                        ClientScriptReference.method705(VarpBit.plane * -570926309, var3, var4, var10, -1, var9, var2, 0, -1, (byte) 86);
                      }
                   }
                }
@@ -132,7 +132,7 @@ public class Class41 {
                         if(var10 == 0) {
                            Wall var30 = Class56.gameScene.getWall(VarpBit.plane * -570926309, var3, var4);
                            if(null != var30) {
-                              var43 = var30.anInt337 * 639818003 >> 14 & 32767;
+                              var43 = var30.hash * 639818003 >> 14 & 32767;
                               if(var9 == 2) {
                                  var30.aClass108_Sub20_Sub14_338 = new GameObject(var43, 2, 4 + var2, VarpBit.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_338);
                                  var30.aClass108_Sub20_Sub14_343 = new GameObject(var43, 2, 1 + var2 & 3, VarpBit.plane * -570926309, var3, var4, var5, false, var30.aClass108_Sub20_Sub14_343);
@@ -143,9 +143,9 @@ public class Class41 {
                         }
 
                         if(var10 == 1) {
-                           WallDecoration var31 = Class56.gameScene.method424(VarpBit.plane * -570926309, var3, var4);
+                           WallDecoration var31 = Class56.gameScene.getWallDecorationForTile(VarpBit.plane * -570926309, var3, var4);
                            if(var31 != null) {
-                              var43 = var31.anInt302 * 414599861 >> 14 & 32767;
+                              var43 = var31.hash * 414599861 >> 14 & 32767;
                               if(var9 != 4 && 5 != var9) {
                                  if(var9 == 6) {
                                     var31.renderable = new GameObject(var43, 4, var2 + 4, VarpBit.plane * -570926309, var3, var4, var5, false, var31.renderable);
@@ -168,12 +168,12 @@ public class Class41 {
                            }
 
                            if(var32 != null) {
-                              var32.renderableObject = new GameObject(var32.anInt586 * 380600017 >> 14 & 32767, var9, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var32.renderableObject);
+                              var32.renderableObject = new GameObject(var32.hash * 380600017 >> 14 & 32767, var9, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var32.renderableObject);
                            }
                         }
 
                         if(var10 == 3) {
-                           FloorDecoration var33 = Class56.gameScene.method426(VarpBit.plane * -570926309, var3, var4);
+                           FloorDecoration var33 = Class56.gameScene.getFloorDecorationForTile(VarpBit.plane * -570926309, var3, var4);
                            if(var33 != null) {
                               var33.renderable = new GameObject(var33.hash * 1276953639 >> 14 & 32767, 22, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var33.renderable);
                            }
@@ -204,7 +204,7 @@ public class Class41 {
                               Client.groundItemArray[VarpBit.plane * -570926309][var3][var4] = null;
                            }
 
-                           Class104.spawnGroundItem(var3, var4, (byte)-53);
+                           Scene.spawnGroundItem(var3, var4, (byte) -53);
                         }
                      }
                   }
@@ -230,7 +230,7 @@ public class Class41 {
                               }
                            }
 
-                           Class104.spawnGroundItem(var3, var4, (byte)-103);
+                           Scene.spawnGroundItem(var3, var4, (byte) -103);
                         }
                      }
                   }
@@ -283,7 +283,7 @@ public class Class41 {
                }
 
                if(null != var19) {
-                  ObjectDefinition var22 = ChatMessagesContainer.getObjectDefForID(var9, (byte)0);
+                  ObjectDefinition var22 = ObjectDefinition.getObjectDefForID(var9, (byte) 0);
                   int var11;
                   int var20;
                   if(1 != var5 && var5 != 3) {
@@ -304,7 +304,7 @@ public class Class41 {
                   int var21 = (var18 << 7) + (var20 << 6);
                   ModelRasterizer var6 = var22.method2180(var10, var5, var25, var13, var24, var21, -1494204670);
                   if(null != var6) {
-                     Class51.method705(VarpBit.plane * -570926309, var12, var18, var1, -1, 0, 0, 1 + var8, 1 + var14, (byte)86);
+                     ClientScriptReference.method705(VarpBit.plane * -570926309, var12, var18, var1, -1, 0, 0, 1 + var8, 1 + var14, (byte) 86);
                      var19.anInt2665 = (var8 + Client.cycle * -637317861) * 2092902079;
                      var19.anInt2670 = (Client.cycle * -637317861 + var14) * 267310813;
                      var19.aClass108_Sub20_Sub14_Sub3_2675 = var6;
@@ -345,7 +345,7 @@ public class Class41 {
                         if(var4 < 104) {
                            var3 = var3 * 128 + 64;
                            var4 = 64 + var4 * 128;
-                           Class108_Sub20_Sub14_Sub6 var39 = new Class108_Sub20_Sub14_Sub6(var8, VarpBit.plane * -570926309, var3, var4, ClientScript.getFloorDrawHeight(var3, var4, VarpBit.plane * -570926309, 1602261234) - var9, var2, Client.cycle * -637317861);
+                           Class108_Sub20_Sub14_Sub6 var39 = new Class108_Sub20_Sub14_Sub6(var8, VarpBit.plane * -570926309, var3, var4, RegionReference.getFloorDrawHeight(var3, var4, VarpBit.plane * -570926309, 1602261234) - var9, var2, Client.cycle * -637317861);
                            Client.aClass105_2928.insertBack(var39);
                         }
                      }

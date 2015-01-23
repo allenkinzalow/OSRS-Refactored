@@ -9,7 +9,7 @@ public class Class77 {
 
 
    static final void drawMapScenes(int var0, int xPos, int yPos, int var3, int var4, int var5) {
-      int var6 = Class56.gameScene.method427(var0, xPos, yPos);
+      int var6 = Class56.gameScene.fetchWallObjectHash(var0, xPos, yPos);
       int var7;
       int var8;
       int var9;
@@ -25,10 +25,10 @@ public class Class77 {
             var10 = var4;
          }
 
-         int[] pixels = Class80.miniMapSprite.pixels;
+         int[] pixels = Client.miniMapSprite.pixels;
          var11 = xPos * 4 + 24624 + (103 - yPos) * 2048;
          objectID = var6 >> 14 & 32767;
-         ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(objectID, (byte)0);
+         ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(objectID, (byte) 0);
          if(objectDef.mapSceneID * -368925089 != -1) {
             PaletteSprite sprite = ChatMessagesContainer.mapSceneIcons[objectDef.mapSceneID * -368925089];
             if(sprite != null) {
@@ -99,13 +99,13 @@ public class Class77 {
          }
       }
 
-      var6 = Class56.gameScene.method429(var0, xPos, yPos);
+      var6 = Class56.gameScene.fetchTileInteractableHash(var0, xPos, yPos);
       if(0 != var6) {
          var8 = Class56.gameScene.method431(var0, xPos, yPos, var6);
          var9 = var8 >> 6 & 3;
          var7 = var8 & 31;
          var10 = var6 >> 14 & 32767;
-         ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(var10, (byte)0);
+         ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(var10, (byte) 0);
          int var22;
          if(-1 != objectDef.mapSceneID * -368925089) {
             PaletteSprite sprite = ChatMessagesContainer.mapSceneIcons[objectDef.mapSceneID * -368925089];
@@ -120,7 +120,7 @@ public class Class77 {
                var11 = 15597568;
             }
 
-            int[] var21 = Class80.miniMapSprite.pixels;
+            int[] var21 = Client.miniMapSprite.pixels;
             var22 = (103 - yPos) * 2048 + xPos * 4 + 24624;
             if(var9 != 0 && var9 != 2) {
                var21[var22] = var11;
@@ -139,7 +139,7 @@ public class Class77 {
       var6 = Class56.gameScene.fetchGroundTileDecorationHash(var0, xPos, yPos);
       if(var6 != 0) {
          var8 = var6 >> 14 & 32767;
-         ObjectDefinition var19 = ChatMessagesContainer.getObjectDefForID(var8, (byte)0);
+         ObjectDefinition var19 = ObjectDefinition.getObjectDefForID(var8, (byte) 0);
          if(-1 != var19.mapSceneID * -368925089) {
             PaletteSprite var18 = ChatMessagesContainer.mapSceneIcons[var19.mapSceneID * -368925089];
             if(null != var18) {

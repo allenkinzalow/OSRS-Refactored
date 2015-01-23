@@ -106,7 +106,7 @@ public class Texture extends Node {
          if(null == imageData) {
             hasSprite = false;
          } else {
-            WallDecoration.method338(imageData, 878628031);
+            PaletteSprite.decodePaletteSprite(imageData, 878628031);
             hasSprite = true;
          }
 
@@ -114,7 +114,7 @@ public class Texture extends Node {
          if(!hasSprite) {
             spritePalette = null;
          } else {
-            spritePalette = Class37.getLastLoadedPaletteSprite(1143767647);
+            spritePalette = PaletteSprite.getLastLoadedPaletteSprite(1143767647);
          }
 
          spritePalette.method2844();

@@ -1,3 +1,4 @@
+
 public class AnimationSkeletonSet extends CacheableNode {
 
 	static PingRequest aClass85_2259;
@@ -96,6 +97,20 @@ public class AnimationSkeletonSet extends CacheableNode {
           } catch (Exception var11) {
              return null;
           }
+       }
+    }
+
+	static AnimationSkeletonSet getAnimationSkeletonSet(int animationID, int var1) {
+       AnimationSkeletonSet skeletonSet = (AnimationSkeletonSet)AnimationDefinition.animDefCache.get((long)animationID);
+       if(null != skeletonSet) {
+          return skeletonSet;
+       } else {
+          skeletonSet = initAnimSkeletonSet(AnimationDefinition.skeletonIndexReference, AnimationDefinition.skinIndexReference, animationID, false, 949323318);
+          if(null != skeletonSet) {
+             AnimationDefinition.animDefCache.put(skeletonSet, (long)animationID);
+          }
+
+          return skeletonSet;
        }
     }
 

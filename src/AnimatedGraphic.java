@@ -2,7 +2,7 @@ import java.awt.Desktop;
 import java.awt.Desktop.Action;
 import java.net.URI;
 
-public class SpotAnim extends CacheableNode {
+public class AnimatedGraphic extends CacheableNode {
 
    int resizeX = 1063384192;
    public static CacheableNodeMap spotAnimCache = new CacheableNodeMap(64);
@@ -21,11 +21,11 @@ public class SpotAnim extends CacheableNode {
    int contrast = 0;
    static GameConnection aGameConnection_2037;
 
-   public static SpotAnim getSpotAnimForID(int spotAnimID, byte var1) {
-      SpotAnim gfx = (SpotAnim) spotAnimCache.get((long) spotAnimID);
+   public static AnimatedGraphic getSpotAnimForID(int spotAnimID, byte var1) {
+      AnimatedGraphic gfx = (AnimatedGraphic) spotAnimCache.get((long) spotAnimID);
       if(null == gfx) {
          byte[] gfxData = aClass74_2029.getFile(13, spotAnimID, (byte) 7);
-         gfx = new SpotAnim();
+         gfx = new AnimatedGraphic();
          gfx.gfxID = spotAnimID * 409213277;
          if(null != gfxData) {
             gfx.decode(new RSByteBuffer(gfxData), (short)2000);
@@ -108,13 +108,13 @@ public class SpotAnim extends CacheableNode {
 
       ModelRasterizer modifiedRasterizer;
       if(-1 != this.animationID * 338579353 && -1 != var1) {
-         modifiedRasterizer = AnimationDefinition.getAnimDefForID(this.animationID * 338579353, 1824710055).method2231(rasterizer, var1, 728619396);
+         modifiedRasterizer = AnimationDefinition.getAnimDefForID(this.animationID * 338579353, 1824710055).getTransformedRasterizer(rasterizer, var1, 728619396);
       } else {
          modifiedRasterizer = rasterizer.method2907(true);
       }
 
       if(this.resizeX * -1874574247 != 128 || 128 != this.resizeY * 834811623) {
-         modifiedRasterizer.method2866(this.resizeX * -1874574247, this.resizeY * 834811623, this.resizeX * -1874574247);
+         modifiedRasterizer.resizeModel(this.resizeX * -1874574247, this.resizeY * 834811623, this.resizeX * -1874574247);
       }
 
       if(0 != this.rotation * 1541900127) {
@@ -274,7 +274,7 @@ public class SpotAnim extends CacheableNode {
       if(null != varp) {
          return varp;
       } else {
-         byte[] var3 = Class36.configIndex_ref.getFile(16, var0, (byte) 7);
+         byte[] var3 = Client.configIndex_ref.getFile(16, var0, (byte) 7);
          varp = new Varp();
          if(var3 != null) {
             varp.decode(new RSByteBuffer(var3), -1057715015);

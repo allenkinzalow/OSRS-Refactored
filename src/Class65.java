@@ -8,7 +8,7 @@ public class Class65 {
    static int[] anIntArray860;
 
 
-   public static Class71 method885(int var0) {
+   public static AbstractMouseWheel method885(int var0) {
       try {
          return new MouseWheelHandler();
       } catch (Throwable var2) {
@@ -21,6 +21,6 @@ public class Class65 {
    }
 
    public static void method889(byte var0) {
-      IdentityKit.identityKitMap.method1371();
+      IdentityKit.identityKitMap.clearCacheMap();
    }
 }

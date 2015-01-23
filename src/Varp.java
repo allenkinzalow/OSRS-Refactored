@@ -20,7 +20,7 @@ public class Varp extends CacheableNode {
       }
    }
 
-   static final void method2152(int var0, int var1, int var2, int var3, RGBSprite var4, byte var5) {
+   static final void method2152(int x, int y, int var2, int var3, RGBSprite var4, byte var5) {
       int var6 = var2 * var2 + var3 * var3;
       if(var6 > 4225 && var6 < 90000) {
          if(var5 > 4) {
@@ -31,13 +31,13 @@ public class Varp extends CacheableNode {
             var13 = var13 * 256 / (Client.anInt2957 * 331969371 + 256);
             int var14 = var3 * var11 + var13 * var2 >> 16;
             int var15 = var13 * var3 - var11 * var2 >> 16;
-            double var9 = Math.atan2((double)var14, (double)var15);
-            int var7 = (int)(Math.sin(var9) * 63.0D);
-            int var8 = (int)(Math.cos(var9) * 57.0D);
-            IdentityKit.mapEdgeSprite.method2765(var7 + 94 + var0 + 4 - 10, 83 + var1 - var8 - 20, 20, 20, 15, 15, var9, 256);
+            double rotationAngle = Math.atan2((double)var14, (double)var15);
+            int yRot = (int)(Math.sin(rotationAngle) * 63.0D);
+            int xRot = (int)(Math.cos(rotationAngle) * 57.0D);
+            IdentityKit.mapEdgeSprite.method2765(yRot + 94 + x + 4 - 10, 83 + y - xRot - 20, 20, 20, 15, 15, rotationAngle, 256);
          }
       } else {
-         ProducingGraphicsBuffer.renderMapDotSprite(var0, var1, var2, var3, var4);
+         ProducingGraphicsBuffer.renderMapDotSprite(x, y, var2, var3, var4);
       }
    }
 

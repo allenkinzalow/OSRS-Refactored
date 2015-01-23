@@ -9,6 +9,7 @@ import java.net.URL;
  */
 public class PingRequester implements Runnable {
 
+	static int anInt918;
 	Interface1 anInterface1_814;
 	PingRequest aClass85_815 = null;
 	PingRequest aClass85_816 = null;
@@ -200,11 +201,11 @@ public class PingRequester implements Runnable {
 
 	PingRequester() {
 		javaVendor = "Unknown";
-		Class71.javaVersion = "1.1";
+		MachineInformation.javaVersion = "1.1";
 
 		try {
 			javaVendor = System.getProperty("java.vendor");
-			Class71.javaVersion = System.getProperty("java.version");
+			MachineInformation.javaVersion = System.getProperty("java.version");
 		} catch (Exception var3) {
 			;
 		}

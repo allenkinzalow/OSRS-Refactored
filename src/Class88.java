@@ -5,7 +5,7 @@ public class Class88 {
    public static int[] configSettings;
    static int[] anIntArray1316;
    public static int[] anIntArray1317;
-   public static short[] aShortArray1318;
+   public static short[] colorsToFind;
 
 
    static {

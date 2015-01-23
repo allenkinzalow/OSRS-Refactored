@@ -31,7 +31,7 @@ public class BuildType {
    }
 
    public static int method1094(int varpBitID, int var1) {
-      VarpBit varpbit = ChatMessagesContainer.method358(varpBitID, 2117507523);
+      VarpBit varpbit = VarpBit.getVarpBitForID(varpBitID, 2117507523);
       int configID = varpbit.configId * 863090207;
       int leastSig = varpbit.leastSigBit * 194527281;
       int mostSig = varpbit.mostSigBit * -944103735;

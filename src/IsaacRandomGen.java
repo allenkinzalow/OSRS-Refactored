@@ -61,7 +61,7 @@ public final class IsaacRandomGen {
 						World.worldFlagSprites = null;
 						RuntimeException_Sub1.worldSortArrowSprites = null;
 						KeyFocusListener.worldTypeSprites = null;
-						Class50.aClass108_Sub20_Sub15_Sub2_702 = null;
+						World.switchWorldSprite = null;
 						MouseCapturer.anIntArray382 = null;
 						Class56.anIntArray757 = null;
 						Client.anIntArray2966 = null;
@@ -70,7 +70,7 @@ public final class IsaacRandomGen {
 						Class16.anIntArray204 = null;
 						Class65.anIntArray860 = null;
 						World.anIntArray565 = null;
-						Class15.method288(2, 1795393564);
+						SoundEffectWorker.method288(2, 1795393564);
 						ClientScriptMap.method2171(true, -1384693053);
 						Class4.aBool58 = false;
 					}
@@ -247,7 +247,7 @@ public final class IsaacRandomGen {
 	}
 
 	public static boolean method734(int var0) {
-		long var1 = Player.getCurrentTimeMillis(849846164);
+		long var1 = Timer.getCurrentTimeMillis(849846164);
 		int var3 = (int) (var1 - Class78.aLong1225 * -8021066364014913945L);
 		Class78.aLong1225 = var1 * 347508540560254295L;
 		if (var3 > 200) {

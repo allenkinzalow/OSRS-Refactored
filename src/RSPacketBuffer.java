@@ -1,6 +1,7 @@
 
 public final class RSPacketBuffer extends RSByteBuffer {
 
+   public static int[] packetSizes = new int[]{0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, -2, 0, 10, 2, 2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 6, 10, 0, 0, 0, 12, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 14, -2, 0, 0, 0, 6, 5, 0, 4, 0, 2, 0, 0, 0, 15, 0, 6, 0, 0, 0, 0, 2, 0, 6, -2, 6, 0, 0, 0, 0, 0, 0, 0, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 4, 6, 0, 0, 2, 0, 4, 0, 0, -2, 0, 2, 8, 0, 1, 0, 5, 0, -1, 6, 0, 6, 0, -2, 0, 4, 0, 0, 0, 0, 6, 0, 0, -2, -1, 3, 0, 0, -1, 0, 0, 0, 28, 0, 0, 6, 0, 4, 0, 0, 0, 1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 1, -1, 0, 0, 0, 0, 0, -2, 0, 0, 7, 0, 0, -2, 0, 0, 0, -2, 0, 0, 2, 8, 0, 0, 0, -1, 5, 0, 0, -2, 0, 0, -2, 0, -2, 0, 0, 0, 0, 0, -2, 0, 0, 0, 6, 0, 0, 0, 0, 0};
    static int[] anIntArray2290 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, '\uffff', 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, Integer.MAX_VALUE, -1};
    int anInt2291;
    IsaacRandomGen aIsaacRandomGen_2295;
@@ -72,7 +73,7 @@ public final class RSPacketBuffer extends RSByteBuffer {
                         break;
                      }
 
-                     var8 = CacheIndexRequest.getInterfaceComponentForHash(var8.hoverPopup * -867206361, 204830061);
+                     var8 = RSInterface.getInterfaceComponentForHash(var8.hoverPopup * -867206361, 204830061);
                      if(null == var8) {
                         var6 = null;
                         break;
@@ -102,7 +103,7 @@ public final class RSPacketBuffer extends RSByteBuffer {
                            break;
                         }
 
-                        var8 = CacheIndexRequest.getInterfaceComponentForHash(var8.hoverPopup * -867206361, -1130139015);
+                        var8 = RSInterface.getInterfaceComponentForHash(var8.hoverPopup * -867206361, -1130139015);
                         if(var8 == null) {
                            var6 = null;
                            break;

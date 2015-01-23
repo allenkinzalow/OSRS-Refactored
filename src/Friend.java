@@ -8,11 +8,12 @@ import java.io.StringWriter;
 public class Friend {
 
    static int anInt620;
+   static int friendsChatListCount;
    String displayName;
    boolean aBool622;
    int anInt623;
    boolean aBool624;
-   static Clipboard aClipboard625;
+   static Clipboard clientClipboard;
    static CacheIndex musicIndex_1;
    static int anInt627;
    int friendHash;
@@ -88,83 +89,83 @@ public class Friend {
       }
    }
 
-   static void method661(int var0, int var1) {
-      if(var0 == -3) {
-         World.method646(StringUtilities.CONNECTION_TIMED, StringUtilities.aString1186, StringUtilities.aString1137, 2040055828);
-      } else if(var0 == -2) {
-         World.method646(StringUtilities.aString1032, StringUtilities.ERROR_CONNECTING, StringUtilities.aString1037, 2087566694);
-      } else if(-1 == var0) {
-         World.method646(StringUtilities.aString1145, StringUtilities.USE_DIFF_WORLD, StringUtilities.aString996, 2016404146);
-      } else if(var0 == 3) {
-         World.method646(StringUtilities.aString997, StringUtilities.invalid_credentials, StringUtilities.aString999, 2010710776);
-      } else if(var0 == 4) {
-         World.method646(StringUtilities.ACCOUNT_DISABLED, StringUtilities.checkMessages, StringUtilities.aString1061, 1999852017);
-      } else if(var0 == 5) {
-         World.method646(StringUtilities.ALREADY_LOGGED_IN, StringUtilities.TRY_AGAIN_60, StringUtilities.aString1005, 1904325528);
-      } else if(6 == var0) {
-         World.method646(StringUtilities.RUNESCAPE_UPDATED, StringUtilities.RELOAD_PAGE, StringUtilities.aString1008, 2074988600);
-      } else if(var0 == 7) {
-         World.method646(StringUtilities.aString1140, StringUtilities.aString1010, StringUtilities.aString1028, 2009116862);
-      } else if(8 == var0) {
-         World.method646(StringUtilities.aString1012, StringUtilities.aString1110, StringUtilities.aString1014, 2121975743);
-      } else if(var0 == 9) {
-         World.method646(StringUtilities.aString1123, StringUtilities.aString1016, StringUtilities.aString1017, 2098644501);
-      } else if(10 == var0) {
-         World.method646(StringUtilities.aString1121, StringUtilities.aString1019, StringUtilities.aString1020, 2000279502);
-      } else if(var0 == 11) {
-         World.method646(StringUtilities.aString1099, StringUtilities.aString1073, StringUtilities.aString1023, 2035660147);
-      } else if(var0 == 12) {
-         World.method646(StringUtilities.aString1006, StringUtilities.aString1178, StringUtilities.aString1150, 1920138736);
-      } else if(13 == var0) {
-         World.method646(StringUtilities.aString1027, StringUtilities.aString1177, StringUtilities.aString1029, 1857228447);
-      } else if(var0 == 14) {
-         World.method646(StringUtilities.SERVER_IS_UPDATING, StringUtilities.aString1031, StringUtilities.aString957, 2116486952);
-      } else if(var0 == 16) {
-         World.method646(StringUtilities.aString1033, StringUtilities.aString1034, StringUtilities.aString1035, 1940128662);
-      } else if(17 == var0) {
-         World.method646(StringUtilities.aString1103, StringUtilities.aString1011, StringUtilities.aString1038, 1941692847);
-      } else if(var0 == 18) {
-         World.method646(StringUtilities.aString1039, StringUtilities.aString1040, StringUtilities.aString1058, 1944674963);
-      } else if(19 == var0) {
-         World.method646(StringUtilities.aString1042, StringUtilities.aString1043, StringUtilities.aString1120, 2133334204);
-      } else if(20 == var0) {
-         World.method646(StringUtilities.aString1049, StringUtilities.aString1052, StringUtilities.aString1047, 2009880585);
-      } else if(var0 == 22) {
-         World.method646(StringUtilities.aString1048, StringUtilities.aString993, StringUtilities.aString1050, 1961904868);
-      } else if(23 == var0) {
-         World.method646(StringUtilities.aString1051, StringUtilities.aString1100, StringUtilities.aString1053, 2131800705);
-      } else if(24 == var0) {
-         World.method646(StringUtilities.aString1054, StringUtilities.aString1115, StringUtilities.aString1056, 2133872138);
-      } else if(var0 == 25) {
-         World.method646(StringUtilities.aString1057, StringUtilities.aString1013, StringUtilities.aString1059, 1919699222);
-      } else if(26 == var0) {
-         World.method646(StringUtilities.BLOCKED_ADDRESS, StringUtilities.aString1015, StringUtilities.aString1077, 2014140630);
-      } else if(var0 == 27) {
-         World.method646(StringUtilities.aString1112, StringUtilities.aString1064, StringUtilities.aString1065, 2098083073);
-      } else if(31 == var0) {
-         World.method646(StringUtilities.aString1072, StringUtilities.aString1046, StringUtilities.aString1074, 2043189195);
-      } else if(var0 == 32) {
-         World.method646(StringUtilities.aString1146, StringUtilities.aString1076, StringUtilities.aString1151, 2024856893);
-      } else if(37 == var0) {
-         World.method646(StringUtilities.aString1078, StringUtilities.aString1079, StringUtilities.aString1080, 1888437246);
-      } else if(38 == var0) {
-         World.method646(StringUtilities.aString1081, StringUtilities.aString1082, StringUtilities.aString1083, 2063699946);
-      } else if(var0 == 55) {
-         World.method646(StringUtilities.aString1116, StringUtilities.aString1085, StringUtilities.aString1086, 2045399584);
+   static void interpretResponseCode(int response, int var1) {
+      if(response == -3) {
+         World.setResponseString(StringUtilities.CONNECTION_TIMED, StringUtilities.aString1186, StringUtilities.aString1137, 2040055828);
+      } else if(response == -2) {
+         World.setResponseString(StringUtilities.aString1032, StringUtilities.ERROR_CONNECTING, StringUtilities.aString1037, 2087566694);
+      } else if(-1 == response) {
+         World.setResponseString(StringUtilities.aString1145, StringUtilities.USE_DIFF_WORLD, StringUtilities.aString996, 2016404146);
+      } else if(response == 3) {
+         World.setResponseString(StringUtilities.aString997, StringUtilities.invalid_credentials, StringUtilities.aString999, 2010710776);
+      } else if(response == 4) {
+         World.setResponseString(StringUtilities.ACCOUNT_DISABLED, StringUtilities.checkMessages, StringUtilities.aString1061, 1999852017);
+      } else if(response == 5) {
+         World.setResponseString(StringUtilities.ALREADY_LOGGED_IN, StringUtilities.TRY_AGAIN_60, StringUtilities.aString1005, 1904325528);
+      } else if(6 == response) {
+         World.setResponseString(StringUtilities.RUNESCAPE_UPDATED, StringUtilities.RELOAD_PAGE, StringUtilities.aString1008, 2074988600);
+      } else if(response == 7) {
+         World.setResponseString(StringUtilities.aString1140, StringUtilities.aString1010, StringUtilities.aString1028, 2009116862);
+      } else if(8 == response) {
+         World.setResponseString(StringUtilities.aString1012, StringUtilities.aString1110, StringUtilities.aString1014, 2121975743);
+      } else if(response == 9) {
+         World.setResponseString(StringUtilities.aString1123, StringUtilities.aString1016, StringUtilities.aString1017, 2098644501);
+      } else if(10 == response) {
+         World.setResponseString(StringUtilities.aString1121, StringUtilities.aString1019, StringUtilities.aString1020, 2000279502);
+      } else if(response == 11) {
+         World.setResponseString(StringUtilities.aString1099, StringUtilities.aString1073, StringUtilities.aString1023, 2035660147);
+      } else if(response == 12) {
+         World.setResponseString(StringUtilities.aString1006, StringUtilities.aString1178, StringUtilities.aString1150, 1920138736);
+      } else if(13 == response) {
+         World.setResponseString(StringUtilities.aString1027, StringUtilities.aString1177, StringUtilities.aString1029, 1857228447);
+      } else if(response == 14) {
+         World.setResponseString(StringUtilities.SERVER_IS_UPDATING, StringUtilities.aString1031, StringUtilities.aString957, 2116486952);
+      } else if(response == 16) {
+         World.setResponseString(StringUtilities.aString1033, StringUtilities.aString1034, StringUtilities.aString1035, 1940128662);
+      } else if(17 == response) {
+         World.setResponseString(StringUtilities.aString1103, StringUtilities.aString1011, StringUtilities.aString1038, 1941692847);
+      } else if(response == 18) {
+         World.setResponseString(StringUtilities.aString1039, StringUtilities.aString1040, StringUtilities.aString1058, 1944674963);
+      } else if(19 == response) {
+         World.setResponseString(StringUtilities.aString1042, StringUtilities.aString1043, StringUtilities.aString1120, 2133334204);
+      } else if(20 == response) {
+         World.setResponseString(StringUtilities.aString1049, StringUtilities.aString1052, StringUtilities.aString1047, 2009880585);
+      } else if(response == 22) {
+         World.setResponseString(StringUtilities.aString1048, StringUtilities.aString993, StringUtilities.aString1050, 1961904868);
+      } else if(23 == response) {
+         World.setResponseString(StringUtilities.aString1051, StringUtilities.aString1100, StringUtilities.aString1053, 2131800705);
+      } else if(24 == response) {
+         World.setResponseString(StringUtilities.aString1054, StringUtilities.aString1115, StringUtilities.aString1056, 2133872138);
+      } else if(response == 25) {
+         World.setResponseString(StringUtilities.aString1057, StringUtilities.aString1013, StringUtilities.aString1059, 1919699222);
+      } else if(26 == response) {
+         World.setResponseString(StringUtilities.BLOCKED_ADDRESS, StringUtilities.aString1015, StringUtilities.aString1077, 2014140630);
+      } else if(response == 27) {
+         World.setResponseString(StringUtilities.aString1112, StringUtilities.aString1064, StringUtilities.aString1065, 2098083073);
+      } else if(31 == response) {
+         World.setResponseString(StringUtilities.aString1072, StringUtilities.aString1046, StringUtilities.aString1074, 2043189195);
+      } else if(response == 32) {
+         World.setResponseString(StringUtilities.aString1146, StringUtilities.aString1076, StringUtilities.aString1151, 2024856893);
+      } else if(37 == response) {
+         World.setResponseString(StringUtilities.aString1078, StringUtilities.aString1079, StringUtilities.aString1080, 1888437246);
+      } else if(38 == response) {
+         World.setResponseString(StringUtilities.aString1081, StringUtilities.aString1082, StringUtilities.aString1083, 2063699946);
+      } else if(response == 55) {
+         World.setResponseString(StringUtilities.aString1116, StringUtilities.aString1085, StringUtilities.aString1086, 2045399584);
       } else {
-         if(56 == var0) {
-            World.method646(StringUtilities.aString1087, StringUtilities.AUTHENTICATOR_APP, StringUtilities.aString1089, 1934315757);
+         if(56 == response) {
+            World.setResponseString(StringUtilities.aString1087, StringUtilities.AUTHENTICATOR_APP, StringUtilities.aString1089, 1934315757);
             IsaacRandomGen.method725(11, 1815863780);
             return;
          }
 
-         if(var0 == 57) {
-            World.method646(StringUtilities.aString1090, StringUtilities.aString1091, StringUtilities.aString1092, 2055770067);
+         if(response == 57) {
+            World.setResponseString(StringUtilities.aString1090, StringUtilities.aString1091, StringUtilities.aString1092, 2055770067);
             IsaacRandomGen.method725(11, 1816939995);
             return;
          }
 
-         World.method646(StringUtilities.aString1093, StringUtilities.aString1030, StringUtilities.aString1117, 1963559549);
+         World.setResponseString(StringUtilities.aString1093, StringUtilities.aString1030, StringUtilities.aString1117, 1963559549);
       }
 
       IsaacRandomGen.method725(10, 1388576886);
@@ -300,7 +301,7 @@ public class Friend {
 
                        Client.anInt2897 = Client.anInt2731 * 1946037095;
                        Client.secureBuffer.writePacket(39);
-                       Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(toRemove));
+                       Client.secureBuffer.writeByte(StringUtilities.getStringLengthPlusOne(toRemove));
                        Client.secureBuffer.writeString(toRemove);
                        return;
                    }

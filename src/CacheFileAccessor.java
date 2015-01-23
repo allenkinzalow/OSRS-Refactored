@@ -14,6 +14,43 @@ public final class CacheFileAccessor {
    long aLong1491;
    long aLong1492;
 
+   public static CacheFileAccessor getPreferencesFileAccessor(String var0, String var1, boolean var2, byte var3) {
+      File preferencesFile = new File(CacheConstants.aFile1252, "preferences" + var0 + ".dat");
+      if(preferencesFile.exists()) {
+         try {
+            CacheFileAccessor preferencesFileAccessor = new CacheFileAccessor(preferencesFile, "rw", 10000L);
+            return preferencesFileAccessor;
+         } catch (IOException var10) {
+            ;
+         }
+      }
+
+      String var5 = "";
+      if(33 == Class108_Sub13.anInt1686 * 1590926487) {
+         var5 = "_rc";
+      } else if(34 == Class108_Sub13.anInt1686 * 1590926487) {
+         var5 = "_wip";
+      }
+
+      File var6 = new File(Class19.cacheDirectory, "jagex_" + var1 + "_preferences" + var0 + var5 + ".dat");
+      CacheFileAccessor var7;
+      if(!var2 && var6.exists()) {
+         try {
+            var7 = new CacheFileAccessor(var6, "rw", 10000L);
+            return var7;
+         } catch (IOException var9) {
+            ;
+         }
+      }
+
+      try {
+         var7 = new CacheFileAccessor(preferencesFile, "rw", 10000L);
+         return var7;
+      } catch (IOException var8) {
+         throw new RuntimeException();
+      }
+   }
+
 
    final void method1482(long var1) throws IOException {
       this.aRandomAccessFile1489.seek(var1);

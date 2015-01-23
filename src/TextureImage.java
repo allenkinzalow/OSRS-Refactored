@@ -1,5 +1,5 @@
 
-public interface Interface2 {
+public interface TextureImage {
 
    int method21(int var1, int var2);
 

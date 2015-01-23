@@ -56,7 +56,7 @@ public final class CacheableNodeMap {
       this.aClass101_1439 = new HashTable(var2);
    }
 
-   public void method1371() {
+   public void clearCacheMap() {
       this.aClass98_1438.method1286();
       this.aClass101_1439.method1300();
       this.aClass108_Sub20_1440 = new CacheableNode();

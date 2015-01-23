@@ -16,7 +16,7 @@ public class Class1 {
 
 	static void method35(int interID, int var1) {
 		if (interID != -1) {
-			if (AbstractIndex.method1073(interID, 1610753614)) {
+			if (RSInterface.loadInterface(interID, 1610753614)) {
 				RSInterface[] components = RSInterface.interface_cache[interID];
 
 				for (int compIndex = 0; compIndex < components.length; ++compIndex) {
@@ -25,7 +25,7 @@ public class Class1 {
 						ClientScript script = new ClientScript();
 						script.parentInterface = component;
 						script.parameters = component.anObjectArray1861;
-						ClientScriptMap.executeScript(script, 2000000, (short) -30137);
+						ClientScript.executeScript(script, 2000000, (short) -30137);
 					}
 				}
 
@@ -342,7 +342,7 @@ public class Class1 {
 									int var43;
 									int var44;
 									if (textureID >= 0) {
-										var41 = Rasterizer3D.anInterface2_2501.method21(textureID, 72614764);
+										var41 = Rasterizer3D.anTextureImage_2501.method21(textureID, 72614764);
 										var44 = -1;
 									} else if (overlayDef.rgbColor * 308395211 == 16711935) {
 										var44 = -2;

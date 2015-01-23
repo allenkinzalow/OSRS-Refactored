@@ -1,4 +1,6 @@
-
+/**
+ * Credits to Lazaro for this class.
+ */
 public class HuffmanEncoding {
 
    public static HuffmanEncoding huffmanEncoding;

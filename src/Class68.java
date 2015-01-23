@@ -11,23 +11,23 @@ public class Class68 {
 
    static final void method929(int var0) {
       ObjectDefinition.method2199();
-      UnderlayDefinition.aClass106_2143.method1371();
+      UnderlayDefinition.aClass106_2143.clearCacheMap();
       Class65.method889((byte)-123);
       Class108_Sub10.method1681(-1081694593);
-      NPCDefinition.npcDefinitionCache.method1371();
-      NPCDefinition.npcRasterizerMap.method1371();
+      NPCDefinition.npcDefinitionCache.clearCacheMap();
+      NPCDefinition.npcRasterizerMap.clearCacheMap();
       GroundItem.method585((byte)-123);
       Class4.method89((byte)1);
-      SpotAnim.spotAnimCache.method1371();
-      SpotAnim.spotAnimRasterizerMap.method1371();
+      AnimatedGraphic.spotAnimCache.clearCacheMap();
+      AnimatedGraphic.spotAnimRasterizerMap.clearCacheMap();
       Class5.method98(1194839351);
-      Varp.varpCacheMap.method1371();
-      EquipmentKit.equipmentMap.method1371();
-      RSInterface.spriteMap.method1371();
-      RSInterface.interfaceMediaMap.method1371();
-      RSInterface.fontMap.method1371();
-      ((TextureLoader)Rasterizer3D.anInterface2_2501).method379(304324233);
-      ClientScriptDefinition.clientScriptMap.method1371();
+      Varp.varpCacheMap.clearCacheMap();
+      EquipmentKit.equipmentMap.clearCacheMap();
+      RSInterface.spriteMap.clearCacheMap();
+      RSInterface.interfaceMediaMap.clearCacheMap();
+      RSInterface.fontMap.clearCacheMap();
+      ((TextureLoader)Rasterizer3D.anTextureImage_2501).method379(304324233);
+      ClientScriptDefinition.clientScriptMap.clearCacheMap();
       Projectile.skeletonIndex.resetCachedIndex();
       AnimationSkin.skinIndex.resetCachedIndex();
       OverlayFloorDefinition.interfaceIndex.resetCachedIndex();
@@ -43,13 +43,13 @@ public class Class68 {
    }
 
    static void method930(int var0) {
-      Object var1 = Class86.anObject1297;
+      Object var1 = CacheRequestDispatcher.anObject1297;
       synchronized(var1) {
-         if(0 == Class86.anInt1299 * 1495359531) {
-            ClientScriptMap.pringRequester.method820(new Class86(), 5, -2013972179);
+         if(0 == CacheRequestDispatcher.anInt1299 * 1495359531) {
+            ClientScriptMap.pringRequester.method820(new CacheRequestDispatcher(), 5, -2013972179);
          }
 
-         Class86.anInt1299 = -373456120;
+         CacheRequestDispatcher.anInt1299 = -373456120;
       }
    }
 }

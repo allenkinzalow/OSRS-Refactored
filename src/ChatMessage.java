@@ -82,7 +82,7 @@ public class ChatMessage extends CacheableNode {
    }
 
    public static RGBSprite method2016(AbstractIndex index, int archiveId, int fileId, byte var3) {
-      if(!FriendsChatMember.method1686(index, archiveId, fileId, -1593817854)) {
+      if(!FriendsChatMember.loadPaletteSprite(index, archiveId, fileId, -1593817854)) {
          return null;
       } else {
          RGBSprite sprite = new RGBSprite();
@@ -90,7 +90,7 @@ public class ChatMessage extends CacheableNode {
          sprite.maxHeight = Class9.anInt121 * -1272520477;
          sprite.offsetX = Class88.anIntArray1316[0];
          sprite.offsetY = Class9.anIntArray123[0];
-         sprite.width = Class36.anIntArray514[0];
+         sprite.width = PaletteSprite.lastLoadedPaletteSpriteWidth[0];
          sprite.height = Class9.anIntArray126[0];
          int dimmension = sprite.width * sprite.height;
          byte[] var6 = AnimationSkeletonSet.loadedCharacterPixels[0];
@@ -100,15 +100,15 @@ public class ChatMessage extends CacheableNode {
             sprite.pixels[pos] = Class9.anIntArray130[var6[pos] & 255];
          }
 
-         ClientScript.method1679((byte)99);
+         PaletteSprite.resetLastPaletteValues((byte) 99);
          return sprite;
       }
    }
 
    static final void method2017(int var0, int var1, int var2, short var3) {
       if(var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-         int var4 = ClientScript.getFloorDrawHeight(var0, var1, VarpBit.plane * -570926309, 1332864502) - var2;
-         var0 -= BZip2Context.anInt279 * 1217916071;
+         int var4 = RegionReference.getFloorDrawHeight(var0, var1, VarpBit.plane * -570926309, 1332864502) - var2;
+         var0 -= BZip2Context.xCameraPos * 1217916071;
          var4 -= ClientScript.anInt1645 * 699100371;
          var1 -= CacheFileAccessor.anInt1490 * 1498802843;
          int var6 = Rasterizer3D.SINE[RuntimeException_Sub1.anInt2625 * -611182019];
@@ -149,6 +149,11 @@ public class ChatMessage extends CacheableNode {
          }
       }
 
+   }
+
+   static int method3181(int var0, byte var1) {
+       ChatMessage chatMessage = (ChatMessage) Class26.aClass95_348.method1202((long) var0);
+       return chatMessage == null ? -1 : (Class26.aClass97_349.aClass108_Sub20_1374 == chatMessage.previousNode ? -1 : ((ChatMessage) chatMessage.previousNode).anInt1944 * -1818271001);
    }
 
    void method2019(int var1, String var2, String var3, String var4, int var5) {

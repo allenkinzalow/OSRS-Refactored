@@ -9,10 +9,10 @@ public class Class108_Sub10 extends Node {
 
 
    public static void method1681(int var0) {
-      ObjectDefinition.objectDefMap.method1371();
-      ObjectDefinition.objectModelCache.method1371();
-      ObjectDefinition.aClass106_2079.method1371();
-      ObjectDefinition.objectRasterizerMap.method1371();
+      ObjectDefinition.objectDefMap.clearCacheMap();
+      ObjectDefinition.objectModelCache.clearCacheMap();
+      ObjectDefinition.aClass106_2079.clearCacheMap();
+      ObjectDefinition.objectRasterizerMap.clearCacheMap();
    }
 
    static final void method1682(Class108_Sub10 var0, boolean var1, short var2) {
@@ -20,11 +20,11 @@ public class Class108_Sub10 extends Node {
       int var4 = (int)var0.key;
       var0.unlink();
       if(var1) {
-         Class5.method92(var3);
+         RSInterface.removeLoadedInterface(var3);
       }
 
       HuffmanEncoding.method691(var3, 1744562904);
-      RSInterface var5 = CacheIndexRequest.getInterfaceComponentForHash(var4, 1444513607);
+      RSInterface var5 = RSInterface.getInterfaceComponentForHash(var4, 1444513607);
       if(var5 != null) {
          MouseInputHandler.method775(var5, -16054773);
       }

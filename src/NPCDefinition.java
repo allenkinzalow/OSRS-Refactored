@@ -38,9 +38,26 @@ public class NPCDefinition extends CacheableNode {
    public int anInt2189 = 1304499145;
    public boolean aBool2190 = false;
    static AbstractIndex configIndexReference;
-   static final int anInt2192 = 39;
    static RSInterface aClass108_Sub17_2193;
    static byte aByte2194;
+
+   public static NPCDefinition getNPCDefForID(int npcID, int var1) {
+      NPCDefinition npcDef = (NPCDefinition) npcDefinitionCache.get((long) npcID);
+      if(npcDef != null) {
+         return npcDef;
+      } else {
+         byte[] npcDefData = configIndexReference.getFile(9, npcID, (byte) 7);
+         npcDef = new NPCDefinition();
+         npcDef.npcID = npcID * -582391805;
+         if(npcDefData != null) {
+            npcDef.decode(new RSByteBuffer(npcDefData), 1749628579);
+         }
+
+         npcDef.method2285((byte)11);
+         npcDefinitionCache.put(npcDef, (long) npcID);
+         return npcDef;
+      }
+   }
 
 
    public boolean method2284(byte var1) {
@@ -283,7 +300,7 @@ public class NPCDefinition extends CacheableNode {
          }
 
          if(128 != this.resizeX * 1618316721 || 128 != this.resizeY * 1034256035) {
-            modifiedRasterizer.method2866(this.resizeX * 1618316721, this.resizeY * 1034256035, this.resizeX * 1618316721);
+            modifiedRasterizer.resizeModel(this.resizeX * 1618316721, this.resizeY * 1034256035, this.resizeX * 1618316721);
          }
 
          return modifiedRasterizer;
@@ -298,7 +315,7 @@ public class NPCDefinition extends CacheableNode {
          var2 = Class88.configSettings[this.anInt2187 * -1146999519];
       }
 
-      return var2 >= 0 && var2 < this.anIntArray2185.length && this.anIntArray2185[var2] != -1?Class108_Sub12.getNPCDefForID(this.anIntArray2185[var2], -606019968):null;
+      return var2 >= 0 && var2 < this.anIntArray2185.length && this.anIntArray2185[var2] != -1? getNPCDefForID(this.anIntArray2185[var2], -606019968):null;
    }
 
    static final void method2293(Entity var0, short var1) {
@@ -334,7 +351,7 @@ public class NPCDefinition extends CacheableNode {
    }
 
    public static void method2300(AbstractIndex var0, AbstractIndex var1, int var2) {
-      SpotAnim.aClass74_2029 = var0;
+      AnimatedGraphic.aClass74_2029 = var0;
       Class54.aClass74_734 = var1;
    }
 

@@ -1,5 +1,8 @@
 import java.awt.*;
 
+/**
+ * Credit to Velocity for some of the fields.
+ */
 public class ItemDefinition extends CacheableNode {
 
 	int resizeY;
@@ -52,7 +55,7 @@ public class ItemDefinition extends CacheableNode {
 
 
 	public static RSFont loadFont(AbstractIndex spriteIndex, AbstractIndex fontIndex, int archiveID, int fileID, int var4) {
-		if (!FriendsChatMember.method1686(spriteIndex, archiveID, fileID, -930113977)) {
+		if (!FriendsChatMember.loadPaletteSprite(spriteIndex, archiveID, fileID, -930113977)) {
 			return null;
 		} else {
 			byte[] fontData = fontIndex.getFile(archiveID, fileID, (byte) 7);
@@ -60,8 +63,8 @@ public class ItemDefinition extends CacheableNode {
 			if (null == fontData) {
 				font = null;
 			} else {
-				RSFont loadedFont = new RSFont(fontData, Class88.anIntArray1316, Class9.anIntArray123, Class36.anIntArray514, Class9.anIntArray126, Class9.anIntArray130, AnimationSkeletonSet.loadedCharacterPixels);
-				ClientScript.method1679((byte) 96);
+				RSFont loadedFont = new RSFont(fontData, Class88.anIntArray1316, Class9.anIntArray123, PaletteSprite.lastLoadedPaletteSpriteWidth, Class9.anIntArray126, Class9.anIntArray130, AnimationSkeletonSet.loadedCharacterPixels);
+				PaletteSprite.resetLastPaletteValues((byte) 96);
 				font = loadedFont;
 			}
 
@@ -95,6 +98,108 @@ public class ItemDefinition extends CacheableNode {
 
           itemDefinitionMap.put(definition, (long) itemID);
           return definition;
+       }
+    }
+
+	public static final RGBSprite getItemSprite(int itemID, int amount, int var2, int var3, boolean exist, int var5) {
+       long itemHash = ((long)var3 << 40) + ((long)var2 << 38) + (long)itemID + ((long)amount << 16);
+       RGBSprite cachedSprite;
+       if(!exist) {
+          cachedSprite = (RGBSprite) itemSpriteMap.get(itemHash);
+          if(cachedSprite != null) {
+             return cachedSprite;
+          }
+       }
+
+       ItemDefinition itemDef = getItemDefinition(itemID, -221675425);
+       if(amount > 1 && null != itemDef.countObj) {
+          int countChangeID = -1;
+
+          for(int amountIndex = 0; amountIndex < 10; ++amountIndex) {
+             if(amount >= itemDef.countCo[amountIndex] && 0 != itemDef.countCo[amountIndex]) {
+                countChangeID = itemDef.countObj[amountIndex];
+             }
+          }
+
+          if(countChangeID != -1) {
+             itemDef = getItemDefinition(countChangeID, -1934683345);
+          }
+       }
+
+       ModelRasterizer modelRasterizer = itemDef.renderItem(1, (byte)24);
+       if(null == modelRasterizer) {
+          return null;
+       } else {
+          RGBSprite sprite = null;
+          if(-1 != itemDef.notedTemplate * -910205763) {
+             sprite = getItemSprite(itemDef.notedID * -616959653, 10, 1, 0, true, -944989678);
+             if(null == sprite) {
+                return null;
+             }
+          }
+
+          int[] pixels = Rasterizer2D.renderPixels;
+          int width = Rasterizer2D.width;
+          int height = Rasterizer2D.height;
+          int[] var18 = new int[4];
+          Rasterizer2D.populateArea(var18);
+          cachedSprite = new RGBSprite(36, 32);
+          Rasterizer2D.copySprite(cachedSprite.pixels, 36, 32);
+          Rasterizer2D.resetPixels();
+          Rasterizer3D.method2970();
+          Rasterizer3D.method2926(16, 16);
+          Rasterizer3D.aBool2518 = false;
+          int zoom = itemDef.zoom2d * 609600173;
+          if(exist) {
+             zoom = (int)(1.5D * (double)zoom);
+          } else if(var2 == 2) {
+             zoom = (int)((double)zoom * 1.04D);
+          }
+
+          int var12 = Rasterizer3D.SINE[itemDef.xan2d * 36515425] * zoom >> 16;
+          int var19 = zoom * Rasterizer3D.COSINE[itemDef.xan2d * 36515425] >> 16;
+          modelRasterizer.method2855();
+          modelRasterizer.method2916(0, itemDef.yan2d * 1922730437, itemDef.zan2d * 1605145061, itemDef.xan2d * 36515425, itemDef.xOffset2d * 1578900673, var12 + modelRasterizer.modelHeight * 782517621 / 2 + itemDef.yOffset2d * 1336895047, itemDef.yOffset2d * 1336895047 + var19);
+          if(var2 >= 1) {
+             cachedSprite.setPixels(1);
+          }
+
+          if(var2 >= 2) {
+             cachedSprite.setPixels(16777215);
+          }
+
+          if(var3 != 0) {
+             cachedSprite.method2814(var3);
+          }
+
+          Rasterizer2D.copySprite(cachedSprite.pixels, 36, 32);
+          if(-1 != itemDef.notedTemplate * -910205763) {
+             sprite.method2746(0, 0);
+          }
+
+          if(!exist && (itemDef.stackable * 1548462817 == 1 || amount != 1) && -1 != amount) {
+             RSFont itemFont = itemAmountFont;
+             String amountString;
+             if(amount < 100000) {
+                amountString = "<col=ffff00>" + amount + "</col>";
+             } else if(amount < 10000000) {
+                amountString = "<col=ffffff>" + amount / 1000 + StringUtilities.ITEM_AMOUNT_K + "</col>";
+             } else {
+                amountString = "<col=00ff80>" + amount / 1000000 + StringUtilities.ITEM_AMOUNT_M + "</col>";
+             }
+
+             itemFont.drawString(amountString, 0, 9, 16776960, 1);
+          }
+
+          if(!exist) {
+             itemSpriteMap.put(cachedSprite, itemHash);
+          }
+
+          Rasterizer2D.copySprite(pixels, width, height);
+          Rasterizer2D.method2551(var18);
+          Rasterizer3D.method2970();
+          Rasterizer3D.aBool2518 = true;
+          return cachedSprite;
        }
     }
 
@@ -656,12 +761,12 @@ public class ItemDefinition extends CacheableNode {
 						player.aBool2352 = var19;
 						if (2 != var6 && 3 != var6) {
 							if (1 == var6) {
-								ChatMessagesContainer.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
+								ChatMessagesContainer.pushMessage(var19 ? 91 : 1, RSTypeFace.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
 							} else {
 								ChatMessagesContainer.pushMessage(var19 ? 90 : 2, player.playerName, textSpoken, 243104464);
 							}
 						} else {
-							ChatMessagesContainer.pushMessage(var19 ? 91 : 1, CacheIndexRequest.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
+							ChatMessagesContainer.pushMessage(var19 ? 91 : 1, RSTypeFace.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
 						}
 					}
 				}

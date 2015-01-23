@@ -52,7 +52,7 @@ public class Class19 {
 
    static final void method327(String var0, int var1, byte var2) {
       Client.secureBuffer.writePacket(114);
-      Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(var0) + 1);
+      Client.secureBuffer.writeByte(StringUtilities.getStringLengthPlusOne(var0) + 1);
       Client.secureBuffer.writeString(var0);
       Client.secureBuffer.method1741(var1, -1571002127);
    }
@@ -166,7 +166,7 @@ public class Class19 {
          }
 
          if((var5 & 1) != 0) {
-            var1.definition = Class108_Sub12.getNPCDefForID(Client.packetBuffer.readUShortLEA(), 1295047954);
+            var1.definition = NPCDefinition.getNPCDefForID(Client.packetBuffer.readUShortLEA(), 1295047954);
             var1.anInt2349 = var1.definition.tileSpacesOccupied * 869735027;
             var1.anInt2389 = var1.definition.anInt2156 * 1300761443;
             var1.anInt2357 = var1.definition.walkAnimation * 1834238161;
@@ -226,8 +226,8 @@ public class Class19 {
          }
       }
 
-      if(Client.packetBuffer.position * 798331555 != Client.anInt2927 * -574496637) {
-         throw new RuntimeException(Client.packetBuffer.position * 798331555 + Class47.COMMA_LITERAL + Client.anInt2927 * -574496637);
+      if(Client.packetBuffer.position * 798331555 != Client.packetSize * -574496637) {
+         throw new RuntimeException(Client.packetBuffer.position * 798331555 + Class47.COMMA_LITERAL + Client.packetSize * -574496637);
       } else {
          for(var2 = 0; var2 < Client.anInt2749 * -1829405175; ++var2) {
             if(null == Client.localNPCs[Client.npcIndices[var2]]) {

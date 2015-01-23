@@ -14,20 +14,6 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
    boolean aBool2612 = false;
 
 
-   static AnimationSkeletonSet method3072(int animationID, int var1) {
-      AnimationSkeletonSet skeletonSet = (AnimationSkeletonSet)AnimationDefinition.animDefCache.get((long)animationID);
-      if(null != skeletonSet) {
-         return skeletonSet;
-      } else {
-         skeletonSet = AnimationSkeletonSet.initAnimSkeletonSet(AnimationDefinition.skeletonIndexReference, AnimationDefinition.skinIndexReference, animationID, false, 949323318);
-         if(null != skeletonSet) {
-            AnimationDefinition.animDefCache.put(skeletonSet, (long)animationID);
-         }
-
-         return skeletonSet;
-      }
-   }
-
    final void method3073(int var1, int var2) {
       if(!this.aBool2612) {
          this.anInt2604 += var1 * -810584273;
@@ -45,12 +31,12 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
    }
 
    protected final ModelRasterizer getModelRasterizer(byte var1) {
-      SpotAnim spotAnim = SpotAnim.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0);
+      AnimatedGraphic animatedGraphic = AnimatedGraphic.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0);
       ModelRasterizer var3;
       if(this.aBool2612) {
-         var3 = spotAnim.getModelRasterizer(-1, -380943559);
+         var3 = animatedGraphic.getModelRasterizer(-1, -380943559);
       } else {
-         var3 = spotAnim.getModelRasterizer(this.anInt2610 * -533807825, -380943559);
+         var3 = animatedGraphic.getModelRasterizer(this.anInt2610 * -533807825, -380943559);
       }
 
       return var3 != null?var3:null;
@@ -63,7 +49,7 @@ public final class Class108_Sub20_Sub14_Sub6 extends Renderable {
       this.anInt2605 = var4 * -1986090103;
       this.anInt2606 = var5 * -818243291;
       this.anInt2602 = (var7 + var6) * 1819958065;
-      int animationID = SpotAnim.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0).animationID * 338579353;
+      int animationID = AnimatedGraphic.getSpotAnimForID(this.anInt2608 * -217366671, (byte) 0).animationID * 338579353;
       if(animationID != -1) {
          this.aBool2612 = false;
          this.animDefinition = AnimationDefinition.getAnimDefForID(animationID, 1927934523);

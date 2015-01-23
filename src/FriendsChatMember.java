@@ -1,6 +1,7 @@
 
 public class FriendsChatMember extends Node {
 
+   static FriendsChatMember[] friendsChatList;
    byte rank;
    String username;
    int anInt1663;
@@ -30,13 +31,13 @@ public class FriendsChatMember extends Node {
       IsaacRandomGen.method725(25, 1943042855);
       GameDefinition.method1107(StringUtilities.LOADING_PLEASE_WAIT, true, 488043270);
       int var10 = Class100.anInt1388 * 263051377;
-      int var9 = Class15.anInt201 * -1743142671;
+      int var9 = SoundEffectWorker.anInt201 * -1743142671;
       Class100.anInt1388 = (var0 - 6) * -870890360;
-      Class15.anInt201 = (var1 - 6) * 527007880;
+      SoundEffectWorker.anInt201 = (var1 - 6) * 527007880;
       int var11 = Class100.anInt1388 * 263051377 - var10;
-      int var7 = Class15.anInt201 * -1743142671 - var9;
+      int var7 = SoundEffectWorker.anInt201 * -1743142671 - var9;
       var10 = Class100.anInt1388 * 263051377;
-      var9 = Class15.anInt201 * -1743142671;
+      var9 = SoundEffectWorker.anInt201 * -1743142671;
 
       int entityIndex;
       int var13;
@@ -122,42 +123,42 @@ public class FriendsChatMember extends Node {
    }
 
    static final void method1685(Class108_Sub13 var0, byte var1) {
-      int var2 = 0;
-      int var4 = -1;
+      int hash = 0;
+      int objectID = -1;
       int var3 = 0;
       int var6 = 0;
       if(0 == var0.anInt1679 * -1012881333) {
-         var2 = Class56.gameScene.method427(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Class56.gameScene.fetchWallObjectHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(var0.anInt1679 * -1012881333 == 1) {
-         var2 = Class56.gameScene.method425(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Class56.gameScene.fetchWallDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(2 == var0.anInt1679 * -1012881333) {
-         var2 = Class56.gameScene.method429(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Class56.gameScene.fetchTileInteractableHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(var0.anInt1679 * -1012881333 == 3) {
-         var2 = Class56.gameScene.fetchGroundTileDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Class56.gameScene.fetchGroundTileDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
-      if(0 != var2) {
-         int var5 = Class56.gameScene.method431(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981, var2);
-         var4 = var2 >> 14 & 32767;
+      if(0 != hash) {
+         int var5 = Class56.gameScene.method431(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981, hash);
+         objectID = hash >> 14 & 32767;
          var3 = var5 & 31;
          var6 = var5 >> 6 & 3;
       }
 
-      var0.anInt1683 = var4 * -1278197465;
+      var0.anInt1683 = objectID * -1278197465;
       var0.anInt1685 = var3 * -1306998411;
       var0.anInt1684 = var6 * 634911733;
    }
 
-   static boolean method1686(AbstractIndex index, int archiveId, int fileId, int var3) {
+   static boolean loadPaletteSprite(AbstractIndex index, int archiveId, int fileId, int var3) {
       byte[] fileData = index.getFile(archiveId, fileId, (byte) 7);
       if(null != fileData) { 
-         WallDecoration.method338(fileData, 878628031);
+         PaletteSprite.decodePaletteSprite(fileData, 878628031);
          return true;
       } else {
          return false;

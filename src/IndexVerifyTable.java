@@ -1,10 +1,10 @@
 
-public class LookupTable {
+public class IndexVerifyTable {
 
    int[] identTable;
 
 
-   public LookupTable(int[] var1) {
+   public IndexVerifyTable(int[] var1) {
       int var2;
       for(var2 = 1; var2 <= var1.length + (var1.length >> 1); var2 <<= 1) {
          ;

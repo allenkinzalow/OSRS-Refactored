@@ -1,7 +1,6 @@
 
 public final class Class54 {
 
-   static String[] stringLocals;
    public static String operatingSystem;
    static int actionMenuWidth;
    static AbstractIndex aClass74_734;
@@ -78,7 +77,7 @@ public final class Class54 {
                            break;
                         }
 
-                        var1 = CacheIndexRequest.getInterfaceComponentForHash(var1.hoverPopup * -867206361, -1084920447);
+                        var1 = RSInterface.getInterfaceComponentForHash(var1.hoverPopup * -867206361, -1084920447);
                         if(null == var1) {
                            var12 = null;
                            break;

@@ -14,8 +14,8 @@ public class RSSoundEffect_2 extends Node {
    static int anInt1561;
    static float[] aFloatArray1562;
    static Class17[] aClass17Array1563;
-   static Class12[] aClass12Array1564;
-   static Class18[] aClass18Array1565;
+   static SoundEffectClass_1[] aSoundEffectClass1Array1564;
+   static SoundEffectContainer[] aSoundEffectContainerArray1565;
    static boolean[] aBoolArray1566;
    static int[] anIntArray1567;
    static boolean aBool1568 = false;
@@ -162,17 +162,17 @@ public class RSSoundEffect_2 extends Node {
       }
 
       var3 = method1643(6) + 1;
-      aClass12Array1564 = new Class12[var3];
+      aSoundEffectClass1Array1564 = new SoundEffectClass_1[var3];
 
       for(var4 = 0; var4 < var3; ++var4) {
-         aClass12Array1564[var4] = new Class12();
+         aSoundEffectClass1Array1564[var4] = new SoundEffectClass_1();
       }
 
       var4 = method1643(6) + 1;
-      aClass18Array1565 = new Class18[var4];
+      aSoundEffectContainerArray1565 = new SoundEffectContainer[var4];
 
       for(var2 = 0; var2 < var4; ++var2) {
-         aClass18Array1565[var2] = new Class18();
+         aSoundEffectContainerArray1565[var2] = new SoundEffectContainer();
       }
 
       var2 = method1643(6) + 1;
@@ -228,14 +228,14 @@ public class RSSoundEffect_2 extends Node {
          var23 = var16 >> 1;
       }
 
-      Class18 var3 = aClass18Array1565[anIntArray1567[var4]];
+      SoundEffectContainer var3 = aSoundEffectContainerArray1565[anIntArray1567[var4]];
       int var15 = var3.anInt227;
       int var2 = var3.anIntArray228[var15];
       boolean var17 = !aClass17Array1563[var2].method318();
       boolean var47 = var17;
 
       for(var2 = 0; var2 < var3.anInt229; ++var2) {
-         Class12 var26 = aClass12Array1564[var3.anIntArray226[var2]];
+         SoundEffectClass_1 var26 = aSoundEffectClass1Array1564[var3.anIntArray226[var2]];
          float[] var14 = aFloatArray1580;
          var26.method255(var14, var16 >> 1, var47);
       }

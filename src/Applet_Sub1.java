@@ -29,6 +29,11 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    public static final int anInt2700 = 154;
    static String aString2701;
 
+   public static void setApplet(Applet var0, String var1, int var2) {
+      Class56.anApplet756 = var0;
+      Class56.operatingSystem = var1;
+   }
+
 
    protected final void method3184(int width, int height, int var3, int var4) {
       try {
@@ -85,7 +90,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       Class1.aCanvas3.requestFocus();
       aBool2688 = true;
       aBool2693 = false;
-      aLong2697 = Player.getCurrentTimeMillis(849846164) * 516356414042863577L;
+      aLong2697 = Timer.getCurrentTimeMillis(849846164) * 516356414042863577L;
    }
 
    final synchronized void method3188(byte var1) {
@@ -125,7 +130,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    void process(short var1) {
-      long currentTime = Player.getCurrentTimeMillis(849846164);
+      long currentTime = Timer.getCurrentTimeMillis(849846164);
       long lastTime = aLongArray2696[Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033];
       aLongArray2696[Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033] = currentTime;
       Class108_Sub20_Sub14_Sub6.anInt2607 = (Class108_Sub20_Sub14_Sub6.anInt2607 * 962733033 + 1 & 31) * 737600601;
@@ -163,7 +168,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    public void destroy() {
       if(this == currentApplet) {
          if(!aBool2692) {
-            aLong2687 = Player.getCurrentTimeMillis(849846164) * 258775077807745085L;
+            aLong2687 = Timer.getCurrentTimeMillis(849846164) * 258775077807745085L;
             Class108_Sub22.sleep(5000L);
             this.method3188((byte)95);
          }
@@ -178,9 +183,9 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       if(this == currentApplet) {
          if(!aBool2692) {
             aBool2688 = true;
-            if(null != Class71.javaVersion) {
-               if(Class71.javaVersion.startsWith("1.5")) {
-                  if(Player.getCurrentTimeMillis(849846164) - -3473457553222264727L * aLong2697 > 1000L) {
+            if(null != MachineInformation.javaVersion) {
+               if(MachineInformation.javaVersion.startsWith("1.5")) {
+                  if(Timer.getCurrentTimeMillis(849846164) - -3473457553222264727L * aLong2697 > 1000L) {
                      Rectangle var2 = var1.getClipBounds();
                      if(var2 != null) {
                         if(var2.width < ProducingGraphicsBuffer.clientWidth * 1080367531) {
@@ -227,7 +232,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          if(null != PingRequester.javaVendor) {
             String var1 = PingRequester.javaVendor.toLowerCase();
             if(var1.indexOf("sun") != -1 || var1.indexOf("apple") != -1) {
-               String var2 = Class71.javaVersion;
+               String var2 = MachineInformation.javaVersion;
                if(var2.equals("1.1") || var2.startsWith("1.1.") || var2.equals("1.2") || var2.startsWith("1.2.") || var2.equals("1.3") || var2.startsWith("1.3.") || var2.equals("1.4") || var2.startsWith("1.4.") || var2.equals("1.5") || var2.startsWith("1.5.") || var2.equals("1.6.0")) {
                   this.sendError("wrongjava", -1271013870);
                   return;
@@ -324,10 +329,10 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             var16 = new Class53_Sub1();
          }
 
-         Class36.clientTimer = (Timer)var16;
+         Timer.clientTimer = (Timer)var16;
 
-         while(0L == 3640810457273822997L * aLong2687 || Player.getCurrentTimeMillis(849846164) < 3640810457273822997L * aLong2687) {
-            Class100.anInt1384 = Class36.clientTimer.method714(anInt2690 * -2113736069, anInt2685 * -328177131, -665517638) * -244555733;
+         while(0L == 3640810457273822997L * aLong2687 || Timer.getCurrentTimeMillis(849846164) < 3640810457273822997L * aLong2687) {
+            Class100.anInt1384 = Timer.clientTimer.method714(anInt2690 * -2113736069, anInt2685 * -328177131, -665517638) * -244555733;
 
             for(int var17 = 0; var17 < Class100.anInt1384 * -969843069; ++var17) {
                this.method3224(760507799);
@@ -345,7 +350,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    void method3224(int var1) {
-      long var2 = Player.getCurrentTimeMillis(849846164);
+      long var2 = Timer.getCurrentTimeMillis(849846164);
       long var4 = aLongArray2694[Timer.anInt723 * -1099924813];
       aLongArray2694[Timer.anInt723 * -1099924813] = var2;
       Timer.anInt723 = (1 + Timer.anInt723 * -1099924813 & 31) * 669828219;
@@ -365,7 +370,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    public void stop() {
       if(currentApplet == this) {
          if(!aBool2692) {
-            aLong2687 = (Player.getCurrentTimeMillis(849846164) + 4000L) * 258775077807745085L;
+            aLong2687 = (Timer.getCurrentTimeMillis(849846164) + 4000L) * 258775077807745085L;
          }
       }
    }
@@ -463,7 +468,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       }
 
       Client.actionMenuOpen = true;
-      Class51.actionMenuX = xPos * -1856507955;
+      ClientScriptReference.actionMenuX = xPos * -1856507955;
       MouseInputHandler.actionMenuY = yPos * 1712577663;
       Class54.actionMenuWidth = maxWidth * 311400179;
       Item.actionMenuHeight = Client.menuActionRow * 1309415031 - 1473975926;

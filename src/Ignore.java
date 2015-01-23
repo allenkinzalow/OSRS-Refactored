@@ -14,7 +14,7 @@ public class Ignore {
    static final void buildRightClickMenu(RSInterface[] components, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       for(int componentID = 0; componentID < components.length; ++componentID) {
          RSInterface component = components[componentID];
-         if(null != component && (!component.aBool1855 || 0 == component.componentType * 942877543 || component.hasScript || Class32.method576(component, -1267315198) != 0 || Client.aClass108_Sub17_2878 == component) && var1 == component.hoverPopup * -867206361 && (!component.aBool1855 || !ClientScriptMap.isComponentHidden(component, (byte)8))) {
+         if(null != component && (!component.aBool1855 || 0 == component.componentType * 942877543 || component.hasScript || Class32.method576(component, -1267315198) != 0 || Client.aClass108_Sub17_2878 == component) && var1 == component.hoverPopup * -867206361 && (!component.aBool1855 || !RSInterface.isComponentHidden(component, (byte) 8))) {
             int var18 = var6 + component.anInt1776 * 985647797;
             int var14 = var7 + component.anInt1824 * 1730176157;
             int var10;
@@ -95,7 +95,7 @@ public class Ignore {
                         if(var21 != menuHash) {
                            var21 = menuHash;
                            if(2 == interactionMenuType && Class56.gameScene.method431(VarpBit.plane * -570926309, xPos, yPos, menuHash) >= 0) {
-                              ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(interactableID, (byte)0);
+                              ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(interactableID, (byte) 0);
                               if(null != objectDef.configChangeDest) {
                                  objectDef = objectDef.getDefinitionForStatus((byte)-49);
                               }
@@ -162,7 +162,7 @@ public class Ignore {
                                  for(entityIndex = 0; entityIndex < Client.anInt2749 * -1829405175; ++entityIndex) {
                                     var43 = Client.localNPCs[Client.npcIndices[entityIndex]];
                                     if(var43 != null && var43 != npc && var43.definition.tileSpacesOccupied * -87058581 == 1 && var43.anInt2394 * 171470795 == npc.anInt2394 * 171470795 && npc.anInt2339 * 826764905 == var43.anInt2339 * 826764905) {
-                                       SpotAnim.method2148(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, -1405217342);
+                                       AnimatedGraphic.method2148(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, -1405217342);
                                     }
                                  }
 
@@ -174,7 +174,7 @@ public class Ignore {
                                  }
                               }
 
-                              SpotAnim.method2148(npc.definition, interactableID, xPos, yPos, 430491862);
+                              AnimatedGraphic.method2148(npc.definition, interactableID, xPos, yPos, 430491862);
                            }
 
                            if(interactionMenuType == 0) {
@@ -187,7 +187,7 @@ public class Ignore {
                                  for(entityIndex = 0; entityIndex < Client.anInt2749 * -1829405175; ++entityIndex) {
                                     var43 = Client.localNPCs[Client.npcIndices[entityIndex]];
                                     if(null != var43 && 1 == var43.definition.tileSpacesOccupied * -87058581 && player.anInt2394 * 171470795 == var43.anInt2394 * 171470795 && var43.anInt2339 * 826764905 == player.anInt2339 * 826764905) {
-                                       SpotAnim.method2148(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, 88805031);
+                                       AnimatedGraphic.method2148(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, 88805031);
                                     }
                                  }
 
@@ -264,7 +264,7 @@ public class Ignore {
                   }
 
                   if(0 == component.componentType * 942877543) {
-                     if(!component.aBool1855 && ClientScriptMap.isComponentHidden(component, (byte)37) && Class72.aClass108_Sub17_924 != component) {
+                     if(!component.aBool1855 && RSInterface.isComponentHidden(component, (byte) 37) && Client.aClass108_Sub17_924 != component) {
                         continue;
                      }
 
@@ -283,7 +283,7 @@ public class Ignore {
                         }
 
                         var24 = var37.anInt1653 * 1557246219;
-                        if(AbstractIndex.method1073(var24, 1046680614)) {
+                        if(RSInterface.loadInterface(var24, 1046680614)) {
                            buildRightClickMenu(RSInterface.interface_cache[var24], -1, var13, var19, var11, var20, var18, var14, -1200460421);
                         }
                      }
@@ -576,9 +576,9 @@ public class Ignore {
                   if(!component.aBool1855 && null == Client.aClass108_Sub17_2877 && IsaacRandomGen.aClass108_Sub17_745 == null && !Client.actionMenuOpen) {
                      if((component.anInt1846 * 1461842043 >= 0 || component.mouseOverColor * 256440005 != 0) && MouseInputHandler.mouseX * -367052265 >= var13 && MouseInputHandler.mouseY * 1533395117 >= var19 && MouseInputHandler.mouseX * -367052265 < var11 && MouseInputHandler.mouseY * 1533395117 < var20) {
                         if(component.anInt1846 * 1461842043 >= 0) {
-                           Class72.aClass108_Sub17_924 = components[component.anInt1846 * 1461842043];
+                           Client.aClass108_Sub17_924 = components[component.anInt1846 * 1461842043];
                         } else {
-                           Class72.aClass108_Sub17_924 = component;
+                           Client.aClass108_Sub17_924 = component;
                         }
                      }
 
@@ -773,7 +773,7 @@ public class Ignore {
                   ChatMessagesContainer.pushMessage(31, "", StringUtilities.aString1105, -1446835517);
                } else {
                   Client.secureBuffer.writePacket(222);
-                  Client.secureBuffer.writeByte(Class108_Sub20_Sub3.getStringLengthPlusOne(toAdd));
+                  Client.secureBuffer.writeByte(StringUtilities.getStringLengthPlusOne(toAdd));
                   Client.secureBuffer.writeString(toAdd);
                }
             }

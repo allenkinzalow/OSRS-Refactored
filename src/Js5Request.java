@@ -118,7 +118,7 @@ public class Js5Request extends CacheableNode {
 
       Client.anInt2822 = 0;
       int xPos = Class100.anInt1388 * 263051377 + (Player.myPlayer.anInt2394 * 171470795 >> 7);
-      int yPos = Class15.anInt201 * -1743142671 + (Player.myPlayer.anInt2339 * 826764905 >> 7);
+      int yPos = SoundEffectWorker.anInt201 * -1743142671 + (Player.myPlayer.anInt2339 * 826764905 >> 7);
       if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136) {
          Client.anInt2822 = 949480073;
       }
@@ -194,4 +194,45 @@ public class Js5Request extends CacheableNode {
       return var0 >> 17 & 7;
    }
 
+   static void submitJs5Request(CacheIndex var0, int index, int archive, int var3, byte var4, boolean var5, byte var6) {
+       long key = (long) (archive + (index << 16));
+       Js5Request req = (Js5Request) Class78.aClass101_1228.get(key);
+
+       if (null == req) {
+           req = (Js5Request) Class78.urgentJs5Requests.get(key);
+           if (null == req) {
+               req = (Js5Request) Class78.aClass101_1220.get(key);
+               if (req != null) {
+                   if (var5) {
+                       req.method1982();
+                       Class78.aClass101_1228.put(req, key);
+                       Class78.anInt1221 -= 831035281;
+                       Class78.anInt1216 -= 1906091653;
+                   }
+               } else  {
+                   if (!var5) {
+                       req = (Js5Request) Class78.regularJs5Requests.get(key);
+
+                       if (null != req) {
+                           return;
+                       }
+                   }
+
+                   req = new Js5Request();
+                   req.aClass74_Sub1_2300 = var0;
+                   req.assumedCRC = var3 * 1016544135;
+                   req.aByte2299 = var4;
+
+                   if (var5) {
+                       Class78.aClass101_1228.put(req, key);
+                       Class78.anInt1216 -= 1906091653;
+                   } else {
+                       Class78.aClass98_1219.method1282(req);
+                       Class78.aClass101_1220.put(req, key);
+                       Class78.anInt1221 += 831035281;
+                   }
+               }
+           }
+       }
+   }
 }

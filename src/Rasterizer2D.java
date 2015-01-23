@@ -10,67 +10,67 @@ public class Rasterizer2D extends CacheableNode {
    protected static int topX = 0;
 
 
-   public static void method2495() {
+   public static void reset() {
       topX = 0;
       topY = 0;
       bottomX = width;
       bottomY = height;
    }
 
-   static void method2496(int var0, int var1, int var2, int var3, int var4) {
-      if(var0 >= topX) {
-         if(var0 < bottomX) {
-            if(var1 < topY) {
-               var2 -= topY - var1;
-               var1 = topY;
+   static void drawVerticalLineAlpha(int x, int y, int height, int color, int alpha) {
+      if(x >= topX) {
+         if(x < bottomX) {
+            if(y < topY) {
+               height -= topY - y;
+               y = topY;
             }
 
-            if(var1 + var2 > bottomY) {
-               var2 = bottomY - var1;
+            if(y + height > bottomY) {
+               height = bottomY - y;
             }
 
-            int var13 = 256 - var4;
-            int var5 = (var3 >> 16 & 255) * var4;
-            int var7 = (var3 >> 8 & 255) * var4;
-            int var9 = (var3 & 255) * var4;
-            int var14 = var0 + var1 * width;
+            int colorA = 256 - alpha;
+            int colorR = (color >> 16 & 255) * alpha;
+            int colorG = (color >> 8 & 255) * alpha;
+            int colorB = (color & 255) * alpha;
+            int pixelOffset = x + y * width;
 
-            for(int var12 = 0; var12 < var2; ++var12) {
-               int var6 = (renderPixels[var14] >> 16 & 255) * var13;
-               int var8 = (renderPixels[var14] >> 8 & 255) * var13;
-               int var10 = (renderPixels[var14] & 255) * var13;
-               int var11 = (var5 + var6 >> 8 << 16) + (var7 + var8 >> 8 << 8) + (var9 + var10 >> 8);
-               renderPixels[var14] = var11;
-               var14 += width;
+            for(int pixelIndex = 0; pixelIndex < height; ++pixelIndex) {
+               int r = (renderPixels[pixelOffset] >> 16 & 255) * colorA;
+               int g = (renderPixels[pixelOffset] >> 8 & 255) * colorA;
+               int b = (renderPixels[pixelOffset] & 255) * colorA;
+               int pixel = (colorR + r >> 8 << 16) + (colorG + g >> 8 << 8) + (colorB + b >> 8);
+               renderPixels[pixelOffset] = pixel;
+               pixelOffset += width;
             }
 
          }
       }
    }
 
-   public static void method2497(int var0, int var1, int var2, int var3) {
-      if(topX < var0) {
-         topX = var0;
+   public static void setRasterizerArea(int tX, int tY, int bX, int bY) {
+      if(topX < tX) {
+         topX = tX;
       }
 
-      if(topY < var1) {
-         topY = var1;
+      if(topY < tY) {
+         topY = tY;
       }
 
-      if(bottomX > var2) {
-         bottomX = var2;
+      if(bottomX > bX) {
+         bottomX = bX;
       }
 
-      if(bottomY > var3) {
-         bottomY = var3;
+      if(bottomY > bY) {
+         bottomY = bY;
       }
    }
 
-   public static void method2498(int[] var0) {
-      var0[0] = topX;
-      var0[1] = topY;
-      var0[2] = bottomX;
-      var0[3] = bottomY;
+   public static void populateArea(int[] area) {
+      area[0] = topX;
+      area[1] = topY;
+      area[2] = bottomX;
+      area[3] = bottomY;
    }
 
    public static void resetPixels() {
@@ -93,219 +93,219 @@ public class Rasterizer2D extends CacheableNode {
 
    }
 
-   public static void setRasterizationRect(int var0, int var1, int var2, int var3) {
-      if(var0 < 0) {
-         var0 = 0;
+   public static void setRasterizationRect(int x, int y, int bX, int bY) {
+      if(x < 0) {
+         x = 0;
       }
 
-      if(var1 < 0) {
-         var1 = 0;
+      if(y < 0) {
+         y = 0;
       }
 
-      if(var2 > width) {
-         var2 = width;
+      if(bX > width) {
+         bX = width;
       }
 
-      if(var3 > height) {
-         var3 = height;
+      if(bY > height) {
+         bY = height;
       }
 
-      topX = var0;
-      topY = var1;
-      bottomX = var2;
-      bottomY = var3;
+      topX = x;
+      topY = y;
+      bottomX = bX;
+      bottomY = bY;
    }
 
-   public static void method2503(int var0, int var1, int var2, int var3, int var4, int var5) {
+   public static void method2503(int x, int y, int width, int height, int var4, int var5) {
       int var6 = 0;
-      int var12 = 65536 / var3;
-      if(var0 < topX) {
-         var2 -= topX - var0;
-         var0 = topX;
+      int var12 = 65536 / height;
+      if(x < topX) {
+         width -= topX - x;
+         x = topX;
       }
 
-      if(var1 < topY) {
-         var6 += (topY - var1) * var12;
-         var3 -= topY - var1;
-         var1 = topY;
+      if(y < topY) {
+         var6 += (topY - y) * var12;
+         height -= topY - y;
+         y = topY;
       }
 
-      if(var0 + var2 > bottomX) {
-         var2 = bottomX - var0;
+      if(x + width > bottomX) {
+         width = bottomX - x;
       }
 
-      if(var1 + var3 > bottomY) {
-         var3 = bottomY - var1;
+      if(y + height > bottomY) {
+         height = bottomY - y;
       }
 
-      int var8 = width - var2;
-      int var9 = var0 + var1 * width;
+      int distance = Rasterizer2D.width - width;
+      int pixelOffset = x + y * Rasterizer2D.width;
 
-      for(int var7 = -var3; var7 < 0; ++var7) {
+      for(int pixelIndex = -height; pixelIndex < 0; ++pixelIndex) {
          int var11 = 65536 - var6 >> 8;
          int var13 = var6 >> 8;
-         int var14 = ((var4 & 16711935) * var11 + (var5 & 16711935) * var13 & -16711936) + ((var4 & '\uff00') * var11 + (var5 & '\uff00') * var13 & 16711680) >>> 8;
+         int pixel = ((var4 & 16711935) * var11 + (var5 & 16711935) * var13 & -16711936) + ((var4 & '\uff00') * var11 + (var5 & '\uff00') * var13 & 16711680) >>> 8;
 
-         for(int var10 = -var2; var10 < 0; ++var10) {
-            renderPixels[var9++] = var14;
+         for(int var10 = -width; var10 < 0; ++var10) {
+            renderPixels[pixelOffset++] = pixel;
          }
 
-         var9 += var8;
+         pixelOffset += distance;
          var6 += var12;
       }
 
    }
 
    public static void drawUnfilledRectangle(int var0, int var1, int var2, int var3, int var4) {
-      method2506(var0, var1, var2, var4);
-      method2506(var0, var1 + var3 - 1, var2, var4);
-      method2508(var0, var1, var3, var4);
-      method2508(var0 + var2 - 1, var1, var3, var4);
+      drawHorizontalLine(var0, var1, var2, var4);
+      drawHorizontalLine(var0, var1 + var3 - 1, var2, var4);
+      drawVerticalLine(var0, var1, var3, var4);
+      drawVerticalLine(var0 + var2 - 1, var1, var3, var4);
    }
 
    public static void method2505(int var0, int var1, int var2, int var3, int var4, int var5) {
-      method2531(var0, var1, var2, var4, var5);
-      method2531(var0, var1 + var3 - 1, var2, var4, var5);
+      drawHorizontalLineAlpha(var0, var1, var2, var4, var5);
+      drawHorizontalLineAlpha(var0, var1 + var3 - 1, var2, var4, var5);
       if(var3 >= 3) {
-         method2496(var0, var1 + 1, var3 - 2, var4, var5);
-         method2496(var0 + var2 - 1, var1 + 1, var3 - 2, var4, var5);
+         drawVerticalLineAlpha(var0, var1 + 1, var3 - 2, var4, var5);
+         drawVerticalLineAlpha(var0 + var2 - 1, var1 + 1, var3 - 2, var4, var5);
       }
    }
 
-   public static void method2506(int var0, int var1, int var2, int var3) {
-      if(var1 >= topY) {
-         if(var1 < bottomY) {
-            if(var0 < topX) {
-               var2 -= topX - var0;
-               var0 = topX;
+   public static void drawHorizontalLine(int x, int y, int length, int color) {
+      if(y >= topY) {
+         if(y < bottomY) {
+            if(x < topX) {
+               length -= topX - x;
+               x = topX;
             }
 
-            if(var0 + var2 > bottomX) {
-               var2 = bottomX - var0;
+            if(x + length > bottomX) {
+               length = bottomX - x;
             }
 
-            int var5 = var0 + var1 * width;
+            int pixelOffset = x + y * width;
 
-            for(int var4 = 0; var4 < var2; ++var4) {
-               renderPixels[var5 + var4] = var3;
+            for(int pixel = 0; pixel < length; ++pixel) {
+               renderPixels[pixelOffset + pixel] = color;
             }
 
          }
       }
    }
 
-   public static void method2508(int var0, int var1, int var2, int var3) {
-      if(var0 >= topX) {
-         if(var0 < bottomX) {
-            if(var1 < topY) {
-               var2 -= topY - var1;
-               var1 = topY;
+   public static void drawVerticalLine(int x, int y, int length, int color) {
+      if(x >= topX) {
+         if(x < bottomX) {
+            if(y < topY) {
+               length -= topY - y;
+               y = topY;
             }
 
-            if(var1 + var2 > bottomY) {
-               var2 = bottomY - var1;
+            if(y + length > bottomY) {
+               length = bottomY - y;
             }
 
-            int var4 = var0 + var1 * width;
+            int pixelOffset = x + y * width;
 
-            for(int var5 = 0; var5 < var2; ++var5) {
-               renderPixels[var4 + var5 * width] = var3;
+            for(int pixel = 0; pixel < length; ++pixel) {
+               renderPixels[pixelOffset + pixel * width] = color;
             }
 
          }
       }
    }
 
-   public static void method2510(int var0, int var1, int var2, int var3, int var4) {
-      var2 -= var0;
-      var3 -= var1;
-      if(var3 == 0) {
-         if(var2 >= 0) {
-            method2506(var0, var1, var2 + 1, var4);
+   public static void method2510(int x, int y, int xLength, int yLength, int color) {
+      xLength -= x;
+      yLength -= y;
+      if(yLength == 0) {
+         if(xLength >= 0) {
+            drawHorizontalLine(x, y, xLength + 1, color);
          } else {
-            method2506(var0 + var2, var1, -var2 + 1, var4);
+            drawHorizontalLine(x + xLength, y, -xLength + 1, color);
          }
-      } else if(var2 == 0) {
-         if(var3 >= 0) {
-            method2508(var0, var1, var3 + 1, var4);
+      } else if(xLength == 0) {
+         if(yLength >= 0) {
+            drawVerticalLine(x, y, yLength + 1, color);
          } else {
-            method2508(var0, var1 + var3, -var3 + 1, var4);
+            drawVerticalLine(x, y + yLength, -yLength + 1, color);
          }
       } else {
-         if(var2 + var3 < 0) {
-            var0 += var2;
-            var2 = -var2;
-            var1 += var3;
-            var3 = -var3;
+         if(xLength + yLength < 0) {
+            x += xLength;
+            xLength = -xLength;
+            y += yLength;
+            yLength = -yLength;
          }
 
          int var5;
          int var6;
-         if(var2 <= var3) {
-            var0 <<= 16;
-            var0 += '\u8000';
-            var2 <<= 16;
-            var6 = (int)Math.floor((double)var2 / (double)var3 + 0.5D);
-            var3 += var1;
-            if(var1 < topY) {
-               var0 += var6 * (topY - var1);
-               var1 = topY;
+         if(xLength <= yLength) {
+            x <<= 16;
+            x += '\u8000';
+            xLength <<= 16;
+            var6 = (int)Math.floor((double)xLength / (double)yLength + 0.5D);
+            yLength += y;
+            if(y < topY) {
+               x += var6 * (topY - y);
+               y = topY;
             }
 
-            if(var3 >= bottomY) {
-               var3 = bottomY - 1;
+            if(yLength >= bottomY) {
+               yLength = bottomY - 1;
             }
 
-            while(var1 <= var3) {
-               var5 = var0 >> 16;
+            while(y <= yLength) {
+               var5 = x >> 16;
                if(var5 >= topX && var5 < bottomX) {
-                  renderPixels[var5 + var1 * width] = var4;
+                  renderPixels[var5 + y * width] = color;
                }
 
-               var0 += var6;
-               ++var1;
+               x += var6;
+               ++y;
             }
 
          } else {
-            var1 <<= 16;
-            var1 += '\u8000';
-            var3 <<= 16;
-            var6 = (int)Math.floor((double)var3 / (double)var2 + 0.5D);
-            var2 += var0;
-            if(var0 < topX) {
-               var1 += var6 * (topX - var0);
-               var0 = topX;
+            y <<= 16;
+            y += '\u8000';
+            yLength <<= 16;
+            var6 = (int)Math.floor((double)yLength / (double)xLength + 0.5D);
+            xLength += x;
+            if(x < topX) {
+               y += var6 * (topX - x);
+               x = topX;
             }
 
-            if(var2 >= bottomX) {
-               var2 = bottomX - 1;
+            if(xLength >= bottomX) {
+               xLength = bottomX - 1;
             }
 
-            while(var0 <= var2) {
-               var5 = var1 >> 16;
+            while(x <= xLength) {
+               var5 = y >> 16;
                if(var5 >= topY && var5 < bottomY) {
-                  renderPixels[var0 + var5 * width] = var4;
+                  renderPixels[x + var5 * width] = color;
                }
 
-               var1 += var6;
-               ++var0;
+               y += var6;
+               ++x;
             }
 
          }
       }
    }
 
-   public static void method2511(int var0, int var1, int var2, int[] var3, int[] var4) {
-      int var5 = var0 + var1 * width;
+   public static void method2511(int x, int y, int pixelColor, int[] offsets, int[] var4) {
+      int position = x + y * width;
 
-      for(var1 = 0; var1 < var3.length; ++var1) {
-         int var6 = var5 + var3[var1];
+      for(int pixelIndex = 0; pixelIndex < offsets.length; ++pixelIndex) {
+         int pixelOffset = position + offsets[pixelIndex];
 
-         for(var0 = -var4[var1]; var0 < 0; ++var0) {
-            renderPixels[var6++] = var2;
+         for(int index = -var4[pixelIndex]; index < 0; ++index) {
+            renderPixels[pixelOffset++] = pixelColor;
          }
 
-         var5 += width;
+         position += width;
       }
 
    }
@@ -317,66 +317,66 @@ public class Rasterizer2D extends CacheableNode {
       setRasterizationRect(0, 0, var1, var2);
    }
 
-   public static void method2529(int var0, int var1, int var2, int var3, int var4, int var5) {
-      if(var0 < topX) {
-         var2 -= topX - var0;
-         var0 = topX;
+   public static void method2529(int x, int y, int width, int height, int color, int var5) {
+      if(x < topX) {
+         width -= topX - x;
+         x = topX;
       }
 
-      if(var1 < topY) {
-         var3 -= topY - var1;
-         var1 = topY;
+      if(y < topY) {
+         height -= topY - y;
+         y = topY;
       }
 
-      if(var0 + var2 > bottomX) {
-         var2 = bottomX - var0;
+      if(x + width > bottomX) {
+         width = bottomX - x;
       }
 
-      if(var1 + var3 > bottomY) {
-         var3 = bottomY - var1;
+      if(y + height > bottomY) {
+         height = bottomY - y;
       }
 
-      var4 = ((var4 & 16711935) * var5 >> 8 & 16711935) + ((var4 & '\uff00') * var5 >> 8 & '\uff00');
-      int var11 = 256 - var5;
-      int var9 = width - var2;
-      int var7 = var0 + var1 * width;
+      color = ((color & 16711935) * var5 >> 8 & 16711935) + ((color & '\uff00') * var5 >> 8 & '\uff00');
+      int alpha = 256 - var5;
+      int var9 = Rasterizer2D.width - width;
+      int pixelOffset = x + y * Rasterizer2D.width;
 
-      for(int var6 = 0; var6 < var3; ++var6) {
-         for(int var10 = -var2; var10 < 0; ++var10) {
-            int var8 = renderPixels[var7];
-            var8 = ((var8 & 16711935) * var11 >> 8 & 16711935) + ((var8 & '\uff00') * var11 >> 8 & '\uff00');
-            renderPixels[var7++] = var4 + var8;
+      for(int var6 = 0; var6 < height; ++var6) {
+         for(int var10 = -width; var10 < 0; ++var10) {
+            int pixelColor = renderPixels[pixelOffset];
+            pixelColor = ((pixelColor & 16711935) * alpha >> 8 & 16711935) + ((pixelColor & '\uff00') * alpha >> 8 & '\uff00');
+            renderPixels[pixelOffset++] = color + pixelColor;
          }
 
-         var7 += var9;
+         pixelOffset += var9;
       }
 
    }
 
-   static void method2531(int var0, int var1, int var2, int var3, int var4) {
-      if(var1 >= topY) {
-         if(var1 < bottomY) {
-            if(var0 < topX) {
-               var2 -= topX - var0;
-               var0 = topX;
+   static void drawHorizontalLineAlpha(int x, int y, int width, int color, int alpha) {
+      if(y >= topY) {
+         if(y < bottomY) {
+            if(x < topX) {
+               width -= topX - x;
+               x = topX;
             }
 
-            if(var0 + var2 > bottomX) {
-               var2 = bottomX - var0;
+            if(x + width > bottomX) {
+               width = bottomX - x;
             }
 
-            int var5 = 256 - var4;
-            int var6 = (var3 >> 16 & 255) * var4;
-            int var12 = (var3 >> 8 & 255) * var4;
-            int var7 = (var3 & 255) * var4;
-            int var8 = var0 + var1 * width;
+            int colorAlpha = 256 - alpha;
+            int colorR = (color >> 16 & 255) * alpha;
+            int colorG = (color >> 8 & 255) * alpha;
+            int colorB = (color & 255) * alpha;
+            int pixelOffset = x + y * Rasterizer2D.width;
 
-            for(int var10 = 0; var10 < var2; ++var10) {
-               int var14 = (renderPixels[var8] >> 16 & 255) * var5;
-               int var11 = (renderPixels[var8] >> 8 & 255) * var5;
-               int var13 = (renderPixels[var8] & 255) * var5;
-               int var9 = (var6 + var14 >> 8 << 16) + (var12 + var11 >> 8 << 8) + (var7 + var13 >> 8);
-               renderPixels[var8++] = var9;
+            for(int pixelIndex = 0; pixelIndex < width; ++pixelIndex) {
+               int r = (renderPixels[pixelOffset] >> 16 & 255) * colorAlpha;
+               int g = (renderPixels[pixelOffset] >> 8 & 255) * colorAlpha;
+               int b = (renderPixels[pixelOffset] & 255) * colorAlpha;
+               int pixel = (colorR + r >> 8 << 16) + (colorG + g >> 8 << 8) + (colorB + b >> 8);
+               renderPixels[pixelOffset++] = pixel;
             }
 
          }
@@ -390,34 +390,34 @@ public class Rasterizer2D extends CacheableNode {
       bottomY = var0[3];
    }
 
-   public static void drawFilledRectangle(int var0, int var1, int var2, int var3, int var4) {
-      if(var0 < topX) {
-         var2 -= topX - var0;
-         var0 = topX;
+   public static void drawFilledRectangle(int x, int y, int width, int height, int color) {
+      if(x < topX) {
+         width -= topX - x;
+         x = topX;
       }
 
-      if(var1 < topY) {
-         var3 -= topY - var1;
-         var1 = topY;
+      if(y < topY) {
+         height -= topY - y;
+         y = topY;
       }
 
-      if(var0 + var2 > bottomX) {
-         var2 = bottomX - var0;
+      if(x + width > bottomX) {
+         width = bottomX - x;
       }
 
-      if(var1 + var3 > bottomY) {
-         var3 = bottomY - var1;
+      if(y + height > bottomY) {
+         height = bottomY - y;
       }
 
-      int var5 = width - var2;
-      int var6 = var0 + var1 * width;
+      int distance = Rasterizer2D.width - width;
+      int pixelOffset = x + y * Rasterizer2D.width;
 
-      for(int var7 = -var3; var7 < 0; ++var7) {
-         for(int var8 = -var2; var8 < 0; ++var8) {
-            renderPixels[var6++] = var4;
+      for(int yIndex = -height; yIndex < 0; ++yIndex) {
+         for(int xIndex = -width; xIndex < 0; ++xIndex) {
+            renderPixels[pixelOffset++] = color;
          }
 
-         var6 += var5;
+         pixelOffset += distance;
       }
 
    }

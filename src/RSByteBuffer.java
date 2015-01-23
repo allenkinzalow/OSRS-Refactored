@@ -640,15 +640,15 @@ public class RSByteBuffer extends Node {
             CacheIndex musicIndex = Friend.musicIndex_1;
             int var8 = musicIndex.getArchiveIDForName("scape main", 1723285154);
             int var9 = musicIndex.getFileIDForName(var8, "");
-            Class91.anInt1325 = -771978757;
+            SongReference.anInt1325 = -771978757;
             RSInterface.aClass74_1889 = musicIndex;
-            Class91.anInt1329 = var8 * -2020957493;
+            SongReference.anInt1329 = var8 * -2020957493;
             OnlineFriend.anInt1511 = var9 * -1300146319;
-            Class27.anInt362 = 1805356111;
+            SoundEffectWorker.anInt362 = 1805356111;
             FriendsChatMember.aBool1669 = false;
             ClientScriptDefinition.anInt2281 = -1589655618;
          } else {
-            Class15.method288(2, 1880141009);
+            SoundEffectWorker.method288(2, 1880141009);
          }
 
          ClientScriptMap.method2171(false, -969315198);

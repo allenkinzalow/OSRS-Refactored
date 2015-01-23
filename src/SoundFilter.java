@@ -1,4 +1,6 @@
-
+/**
+ * Credits to someone else for this class.
+ */
 public class SoundFilter {
 
    int[][][] anIntArrayArrayArray134 = new int[2][2][4];

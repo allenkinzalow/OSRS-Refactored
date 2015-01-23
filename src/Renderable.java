@@ -21,7 +21,7 @@ public abstract class Renderable extends CacheableNode {
    public static PaletteSprite method2488(AbstractIndex var0, String var1, String var2, byte var3) {
       int var4 = var0.getArchiveIDForName(var1, 1723285154);
       int var5 = var0.getFileIDForName(var4, var2);
-      return Class5.method99(var0, var4, var5, (byte)0);
+      return PaletteSprite.getPaletteSprite(var0, var4, var5, (byte) 0);
    }
 
    public static void method2491(PingRequester var0, Object var1, short var2) {

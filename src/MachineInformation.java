@@ -1,6 +1,8 @@
 
-public class Class108_Sub15 extends Node {
+public class MachineInformation extends Node {
 
+   static MachineInformation aMachineInformation_1422;
+   static String javaVersion;
    String aString1724;
    boolean aBool1725;
    int anInt1726;
@@ -55,7 +57,7 @@ public class Class108_Sub15 extends Node {
       }
    }
 
-   public Class108_Sub15(boolean var1) {
+   public MachineInformation(boolean var1) {
       if(var1) {
          if(VertexNormal.lowerOperatingSystem.startsWith("win")) {
             this.anInt1726 = 1941850467;

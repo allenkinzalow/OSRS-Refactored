@@ -63,27 +63,27 @@ public class GameObject extends Renderable {
 
       short var2 = 280;
       if(MouseInputHandler.mousePressX * 472132205 >= var2 && MouseInputHandler.mousePressX * 472132205 <= var2 + 14 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-         Class108_Sub15.method1923(0, 0, (byte)102);
+         MachineInformation.method1923(0, 0, (byte) 102);
       } else if(MouseInputHandler.mousePressX * 472132205 >= var2 + 15 && MouseInputHandler.mousePressX * 472132205 <= var2 + 80 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-         Class108_Sub15.method1923(0, 1, (byte)93);
+         MachineInformation.method1923(0, 1, (byte) 93);
       } else {
          short var3 = 390;
          if(MouseInputHandler.mousePressX * 472132205 >= var3 && MouseInputHandler.mousePressX * 472132205 <= var3 + 14 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-            Class108_Sub15.method1923(1, 0, (byte)113);
+            MachineInformation.method1923(1, 0, (byte) 113);
          } else if(MouseInputHandler.mousePressX * 472132205 >= 15 + var3 && MouseInputHandler.mousePressX * 472132205 <= var3 + 80 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-            Class108_Sub15.method1923(1, 1, (byte)123);
+            MachineInformation.method1923(1, 1, (byte) 123);
          } else {
             short var4 = 500;
             if(MouseInputHandler.mousePressX * 472132205 >= var4 && MouseInputHandler.mousePressX * 472132205 <= var4 + 14 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-               Class108_Sub15.method1923(2, 0, (byte)52);
+               MachineInformation.method1923(2, 0, (byte) 52);
             } else if(MouseInputHandler.mousePressX * 472132205 >= var4 + 15 && MouseInputHandler.mousePressX * 472132205 <= var4 + 80 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-               Class108_Sub15.method1923(2, 1, (byte)61);
+               MachineInformation.method1923(2, 1, (byte) 61);
             } else {
                short var5 = 610;
                if(MouseInputHandler.mousePressX * 472132205 >= var5 && MouseInputHandler.mousePressX * 472132205 <= 14 + var5 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-                  Class108_Sub15.method1923(3, 0, (byte)107);
+                  MachineInformation.method1923(3, 0, (byte) 107);
                } else if(MouseInputHandler.mousePressX * 472132205 >= 15 + var5 && MouseInputHandler.mousePressX * 472132205 <= var5 + 80 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
-                  Class108_Sub15.method1923(3, 1, (byte)116);
+                  MachineInformation.method1923(3, 1, (byte) 116);
                } else if(MouseInputHandler.mousePressX * 472132205 >= 708 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressX * 472132205 <= 758 && MouseInputHandler.mousePressY * 1498262827 <= 20) {
                   Class4.worldListOpen = false;
                   Class4.aClass108_Sub20_Sub15_Sub1_40.drawSprite(0, 0);
@@ -91,7 +91,7 @@ public class GameObject extends Renderable {
                   IndexTable.clientLogo.drawSprite(382 - IndexTable.clientLogo.anInt2413 / 2, 18);
                } else if(Class4.hoveredWorldID * -202005965 != -1) {
                   World var6 = Class4.worldList[Class4.hoveredWorldID * -202005965];
-                  Class5.method103(var6, -1418644820);
+                  World.method103(var6, -1418644820);
                   Class4.worldListOpen = false;
                   Class4.aClass108_Sub20_Sub15_Sub1_40.drawSprite(0, 0);
                   Class41.aClass108_Sub20_Sub15_Sub1_588.drawSprite(382, 0);
@@ -124,7 +124,7 @@ public class GameObject extends Renderable {
          this.animationCycleDelay = (Client.cycle * -637317861 - var4) * -1355118769;
       }
 
-      ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(this.objectID * -1212535243, (byte)0);
+      ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(this.objectID * -1212535243, (byte) 0);
       if(null != objectDef.configChangeDest) {
          objectDef = objectDef.getDefinitionForStatus((byte)45);
       }
@@ -187,7 +187,7 @@ public class GameObject extends Renderable {
                         Client.secureBuffer.writePacket(52);
                         Client.secureBuffer.writeByte(18);
                         Client.secureBuffer.writeByteN(!KeyFocusListener.aBoolArray895[82] ? 0 : (KeyFocusListener.aBoolArray895[81] ? 2 : 1), (byte) 1);
-                        Client.secureBuffer.writeAShortLE(var11 + Class15.anInt201 * -1743142671, (byte) -66);
+                        Client.secureBuffer.writeAShortLE(var11 + SoundEffectWorker.anInt201 * -1743142671, (byte) -66);
                         Client.secureBuffer.writeAShortLE(var3 + Class100.anInt1388 * 263051377, (byte) 35);
                         Client.secureBuffer.writeByte(var5);
                         Client.secureBuffer.writeByte(var4);
@@ -210,6 +210,6 @@ public class GameObject extends Renderable {
    }
 
    static void executeScript(ClientScript script, int var1) {
-      ClientScriptMap.executeScript(script, 200000, (short)-28048);
+      ClientScript.executeScript(script, 200000, (short) -28048);
    }
 }

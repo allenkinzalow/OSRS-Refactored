@@ -272,7 +272,7 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
 
          if((var0.anInt2363 * -1894435593 != 0 || 0 != var0.anInt2387 * -1337634707) && (var0.anInt2390 * 2120122927 == 0 || var0.anInt2338 * 1340222601 > 0)) {
             var5 = var0.anInt2394 * 171470795 - (var0.anInt2363 * -984793664 - Class100.anInt1388 * -344581056 - Class100.anInt1388 * -344581056);
-            var3 = var0.anInt2339 * 826764905 - (var0.anInt2387 * 290724672 - Class15.anInt201 * 108018752 - Class15.anInt201 * 108018752);
+            var3 = var0.anInt2339 * 826764905 - (var0.anInt2387 * 290724672 - SoundEffectWorker.anInt201 * 108018752 - SoundEffectWorker.anInt201 * 108018752);
             if(var5 != 0 || 0 != var3) {
                var0.anInt2354 = ((int)(Math.atan2((double)var5, (double)var3) * 325.949D) & 2047) * 1023159171;
             }

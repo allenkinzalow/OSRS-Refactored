@@ -10,13 +10,13 @@ public class ModelRasterizer extends Renderable {
    int[] vertexYCoordinate;
    int[] vertexZCoordinate;
    int[][] anIntArrayArray2439;
-   int[] anIntArray2440;
-   int[] anIntArray2441;
-   int[] anIntArray2442;
+   int[] trianglePointsX;
+   int[] trianglePointsY;
+   int[] trianglePointsZ;
    static int[][] anIntArrayArray2443 = new int[1600][512];
    int[] anIntArray2444;
    int[] anIntArray2445;
-   byte[] aByteArray2446;
+   byte[] faceRenderPriorities;
    byte[] triangleAlphaValues;
    static int[] projectedVertexX = new int[4096];
    static int[] anIntArray2449 = new int[2000];
@@ -27,7 +27,7 @@ public class ModelRasterizer extends Renderable {
    int[] anIntArray2454;
    int[][] anIntArrayArray2456;
    public boolean aBool2457 = false;
-   int anInt2458 = 0;
+   int triangleFaceCount = 0;
    int anInt2459;
    int anInt2460;
    int anInt2461;
@@ -66,8 +66,8 @@ public class ModelRasterizer extends Renderable {
 
 
    public ModelRasterizer method2852(boolean var1) {
-      if(!var1 && aByteArray2477.length < this.anInt2458) {
-         aByteArray2477 = new byte[this.anInt2458 + 100];
+      if(!var1 && aByteArray2477.length < this.triangleFaceCount) {
+         aByteArray2477 = new byte[this.triangleFaceCount + 100];
       }
 
       return this.method2854(var1, aClass108_Sub20_Sub14_Sub3_2484, aByteArray2477);
@@ -75,7 +75,7 @@ public class ModelRasterizer extends Renderable {
 
    ModelRasterizer method2854(boolean var1, ModelRasterizer var2, byte[] var3) {
       var2.vertexCoordinateCount = this.vertexCoordinateCount;
-      var2.anInt2458 = this.anInt2458;
+      var2.triangleFaceCount = this.triangleFaceCount;
       var2.anInt2434 = this.anInt2434;
       if(var2.vertexXCoordinate == null || var2.vertexXCoordinate.length < this.vertexCoordinateCount) {
          var2.vertexXCoordinate = new int[this.vertexCoordinateCount + 100];
@@ -95,23 +95,23 @@ public class ModelRasterizer extends Renderable {
       } else {
          var2.triangleAlphaValues = var3;
          if(this.triangleAlphaValues == null) {
-            for(var4 = 0; var4 < this.anInt2458; ++var4) {
+            for(var4 = 0; var4 < this.triangleFaceCount; ++var4) {
                var2.triangleAlphaValues[var4] = 0;
             }
          } else {
-            for(var4 = 0; var4 < this.anInt2458; ++var4) {
+            for(var4 = 0; var4 < this.triangleFaceCount; ++var4) {
                var2.triangleAlphaValues[var4] = this.triangleAlphaValues[var4];
             }
          }
       }
 
-      var2.anIntArray2440 = this.anIntArray2440;
-      var2.anIntArray2441 = this.anIntArray2441;
-      var2.anIntArray2442 = this.anIntArray2442;
+      var2.trianglePointsX = this.trianglePointsX;
+      var2.trianglePointsY = this.trianglePointsY;
+      var2.trianglePointsZ = this.trianglePointsZ;
       var2.anIntArray2445 = this.anIntArray2445;
       var2.anIntArray2444 = this.anIntArray2444;
       var2.anIntArray2489 = this.anIntArray2489;
-      var2.aByteArray2446 = this.aByteArray2446;
+      var2.faceRenderPriorities = this.faceRenderPriorities;
       var2.aByteArray2451 = this.aByteArray2451;
       var2.aShortArray2481 = this.aShortArray2481;
       var2.aByte2450 = this.aByte2450;
@@ -433,21 +433,21 @@ public class ModelRasterizer extends Renderable {
       this.anInt2466 = 0;
    }
 
-   public void method2865(int var1, int var2, int var3) {
-      for(int var4 = 0; var4 < this.vertexCoordinateCount; ++var4) {
-         this.vertexXCoordinate[var4] += var1;
-         this.vertexYCoordinate[var4] += var2;
-         this.vertexZCoordinate[var4] += var3;
+   public void offsetModelVertices(int xOffset, int yOffset, int zOffset) {
+      for(int vertexIndex = 0; vertexIndex < this.vertexCoordinateCount; ++vertexIndex) {
+         this.vertexXCoordinate[vertexIndex] += xOffset;
+         this.vertexYCoordinate[vertexIndex] += yOffset;
+         this.vertexZCoordinate[vertexIndex] += zOffset;
       }
 
       this.anInt2466 = 0;
    }
 
-   public void method2866(int var1, int var2, int var3) {
+   public void resizeModel(int xSize, int ySize, int zSize) {
       for(int var4 = 0; var4 < this.vertexCoordinateCount; ++var4) {
-         this.vertexXCoordinate[var4] = this.vertexXCoordinate[var4] * var1 / 128;
-         this.vertexYCoordinate[var4] = this.vertexYCoordinate[var4] * var2 / 128;
-         this.vertexZCoordinate[var4] = this.vertexZCoordinate[var4] * var3 / 128;
+         this.vertexXCoordinate[var4] = this.vertexXCoordinate[var4] * xSize / 128;
+         this.vertexYCoordinate[var4] = this.vertexYCoordinate[var4] * ySize / 128;
+         this.vertexZCoordinate[var4] = this.vertexZCoordinate[var4] * zSize / 128;
       }
 
       this.anInt2466 = 0;
@@ -457,9 +457,9 @@ public class ModelRasterizer extends Renderable {
       int var2 = Rasterizer3D.centerX;
       int var19 = Rasterizer3D.centerY;
       int var3 = 0;
-      int var4 = this.anIntArray2440[var1];
-      int var5 = this.anIntArray2441[var1];
-      int var6 = this.anIntArray2442[var1];
+      int var4 = this.trianglePointsX[var1];
+      int var5 = this.trianglePointsY[var1];
+      int var6 = this.trianglePointsZ[var1];
       int var16 = cameraVertexZ[var4];
       int var17 = cameraVertexZ[var5]; 
       int var18 = cameraVertexZ[var6];
@@ -618,7 +618,7 @@ public class ModelRasterizer extends Renderable {
       }
    }
 
-   public final void renderSingle(int var1, int var2, int var3, int var4, int var5, int zoomSine, int zoomCosine, int var8) {
+   public final void renderSingle(int var1, int angleY, int var3, int angleX, int var5, int zoomSine, int zoomCosine, int var8) {
       anIntArray2474[0] = -1;
       if(this.anInt2466 != 2 && this.anInt2466 != 1) {
          this.method2856();
@@ -628,12 +628,12 @@ public class ModelRasterizer extends Renderable {
       int baseDrawY = Rasterizer3D.centerY;
       int var11 = SINE[var1];
       int var12 = COSINE[var1];
-      int var13 = SINE[var2];
-      int var14 = COSINE[var2];
+      int var13 = SINE[angleY];
+      int var14 = COSINE[angleY];
       int var15 = SINE[var3];
       int var16 = COSINE[var3];
-      int rotSine_1 = SINE[var4];
-      int rotCosine_1 = COSINE[var4];
+      int rotSine_1 = SINE[angleX];
+      int rotCosine_1 = COSINE[angleX];
       int zoom = zoomSine * rotSine_1 + zoomCosine * rotCosine_1 >> 16;
 
       for(int vertex = 0; vertex < this.vertexCoordinateCount; ++vertex) {
@@ -653,7 +653,7 @@ public class ModelRasterizer extends Renderable {
             baseVertexY = calculatedVertex;
          }
 
-         if(var2 != 0) {
+         if(angleY != 0) {
             calculatedVertex = baseVertexZ * var13 + baseVertexX * var14 >> 16;
             baseVertexZ = baseVertexZ * var14 - baseVertexX * var13 >> 16;
             baseVertexX = calculatedVertex;
@@ -697,11 +697,11 @@ public class ModelRasterizer extends Renderable {
          int var15;
          int var16;
          int var19;
-         for(var5 = 0; var5 < this.anInt2458; ++var5) {
+         for(var5 = 0; var5 < this.triangleFaceCount; ++var5) {
             if(this.anIntArray2489[var5] != -2) {
-               var14 = this.anIntArray2440[var5];
-               var13 = this.anIntArray2441[var5];
-               var15 = this.anIntArray2442[var5];
+               var14 = this.trianglePointsX[var5];
+               var13 = this.trianglePointsY[var5];
+               var15 = this.trianglePointsZ[var5];
                var12 = projectedVertexX[var14];
                var11 = projectedVertexX[var13];
                var4 = projectedVertexX[var15];
@@ -752,7 +752,7 @@ public class ModelRasterizer extends Renderable {
          }
 
          int[] var27;
-         if(this.aByteArray2446 == null) {
+         if(this.faceRenderPriorities == null) {
             for(var5 = this.anInt2461 - 1; var5 >= 0; --var5) {
                var14 = anIntArray2474[var5];
                if(var14 > 0) {
@@ -777,7 +777,7 @@ public class ModelRasterizer extends Renderable {
 
                   for(var15 = 0; var15 < var14; ++var15) {
                      var12 = var27[var15];
-                     byte var26 = this.aByteArray2446[var12];
+                     byte var26 = this.faceRenderPriorities[var12];
                      var4 = anIntArray2475[var26]++;
                      anIntArrayArray2476[var26][var4] = var12;
                      if(var26 < 10) {
@@ -910,7 +910,7 @@ public class ModelRasterizer extends Renderable {
       boolean var5 = false;
       boolean var6 = false;
       this.vertexCoordinateCount = 0;
-      this.anInt2458 = 0;
+      this.triangleFaceCount = 0;
       this.anInt2434 = 0;
       this.aByte2450 = -1;
 
@@ -920,9 +920,9 @@ public class ModelRasterizer extends Renderable {
          var7 = var1[var9];
          if(var7 != null) {
             this.vertexCoordinateCount += var7.vertexCoordinateCount;
-            this.anInt2458 += var7.anInt2458;
+            this.triangleFaceCount += var7.triangleFaceCount;
             this.anInt2434 += var7.anInt2434;
-            if(var7.aByteArray2446 != null) {
+            if(var7.faceRenderPriorities != null) {
                var4 = true;
             } else {
                if(this.aByte2450 == -1) {
@@ -943,26 +943,26 @@ public class ModelRasterizer extends Renderable {
       this.vertexXCoordinate = new int[this.vertexCoordinateCount];
       this.vertexYCoordinate = new int[this.vertexCoordinateCount];
       this.vertexZCoordinate = new int[this.vertexCoordinateCount];
-      this.anIntArray2440 = new int[this.anInt2458];
-      this.anIntArray2441 = new int[this.anInt2458];
-      this.anIntArray2442 = new int[this.anInt2458];
-      this.anIntArray2445 = new int[this.anInt2458];
-      this.anIntArray2444 = new int[this.anInt2458];
-      this.anIntArray2489 = new int[this.anInt2458];
+      this.trianglePointsX = new int[this.triangleFaceCount];
+      this.trianglePointsY = new int[this.triangleFaceCount];
+      this.trianglePointsZ = new int[this.triangleFaceCount];
+      this.anIntArray2445 = new int[this.triangleFaceCount];
+      this.anIntArray2444 = new int[this.triangleFaceCount];
+      this.anIntArray2489 = new int[this.triangleFaceCount];
       if(var4) {
-         this.aByteArray2446 = new byte[this.anInt2458];
+         this.faceRenderPriorities = new byte[this.triangleFaceCount];
       }
 
       if(var3) {
-         this.triangleAlphaValues = new byte[this.anInt2458];
+         this.triangleAlphaValues = new byte[this.triangleFaceCount];
       }
 
       if(var5) {
-         this.aShortArray2481 = new short[this.anInt2458];
+         this.aShortArray2481 = new short[this.triangleFaceCount];
       }
 
       if(var6) {
-         this.aByteArray2451 = new byte[this.anInt2458];
+         this.aByteArray2451 = new byte[this.triangleFaceCount];
       }
 
       if(this.anInt2434 > 0) {
@@ -972,49 +972,49 @@ public class ModelRasterizer extends Renderable {
       }
 
       this.vertexCoordinateCount = 0;
-      this.anInt2458 = 0;
+      this.triangleFaceCount = 0;
       this.anInt2434 = 0;
 
       for(var9 = 0; var9 < var2; ++var9) {
          var7 = var1[var9];
          if(var7 != null) {
             int var8;
-            for(var8 = 0; var8 < var7.anInt2458; ++var8) {
-               this.anIntArray2440[this.anInt2458] = var7.anIntArray2440[var8] + this.vertexCoordinateCount;
-               this.anIntArray2441[this.anInt2458] = var7.anIntArray2441[var8] + this.vertexCoordinateCount;
-               this.anIntArray2442[this.anInt2458] = var7.anIntArray2442[var8] + this.vertexCoordinateCount;
-               this.anIntArray2445[this.anInt2458] = var7.anIntArray2445[var8];
-               this.anIntArray2444[this.anInt2458] = var7.anIntArray2444[var8];
-               this.anIntArray2489[this.anInt2458] = var7.anIntArray2489[var8];
+            for(var8 = 0; var8 < var7.triangleFaceCount; ++var8) {
+               this.trianglePointsX[this.triangleFaceCount] = var7.trianglePointsX[var8] + this.vertexCoordinateCount;
+               this.trianglePointsY[this.triangleFaceCount] = var7.trianglePointsY[var8] + this.vertexCoordinateCount;
+               this.trianglePointsZ[this.triangleFaceCount] = var7.trianglePointsZ[var8] + this.vertexCoordinateCount;
+               this.anIntArray2445[this.triangleFaceCount] = var7.anIntArray2445[var8];
+               this.anIntArray2444[this.triangleFaceCount] = var7.anIntArray2444[var8];
+               this.anIntArray2489[this.triangleFaceCount] = var7.anIntArray2489[var8];
                if(var4) {
-                  if(var7.aByteArray2446 != null) {
-                     this.aByteArray2446[this.anInt2458] = var7.aByteArray2446[var8];
+                  if(var7.faceRenderPriorities != null) {
+                     this.faceRenderPriorities[this.triangleFaceCount] = var7.faceRenderPriorities[var8];
                   } else {
-                     this.aByteArray2446[this.anInt2458] = var7.aByte2450;
+                     this.faceRenderPriorities[this.triangleFaceCount] = var7.aByte2450;
                   }
                }
 
                if(var3 && var7.triangleAlphaValues != null) {
-                  this.triangleAlphaValues[this.anInt2458] = var7.triangleAlphaValues[var8];
+                  this.triangleAlphaValues[this.triangleFaceCount] = var7.triangleAlphaValues[var8];
                }
 
                if(var5) {
                   if(var7.aShortArray2481 != null) {
-                     this.aShortArray2481[this.anInt2458] = var7.aShortArray2481[var8];
+                     this.aShortArray2481[this.triangleFaceCount] = var7.aShortArray2481[var8];
                   } else {
-                     this.aShortArray2481[this.anInt2458] = -1;
+                     this.aShortArray2481[this.triangleFaceCount] = -1;
                   }
                }
 
                if(var6) {
                   if(var7.aByteArray2451 != null && var7.aByteArray2451[var8] != -1) {
-                     this.aByteArray2451[this.anInt2458] = (byte)(var7.aByteArray2451[var8] + this.anInt2434);
+                     this.aByteArray2451[this.triangleFaceCount] = (byte)(var7.aByteArray2451[var8] + this.anInt2434);
                   } else {
-                     this.aByteArray2451[this.anInt2458] = -1;
+                     this.aByteArray2451[this.triangleFaceCount] = -1;
                   }
                }
 
-               ++this.anInt2458;
+               ++this.triangleFaceCount;
             }
 
             for(var8 = 0; var8 < var7.anInt2434; ++var8) {
@@ -1053,17 +1053,17 @@ public class ModelRasterizer extends Renderable {
             if(var5) {
                var9 = new ModelRasterizer();
                var9.vertexCoordinateCount = this.vertexCoordinateCount;
-               var9.anInt2458 = this.anInt2458;
+               var9.triangleFaceCount = this.triangleFaceCount;
                var9.anInt2434 = this.anInt2434;
                var9.vertexXCoordinate = this.vertexXCoordinate;
                var9.vertexZCoordinate = this.vertexZCoordinate;
-               var9.anIntArray2440 = this.anIntArray2440;
-               var9.anIntArray2441 = this.anIntArray2441;
-               var9.anIntArray2442 = this.anIntArray2442;
+               var9.trianglePointsX = this.trianglePointsX;
+               var9.trianglePointsY = this.trianglePointsY;
+               var9.trianglePointsZ = this.trianglePointsZ;
                var9.anIntArray2445 = this.anIntArray2445;
                var9.anIntArray2444 = this.anIntArray2444;
                var9.anIntArray2489 = this.anIntArray2489;
-               var9.aByteArray2446 = this.aByteArray2446;
+               var9.faceRenderPriorities = this.faceRenderPriorities;
                var9.triangleAlphaValues = this.triangleAlphaValues;
                var9.aByteArray2451 = this.aByteArray2451;
                var9.aShortArray2481 = this.aShortArray2481;
@@ -1260,9 +1260,9 @@ public class ModelRasterizer extends Renderable {
       if(aBoolArray2465[var1]) {
          this.method2867(var1);
       } else {
-         int var2 = this.anIntArray2440[var1];
-         int var3 = this.anIntArray2441[var1];
-         int var4 = this.anIntArray2442[var1];
+         int var2 = this.trianglePointsX[var1];
+         int var3 = this.trianglePointsY[var1];
+         int var4 = this.trianglePointsZ[var1];
          Rasterizer3D.restrictEdges = aBoolArray2464[var1];
          if(this.triangleAlphaValues == null) {
             Rasterizer3D.alpha = 0;
@@ -1309,8 +1309,8 @@ public class ModelRasterizer extends Renderable {
    }
 
    public ModelRasterizer method2907(boolean var1) {
-      if(!var1 && aByteArray2452.length < this.anInt2458) {
-         aByteArray2452 = new byte[this.anInt2458 + 100];
+      if(!var1 && aByteArray2452.length < this.triangleFaceCount) {
+         aByteArray2452 = new byte[this.triangleFaceCount + 100];
       }
 
       return this.method2854(var1, aClass108_Sub20_Sub14_Sub3_2496, aByteArray2452);

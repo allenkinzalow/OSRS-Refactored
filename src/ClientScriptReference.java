@@ -1,11 +1,11 @@
 
-public class Class51 {
+public class ClientScriptReference {
 
    int anInt708 = -948638743;
-   int[] anIntArray709;
+   int[] localIntegers;
    static int actionMenuX;
-   ClientScriptDefinition aClass108_Sub20_Sub17_711;
-   String[] aStringArray715;
+   ClientScriptDefinition clientScriptDefinition;
+   String[] localStrings;
    static int anInt716;
 
 
@@ -70,15 +70,15 @@ public class Class51 {
       var10.anInt1690 = var8 * -881348299;
    }
 
-   static final void method706(int var0, int var1) {
-      if(AbstractIndex.method1073(var0, -2068560407)) {
-         RSInterface[] var2 = RSInterface.interface_cache[var0];
+   static final void method706(int interfaceID, int var1) {
+      if(RSInterface.loadInterface(interfaceID, -2068560407)) {
+         RSInterface[] interfaces = RSInterface.interface_cache[interfaceID];
 
-         for(int var3 = 0; var3 < var2.length; ++var3) {
-            RSInterface var4 = var2[var3];
-            if(null != var4) {
-               var4.anInt1877 = 0;
-               var4.anInt1805 = 0;
+         for(int interfaceIndex = 0; interfaceIndex < interfaces.length; ++interfaceIndex) {
+            RSInterface rsi = interfaces[interfaceIndex];
+            if(null != rsi) {
+               rsi.anInt1877 = 0;
+               rsi.anInt1805 = 0;
             }
          }
 

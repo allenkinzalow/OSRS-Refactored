@@ -4,7 +4,7 @@ public class Rasterizer3D extends Rasterizer2D {
    static int alpha = 0;
    static boolean aBool2499 = false;
    static boolean aBool2500 = false;
-   public static Interface2 anInterface2_2501;
+   public static TextureImage anTextureImage_2501;
    static int anInt2502;
    static int centerX;
    static int centerY;
@@ -1644,14 +1644,14 @@ public class Rasterizer3D extends Rasterizer2D {
    }
 
    static final void drawTexturedTriangle(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18) {
-      int[] texturePixels = anInterface2_2501.getTexturePixels(var18, -1037759622);
+      int[] texturePixels = anTextureImage_2501.getTexturePixels(var18, -1037759622);
       int var21;
       if(texturePixels == null) {
-         var21 = anInterface2_2501.method21(var18, -990146898);
+         var21 = anTextureImage_2501.method21(var18, -990146898);
          method2932(var0, var1, var2, var3, var4, var5, method2939(var21, var6), method2939(var21, var7), method2939(var21, var8));
       } else {
-         aBool2500 = anInterface2_2501.method24(var18, 497566445);
-         aBool2499 = anInterface2_2501.method23(var18, 1564709454);
+         aBool2500 = anTextureImage_2501.method24(var18, 497566445);
+         aBool2499 = anTextureImage_2501.method23(var18, 1564709454);
          var21 = var4 - var3;
          int var26 = var1 - var0;
          int var27 = var5 - var3;
@@ -2581,14 +2581,14 @@ public class Rasterizer3D extends Rasterizer2D {
    }
 
    static final void method2937(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18) {
-      int[] var19 = anInterface2_2501.getTexturePixels(var18, -1633464899);
+      int[] var19 = anTextureImage_2501.getTexturePixels(var18, -1633464899);
       int var22;
       if(var19 == null) {
-         var22 = anInterface2_2501.method21(var18, -671846890);
+         var22 = anTextureImage_2501.method21(var18, -671846890);
          method2932(var0, var1, var2, var3, var4, var5, method2939(var22, var6), method2939(var22, var7), method2939(var22, var8));
       } else {
-         aBool2500 = anInterface2_2501.method24(var18, 1192091588);
-         aBool2499 = anInterface2_2501.method23(var18, 1562357298);
+         aBool2500 = anTextureImage_2501.method24(var18, 1192091588);
+         aBool2499 = anTextureImage_2501.method23(var18, 1562357298);
          var22 = var4 - var3;
          int var36 = var1 - var0;
          int var38 = var5 - var3;
@@ -3335,8 +3335,8 @@ public class Rasterizer3D extends Rasterizer2D {
       method2924(topX, topY, bottomX, bottomY);
    }
 
-   public static final void method2975(Interface2 var0) {
-      anInterface2_2501 = var0;
+   public static final void method2975(TextureImage var0) {
+      anTextureImage_2501 = var0;
    }
 
    public static final void method2976(double var0) {

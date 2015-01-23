@@ -35,7 +35,7 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                IsaacRandomGen.method735(Friend.musicIndex_1, "scape main", "", 255, false, (byte) 1);
             } else {
                Class32.aClass108_Sub4_Sub3_464.method2610(410806899);
-               Class91.anInt1325 = -771978757;
+               SongReference.anInt1325 = -771978757;
                RSInterface.aClass74_1889 = null;
             }
          }
@@ -50,13 +50,13 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                      byte var6 = 100;
                      byte var5 = 35;
                      if(MouseInputHandler.mousePressX * 472132205 >= var2 && MouseInputHandler.mousePressX * 472132205 <= var2 + var6 && MouseInputHandler.mousePressY * 1498262827 >= var4 && MouseInputHandler.mousePressY * 1498262827 <= var5 + var4) {
-                        Player.method3180(-525999435);
+                        World.method3180(-525999435);
                         return;
                      }
                   }
 
                   if(null != Class77.aClass43_1203) {
-                     Player.method3180(1624557494);
+                     World.method3180(1624557494);
                   }
                }
 
@@ -73,7 +73,7 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   var13 = 302;
                   var7 = 291;
                   if(var10 == 1 && var12 >= var13 - 75 && var12 <= var13 + 75 && var14 >= var7 - 20 && var14 <= 20 + var7) {
-                     SpotAnim.method2137(Class4.method81("secure", true, (byte)4) + "m=account-creation/g=oldscape/create_account_funnel.ws", true, false, (byte)26);
+                     AnimatedGraphic.method2137(Class4.method81("secure", true, (byte) 4) + "m=account-creation/g=oldscape/create_account_funnel.ws", true, false, (byte) 26);
                   }
 
                   var13 = 462;
@@ -166,11 +166,11 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   if(var10 == 1 && var12 >= var7 - 75 && var12 <= var7 + 75 && var14 >= var11 - 20 && var14 <= var11 + 20) {
                      Class4.typedUsername = Class4.typedUsername.trim();
                      if(Class4.typedUsername.length() == 0) {
-                        World.method646(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 2129771750);
+                        World.setResponseString(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 2129771750);
                      } else if(Class4.typedPassword.length() == 0) {
-                        World.method646(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1994617895);
+                        World.setResponseString(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1994617895);
                      } else {
-                        World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1896835022);
+                        World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1896835022);
                         Class4.aClass76_65 = Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(ProducingGraphicsBuffer.method1595(Class4.typedUsername, 698639797)))?Class76.aClass76_1200:Class76.aClass76_1199;
                         IsaacRandomGen.method725(20, 1805521706);
                      }
@@ -239,16 +239,16 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                            if(84 == Class9.anInt124 * 1025603675) {
                               Class4.typedUsername = Class4.typedUsername.trim();
                               if(Class4.typedUsername.length() == 0) {
-                                 World.method646(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 1994248243);
+                                 World.setResponseString(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 1994248243);
                                  return;
                               }
 
                               if(Class4.typedPassword.length() == 0) {
-                                 World.method646(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1951485667);
+                                 World.setResponseString(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1951485667);
                                  return;
                               }
 
-                              World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1956224355);
+                              World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1956224355);
                               Class4.aClass76_65 = Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(ProducingGraphicsBuffer.method1595(Class4.typedUsername, 698639797)))?Class76.aClass76_1200:Class76.aClass76_1199;
                               IsaacRandomGen.method725(20, 1408783702);
                               return;
@@ -268,12 +268,12 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                   if(1 == var10 && var12 >= var13 - 75 && var12 <= 75 + var13 && var14 >= var7 - 20 && var14 <= 20 + var7) {
                      BuildType.enteredPin.trim();
                      if(BuildType.enteredPin.length() != 6) {
-                        World.method646(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2140301062);
+                        World.setResponseString(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2140301062);
                      } else {
                         AnimationSkeletonSet.anInt2260 = Integer.parseInt(BuildType.enteredPin) * -1042182137;
                         BuildType.enteredPin = "";
                         Class4.aClass76_65 = Class4.trustComputer?Class76.aClass76_1198:Class76.aClass76_1201;
-                        World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1981202273);
+                        World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1981202273);
                         IsaacRandomGen.method725(20, 1910610971);
                      }
                   } else {
@@ -282,7 +282,7 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                      }
 
                      if(var10 == 1 && var12 >= 348 && var12 <= 416 && var14 >= 351 && var14 <= 363) {
-                        SpotAnim.method2137(Class4.method81("secure", true, (byte)4) + "m=totp-authenticator/disableTOTPRequest", true, false, (byte)-11);
+                        AnimatedGraphic.method2137(Class4.method81("secure", true, (byte) 4) + "m=totp-authenticator/disableTOTPRequest", true, false, (byte) -11);
                      }
 
                      var13 = 462;
@@ -322,14 +322,14 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
                               if(84 == Class9.anInt124 * 1025603675) {
                                  BuildType.enteredPin.trim();
                                  if(BuildType.enteredPin.length() != 6) {
-                                    World.method646(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2014560043);
+                                    World.setResponseString(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2014560043);
                                     return;
                                  }
 
                                  AnimationSkeletonSet.anInt2260 = Integer.parseInt(BuildType.enteredPin) * -1042182137;
                                  BuildType.enteredPin = "";
                                  Class4.aClass76_65 = Class4.trustComputer?Class76.aClass76_1198:Class76.aClass76_1201;
-                                 World.method646(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 2071091536);
+                                 World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 2071091536);
                                  IsaacRandomGen.method725(20, 1944863421);
                                  return;
                               }
@@ -347,10 +347,6 @@ public class Class108_Sub20_Sub3 extends CacheableNode {
             }
          }
       }
-   }
-
-   public static int getStringLengthPlusOne(String var0) {
-      return var0.length() + 1;
    }
 
 }

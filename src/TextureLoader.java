@@ -1,5 +1,5 @@
 
-public class TextureLoader implements Interface2 {
+public class TextureLoader implements TextureImage {
 
    Texture[] loadedTextures;
    Deque aClass105_366 = new Deque();

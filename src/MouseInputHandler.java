@@ -30,7 +30,7 @@ public class MouseInputHandler implements MouseListener, MouseMotionListener, Fo
          anInt765 = 0; 
          lastMousePressX = event.getX() * 1143934983;
          lastMousePressY = event.getY() * -71262799;
-         lastMousePressTime = Player.getCurrentTimeMillis(849846164) * 8929978800836815775L;
+         lastMousePressTime = Timer.getCurrentTimeMillis(849846164) * 8929978800836815775L;
          if(event.isAltDown()) {
             anInt772 = -2026519500;
             anInt766 = 714924716;

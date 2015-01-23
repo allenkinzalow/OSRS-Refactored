@@ -131,6 +131,114 @@ public class RSInterface extends Node {
    int activeMediaType = -1227663423;
    public static AbstractIndex aClass74_1889;
 
+   static boolean isComponentHidden(RSInterface component, byte var1) {
+      if(Client.aBool2875) {
+         if(Class32.method576(component, 321089465) != 0) {
+            return false;
+         }
+
+         if(component.componentType * 942877543 == 0) {
+            return false;
+         }
+      }
+
+      return component.hidden;
+   }
+
+   public static RSInterface getInterfaceComponentForHash(int hash, int var1) {
+      int interfaceID = hash >> 16;
+      int componentID = hash & '\uffff';
+      if(null == interface_cache[interfaceID] || null == interface_cache[interfaceID][componentID]) {
+         boolean var4 = loadInterface(interfaceID, 780045770);
+         if(!var4) {
+            return null;
+         }
+      }
+
+      return interface_cache[interfaceID][componentID];
+   }
+
+   public static boolean loadInterface(int interfaceID, int var1) {
+      if(interfacesLoadedArray[interfaceID]) {
+         return true;
+      } else if(!interfaceIndexReference.containsArchive(interfaceID, (byte) -25)) {
+         return false;
+      } else {
+         int componentCount = interfaceIndexReference.getFileCount(interfaceID);
+         if(componentCount == 0) {
+            interfacesLoadedArray[interfaceID] = true;
+            return true;
+         } else {
+            if(null == interface_cache[interfaceID]) {
+               interface_cache[interfaceID] = new RSInterface[componentCount];
+            }
+
+            for(int component = 0; component < componentCount; ++component) {
+               if(null == interface_cache[interfaceID][component]) {
+                  byte[] componentData = interfaceIndexReference.getFile(interfaceID, component, (byte) 7);
+                  if(null != componentData) {
+                     interface_cache[interfaceID][component] = new RSInterface();
+                     interface_cache[interfaceID][component].interfaceHash = (component + (interfaceID << 16)) * -585455939;
+                     if(componentData[0] == -1) {
+                        interface_cache[interfaceID][component].decodeActiveInterface(new RSByteBuffer(componentData), 1019707415);
+                     } else {
+                        interface_cache[interfaceID][component].decodeInterface(new RSByteBuffer(componentData), 1016246501);
+                     }
+                  }
+               }
+            }
+
+            interfacesLoadedArray[interfaceID] = true;
+            return true;
+         }
+      }
+   }
+
+   public static void removeLoadedInterface(int interID) {
+      if(-1 != interID) {
+         if(interfacesLoadedArray[interID]) {
+            interfaceIndexReference.method1026(interID, (byte) 70);
+            if(null != interface_cache[interID]) {
+               boolean shouldReset = true;
+
+               for(int componentID = 0; componentID < interface_cache[interID].length; ++componentID) {
+                  if(null != interface_cache[interID][componentID]) {
+                     if(interface_cache[interID][componentID].componentType * 942877543 != 2) {
+                        interface_cache[interID][componentID] = null;
+                     } else {
+                        shouldReset = false;
+                     }
+                  }
+               }
+
+               if(shouldReset) {
+                  interface_cache[interID] = null;
+               }
+
+               interfacesLoadedArray[interID] = false;
+            }
+         }
+      }
+   }
+
+   static final void renderInterface(int interfaceID, int x, int y, int width, int height, int var5, int var6, int var7, int var8) {
+       if (loadInterface(interfaceID, 2021367900)) {
+           Client.aClass108_Sub17Array2963 = null;
+           ClientScriptDefinition.renderInterfaceComponents(interface_cache[interfaceID], -1, x, y, width, height, var5, var6, var7, 2123082435);
+           if (null != Client.aClass108_Sub17Array2963) {
+               ClientScriptDefinition.renderInterfaceComponents(Client.aClass108_Sub17Array2963, -1412584499, x, y, width, height, Class43.anInt619 * 1576174687, EquipmentKit.anInt1344 * 1005459417, var7, 1843051657);
+               Client.aClass108_Sub17Array2963 = null;
+           }
+       } else if (var7 != -1) {
+           Client.aBoolArray2909[var7] = true;
+       } else {
+           for (int var9 = 0; var9 < 100; ++var9) {
+               Client.aBoolArray2909[var9] = true;
+           }
+
+       }
+   }
+
 
    void decodeInterface(RSByteBuffer buffer, int var2) {
       this.aBool1855 = false;
@@ -713,7 +821,7 @@ public class RSInterface extends Node {
             }
 
             if(2 == mediaType) { // npc
-               model = Class108_Sub12.getNPCDefForID(modelID, -137084291).method2286((byte)117);
+               model = NPCDefinition.getNPCDefForID(modelID, -137084291).method2286((byte)117);
                if(null == model) {
                   mediaUnavailable = true;
                   return null;

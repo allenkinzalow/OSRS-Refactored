@@ -6,7 +6,7 @@ public class EquipmentKit {
    public boolean isFemale;
    long aLong1336;
    public static short[][] aShortArrayArray1337;
-   public static short[][] aShortArrayArray1338;
+   public static short[][] colorsToReplace;
    int[] bodyPartIDs;
    static int[] anIntArray1340 = new int[]{8, 11, 4, 6, 9, 7, 10};
    public static CacheableNodeMap equipmentMap = new CacheableNodeMap(260);
@@ -15,7 +15,7 @@ public class EquipmentKit {
 
 
    public int method1168(int var1) {
-      return -1 == this.anInt1342 * -11560425?this.bodyPartIDs[1] + (this.bodyPartIDs[11] << 5) + (this.bodyPartIDs[8] << 10) + (this.bodyPartIDs[0] << 15) + (this.bodyPartColors[0] << 25) + (this.bodyPartColors[4] << 20):305419896 + Class108_Sub12.getNPCDefForID(this.anInt1342 * -11560425, 1146350365).npcID * 140673707;
+      return -1 == this.anInt1342 * -11560425?this.bodyPartIDs[1] + (this.bodyPartIDs[11] << 5) + (this.bodyPartIDs[8] << 10) + (this.bodyPartIDs[0] << 15) + (this.bodyPartColors[0] << 25) + (this.bodyPartColors[4] << 20):305419896 + NPCDefinition.getNPCDefForID(this.anInt1342 * -11560425, 1146350365).npcID * 140673707;
    }
 
    public void method1169(int var1, boolean var2, int var3) {
@@ -74,7 +74,7 @@ public class EquipmentKit {
 
    public ModelRasterizer getModelRasterizer(AnimationDefinition animDef, int var2, AnimationDefinition interAnimDef, int var4, int var5) {
       if(-1 != this.anInt1342 * -11560425) {
-         return Class108_Sub12.getNPCDefForID(this.anInt1342 * -11560425, -1058486413).method2288(animDef, var2, interAnimDef, var4, (byte)1);
+         return NPCDefinition.getNPCDefForID(this.anInt1342 * -11560425, -1058486413).method2288(animDef, var2, interAnimDef, var4, (byte)1);
       } else {
          long bodyEquipmentHash = this.aLong1336 * -6070883008633819357L;
          int[] bodyPartIDs = this.bodyPartIDs;
@@ -148,8 +148,8 @@ public class EquipmentKit {
                RSModel completeModel = new RSModel(bodyParts, bodyPartId);
 
                for(bodyPartID = 0; bodyPartID < 5; ++bodyPartID) {
-                  if(this.bodyPartColors[bodyPartID] < aShortArrayArray1338[bodyPartID].length) {
-                     completeModel.findReplaceColor(Class88.aShortArray1318[bodyPartID], aShortArrayArray1338[bodyPartID][this.bodyPartColors[bodyPartID]]);
+                  if(this.bodyPartColors[bodyPartID] < colorsToReplace[bodyPartID].length) {
+                     completeModel.findReplaceColor(Class88.colorsToFind[bodyPartID], colorsToReplace[bodyPartID][this.bodyPartColors[bodyPartID]]);
                   }
 
                   if(this.bodyPartColors[bodyPartID] < aShortArrayArray1337[bodyPartID].length) {
@@ -182,7 +182,7 @@ public class EquipmentKit {
 
    RSModel getModel(byte var1) {
       if(this.anInt1342 * -11560425 != -1) {
-         return Class108_Sub12.getNPCDefForID(this.anInt1342 * -11560425, 1247515359).method2286((byte)115);
+         return NPCDefinition.getNPCDefForID(this.anInt1342 * -11560425, 1247515359).method2286((byte)115);
       } else {
          boolean hasModel = false;
 
@@ -226,8 +226,8 @@ public class EquipmentKit {
             RSModel completeModel = new RSModel(bodyPartModels, bodyPartId);
 
             for(bodyPartID = 0; bodyPartID < 5; ++bodyPartID) {
-               if(this.bodyPartColors[bodyPartID] < aShortArrayArray1338[bodyPartID].length) {
-                  completeModel.findReplaceColor(Class88.aShortArray1318[bodyPartID], aShortArrayArray1338[bodyPartID][this.bodyPartColors[bodyPartID]]);
+               if(this.bodyPartColors[bodyPartID] < colorsToReplace[bodyPartID].length) {
+                  completeModel.findReplaceColor(Class88.colorsToFind[bodyPartID], colorsToReplace[bodyPartID][this.bodyPartColors[bodyPartID]]);
                }
 
                if(this.bodyPartColors[bodyPartID] < aShortArrayArray1337[bodyPartID].length) {
@@ -241,7 +241,7 @@ public class EquipmentKit {
    }
 
    public static String method1180(CharSequence var0, byte var1) {
-      String var2 = ClientScript.method1680(CacheConstants.method1102(var0, 1886585479));
+      String var2 = StringUtilities.method1680(CacheConstants.method1102(var0, 1886585479));
       if(var2 == null) {
          var2 = "";
       }
@@ -278,7 +278,7 @@ public class EquipmentKit {
          do {
             --var4;
             if(var4 < 0) {
-               var4 = aShortArrayArray1338[var1].length - 1;
+               var4 = colorsToReplace[var1].length - 1;
             }
 
             if(var1 == 4 && var4 == 8) {
@@ -290,7 +290,7 @@ public class EquipmentKit {
       } else {
          do {
             ++var4;
-            if(var4 >= aShortArrayArray1338[var1].length) {
+            if(var4 >= colorsToReplace[var1].length) {
                var4 = 0;
             }
 

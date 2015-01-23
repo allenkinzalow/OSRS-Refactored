@@ -26,7 +26,7 @@ public final class RGBSprite extends Rasterizer2D {
    }
 
    static RGBSprite[] loadRGBSpriteSet(AbstractIndex var0, int var1, int var2, int var3) {
-       if (!FriendsChatMember.method1686(var0, var1, var2, -1626517407)) {
+       if (!FriendsChatMember.loadPaletteSprite(var0, var1, var2, -1626517407)) {
            return null;
        } else {
            RGBSprite[] var7 = new RGBSprite[Class9.anInt125 * 2039617935];
@@ -37,7 +37,7 @@ public final class RGBSprite extends Rasterizer2D {
                var8.maxHeight = Class9.anInt121 * -1272520477;
                var8.offsetX = Class88.anIntArray1316[var6];
                var8.offsetY = Class9.anIntArray123[var6];
-               var8.width = Class36.anIntArray514[var6];
+               var8.width = PaletteSprite.lastLoadedPaletteSpriteWidth[var6];
                var8.height = Class9.anIntArray126[var6];
                int var5 = var8.width * var8.height;
                byte[] var9 = AnimationSkeletonSet.loadedCharacterPixels[var6];
@@ -48,7 +48,7 @@ public final class RGBSprite extends Rasterizer2D {
                }
            }
 
-           ClientScript.method1679((byte) 93);
+           PaletteSprite.resetLastPaletteValues((byte) 93);
            return var7;
        }
    }

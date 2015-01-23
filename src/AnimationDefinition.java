@@ -134,28 +134,28 @@ public class AnimationDefinition extends CacheableNode {
       }
    }
 
-   public ModelRasterizer method2229(ModelRasterizer var1, int var2, int var3) {
-      var2 = this.frameDelays[var2];
-      AnimationSkeletonSet var4 = Class108_Sub20_Sub14_Sub6.method3072(var2 >> 16, 1418403418);
-      var2 &= '\uffff';
-      if(null == var4) {
+   public ModelRasterizer method2229(ModelRasterizer var1, int frame, int var3) {
+      int frameDelay = this.frameDelays[frame];
+      AnimationSkeletonSet skeletonSet = AnimationSkeletonSet.getAnimationSkeletonSet(frameDelay >> 16, 1418403418);
+      frameDelay &= '\uffff';
+      if(null == skeletonSet) {
          return var1.method2852(true);
       } else {
-         ModelRasterizer var5 = var1.method2852(!var4.method2563(var2, (byte)74));
-         var5.applyTransform(var4, var2);
+         ModelRasterizer var5 = var1.method2852(!skeletonSet.method2563(frameDelay, (byte) 74));
+         var5.applyTransform(skeletonSet, frameDelay);
          return var5;
       }
    }
 
-   ModelRasterizer method2231(ModelRasterizer var1, int var2, int var3) {
-      var2 = this.frameDelays[var2];
-      AnimationSkeletonSet var5 = Class108_Sub20_Sub14_Sub6.method3072(var2 >> 16, 1925624292);
-      var2 &= '\uffff';
-      if(var5 == null) {
+   ModelRasterizer getTransformedRasterizer(ModelRasterizer var1, int frame, int var3) {
+      int frameDelay = this.frameDelays[frame];
+      AnimationSkeletonSet skeletonSet = AnimationSkeletonSet.getAnimationSkeletonSet(frameDelay >> 16, 1925624292);
+      frameDelay &= '\uffff';
+      if(skeletonSet == null) {
          return var1.method2907(true);
       } else {
-         ModelRasterizer var4 = var1.method2907(!var5.method2563(var2, (byte)74));
-         var4.applyTransform(var5, var2);
+         ModelRasterizer var4 = var1.method2907(!skeletonSet.method2563(frameDelay, (byte) 74));
+         var4.applyTransform(skeletonSet, frameDelay);
          return var4;
       }
    }
@@ -177,7 +177,7 @@ public class AnimationDefinition extends CacheableNode {
 
    public ModelRasterizer method2233(ModelRasterizer var1, int var2, byte var3) {
       int var4 = this.frameDelays[var2];
-      AnimationSkeletonSet var8 = Class108_Sub20_Sub14_Sub6.method3072(var4 >> 16, 432968839);
+      AnimationSkeletonSet var8 = AnimationSkeletonSet.getAnimationSkeletonSet(var4 >> 16, 432968839);
       var4 &= '\uffff';
       if(null == var8) {
          return var1.method2852(true);
@@ -186,7 +186,7 @@ public class AnimationDefinition extends CacheableNode {
          int var7 = 0;
          if(this.anIntArray2118 != null && var2 < this.anIntArray2118.length) {
             var7 = this.anIntArray2118[var2];
-            var6 = Class108_Sub20_Sub14_Sub6.method3072(var7 >> 16, 506279496);
+            var6 = AnimationSkeletonSet.getAnimationSkeletonSet(var7 >> 16, 506279496);
             var7 &= '\uffff';
          }
 
@@ -210,7 +210,7 @@ public class AnimationDefinition extends CacheableNode {
 
    ModelRasterizer method2235(ModelRasterizer var1, int var2, int var3, int var4) {
       var2 = this.frameDelays[var2];
-      AnimationSkeletonSet var6 = Class108_Sub20_Sub14_Sub6.method3072(var2 >> 16, 1592292260);
+      AnimationSkeletonSet var6 = AnimationSkeletonSet.getAnimationSkeletonSet(var2 >> 16, 1592292260);
       var2 &= '\uffff';
       if(var6 == null) {
          return var1.method2852(true);
@@ -245,7 +245,7 @@ public class AnimationDefinition extends CacheableNode {
    }
 
    static final void renderActionMenu(byte var0) {
-      int xPos = Class51.actionMenuX * -745630459;
+      int xPos = ClientScriptReference.actionMenuX * -745630459;
       int yPos = MouseInputHandler.actionMenuY * -740301953;
       int width = Class54.actionMenuWidth * 1703965243;
       int height = Item.actionMenuHeight * 720768655;
@@ -278,7 +278,7 @@ public class AnimationDefinition extends CacheableNode {
          b12_full.drawString(menuActionName, xPos + 3, yOffset, color, 0);
       }
 
-      var10 = Class51.actionMenuX * -745630459;
+      var10 = ClientScriptReference.actionMenuX * -745630459;
       yOffset = MouseInputHandler.actionMenuY * -740301953;
       color = Class54.actionMenuWidth * 1703965243;
       int var14 = Item.actionMenuHeight * 720768655;
@@ -293,13 +293,13 @@ public class AnimationDefinition extends CacheableNode {
 
    public ModelRasterizer method2265(ModelRasterizer var1, int var2, AnimationDefinition var3, int var4, byte var5) {
       var2 = this.frameDelays[var2];
-      AnimationSkeletonSet var6 = Class108_Sub20_Sub14_Sub6.method3072(var2 >> 16, 1825573478);
+      AnimationSkeletonSet var6 = AnimationSkeletonSet.getAnimationSkeletonSet(var2 >> 16, 1825573478);
       var2 &= '\uffff';
       if(var6 == null) {
          return var3.method2229(var1, var4, -1345282556);
       } else {
          var4 = var3.frameDelays[var4];
-         AnimationSkeletonSet var7 = Class108_Sub20_Sub14_Sub6.method3072(var4 >> 16, 743656016);
+         AnimationSkeletonSet var7 = AnimationSkeletonSet.getAnimationSkeletonSet(var4 >> 16, 743656016);
          var4 &= '\uffff';
          ModelRasterizer rasterizer;
          if(var7 == null) {

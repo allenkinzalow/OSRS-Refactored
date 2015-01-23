@@ -3,7 +3,7 @@ public class Class53_Sub1 extends Timer {
 
    long[] aLongArray1702 = new long[10];
    int anInt1703 = 1398825216;
-   long aLong1705 = Player.getCurrentTimeMillis(849846164) * 7952023716220594927L;
+   long aLong1705 = getCurrentTimeMillis(849846164) * 7952023716220594927L;
    int anInt1706 = 0;
    int anInt1707;
    int anInt1709 = -1218258545;
@@ -14,7 +14,7 @@ public class Class53_Sub1 extends Timer {
       int var6 = this.anInt1709 * -1255266961;
       this.anInt1703 = -441126484;
       this.anInt1709 = -1218258545;
-      this.aLong1705 = Player.getCurrentTimeMillis(849846164) * 7952023716220594927L;
+      this.aLong1705 = getCurrentTimeMillis(849846164) * 7952023716220594927L;
       if(0L == this.aLongArray1702[this.anInt1707 * 2084947525]) {
          this.anInt1703 = var4 * 55795809;
          this.anInt1709 = var6 * -1218258545;
@@ -98,7 +98,7 @@ public class Class53_Sub1 extends Timer {
          RegionReference.anInt485 = plane * -1850046385;
       }
 
-      ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(objectID, (byte)0);
+      ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(objectID, (byte) 0);
       int var17;
       int var19;
       if(1 != var4 && 3 != var4) {
@@ -349,9 +349,9 @@ public class Class53_Sub1 extends Timer {
                   scene.method410(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, RegionReference.anIntArray491[var4], 0, 0, 0, var16, var24);
                } else if(var5 == 5) {
                   var27 = 16;
-                  var25 = scene.method427(plane, localX, localY);
+                  var25 = scene.fetchWallObjectHash(plane, localX, localY);
                   if(var25 != 0) {
-                     var27 = ChatMessagesContainer.getObjectDefForID(var25 >> 14 & 32767, (byte)0).anInt2069 * -225839219;
+                     var27 = ObjectDefinition.getObjectDefForID(var25 >> 14 & 32767, (byte) 0).anInt2069 * -225839219;
                   }
 
                   if(-1 == objectDef.animationID * -2061255559 && null == objectDef.configChangeDest) {
@@ -363,9 +363,9 @@ public class Class53_Sub1 extends Timer {
                   scene.method410(plane, localX, localY, var14, (Renderable)var29, (Renderable)null, RegionReference.anIntArray491[var4], 0, RegionReference.anIntArray493[var4] * var27, RegionReference.anIntArray494[var4] * var27, var16, var24);
                } else if(var5 == 6) {
                   var27 = 8;
-                  var25 = scene.method427(plane, localX, localY);
+                  var25 = scene.fetchWallObjectHash(plane, localX, localY);
                   if(var25 != 0) {
-                     var27 = ChatMessagesContainer.getObjectDefForID(var25 >> 14 & 32767, (byte)0).anInt2069 * -225839219 / 2;
+                     var27 = ObjectDefinition.getObjectDefForID(var25 >> 14 & 32767, (byte) 0).anInt2069 * -225839219 / 2;
                   }
 
                   if(objectDef.animationID * -2061255559 == -1 && null == objectDef.configChangeDest) {
@@ -386,9 +386,9 @@ public class Class53_Sub1 extends Timer {
                   scene.method410(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, 256, var25, 0, 0, var16, var24);
                } else if(8 == var5) {
                   var27 = 8;
-                  var25 = scene.method427(plane, localX, localY);
+                  var25 = scene.fetchWallObjectHash(plane, localX, localY);
                   if(var25 != 0) {
-                     var27 = ChatMessagesContainer.getObjectDefForID(var25 >> 14 & 32767, (byte)0).anInt2069 * -225839219 / 2;
+                     var27 = ObjectDefinition.getObjectDefForID(var25 >> 14 & 32767, (byte) 0).anInt2069 * -225839219 / 2;
                   }
 
                   int var26 = var4 + 2 & 3;

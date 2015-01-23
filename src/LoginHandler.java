@@ -17,7 +17,7 @@ public class LoginHandler {
 
 
 	public static RSInterface method878(int var0, int var1, int var2) {
-		RSInterface var3 = CacheIndexRequest.getInterfaceComponentForHash(var0, 2146838109);
+		RSInterface var3 = RSInterface.getInterfaceComponentForHash(var0, 2146838109);
 		return var1 == -1 ? var3 : (null != var3 && null != var3.aClass108_Sub17Array1879 && var1 < var3.aClass108_Sub17Array1879.length ? var3.aClass108_Sub17Array1879[var1] : null);
 	}
 
@@ -45,7 +45,7 @@ public class LoginHandler {
 	}
 
 	static final void method882(int var0, int var1, byte var2) {
-		if (AbstractIndex.method1073(var0, -1764806403)) {
+		if (RSInterface.loadInterface(var0, -1764806403)) {
 			PlainTile.method625(RSInterface.interface_cache[var0], var1, -1128005989);
 		}
 	}
@@ -88,7 +88,7 @@ public class LoginHandler {
 				Client.loginStage = -1170365273;
 			}
 
-			int var1;
+			int responseCode;
 			if (Client.loginStage * -1241953979 == 3) {
 				if (null != Class2.aClass7_17) {
 					Class2.aClass7_17.method119((byte) 84);
@@ -98,7 +98,7 @@ public class LoginHandler {
 					Class50.aClass7_697.method119((byte) 61);
 				}
 
-				var1 = Varp.loginConnection.read();
+				responseCode = Varp.loginConnection.read();
 				if (Class2.aClass7_17 != null) {
 					Class2.aClass7_17.method119((byte) -8);
 				}
@@ -107,8 +107,8 @@ public class LoginHandler {
 					Class50.aClass7_697.method119((byte) 68);
 				}
 
-				if (0 != var1) {
-					Friend.method661(var1, -16711936);
+				if (0 != responseCode) {
+					Friend.interpretResponseCode(responseCode, -16711936);
 					return;
 				}
 
@@ -191,8 +191,8 @@ public class LoginHandler {
 				}
 
 				var4.writeBytes(randomDat, 0, 24, (byte) -52);
-				RSByteBuffer machineBUf = new RSByteBuffer(Class104.aClass108_Sub15_1422.calculateMachineInfoSize((byte) -109));
-				Class104.aClass108_Sub15_1422.writeMachineInfo(machineBUf, (byte) 68);
+				RSByteBuffer machineBUf = new RSByteBuffer(MachineInformation.aMachineInformation_1422.calculateMachineInfoSize((byte) -109));
+				MachineInformation.aMachineInformation_1422.writeMachineInfo(machineBUf, (byte) 68);
 
 				Client.loginBuffer.writeBytes(machineBUf.buf, 0, machineBUf.buf.length, (byte) -53);
 				Client.loginBuffer.writeInt(Projectile.skeletonIndex.anInt935 * -1983334491);
@@ -231,20 +231,20 @@ public class LoginHandler {
 			final int paki = 1954236750 * -1241953979;
 
 			if (Client.loginStage * -1241953979 == 6 && Varp.loginConnection.available() > 0) {
-				var1 = Varp.loginConnection.read();
-				if (21 == var1 && 20 == Client.loginLoadingStage * 1315883169) {
+				responseCode = Varp.loginConnection.read();
+				if (21 == responseCode && 20 == Client.loginLoadingStage * 1315883169) {
 					Client.loginStage = 132459227;
-				} else if (2 == var1) {
+				} else if (2 == responseCode) {
 					Client.loginStage = 783871477;
 				} else {
-					if (var1 == 15 && Client.loginLoadingStage * 1315883169 == 40) {
+					if (responseCode == 15 && Client.loginLoadingStage * 1315883169 == 40) {
 						Client.secureBuffer.position = 0;
 						Client.packetBuffer.position = 0;
 						Client.packetID = 859744123;
 						Client.anInt2803 = 2024851459;
 						Client.anInt2755 = -1505993085;
 						Client.anInt2756 = -2134126195;
-						Client.anInt2927 = 0;
+						Client.packetSize = 0;
 						Client.anInt2918 = 0;
 						Client.anInt2722 = 0;
 						Client.menuActionRow = 0;
@@ -274,8 +274,8 @@ public class LoginHandler {
 						return;
 					}
 
-					if (var1 != 23 || Client.anInt2740 * -1069435249 >= 1) {
-						Friend.method661(var1, -16711936);
+					if (responseCode != 23 || Client.anInt2740 * -1069435249 >= 1) {
+						Friend.interpretResponseCode(responseCode, -16711936);
 						return;
 					}
 
@@ -291,7 +291,7 @@ public class LoginHandler {
 
 			if (8 == Client.loginStage * -1241953979) {
 				Client.anInt2739 = 0;
-				World.method646(StringUtilities.RECENT_WORLD, StringUtilities.TRANSFER_TIMER, Client.anInt2751 * -1211848589 / 60 + StringUtilities.TRANSFER_SECONDS, 2038890483);
+				World.setResponseString(StringUtilities.RECENT_WORLD, StringUtilities.TRANSFER_TIMER, Client.anInt2751 * -1211848589 / 60 + StringUtilities.TRANSFER_SECONDS, 2038890483);
 				if ((Client.anInt2751 += 1825948485) * -1211848589 <= 0) {
 					Client.loginStage = 0;
 				}
@@ -332,7 +332,7 @@ public class LoginHandler {
 					System.out.println("They gif us " + a);
 					Varp.loginConnection.read(Client.packetBuffer.buf, 0, 2);
 					Client.packetBuffer.position = 0;
-					Client.anInt2927 = (a= Client.packetBuffer.readUShort(-838299460)) * 1182625323;
+					Client.packetSize = (a= Client.packetBuffer.readUShort(-838299460)) * 1182625323;
 					System.out.println("Size " + a);
 					if (1 == Client.anInt2758 * -1950682749) {
 						try {
@@ -364,15 +364,15 @@ public class LoginHandler {
 							Client.anInt2740 += 990685295;
 							Client.loginStage = 0;
 						} else {
-							Friend.method661(-3, -16711936);
+							Friend.interpretResponseCode(-3, -16711936);
 						}
 					}
-				} else if (Varp.loginConnection.available() >= Client.anInt2927 * -574496637) {
+				} else if (Varp.loginConnection.available() >= Client.packetSize * -574496637) {
 					Client.packetBuffer.position = 0;
-					Varp.loginConnection.read(Client.packetBuffer.buf, 0, Client.anInt2927 * -574496637);
+					Varp.loginConnection.read(Client.packetBuffer.buf, 0, Client.packetSize * -574496637);
 					Client.lastMousePressTime = 5205271143587660129L;
 					Client.anInt2714 = -1445469673;
-					ClientScript.mouseCapturer.coordIndex = 0;
+					MouseCapturer.mouseCapturer.coordIndex = 0;
 					focusGained = true;
 					Client.lastSentFocusGained = true;
 					Client.aLong2925 = -1524832735365646447L;
@@ -408,13 +408,13 @@ public class LoginHandler {
 					Client.numLocalPlayers = 0;
 					Client.anInt2749 = 0;
 
-					for (var1 = 0; var1 < 2048; ++var1) {
-						Client.localPlayers[var1] = null;
-						Client.cachedAppearances[var1] = null;
+					for (responseCode = 0; responseCode < 2048; ++responseCode) {
+						Client.localPlayers[responseCode] = null;
+						Client.cachedAppearances[responseCode] = null;
 					}
 
-					for (var1 = 0; var1 < '\u8000'; ++var1) {
-						Client.localNPCs[var1] = null;
+					for (responseCode = 0; responseCode < '\u8000'; ++responseCode) {
+						Client.localNPCs[responseCode] = null;
 					}
 
 					Player.myPlayer = Client.localPlayers[2047] = new Player();
@@ -422,10 +422,10 @@ public class LoginHandler {
 					Client.projectileDeque.method1333();
 					Client.aClass105_2928.method1333();
 
-					for (var1 = 0; var1 < 4; ++var1) {
+					for (responseCode = 0; responseCode < 4; ++responseCode) {
 						for (var2 = 0; var2 < 104; ++var2) {
 							for (var3 = 0; var3 < 104; ++var3) {
-								Client.groundItemArray[var1][var2][var3] = null;
+								Client.groundItemArray[responseCode][var2][var3] = null;
 							}
 						}
 					}
@@ -435,21 +435,21 @@ public class LoginHandler {
 					Client.friendListCount = 0;
 					Client.ignoreListCount = 0;
 
-					for (var1 = 0; var1 < Varp.anInt2045 * -1989920909; ++var1) {
-						Varp var18 = SpotAnim.method2149(var1, (byte) 4);
+					for (responseCode = 0; responseCode < Varp.anInt2045 * -1989920909; ++responseCode) {
+						Varp var18 = AnimatedGraphic.method2149(responseCode, (byte) 4);
 						if (null != var18) {
-							Class88.anIntArray1317[var1] = 0;
-							Class88.configSettings[var1] = 0;
+							Class88.anIntArray1317[responseCode] = 0;
+							Class88.configSettings[responseCode] = 0;
 						}
 					}
 
-					for (var1 = 0; var1 < Client.anIntArray2864.length; ++var1) {
-						Client.anIntArray2864[var1] = -1;
+					for (responseCode = 0; responseCode < Client.anIntArray2864.length; ++responseCode) {
+						Client.anIntArray2864[responseCode] = -1;
 					}
 
 					Client.anInt2789 = 801480023;
 					if (-1 != Client.openInterfaceID * 1523906617) {
-						Class5.method92(Client.openInterfaceID * 1523906617);
+						RSInterface.removeLoadedInterface(Client.openInterfaceID * 1523906617);
 					}
 
 					for (Class108_Sub10 var17 = (Class108_Sub10) Client.aClass101_2866.method1304(); null != var17; var17 = (Class108_Sub10) Client.aClass101_2866.method1303()) {
@@ -463,21 +463,21 @@ public class LoginHandler {
 					Client.menuActionRow = 0;
 					Client.aClass93_2926.initialize((int[]) null, new int[]{0, 0, 0, 0, 0}, false, -1, -1809930983);
 
-					for (var1 = 0; var1 < 8; ++var1) {
-						Client.aStringArray2834[var1] = null;
-						Client.aBoolArray2835[var1] = false;
+					for (responseCode = 0; responseCode < 8; ++responseCode) {
+						Client.aStringArray2834[responseCode] = null;
+						Client.aBoolArray2835[responseCode] = false;
 					}
 
 					Class108_Sub12.aClass101_1673 = new HashTable(32);
 					Client.aBool2874 = true;
 
-					for (var1 = 0; var1 < 100; ++var1) {
-						Client.aBoolArray2909[var1] = true;
+					for (responseCode = 0; responseCode < 100; ++responseCode) {
+						Client.aBoolArray2909[responseCode] = true;
 					}
 
 					Client.aString2967 = null;
-					Class27.friendsChatListCount = 0;
-					Class50.friendsChatList = null;
+					Friend.friendsChatListCount = 0;
+					FriendsChatMember.friendsChatList = null;
 					Friend.anInt620 = 964554551;
 					PlainTile.loadIncomingMap(false, (byte) 117);
 					Client.packetID = 859744123;
@@ -494,7 +494,7 @@ public class LoginHandler {
 				Client.anInt2740 += 990685295;
 				Client.loginStage = 0;
 			} else {
-				Friend.method661(-2, -16711936);
+				Friend.interpretResponseCode(-2, -16711936);
 			}
 		}
 	}

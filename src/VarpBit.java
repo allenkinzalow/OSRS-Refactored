@@ -7,8 +7,24 @@ public class VarpBit extends CacheableNode {
    static AbstractIndex aClass74_1951;
    static int plane;
    public static AbstractIndex aClass74_1954;
-   static CacheableNodeMap aClass106_1955 = new CacheableNodeMap(64);
+   static CacheableNodeMap varpBitCache = new CacheableNodeMap(64);
    public int configId;
+
+   public static VarpBit getVarpBitForID(int fileID, int var1) {
+       VarpBit var2 = (VarpBit) varpBitCache.get((long) fileID);
+       if (null != var2) {
+           return var2;
+       } else {
+           byte[] var3 = aClass74_1951.getFile(14, fileID, (byte) 7);
+           var2 = new VarpBit();
+           if (var3 != null) {
+               var2.decode(new RSByteBuffer(var3), (short) 5866);
+           }
+
+           varpBitCache.put(var2, (long) fileID);
+           return var2;
+       }
+   }
 
 
    void decodeReadValues(RSByteBuffer buffer, int opcode, int var3) {

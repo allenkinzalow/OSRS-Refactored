@@ -27,6 +27,10 @@ public abstract class RSTypeFace extends Rasterizer2D {
    static Random aRandom2655 = new Random();
    int anInt2656;
 
+   static String getIconTag(int iconID, int var1) {
+      return "<img=" + iconID + ">";
+   }
+
 
    void method3086(byte[] fontData) {
       this.anIntArray2636 = new int[256];
@@ -649,11 +653,11 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
                   int var15 = this.anIntArray2636[character];
                   if(anInt2646 != -1) {
-                     method2506(x, y + (int)((double)this.anInt2643 * 0.7D), var15, anInt2646);
+                     drawHorizontalLine(x, y + (int) ((double) this.anInt2643 * 0.7D), var15, anInt2646);
                   }
 
                   if(anInt2647 != -1) {
-                     method2506(x, y + this.anInt2643, var15, anInt2647);
+                     drawHorizontalLine(x, y + this.anInt2643, var15, anInt2647);
                   }
 
                   x += var15;
@@ -891,11 +895,11 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
                   int var10 = this.anIntArray2636[character];
                   if(anInt2646 != -1) {
-                     method2506(var2, var3 + (int)((double)this.anInt2643 * 0.7D), var10, anInt2646);
+                     drawHorizontalLine(var2, var3 + (int) ((double) this.anInt2643 * 0.7D), var10, anInt2646);
                   }
 
                   if(anInt2647 != -1) {
-                     method2506(var2, var3 + this.anInt2643 + 1, var10, anInt2647);
+                     drawHorizontalLine(var2, var3 + this.anInt2643 + 1, var10, anInt2647);
                   }
 
                   var2 += var10;

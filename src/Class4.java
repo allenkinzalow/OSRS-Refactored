@@ -59,8 +59,8 @@ public class Class4 {
    }
 
    public static void method89(byte var0) {
-      AnimationDefinition.animationDefMap.method1371();
-      AnimationDefinition.animDefCache.method1371();
+      AnimationDefinition.animationDefMap.clearCacheMap();
+      AnimationDefinition.animDefCache.clearCacheMap();
    }
 
    static final void method90(Entity entity, short var1) {
@@ -91,7 +91,7 @@ public class Class4 {
             entity.anInt2374 = 0;
          }
 
-         int spotAnimEmoteID = SpotAnim.getSpotAnimForID(entity.anInt2373 * 1305815823, (byte) 0).animationID * 338579353;
+         int spotAnimEmoteID = AnimatedGraphic.getSpotAnimForID(entity.anInt2373 * 1305815823, (byte) 0).animationID * 338579353;
          if(-1 != spotAnimEmoteID) {
             AnimationDefinition spotAnimDef = AnimationDefinition.getAnimDefForID(spotAnimEmoteID, 1789980921);
             if(null != spotAnimDef && null != spotAnimDef.frameDelays) {

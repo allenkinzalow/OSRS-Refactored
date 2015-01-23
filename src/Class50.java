@@ -8,8 +8,6 @@ public class Class50 implements Interface3 {
 	static Class50 aClass50_698 = new Class50(0);
 	static int anInt699;
 	static Class50 aClass50_701 = new Class50(1);
-	static PaletteSprite aClass108_Sub20_Sub15_Sub2_702;
-	static FriendsChatMember[] friendsChatList;
 
 
 	public int method32(int var1) {
@@ -24,7 +22,7 @@ public class Class50 implements Interface3 {
 		return 0 != (var0 >> 21 & 1);
 	}
 
-	static final void method699(int xPos, int yPos, int var2, short var3) {
+	static final void renderMiniMap(int xPos, int yPos, int var2, short var3) {
 		Friend.method660(-2023108021);
 		Rasterizer2D.setRasterizationRect(xPos, yPos, xPos + Class63.mapBackSprite.anInt2413, Class63.mapBackSprite.anInt2414 + yPos);
 		if (2 != Client.anInt2935 * -1279723019 && Client.anInt2935 * -1279723019 != 5) {
@@ -32,7 +30,7 @@ public class Class50 implements Interface3 {
 			int var9 = Player.myPlayer.anInt2394 * 171470795 / 32 + 48;
 			int var10 = 464 - Player.myPlayer.anInt2339 * 826764905 / 32;
 
-			Class80.miniMapSprite.method2755(25 + xPos, 5 + yPos, 146, 151, var9, var10, rotation, 256 + Client.anInt2957 * 331969371, OverlayFloorDefinition.anIntArray2221, Varp.anIntArray2043);
+			Client.miniMapSprite.method2755(25 + xPos, 5 + yPos, 146, 151, var9, var10, rotation, 256 + Client.anInt2957 * 331969371, OverlayFloorDefinition.anIntArray2221, Varp.anIntArray2043);
 
 			int var5;
 			int var6;
@@ -86,8 +84,8 @@ public class Class50 implements Interface3 {
 
 					boolean isFriendsChat = false;
 
-					for (int friendsChatIndex = 0; friendsChatIndex < Class27.friendsChatListCount * 1727166727; ++friendsChatIndex) {
-						if (player.playerName.equals(friendsChatList[friendsChatIndex].username)) {
+					for (int friendsChatIndex = 0; friendsChatIndex < Friend.friendsChatListCount * 1727166727; ++friendsChatIndex) {
+						if (player.playerName.equals(FriendsChatMember.friendsChatList[friendsChatIndex].username)) {
 							isFriendsChat = true;
 							break;
 						}
@@ -122,7 +120,7 @@ public class Class50 implements Interface3 {
 
 				if (2 == Client.anInt2723 * -927004421) {
 					var5 = 2 + (Client.anInt2726 * -1027873740 - Class100.anInt1388 * 1052205508) - Player.myPlayer.anInt2394 * 171470795 / 32;
-					var6 = Client.anInt2727 * 444255620 - Class15.anInt201 * 1617363908 + 2 - Player.myPlayer.anInt2339 * 826764905 / 32;
+					var6 = Client.anInt2727 * 444255620 - SoundEffectWorker.anInt201 * 1617363908 + 2 - Player.myPlayer.anInt2339 * 826764905 / 32;
 					Varp.method2152(xPos, yPos, var5, var6, Class56.mapMarkerSprites[1], (byte) 127);
 				}
 
@@ -160,24 +158,6 @@ public class Class50 implements Interface3 {
 		}
 
 		Client.aBoolArray2910[var2] = true;
-	}
-
-	static final void renderInterface(int interfaceID, int x, int y, int width, int height, int var5, int var6, int var7, int var8) {
-		if (AbstractIndex.method1073(interfaceID, 2021367900)) {
-			Client.aClass108_Sub17Array2963 = null;
-			ClientScriptDefinition.renderInterfaceComponents(RSInterface.interface_cache[interfaceID], -1, x, y, width, height, var5, var6, var7, 2123082435);
-			if (null != Client.aClass108_Sub17Array2963) {
-				ClientScriptDefinition.renderInterfaceComponents(Client.aClass108_Sub17Array2963, -1412584499, x, y, width, height, Class43.anInt619 * 1576174687, EquipmentKit.anInt1344 * 1005459417, var7, 1843051657);
-				Client.aClass108_Sub17Array2963 = null;
-			}
-		} else if (var7 != -1) {
-			Client.aBoolArray2909[var7] = true;
-		} else {
-			for (int var9 = 0; var9 < 100; ++var9) {
-				Client.aBoolArray2909[var9] = true;
-			}
-
-		}
 	}
 
 	static final void method701(int var0, int var1, int var2, int var3) {

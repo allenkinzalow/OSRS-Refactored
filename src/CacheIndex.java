@@ -12,12 +12,21 @@ public class CacheIndex extends AbstractIndex {
    boolean aBool1714 = false;
    volatile boolean aBool1715 = false;
    IndexTable aClass59_1716;
-   int anInt1717;
+   int crcValue;
    static CRC32 aCRC32_1718 = new CRC32();
    IndexTable aClass59_1719;
    int anInt1720;
    int anInt1721 = -1749760423;
    public static final int anInt1722 = 207;
+
+   static CacheIndex initCacheIndex(int index, boolean var1, boolean var2, boolean var3, int var4) {
+       IndexTable indexTable = null;
+       if (CacheConstants.cacheDataFile != null) {
+           indexTable = new IndexTable(index, CacheConstants.cacheDataFile, CacheConstants.indexFileArray[index], 1000000);
+       }
+
+       return new CacheIndex(indexTable, IndexTable.cache255Index, index, var1, var2, var3);
+   }
 
 
    void method1003(int archiveID, int var2) {
@@ -28,17 +37,17 @@ public class CacheIndex extends AbstractIndex {
       if(this.aClass59_1719 != null && null != this.aBoolArray1713 && this.aBoolArray1713[archiveID]) {
          RegionReference.method587(archiveID, this.aClass59_1719, this, 1473251475);
       } else { 
-         GroundItem.submitJs5Request(this, this.indexID * 663669877, archiveID, this.anIntArray933[archiveID], (byte) 2, true, (byte) 58);
+         Js5Request.submitJs5Request(this, this.indexID * 663669877, archiveID, this.anIntArray933[archiveID], (byte) 2, true, (byte) 58);
       }
    }
 
    void method1893(int var1, int var2, int var3) {
-      this.anInt1717 = var1 * -1492563333;
+      this.crcValue = var1 * -1492563333;
       this.anInt1720 = var2 * 1660478651;
       if(this.aClass59_1716 != null) {
          RegionReference.method587(this.indexID * 663669877, this.aClass59_1716, this, 2119283429);
       } else {
-         GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 41);
+         Js5Request.submitJs5Request(this, 255, this.indexID * 663669877, this.crcValue * 366281907, (byte) 0, true, (byte) 41);
       }
    }
 
@@ -63,9 +72,9 @@ public class CacheIndex extends AbstractIndex {
                cacheIndexRequest.key = (long)var2;
                cacheIndexRequest.cacheIndexTable = indexTable;
                cacheIndexRequest.cacheIndex = this;
-               Deque var6 = Class86.cacheIndexRequests;
+               Deque var6 = CacheRequestDispatcher.cacheIndexRequests;
                synchronized(var6) {
-                  Class86.cacheIndexRequests.insertBack(cacheIndexRequest);
+                  CacheRequestDispatcher.cacheIndexRequests.insertBack(cacheIndexRequest);
                }
 
                Class68.method930(2121484272);
@@ -131,9 +140,9 @@ public class CacheIndex extends AbstractIndex {
                cacheIndexRequest.key = (long)var14;
                cacheIndexRequest.indexData = data;
                cacheIndexRequest.cacheIndexTable = var15;
-               Deque var9 = Class86.cacheIndexRequests;
-               synchronized(var9) {
-                  Class86.cacheIndexRequests.insertBack(cacheIndexRequest);
+               Deque deque = CacheRequestDispatcher.cacheIndexRequests;
+               synchronized(deque) {
+                  CacheRequestDispatcher.cacheIndexRequests.insertBack(cacheIndexRequest);
                }
 
                Class68.method930(1610251632);
@@ -152,9 +161,9 @@ public class CacheIndex extends AbstractIndex {
             cacheIndexRequest.key = (long)archiveID;
             cacheIndexRequest.indexData = data;
             cacheIndexRequest.cacheIndexTable = var6;
-            Deque var8 = Class86.cacheIndexRequests;
+            Deque var8 = CacheRequestDispatcher.cacheIndexRequests;
             synchronized(var8) {
-               Class86.cacheIndexRequests.insertBack(cacheIndexRequest);
+               CacheRequestDispatcher.cacheIndexRequests.insertBack(cacheIndexRequest);
             }
 
             Class68.method930(779777068);
@@ -168,31 +177,31 @@ public class CacheIndex extends AbstractIndex {
    }
 
    public void method1906(IndexTable indexTable, int indexID, byte[] data, boolean var4, int var5) {
-      int var6;
+      int crcValue;
       if(this.aClass59_1716 == indexTable) {
          if(this.aBool1715) {
             throw new RuntimeException();
          } else if(data == null) {
-            GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 122);
+            Js5Request.submitJs5Request(this, 255, this.indexID * 663669877, this.crcValue * 366281907, (byte) 0, true, (byte) 122);
          } else {
             aCRC32_1718.reset();
             aCRC32_1718.update(data, 0, data.length);
-            var6 = (int)aCRC32_1718.getValue();
-            RSByteBuffer var10 = new RSByteBuffer(RegionReference.method618(data));
-            int var8 = var10.readUByte();
+            crcValue = (int)aCRC32_1718.getValue();
+            RSByteBuffer buffer = new RSByteBuffer(RegionReference.method618(data));
+            int var8 = buffer.readUByte();
             if(5 != var8 && 6 != var8) {
                throw new RuntimeException("");
             } else {
                int var9 = 0;
                if(var8 >= 6) {
-                  var9 = var10.readInt();
+                  var9 = buffer.readInt();
                }
 
-               if(var6 == this.anInt1717 * 366281907 && var9 == this.anInt1720 * -1004552077) {
+               if(crcValue == this.crcValue * 366281907 && var9 == this.anInt1720 * -1004552077) {
                   this.method1002(data, -1942605956);
                   this.method1895(-983603587);
                } else {
-                  GroundItem.submitJs5Request(this, 255, this.indexID * 663669877, this.anInt1717 * 366281907, (byte) 0, true, (byte) 80);
+                  Js5Request.submitJs5Request(this, 255, this.indexID * 663669877, this.crcValue * 366281907, (byte) 0, true, (byte) 80);
                }
             }
          }
@@ -204,9 +213,9 @@ public class CacheIndex extends AbstractIndex {
          if(data != null && data.length > 2) {
             aCRC32_1718.reset();
             aCRC32_1718.update(data, 0, data.length - 2);
-            var6 = (int)aCRC32_1718.getValue();
+            crcValue = (int)aCRC32_1718.getValue();
             int var7 = ((data[data.length - 2] & 255) << 8) + (data[data.length - 1] & 255);
-            if(var6 == this.anIntArray933[indexID] && var7 == this.anIntArray934[indexID]) {
+            if(crcValue == this.anIntArray933[indexID] && var7 == this.anIntArray934[indexID]) {
                this.aBoolArray1713[indexID] = true;
                if(var4) {
                   this.archiveArray[indexID] = Class108_Sub12.method1688(data, false, -2005327714);
@@ -214,13 +223,13 @@ public class CacheIndex extends AbstractIndex {
             } else {
                this.aBoolArray1713[indexID] = false;
                if(this.aBool1714 || var4) {
-                  GroundItem.submitJs5Request(this, this.indexID * 663669877, indexID, this.anIntArray933[indexID], (byte) 2, var4, (byte) 30);
+                  Js5Request.submitJs5Request(this, this.indexID * 663669877, indexID, this.anIntArray933[indexID], (byte) 2, var4, (byte) 30);
                }
             }
          } else {
             this.aBoolArray1713[indexID] = false;
             if(this.aBool1714 || var4) {
-               GroundItem.submitJs5Request(this, this.indexID * 663669877, indexID, this.anIntArray933[indexID], (byte) 2, var4, (byte) 20);
+               Js5Request.submitJs5Request(this, this.indexID * 663669877, indexID, this.anIntArray933[indexID], (byte) 2, var4, (byte) 20);
             }
          }
       }

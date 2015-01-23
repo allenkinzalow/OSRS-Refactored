@@ -17,19 +17,20 @@ public final class RegionReference {
    static int[][][] tileHeights = new int[4][105][105];
    static int lightnessRandomizer = ((int)(Math.random() * 33.0D) - 16) * 1990361651;
    static int hueRandomizer = ((int)(Math.random() * 17.0D) - 8) * -1535870085;
+   static int[] objectLandscapeIDs;
 
 
    static void method587(int indexID, IndexTable indexTable, CacheIndex cacheIndex, int var3) {
       byte[] var4 = null;
-      Deque var5 = Class86.cacheIndexRequests;
+      Deque var5 = CacheRequestDispatcher.cacheIndexRequests;
       synchronized(var5) {
-         CacheIndexRequest var6 = (CacheIndexRequest)Class86.cacheIndexRequests.getFront();
+         CacheIndexRequest indexRequest = (CacheIndexRequest) CacheRequestDispatcher.cacheIndexRequests.getFront();
 
-         while(var6 != null) {
-            if((long)indexID != var6.key || var6.cacheIndexTable != indexTable || var6.anInt1759 * -612139703 != 0) {
-               var6 = (CacheIndexRequest)Class86.cacheIndexRequests.getNext();
+         while(indexRequest != null) {
+            if((long)indexID != indexRequest.key || indexRequest.cacheIndexTable != indexTable || indexRequest.anInt1759 * -612139703 != 0) {
+               indexRequest = (CacheIndexRequest) CacheRequestDispatcher.cacheIndexRequests.getNext();
             } else {
-               var4 = var6.indexData;
+               var4 = indexRequest.indexData;
                break;
             }
          }
@@ -43,12 +44,12 @@ public final class RegionReference {
       }
    }
 
-   static final void method588(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, CollisionMap[] var8, short var9) {
+   static final void method588(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, CollisionMap[] collisionMap, short var9) {
       int var12;
       for(int var10 = 0; var10 < 8; ++var10) {
          for(var12 = 0; var12 < 8; ++var12) {
             if(var10 + var2 > 0 && var10 + var2 < 103 && var12 + var3 > 0 && var3 + var12 < 103) {
-               var8[var1].clipData[var10 + var2][var3 + var12] &= -16777217;
+               collisionMap[var1].clipData[var10 + var2][var3 + var12] &= -16777217;
             }
          }
       }
@@ -159,8 +160,8 @@ public final class RegionReference {
             }
          }
 
-         if(-1 != ClientScript.objectLandscapeIDs[var4] && ClientScriptDefinition.objectData[var4] == null) {
-            ClientScriptDefinition.objectData[var4] = PingRequester.landscapeIndex.getFileData(ClientScript.objectLandscapeIDs[var4], 0, Class47.xteaMapKeys[var4]);
+         if(-1 != objectLandscapeIDs[var4] && ClientScriptDefinition.objectData[var4] == null) {
+            ClientScriptDefinition.objectData[var4] = PingRequester.landscapeIndex.getFileData(objectLandscapeIDs[var4], 0, Class47.xteaMapKeys[var4]);
             if(ClientScriptDefinition.objectData[var4] == null) {
                var6 = false;
                Client.anInt2759 -= 903859995;
@@ -187,7 +188,7 @@ public final class RegionReference {
             byte[] data = ClientScriptDefinition.objectData[var4];
             if(data != null) {
                localX = (GraphicsBuffer.mapCoordinates[var4] >> 8) * 64 - Class100.anInt1388 * 263051377;
-               localY = (GraphicsBuffer.mapCoordinates[var4] & 255) * 64 - Class15.anInt201 * -1743142671;
+               localY = (GraphicsBuffer.mapCoordinates[var4] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
                if(Client.isAtDynamicMap) {
                   localX = 10;
                   localY = 10;
@@ -223,7 +224,7 @@ public final class RegionReference {
                         int var23 = localX + var15;
                         int var8 = localY + var21;
                         if(var23 > 0 && var8 > 0 && var23 < 103 && var8 < 103) {
-                           ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(var18, (byte)0);
+                           ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(var18, (byte) 0);
                            if(var22 != 22 || !Client.lowMemory || 0 != objectDef.anInt2088 * 619772583 || 1 == objectDef.anInt2094 * 795821915 || objectDef.aBool2104) {
                               if(!objectDef.method2178((byte)82)) {
                                  Client.anInt2761 += 1702706361;
@@ -279,19 +280,19 @@ public final class RegionReference {
             ChatMessage.method2010((short)-14602);
             Class23.method343(true, (byte)-61);
             int var7;
-            int var41;
+            int x;
             int var42;
             int var46;
             if(!Client.isAtDynamicMap) {
                byte[] terrainData;
                for(var37 = 0; var37 < terrainDataAmt; ++var37) {
                   localX = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
-                  localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - Class15.anInt201 * -1743142671;
+                  localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
                   terrainData = Class2.terrainData[var37];
                   if(terrainData != null) {
                      Friend.method660(1338432946);
                      var7 = Friend.anInt620 * 1203260360 - 48;
-                     var41 = BuildType.anInt1238 * 1374898232 - 48;
+                     x = BuildType.anInt1238 * 1374898232 - 48;
                      CollisionMap[] collisionMap = Client.clippingPlanes;
 
                      for(var18 = 0; var18 < 4; ++var18) {
@@ -309,7 +310,7 @@ public final class RegionReference {
                      for(int plane = 0; plane < 4; ++plane) {
                         for(var5 = 0; var5 < 64; ++var5) {
                            for(var46 = 0; var46 < 64; ++var46) {
-                              ClientScriptDefinition.method2566(var45, plane, var5 + localX, var46 + localY, var7, var41, 0, (byte)-40);
+                              ClientScriptDefinition.method2566(var45, plane, var5 + localX, var46 + localY, var7, x, 0, (byte)-40);
                            }
                         }
                      }
@@ -318,7 +319,7 @@ public final class RegionReference {
 
                for(var37 = 0; var37 < terrainDataAmt; ++var37) {
                   localX = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
-                  localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - Class15.anInt201 * -1743142671;
+                  localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
                   terrainData = Class2.terrainData[var37];
                   if(terrainData == null && BuildType.anInt1238 * -365008633 < 800) {
                      Friend.method660(1989703340);
@@ -332,14 +333,14 @@ public final class RegionReference {
                   byte[] objectData = ClientScriptDefinition.objectData[var37];
                   if(objectData != null) {
                      localY = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
-                     var42 = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - Class15.anInt201 * -1743142671;
+                     var42 = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
                      Friend.method660(-967525957);
                      ProducingGraphicsBuffer.method1593(objectData, localY, var42, Class56.gameScene, Client.clippingPlanes, (byte)8);
                   }
                }
             }
 
-            int var39;
+            int y;
             if(Client.isAtDynamicMap) {
                for(var37 = 0; var37 < 4; ++var37) {
                   Friend.method660(519229201);
@@ -349,15 +350,15 @@ public final class RegionReference {
                         boolean var43 = false;
                         var7 = Client.anIntArrayArrayArray2766[var37][localX][localY];
                         if(var7 != -1) {
-                           var41 = var7 >> 24 & 3;
-                           var39 = var7 >> 1 & 3;
+                           x = var7 >> 24 & 3;
+                           y = var7 >> 1 & 3;
                            var18 = var7 >> 14 & 1023;
                            var12 = var7 >> 3 & 2047;
                            var5 = var12 / 8 + (var18 / 8 << 8);
 
                            for(var46 = 0; var46 < GraphicsBuffer.mapCoordinates.length; ++var46) {
                               if(GraphicsBuffer.mapCoordinates[var46] == var5 && Class2.terrainData[var46] != null) {
-                                 method588(Class2.terrainData[var46], var37, localX * 8, localY * 8, var41, (var18 & 7) * 8, (var12 & 7) * 8, var39, Client.clippingPlanes, (short)-28440);
+                                 method588(Class2.terrainData[var46], var37, localX * 8, localY * 8, x, (var18 & 7) * 8, (var12 & 7) * 8, y, Client.clippingPlanes, (short)-28440);
                                  var43 = true;
                                  break;
                               }
@@ -391,17 +392,17 @@ public final class RegionReference {
                         var42 = Client.anIntArrayArrayArray2766[var37][localX][localY];
                         if(var42 != -1) {
                            var7 = var42 >> 24 & 3;
-                           var41 = var42 >> 1 & 3;
-                           var39 = var42 >> 14 & 1023;
+                           x = var42 >> 1 & 3;
+                           y = var42 >> 14 & 1023;
                            var18 = var42 >> 3 & 2047;
-                           var12 = (var39 / 8 << 8) + var18 / 8;
+                           var12 = (y / 8 << 8) + var18 / 8;
 
                            for(var5 = 0; var5 < GraphicsBuffer.mapCoordinates.length; ++var5) {
                               if(var12 == GraphicsBuffer.mapCoordinates[var5] && null != ClientScriptDefinition.objectData[var5]) {
                                  byte[] var47 = ClientScriptDefinition.objectData[var5];
                                  var20 = localX * 8;
                                  var21 = localY * 8;
-                                 var15 = (var39 & 7) * 8;
+                                 var15 = (y & 7) * 8;
                                  var22 = (var18 & 7) * 8;
                                  Scene scene = Class56.gameScene;
                                  CollisionMap[] collisionMAp = Client.clippingPlanes;
@@ -431,9 +432,9 @@ public final class RegionReference {
                                        int var30 = var35 >> 2;
                                        int var29 = var35 & 3;
                                        if(var7 == var28 && var34 >= var15 && var34 < var15 + 8 && var32 >= var22 && var32 < 8 + var22) {
-                                          ObjectDefinition objectDef = ChatMessagesContainer.getObjectDefForID(var25, (byte)0);
-                                          int var1 = var20 + Class108_Sub15.method1922(var34 & 7, var32 & 7, var41, objectDef.sizeX * 721302265, objectDef.sizeY * -1917144319, var29, 1637745452);
-                                          int var2 = var21 + BuildType.method1093(var34 & 7, var32 & 7, var41, objectDef.sizeX * 721302265, objectDef.sizeY * -1917144319, var29, 1023920987);
+                                          ObjectDefinition objectDef = ObjectDefinition.getObjectDefForID(var25, (byte) 0);
+                                          int var1 = var20 + MachineInformation.method1922(var34 & 7, var32 & 7, x, objectDef.sizeX * 721302265, objectDef.sizeY * -1917144319, var29, 1637745452);
+                                          int var2 = var21 + BuildType.method1093(var34 & 7, var32 & 7, x, objectDef.sizeX * 721302265, objectDef.sizeY * -1917144319, var29, 1023920987);
                                           if(var1 > 0 && var2 > 0 && var1 < 103 && var2 < 103) {
                                              int var9 = var37;
                                              if(2 == (mapTileSettings[1][var1][var2] & 2)) {
@@ -445,7 +446,7 @@ public final class RegionReference {
                                                 var10 = collisionMAp[var9];
                                              }
 
-                                             Class53_Sub1.method1891(var37, var1, var2, var25, var29 + var41 & 3, var30, scene, var10, (short)-21330);
+                                             Class53_Sub1.method1891(var37, var1, var2, var25, var29 + x & 3, var30, scene, var10, (short)-21330);
                                           }
                                        }
                                     }
@@ -480,7 +481,7 @@ public final class RegionReference {
 
             for(localX = 0; localX < 104; ++localX) {
                for(localY = 0; localY < 104; ++localY) {
-                  Class104.spawnGroundItem(localX, localY, (byte)-103);
+                  Scene.spawnGroundItem(localX, localY, (byte) -103);
                }
             }
 
@@ -495,7 +496,7 @@ public final class RegionReference {
                }
             }
 
-            ObjectDefinition.objectModelCache.method1371();
+            ObjectDefinition.objectModelCache.clearCacheMap();
             if(UnderlayDefinition.aFrame2150 != null) {
                Client.secureBuffer.writePacket(144);
                Client.secureBuffer.writeInt(1057001181);
@@ -507,11 +508,11 @@ public final class RegionReference {
                var42 = (BuildType.anInt1238 * -365008633 - 6) / 8;
                var7 = (6 + BuildType.anInt1238 * -365008633) / 8;
 
-               for(var41 = localX - 1; var41 <= 1 + localY; ++var41) {
-                  for(var39 = var42 - 1; var39 <= var7 + 1; ++var39) {
-                     if(var41 < localX || var41 > localY || var39 < var42 || var39 > var7) {
-                        PingRequester.landscapeIndex.method1024("m" + var41 + "_" + var39);
-                        PingRequester.landscapeIndex.method1024("l" + var41 + "_" + var39);
+               for(x = localX - 1; x <= 1 + localY; ++x) {
+                  for(y = var42 - 1; y <= var7 + 1; ++y) {
+                     if(x < localX || x > localY || y < var42 || y > var7) {
+                        PingRequester.landscapeIndex.loadArchiveForName("m" + x + "_" + y);
+                        PingRequester.landscapeIndex.loadArchiveForName("l" + x + "_" + y);
                      }
                   }
                }
@@ -532,8 +533,27 @@ public final class RegionReference {
             LoginHandler.blendedHueDivisor = null;
             Wall.blendedDirectionTracker = null;
             Client.secureBuffer.writePacket(133);
-            Class15.method296((byte) -80);
+            SoundEffectWorker.method296((byte) -80);
          }
+      }
+   }
+
+   static final int getFloorDrawHeight(int var0, int var1, int var2, int var3) {
+      int var4 = var0 >> 7;
+      int var7 = var1 >> 7;
+      if(var4 >= 0 && var7 >= 0 && var4 <= 103 && var7 <= 103) {
+         int var6 = var2;
+         if(var2 < 3 && (mapTileSettings[1][var4][var7] & 2) == 2) {
+            var6 = var2 + 1;
+         }
+
+         int var5 = var0 & 127;
+         int var8 = var1 & 127;
+         int var9 = var5 * tileHeights[var6][1 + var4][var7] + (128 - var5) * tileHeights[var6][var4][var7] >> 7;
+         int var10 = tileHeights[var6][var4 + 1][1 + var7] * var5 + (128 - var5) * tileHeights[var6][var4][var7 + 1] >> 7;
+         return (128 - var8) * var9 + var8 * var10 >> 7;
+      } else {
+         return 0;
       }
    }
 }

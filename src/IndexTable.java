@@ -3,6 +3,7 @@ import java.io.IOException;
 
 public final class IndexTable {
 
+   static IndexTable cache255Index;
    CacheFile dataFile = null;
    CacheFile indexFile = null;
    int index;

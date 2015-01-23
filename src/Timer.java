@@ -1,17 +1,23 @@
 import java.io.File;
 import java.io.RandomAccessFile;
 
+/**
+ * Credits to Major for some of this.
+ */
 public abstract class Timer {
 
    static int anInt723;
-   public static Class15 aClass15_724;
+   public static SoundEffectWorker aSoundEffectWorker_724;
+   static long lastSetTime;
+   static long someTimeLeft;
+   static Timer clientTimer;
 
 
    static void method713(int var0) {
       CacheFileAccessor var1 = null;
 
       try {
-         var1 = Entity.getPreferencesFileAccessor("", Client.gameDefinition.gameName, true, (byte) 70);
+         var1 = CacheFileAccessor.getPreferencesFileAccessor("", Client.gameDefinition.gameName, true, (byte) 70);
          RSByteBuffer var2 = Ignore.aClass37_386.method631(2045058579);
          var1.method1491(var2.buf, 0, var2.position * 798331555, 473414132);
       } catch (Exception var4) {
@@ -25,6 +31,16 @@ public abstract class Timer {
       } catch (Exception var3) {
          ;
       }
+   }
+
+   public static synchronized long getCurrentTimeMillis(int var0) {
+       long currentTime = System.currentTimeMillis();
+       if (currentTime < -3666040911483064549L * lastSetTime) {
+           someTimeLeft += (-3666040911483064549L * lastSetTime - currentTime) * 3120880967327051097L;
+       }
+
+       lastSetTime = 8990033128397214483L * currentTime;
+       return 1395227801606490857L * someTimeLeft + currentTime;
    }
 
    abstract int method714(int var1, int var2, int var3);

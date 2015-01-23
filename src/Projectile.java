@@ -66,7 +66,7 @@ public final class Projectile extends Renderable {
       this.anInt2533 = var10 * -626069;
       this.anInt2542 = var11 * -949372975;
       this.isMoving = false;
-      int var12 = SpotAnim.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0).animationID * 338579353;
+      int var12 = AnimatedGraphic.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0).animationID * 338579353;
       if(var12 != -1) {
          this.animation = AnimationDefinition.getAnimDefForID(var12, 2017863609);
       } else {
@@ -100,8 +100,8 @@ public final class Projectile extends Renderable {
    }
 
    protected final ModelRasterizer getModelRasterizer(byte var1) {
-      SpotAnim spotAnim = SpotAnim.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0);
-      ModelRasterizer rasterizer = spotAnim.getModelRasterizer(this.currentFrame * -1472651671, -380943559);
+      AnimatedGraphic animatedGraphic = AnimatedGraphic.getSpotAnimForID(this.gfxId * 1528063247, (byte) 0);
+      ModelRasterizer rasterizer = animatedGraphic.getModelRasterizer(this.currentFrame * -1472651671, -380943559);
       if(null == rasterizer) {
          return null;
       } else {
@@ -121,7 +121,7 @@ public final class Projectile extends Renderable {
       if(var0 >= 8000 && var0 <= '\ubb80') {
          Class7.anInt94 = var0 * -557009621;
          Class7.aBool99 = var1;
-         Class71.anInt918 = var2 * -983992405;
+         PingRequester.anInt918 = var2 * -983992405;
       } else {
          throw new IllegalArgumentException();
       }

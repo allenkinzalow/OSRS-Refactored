@@ -12,7 +12,7 @@ public class Class84 {
          int var4 = Class50.aClass108_Sub14_693.readInt();
          var0.method1893(var3, var4, 1387721033);
       } else {
-         GroundItem.submitJs5Request(null, 255, 255, 0, (byte) 0, true, (byte) 77);
+         Js5Request.submitJs5Request(null, 255, 255, 0, (byte) 0, true, (byte) 77);
          Class78.aClass74_Sub1Array1214[var1] = var0;
       }
    }
@@ -44,14 +44,14 @@ public class Class84 {
 
       int var6 = var2 * (var3 - 32 - var7) / (var4 - var3);
       Rasterizer2D.drawFilledRectangle(var0, var6 + var1 + 16, 16, var7, Client.anInt2782 * -1489754135);
-      Rasterizer2D.method2508(var0, var6 + var1 + 16, var7, Client.anInt2784 * 1934976019);
-      Rasterizer2D.method2508(1 + var0, 16 + var1 + var6, var7, Client.anInt2784 * 1934976019);
-      Rasterizer2D.method2506(var0, var6 + 16 + var1, 16, Client.anInt2784 * 1934976019);
-      Rasterizer2D.method2506(var0, var6 + var1 + 17, 16, Client.anInt2784 * 1934976019);
-      Rasterizer2D.method2508(15 + var0, var1 + 16 + var6, var7, Client.anInt2783 * -964724323);
-      Rasterizer2D.method2508(14 + var0, var6 + var1 + 17, var7 - 1, Client.anInt2783 * -964724323);
-      Rasterizer2D.method2506(var0, var7 + 15 + var1 + var6, 16, Client.anInt2783 * -964724323);
-      Rasterizer2D.method2506(var0 + 1, var7 + var6 + 14 + var1, 15, Client.anInt2783 * -964724323);
+      Rasterizer2D.drawVerticalLine(var0, var6 + var1 + 16, var7, Client.anInt2784 * 1934976019);
+      Rasterizer2D.drawVerticalLine(1 + var0, 16 + var1 + var6, var7, Client.anInt2784 * 1934976019);
+      Rasterizer2D.drawHorizontalLine(var0, var6 + 16 + var1, 16, Client.anInt2784 * 1934976019);
+      Rasterizer2D.drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.anInt2784 * 1934976019);
+      Rasterizer2D.drawVerticalLine(15 + var0, var1 + 16 + var6, var7, Client.anInt2783 * -964724323);
+      Rasterizer2D.drawVerticalLine(14 + var0, var6 + var1 + 17, var7 - 1, Client.anInt2783 * -964724323);
+      Rasterizer2D.drawHorizontalLine(var0, var7 + 15 + var1 + var6, 16, Client.anInt2783 * -964724323);
+      Rasterizer2D.drawHorizontalLine(var0 + 1, var7 + var6 + 14 + var1, 15, Client.anInt2783 * -964724323);
    }
 
    public static int method1121(CharSequence var0, int var1, byte var2) {

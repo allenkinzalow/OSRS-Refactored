@@ -30,31 +30,31 @@ public class CacheConstants {
    static final void method1097(int configID, byte var1) {
       Client.method3554(-1192704029);
       ChatMessagesContainer.method346(151864213);
-      int config = SpotAnim.method2149(configID, (byte)4).configType * -1110014191;
+      int config = AnimatedGraphic.method2149(configID, (byte) 4).configType * -1110014191;
       if(0 != config) {
          int value = Class88.configSettings[configID];
          if(1 == config) { // adjust lighting
             if(1 == value) {
                Rasterizer3D.method2976(0.9D);
-               ((TextureLoader)Rasterizer3D.anInterface2_2501).method384(0.9D);
+               ((TextureLoader)Rasterizer3D.anTextureImage_2501).method384(0.9D);
             }
 
             if(2 == value) {
                Rasterizer3D.method2976(0.8D);
-               ((TextureLoader)Rasterizer3D.anInterface2_2501).method384(0.8D);
+               ((TextureLoader)Rasterizer3D.anTextureImage_2501).method384(0.8D);
             }
 
             if(value == 3) {
                Rasterizer3D.method2976(0.7D);
-               ((TextureLoader)Rasterizer3D.anInterface2_2501).method384(0.7D);
+               ((TextureLoader)Rasterizer3D.anTextureImage_2501).method384(0.7D);
             }
 
             if(value == 4) {
                Rasterizer3D.method2976(0.6D);
-               ((TextureLoader)Rasterizer3D.anInterface2_2501).method384(0.6D);
+               ((TextureLoader)Rasterizer3D.anTextureImage_2501).method384(0.6D);
             }
 
-            ItemDefinition.itemSpriteMap.method1371();
+            ItemDefinition.itemSpriteMap.clearCacheMap();
          }
 
          if(config == 3) {
@@ -85,11 +85,11 @@ public class CacheConstants {
                   Client.aBool2938 = false;
                } else if(var6 == 0) {
                   Class32.aClass108_Sub4_Sub3_464.method2610(1521857055);
-                  Class91.anInt1325 = -771978757;
+                  SongReference.anInt1325 = -771978757;
                   RSInterface.aClass74_1889 = null;
                   Client.aBool2938 = false;
-               } else if(0 != Class91.anInt1325 * 485824819) {
-                  Class27.anInt362 = var6 * 495527089;
+               } else if(0 != SongReference.anInt1325 * 485824819) {
+                  SoundEffectWorker.anInt362 = var6 * 495527089;
                } else {
                   Class32.aClass108_Sub4_Sub3_464.method2637(var6, -2140515307);
                }

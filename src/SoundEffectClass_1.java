@@ -1,4 +1,4 @@
-public class Class12 {
+public class SoundEffectClass_1 {
 
 	int anInt174 = RSSoundEffect_2.method1643(16);
 	int anInt173 = RSSoundEffect_2.method1643(24);
@@ -9,7 +9,7 @@ public class Class12 {
 	int[] anIntArray178;
 
 
-	Class12() {
+	SoundEffectClass_1() {
 		int[] var1 = new int[this.anInt175];
 
 		int var2;

@@ -15,7 +15,7 @@ public final class InteractableObject {
    int anInt582;
    int anInt583 = 0;
    static int[] anIntArray584;
-   public int anInt586 = 0;
+   public int hash = 0;
 
 
    static final void method648(int var0) {
@@ -32,7 +32,7 @@ public final class InteractableObject {
       }
 
       System.gc();
-      Class15.method288(2, 2134470595);
+      SoundEffectWorker.method288(2, 2134470595);
       Client.anInt2937 = 834881831;
       Client.aBool2938 = false;
       ChatMessage.method2010((short)-6014);

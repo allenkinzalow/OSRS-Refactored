@@ -1,5 +1,5 @@
 
-public class Class18 {
+public class SoundEffectContainer {
 
    int[] anIntArray226;
    int anInt227;
@@ -7,7 +7,7 @@ public class Class18 {
    int anInt229;
 
 
-   Class18() {
+   SoundEffectContainer() {
       RSSoundEffect_2.method1643(16);
       this.anInt229 = RSSoundEffect_2.method1618() != 0?RSSoundEffect_2.method1643(4) + 1:1;
       if(RSSoundEffect_2.method1618() != 0) {

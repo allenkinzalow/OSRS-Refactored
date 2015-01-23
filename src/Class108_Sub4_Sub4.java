@@ -180,7 +180,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                if(4 == opcode) {
                   var10 = rsinter_opcodes[opcode_index++] << 16;
                   var10 += rsinter_opcodes[opcode_index++];
-                  var11 = CacheIndexRequest.getInterfaceComponentForHash(var10, 1426632239);
+                  var11 = RSInterface.getInterfaceComponentForHash(var10, 1426632239);
                   var12 = rsinter_opcodes[opcode_index++];
                   if(var12 != -1 && (!ItemDefinition.getItemDefinition(var12, 14463529).members || Client.aBool2710)) {
                      for(var13 = 0; var13 < var11.widgetItems.length; ++var13) {
@@ -218,7 +218,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                if(opcode == 10) {
                   var10 = rsinter_opcodes[opcode_index++] << 16;
                   var10 += rsinter_opcodes[opcode_index++];
-                  var11 = CacheIndexRequest.getInterfaceComponentForHash(var10, 77589357);
+                  var11 = RSInterface.getInterfaceComponentForHash(var10, 77589357);
                   var12 = rsinter_opcodes[opcode_index++];
                   if(-1 != var12 && (!ItemDefinition.getItemDefinition(var12, -1377973379).members || Client.aBool2710)) {
                      for(var13 = 0; var13 < var11.widgetItems.length; ++var13) {
@@ -266,7 +266,7 @@ public class Class108_Sub4_Sub4 extends Class108_Sub4 {
                }
 
                if(19 == opcode) {
-                  opcodeValue = (Player.myPlayer.anInt2339 * 826764905 >> 7) + Class15.anInt201 * -1743142671;
+                  opcodeValue = (Player.myPlayer.anInt2339 * 826764905 >> 7) + SoundEffectWorker.anInt201 * -1743142671;
                }
 
                if(20 == opcode) {

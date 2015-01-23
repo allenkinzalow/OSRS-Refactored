@@ -47,21 +47,4 @@ public class Class108_Sub12 extends Node {
       }
    }
 
-   public static NPCDefinition getNPCDefForID(int npcID, int var1) {
-      NPCDefinition npcDef = (NPCDefinition)NPCDefinition.npcDefinitionCache.get((long)npcID);
-      if(npcDef != null) {
-         return npcDef;
-      } else {
-         byte[] npcDefData = NPCDefinition.configIndexReference.getFile(9, npcID, (byte) 7);
-         npcDef = new NPCDefinition();
-         npcDef.npcID = npcID * -582391805;
-         if(npcDefData != null) {
-            npcDef.decode(new RSByteBuffer(npcDefData), 1749628579);
-         }
-
-         npcDef.method2285((byte)11);
-         NPCDefinition.npcDefinitionCache.put(npcDef, (long)npcID);
-         return npcDef;
-      }
-   }
 }

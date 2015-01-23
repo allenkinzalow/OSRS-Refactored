@@ -1,4 +1,6 @@
-
+/**
+ * Credits to someone else for this class.
+ */
 public class SoundTrackEnvelope {
 
    int[] anIntArray26 = new int[2];

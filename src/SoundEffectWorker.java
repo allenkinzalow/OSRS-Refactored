@@ -1,7 +1,8 @@
 import java.awt.Component;
 
-public class Class15 {
+public class SoundEffectWorker {
 
+   public static int anInt362;
    AbstractIndex soundEffectIndex_R1;
    AbstractIndex soundEffectIndex_R2;
    HashTable aClass101_200 = new HashTable(256);
@@ -28,10 +29,10 @@ public class Class15 {
             }
 
             var8.method126(var8.anInt100 * 741136993);
-            if(Class71.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
+            if(PingRequester.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
                Class108_Sub20_Sub3.aClass14_1965 = new Class14();
                Class108_Sub20_Sub3.aClass14_1965.aClass61_192 = var0;
-               var0.method820(Class108_Sub20_Sub3.aClass14_1965, Class71.anInt918 * 523094787, -1606001026);
+               var0.method820(Class108_Sub20_Sub3.aClass14_1965, PingRequester.anInt918 * 523094787, -1606001026);
             }
 
             if(null != Class108_Sub20_Sub3.aClass14_1965) {
@@ -51,10 +52,10 @@ public class Class15 {
                var5.method125(var1);
                var5.anInt100 = 1382563840;
                var5.method126(var5.anInt100 * 741136993);
-               if(Class71.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
+               if(PingRequester.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
                   Class108_Sub20_Sub3.aClass14_1965 = new Class14();
                   Class108_Sub20_Sub3.aClass14_1965.aClass61_192 = var0;
-                  var0.method820(Class108_Sub20_Sub3.aClass14_1965, Class71.anInt918 * 523094787, -1673424199);
+                  var0.method820(Class108_Sub20_Sub3.aClass14_1965, PingRequester.anInt918 * 523094787, -1673424199);
                }
 
                if(null != Class108_Sub20_Sub3.aClass14_1965) {
@@ -111,22 +112,22 @@ public class Class15 {
    }
 
    public static void method288(int var0, int var1) {
-      Class91.anInt1325 = -771978757;
+      SongReference.anInt1325 = -771978757;
       RSInterface.aClass74_1889 = null;
-      Class91.anInt1329 = 2020957493;
+      SongReference.anInt1329 = 2020957493;
       OnlineFriend.anInt1511 = 1300146319;
-      Class27.anInt362 = 0;
+      anInt362 = 0;
       FriendsChatMember.aBool1669 = false;
       ClientScriptDefinition.anInt2281 = var0 * 1352655839;
    }
 
-   public Class15(AbstractIndex var1, AbstractIndex var2) {
+   public SoundEffectWorker(AbstractIndex var1, AbstractIndex var2) {
       this.soundEffectIndex_R1 = var1;
       this.soundEffectIndex_R2 = var2;
    }
 
    protected static final void method296(byte var0) {
-      Class36.clientTimer.method720(51940008);
+      Timer.clientTimer.method720(51940008);
 
       int var1;
       for(var1 = 0; var1 < 32; ++var1) {
@@ -169,10 +170,6 @@ public class Class15 {
             return var6;
          }
       }
-   }
-
-   static final void method298(Class1 var0, int var1, int var2, short var3) {
-      MouseCapturer.processClickAction(var0.anInt7 * 313474189, var0.anInt2 * 209465825, var0.anInt4 * -647975407, var0.anInt6 * -2100227435, var0.aString5, var0.aString5, var1, var2, -457306493);
    }
 
    public Class108_Sub1_Sub1 method299(int var1, int[] var2, int var3) {

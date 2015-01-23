@@ -54,6 +54,29 @@ public class ObjectDefinition extends CacheableNode {
    public boolean aBool2114 = true;
    static RSFont p12_full_font;
 
+   public static ObjectDefinition getObjectDefForID(int objectID, byte var1) {
+       ObjectDefinition objectDef = (ObjectDefinition) objectDefMap.get((long) objectID);
+       if (objectDef != null) {
+           return objectDef;
+       } else {
+           byte[] objectData = aClass74_2066.getFile(6, objectID, (byte) 7);
+           objectDef = new ObjectDefinition();
+           objectDef.objectID = objectID * -743597329;
+           if (null != objectData) {
+               objectDef.decode(new RSByteBuffer(objectData), (byte) 79);
+           }
+
+           objectDef.method2174(1656964186);
+           if (objectDef.isSolid) {
+               objectDef.anInt2094 = 0;
+               objectDef.aBool2114 = false;
+           }
+
+           objectDefMap.put(objectDef, (long) objectID);
+           return objectDef;
+       }
+   }
+
 
    void method2174(int var1) {
       if(this.anInt2088 * 619772583 == -1) {
@@ -386,7 +409,7 @@ public class ObjectDefinition extends CacheableNode {
       }
 
       return var2 >= 0 && var2 < this.configChangeDest.length && -1 != this.configChangeDest[var2] ? 
-    		  ChatMessagesContainer.getObjectDefForID(this.configChangeDest[var2], (byte)0) : null;
+    		  getObjectDefForID(this.configChangeDest[var2], (byte) 0) : null;
    }
 
    void decode(RSByteBuffer buffer, byte var2) {
@@ -401,7 +424,7 @@ public class ObjectDefinition extends CacheableNode {
    }
 
    public static void method2199() {
-      OverlayFloorDefinition.overlayFloorMap.method1371();
+      OverlayFloorDefinition.overlayFloorMap.clearCacheMap();
    }
 
    public boolean method2206() {
@@ -410,7 +433,7 @@ public class ObjectDefinition extends CacheableNode {
       } else {
          for(int var2 = 0; var2 < this.configChangeDest.length; ++var2) {
             if(this.configChangeDest[var2] != -1) {
-               ObjectDefinition var3 = ChatMessagesContainer.getObjectDefForID(this.configChangeDest[var2], (byte)0);
+               ObjectDefinition var3 = getObjectDefForID(this.configChangeDest[var2], (byte) 0);
                if(var3.anInt2110 * 849129685 != -1 || null != var3.anIntArray2084) {
                   return true;
                }
@@ -969,7 +992,7 @@ public class ObjectDefinition extends CacheableNode {
 
          Rasterizer2D.setRasterizationRect(0, 9, 128, var22 + 7);
          Class4.aClass108_Sub20_Sub15_Sub1_40.drawSprite(0, 0);
-         Rasterizer2D.method2495();
+         Rasterizer2D.reset();
          var4 = 0;
          var26 = 6885;
 
@@ -1000,7 +1023,7 @@ public class ObjectDefinition extends CacheableNode {
 
          Rasterizer2D.setRasterizationRect(637, 9, 765, 7 + var22);
          Class41.aClass108_Sub20_Sub15_Sub1_588.drawSprite(382, 0);
-         Rasterizer2D.method2495();
+         Rasterizer2D.reset();
          var4 = 0;
          var26 = 7546;
 
@@ -1028,12 +1051,12 @@ public class ObjectDefinition extends CacheableNode {
 
          MouseCapturer.aClass108_Sub20_Sub15_Sub2Array383[Ignore.aClass37_386.aBool529?1:0].drawSprite(725, 463);
          if(Client.loginLoadingStage * 1315883169 > 5 && Client.anInt2712 * 148074329 == 0) {
-            if(Class50.aClass108_Sub20_Sub15_Sub2_702 != null) {
+            if(World.switchWorldSprite != null) {
                var3 = 5;
                var24 = 463;
                byte var32 = 100;
                byte var27 = 35;
-               Class50.aClass108_Sub20_Sub15_Sub2_702.drawSprite(var3, var24);
+               World.switchWorldSprite.drawSprite(var3, var24);
                b12_full.drawStringCenter(StringUtilities.aString1114 + " " + Client.worldID * 292541855, var3 + var32 / 2, var24 + var27 / 2 - 2, 16777215, 0);
                if(null != Class77.aClass43_1203) {
                   p11_full.drawStringCenter(StringUtilities.LOADING, var32 / 2 + var3, 12 + var24 + var27 / 2, 16777215, 0);
@@ -1041,7 +1064,7 @@ public class ObjectDefinition extends CacheableNode {
                   p11_full.drawStringCenter(StringUtilities.CLICK_TO_SWITCH, var32 / 2 + var3, 12 + var24 + var27 / 2, 16777215, 0);
                }
             } else {
-               Class50.aClass108_Sub20_Sub15_Sub2_702 = Renderable.method2488(Class23.spriteIndex, "sl_button", "", (byte)2);
+               World.switchWorldSprite = Renderable.method2488(Class23.spriteIndex, "sl_button", "", (byte)2);
             }
          }
 
@@ -1112,7 +1135,7 @@ public class ObjectDefinition extends CacheableNode {
 
       var6 = Item.anInt2616 * -1461479521 >> 7;
       var7 = GroundItem.anInt480 * -1594540275 >> 7;
-      int var8 = ClientScript.getFloorDrawHeight(Item.anInt2616 * -1461479521, GroundItem.anInt480 * -1594540275, VarpBit.plane * -570926309, 1820764416);
+      int var8 = RegionReference.getFloorDrawHeight(Item.anInt2616 * -1461479521, GroundItem.anInt480 * -1594540275, VarpBit.plane * -570926309, 1820764416);
       int var9 = 0;
       int var3;
       if(var6 > 3 && var7 > 3 && var6 < 100 && var7 < 100) {

@@ -39,7 +39,7 @@ public final class BZip2Context {
    int[][] anIntArrayArray276 = new int[6][258];
    int anInt277;
    int anInt278;
-   static int anInt279;
+   static int xCameraPos;
 
 
 }

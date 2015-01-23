@@ -7,17 +7,17 @@ public class RSModel extends Renderable {
    int[] vertexY;
    int triangleFaceCount = 0;
    int[] trianglePointsX;
-   int[] anIntArray2560;
+   int[] vertexSkins;
    int[] trianglePointsZ;
    int anInt2562;
    int[] trianglePointsY;
    byte[] faceAlphas;
    public short aShort2565;
    byte[] faceRenderType;
-   short[] aShortArray2567;
-   byte aByte2568 = 0;
+   short[] faceTextures;
+   byte priority = 0;
    int anInt2569;
-   byte[] aByteArray2570;
+   byte[] textureRenderTypes;
    short[] texTriangleY;
    static int[] anIntArray2572 = Rasterizer3D.SINE;
    short[] texTriangleZ;
@@ -28,8 +28,8 @@ public class RSModel extends Renderable {
    short[] aShortArray2578;
    boolean aBool2579 = false;
    byte[] aByteArray2580;
-   byte[] aByteArray2581;
-   int[] anIntArray2582;
+   byte[] textureCoords;
+   int[] triangleSkinValues;
    int[][] anIntArrayArray2583;
    int[][] anIntArrayArray2584;
    Class16[] aClass16Array2585;
@@ -37,7 +37,7 @@ public class RSModel extends Renderable {
    VertexNormal[] aClass49Array2587;
    VertexNormal[] vertexNormalArray;
    public short aShort2589;
-   short[] aShortArray2590;
+   short[] faceColor;
    int shadowIntensity;
    int anInt2592;
    int anInt2593;
@@ -46,7 +46,7 @@ public class RSModel extends Renderable {
    static int[] anIntArray2596 = new int[10000];
    static int[] anIntArray2597 = new int[10000];
    int vertexCount = 0;
-   short[] aShortArray2599;
+   short[] texturePrimaryColor;
    static int[] anIntArray2600 = Rasterizer3D.COSINE;
 
 
@@ -86,97 +86,97 @@ public class RSModel extends Renderable {
       int triangleCount = var2.readUShort(2143709516);
       int textureTriangleCount = var2.readUByte();
       int var13 = var2.readUByte();
-      int var32 = var2.readUByte();
+      int modelPriority = var2.readUByte();
       int var50 = var2.readUByte();
       int var17 = var2.readUByte();
-      int var18 = var2.readUByte();
-      int var19 = var2.readUByte();
+      int modelTexture = var2.readUByte();
+      int modelVertexSkins = var2.readUByte();
       int var20 = var2.readUShort(-362432543);
       int var21 = var2.readUShort(606911415);
       int var42 = var2.readUShort(-604351495);
       int var22 = var2.readUShort(-2085977155);
       int var38 = var2.readUShort(967973759);
-      int var23 = 0;
+      int textureAmount = 0;
       int var7 = 0;
       int var29 = 0;
-      int var4;
+      int position;
       if(textureTriangleCount > 0) {
-         this.aByteArray2570 = new byte[textureTriangleCount];
+         this.textureRenderTypes = new byte[textureTriangleCount];
          var2.position = 0;
 
-         for(var4 = 0; var4 < textureTriangleCount; ++var4) {
-            byte var26 = this.aByteArray2570[var4] = var2.readByte();
-            if(var26 == 0) {
-               ++var23;
+         for(position = 0; position < textureTriangleCount; ++position) {
+            byte renderType = this.textureRenderTypes[position] = var2.readByte();
+            if(renderType == 0) {
+               ++textureAmount;
             }
 
-            if(var26 >= 1 && var26 <= 3) {
+            if(renderType >= 1 && renderType <= 3) {
                ++var7;
             }
 
-            if(var26 == 2) {
+            if(renderType == 2) {
                ++var29;
             }
          }
       }
 
-      var4 = textureTriangleCount + verticeCount;
-      int var31 = var4;
+      position = textureTriangleCount + verticeCount;
+      int renderTypePos = position;
       if(var13 == 1) {
-         var4 += triangleCount;
+         position += triangleCount;
       }
 
-      int var49 = var4;
-      var4 += triangleCount;
-      int var33 = var4;
-      if(var32 == 255) {
-         var4 += triangleCount;
+      int var49 = position;
+      position += triangleCount;
+      int priorityPos = position;
+      if(modelPriority == 255) {
+         position += triangleCount;
       }
 
-      int var27 = var4;
+      int triangleSkinPos = position;
       if(var17 == 1) {
-         var4 += triangleCount;
+         position += triangleCount;
       }
 
-      int var35 = var4;
-      if(var19 == 1) {
-         var4 += verticeCount;
+      int var35 = position;
+      if(modelVertexSkins == 1) {
+         position += verticeCount;
       }
 
-      int var36 = var4;
+      int alphaPos = position;
       if(var50 == 1) {
-         var4 += triangleCount;
+         position += triangleCount;
       }
 
-      int var11 = var4;
-      var4 += var22;
-      int var44 = var4;
-      if(var18 == 1) {
-         var4 += triangleCount * 2;
+      int var11 = position;
+      position += var22;
+      int texturePos = position;
+      if(modelTexture == 1) {
+         position += triangleCount * 2;
       }
 
-      int var52 = var4;
-      var4 += var38;
-      int var39 = var4;
-      var4 += triangleCount * 2;
-      int var40 = var4;
-      var4 += var20;
-      int var41 = var4;
-      var4 += var21;
-      int var8 = var4;
-      var4 += var42;
-      int var43 = var4;
-      var4 += var23 * 6;
-      int var37 = var4;
-      var4 += var7 * 6;
-      int var48 = var4;
-      var4 += var7 * 6;
-      int var56 = var4;
-      var4 += var7 * 2;
-      int var45 = var4;
-      var4 += var7;
-      int var46 = var4;
-      var4 += var7 * 2 + var29 * 2;
+      int textureCoordPos = position;
+      position += var38;
+      int colorPos = position;
+      position += triangleCount * 2;
+      int var40 = position;
+      position += var20;
+      int var41 = position;
+      position += var21;
+      int var8 = position;
+      position += var42;
+      int var43 = position;
+      position += textureAmount * 6;
+      int var37 = position;
+      position += var7 * 6;
+      int var48 = position;
+      position += var7 * 6;
+      int var56 = position;
+      position += var7 * 2;
+      int var45 = position;
+      position += var7;
+      int var46 = position;
+      position += var7 * 2 + var29 * 2;
       this.vertexCount = verticeCount;
       this.triangleFaceCount = triangleCount;
       this.anInt2569 = textureTriangleCount;
@@ -186,18 +186,18 @@ public class RSModel extends Renderable {
       this.trianglePointsX = new int[triangleCount];
       this.trianglePointsY = new int[triangleCount];
       this.trianglePointsZ = new int[triangleCount];
-      if(var19 == 1) {
-         this.anIntArray2560 = new int[verticeCount];
+      if(modelVertexSkins == 1) {
+         this.vertexSkins = new int[verticeCount];
       }
 
       if(var13 == 1) {
          this.faceRenderType = new byte[triangleCount];
       }
 
-      if(var32 == 255) {
+      if(modelPriority == 255) {
          this.faceRenderPriorities = new byte[triangleCount];
       } else {
-         this.aByte2568 = (byte)var32;
+         this.priority = (byte)modelPriority;
       }
 
       if(var50 == 1) {
@@ -205,18 +205,18 @@ public class RSModel extends Renderable {
       }
 
       if(var17 == 1) {
-         this.anIntArray2582 = new int[triangleCount];
+         this.triangleSkinValues = new int[triangleCount];
       }
 
-      if(var18 == 1) {
-         this.aShortArray2567 = new short[triangleCount];
+      if(modelTexture == 1) {
+         this.faceTextures = new short[triangleCount];
       }
 
-      if(var18 == 1 && textureTriangleCount > 0) {
-         this.aByteArray2581 = new byte[triangleCount];
+      if(modelTexture == 1 && textureTriangleCount > 0) {
+         this.textureCoords = new byte[triangleCount];
       }
 
-      this.aShortArray2590 = new short[triangleCount];
+      this.faceColor = new short[triangleCount];
       if(textureTriangleCount > 0) {
          this.texTriangleX = new short[textureTriangleCount];
          this.texTriangleY = new short[textureTriangleCount];
@@ -231,7 +231,7 @@ public class RSModel extends Renderable {
          }
 
          if(var29 > 0) {
-            this.aShortArray2599 = new short[var29];
+            this.texturePrimaryColor = new short[var29];
          }
       }
 
@@ -240,125 +240,125 @@ public class RSModel extends Renderable {
       var3.position = var41 * 537964811;
       var28.position = var8 * 537964811;
       var6.position = var35 * 537964811;
-      int var53 = 0;
-      int var54 = 0;
-      int var34 = 0;
+      int vX = 0;
+      int vY = 0;
+      int vZ = 0;
 
-      int var9;
+      int vertexZOffset;
       int var10;
-      int var14;
+      int vertexYOffset;
       int var15;
-      int var25;
-      for(var25 = 0; var25 < verticeCount; ++var25) {
-         var10 = var2.readUByte();
-         var15 = 0;
-         if((var10 & 1) != 0) {
-            var15 = var24.method1746(1113333989);
+      int point;
+      for(point = 0; point < verticeCount; ++point) {
+         int vertexFlags = var2.readUByte();
+         int vertexXOffset = 0;
+         if((vertexFlags & 1) != 0) {
+            vertexXOffset = var24.method1746(1113333989);
          }
 
-         var14 = 0;
-         if((var10 & 2) != 0) {
-            var14 = var3.method1746(1113333989);
+         vertexYOffset = 0;
+         if((vertexFlags & 2) != 0) {
+            vertexYOffset = var3.method1746(1113333989);
          }
 
-         var9 = 0;
-         if((var10 & 4) != 0) {
-            var9 = var28.method1746(1113333989);
+         vertexZOffset = 0;
+         if((vertexFlags & 4) != 0) {
+            vertexZOffset = var28.method1746(1113333989);
          }
 
-         this.vertexX[var25] = var53 + var15;
-         this.vertexY[var25] = var54 + var14;
-         this.vertexZ[var25] = var34 + var9;
-         var53 = this.vertexX[var25];
-         var54 = this.vertexY[var25];
-         var34 = this.vertexZ[var25];
-         if(var19 == 1) {
-            this.anIntArray2560[var25] = var6.readUByte();
+         this.vertexX[point] = vX + vertexXOffset;
+         this.vertexY[point] = vY + vertexYOffset;
+         this.vertexZ[point] = vZ + vertexZOffset;
+         vX = this.vertexX[point];
+         vY = this.vertexY[point];
+         vZ = this.vertexZ[point];
+         if(modelVertexSkins == 1) {
+            this.vertexSkins[point] = var6.readUByte();
          }
       }
 
-      var2.position = var39 * 537964811;
-      var24.position = var31 * 537964811;
-      var3.position = var33 * 537964811;
-      var28.position = var36 * 537964811;
-      var6.position = var27 * 537964811;
-      var55.position = var44 * 537964811;
-      var51.position = var52 * 537964811;
+      var2.position = colorPos * 537964811;
+      var24.position = renderTypePos * 537964811;
+      var3.position = priorityPos * 537964811;
+      var28.position = alphaPos * 537964811;
+      var6.position = triangleSkinPos * 537964811;
+      var55.position = texturePos * 537964811;
+      var51.position = textureCoordPos * 537964811;
 
-      for(var25 = 0; var25 < triangleCount; ++var25) {
-         this.aShortArray2590[var25] = (short)var2.readUShort(-1731836965);
+      for(point = 0; point < triangleCount; ++point) {
+         this.faceColor[point] = (short)var2.readUShort(-1731836965);
          if(var13 == 1) {
-            this.faceRenderType[var25] = var24.readByte();
+            this.faceRenderType[point] = var24.readByte();
          }
 
-         if(var32 == 255) {
-            this.faceRenderPriorities[var25] = var3.readByte();
+         if(modelPriority == 255) {
+            this.faceRenderPriorities[point] = var3.readByte();
          }
 
          if(var50 == 1) {
-            this.faceAlphas[var25] = var28.readByte();
+            this.faceAlphas[point] = var28.readByte();
          }
 
          if(var17 == 1) {
-            this.anIntArray2582[var25] = var6.readUByte();
+            this.triangleSkinValues[point] = var6.readUByte();
          }
 
-         if(var18 == 1) {
-            this.aShortArray2567[var25] = (short)(var55.readUShort(1555000976) - 1);
+         if(modelTexture == 1) {
+            this.faceTextures[point] = (short)(var55.readUShort(1555000976) - 1);
          }
 
-         if(this.aByteArray2581 != null && this.aShortArray2567[var25] != -1) {
-            this.aByteArray2581[var25] = (byte)(var51.readUByte() - 1);
+         if(this.textureCoords != null && this.faceTextures[point] != -1) {
+            this.textureCoords[point] = (byte)(var51.readUByte() - 1);
          }
       }
 
       var2.position = var11 * 537964811;
       var24.position = var49 * 537964811;
-      var25 = 0;
-      var10 = 0;
-      var15 = 0;
-      var14 = 0;
+      int trianglePointX = 0;
+      int trianglePointY = 0;
+      int trianglePointZ = 0;
+      vertexYOffset = 0;
 
       int var16;
-      for(var9 = 0; var9 < triangleCount; ++var9) {
-         var16 = var24.readUByte();
-         if(var16 == 1) {
-            var25 = var2.method1746(1113333989) + var14;
-            var10 = var2.method1746(1113333989) + var25;
-            var15 = var2.method1746(1113333989) + var10;
-            var14 = var15;
-            this.trianglePointsX[var9] = var25;
-            this.trianglePointsY[var9] = var10;
-            this.trianglePointsZ[var9] = var15;
+      for(vertexZOffset = 0; vertexZOffset < triangleCount; ++vertexZOffset) {
+         int numFaces = var24.readUByte();
+         if(numFaces == 1) {
+            trianglePointX = var2.method1746(1113333989) + vertexYOffset;
+            trianglePointY = var2.method1746(1113333989) + trianglePointX;
+            trianglePointZ = var2.method1746(1113333989) + trianglePointY;
+            vertexYOffset = trianglePointZ;
+            this.trianglePointsX[vertexZOffset] = trianglePointX;
+            this.trianglePointsY[vertexZOffset] = trianglePointY;
+            this.trianglePointsZ[vertexZOffset] = trianglePointZ;
          }
 
-         if(var16 == 2) {
-            var10 = var15;
-            var15 = var2.method1746(1113333989) + var14;
-            var14 = var15;
-            this.trianglePointsX[var9] = var25;
-            this.trianglePointsY[var9] = var10;
-            this.trianglePointsZ[var9] = var15;
+         if(numFaces == 2) {
+            trianglePointY = trianglePointZ;
+            trianglePointZ = var2.method1746(1113333989) + vertexYOffset;
+            vertexYOffset = trianglePointZ;
+            this.trianglePointsX[vertexZOffset] = trianglePointX;
+            this.trianglePointsY[vertexZOffset] = trianglePointY;
+            this.trianglePointsZ[vertexZOffset] = trianglePointZ;
          }
 
-         if(var16 == 3) {
-            var25 = var15;
-            var15 = var2.method1746(1113333989) + var14;
-            var14 = var15;
-            this.trianglePointsX[var9] = var25;
-            this.trianglePointsY[var9] = var10;
-            this.trianglePointsZ[var9] = var15;
+         if(numFaces == 3) {
+            trianglePointX = trianglePointZ;
+            trianglePointZ = var2.method1746(1113333989) + vertexYOffset;
+            vertexYOffset = trianglePointZ;
+            this.trianglePointsX[vertexZOffset] = trianglePointX;
+            this.trianglePointsY[vertexZOffset] = trianglePointY;
+            this.trianglePointsZ[vertexZOffset] = trianglePointZ;
          }
 
-         if(var16 == 4) {
-            int var57 = var25;
-            var25 = var10;
-            var10 = var57;
-            var15 = var2.method1746(1113333989) + var14;
-            var14 = var15;
-            this.trianglePointsX[var9] = var25;
-            this.trianglePointsY[var9] = var57;
-            this.trianglePointsZ[var9] = var15;
+         if(numFaces == 4) {
+            int var57 = trianglePointX;
+            trianglePointX = trianglePointY;
+            trianglePointY = var57;
+            trianglePointZ = var2.method1746(1113333989) + vertexYOffset;
+            vertexYOffset = trianglePointZ;
+            this.trianglePointsX[vertexZOffset] = trianglePointX;
+            this.trianglePointsY[vertexZOffset] = var57;
+            this.trianglePointsZ[vertexZOffset] = trianglePointZ;
          }
       }
 
@@ -369,55 +369,55 @@ public class RSModel extends Renderable {
       var6.position = var45 * 537964811;
       var55.position = var46 * 537964811;
 
-      for(var9 = 0; var9 < textureTriangleCount; ++var9) {
-         var16 = this.aByteArray2570[var9] & 255;
-         if(var16 == 0) {
-            this.texTriangleX[var9] = (short)var2.readUShort(-1754757119);
-            this.texTriangleY[var9] = (short)var2.readUShort(-880205756);
-            this.texTriangleZ[var9] = (short)var2.readUShort(-409278489);
+      for(int texIndex = 0; texIndex < textureTriangleCount; ++texIndex) {
+         int type = this.textureRenderTypes[texIndex] & 255;
+         if(type == 0) {
+            this.texTriangleX[texIndex] = (short)var2.readUShort(-1754757119);
+            this.texTriangleY[texIndex] = (short)var2.readUShort(-880205756);
+            this.texTriangleZ[texIndex] = (short)var2.readUShort(-409278489);
          }
 
-         if(var16 == 1) {
-            this.texTriangleX[var9] = (short)var24.readUShort(-1497790075);
-            this.texTriangleY[var9] = (short)var24.readUShort(1137892950);
-            this.texTriangleZ[var9] = (short)var24.readUShort(-4589358);
-            this.aShortArray2574[var9] = (short)var3.readUShort(-1282357887);
-            this.aShortArray2575[var9] = (short)var3.readUShort(-1206694111);
-            this.aShortArray2586[var9] = (short)var3.readUShort(-1118812085);
-            this.aShortArray2577[var9] = (short)var28.readUShort(527014301);
-            this.aByteArray2580[var9] = var6.readByte();
-            this.aShortArray2578[var9] = (short)var55.readUShort(-1689479008);
+         if(type == 1) {
+            this.texTriangleX[texIndex] = (short)var24.readUShort(-1497790075);
+            this.texTriangleY[texIndex] = (short)var24.readUShort(1137892950);
+            this.texTriangleZ[texIndex] = (short)var24.readUShort(-4589358);
+            this.aShortArray2574[texIndex] = (short)var3.readUShort(-1282357887);
+            this.aShortArray2575[texIndex] = (short)var3.readUShort(-1206694111);
+            this.aShortArray2586[texIndex] = (short)var3.readUShort(-1118812085);
+            this.aShortArray2577[texIndex] = (short)var28.readUShort(527014301);
+            this.aByteArray2580[texIndex] = var6.readByte();
+            this.aShortArray2578[texIndex] = (short)var55.readUShort(-1689479008);
          }
 
-         if(var16 == 2) {
-            this.texTriangleX[var9] = (short)var24.readUShort(-535463807);
-            this.texTriangleY[var9] = (short)var24.readUShort(309312190);
-            this.texTriangleZ[var9] = (short)var24.readUShort(-29678875);
-            this.aShortArray2574[var9] = (short)var3.readUShort(-1494665846);
-            this.aShortArray2575[var9] = (short)var3.readUShort(-1434724466);
-            this.aShortArray2586[var9] = (short)var3.readUShort(-2091026467);
-            this.aShortArray2577[var9] = (short)var28.readUShort(744196798);
-            this.aByteArray2580[var9] = var6.readByte();
-            this.aShortArray2578[var9] = (short)var55.readUShort(56902358);
-            this.aShortArray2599[var9] = (short)var55.readUShort(-1102995196);
+         if(type == 2) {
+            this.texTriangleX[texIndex] = (short)var24.readUShort(-535463807);
+            this.texTriangleY[texIndex] = (short)var24.readUShort(309312190);
+            this.texTriangleZ[texIndex] = (short)var24.readUShort(-29678875);
+            this.aShortArray2574[texIndex] = (short)var3.readUShort(-1494665846);
+            this.aShortArray2575[texIndex] = (short)var3.readUShort(-1434724466);
+            this.aShortArray2586[texIndex] = (short)var3.readUShort(-2091026467);
+            this.aShortArray2577[texIndex] = (short)var28.readUShort(744196798);
+            this.aByteArray2580[texIndex] = var6.readByte();
+            this.aShortArray2578[texIndex] = (short)var55.readUShort(56902358);
+            this.texturePrimaryColor[texIndex] = (short)var55.readUShort(-1102995196);
          }
 
-         if(var16 == 3) {
-            this.texTriangleX[var9] = (short)var24.readUShort(1159817512);
-            this.texTriangleY[var9] = (short)var24.readUShort(983074570);
-            this.texTriangleZ[var9] = (short)var24.readUShort(-1792527509);
-            this.aShortArray2574[var9] = (short)var3.readUShort(469562987);
-            this.aShortArray2575[var9] = (short)var3.readUShort(1754184044);
-            this.aShortArray2586[var9] = (short)var3.readUShort(-1901414532);
-            this.aShortArray2577[var9] = (short)var28.readUShort(-1340374914);
-            this.aByteArray2580[var9] = var6.readByte();
-            this.aShortArray2578[var9] = (short)var55.readUShort(-194924513);
+         if(type == 3) {
+            this.texTriangleX[texIndex] = (short)var24.readUShort(1159817512);
+            this.texTriangleY[texIndex] = (short)var24.readUShort(983074570);
+            this.texTriangleZ[texIndex] = (short)var24.readUShort(-1792527509);
+            this.aShortArray2574[texIndex] = (short)var3.readUShort(469562987);
+            this.aShortArray2575[texIndex] = (short)var3.readUShort(1754184044);
+            this.aShortArray2586[texIndex] = (short)var3.readUShort(-1901414532);
+            this.aShortArray2577[texIndex] = (short)var28.readUShort(-1340374914);
+            this.aByteArray2580[texIndex] = var6.readByte();
+            this.aShortArray2578[texIndex] = (short)var55.readUShort(-194924513);
          }
       }
 
-      var2.position = var4 * 537964811;
-      var9 = var2.readUByte();
-      if(var9 != 0) {
+      var2.position = position * 537964811;
+      vertexZOffset = var2.readUByte();
+      if(vertexZOffset != 0) {
          new Class41();
          var2.readUShort(-1311985976);
          var2.readUShort(-488960106);
@@ -497,26 +497,26 @@ public class RSModel extends Renderable {
       this.trianglePointsY = new int[var11];
       this.trianglePointsZ = new int[var11];
       if(var12 > 0) {
-         this.aByteArray2570 = new byte[var12];
+         this.textureRenderTypes = new byte[var12];
          this.texTriangleX = new short[var12];
          this.texTriangleY = new short[var12];
          this.texTriangleZ = new short[var12];
       }
 
       if(var28 == 1) {
-         this.anIntArray2560 = new int[var10];
+         this.vertexSkins = new int[var10];
       }
 
       if(var13 == 1) {
          this.faceRenderType = new byte[var11];
-         this.aByteArray2581 = new byte[var11];
-         this.aShortArray2567 = new short[var11];
+         this.textureCoords = new byte[var11];
+         this.faceTextures = new short[var11];
       }
 
       if(var14 == 255) {
          this.faceRenderPriorities = new byte[var11];
       } else {
-         this.aByte2568 = (byte)var14;
+         this.priority = (byte)var14;
       }
 
       if(var30 == 1) {
@@ -524,10 +524,10 @@ public class RSModel extends Renderable {
       }
 
       if(var15 == 1) {
-         this.anIntArray2582 = new int[var11];
+         this.triangleSkinValues = new int[var11];
       }
 
-      this.aShortArray2590 = new short[var11];
+      this.faceColor = new short[var11];
       var5.position = var16 * 537964811;
       var39.position = var34 * 537964811;
       var26.position = var35 * 537964811;
@@ -566,7 +566,7 @@ public class RSModel extends Renderable {
          var33 = this.vertexY[var18];
          var19 = this.vertexZ[var18];
          if(var28 == 1) {
-            this.anIntArray2560[var18] = var3.readUByte();
+            this.vertexSkins[var18] = var3.readUByte();
          }
       }
 
@@ -577,7 +577,7 @@ public class RSModel extends Renderable {
       var3.position = var4 * 537964811;
 
       for(var18 = 0; var18 < var11; ++var18) {
-         this.aShortArray2590[var18] = (short)var5.readUShort(1730864093);
+         this.faceColor[var18] = (short)var5.readUShort(1730864093);
          if(var13 == 1) {
             var8 = var39.readUByte();
             if((var8 & 1) == 1) {
@@ -588,15 +588,15 @@ public class RSModel extends Renderable {
             }
 
             if((var8 & 2) == 2) {
-               this.aByteArray2581[var18] = (byte)(var8 >> 2);
-               this.aShortArray2567[var18] = this.aShortArray2590[var18];
-               this.aShortArray2590[var18] = 127;
-               if(this.aShortArray2567[var18] != -1) {
+               this.textureCoords[var18] = (byte)(var8 >> 2);
+               this.faceTextures[var18] = this.faceColor[var18];
+               this.faceColor[var18] = 127;
+               if(this.faceTextures[var18] != -1) {
                   var43 = true;
                }
             } else {
-               this.aByteArray2581[var18] = -1;
-               this.aShortArray2567[var18] = -1;
+               this.textureCoords[var18] = -1;
+               this.faceTextures[var18] = -1;
             }
          }
 
@@ -609,7 +609,7 @@ public class RSModel extends Renderable {
          }
 
          if(var15 == 1) {
-            this.anIntArray2582[var18] = var3.readUByte();
+            this.triangleSkinValues[var18] = var3.readUByte();
          }
       }
 
@@ -667,20 +667,20 @@ public class RSModel extends Renderable {
       var5.position = var32 * 537964811;
 
       for(var7 = 0; var7 < var12; ++var7) {
-         this.aByteArray2570[var7] = 0;
+         this.textureRenderTypes[var7] = 0;
          this.texTriangleX[var7] = (short)var5.readUShort(1120497538);
          this.texTriangleY[var7] = (short)var5.readUShort(-1275989308);
          this.texTriangleZ[var7] = (short)var5.readUShort(2088609358);
       }
 
-      if(this.aByteArray2581 != null) {
+      if(this.textureCoords != null) {
          boolean var45 = false;
 
          for(var22 = 0; var22 < var11; ++var22) {
-            var21 = this.aByteArray2581[var22] & 255;
+            var21 = this.textureCoords[var22] & 255;
             if(var21 != 255) {
                if((this.texTriangleX[var21] & '\uffff') == this.trianglePointsX[var22] && (this.texTriangleY[var21] & '\uffff') == this.trianglePointsY[var22] && (this.texTriangleZ[var21] & '\uffff') == this.trianglePointsZ[var22]) {
-                  this.aByteArray2581[var22] = -1;
+                  this.textureCoords[var22] = -1;
                } else {
                   var45 = true;
                }
@@ -688,12 +688,12 @@ public class RSModel extends Renderable {
          }
 
          if(!var45) {
-            this.aByteArray2581 = null;
+            this.textureCoords = null;
          }
       }
 
       if(!var43) {
-         this.aShortArray2567 = null;
+         this.faceTextures = null;
       }
 
       if(!var2) {
@@ -718,8 +718,8 @@ public class RSModel extends Renderable {
          this.vertexX[this.vertexCount] = var7;
          this.vertexY[this.vertexCount] = var5;
          this.vertexZ[this.vertexCount] = var6;
-         if(var1.anIntArray2560 != null) {
-            this.anIntArray2560[this.vertexCount] = var1.anIntArray2560[var2];
+         if(var1.vertexSkins != null) {
+            this.vertexSkins[this.vertexCount] = var1.vertexSkins[var2];
          }
 
          var3 = this.vertexCount++;
@@ -750,23 +750,23 @@ public class RSModel extends Renderable {
       }
 
       if(var3) {
-         this.aShortArray2590 = var1.aShortArray2590;
+         this.faceColor = var1.faceColor;
       } else {
-         this.aShortArray2590 = new short[this.triangleFaceCount];
+         this.faceColor = new short[this.triangleFaceCount];
 
          for(var6 = 0; var6 < this.triangleFaceCount; ++var6) {
-            this.aShortArray2590[var6] = var1.aShortArray2590[var6];
+            this.faceColor[var6] = var1.faceColor[var6];
          }
       }
 
-      if(!var4 && var1.aShortArray2567 != null) {
-         this.aShortArray2567 = new short[this.triangleFaceCount];
+      if(!var4 && var1.faceTextures != null) {
+         this.faceTextures = new short[this.triangleFaceCount];
 
          for(var6 = 0; var6 < this.triangleFaceCount; ++var6) {
-            this.aShortArray2567[var6] = var1.aShortArray2567[var6];
+            this.faceTextures[var6] = var1.faceTextures[var6];
          }
       } else {
-         this.aShortArray2567 = var1.aShortArray2567;
+         this.faceTextures = var1.faceTextures;
       }
 
       if(var5) {
@@ -789,9 +789,9 @@ public class RSModel extends Renderable {
       this.trianglePointsZ = var1.trianglePointsZ;
       this.faceRenderType = var1.faceRenderType;
       this.faceRenderPriorities = var1.faceRenderPriorities;
-      this.aByteArray2581 = var1.aByteArray2581;
-      this.aByte2568 = var1.aByte2568;
-      this.aByteArray2570 = var1.aByteArray2570;
+      this.textureCoords = var1.textureCoords;
+      this.priority = var1.priority;
+      this.textureRenderTypes = var1.textureRenderTypes;
       this.texTriangleX = var1.texTriangleX;
       this.texTriangleY = var1.texTriangleY;
       this.texTriangleZ = var1.texTriangleZ;
@@ -801,9 +801,9 @@ public class RSModel extends Renderable {
       this.aShortArray2577 = var1.aShortArray2577;
       this.aByteArray2580 = var1.aByteArray2580;
       this.aShortArray2578 = var1.aShortArray2578;
-      this.aShortArray2599 = var1.aShortArray2599;
-      this.anIntArray2560 = var1.anIntArray2560;
-      this.anIntArray2582 = var1.anIntArray2582;
+      this.texturePrimaryColor = var1.texturePrimaryColor;
+      this.vertexSkins = var1.vertexSkins;
+      this.triangleSkinValues = var1.triangleSkinValues;
       this.anIntArrayArray2583 = var1.anIntArrayArray2583;
       this.anIntArrayArray2584 = var1.anIntArrayArray2584;
       this.vertexNormalArray = var1.vertexNormalArray;
@@ -834,11 +834,11 @@ public class RSModel extends Renderable {
       var1.trianglePointsZ = this.trianglePointsZ;
       var1.faceRenderPriorities = this.faceRenderPriorities;
       var1.faceAlphas = this.faceAlphas;
-      var1.aByteArray2581 = this.aByteArray2581;
-      var1.aShortArray2590 = this.aShortArray2590;
-      var1.aShortArray2567 = this.aShortArray2567;
-      var1.aByte2568 = this.aByte2568;
-      var1.aByteArray2570 = this.aByteArray2570;
+      var1.textureCoords = this.textureCoords;
+      var1.faceColor = this.faceColor;
+      var1.faceTextures = this.faceTextures;
+      var1.priority = this.priority;
+      var1.textureRenderTypes = this.textureRenderTypes;
       var1.texTriangleX = this.texTriangleX;
       var1.texTriangleY = this.texTriangleY;
       var1.texTriangleZ = this.texTriangleZ;
@@ -848,9 +848,9 @@ public class RSModel extends Renderable {
       var1.aShortArray2577 = this.aShortArray2577;
       var1.aByteArray2580 = this.aByteArray2580;
       var1.aShortArray2578 = this.aShortArray2578;
-      var1.aShortArray2599 = this.aShortArray2599;
-      var1.anIntArray2560 = this.anIntArray2560;
-      var1.anIntArray2582 = this.anIntArray2582;
+      var1.texturePrimaryColor = this.texturePrimaryColor;
+      var1.vertexSkins = this.vertexSkins;
+      var1.triangleSkinValues = this.triangleSkinValues;
       var1.anIntArrayArray2583 = this.anIntArrayArray2583;
       var1.anIntArrayArray2584 = this.anIntArrayArray2584;
       var1.vertexNormalArray = this.vertexNormalArray;
@@ -895,18 +895,18 @@ public class RSModel extends Renderable {
 
    public void findReplaceColor(short var1, short var2) {
       for(int var3 = 0; var3 < this.triangleFaceCount; ++var3) {
-         if(this.aShortArray2590[var3] == var1) {
-            this.aShortArray2590[var3] = var2;
+         if(this.faceColor[var3] == var1) {
+            this.faceColor[var3] = var2;
          }
       }
 
    }
 
    public void findReplaceTexture(short var1, short var2) {
-      if(this.aShortArray2567 != null) {
+      if(this.faceTextures != null) {
          for(int var3 = 0; var3 < this.triangleFaceCount; ++var3) {
-            if(this.aShortArray2567[var3] == var1) {
-               this.aShortArray2567[var3] = var2;
+            if(this.faceTextures[var3] == var1) {
+               this.faceTextures[var3] = var2;
             }
          }
 
@@ -918,12 +918,12 @@ public class RSModel extends Renderable {
       int var2;
       int[] var3;
       int var4;
-      if(this.anIntArray2560 != null) {
+      if(this.vertexSkins != null) {
          var3 = new int[256];
          var2 = 0;
 
          for(var1 = 0; var1 < this.vertexCount; ++var1) {
-            var4 = this.anIntArray2560[var1];
+            var4 = this.vertexSkins[var1];
             ++var3[var4];
             if(var4 > var2) {
                var2 = var4;
@@ -938,18 +938,18 @@ public class RSModel extends Renderable {
          }
 
          for(var1 = 0; var1 < this.vertexCount; this.anIntArrayArray2583[var4][var3[var4]++] = var1++) {
-            var4 = this.anIntArray2560[var1];
+            var4 = this.vertexSkins[var1];
          }
 
-         this.anIntArray2560 = null;
+         this.vertexSkins = null;
       }
 
-      if(this.anIntArray2582 != null) {
+      if(this.triangleSkinValues != null) {
          var3 = new int[256];
          var2 = 0;
 
          for(var1 = 0; var1 < this.triangleFaceCount; ++var1) {
-            var4 = this.anIntArray2582[var1];
+            var4 = this.triangleSkinValues[var1];
             ++var3[var4];
             if(var4 > var2) {
                var2 = var4;
@@ -964,10 +964,10 @@ public class RSModel extends Renderable {
          }
 
          for(var1 = 0; var1 < this.triangleFaceCount; this.anIntArrayArray2584[var4][var3[var4]++] = var1++) {
-            var4 = this.anIntArray2582[var1];
+            var4 = this.triangleSkinValues[var1];
          }
 
-         this.anIntArray2582 = null;
+         this.triangleSkinValues = null;
       }
    }
 
@@ -1120,7 +1120,7 @@ public class RSModel extends Renderable {
       this.vertexCount = 0;
       this.triangleFaceCount = 0;
       this.anInt2569 = 0;
-      this.aByte2568 = -1;
+      this.priority = -1;
 
       RSModel var3;
       int var9;
@@ -1133,27 +1133,27 @@ public class RSModel extends Renderable {
             if(var3.faceRenderPriorities != null) {
                var4 = true;
             } else {
-               if(this.aByte2568 == -1) {
-                  this.aByte2568 = var3.aByte2568;
+               if(this.priority == -1) {
+                  this.priority = var3.priority;
                }
 
-               if(this.aByte2568 != var3.aByte2568) {
+               if(this.priority != var3.priority) {
                   var4 = true;
                }
             }
 
             var10 |= var3.faceRenderType != null;
             var6 |= var3.faceAlphas != null;
-            var7 |= var3.anIntArray2582 != null;
-            var8 |= var3.aShortArray2567 != null;
-            var11 |= var3.aByteArray2581 != null;
+            var7 |= var3.triangleSkinValues != null;
+            var8 |= var3.faceTextures != null;
+            var11 |= var3.textureCoords != null;
          }
       }
 
       this.vertexX = new int[this.vertexCount];
       this.vertexY = new int[this.vertexCount];
       this.vertexZ = new int[this.vertexCount];
-      this.anIntArray2560 = new int[this.vertexCount];
+      this.vertexSkins = new int[this.vertexCount];
       this.trianglePointsX = new int[this.triangleFaceCount];
       this.trianglePointsY = new int[this.triangleFaceCount];
       this.trianglePointsZ = new int[this.triangleFaceCount];
@@ -1170,20 +1170,20 @@ public class RSModel extends Renderable {
       }
 
       if(var7) {
-         this.anIntArray2582 = new int[this.triangleFaceCount];
+         this.triangleSkinValues = new int[this.triangleFaceCount];
       }
 
       if(var8) {
-         this.aShortArray2567 = new short[this.triangleFaceCount];
+         this.faceTextures = new short[this.triangleFaceCount];
       }
 
       if(var11) {
-         this.aByteArray2581 = new byte[this.triangleFaceCount];
+         this.textureCoords = new byte[this.triangleFaceCount];
       }
 
-      this.aShortArray2590 = new short[this.triangleFaceCount];
+      this.faceColor = new short[this.triangleFaceCount];
       if(this.anInt2569 > 0) {
-         this.aByteArray2570 = new byte[this.anInt2569];
+         this.textureRenderTypes = new byte[this.anInt2569];
          this.texTriangleX = new short[this.anInt2569];
          this.texTriangleY = new short[this.anInt2569];
          this.texTriangleZ = new short[this.anInt2569];
@@ -1193,7 +1193,7 @@ public class RSModel extends Renderable {
          this.aShortArray2577 = new short[this.anInt2569];
          this.aByteArray2580 = new byte[this.anInt2569];
          this.aShortArray2578 = new short[this.anInt2569];
-         this.aShortArray2599 = new short[this.anInt2569];
+         this.texturePrimaryColor = new short[this.anInt2569];
       }
 
       this.vertexCount = 0;
@@ -1213,7 +1213,7 @@ public class RSModel extends Renderable {
                   if(var3.faceRenderPriorities != null) {
                      this.faceRenderPriorities[this.triangleFaceCount] = var3.faceRenderPriorities[var5];
                   } else {
-                     this.faceRenderPriorities[this.triangleFaceCount] = var3.aByte2568;
+                     this.faceRenderPriorities[this.triangleFaceCount] = var3.priority;
                   }
                }
 
@@ -1221,27 +1221,27 @@ public class RSModel extends Renderable {
                   this.faceAlphas[this.triangleFaceCount] = var3.faceAlphas[var5];
                }
 
-               if(var7 && var3.anIntArray2582 != null) {
-                  this.anIntArray2582[this.triangleFaceCount] = var3.anIntArray2582[var5];
+               if(var7 && var3.triangleSkinValues != null) {
+                  this.triangleSkinValues[this.triangleFaceCount] = var3.triangleSkinValues[var5];
                }
 
                if(var8) {
-                  if(var3.aShortArray2567 != null) {
-                     this.aShortArray2567[this.triangleFaceCount] = var3.aShortArray2567[var5];
+                  if(var3.faceTextures != null) {
+                     this.faceTextures[this.triangleFaceCount] = var3.faceTextures[var5];
                   } else {
-                     this.aShortArray2567[this.triangleFaceCount] = -1;
+                     this.faceTextures[this.triangleFaceCount] = -1;
                   }
                }
 
                if(var11) {
-                  if(var3.aByteArray2581 != null && var3.aByteArray2581[var5] != -1) {
-                     this.aByteArray2581[this.triangleFaceCount] = (byte)(var3.aByteArray2581[var5] + this.anInt2569);
+                  if(var3.textureCoords != null && var3.textureCoords[var5] != -1) {
+                     this.textureCoords[this.triangleFaceCount] = (byte)(var3.textureCoords[var5] + this.anInt2569);
                   } else {
-                     this.aByteArray2581[this.triangleFaceCount] = -1;
+                     this.textureCoords[this.triangleFaceCount] = -1;
                   }
                }
 
-               this.aShortArray2590[this.triangleFaceCount] = var3.aShortArray2590[var5];
+               this.faceColor[this.triangleFaceCount] = var3.faceColor[var5];
                this.trianglePointsX[this.triangleFaceCount] = this.method2995(var3, var3.trianglePointsX[var5]);
                this.trianglePointsY[this.triangleFaceCount] = this.method2995(var3, var3.trianglePointsY[var5]);
                this.trianglePointsZ[this.triangleFaceCount] = this.method2995(var3, var3.trianglePointsZ[var5]);
@@ -1249,7 +1249,7 @@ public class RSModel extends Renderable {
             }
 
             for(var5 = 0; var5 < var3.anInt2569; ++var5) {
-               byte var12 = this.aByteArray2570[this.anInt2569] = var3.aByteArray2570[var5];
+               byte var12 = this.textureRenderTypes[this.anInt2569] = var3.textureRenderTypes[var5];
                if(var12 == 0) {
                   this.texTriangleX[this.anInt2569] = (short)this.method2995(var3, var3.texTriangleX[var5]);
                   this.texTriangleY[this.anInt2569] = (short)this.method2995(var3, var3.texTriangleY[var5]);
@@ -1269,7 +1269,7 @@ public class RSModel extends Renderable {
                }
 
                if(var12 == 2) {
-                  this.aShortArray2599[this.anInt2569] = var3.aShortArray2599[var5];
+                  this.texturePrimaryColor[this.anInt2569] = var3.texturePrimaryColor[var5];
                }
 
                ++this.anInt2569;
@@ -1328,11 +1328,11 @@ public class RSModel extends Renderable {
                var7.faceRenderType = this.faceRenderType;
                var7.faceRenderPriorities = this.faceRenderPriorities;
                var7.faceAlphas = this.faceAlphas;
-               var7.aByteArray2581 = this.aByteArray2581;
-               var7.aShortArray2590 = this.aShortArray2590;
-               var7.aShortArray2567 = this.aShortArray2567;
-               var7.aByte2568 = this.aByte2568;
-               var7.aByteArray2570 = this.aByteArray2570;
+               var7.textureCoords = this.textureCoords;
+               var7.faceColor = this.faceColor;
+               var7.faceTextures = this.faceTextures;
+               var7.priority = this.priority;
+               var7.textureRenderTypes = this.textureRenderTypes;
                var7.texTriangleX = this.texTriangleX;
                var7.texTriangleY = this.texTriangleY;
                var7.texTriangleZ = this.texTriangleZ;
@@ -1342,9 +1342,9 @@ public class RSModel extends Renderable {
                var7.aShortArray2577 = this.aShortArray2577;
                var7.aByteArray2580 = this.aByteArray2580;
                var7.aShortArray2578 = this.aShortArray2578;
-               var7.aShortArray2599 = this.aShortArray2599;
-               var7.anIntArray2560 = this.anIntArray2560;
-               var7.anIntArray2582 = this.anIntArray2582;
+               var7.texturePrimaryColor = this.texturePrimaryColor;
+               var7.vertexSkins = this.vertexSkins;
+               var7.triangleSkinValues = this.triangleSkinValues;
                var7.anIntArrayArray2583 = this.anIntArrayArray2583;
                var7.anIntArrayArray2584 = this.anIntArrayArray2584;
                var7.aShort2565 = this.aShort2565;
@@ -1422,33 +1422,33 @@ public class RSModel extends Renderable {
     * 
     * @param ambient	darkness
     * @param contrast	lightness	
-    * @param var3	direction1
-    * @param var4	direction2
-    * @param var5	direction3
+    * @param rightLight	direction1
+    * @param middleLight	direction2
+    * @param leftLight	direction3
     * @return
     */
-   public final ModelRasterizer createModelRasterizer(int ambient, int contrast, int var3, int var4, int var5) {
+   public final ModelRasterizer createModelRasterizer(int ambient, int contrast, int rightLight, int middleLight, int leftLight) {
       this.method3008();
-      int var6 = (int)Math.sqrt((double)(var3 * var3 + var4 * var4 + var5 * var5));
-      int var7 = contrast * var6 >> 8;
+      int resultantVectorLight = (int)Math.sqrt((double)(rightLight * rightLight + middleLight * middleLight + leftLight * leftLight));
+      int var7 = contrast * resultantVectorLight >> 8;
       ModelRasterizer rasterizer = new ModelRasterizer();
       rasterizer.anIntArray2445 = new int[this.triangleFaceCount];
       rasterizer.anIntArray2444 = new int[this.triangleFaceCount];
       rasterizer.anIntArray2489 = new int[this.triangleFaceCount];
-      if(this.anInt2569 > 0 && this.aByteArray2581 != null) {
+      if(this.anInt2569 > 0 && this.textureCoords != null) {
          int[] var9 = new int[this.anInt2569];
 
          int var10;
          for(var10 = 0; var10 < this.triangleFaceCount; ++var10) {
-            if(this.aByteArray2581[var10] != -1) {
-               ++var9[this.aByteArray2581[var10] & 255];
+            if(this.textureCoords[var10] != -1) {
+               ++var9[this.textureCoords[var10] & 255];
             }
          }
 
          rasterizer.anInt2434 = 0;
 
          for(var10 = 0; var10 < this.anInt2569; ++var10) {
-            if(var9[var10] > 0 && this.aByteArray2570[var10] == 0) {
+            if(var9[var10] > 0 && this.textureRenderTypes[var10] == 0) {
                ++rasterizer.anInt2434;
             }
          }
@@ -1460,7 +1460,7 @@ public class RSModel extends Renderable {
 
          int var13;
          for(var13 = 0; var13 < this.anInt2569; ++var13) {
-            if(var9[var13] > 0 && this.aByteArray2570[var13] == 0) {
+            if(var9[var13] > 0 && this.textureRenderTypes[var13] == 0) {
                rasterizer.anIntArray2462[var10] = this.texTriangleX[var13] & '\uffff';
                rasterizer.anIntArray2453[var10] = this.texTriangleY[var13] & '\uffff';
                rasterizer.anIntArray2454[var10] = this.texTriangleZ[var13] & '\uffff';
@@ -1473,8 +1473,8 @@ public class RSModel extends Renderable {
          rasterizer.aByteArray2451 = new byte[this.triangleFaceCount];
 
          for(var13 = 0; var13 < this.triangleFaceCount; ++var13) {
-            if(this.aByteArray2581[var13] != -1) {
-               rasterizer.aByteArray2451[var13] = (byte)var9[this.aByteArray2581[var13] & 255];
+            if(this.textureCoords[var13] != -1) {
+               rasterizer.aByteArray2451[var13] = (byte)var9[this.textureCoords[var13] & 255];
             } else {
                rasterizer.aByteArray2451[var13] = -1;
             }
@@ -1497,10 +1497,10 @@ public class RSModel extends Renderable {
          }
 
          short var14;
-         if(this.aShortArray2567 == null) {
+         if(this.faceTextures == null) {
             var14 = -1;
          } else {
-            var14 = this.aShortArray2567[var16];
+            var14 = this.faceTextures[var16];
          }
 
          if(var19 == -2) {
@@ -1511,40 +1511,40 @@ public class RSModel extends Renderable {
             var17 = 2;
          }
 
-         VertexNormal var11;
-         int var12;
+         VertexNormal vertex;
+         int adjustedLighting;
          Class16 var18;
          if(var14 == -1) {
             if(var17 == 0) {
-               int var15 = this.aShortArray2590[var16] & '\uffff';
+               int var15 = this.faceColor[var16] & '\uffff';
                if(this.aClass49Array2587 != null && this.aClass49Array2587[this.trianglePointsX[var16]] != null) {
-                  var11 = this.aClass49Array2587[this.trianglePointsX[var16]];
+                  vertex = this.aClass49Array2587[this.trianglePointsX[var16]];
                } else {
-                  var11 = this.vertexNormalArray[this.trianglePointsX[var16]];
+                  vertex = this.vertexNormalArray[this.trianglePointsX[var16]];
                }
 
-               var12 = ambient + (var3 * var11.x * -103601413 + var4 * var11.y * -687288033 + var5 * var11.z * 1413400487) / (var7 * var11.magnitude * -1235990359);
-               rasterizer.anIntArray2445[var16] = method3013(var15, var12);
+               adjustedLighting = ambient + (rightLight * vertex.x * -103601413 + middleLight * vertex.y * -687288033 + leftLight * vertex.z * 1413400487) / (var7 * vertex.magnitude * -1235990359);
+               rasterizer.anIntArray2445[var16] = method3013(var15, adjustedLighting);
                if(this.aClass49Array2587 != null && this.aClass49Array2587[this.trianglePointsY[var16]] != null) {
-                  var11 = this.aClass49Array2587[this.trianglePointsY[var16]];
+                  vertex = this.aClass49Array2587[this.trianglePointsY[var16]];
                } else {
-                  var11 = this.vertexNormalArray[this.trianglePointsY[var16]];
+                  vertex = this.vertexNormalArray[this.trianglePointsY[var16]];
                }
 
-               var12 = ambient + (var3 * var11.x * -103601413 + var4 * var11.y * -687288033 + var5 * var11.z * 1413400487) / (var7 * var11.magnitude * -1235990359);
-               rasterizer.anIntArray2444[var16] = method3013(var15, var12);
+               adjustedLighting = ambient + (rightLight * vertex.x * -103601413 + middleLight * vertex.y * -687288033 + leftLight * vertex.z * 1413400487) / (var7 * vertex.magnitude * -1235990359);
+               rasterizer.anIntArray2444[var16] = method3013(var15, adjustedLighting);
                if(this.aClass49Array2587 != null && this.aClass49Array2587[this.trianglePointsZ[var16]] != null) {
-                  var11 = this.aClass49Array2587[this.trianglePointsZ[var16]];
+                  vertex = this.aClass49Array2587[this.trianglePointsZ[var16]];
                } else {
-                  var11 = this.vertexNormalArray[this.trianglePointsZ[var16]];
+                  vertex = this.vertexNormalArray[this.trianglePointsZ[var16]];
                }
 
-               var12 = ambient + (var3 * var11.x * -103601413 + var4 * var11.y * -687288033 + var5 * var11.z * 1413400487) / (var7 * var11.magnitude * -1235990359);
-               rasterizer.anIntArray2489[var16] = method3013(var15, var12);
+               adjustedLighting = ambient + (rightLight * vertex.x * -103601413 + middleLight * vertex.y * -687288033 + leftLight * vertex.z * 1413400487) / (var7 * vertex.magnitude * -1235990359);
+               rasterizer.anIntArray2489[var16] = method3013(var15, adjustedLighting);
             } else if(var17 == 1) {
                var18 = this.aClass16Array2585[var16];
-               var12 = ambient + (var3 * var18.anInt209 * -354499815 + var4 * var18.anInt213 * -707368019 + var5 * var18.anInt206 * 734531985) / (var7 + var7 / 2);
-               rasterizer.anIntArray2445[var16] = method3013(this.aShortArray2590[var16] & '\uffff', var12);
+               adjustedLighting = ambient + (rightLight * var18.anInt209 * -354499815 + middleLight * var18.anInt213 * -707368019 + leftLight * var18.anInt206 * 734531985) / (var7 + var7 / 2);
+               rasterizer.anIntArray2445[var16] = method3013(this.faceColor[var16] & '\uffff', adjustedLighting);
                rasterizer.anIntArray2489[var16] = -1;
             } else if(var17 == 3) {
                rasterizer.anIntArray2445[var16] = 128;
@@ -1554,33 +1554,33 @@ public class RSModel extends Renderable {
             }
          } else if(var17 == 0) {
             if(this.aClass49Array2587 != null && this.aClass49Array2587[this.trianglePointsX[var16]] != null) {
-               var11 = this.aClass49Array2587[this.trianglePointsX[var16]];
+               vertex = this.aClass49Array2587[this.trianglePointsX[var16]];
             } else {
-               var11 = this.vertexNormalArray[this.trianglePointsX[var16]];
+               vertex = this.vertexNormalArray[this.trianglePointsX[var16]];
             }
 
-            var12 = ambient + (var3 * var11.x * -103601413 + var4 * var11.y * -687288033 + var5 * var11.z * 1413400487) / (var7 * var11.magnitude * -1235990359);
-            rasterizer.anIntArray2445[var16] = method2990(var12);
+            adjustedLighting = ambient + (rightLight * vertex.x * -103601413 + middleLight * vertex.y * -687288033 + leftLight * vertex.z * 1413400487) / (var7 * vertex.magnitude * -1235990359);
+            rasterizer.anIntArray2445[var16] = method2990(adjustedLighting);
             if(this.aClass49Array2587 != null && this.aClass49Array2587[this.trianglePointsY[var16]] != null) {
-               var11 = this.aClass49Array2587[this.trianglePointsY[var16]];
+               vertex = this.aClass49Array2587[this.trianglePointsY[var16]];
             } else {
-               var11 = this.vertexNormalArray[this.trianglePointsY[var16]];
+               vertex = this.vertexNormalArray[this.trianglePointsY[var16]];
             }
 
-            var12 = ambient + (var3 * var11.x * -103601413 + var4 * var11.y * -687288033 + var5 * var11.z * 1413400487) / (var7 * var11.magnitude * -1235990359);
-            rasterizer.anIntArray2444[var16] = method2990(var12);
+            adjustedLighting = ambient + (rightLight * vertex.x * -103601413 + middleLight * vertex.y * -687288033 + leftLight * vertex.z * 1413400487) / (var7 * vertex.magnitude * -1235990359);
+            rasterizer.anIntArray2444[var16] = method2990(adjustedLighting);
             if(this.aClass49Array2587 != null && this.aClass49Array2587[this.trianglePointsZ[var16]] != null) {
-               var11 = this.aClass49Array2587[this.trianglePointsZ[var16]];
+               vertex = this.aClass49Array2587[this.trianglePointsZ[var16]];
             } else {
-               var11 = this.vertexNormalArray[this.trianglePointsZ[var16]];
+               vertex = this.vertexNormalArray[this.trianglePointsZ[var16]];
             }
 
-            var12 = ambient + (var3 * var11.x * -103601413 + var4 * var11.y * -687288033 + var5 * var11.z * 1413400487) / (var7 * var11.magnitude * -1235990359);
-            rasterizer.anIntArray2489[var16] = method2990(var12);
+            adjustedLighting = ambient + (rightLight * vertex.x * -103601413 + middleLight * vertex.y * -687288033 + leftLight * vertex.z * 1413400487) / (var7 * vertex.magnitude * -1235990359);
+            rasterizer.anIntArray2489[var16] = method2990(adjustedLighting);
          } else if(var17 == 1) {
             var18 = this.aClass16Array2585[var16];
-            var12 = ambient + (var3 * var18.anInt209 * -354499815 + var4 * var18.anInt213 * -707368019 + var5 * var18.anInt206 * 734531985) / (var7 + var7 / 2);
-            rasterizer.anIntArray2445[var16] = method2990(var12);
+            adjustedLighting = ambient + (rightLight * var18.anInt209 * -354499815 + middleLight * var18.anInt213 * -707368019 + leftLight * var18.anInt206 * 734531985) / (var7 + var7 / 2);
+            rasterizer.anIntArray2445[var16] = method2990(adjustedLighting);
             rasterizer.anIntArray2489[var16] = -1;
          } else {
             rasterizer.anIntArray2489[var16] = -2;
@@ -1592,16 +1592,16 @@ public class RSModel extends Renderable {
       rasterizer.vertexXCoordinate = this.vertexX;
       rasterizer.vertexYCoordinate = this.vertexY;
       rasterizer.vertexZCoordinate = this.vertexZ;
-      rasterizer.anInt2458 = this.triangleFaceCount;
-      rasterizer.anIntArray2440 = this.trianglePointsX;
-      rasterizer.anIntArray2441 = this.trianglePointsY;
-      rasterizer.anIntArray2442 = this.trianglePointsZ;
-      rasterizer.aByteArray2446 = this.faceRenderPriorities;
+      rasterizer.triangleFaceCount = this.triangleFaceCount;
+      rasterizer.trianglePointsX = this.trianglePointsX;
+      rasterizer.trianglePointsY = this.trianglePointsY;
+      rasterizer.trianglePointsZ = this.trianglePointsZ;
+      rasterizer.faceRenderPriorities = this.faceRenderPriorities;
       rasterizer.triangleAlphaValues = this.faceAlphas;
-      rasterizer.aByte2450 = this.aByte2568;
+      rasterizer.aByte2450 = this.priority;
       rasterizer.anIntArrayArray2439 = this.anIntArrayArray2583;
       rasterizer.anIntArrayArray2456 = this.anIntArrayArray2584;
-      rasterizer.aShortArray2481 = this.aShortArray2567;
+      rasterizer.aShortArray2481 = this.faceTextures;
       return rasterizer;
    }
 
@@ -1619,51 +1619,51 @@ public class RSModel extends Renderable {
       var1.method3008();
       ++anInt2576;
       int var7 = 0;
-      int[] var15 = var1.vertexX;
-      int var10 = var1.vertexCount;
+      int[] vertexXArray = var1.vertexX;
+      int vCount = var1.vertexCount;
 
-      int var8;
-      for(var8 = 0; var8 < model.vertexCount; ++var8) {
-         VertexNormal var12 = model.vertexNormalArray[var8];
+      int vertexCount;
+      for(vertexCount = 0; vertexCount < model.vertexCount; ++vertexCount) {
+         VertexNormal var12 = model.vertexNormalArray[vertexCount];
          if(var12.magnitude * -1235990359 != 0) {
-            int var14 = model.vertexY[var8] - var3;
+            int var14 = model.vertexY[vertexCount] - var3;
             if(var14 <= var1.shadowIntensity) {
-               int var13 = model.vertexX[var8] - var2;
+               int var13 = model.vertexX[vertexCount] - var2;
                if(var13 >= var1.anInt2592 && var13 <= var1.anInt2593) {
-                  int var11 = model.vertexZ[var8] - var4;
+                  int var11 = model.vertexZ[vertexCount] - var4;
                   if(var11 >= var1.anInt2595 && var11 <= var1.anInt2562) {
-                     for(int var9 = 0; var9 < var10; ++var9) {
-                        VertexNormal var6 = var1.vertexNormalArray[var9];
-                        if(var13 == var15[var9] && var11 == var1.vertexZ[var9] && var14 == var1.vertexY[var9] && var6.magnitude * -1235990359 != 0) {
+                     for(int vertexIndex = 0; vertexIndex < vCount; ++vertexIndex) {
+                        VertexNormal vertex = var1.vertexNormalArray[vertexIndex];
+                        if(var13 == vertexXArray[vertexIndex] && var11 == var1.vertexZ[vertexIndex] && var14 == var1.vertexY[vertexIndex] && vertex.magnitude * -1235990359 != 0) {
                            if(model.aClass49Array2587 == null) {
                               model.aClass49Array2587 = new VertexNormal[model.vertexCount];
                            }
 
                            if(var1.aClass49Array2587 == null) {
-                              var1.aClass49Array2587 = new VertexNormal[var10];
+                              var1.aClass49Array2587 = new VertexNormal[vCount];
                            }
 
-                           VertexNormal vertexNormal = model.aClass49Array2587[var8];
+                           VertexNormal vertexNormal = model.aClass49Array2587[vertexCount];
                            if(vertexNormal == null) {
-                              vertexNormal = model.aClass49Array2587[var8] = new VertexNormal(var12);
+                              vertexNormal = model.aClass49Array2587[vertexCount] = new VertexNormal(var12);
                            }
 
-                           VertexNormal var17 = var1.aClass49Array2587[var9];
+                           VertexNormal var17 = var1.aClass49Array2587[vertexIndex];
                            if(var17 == null) {
-                              var17 = var1.aClass49Array2587[var9] = new VertexNormal(var6);
+                              var17 = var1.aClass49Array2587[vertexIndex] = new VertexNormal(vertex);
                            }
 
-                           vertexNormal.x += var6.x * 1;
-                           vertexNormal.y += var6.y * 1;
-                           vertexNormal.z += var6.z * 1;
-                           vertexNormal.magnitude += var6.magnitude * 1;
+                           vertexNormal.x += vertex.x * 1;
+                           vertexNormal.y += vertex.y * 1;
+                           vertexNormal.z += vertex.z * 1;
+                           vertexNormal.magnitude += vertex.magnitude * 1;
                            var17.x += var12.x * 1;
                            var17.y += var12.y * 1;
                            var17.z += var12.z * 1;
                            var17.magnitude += var12.magnitude * 1;
                            ++var7;
-                           anIntArray2596[var8] = anInt2576;
-                           anIntArray2597[var9] = anInt2576;
+                           anIntArray2596[vertexCount] = anInt2576;
+                           anIntArray2597[vertexIndex] = anInt2576;
                         }
                      }
                   }
@@ -1674,23 +1674,23 @@ public class RSModel extends Renderable {
 
       if(var7 >= 3) {
          if(var5) {
-            for(var8 = 0; var8 < model.triangleFaceCount; ++var8) {
-               if(anIntArray2596[model.trianglePointsX[var8]] == anInt2576 && anIntArray2596[model.trianglePointsY[var8]] == anInt2576 && anIntArray2596[model.trianglePointsZ[var8]] == anInt2576) {
+            for(vertexCount = 0; vertexCount < model.triangleFaceCount; ++vertexCount) {
+               if(anIntArray2596[model.trianglePointsX[vertexCount]] == anInt2576 && anIntArray2596[model.trianglePointsY[vertexCount]] == anInt2576 && anIntArray2596[model.trianglePointsZ[vertexCount]] == anInt2576) {
                   if(model.faceRenderType == null) {
                      model.faceRenderType = new byte[model.triangleFaceCount];
                   }
 
-                  model.faceRenderType[var8] = 2;
+                  model.faceRenderType[vertexCount] = 2;
                }
             }
 
-            for(var8 = 0; var8 < var1.triangleFaceCount; ++var8) {
-               if(anIntArray2597[var1.trianglePointsX[var8]] == anInt2576 && anIntArray2597[var1.trianglePointsY[var8]] == anInt2576 && anIntArray2597[var1.trianglePointsZ[var8]] == anInt2576) {
+            for(vertexCount = 0; vertexCount < var1.triangleFaceCount; ++vertexCount) {
+               if(anIntArray2597[var1.trianglePointsX[vertexCount]] == anInt2576 && anIntArray2597[var1.trianglePointsY[vertexCount]] == anInt2576 && anIntArray2597[var1.trianglePointsZ[vertexCount]] == anInt2576) {
                   if(var1.faceRenderType == null) {
                      var1.faceRenderType = new byte[var1.triangleFaceCount];
                   }
 
-                  var1.faceRenderType[var8] = 2;
+                  var1.faceRenderType[vertexCount] = 2;
                }
             }
 

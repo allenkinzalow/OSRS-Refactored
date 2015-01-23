@@ -57,12 +57,59 @@ public class Scene {
 	static int anInt462;
 	static int anInt463;
 
+	static final void spawnGroundItem(int x, int y, byte var2) {
+       Deque itemDeque = Client.groundItemArray[VarpBit.plane * -570926309][x][y];
+       if(null == itemDeque) {
+          Class56.gameScene.removeGroundItemTile(VarpBit.plane * -570926309, x, y);
+       } else {
+          long maxValue = -99999999L;
+          Item topGroundItem = null;
 
-	void method401(RSModel model, int var2, int xPos, int yPos) {
+          Item item;
+          for(item = (Item)itemDeque.getFront(); item != null; item = (Item)itemDeque.getNext()) {
+             ItemDefinition definition = ItemDefinition.getItemDefinition(item.itemID * -1672318173, -215276823);
+             long value = (long)(definition.cost * -1794880833);
+             if(1 == definition.stackable * 1548462817) {
+                value *= (long)(item.anInt2614 * -767037133 + 1);
+             }
+
+             if(value > maxValue) {
+                maxValue = value;
+                topGroundItem = item;
+             }
+          }
+
+          if(null == topGroundItem) {
+             Class56.gameScene.removeGroundItemTile(VarpBit.plane * -570926309, x, y);
+          } else {
+             itemDeque.insertFront(topGroundItem);
+             Item firstItem = null;
+             Item secondItem = null;
+
+             for(item = (Item)itemDeque.getFront(); null != item; item = (Item)itemDeque.getNext()) {
+                if(topGroundItem.itemID * -1672318173 != item.itemID * -1672318173) {
+                   if(firstItem == null) {
+                      firstItem = item;
+                   }
+
+                   if(item.itemID * -1672318173 != firstItem.itemID * -1672318173 && secondItem == null) {
+                      secondItem = item;
+                   }
+                }
+             }
+
+             int hash = 1610612736 + x + (y << 7);
+             Class56.gameScene.addGroundItemTile(VarpBit.plane * -570926309, x, y, RegionReference.getFloorDrawHeight(x * 128 + 64, 64 + y * 128, VarpBit.plane * -570926309, 1084393702), topGroundItem, hash, firstItem, secondItem);
+          }
+       }
+    }
+
+
+	void method401(RSModel model, int plane, int xPos, int yPos) {
 		Tile tile; 
 		RSModel floorDecModel;
 		if (xPos < this.xMapSize) {
-			tile = this.tileArray[var2][xPos + 1][yPos];
+			tile = this.tileArray[plane][xPos + 1][yPos];
 			if (tile != null && tile.floorDecoration != null && tile.floorDecoration.renderable instanceof RSModel) {
 				floorDecModel = (RSModel) tile.floorDecoration.renderable;
 				RSModel.method3069(model, floorDecModel, 128, 0, 0, true);
@@ -70,7 +117,7 @@ public class Scene {
 		}
 
 		if (yPos < this.xMapSize) {
-			tile = this.tileArray[var2][xPos][yPos + 1];
+			tile = this.tileArray[plane][xPos][yPos + 1];
 			if (tile != null && tile.floorDecoration != null && tile.floorDecoration.renderable instanceof RSModel) {
 				floorDecModel = (RSModel) tile.floorDecoration.renderable;
 				RSModel.method3069(model, floorDecModel, 0, 0, 128, true);
@@ -78,7 +125,7 @@ public class Scene {
 		}
 
 		if (xPos < this.xMapSize && yPos < this.yMapSize) {
-			tile = this.tileArray[var2][xPos + 1][yPos + 1];
+			tile = this.tileArray[plane][xPos + 1][yPos + 1];
 			if (tile != null && tile.floorDecoration != null && tile.floorDecoration.renderable instanceof RSModel) {
 				floorDecModel = (RSModel) tile.floorDecoration.renderable;
 				RSModel.method3069(model, floorDecModel, 128, 0, 128, true);
@@ -87,7 +134,7 @@ public class Scene {
 
 		if (xPos < this.xMapSize) {
 			if (yPos > 0) {
-				tile = this.tileArray[var2][xPos + 1][yPos - 1];
+				tile = this.tileArray[plane][xPos + 1][yPos - 1];
 				if (tile != null) {
 					if (tile.floorDecoration != null) {
 						if (tile.floorDecoration.renderable instanceof RSModel) {
@@ -110,7 +157,7 @@ public class Scene {
 
 				for (int var7 = 0; var7 < var4.anInt1612 * -1912292193; ++var7) {
 					InteractableObject io = var4.interactableObjects[var7];
-					if ((io.anInt586 * 380600017 >> 29 & 3) == 2 && io.xPos * 1316787257 == x && io.yPos * 922395151 == y) {
+					if ((io.hash * 380600017 >> 29 & 3) == 2 && io.xPos * 1316787257 == x && io.yPos * 922395151 == y) {
 						io.anInt575 -= 85696413;
 					}
 				}
@@ -228,7 +275,7 @@ public class Scene {
 	public void method409(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10) {
 		if (var5 != null || var6 != null) {
 			Wall var12 = new Wall();
-			var12.anInt337 = var9 * 1520883995;
+			var12.hash = var9 * 1520883995;
 			var12.anInt341 = var10 * -2134476677;
 			var12.anInt334 = var2 * -991882880 - 495941440;
 			var12.anInt339 = var3 * 1040597120 + 520298560;
@@ -251,7 +298,7 @@ public class Scene {
 	public void method410(int var1, int var2, int var3, int var4, Renderable var5, Renderable var6, int var7, int var8, int var9, int var10, int var11, int var12) {
 		if (var5 != null) {
 			WallDecoration var13 = new WallDecoration();
-			var13.anInt302 = var11 * 1304286109;
+			var13.hash = var11 * 1304286109;
 			var13.anInt303 = var12 * 2107716451;
 			var13.anInt294 = var2 * 639770240 + 319885120;
 			var13.anInt293 = var3 * -328335744 - 164167872;
@@ -337,7 +384,7 @@ public class Scene {
 		}
 
 		InteractableObject var20 = new InteractableObject();
-		var20.anInt586 = var12 * -504391119;
+		var20.hash = var12 * -504391119;
 		var20.anInt583 = var13 * 2085864127;
 		var20.anInt575 = plane * 85696413;
 		var20.anInt572 = var6 * 1256595785;
@@ -412,7 +459,7 @@ public class Scene {
 		if (var4 != null) {
 			for (int var5 = 0; var5 < var4.anInt1612 * -1912292193; ++var5) {
 				InteractableObject var6 = var4.interactableObjects[var5];
-				if ((var6.anInt586 * 380600017 >> 29 & 3) == 2 && var6.xPos * 1316787257 == var2 && var6.yPos * 922395151 == var3) {
+				if ((var6.hash * 380600017 >> 29 & 3) == 2 && var6.xPos * 1316787257 == var2 && var6.yPos * 922395151 == var3) {
 					this.method560(var6);
 					return;
 				}
@@ -439,35 +486,35 @@ public class Scene {
 		return (var0 & '\uff80') + var1;
 	}
 
-	public WallDecoration method424(int var1, int var2, int var3) {
+	public WallDecoration getWallDecorationForTile(int var1, int var2, int var3) {
 		Tile var4 = this.tileArray[var1][var2][var3];
 		return var4 == null ? null : var4.wallDecoration;
 	}
 
-	public int method425(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		return var4 != null && var4.wallDecoration != null ? var4.wallDecoration.anInt302 * 414599861 : 0;
+	public int fetchWallDecorationHash(int var1, int var2, int var3) {
+		Tile tile = this.tileArray[var1][var2][var3];
+		return tile != null && tile.wallDecoration != null ? tile.wallDecoration.hash * 414599861 : 0;
 	}
 
-	public FloorDecoration method426(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		return var4 != null && var4.floorDecoration != null ? var4.floorDecoration : null;
+	public FloorDecoration getFloorDecorationForTile(int var1, int var2, int var3) {
+		Tile tile = this.tileArray[var1][var2][var3];
+		return tile != null && tile.floorDecoration != null ? tile.floorDecoration : null;
 	}
 
-	public int method427(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		return var4 != null && var4.wall != null ? var4.wall.anInt337 * 639818003 : 0;
+	public int fetchWallObjectHash(int var1, int var2, int var3) {
+		Tile tile = this.tileArray[var1][var2][var3];
+		return tile != null && tile.wall != null ? tile.wall.hash * 639818003 : 0;
 	}
 
-	public int method429(int var1, int var2, int var3) {
-		Tile var4 = this.tileArray[var1][var2][var3];
-		if (var4 == null) {
+	public int fetchTileInteractableHash(int var1, int var2, int var3) {
+		Tile tile = this.tileArray[var1][var2][var3];
+		if (tile == null) {
 			return 0;
 		} else {
-			for (int var6 = 0; var6 < var4.anInt1612 * -1912292193; ++var6) {
-				InteractableObject var5 = var4.interactableObjects[var6];
-				if ((var5.anInt586 * 380600017 >> 29 & 3) == 2 && var5.xPos * 1316787257 == var2 && var5.yPos * 922395151 == var3) {
-					return var5.anInt586 * 380600017;
+			for (int var6 = 0; var6 < tile.anInt1612 * -1912292193; ++var6) {
+				InteractableObject tileInteractableObject = tile.interactableObjects[var6];
+				if ((tileInteractableObject.hash * 380600017 >> 29 & 3) == 2 && tileInteractableObject.xPos * 1316787257 == var2 && tileInteractableObject.yPos * 922395151 == var3) {
+					return tileInteractableObject.hash * 380600017;
 				}
 			}
 
@@ -483,15 +530,15 @@ public class Scene {
 	public int method431(int var1, int var2, int var3, int var4) {
 		Tile var5 = this.tileArray[var1][var2][var3];
 		if (var5 != null) {
-			if (var5.wall != null && var5.wall.anInt337 * 639818003 == var4) {
+			if (var5.wall != null && var5.wall.hash * 639818003 == var4) {
 				return var5.wall.anInt341 * -953243981 & 255;
-			} else if (var5.wallDecoration != null && var5.wallDecoration.anInt302 * 414599861 == var4) {
+			} else if (var5.wallDecoration != null && var5.wallDecoration.hash * 414599861 == var4) {
 				return var5.wallDecoration.anInt303 * -1368791477 & 255;
 			} else if (var5.floorDecoration != null && var5.floorDecoration.hash * 1276953639 == var4) {
 				return var5.floorDecoration.anInt285 * -1366545129 & 255;
 			} else {
 				for (int var6 = 0; var6 < var5.anInt1612 * -1912292193; ++var6) {
-					if (var5.interactableObjects[var6].anInt586 * 380600017 == var4) {
+					if (var5.interactableObjects[var6].hash * 380600017 == var4) {
 						return var5.interactableObjects[var6].anInt583 * -1925665473 & 255;
 					}
 				}
@@ -916,13 +963,13 @@ public class Scene {
 
 						var10 = var9.wall;
 						if (var10 != null) {
-							var10.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var10.anInt334 * 1597898123 - xCameraPos, var10.anInt335 * 1266353119 - zCameraPos, var10.anInt339 * 251671425 - yCameraPos, var10.anInt337 * 639818003);
+							var10.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var10.anInt334 * 1597898123 - xCameraPos, var10.anInt335 * 1266353119 - zCameraPos, var10.anInt339 * 251671425 - yCameraPos, var10.hash * 639818003);
 						}
 
 						for (var11 = 0; var11 < var9.anInt1612 * -1912292193; ++var11) {
 							interactableObject = var9.interactableObjects[var11];
 							if (interactableObject != null) {
-								interactableObject.renderableObject.renderAtPoint(interactableObject.anInt580 * -469937249, anInt428, anInt434, anInt430, anInt431, interactableObject.anInt572 * -1568890631 - xCameraPos, interactableObject.anInt571 * -62943593 - zCameraPos, interactableObject.anInt573 * -904730093 - yCameraPos, interactableObject.anInt586 * 380600017);
+								interactableObject.renderableObject.renderAtPoint(interactableObject.anInt580 * -469937249, anInt428, anInt434, anInt430, anInt431, interactableObject.anInt572 * -1568890631 - xCameraPos, interactableObject.anInt571 * -62943593 - zCameraPos, interactableObject.anInt573 * -904730093 - yCameraPos, interactableObject.hash * 380600017);
 							}
 						}
 					}
@@ -985,17 +1032,17 @@ public class Scene {
 						}
 
 						if ((wall.anInt336 * 1243649837 & var11) != 0 && !this.isWallCulled(var7, var4, var5, wall.anInt336 * 1243649837)) {
-							wall.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.anInt337 * 639818003);
+							wall.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.hash * 639818003);
 						}
 
 						if ((wall.anInt333 * -2065803153 & var11) != 0 && !this.isWallCulled(var7, var4, var5, wall.anInt333 * -2065803153)) {
-							wall.aClass108_Sub20_Sub14_343.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.anInt337 * 639818003);
+							wall.aClass108_Sub20_Sub14_343.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.hash * 639818003);
 						}
 					}
 
 					if (wallDecoration != null && !this.isCulled(var7, var4, var5, wallDecoration.renderable.modelHeight * 782517621)) {
 						if ((wallDecoration.anInt296 * -731248795 & var11) != 0) {
-							wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wallDecoration.anInt294 * 501445397 - xCameraPos + wallDecoration.anInt298 * -1652093979, wallDecoration.anInt304 * 609165403 - zCameraPos, wallDecoration.anInt293 * 534010197 - yCameraPos + wallDecoration.anInt299 * -17941331, wallDecoration.anInt302 * 414599861);
+							wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wallDecoration.anInt294 * 501445397 - xCameraPos + wallDecoration.anInt298 * -1652093979, wallDecoration.anInt304 * 609165403 - zCameraPos, wallDecoration.anInt293 * 534010197 - yCameraPos + wallDecoration.anInt299 * -17941331, wallDecoration.hash * 414599861);
 						} else if (wallDecoration.anInt296 * -731248795 == 256) {
 							var14 = wallDecoration.anInt294 * 501445397 - xCameraPos;
 							var15 = wallDecoration.anInt304 * 609165403 - zCameraPos;
@@ -1015,9 +1062,9 @@ public class Scene {
 							}
 
 							if (var19 < var18) {
-								wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var14 + wallDecoration.anInt298 * -1652093979, var15, var16 + wallDecoration.anInt299 * -17941331, wallDecoration.anInt302 * 414599861);
+								wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var14 + wallDecoration.anInt298 * -1652093979, var15, var16 + wallDecoration.anInt299 * -17941331, wallDecoration.hash * 414599861);
 							} else if (wallDecoration.aClass108_Sub20_Sub14_301 != null) {
-								wallDecoration.aClass108_Sub20_Sub14_301.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var14, var15, var16, wallDecoration.anInt302 * 414599861);
+								wallDecoration.aClass108_Sub20_Sub14_301.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var14, var15, var16, wallDecoration.hash * 414599861);
 							}
 						}
 					}
@@ -1089,7 +1136,7 @@ public class Scene {
 					if (var22) {
 						var10 = tile.wall;
 						if (!this.isWallCulled(var7, var4, var5, var10.anInt336 * 1243649837)) {
-							var10.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var10.anInt334 * 1597898123 - xCameraPos, var10.anInt335 * 1266353119 - zCameraPos, var10.anInt339 * 251671425 - yCameraPos, var10.anInt337 * 639818003);
+							var10.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var10.anInt334 * 1597898123 - xCameraPos, var10.anInt335 * 1266353119 - zCameraPos, var10.anInt339 * 251671425 - yCameraPos, var10.hash * 639818003);
 						}
 
 						tile.anInt1620 = 0;
@@ -1188,7 +1235,7 @@ public class Scene {
 							InteractableObject var35 = aClass40Array432[var24];
 							var35.anInt581 = cycle * -793186621;
 							if (!this.isCulled(var7, var35.xPos * 1316787257, var35.anInt582 * 1424354129, var35.yPos * 922395151, var35.anInt579 * 1215390305, var35.renderableObject.modelHeight * 782517621)) {
-								var35.renderableObject.renderAtPoint(var35.anInt580 * -469937249, anInt428, anInt434, anInt430, anInt431, var35.anInt572 * -1568890631 - xCameraPos, var35.anInt571 * -62943593 - zCameraPos, var35.anInt573 * -904730093 - yCameraPos, var35.anInt586 * 380600017);
+								var35.renderableObject.renderAtPoint(var35.anInt580 * -469937249, anInt428, anInt434, anInt430, anInt431, var35.anInt572 * -1568890631 - xCameraPos, var35.anInt571 * -62943593 - zCameraPos, var35.anInt573 * -904730093 - yCameraPos, var35.hash * 380600017);
 							}
 
 							for (var14 = var35.xPos * 1316787257; var14 <= var35.anInt582 * 1424354129; ++var14) {
@@ -1261,7 +1308,7 @@ public class Scene {
 						WallDecoration wallDecoration = tile.wallDecoration;
 						if (wallDecoration != null && !this.isCulled(var7, var4, var5, wallDecoration.renderable.modelHeight * 782517621)) {
 							if ((wallDecoration.anInt296 * -731248795 & tile.anInt1623 * 98641359) != 0) {
-								wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wallDecoration.anInt294 * 501445397 - xCameraPos + wallDecoration.anInt298 * -1652093979, wallDecoration.anInt304 * 609165403 - zCameraPos, wallDecoration.anInt293 * 534010197 - yCameraPos + wallDecoration.anInt299 * -17941331, wallDecoration.anInt302 * 414599861);
+								wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wallDecoration.anInt294 * 501445397 - xCameraPos + wallDecoration.anInt298 * -1652093979, wallDecoration.anInt304 * 609165403 - zCameraPos, wallDecoration.anInt293 * 534010197 - yCameraPos + wallDecoration.anInt299 * -17941331, wallDecoration.hash * 414599861);
 							} else if (wallDecoration.anInt296 * -731248795 == 256) {
 								var11 = wallDecoration.anInt294 * 501445397 - xCameraPos;
 								var24 = wallDecoration.anInt304 * 609165403 - zCameraPos;
@@ -1280,9 +1327,9 @@ public class Scene {
 								}
 
 								if (var16 >= var15) {
-									wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var11 + wallDecoration.anInt298 * -1652093979, var24, var26 + wallDecoration.anInt299 * -17941331, wallDecoration.anInt302 * 414599861);
+									wallDecoration.renderable.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var11 + wallDecoration.anInt298 * -1652093979, var24, var26 + wallDecoration.anInt299 * -17941331, wallDecoration.hash * 414599861);
 								} else if (wallDecoration.aClass108_Sub20_Sub14_301 != null) {
-									wallDecoration.aClass108_Sub20_Sub14_301.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var11, var24, var26, wallDecoration.anInt302 * 414599861);
+									wallDecoration.aClass108_Sub20_Sub14_301.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, var11, var24, var26, wallDecoration.hash * 414599861);
 								}
 							}
 						}
@@ -1290,11 +1337,11 @@ public class Scene {
 						Wall wall = tile.wall;
 						if (wall != null) {
 							if ((wall.anInt333 * -2065803153 & tile.anInt1623 * 98641359) != 0 && !this.isWallCulled(var7, var4, var5, wall.anInt333 * -2065803153)) {
-								wall.aClass108_Sub20_Sub14_343.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.anInt337 * 639818003);
+								wall.aClass108_Sub20_Sub14_343.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.hash * 639818003);
 							}
 
 							if ((wall.anInt336 * 1243649837 & tile.anInt1623 * 98641359) != 0 && !this.isWallCulled(var7, var4, var5, wall.anInt336 * 1243649837)) {
-								wall.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.anInt337 * 639818003);
+								wall.aClass108_Sub20_Sub14_338.renderAtPoint(0, anInt428, anInt434, anInt430, anInt431, wall.anInt334 * 1597898123 - xCameraPos, wall.anInt335 * 1266353119 - zCameraPos, wall.anInt339 * 251671425 - yCameraPos, wall.hash * 639818003);
 							}
 						}
 					}
@@ -1421,7 +1468,7 @@ public class Scene {
 							Rasterizer3D.method2937(var17, var18, var19, var11, var12, var16, var1.triangleHSL_A[var13], var1.triangle_HSL_B[var13], var1.triangleHSL_C[var13], ShapedTile.anIntArray540[var15], ShapedTile.anIntArray540[var9], ShapedTile.anIntArray540[var10], ShapedTile.anIntArray554[var15], ShapedTile.anIntArray554[var9], ShapedTile.anIntArray554[var10], ShapedTile.anIntArray536[var15], ShapedTile.anIntArray536[var9], ShapedTile.anIntArray536[var10], var1.anIntArray553[var13]);
 						}
 					} else {
-						int var14 = Rasterizer3D.anInterface2_2501.method21(var1.anIntArray553[var13], -591535061);
+						int var14 = Rasterizer3D.anTextureImage_2501.method21(var1.anIntArray553[var13], -591535061);
 						Rasterizer3D.method2932(var17, var18, var19, var11, var12, var16, method423(var14, var1.triangleHSL_A[var13]), method423(var14, var1.triangle_HSL_B[var13]), method423(var14, var1.triangleHSL_C[var13]));
 					}
 				} else if (var1.triangleHSL_A[var13] != 12345678) {
@@ -1438,21 +1485,21 @@ public class Scene {
 		anInt444 = 0;
 
 		for (int var4 = 0; var4 < var1; ++var4) {
-			CullingCluster var2 = var5[var4];
+			CullingCluster cullingCluster = var5[var4];
 			int var3;
 			int var6;
 			int var7;
 			int var8;
 			boolean var9;
-			if (var2.anInt644 * -1874526279 == 1) {
-				var8 = var2.anInt649 * -437373355 - xCamPosTile + 25;
+			if (cullingCluster.anInt644 * -1874526279 == 1) {
+				var8 = cullingCluster.anInt649 * -437373355 - xCamPosTile + 25;
 				if (var8 >= 0 && var8 <= 50) {
-					var6 = var2.anInt642 * 964995897 - yCamPosTile + 25;
+					var6 = cullingCluster.anInt642 * 964995897 - yCamPosTile + 25;
 					if (var6 < 0) {
 						var6 = 0;
 					}
 
-					var7 = var2.anInt661 * -1554923397 - yCamPosTile + 25;
+					var7 = cullingCluster.anInt661 * -1554923397 - yCamPosTile + 25;
 					if (var7 > 50) {
 						var7 = 50;
 					}
@@ -1467,34 +1514,34 @@ public class Scene {
 					}
 
 					if (var9) {
-						var3 = xCameraPos - var2.anInt645 * -47013057;
+						var3 = xCameraPos - cullingCluster.anInt645 * -47013057;
 						if (var3 > 32) {
-							var2.anInt651 = -927793623;
+							cullingCluster.anInt651 = -927793623;
 						} else {
 							if (var3 >= -32) {
 								continue;
 							}
 
-							var2.anInt651 = -1855587246;
+							cullingCluster.anInt651 = -1855587246;
 							var3 = -var3;
 						}
 
-						var2.anInt654 = (var2.anInt647 * 1567332133 - yCameraPos << 8) / var3 * -235416623;
-						var2.anInt655 = (var2.anInt643 * 452864001 - yCameraPos << 8) / var3 * 1619077315;
-						var2.anInt656 = (var2.anInt658 * -833251235 - zCameraPos << 8) / var3 * -1061839087;
-						var2.anInt657 = (var2.anInt650 * -1204041451 - zCameraPos << 8) / var3 * -1989063057;
-						aClass46Array445[anInt444++] = var2;
+						cullingCluster.anInt654 = (cullingCluster.anInt647 * 1567332133 - yCameraPos << 8) / var3 * -235416623;
+						cullingCluster.anInt655 = (cullingCluster.anInt643 * 452864001 - yCameraPos << 8) / var3 * 1619077315;
+						cullingCluster.anInt656 = (cullingCluster.anInt658 * -833251235 - zCameraPos << 8) / var3 * -1061839087;
+						cullingCluster.anInt657 = (cullingCluster.anInt650 * -1204041451 - zCameraPos << 8) / var3 * -1989063057;
+						aClass46Array445[anInt444++] = cullingCluster;
 					}
 				}
-			} else if (var2.anInt644 * -1874526279 == 2) {
-				var8 = var2.anInt642 * 964995897 - yCamPosTile + 25;
+			} else if (cullingCluster.anInt644 * -1874526279 == 2) {
+				var8 = cullingCluster.anInt642 * 964995897 - yCamPosTile + 25;
 				if (var8 >= 0 && var8 <= 50) {
-					var6 = var2.anInt649 * -437373355 - xCamPosTile + 25;
+					var6 = cullingCluster.anInt649 * -437373355 - xCamPosTile + 25;
 					if (var6 < 0) {
 						var6 = 0;
 					}
 
-					var7 = var2.anInt641 * 1185851827 - xCamPosTile + 25;
+					var7 = cullingCluster.anInt641 * 1185851827 - xCamPosTile + 25;
 					if (var7 > 50) {
 						var7 = 50;
 					}
@@ -1509,45 +1556,45 @@ public class Scene {
 					}
 
 					if (var9) {
-						var3 = yCameraPos - var2.anInt647 * 1567332133;
+						var3 = yCameraPos - cullingCluster.anInt647 * 1567332133;
 						if (var3 > 32) {
-							var2.anInt651 = 1511586427;
+							cullingCluster.anInt651 = 1511586427;
 						} else {
 							if (var3 >= -32) {
 								continue;
 							}
 
-							var2.anInt651 = 583792804;
+							cullingCluster.anInt651 = 583792804;
 							var3 = -var3;
 						}
 
-						var2.anInt640 = (var2.anInt645 * -47013057 - xCameraPos << 8) / var3 * 825026817;
-						var2.anInt653 = (var2.anInt652 * 2005978415 - xCameraPos << 8) / var3 * -1938500855;
-						var2.anInt656 = (var2.anInt658 * -833251235 - zCameraPos << 8) / var3 * -1061839087;
-						var2.anInt657 = (var2.anInt650 * -1204041451 - zCameraPos << 8) / var3 * -1989063057;
-						aClass46Array445[anInt444++] = var2;
+						cullingCluster.anInt640 = (cullingCluster.anInt645 * -47013057 - xCameraPos << 8) / var3 * 825026817;
+						cullingCluster.anInt653 = (cullingCluster.anInt652 * 2005978415 - xCameraPos << 8) / var3 * -1938500855;
+						cullingCluster.anInt656 = (cullingCluster.anInt658 * -833251235 - zCameraPos << 8) / var3 * -1061839087;
+						cullingCluster.anInt657 = (cullingCluster.anInt650 * -1204041451 - zCameraPos << 8) / var3 * -1989063057;
+						aClass46Array445[anInt444++] = cullingCluster;
 					}
 				}
-			} else if (var2.anInt644 * -1874526279 == 4) {
-				var8 = var2.anInt658 * -833251235 - zCameraPos;
+			} else if (cullingCluster.anInt644 * -1874526279 == 4) {
+				var8 = cullingCluster.anInt658 * -833251235 - zCameraPos;
 				if (var8 > 128) {
-					var6 = var2.anInt642 * 964995897 - yCamPosTile + 25;
+					var6 = cullingCluster.anInt642 * 964995897 - yCamPosTile + 25;
 					if (var6 < 0) {
 						var6 = 0;
 					}
 
-					var7 = var2.anInt661 * -1554923397 - yCamPosTile + 25;
+					var7 = cullingCluster.anInt661 * -1554923397 - yCamPosTile + 25;
 					if (var7 > 50) {
 						var7 = 50;
 					}
 
 					if (var6 <= var7) {
-						int var13 = var2.anInt649 * -437373355 - xCamPosTile + 25;
+						int var13 = cullingCluster.anInt649 * -437373355 - xCamPosTile + 25;
 						if (var13 < 0) {
 							var13 = 0;
 						}
 
-						var3 = var2.anInt641 * 1185851827 - xCamPosTile + 25;
+						var3 = cullingCluster.anInt641 * 1185851827 - xCamPosTile + 25;
 						if (var3 > 50) {
 							var3 = 50;
 						}
@@ -1565,12 +1612,12 @@ public class Scene {
 						}
 
 						if (var11) {
-							var2.anInt651 = -344000819;
-							var2.anInt640 = (var2.anInt645 * -47013057 - xCameraPos << 8) / var8 * 825026817;
-							var2.anInt653 = (var2.anInt652 * 2005978415 - xCameraPos << 8) / var8 * -1938500855;
-							var2.anInt654 = (var2.anInt647 * 1567332133 - yCameraPos << 8) / var8 * -235416623;
-							var2.anInt655 = (var2.anInt643 * 452864001 - yCameraPos << 8) / var8 * 1619077315;
-							aClass46Array445[anInt444++] = var2;
+							cullingCluster.anInt651 = -344000819;
+							cullingCluster.anInt640 = (cullingCluster.anInt645 * -47013057 - xCameraPos << 8) / var8 * 825026817;
+							cullingCluster.anInt653 = (cullingCluster.anInt652 * 2005978415 - xCameraPos << 8) / var8 * -1938500855;
+							cullingCluster.anInt654 = (cullingCluster.anInt647 * 1567332133 - yCameraPos << 8) / var8 * -235416623;
+							cullingCluster.anInt655 = (cullingCluster.anInt643 * 452864001 - yCameraPos << 8) / var8 * 1619077315;
+							aClass46Array445[anInt444++] = cullingCluster;
 						}
 					}
 				}
@@ -2112,7 +2159,7 @@ public class Scene {
 									Rasterizer3D.method2937(var24, var25, var26, var27, var22, var28, var1.anInt505 * 22178081, var1.anInt507 * 308003115, var1.anInt504 * 1652666251, var17, var9, var19, var13, var12, var16, var11, var15, var21, var1.anInt509 * -482843313);
 								}
 							} else {
-								var23 = Rasterizer3D.anInterface2_2501.method21(var1.anInt509 * -482843313, -54823951);
+								var23 = Rasterizer3D.anTextureImage_2501.method21(var1.anInt509 * -482843313, -54823951);
 								Rasterizer3D.method2932(var24, var25, var26, var27, var22, var28, method423(var23, var1.anInt505 * 22178081), method423(var23, var1.anInt507 * 308003115), method423(var23, var1.anInt504 * 1652666251));
 							}
 						}
@@ -2135,7 +2182,7 @@ public class Scene {
 							} else if (!aBool411) {
 								Rasterizer3D.method2937(var30, var26, var25, var29, var28, var22, var1.anInt503 * -1317598385, var1.anInt504 * 1652666251, var1.anInt507 * 308003115, var10, var19, var9, var20, var16, var12, var14, var21, var15, var1.anInt509 * -482843313);
 							} else {
-								var23 = Rasterizer3D.anInterface2_2501.method21(var1.anInt509 * -482843313, -1111881249);
+								var23 = Rasterizer3D.anTextureImage_2501.method21(var1.anInt509 * -482843313, -1111881249);
 								Rasterizer3D.method2932(var30, var26, var25, var29, var28, var22, method423(var23, var1.anInt503 * -1317598385), method423(var23, var1.anInt504 * 1652666251), method423(var23, var1.anInt507 * 308003115));
 							}
 						}
@@ -2175,7 +2222,7 @@ public class Scene {
 		} else {
 			for (int var6 = 0; var6 < tile.anInt1612 * -1912292193; ++var6) {
 				InteractableObject io = tile.interactableObjects[var6];
-				if ((io.anInt586 * 380600017 >> 29 & 3) == 2 && io.xPos * 1316787257 == x && io.yPos * 922395151 == y) {
+				if ((io.hash * 380600017 >> 29 & 3) == 2 && io.xPos * 1316787257 == x && io.yPos * 922395151 == y) {
 					return io;
 				}
 			}

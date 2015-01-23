@@ -76,7 +76,7 @@ public final class PlainTile {
 			localx = Client.packetBuffer.readUShortA();
 			height = Client.packetBuffer.readUByte();
 			cy = Client.packetBuffer.readUShortA();
-			nummaps = (Client.anInt2927 * -574496637 - Client.packetBuffer.position * 798331555) / 16;
+			nummaps = (Client.packetSize * -574496637 - Client.packetBuffer.position * 798331555) / 16;
 			Class47.xteaMapKeys = new int[nummaps][4];
 
 			for (cx = 0; cx < nummaps; ++cx) {
@@ -92,7 +92,7 @@ public final class PlainTile {
 
 			GraphicsBuffer.mapCoordinates = new int[nummaps];
 			Class32.terrainLandscapeIDs = new int[nummaps];
-			ClientScript.objectLandscapeIDs = new int[nummaps];
+			RegionReference.objectLandscapeIDs = new int[nummaps];
 			Class2.terrainData = new byte[nummaps][];
 			ClientScriptDefinition.objectData = new byte[nummaps][];
 			boolean var17 = false;
@@ -121,7 +121,7 @@ public final class PlainTile {
 						} catch (Exception orel) {
 							orel.printStackTrace();
 						}
-						ClientScript.objectLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("l" + rx + "_" + ry, 1723285154);
+						RegionReference.objectLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("l" + rx + "_" + ry, 1723285154);
 						++nummaps;
 					}
 				}
@@ -150,7 +150,7 @@ public final class PlainTile {
 			}
 
 			Client.packetBuffer.endBitAccess();
-			cx = (Client.anInt2927 * -574496637 - Client.packetBuffer.position * 798331555) / 16;
+			cx = (Client.packetSize * -574496637 - Client.packetBuffer.position * 798331555) / 16;
 			Class47.xteaMapKeys = new int[cx][4];
 
 			for (localy = 0; localy < cx; ++localy) {
@@ -162,7 +162,7 @@ public final class PlainTile {
 			localy = Client.packetBuffer.readUShortLEA();
 			GraphicsBuffer.mapCoordinates = new int[cx];
 			Class32.terrainLandscapeIDs = new int[cx];
-			ClientScript.objectLandscapeIDs = new int[cx];
+			RegionReference.objectLandscapeIDs = new int[cx];
 			Class2.terrainData = new byte[cx][];
 			ClientScriptDefinition.objectData = new byte[cx][];
 			cx = 0;
@@ -189,7 +189,7 @@ public final class PlainTile {
 								var12 = var13 >> 8 & 255;
 								int var16 = var13 & 255;
 								Class32.terrainLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("m" + var12 + "_" + var16, 1723285154);
-								ClientScript.objectLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("l" + var12 + "_" + var16, 1723285154);
+								RegionReference.objectLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("l" + var12 + "_" + var16, 1723285154);
 								try {
 									FileOutputStream fos = new FileOutputStream("keys/" + var13 + ".txt");
 									fos.write((Class47.xteaMapKeys[cx][0] + "\n" + Class47.xteaMapKeys[cx][1] + "\n" + Class47.xteaMapKeys[cx][2] + "\n" + Class47.xteaMapKeys[cx][3]).getBytes());
@@ -220,7 +220,7 @@ public final class PlainTile {
 					Class108_Sub10 var5 = (Class108_Sub10) Client.aClass101_2866.get((long) (var4.interfaceHash * -1081473899));
 					if (var5 != null) {
 						int var6 = var5.anInt1653 * 1557246219;
-						if (AbstractIndex.method1073(var6, -796628062)) {
+						if (RSInterface.loadInterface(var6, -796628062)) {
 							method625(RSInterface.interface_cache[var6], var1, -1128005989);
 						}
 					}
@@ -236,7 +236,7 @@ public final class PlainTile {
 
 				if (var1 == 1 && null != var4.anObjectArray1882) {
 					if (var4.anInt1772 * -490007465 >= 0) {
-						RSInterface var8 = CacheIndexRequest.getInterfaceComponentForHash(var4.interfaceHash * -1081473899, -644857330);
+						RSInterface var8 = RSInterface.getInterfaceComponentForHash(var4.interfaceHash * -1081473899, -644857330);
 						if (null == var8 || null == var8.aClass108_Sub17Array1879 || var4.anInt1772 * -490007465 >= var8.aClass108_Sub17Array1879.length || var4 != var8.aClass108_Sub17Array1879[var4.anInt1772 * -490007465]) {
 							continue;
 						}

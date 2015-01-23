@@ -8,7 +8,7 @@ public class OnlineFriend extends LinkedNode {
    public static int anInt1511;
    String username;
    short status;
-   int anInt1517 = (int)(Player.getCurrentTimeMillis(849846164) / 1000L) * -198668945;
+   int anInt1517 = (int)(Timer.getCurrentTimeMillis(849846164) / 1000L) * -198668945;
 
 
    OnlineFriend(String var1, int var2) {

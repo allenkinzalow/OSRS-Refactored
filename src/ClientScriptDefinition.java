@@ -24,7 +24,7 @@ public class ClientScriptDefinition extends CacheableNode {
 						int[] tileHeights = RegionReference.tileHeights[0][localX];
 						int var10 = var4 + localX + 932731;
 						int var13 = localY + 556238 + var5;
-						int tileHeight = Class51.method702('\ub135' + var10, 91923 + var13, 4, 1366946286) - 128 + (Class51.method702(var10 + 10294, var13 + '\u93bd', 2, -435852071) - 128 >> 1) + (Class51.method702(var10, var13, 1, 1719228151) - 128 >> 2);
+						int tileHeight = ClientScriptReference.method702('\ub135' + var10, 91923 + var13, 4, 1366946286) - 128 + (ClientScriptReference.method702(var10 + 10294, var13 + '\u93bd', 2, -435852071) - 128 >> 1) + (ClientScriptReference.method702(var10, var13, 1, 1719228151) - 128 >> 2);
 						tileHeight = (int) ((double) tileHeight * 0.3D) + 35;
 						if (tileHeight < 10) {
 							tileHeight = 10; 
@@ -104,7 +104,7 @@ public class ClientScriptDefinition extends CacheableNode {
 
 				component.anInt1780 = var19 * 1057491055;
 				component.cycle = Client.cycle * 1800650659;
-				if (!component.aBool1855 || !ClientScriptMap.isComponentHidden(component, (byte) 82)) {
+				if (!component.aBool1855 || !RSInterface.isComponentHidden(component, (byte) 82)) {
 					int var21;
 					if (component.anInt1886 * -917776085 > 0) {
 						int mediaRenderType = component.anInt1886 * -917776085; // this is how the media is displayed
@@ -238,14 +238,14 @@ public class ClientScriptDefinition extends CacheableNode {
 							}
 
 							if (component.anInt1886 * -917776085 == 1338) {
-								Class50.method699(var21, var12, var19, (short) -4901);
+								Class50.renderMiniMap(var21, var12, var19, (short) -4901);
 								Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 								continue;
 							}
 						}
 
 						if (0 == component.componentType * 942877543) { // container or scrolling container?
-							if (!component.aBool1855 && ClientScriptMap.isComponentHidden(component, (byte) 83) && component != Class72.aClass108_Sub17_924) {
+							if (!component.aBool1855 && RSInterface.isComponentHidden(component, (byte) 83) && component != Client.aClass108_Sub17_924) {
 								continue;
 							}
 
@@ -266,7 +266,7 @@ public class ClientScriptDefinition extends CacheableNode {
 
 							Class108_Sub10 var45 = (Class108_Sub10) Client.aClass101_2866.get((long) (component.interfaceHash * -1081473899));
 							if (null != var45) {
-								Class50.renderInterface(var45.anInt1653 * 1557246219, var24, var29, var28, var25, var21, var12, var19, 1300032424);
+								RSInterface.renderInterface(var45.anInt1653 * 1557246219, var24, var29, var28, var25, var21, var12, var19, 1300032424);
 							}
 
 							Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
@@ -302,10 +302,10 @@ public class ClientScriptDefinition extends CacheableNode {
 												int itemID = component.widgetItems[itemIndex] - 1;
 												if (xPos + 32 > xRender && xPos < renderWidth && yPos + 32 > yRender && yPos < renderHeight || IsaacRandomGen.aClass108_Sub17_745 == component && itemIndex == Client.anInt2863 * -664226831) {
 													RGBSprite itemSprite;
-													if (1 == Client.anInt2858 * -968945719 && Class51.anInt716 * 347376265 == itemIndex && component.interfaceHash * -1081473899 == Class50.anInt699 * -932350913) {
-														itemSprite = Class5.getItemSprite(itemID, component.widgetItemAmounts[itemIndex], 2, 0, false, 1256224427);
+													if (1 == Client.anInt2858 * -968945719 && ClientScriptReference.anInt716 * 347376265 == itemIndex && component.interfaceHash * -1081473899 == Class50.anInt699 * -932350913) {
+														itemSprite = ItemDefinition.getItemSprite(itemID, component.widgetItemAmounts[itemIndex], 2, 0, false, 1256224427);
 													} else {
-														itemSprite = Class5.getItemSprite(itemID, component.widgetItemAmounts[itemIndex], 1, 3153952, false, -1431232517);
+														itemSprite = ItemDefinition.getItemSprite(itemID, component.widgetItemAmounts[itemIndex], 1, 3153952, false, -1431232517);
 													}
 
 													if (itemSprite != null) {
@@ -383,12 +383,12 @@ public class ClientScriptDefinition extends CacheableNode {
 								} else if (3 == component.componentType * 942877543) {
 									if (GameDefinition.method1103(component, (byte) -28)) {
 										var22 = component.componentActiveColor * -310727379;
-										if (component == Class72.aClass108_Sub17_924 && component.mouseOverActiveColor * -1067295333 != 0) {
+										if (component == Client.aClass108_Sub17_924 && component.mouseOverActiveColor * -1067295333 != 0) {
 											var22 = component.mouseOverActiveColor * -1067295333;
 										}
 									} else {
 										var22 = component.componentColor * -1484361639;
-										if (component == Class72.aClass108_Sub17_924 && 0 != component.mouseOverColor * 256440005) {
+										if (component == Client.aClass108_Sub17_924 && 0 != component.mouseOverColor * 256440005) {
 											var22 = component.mouseOverColor * 256440005;
 										}
 									}
@@ -416,7 +416,7 @@ public class ClientScriptDefinition extends CacheableNode {
 											String componentString = component.componentString;
 											if (GameDefinition.method1103(component, (byte) -58)) {
 												var30 = component.componentActiveColor * -310727379;
-												if (Class72.aClass108_Sub17_924 == component && component.mouseOverActiveColor * -1067295333 != 0) {
+												if (Client.aClass108_Sub17_924 == component && component.mouseOverActiveColor * -1067295333 != 0) {
 													var30 = component.mouseOverActiveColor * -1067295333;
 												}
 
@@ -425,7 +425,7 @@ public class ClientScriptDefinition extends CacheableNode {
 												}
 											} else {
 												var30 = component.componentColor * -1484361639;
-												if (Class72.aClass108_Sub17_924 == component && component.mouseOverColor * 256440005 != 0) {
+												if (Client.aClass108_Sub17_924 == component && component.mouseOverColor * 256440005 != 0) {
 													var30 = component.mouseOverColor * 256440005;
 												}
 											}
@@ -465,7 +465,7 @@ public class ClientScriptDefinition extends CacheableNode {
 											}
 										} else {
 											if (component.itemID * 703308511 != -1) {
-												var49 = Class5.getItemSprite(component.itemID * 703308511, component.anInt1775 * 1939717269, component.anInt1799 * 411719917, component.anInt1800 * -563686383, false, -364961531);
+												var49 = ItemDefinition.getItemSprite(component.itemID * 703308511, component.anInt1775 * 1939717269, component.anInt1799 * 411719917, component.anInt1800 * -563686383, false, -364961531);
 											} else {
 												var49 = component.method1938(false, 301049466);
 											}
@@ -489,7 +489,7 @@ public class ClientScriptDefinition extends CacheableNode {
 														var49.method2756(var21, var12, component.height * -1281443035, component.width * 334099177);
 													}
 												} else {
-													Rasterizer2D.method2497(var21, var12, component.height * -1281443035 + var21, component.width * 334099177 + var12);
+													Rasterizer2D.setRasterizerArea(var21, var12, component.height * -1281443035 + var21, component.width * 334099177 + var12);
 													var20 = (var30 - 1 + component.height * -1281443035) / var30;
 													var41 = (component.width * 334099177 + (var15 - 1)) / var15;
 
@@ -756,5 +756,46 @@ public class ClientScriptDefinition extends CacheableNode {
 		}
 
 		return var0;
+	}
+
+	static ClientScriptDefinition getClientScriptDefinition(int scriptID, int var1) {
+		ClientScriptDefinition definition = (ClientScriptDefinition) clientScriptMap.get((long) scriptID);
+		if (null != definition) {
+			return definition;
+		} else {
+			byte[] scriptData = Class108_Sub13.clientScriptIndex.getFile(scriptID, 0, (byte) 7);
+			if (null == scriptData) {
+				return null;
+			} else {
+				definition = new ClientScriptDefinition();
+				RSByteBuffer buffer = new RSByteBuffer(scriptData);
+				buffer.position = (buffer.buf.length - 12) * 537964811;
+				int paramCount = buffer.readInt();
+				definition.localIntCount = buffer.readUShort(36419144) * 1427932745;
+				definition.localStringCount = buffer.readUShort(1177800875) * -1989268771;
+				definition.anInt2269 = buffer.readUShort(1384272638) * -1053579443;
+				definition.anInt2276 = buffer.readUShort(84710466) * -485318219;
+				buffer.position = 0;
+				buffer.method1725(-2124865514);
+				definition.instructions = new int[paramCount];
+				definition.intOperands = new int[paramCount];
+				definition.aStringArray2272 = new String[paramCount];
+
+				int var3;
+				for (int var6 = 0; buffer.position * 798331555 < buffer.buf.length - 12; definition.instructions[var6++] = var3) {
+					var3 = buffer.readUShort(2026634670);
+					if (var3 == 3) {
+						definition.aStringArray2272[var6] = buffer.getString_2((byte) 8);
+					} else if (var3 < 100 && 21 != var3 && 38 != var3 && 39 != var3) {
+						definition.intOperands[var6] = buffer.readInt();
+					} else {
+						definition.intOperands[var6] = buffer.readUByte();
+					}
+				}
+
+				clientScriptMap.put(definition, (long) scriptID);
+				return definition;
+			}
+		}
 	}
 }

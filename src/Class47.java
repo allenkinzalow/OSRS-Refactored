@@ -18,10 +18,10 @@ public class Class47 {
    static final void method673(RSInterface[] var0, int var1, int var2) {
       for(int var3 = 0; var3 < var0.length; ++var3) {
          RSInterface var4 = var0[var3];
-         if(null != var4 && var4.hoverPopup * -867206361 == var1 && (!var4.aBool1855 || !ClientScriptMap.isComponentHidden(var4, (byte)38))) {
+         if(null != var4 && var4.hoverPopup * -867206361 == var1 && (!var4.aBool1855 || !RSInterface.isComponentHidden(var4, (byte) 38))) {
             int var6;
             if(0 == var4.componentType * 942877543) {
-               if(!var4.aBool1855 && ClientScriptMap.isComponentHidden(var4, (byte)13) && Class72.aClass108_Sub17_924 != var4) {
+               if(!var4.aBool1855 && RSInterface.isComponentHidden(var4, (byte) 13) && Client.aClass108_Sub17_924 != var4) {
                   continue;
                }
 
@@ -33,7 +33,7 @@ public class Class47 {
                Class108_Sub10 var5 = (Class108_Sub10) Client.aClass101_2866.get((long) (var4.interfaceHash * -1081473899));
                if(null != var5) {
                   var6 = var5.anInt1653 * 1557246219;
-                  if(AbstractIndex.method1073(var6, -1000670592)) {
+                  if(RSInterface.loadInterface(var6, -1000670592)) {
                      method673(RSInterface.interface_cache[var6], -1, -1348982981);
                   }
                }
@@ -157,7 +157,7 @@ public class Class47 {
                   }
 
                   Class78.anInt1212 = 0;
-                  Class78.aLong1225 = Player.getCurrentTimeMillis(849846164) * 347508540560254295L;
+                  Class78.aLong1225 = Timer.getCurrentTimeMillis(849846164) * 347508540560254295L;
                   return;
                }
 

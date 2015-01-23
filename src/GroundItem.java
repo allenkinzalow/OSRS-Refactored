@@ -162,59 +162,17 @@ public final class GroundItem {
 			var9 = var14;
 		}
 
-		BZip2Context.anInt279 = (var0 - var9) * 1616837399;
+		BZip2Context.xCameraPos = (var0 - var9) * 1616837399;
 		ClientScript.anInt1645 = (var1 - var8) * 1023920987;
 		CacheFileAccessor.anInt1490 = (var2 - var10) * 365620115;
 		RuntimeException_Sub1.anInt2625 = var3 * -1558852331;
 		GameConnection.anInt811 = var4 * -422753419;
 	}
 
-	static void submitJs5Request(CacheIndex var0, int index, int archive, int var3, byte var4, boolean var5, byte var6) {
-		long key = (long) (archive + (index << 16));
-		Js5Request req = (Js5Request) Class78.aClass101_1228.get(key);
-
-		if (null == req) {
-			req = (Js5Request) Class78.urgentJs5Requests.get(key);
-			if (null == req) {
-				req = (Js5Request) Class78.aClass101_1220.get(key);
-				if (req != null) {
-					if (var5) {
-						req.method1982();
-						Class78.aClass101_1228.put(req, key);
-						Class78.anInt1221 -= 831035281;
-						Class78.anInt1216 -= 1906091653;
-					}
-				} else  {
-					if (!var5) {
-						req = (Js5Request) Class78.regularJs5Requests.get(key);
-
-						if (null != req) {
-							return;
-						}
-					}
-
-					req = new Js5Request();
-					req.aClass74_Sub1_2300 = var0;
-					req.assumedCRC = var3 * 1016544135;
-					req.aByte2299 = var4;
-
-					if (var5) {
-						Class78.aClass101_1228.put(req, key);
-						Class78.anInt1216 -= 1906091653;
-					} else {
-						Class78.aClass98_1219.method1282(req);
-						Class78.aClass101_1220.put(req, key);
-						Class78.anInt1221 += 831035281;
-					}
-				}
-			}
-		}
-	}
-
 	public static void method585(byte var0) {
-		ItemDefinition.itemDefinitionMap.method1371();
-		ItemDefinition.itemModelMap.method1371();
-		ItemDefinition.itemSpriteMap.method1371();
+		ItemDefinition.itemDefinitionMap.clearCacheMap();
+		ItemDefinition.itemModelMap.clearCacheMap();
+		ItemDefinition.itemSpriteMap.clearCacheMap();
 	}
 
 	static final void method586(RSInterface var0, int var1, int var2, int var3) {
@@ -266,7 +224,7 @@ public final class GroundItem {
 						if (var0.widgetItems[var15] > 0) {
 							ItemDefinition itemDef = ItemDefinition.getItemDefinition(var0.widgetItems[var15] - 1, -1008729094);
 							if (Client.anInt2858 * -968945719 == 1 && Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, 618724156), 1422902481)) {
-								if (Class50.anInt699 * -932350913 != var0.interfaceHash * -1081473899 || var15 != Class51.anInt716 * 347376265) {
+								if (Class50.anInt699 * -932350913 != var0.interfaceHash * -1081473899 || var15 != ClientScriptReference.anInt716 * 347376265) {
 									Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -950562409) + itemDef.name, 31, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2028186126);
 								}
 							} else if (Client.aBool2881 && Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, -1016511227), 77070691)) {

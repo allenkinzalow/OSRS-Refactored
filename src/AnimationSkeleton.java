@@ -1,4 +1,6 @@
-
+/**
+ * Credits to Velocity for some of the naming.
+ */
 public class AnimationSkeleton {
 
    int[] translator_x;

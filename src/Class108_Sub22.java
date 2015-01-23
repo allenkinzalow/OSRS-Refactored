@@ -10,8 +10,13 @@ public class Class108_Sub22 extends Node {
    byte[] aByteArray1924 = new byte[128];
    Class100[] aClass100Array1927 = new Class100[128];
 
+   public static int method376(int var0, int var1, int var2) {
+      int var3 = var0 >>> 31;
+      return (var0 + var3) / var1 - var3;
+   }
 
-   boolean method1990(Class15 var1, byte[] var2, int[] var3, int var4) {
+
+   boolean method1990(SoundEffectWorker var1, byte[] var2, int[] var3, int var4) {
       boolean var5 = true;
       int var9 = 0;
       Class108_Sub1_Sub1 var7 = null;
@@ -443,7 +448,7 @@ public class Class108_Sub22 extends Node {
             var27 = (var3 - var39) * var46 + (var3 - var39) / 2;
 
             for(var8 = var39; var8 < var3; ++var8) {
-               var29 = Class27.method376(var27, var3 - var39, -532096506);
+               var29 = method376(var27, var3 - var39, -532096506);
                this.aByteArray1921[var8] = (byte)(32 + this.aByteArray1921[var8] * var29 >> 6);
                var27 += var25 - var46;
             }

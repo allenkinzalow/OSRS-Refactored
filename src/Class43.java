@@ -19,11 +19,11 @@ public class Class43 {
    Class43(PingRequester var1, URL var2) {
       this.aClass85_608 = var1.method822(var2, (short)128);
       this.anInt618 = 0;
-      this.aLong614 = (Player.getCurrentTimeMillis(849846164) + 30000L) * 7909828926640958115L;
+      this.aLong614 = (Timer.getCurrentTimeMillis(849846164) + 30000L) * 7909828926640958115L;
    }
 
    byte[] method650(byte var1) throws IOException {
-      if(Player.getCurrentTimeMillis(849846164) > this.aLong614 * -2717684605281117941L) {
+      if(Timer.getCurrentTimeMillis(849846164) > this.aLong614 * -2717684605281117941L) {
          throw new IOException();
       } else {
          if(this.anInt618 * 230308155 == 0) {
@@ -204,7 +204,7 @@ public class Class43 {
             Client.clippingPlanes[var1] = new CollisionMap(104, 104);
          }
 
-         Class80.miniMapSprite = new RGBSprite(512, 512);
+         Client.miniMapSprite = new RGBSprite(512, 512);
          Class4.currentLoadingStatus = StringUtilities.PREPARE_GAME_ENGINE;
          Class4.anInt52 = 2012125629;
          Client.currentLoadingStep = 966940460;
@@ -228,22 +228,22 @@ public class Class43 {
             Class4.anInt52 = -270716038;
             Client.currentLoadingStep = -697072958; 
          } else if(30 == Client.currentLoadingStep * -2390161) {
-            Projectile.skeletonIndex = Player.initCacheIndex(0, false, true, true, -517502665);
-            AnimationSkin.skinIndex = Player.initCacheIndex(1, false, true, true, -224103278);
-            AbstractIndex.configIndex = Player.initCacheIndex(2, true, false, true, -868873085);
-            OverlayFloorDefinition.interfaceIndex = Player.initCacheIndex(3, false, true, true, -377716183);
-            RSSoundEffect.soundEffectsIndex_1 = Player.initCacheIndex(4, false, true, true, -1122417526);
-            PingRequester.landscapeIndex = Player.initCacheIndex(5, true, true, true, -1364602569);
-            Friend.musicIndex_1 = Player.initCacheIndex(6, true, true, false, -1649811484);
-            Class47.modelIndex = Player.initCacheIndex(7, false, true, true, -1786151476);
-            Class23.spriteIndex = Player.initCacheIndex(8, false, true, true, -1203260803);
-            Class4.textureIndex = Player.initCacheIndex(9, false, true, true, -1786660079);
-            RuntimeException_Sub1.huffmanIndex = Player.initCacheIndex(10, false, true, true, -1850067732);
-            ClientParameter.musicIndex_2 = Player.initCacheIndex(11, false, true, true, -596901743);
-            Class108_Sub13.clientScriptIndex = Player.initCacheIndex(12, false, true, true, -2145575712);
-            Class54.fontIndex = Player.initCacheIndex(13, true, false, true, -1957495351);
-            HuffmanEncoding.soundEffectsIndex_2 = Player.initCacheIndex(14, false, true, false, -1772317315);
-            IsaacRandomGen.soundEffectsIndex_3 = Player.initCacheIndex(15, false, true, true, -483363239);
+            Projectile.skeletonIndex = CacheIndex.initCacheIndex(0, false, true, true, -517502665);
+            AnimationSkin.skinIndex = CacheIndex.initCacheIndex(1, false, true, true, -224103278);
+            AbstractIndex.configIndex = CacheIndex.initCacheIndex(2, true, false, true, -868873085);
+            OverlayFloorDefinition.interfaceIndex = CacheIndex.initCacheIndex(3, false, true, true, -377716183);
+            RSSoundEffect.soundEffectsIndex_1 = CacheIndex.initCacheIndex(4, false, true, true, -1122417526);
+            PingRequester.landscapeIndex = CacheIndex.initCacheIndex(5, true, true, true, -1364602569);
+            Friend.musicIndex_1 = CacheIndex.initCacheIndex(6, true, true, false, -1649811484);
+            Class47.modelIndex = CacheIndex.initCacheIndex(7, false, true, true, -1786151476);
+            Class23.spriteIndex = CacheIndex.initCacheIndex(8, false, true, true, -1203260803);
+            Class4.textureIndex = CacheIndex.initCacheIndex(9, false, true, true, -1786660079);
+            RuntimeException_Sub1.huffmanIndex = CacheIndex.initCacheIndex(10, false, true, true, -1850067732);
+            ClientParameter.musicIndex_2 = CacheIndex.initCacheIndex(11, false, true, true, -596901743);
+            Class108_Sub13.clientScriptIndex = CacheIndex.initCacheIndex(12, false, true, true, -2145575712);
+            Class54.fontIndex = CacheIndex.initCacheIndex(13, true, false, true, -1957495351);
+            HuffmanEncoding.soundEffectsIndex_2 = CacheIndex.initCacheIndex(14, false, true, false, -1772317315);
+            IsaacRandomGen.soundEffectsIndex_3 = CacheIndex.initCacheIndex(15, false, true, true, -483363239);
             Class4.currentLoadingStatus = StringUtilities.CONNECTING_UPDATE_SERVER;
             Class4.anInt52 = -541432076; 
             Client.currentLoadingStep = 1933880920; 
@@ -280,10 +280,10 @@ public class Class43 {
             Projectile.method2986(22050, !Client.lowMemory, 2, -2143336532);
             Class108_Sub4_Sub3 var28 = new Class108_Sub4_Sub3();
             var28.method2603(9, 128, (short)-16228);
-            Class2.aClass7_17 = Class15.method284(ClientScriptMap.pringRequester, Class1.aCanvas3, 0, 22050, -1059713629);
+            Class2.aClass7_17 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, Class1.aCanvas3, 0, 22050, -1059713629);
             Class2.aClass7_17.method117(var28, (byte)46);
             Entity.method2740(IsaacRandomGen.soundEffectsIndex_3, HuffmanEncoding.soundEffectsIndex_2, RSSoundEffect.soundEffectsIndex_1, var28, -685492007);
-            Class50.aClass7_697 = Class15.method284(ClientScriptMap.pringRequester, Class1.aCanvas3, 1, 2048, 1579217328);
+            Class50.aClass7_697 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, Class1.aCanvas3, 1, 2048, 1579217328);
             Class26.aClass108_Sub4_Sub1_352 = new Class108_Sub4_Sub1();
             Class50.aClass7_697.method117(Class26.aClass108_Sub4_Sub1_352, (byte)-45);
             GameObject.aClass19_2428 = new Class19(22050, Class7.anInt94 * -322018941);
@@ -334,7 +334,7 @@ public class Class43 {
                   Class4.currentLoadingStatus = StringUtilities.LOADING_FONTS + var1 * 100 / 3 + "%";
                   Class4.anInt52 = -1082864152;
                } else {
-                  Class104.aClass108_Sub15_1422 = new Class108_Sub15(true);
+                  MachineInformation.aMachineInformation_1422 = new MachineInformation(true);
                   Class4.currentLoadingStatus = StringUtilities.loading_fonts_2;
                   Class4.anInt52 = -1082864152;
                   Client.currentLoadingStep = -1394145916;
@@ -453,8 +453,8 @@ public class Class43 {
                         Client.currentLoadingStep = -1124278414;
                      }
                   } else if(Client.currentLoadingStep * -2390161 == 110) {
-                     ClientScript.mouseCapturer = new MouseCapturer();
-                     ClientScriptMap.pringRequester.method820(ClientScript.mouseCapturer, 10, -1542608488);
+                     MouseCapturer.mouseCapturer = new MouseCapturer();
+                     ClientScriptMap.pringRequester.method820(MouseCapturer.mouseCapturer, 10, -1542608488);
                      Class4.currentLoadingStatus = StringUtilities.aString1143;
                      Class4.anInt52 = -1685737298;
                      Client.currentLoadingStep = 1506675464;
@@ -525,8 +525,8 @@ public class Class43 {
                      ++var1;
                   }
 
-                  if(null == Class5.headPrayerSprites) {
-                     Class5.headPrayerSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "headicons_prayer", "", (short) 93);
+                  if(null == Entity.headPrayerSprites) {
+                     Entity.headPrayerSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "headicons_prayer", "", (short) 93);
                   } else {
                      ++var1;
                   }

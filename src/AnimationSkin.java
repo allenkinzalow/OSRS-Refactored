@@ -35,11 +35,11 @@ public class AnimationSkin extends Node {
    }
 
    public static void method1677(AbstractIndex musicIndex, int var1, int var2, int var3, boolean var4, int var5) {
-      Class91.anInt1325 = -771978757;
+      SongReference.anInt1325 = -771978757;
       RSInterface.aClass74_1889 = musicIndex;
-      Class91.anInt1329 = var1 * -2020957493;
+      SongReference.anInt1329 = var1 * -2020957493;
       OnlineFriend.anInt1511 = var2 * -1300146319;
-      Class27.anInt362 = var3 * 495527089;
+      SoundEffectWorker.anInt362 = var3 * 495527089;
       FriendsChatMember.aBool1669 = var4;
       ClientScriptDefinition.anInt2281 = 1706374896;
    }

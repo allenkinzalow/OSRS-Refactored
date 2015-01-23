@@ -5,7 +5,7 @@ public final class Wall {
    int anInt334;
    int anInt335;
    int anInt336;
-   public int anInt337 = 0;
+   public int hash = 0;
    public Renderable aClass108_Sub20_Sub14_338;
    int anInt339;
    static int[] blendedDirectionTracker;

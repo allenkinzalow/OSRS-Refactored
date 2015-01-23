@@ -67,17 +67,4 @@ public class Class37 {
       return 8;
    }
 
-   public static PaletteSprite getLastLoadedPaletteSprite(int var0) {
-      PaletteSprite paletteSprite = new PaletteSprite();
-      paletteSprite.anInt2418 = Class9.anInt122 * 93011449;
-      paletteSprite.anInt2412 = Class9.anInt121 * -1272520477;
-      paletteSprite.anInt2415 = Class88.anIntArray1316[0];
-      paletteSprite.anInt2411 = Class9.anIntArray123[0];
-      paletteSprite.anInt2413 = Class36.anIntArray514[0];
-      paletteSprite.anInt2414 = Class9.anIntArray126[0];
-      paletteSprite.palette = Class9.anIntArray130;
-      paletteSprite.pixels = AnimationSkeletonSet.loadedCharacterPixels[0];
-      ClientScript.method1679((byte)112);
-      return paletteSprite;
-   }
 }

@@ -22,8 +22,8 @@ public class Class56 {
 
    static final int method745(int var0) {
       if(!Ignore.aClass37_386.aBool528) {
-         int var1 = ClientScript.getFloorDrawHeight(BZip2Context.anInt279 * 1217916071, CacheFileAccessor.anInt1490 * 1498802843, VarpBit.plane * -570926309, 1561513194);
-         return var1 - ClientScript.anInt1645 * 699100371 < 800 && (RegionReference.mapTileSettings[VarpBit.plane * -570926309][BZip2Context.anInt279 * 1217916071 >> 7][CacheFileAccessor.anInt1490 * 1498802843 >> 7] & 4) != 0?VarpBit.plane * -570926309:3;
+         int var1 = RegionReference.getFloorDrawHeight(BZip2Context.xCameraPos * 1217916071, CacheFileAccessor.anInt1490 * 1498802843, VarpBit.plane * -570926309, 1561513194);
+         return var1 - ClientScript.anInt1645 * 699100371 < 800 && (RegionReference.mapTileSettings[VarpBit.plane * -570926309][BZip2Context.xCameraPos * 1217916071 >> 7][CacheFileAccessor.anInt1490 * 1498802843 >> 7] & 4) != 0?VarpBit.plane * -570926309:3;
       } else {
          return VarpBit.plane * -570926309;
       }
