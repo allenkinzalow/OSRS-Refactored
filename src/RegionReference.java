@@ -253,12 +253,12 @@ public final class RegionReference {
             int var42;
             int var46;
             if(!Client.isAtDynamicMap) {
-               byte[] terrainData;
+               byte[] terrainDataPlane;
                for(var37 = 0; var37 < terrainDataAmt; ++var37) {
                   localX = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
                   localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
-                  terrainData = terrainData[var37];
-                  if(terrainData != null) {
+                  terrainDataPlane = terrainData[var37];
+                  if(terrainDataPlane != null) {
                      Friend.method660(1338432946);
                      var7 = Friend.anInt620 * 1203260360 - 48;
                      x = BuildType.anInt1238 * 1374898232 - 48;
@@ -274,7 +274,7 @@ public final class RegionReference {
                         }
                      }
 
-                     RSByteBuffer var45 = new RSByteBuffer(terrainData);
+                     RSByteBuffer var45 = new RSByteBuffer(terrainDataPlane);
 
                      for(int plane = 0; plane < 4; ++plane) {
                         for(var5 = 0; var5 < 64; ++var5) {
@@ -289,8 +289,8 @@ public final class RegionReference {
                for(var37 = 0; var37 < terrainDataAmt; ++var37) {
                   localX = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
                   localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
-                  terrainData = terrainData[var37];
-                  if(terrainData == null && BuildType.anInt1238 * -365008633 < 800) {
+                  terrainDataPlane = terrainData[var37];
+                  if(terrainDataPlane == null && BuildType.anInt1238 * -365008633 < 800) {
                      Friend.method660(1989703340);
                      Class19.method337(localX, localY, 64, 64, 1185887909);
                   }
