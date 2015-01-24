@@ -594,7 +594,7 @@ public class ObjectDefinition extends CacheableNode {
       int var39;
       Graphics var40;
       int var41;
-      if(Class4.worldListOpen) {
+      if(PlayerLoginDetails.worldListOpen) {
          if(World.worldBackSprites == null) {
             World.worldBackSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "sl_back", "", (short) 10222);
          }
@@ -624,13 +624,13 @@ public class ObjectDefinition extends CacheableNode {
 
          if(RuntimeException_Sub1.worldSortArrowSprites != null) {
             var22 = 280;
-            if(Class4.anIntArray56[0] == 0 && 0 == Class4.anIntArray63[0]) {
+            if(PlayerLoginDetails.anIntArray56[0] == 0 && 0 == PlayerLoginDetails.anIntArray63[0]) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(var22, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[0].drawSprite(var22, 4);
             }
 
-            if(0 == Class4.anIntArray56[0] && 1 == Class4.anIntArray63[0]) {
+            if(0 == PlayerLoginDetails.anIntArray56[0] && 1 == PlayerLoginDetails.anIntArray63[0]) {
                RuntimeException_Sub1.worldSortArrowSprites[3].drawSprite(15 + var22, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(var22 + 15, 4);
@@ -638,13 +638,13 @@ public class ObjectDefinition extends CacheableNode {
 
             b12_full.drawString(StringUtilities.WORLD_ID, 32 + var22, 17, 16777215, -1);
             var24 = 390;
-            if(1 == Class4.anIntArray56[0] && 0 == Class4.anIntArray63[0]) {
+            if(1 == PlayerLoginDetails.anIntArray56[0] && 0 == PlayerLoginDetails.anIntArray63[0]) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(var24, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[0].drawSprite(var24, 4);
             }
 
-            if(Class4.anIntArray56[0] == 1 && Class4.anIntArray63[0] == 1) {
+            if(PlayerLoginDetails.anIntArray56[0] == 1 && PlayerLoginDetails.anIntArray63[0] == 1) {
                RuntimeException_Sub1.worldSortArrowSprites[3].drawSprite(15 + var24, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(15 + var24, 4);
@@ -652,13 +652,13 @@ public class ObjectDefinition extends CacheableNode {
 
             b12_full.drawString(StringUtilities.WORLD_PLAYERS, var24 + 32, 17, 16777215, -1);
             var25 = 500;
-            if(2 == Class4.anIntArray56[0] && Class4.anIntArray63[0] == 0) {
+            if(2 == PlayerLoginDetails.anIntArray56[0] && PlayerLoginDetails.anIntArray63[0] == 0) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(var25, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[0].drawSprite(var25, 4);
             }
 
-            if(Class4.anIntArray56[0] == 2 && Class4.anIntArray63[0] == 1) {
+            if(PlayerLoginDetails.anIntArray56[0] == 2 && PlayerLoginDetails.anIntArray63[0] == 1) {
                RuntimeException_Sub1.worldSortArrowSprites[3].drawSprite(15 + var25, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(15 + var25, 4);
@@ -666,13 +666,13 @@ public class ObjectDefinition extends CacheableNode {
 
             b12_full.drawString(StringUtilities.WORLD_LOCATION, var25 + 32, 17, 16777215, -1);
             short xOffset = 610;
-            if(3 == Class4.anIntArray56[0] && Class4.anIntArray63[0] == 0) {
+            if(3 == PlayerLoginDetails.anIntArray56[0] && PlayerLoginDetails.anIntArray63[0] == 0) {
                RuntimeException_Sub1.worldSortArrowSprites[2].drawSprite(xOffset, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[0].drawSprite(xOffset, 4);
             }
 
-            if(Class4.anIntArray56[0] == 3 && 1 == Class4.anIntArray63[0]) {
+            if(PlayerLoginDetails.anIntArray56[0] == 3 && 1 == PlayerLoginDetails.anIntArray63[0]) {
                RuntimeException_Sub1.worldSortArrowSprites[3].drawSprite(15 + xOffset, 4);
             } else {
                RuntimeException_Sub1.worldSortArrowSprites[1].drawSprite(15 + xOffset, 4);
@@ -683,7 +683,7 @@ public class ObjectDefinition extends CacheableNode {
 
          Rasterizer2D.drawFilledRectangle(708, 4, 50, 16, 0);
          p11_full.drawStringCenter(StringUtilities.CANCEL_OPTION, 733, 16, 16777215, -1);
-         Class4.hoveredWorldID = 2115622661;
+         PlayerLoginDetails.hoveredWorldID = 2115622661;
          if(null != World.worldBackSprites) {
             var3 = 88;
             byte var34 = 19;
@@ -694,15 +694,15 @@ public class ObjectDefinition extends CacheableNode {
                do {
                   var29 = var6;
                   var30 = var26;
-                  if(var6 * (var26 - 1) >= Class4.worldCount * 301546367) {
+                  if(var6 * (var26 - 1) >= PlayerLoginDetails.worldCount * 301546367) {
                      --var26;
                   }
 
-                  if(var26 * (var6 - 1) >= Class4.worldCount * 301546367) {
+                  if(var26 * (var6 - 1) >= PlayerLoginDetails.worldCount * 301546367) {
                      --var6;
                   }
 
-                  if(var26 * (var6 - 1) >= Class4.worldCount * 301546367) {
+                  if(var26 * (var6 - 1) >= PlayerLoginDetails.worldCount * 301546367) {
                      --var6;
                   }
                } while(var29 != var6);
@@ -726,8 +726,8 @@ public class ObjectDefinition extends CacheableNode {
             boolean hovering = false;
 
             int worldID;
-            for(worldID = 0; worldID < Class4.worldCount * 301546367; ++worldID) {
-               World world = Class4.worldList[worldID];
+            for(worldID = 0; worldID < PlayerLoginDetails.worldCount * 301546367; ++worldID) {
+               World world = PlayerLoginDetails.worldList[worldID];
                boolean canHover = true;
                String playerCount = Integer.toString(world.playerCount * 649230499);
                if(world.playerCount * 649230499 == -1) {
@@ -752,7 +752,7 @@ public class ObjectDefinition extends CacheableNode {
                }
 
                if(MouseInputHandler.mouseX * -367052265 >= xPos && MouseInputHandler.mouseY * 1533395117 >= yPos && MouseInputHandler.mouseX * -367052265 < var3 + xPos && MouseInputHandler.mouseY * 1533395117 < var34 + yPos && canHover) {
-                  Class4.hoveredWorldID = worldID * -2115622661;
+                  PlayerLoginDetails.hoveredWorldID = worldID * -2115622661;
                   World.worldBackSprites[worldBackSpriteID].drawSpriteAlpha(xPos, yPos, 128, 16777215);
                   hovering = true;
                } else {
@@ -775,19 +775,19 @@ public class ObjectDefinition extends CacheableNode {
             }
 
             if(hovering) {
-               worldID = p11_full.getTextWidth(Class4.worldList[Class4.hoveredWorldID * -202005965].tooltip) + 6;
+               worldID = p11_full.getTextWidth(PlayerLoginDetails.worldList[PlayerLoginDetails.hoveredWorldID * -202005965].tooltip) + 6;
                int var42 = 8 + p11_full.anInt2643;
                Rasterizer2D.drawFilledRectangle(MouseInputHandler.mouseX * -367052265 - worldID / 2, 5 + 20 + MouseInputHandler.mouseY * 1533395117, worldID, var42, 16777120);
                Rasterizer2D.drawUnfilledRectangle(MouseInputHandler.mouseX * -367052265 - worldID / 2, MouseInputHandler.mouseY * 1533395117 + 20 + 5, worldID, var42, 0);
-               p11_full.drawStringCenter(Class4.worldList[Class4.hoveredWorldID * -202005965].tooltip, MouseInputHandler.mouseX * -367052265, 5 + MouseInputHandler.mouseY * 1533395117 + 20 + p11_full.anInt2643 + 4, 0, -1);
+               p11_full.drawStringCenter(PlayerLoginDetails.worldList[PlayerLoginDetails.hoveredWorldID * -202005965].tooltip, MouseInputHandler.mouseX * -367052265, 5 + MouseInputHandler.mouseY * 1533395117 + 20 + p11_full.anInt2643 + 4, 0, -1);
             }
          }
 
          try {
-            var40 = Class1.aCanvas3.getGraphics();
+            var40 = ContextMenuRow.aCanvas3.getGraphics();
             Class63.aClass13_830.method261(var40, 0, 0, -537550817);
          } catch (Exception var20) {
-            Class1.aCanvas3.repaint();
+            ContextMenuRow.aCanvas3.repaint();
          }
       } else {
          int var4;
@@ -797,9 +797,9 @@ public class ObjectDefinition extends CacheableNode {
             var4 = 253 - var3;
             Rasterizer2D.drawUnfilledRectangle(230, var4, 304, 34, 9179409);
             Rasterizer2D.drawUnfilledRectangle(231, 1 + var4, 302, 32, 0);
-            Rasterizer2D.drawFilledRectangle(232, var4 + 2, Class4.anInt52 * 1915498427, 30, 9179409);
-            Rasterizer2D.drawFilledRectangle(232 + Class4.anInt52 * 1915498427, 2 + var4, 300 - Class4.anInt52 * 1915498427, 30, 0);
-            b12_full.drawStringCenter(Class4.currentLoadingStatus, 382, 276 - var3, 16777215, -1);
+            Rasterizer2D.drawFilledRectangle(232, var4 + 2, PlayerLoginDetails.anInt52 * 1915498427, 30, 9179409);
+            Rasterizer2D.drawFilledRectangle(232 + PlayerLoginDetails.anInt52 * 1915498427, 2 + var4, 300 - PlayerLoginDetails.anInt52 * 1915498427, 30, 0);
+            b12_full.drawStringCenter(PlayerLoginDetails.currentLoadingStatus, 382, 276 - var3, 16777215, -1);
          }
 
          String enterUsername;
@@ -809,27 +809,27 @@ public class ObjectDefinition extends CacheableNode {
          char[] hiddenCharacters;
          int var23;
          if(20 == Client.loginLoadingStage * 1315883169) {
-            Class4.titleBox.drawSprite(382 - Class4.titleBox.anInt2413 / 2, 271 - Class4.titleBox.anInt2414 / 2);
+            PlayerLoginDetails.titleBox.drawSprite(382 - PlayerLoginDetails.titleBox.anInt2413 / 2, 271 - PlayerLoginDetails.titleBox.anInt2414 / 2);
             int yPos = 211;
-            b12_full.drawStringCenter(Class4.aString74, 382, yPos, 16776960, 0);
+            b12_full.drawStringCenter(PlayerLoginDetails.aString74, 382, yPos, 16776960, 0);
             int yPos_1 = yPos + 15;
-            b12_full.drawStringCenter(Class4.aString64, 382, yPos_1, 16776960, 0);
+            b12_full.drawStringCenter(PlayerLoginDetails.aString64, 382, yPos_1, 16776960, 0);
             yPos_1 += 15;
-            b12_full.drawStringCenter(Class4.aString55, 382, yPos_1, 16776960, 0);
+            b12_full.drawStringCenter(PlayerLoginDetails.aString55, 382, yPos_1, 16776960, 0);
             yPos_1 += 15;
             yPos_1 += 10;
-            if(4 != Class4.anInt54 * 2105711249) {
+            if(4 != PlayerLoginDetails.anInt54 * 2105711249) {
                b12_full.drawString(StringUtilities.LOGIN, 272, yPos_1, 16777215, 0);
                var24 = 200;
 
-               for(enterUsername = Class4.typedUsername; b12_full.getTextWidth(enterUsername) > var24; enterUsername = enterUsername.substring(0, enterUsername.length() - 1)) {
+               for(enterUsername = PlayerLoginDetails.typedUsername; b12_full.getTextWidth(enterUsername) > var24; enterUsername = enterUsername.substring(0, enterUsername.length() - 1)) {
                   ; 
                }
 
                b12_full.drawString(RSTypeFace.appendLTGTTags(enterUsername), 312, yPos_1, 16777215, 0);
                yPos_1 += 15;
                enterPassword = StringUtilities.PASSWORD;
-               typedPassword = Class4.typedPassword;
+               typedPassword = PlayerLoginDetails.typedPassword;
                passwordLength = typedPassword.length();
                hiddenCharacters = new char[passwordLength];
 
@@ -844,56 +844,56 @@ public class ObjectDefinition extends CacheableNode {
          }
 
          if(Client.loginLoadingStage * 1315883169 == 10 || 11 == Client.loginLoadingStage * 1315883169) {
-            Class4.titleBox.drawSprite(202, 171);
-            if(Class4.anInt54 * 2105711249 == 0) {
+            PlayerLoginDetails.titleBox.drawSprite(202, 171);
+            if(PlayerLoginDetails.anInt54 * 2105711249 == 0) {
                var22 = 251;
                b12_full.drawStringCenter(StringUtilities.WELCOME_TO_RUNESCAPE, 382, var22, 16776960, 0);
                var23 = var22 + 30;
                var24 = 302;
                var25 = 291;
-               Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
+               PlayerLoginDetails.titleButton.drawSprite(var24 - 73, var25 - 20);
                b12_full.method3097(StringUtilities.NEW_USER_BUTTON, var24 - 73, var25 - 20, 144, 40, 16777215, 0, 1, 1, 0);
                var24 = 462;
-               Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
+               PlayerLoginDetails.titleButton.drawSprite(var24 - 73, var25 - 20);
                b12_full.method3097(StringUtilities.EXISTING_USER_BUTTON, var24 - 73, var25 - 20, 144, 40, 16777215, 0, 1, 1, 0);
-            } else if(Class4.anInt54 * 2105711249 == 1) {
+            } else if(PlayerLoginDetails.anInt54 * 2105711249 == 1) {
                b12_full.drawStringCenter(StringUtilities.WARNING, 382, 211, 16776960, 0);
                var22 = 236;
-               b12_full.drawStringCenter(Class4.aString74, 382, var22, 16777215, 0);
+               b12_full.drawStringCenter(PlayerLoginDetails.aString74, 382, var22, 16777215, 0);
                var23 = var22 + 15;
-               b12_full.drawStringCenter(Class4.aString64, 382, var23, 16777215, 0);
+               b12_full.drawStringCenter(PlayerLoginDetails.aString64, 382, var23, 16777215, 0);
                var23 += 15;
-               b12_full.drawStringCenter(Class4.aString55, 382, var23, 16777215, 0);
+               b12_full.drawStringCenter(PlayerLoginDetails.aString55, 382, var23, 16777215, 0);
                var23 += 15;
                var24 = 302;
                var25 = 321;
-               Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
+               PlayerLoginDetails.titleButton.drawSprite(var24 - 73, var25 - 20);
                b12_full.drawStringCenter(StringUtilities.CONTINUE_MENU, var24, var25 + 5, 16777215, 0);
                var24 = 462;
-               Class4.titleButton.drawSprite(var24 - 73, var25 - 20);
+               PlayerLoginDetails.titleButton.drawSprite(var24 - 73, var25 - 20);
                b12_full.drawStringCenter(StringUtilities.CANCEL_OPTION, var24, var25 + 5, 16777215, 0);
             } else {
                short var36;
-               if(Class4.anInt54 * 2105711249 == 2) {
+               if(PlayerLoginDetails.anInt54 * 2105711249 == 2) {
                   var22 = 211;
-                  b12_full.drawStringCenter(Class4.aString74, 382, var22, 16776960, 0);
+                  b12_full.drawStringCenter(PlayerLoginDetails.aString74, 382, var22, 16776960, 0);
                   var23 = var22 + 15;
-                  b12_full.drawStringCenter(Class4.aString64, 382, var23, 16776960, 0);
+                  b12_full.drawStringCenter(PlayerLoginDetails.aString64, 382, var23, 16776960, 0);
                   var23 += 15;
-                  b12_full.drawStringCenter(Class4.aString55, 382, var23, 16776960, 0);
+                  b12_full.drawStringCenter(PlayerLoginDetails.aString55, 382, var23, 16776960, 0);
                   var23 += 15;
                   var23 += 10;
                   b12_full.drawString(StringUtilities.LOGIN, 272, var23, 16777215, 0);
                   var24 = 200;
 
-                  for(enterUsername = Class4.typedUsername; b12_full.getTextWidth(enterUsername) > var24; enterUsername = enterUsername.substring(1)) {
+                  for(enterUsername = PlayerLoginDetails.typedUsername; b12_full.getTextWidth(enterUsername) > var24; enterUsername = enterUsername.substring(1)) {
                      ;
                   }
 
-                  b12_full.drawString(RSTypeFace.appendLTGTTags(enterUsername) + (0 == Class4.anInt62 * 1502041601 & Client.cycle * -637317861 % 40 < 20?HuffmanEncoding.method690(16776960, -638653094) + Class47.FLASHING_CURSOR:""), 312, var23, 16777215, 0);
+                  b12_full.drawString(RSTypeFace.appendLTGTTags(enterUsername) + (0 == PlayerLoginDetails.anInt62 * 1502041601 & Client.cycle * -637317861 % 40 < 20?HuffmanEncoding.method690(16776960, -638653094) + Class47.FLASHING_CURSOR:""), 312, var23, 16777215, 0);
                   var23 += 15;
                   enterPassword = StringUtilities.PASSWORD;
-                  typedPassword = Class4.typedPassword;
+                  typedPassword = PlayerLoginDetails.typedPassword;
                   passwordLength = typedPassword.length();
                   hiddenCharacters = new char[passwordLength];
 
@@ -902,23 +902,23 @@ public class ObjectDefinition extends CacheableNode {
                   }
 
                   hiddenPassword = new String(hiddenCharacters);
-                  b12_full.drawString(enterPassword + hiddenPassword + (1 == Class4.anInt62 * 1502041601 & Client.cycle * -637317861 % 40 < 20?HuffmanEncoding.method690(16776960, -915868611) + Class47.FLASHING_CURSOR:""), 274, var23, 16777215, 0);
+                  b12_full.drawString(enterPassword + hiddenPassword + (1 == PlayerLoginDetails.anInt62 * 1502041601 & Client.cycle * -637317861 % 40 < 20?HuffmanEncoding.method690(16776960, -915868611) + Class47.FLASHING_CURSOR:""), 274, var23, 16777215, 0);
                   var23 += 15;
                   short var33 = 302;
                   var36 = 321;
-                  Class4.titleButton.drawSprite(var33 - 73, var36 - 20);
+                  PlayerLoginDetails.titleButton.drawSprite(var33 - 73, var36 - 20);
                   b12_full.drawStringCenter(StringUtilities.LOGIN_BUTTON, var33, var36 + 5, 16777215, 0);
                   var33 = 462;
-                  Class4.titleButton.drawSprite(var33 - 73, var36 - 20);
+                  PlayerLoginDetails.titleButton.drawSprite(var33 - 73, var36 - 20);
                   b12_full.drawStringCenter(StringUtilities.CANCEL_OPTION, var33, 5 + var36, 16777215, 0);
-               } else if(4 == Class4.anInt54 * 2105711249) { // authenticaor
+               } else if(4 == PlayerLoginDetails.anInt54 * 2105711249) { // authenticaor
                   b12_full.drawStringCenter(StringUtilities.AUTHENTICATOR, 382, 211, 16776960, 0);
                   var22 = 236;
-                  b12_full.drawStringCenter(Class4.aString74, 382, var22, 16777215, 0);
+                  b12_full.drawStringCenter(PlayerLoginDetails.aString74, 382, var22, 16777215, 0);
                   var23 = var22 + 15;
-                  b12_full.drawStringCenter(Class4.aString64, 382, var23, 16777215, 0);
+                  b12_full.drawStringCenter(PlayerLoginDetails.aString64, 382, var23, 16777215, 0);
                   var23 += 15;
-                  b12_full.drawStringCenter(Class4.aString55, 382, var23, 16777215, 0);
+                  b12_full.drawStringCenter(PlayerLoginDetails.aString55, 382, var23, 16777215, 0);
                   var23 += 15;
                   String enterPin = StringUtilities.PIN_ENTER;
                   String typedPin = BuildType.enteredPin;
@@ -938,50 +938,50 @@ public class ObjectDefinition extends CacheableNode {
                   int radioX = 373 + b12_full.getTextWidth(StringUtilities.THIRTY_DAYS) + 15;
                   int radioY = var23 - b12_full.anInt2643;
                   PaletteSprite radioButton;
-                  if(Class4.trustComputer) {
+                  if(PlayerLoginDetails.trustComputer) {
                      radioButton = GroundItem.radioButtonOptions_2;
                   } else {
-                     radioButton = Class4.radioButtonOptions;
+                     radioButton = PlayerLoginDetails.radioButtonOptions;
                   }
 
                   radioButton.drawSprite(radioX, radioY);
                   var23 += 15;
                   var36 = 302;
                   short var38 = 321;
-                  Class4.titleButton.drawSprite(var36 - 73, var38 - 20);
+                  PlayerLoginDetails.titleButton.drawSprite(var36 - 73, var38 - 20);
                   b12_full.drawStringCenter(StringUtilities.CONTINUE_MENU, var36, 5 + var38, 16777215, 0);
                   var36 = 462;
-                  Class4.titleButton.drawSprite(var36 - 73, var38 - 20);
+                  PlayerLoginDetails.titleButton.drawSprite(var36 - 73, var38 - 20);
                   b12_full.drawStringCenter(StringUtilities.CANCEL_OPTION, var36, 5 + var38, 16777215, 0);
                   p11_full.drawStringCenter(StringUtilities.CANT_LOGIN_QUESTION, 382, 36 + var38, 255, 0);
                }
             }
          }
 
-         if(Class4.anInt50 * -368964559 > 0) {
-            GroundItem.method582(Class4.anInt50 * -368964559, (short)128);
-            Class4.anInt50 = 0;
+         if(PlayerLoginDetails.anInt50 * -368964559 > 0) {
+            GroundItem.method582(PlayerLoginDetails.anInt50 * -368964559, (short)128);
+            PlayerLoginDetails.anInt50 = 0;
          }
 
          var22 = 256;
-         if(Class4.anInt57 * 250523231 > 0) {
+         if(PlayerLoginDetails.anInt57 * 250523231 > 0) {
             for(var4 = 0; var4 < 256; ++var4) {
-               if(Class4.anInt57 * 250523231 > 768) {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(MouseCapturer.anIntArray382[var4], Class56.anIntArray757[var4], 1024 - Class4.anInt57 * 250523231, (byte)51);
-               } else if(Class4.anInt57 * 250523231 > 256) {
+               if(PlayerLoginDetails.anInt57 * 250523231 > 768) {
+                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(MouseCapturer.anIntArray382[var4], Class56.anIntArray757[var4], 1024 - PlayerLoginDetails.anInt57 * 250523231, (byte)51);
+               } else if(PlayerLoginDetails.anInt57 * 250523231 > 256) {
                   Class108_Sub10.anIntArray1655[var4] = Class56.anIntArray757[var4];
                } else {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(Class56.anIntArray757[var4], MouseCapturer.anIntArray382[var4], 256 - Class4.anInt57 * 250523231, (byte)70);
+                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(Class56.anIntArray757[var4], MouseCapturer.anIntArray382[var4], 256 - PlayerLoginDetails.anInt57 * 250523231, (byte)70);
                }
             }
-         } else if(Class4.anInt67 * -713414969 > 0) {
+         } else if(PlayerLoginDetails.anInt67 * -713414969 > 0) {
             for(var4 = 0; var4 < 256; ++var4) {
-               if(Class4.anInt67 * -713414969 > 768) {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(MouseCapturer.anIntArray382[var4], Client.anIntArray2966[var4], 1024 - Class4.anInt67 * -713414969, (byte)-82);
-               } else if(Class4.anInt67 * -713414969 > 256) {
+               if(PlayerLoginDetails.anInt67 * -713414969 > 768) {
+                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(MouseCapturer.anIntArray382[var4], Client.anIntArray2966[var4], 1024 - PlayerLoginDetails.anInt67 * -713414969, (byte)-82);
+               } else if(PlayerLoginDetails.anInt67 * -713414969 > 256) {
                   Class108_Sub10.anIntArray1655[var4] = Client.anIntArray2966[var4];
                } else {
-                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(Client.anIntArray2966[var4], MouseCapturer.anIntArray382[var4], 256 - Class4.anInt67 * -713414969, (byte)32);
+                  Class108_Sub10.anIntArray1655[var4] = Varp.method2160(Client.anIntArray2966[var4], MouseCapturer.anIntArray382[var4], 256 - PlayerLoginDetails.anInt67 * -713414969, (byte)32);
                }
             }
          } else {
@@ -991,13 +991,13 @@ public class ObjectDefinition extends CacheableNode {
          }
 
          Rasterizer2D.setRasterizationRect(0, 9, 128, var22 + 7);
-         Class4.aClass108_Sub20_Sub15_Sub1_40.drawSprite(0, 0);
+         PlayerLoginDetails.clientBackgroundLeft.drawSprite(0, 0);
          Rasterizer2D.reset();
          var4 = 0;
          var26 = 6885;
 
          for(var6 = 1; var6 < var22 - 1; ++var6) {
-            var29 = (var22 - var6) * Class4.anIntArray45[var6] / var22;
+            var29 = (var22 - var6) * PlayerLoginDetails.anIntArray45[var6] / var22;
             var30 = var29 + 22;
             if(var30 < 0) {
                var30 = 0;
@@ -1022,13 +1022,13 @@ public class ObjectDefinition extends CacheableNode {
          }
 
          Rasterizer2D.setRasterizationRect(637, 9, 765, 7 + var22);
-         Class41.aClass108_Sub20_Sub15_Sub1_588.drawSprite(382, 0);
+         Class41.clientBackgroundRight.drawSprite(382, 0);
          Rasterizer2D.reset();
          var4 = 0;
          var26 = 7546;
 
          for(var6 = 1; var6 < var22 - 1; ++var6) {
-            var29 = (var22 - var6) * Class4.anIntArray45[var6] / var22;
+            var29 = (var22 - var6) * PlayerLoginDetails.anIntArray45[var6] / var22;
             var30 = 103 - var29;
             var26 += var29;
 
@@ -1049,7 +1049,7 @@ public class ObjectDefinition extends CacheableNode {
             var26 += 765 - var30 - var29;
          }
 
-         MouseCapturer.aClass108_Sub20_Sub15_Sub2Array383[Ignore.aClass37_386.aBool529?1:0].drawSprite(725, 463);
+         MouseCapturer.musicMuteButton[Ignore.aClass37_386.aBool529?1:0].drawSprite(725, 463);
          if(Client.loginLoadingStage * 1315883169 > 5 && Client.anInt2712 * 148074329 == 0) {
             if(World.switchWorldSprite != null) {
                var3 = 5;
@@ -1069,10 +1069,10 @@ public class ObjectDefinition extends CacheableNode {
          }
 
          try {
-            var40 = Class1.aCanvas3.getGraphics();
+            var40 = ContextMenuRow.aCanvas3.getGraphics();
             Class63.aClass13_830.method261(var40, 0, 0, -1151766827);
          } catch (Exception var21) {
-            Class1.aCanvas3.repaint();
+            ContextMenuRow.aCanvas3.repaint();
          }
       }
    }

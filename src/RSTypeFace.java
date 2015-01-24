@@ -685,8 +685,8 @@ public abstract class RSTypeFace extends Rasterizer2D {
    abstract void method3108(byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7);
 
    static void drawCharacter(byte[] var0, int var1, int var2, int var3, int var4, int var5) {
-      int var6 = var1 + var2 * width;
-      int var10 = width - var3;
+      int var6 = var1 + var2 * renderWidth;
+      int var10 = renderWidth - var3;
       int var8 = 0;
       int var7 = 0;
       int var9;
@@ -695,7 +695,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
          var4 -= var9;
          var2 = topY;
          var7 += var9 * var3;
-         var6 += var9 * width;
+         var6 += var9 * renderWidth;
       }
 
       if(var2 + var4 > bottomY) {
@@ -912,8 +912,8 @@ public abstract class RSTypeFace extends Rasterizer2D {
    }
 
    static void drawAlphaCharacter(byte[] characterPixels, int x, int y, int width, int height, int color, int alpha) {
-      int rasterizerPixel = x + y * Rasterizer2D.width;
-      int rasterizerPixelOffset = Rasterizer2D.width - width;
+      int rasterizerPixel = x + y * Rasterizer2D.renderWidth;
+      int rasterizerPixelOffset = Rasterizer2D.renderWidth - width;
       int characterPixelOffset = 0;
       int characterPixel = 0;
       int offset;
@@ -922,7 +922,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
          height -= offset;
          y = topY;
          characterPixel += offset * width;
-         rasterizerPixel += offset * Rasterizer2D.width;
+         rasterizerPixel += offset * Rasterizer2D.renderWidth;
       }
 
       if(y + height > bottomY) {

@@ -2,7 +2,6 @@ public class ChatMessagesContainer {
 
 	int lastMessageIndex; // this is the oldest message's index in the array
 	ChatMessage[] chatMessages = new ChatMessage[100];
-	static PaletteSprite[] mapSceneIcons;
 	static int[] anIntArray332;
 
 

@@ -1,4 +1,6 @@
+import java.awt.*;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.Socket;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -14,6 +16,8 @@ public class LoginHandler {
 	protected static boolean focusGained;
 	static int anInt845 = 0;
 	static byte[][] aByteArrayArray846 = new byte[50][];
+	static BigInteger rsaExponent = new BigInteger("10001", 16);
+	static BigInteger rsaModulus = new BigInteger("aead8fe7a0e8b2255e84597f391815600a4e02746698fea7bfe1b20b5a1f7ba47a2d9af413facda26925eafa2f7be93e3354d67a1210bf67beec2251eafacfe7a819be666c900843421e009ec16529131893fba57528dab31ff64013cdabc00c35e832ada7da6aca3d8cd18100fe79f2133c07be414142d8ba636d49f30b25cb", 16);
 
 
 	public static RSInterface method878(int var0, int var1, int var2) {
@@ -125,20 +129,20 @@ public class LoginHandler {
 
 				Client.secureBuffer.position = 0;
 				Client.secureBuffer.writeByte(1);
-				Client.secureBuffer.writeByte(Class4.aClass76_65.method32(-1397647336));
+				Client.secureBuffer.writeByte(PlayerLoginDetails.aClass76_65.getID(-1397647336));
 
 				Client.secureBuffer.writeInt(xteakeys[0]);
 				Client.secureBuffer.writeInt(xteakeys[1]);
 				Client.secureBuffer.writeInt(xteakeys[2]);
 				Client.secureBuffer.writeInt(xteakeys[3]);
 
-				System.out.println("Asshat: " +(Class4.aClass76_65.anInt1197 * -1956627331));
-				switch (Class4.aClass76_65.anInt1197 * -1956627331) {
+				System.out.println("Asshat: " +(PlayerLoginDetails.aClass76_65.anInt1197 * -1956627331));
+				switch (PlayerLoginDetails.aClass76_65.anInt1197 * -1956627331) {
 					case 0:
 						Client.secureBuffer.position += 8751192;
 						break;
 					case 1:
-						Client.secureBuffer.writeInt((Integer) Ignore.aClass37_386.aLinkedHashMap530.get(Integer.valueOf(ProducingGraphicsBuffer.method1595(Class4.typedUsername, 698639797))));
+						Client.secureBuffer.writeInt((Integer) Ignore.aClass37_386.aLinkedHashMap530.get(Integer.valueOf(ProducingGraphicsBuffer.method1595(PlayerLoginDetails.typedUsername, 698639797))));
 						Client.secureBuffer.position -= 2143108052; // -4 aka +4
 						break;
 					case 2:
@@ -147,10 +151,10 @@ public class LoginHandler {
 						Client.secureBuffer.position -= 1605143241; // -5 aka +5
 				}
 
-				Client.secureBuffer.writeString(Class4.typedPassword);
+				Client.secureBuffer.writeString(PlayerLoginDetails.typedPassword);
 
 				if (!Loader.local)
-					Client.secureBuffer.doRSA(Class32.rsaExponent, Class32.rsaModulus, (byte) 1);
+					Client.secureBuffer.doRSA(rsaExponent, rsaModulus, (byte) 1);
 
 				Client.loginBuffer.position = 0;
 
@@ -167,7 +171,7 @@ public class LoginHandler {
 				Client.loginBuffer.writeBytes(Client.secureBuffer.buf, 0, Client.secureBuffer.position * 798331555, (byte) -6);
 
 				var3 = Client.loginBuffer.position * 798331555;//mark
-				Client.loginBuffer.writeString(Class4.typedUsername);
+				Client.loginBuffer.writeString(PlayerLoginDetails.typedUsername);
 				Client.loginBuffer.writeByte(Client.lowMemory ? 1 : 0);
 				RSPacketBuffer var4 = Client.loginBuffer;
 				byte[] randomDat = new byte[24];
@@ -204,7 +208,7 @@ public class LoginHandler {
 				Client.loginBuffer.writeInt(Friend.musicIndex_1.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(Class47.modelIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(Class23.spriteIndex.anInt935 * -1983334491);
-				Client.loginBuffer.writeInt(Class4.textureIndex.anInt935 * -1983334491);
+				Client.loginBuffer.writeInt(PlayerLoginDetails.textureIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(RuntimeException_Sub1.huffmanIndex.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(ClientParameter.musicIndex_2.anInt935 * -1983334491);
 				Client.loginBuffer.writeInt(Class108_Sub13.clientScriptIndex.anInt935 * -1983334491);
@@ -247,8 +251,8 @@ public class LoginHandler {
 						Client.packetSize = 0;
 						Client.anInt2918 = 0;
 						Client.anInt2722 = 0;
-						Client.menuActionRow = 0;
-						Client.actionMenuOpen = false;
+						ContextMenu.contextMenuRow = 0;
+						ContextMenu.contextMenuOpen = false;
 						Client.anInt2935 = 0;
 						Client.anInt2933 = 0;
 
@@ -306,7 +310,7 @@ public class LoginHandler {
 						var2 |= Client.packetBuffer.readPacket(-1684324366) << 16;
 						var2 |= Client.packetBuffer.readPacket(-1684324366) << 8;
 						var2 |= Client.packetBuffer.readPacket(-1684324366);
-						var3 = ProducingGraphicsBuffer.method1595(Class4.typedUsername, 698639797);
+						var3 = ProducingGraphicsBuffer.method1595(PlayerLoginDetails.typedUsername, 698639797);
 						if (Ignore.aClass37_386.aLinkedHashMap530.size() >= 10 && !Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(var3))) {
 							Iterator var15 = Ignore.aClass37_386.aLinkedHashMap530.entrySet().iterator();
 							var15.next();
@@ -387,8 +391,8 @@ public class LoginHandler {
 					Client.anInt2722 = 0;
 					Client.anInt2753 = 0;
 					Client.anInt2723 = 0;
-					Client.menuActionRow = 0;
-					Client.actionMenuOpen = false;
+					ContextMenu.contextMenuRow = 0;
+					ContextMenu.contextMenuOpen = false;
 					ItemDefinition.method2100(0, -1768089869);
 					MouseCapturer.method394((short) 256);
 					Client.anInt2858 = 0;
@@ -459,8 +463,8 @@ public class LoginHandler {
 					Client.openInterfaceID = -1256289801;
 					Client.aClass101_2866 = new HashTable(8);
 					Client.aClass108_Sub17_2869 = null;
-					Client.actionMenuOpen = false;
-					Client.menuActionRow = 0;
+					ContextMenu.contextMenuOpen = false;
+					ContextMenu.contextMenuRow = 0;
 					Client.aClass93_2926.initialize((int[]) null, new int[]{0, 0, 0, 0, 0}, false, -1, -1809930983);
 
 					for (responseCode = 0; responseCode < 8; ++responseCode) {
@@ -501,5 +505,441 @@ public class LoginHandler {
 
 	public static void method1480(byte var0) {
        Class92.aClass92_1447 = new Class92();
+    }
+
+	static void processLoginAndWorldListClick(Applet_Sub1 var0, int var1) {
+       if(PlayerLoginDetails.worldListOpen) {
+          GameObject.method2846(var0, (byte)-11);
+       } else {
+          if((MouseInputHandler.clickType * 1629072957 == 1 || !Class100.aBool1391 && MouseInputHandler.clickType * 1629072957 == 4) && MouseInputHandler.mousePressX * 472132205 >= 715 && MouseInputHandler.mousePressY * 1498262827 >= 453) {
+             Ignore.aClass37_386.aBool529 = !Ignore.aClass37_386.aBool529;
+             Timer.method713(-1567766695);
+             if(!Ignore.aClass37_386.aBool529) {
+                RSSong.playSong(Friend.musicIndex_1, "scape main", "", 255, false, (byte) 1);
+             } else {
+                Class32.aClass108_Sub4_Sub3_464.method2610(410806899);
+                SongReference.anInt1325 = -771978757;
+                RSInterface.aClass74_1889 = null;
+             }
+          }
+
+          if(5 != Client.loginLoadingStage * 1315883169) {
+             PlayerLoginDetails.anInt50 -= 1909601071;
+             if(Client.loginLoadingStage * 1315883169 == 10 || Client.loginLoadingStage * 1315883169 == 11) {
+                if(0 == Client.anInt2712 * 148074329) {
+                   if(1 == MouseInputHandler.clickType * 1629072957 || !Class100.aBool1391 && 4 == MouseInputHandler.clickType * 1629072957) {
+                      byte var2 = 5;
+                      short var4 = 463;
+                      byte var6 = 100;
+                      byte var5 = 35;
+                      if(MouseInputHandler.mousePressX * 472132205 >= var2 && MouseInputHandler.mousePressX * 472132205 <= var2 + var6 && MouseInputHandler.mousePressY * 1498262827 >= var4 && MouseInputHandler.mousePressY * 1498262827 <= var5 + var4) {
+                         World.method3180(-525999435);
+                         return;
+                      }
+                   }
+
+                   if(null != Class77.aClass43_1203) {
+                      World.method3180(1624557494);
+                   }
+                }
+
+                int clickType = MouseInputHandler.clickType * 1629072957;
+                int xPos = MouseInputHandler.mousePressX * 472132205;
+                int yPos = MouseInputHandler.mousePressY * 1498262827;
+                if(!Class100.aBool1391 && 4 == clickType) {
+                   clickType = 1;
+                }
+
+                short var7;
+                short var13;
+                if(0 == PlayerLoginDetails.anInt54 * 2105711249) {
+                   var13 = 302;
+                   var7 = 291;
+                   if(clickType == 1 && xPos >= var13 - 75 && xPos <= var13 + 75 && yPos >= var7 - 20 && yPos <= 20 + var7) {
+                      AnimatedGraphic.method2137(PlayerLoginDetails.method81("secure", true, (byte) 4) + "m=account-creation/g=oldscape/create_account_funnel.ws", true, false, (byte) 26);
+                   }
+
+                   var13 = 462;
+                   if(1 == clickType) {
+                      if(xPos >= var13 - 75) {
+                         if(xPos <= var13 + 75) {
+                            if(yPos >= var7 - 20) {
+                               if(yPos <= var7 + 20) {
+                                  if((Client.worldType * 164398169 & 4) != 0) {
+                                     if(0 != (Client.worldType * 164398169 & 1024)) {
+                                        PlayerLoginDetails.aString74 = StringUtilities.HIGH_RISK_PVP_WORLD;
+                                        PlayerLoginDetails.aString64 = StringUtilities.aString1171;
+                                        PlayerLoginDetails.aString55 = StringUtilities.aString1185;
+                                     } else {
+                                        PlayerLoginDetails.aString74 = StringUtilities.HIGH_RISK_PVP_WORLD;
+                                        PlayerLoginDetails.aString64 = StringUtilities.aString1165;
+                                        PlayerLoginDetails.aString55 = StringUtilities.aString1166;
+                                     }
+
+                                     PlayerLoginDetails.anInt54 = -1920702863;
+                                     PlayerLoginDetails.anInt62 = 0;
+                                  } else if((Client.worldType * 164398169 & 1024) != 0) {
+                                     PlayerLoginDetails.aString74 = StringUtilities.aString1167;
+                                     PlayerLoginDetails.aString64 = StringUtilities.aString1168;
+                                     PlayerLoginDetails.aString55 = StringUtilities.aString1169;
+                                     PlayerLoginDetails.anInt54 = -1920702863;
+                                     PlayerLoginDetails.anInt62 = 0;
+                                  } else {
+                                     PlayerLoginDetails.aString74 = StringUtilities.aString1160;
+                                     PlayerLoginDetails.aString64 = StringUtilities.aString1101;
+                                     PlayerLoginDetails.aString55 = StringUtilities.aString1162;
+                                     PlayerLoginDetails.anInt54 = 453561570;
+                                     PlayerLoginDetails.anInt62 = 0;
+                                  }
+                               }
+                            }
+                         }
+                      }
+                   }
+                } else if(PlayerLoginDetails.anInt54 * 2105711249 == 1) {
+                   while(GraphicsBuffer.method278(1941552803)) {
+                      if(Class9.anInt124 * 1025603675 == 84) {
+                         PlayerLoginDetails.aString74 = StringUtilities.aString1160;
+                         PlayerLoginDetails.aString64 = StringUtilities.aString1101;
+                         PlayerLoginDetails.aString55 = StringUtilities.aString1162;
+                         PlayerLoginDetails.anInt54 = 453561570;
+                         PlayerLoginDetails.anInt62 = 0;
+                      } else if(Class9.anInt124 * 1025603675 == 13) {
+                         PlayerLoginDetails.anInt54 = 0;
+                      }
+                   }
+
+                   var13 = 302;
+                   var7 = 321;
+                   if(1 == clickType && xPos >= var13 - 75 && xPos <= 75 + var13 && yPos >= var7 - 20 && yPos <= var7 + 20) {
+                      PlayerLoginDetails.aString74 = StringUtilities.aString1160;
+                      PlayerLoginDetails.aString64 = StringUtilities.aString1101;
+                      PlayerLoginDetails.aString55 = StringUtilities.aString1162;
+                      PlayerLoginDetails.anInt54 = 453561570;
+                      PlayerLoginDetails.anInt62 = 0;
+                   }
+
+                   var13 = 462;
+                   if(1 == clickType) {
+                      if(xPos >= var13 - 75) {
+                         if(xPos <= var13 + 75) {
+                            if(yPos >= var7 - 20) {
+                               if(yPos <= 20 + var7) {
+                                  PlayerLoginDetails.anInt54 = 0;
+                               }
+                            }
+                         }
+                      }
+                   }
+                } else if(PlayerLoginDetails.anInt54 * 2105711249 == 2) {
+                   var13 = 231;
+                   int var15 = var13 + 30;
+                   if(clickType == 1 && yPos >= var15 - 15 && yPos < var15) {
+                      PlayerLoginDetails.anInt62 = 0;
+                   }
+
+                   var15 += 15;
+                   if(clickType == 1 && yPos >= var15 - 15 && yPos < var15) {
+                      PlayerLoginDetails.anInt62 = -547575295;
+                   }
+
+                   var15 += 15;
+                   var7 = 302;
+                   short var11 = 321;
+                   if(clickType == 1 && xPos >= var7 - 75 && xPos <= var7 + 75 && yPos >= var11 - 20 && yPos <= var11 + 20) {
+                      PlayerLoginDetails.typedUsername = PlayerLoginDetails.typedUsername.trim();
+                      if(PlayerLoginDetails.typedUsername.length() == 0) {
+                         World.setResponseString(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 2129771750);
+                      } else if(PlayerLoginDetails.typedPassword.length() == 0) {
+                         World.setResponseString(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1994617895);
+                      } else {
+                         World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1896835022);
+                         PlayerLoginDetails.aClass76_65 = Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(ProducingGraphicsBuffer.method1595(PlayerLoginDetails.typedUsername, 698639797)))?Class76.aClass76_1200:Class76.aClass76_1199;
+                         IsaacRandomGen.method725(20, 1805521706);
+                      }
+                   } else {
+                      var7 = 462;
+                      if(1 == clickType && xPos >= var7 - 75 && xPos <= 75 + var7 && yPos >= var11 - 20 && yPos <= var11 + 20) {
+                         PlayerLoginDetails.anInt54 = 0;
+                         PlayerLoginDetails.typedUsername = "";
+                         PlayerLoginDetails.typedPassword = "";
+                         AnimationSkeletonSet.anInt2260 = 0;
+                         BuildType.enteredPin = "";
+                         PlayerLoginDetails.trustComputer = true;
+                      }
+
+                      while(GraphicsBuffer.method278(-429939348)) {
+                         boolean var16 = false;
+                         int var9 = 0;
+
+                         while(true) {
+                            if(var9 < PlayerLoginDetails.validCharacters.length()) {
+                               if(aChar841 != PlayerLoginDetails.validCharacters.charAt(var9)) {
+                                  ++var9;
+                                  continue;
+                               }
+
+                               var16 = true;
+                            }
+
+                            if(Class9.anInt124 * 1025603675 == 13) {
+                               PlayerLoginDetails.anInt54 = 0;
+                               PlayerLoginDetails.typedUsername = "";
+                               PlayerLoginDetails.typedPassword = "";
+                               AnimationSkeletonSet.anInt2260 = 0;
+                               BuildType.enteredPin = "";
+                               PlayerLoginDetails.trustComputer = true;
+                               break;
+                            }
+
+                            if(PlayerLoginDetails.anInt62 * 1502041601 == 0) {
+                               if(85 == Class9.anInt124 * 1025603675 && PlayerLoginDetails.typedUsername.length() > 0) {
+                                  PlayerLoginDetails.typedUsername = PlayerLoginDetails.typedUsername.substring(0, PlayerLoginDetails.typedUsername.length() - 1);
+                               }
+
+                               if(84 == Class9.anInt124 * 1025603675 || 80 == Class9.anInt124 * 1025603675) {
+                                  PlayerLoginDetails.anInt62 = -547575295;
+                               }
+
+                               if(var16 && PlayerLoginDetails.typedUsername.length() < 320) {
+                                  PlayerLoginDetails.typedUsername = PlayerLoginDetails.typedUsername + aChar841;
+                               }
+                               break;
+                            }
+
+                            if(1 != PlayerLoginDetails.anInt62 * 1502041601) {
+                               break;
+                            }
+
+                            if(Class9.anInt124 * 1025603675 == 85 && PlayerLoginDetails.typedPassword.length() > 0) {
+                               PlayerLoginDetails.typedPassword = PlayerLoginDetails.typedPassword.substring(0, PlayerLoginDetails.typedPassword.length() - 1);
+                            }
+
+                            if(84 == Class9.anInt124 * 1025603675 || 80 == Class9.anInt124 * 1025603675) {
+                               PlayerLoginDetails.anInt62 = 0;
+                            }
+
+                            if(84 == Class9.anInt124 * 1025603675) {
+                               PlayerLoginDetails.typedUsername = PlayerLoginDetails.typedUsername.trim();
+                               if(PlayerLoginDetails.typedUsername.length() == 0) {
+                                  World.setResponseString(StringUtilities.aString1066, StringUtilities.PLEASE_ENTER_USER_EMAIL, StringUtilities.aString982, 1994248243);
+                                  return;
+                               }
+
+                               if(PlayerLoginDetails.typedPassword.length() == 0) {
+                                  World.setResponseString(StringUtilities.aString1096, StringUtilities.PLEASE_ENTER_PASS, StringUtilities.aString1071, 1951485667);
+                                  return;
+                               }
+
+                               World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1956224355);
+                               PlayerLoginDetails.aClass76_65 = Ignore.aClass37_386.aLinkedHashMap530.containsKey(Integer.valueOf(ProducingGraphicsBuffer.method1595(PlayerLoginDetails.typedUsername, 698639797)))?Class76.aClass76_1200:Class76.aClass76_1199;
+                               IsaacRandomGen.method725(20, 1408783702);
+                               return;
+                            }
+
+                            if(var16 && PlayerLoginDetails.typedPassword.length() < 20) {
+                               PlayerLoginDetails.typedPassword = PlayerLoginDetails.typedPassword + aChar841;
+                            }
+                            break;
+                         }
+                      }
+
+                   }
+                } else if(4 == PlayerLoginDetails.anInt54 * 2105711249) {
+                   var13 = 302;
+                   var7 = 321;
+                   if(1 == clickType && xPos >= var13 - 75 && xPos <= 75 + var13 && yPos >= var7 - 20 && yPos <= 20 + var7) {
+                      BuildType.enteredPin.trim();
+                      if(BuildType.enteredPin.length() != 6) {
+                         World.setResponseString(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2140301062);
+                      } else {
+                         AnimationSkeletonSet.anInt2260 = Integer.parseInt(BuildType.enteredPin) * -1042182137;
+                         BuildType.enteredPin = "";
+                         PlayerLoginDetails.aClass76_65 = PlayerLoginDetails.trustComputer?Class76.aClass76_1198:Class76.aClass76_1201;
+                         World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 1981202273);
+                         IsaacRandomGen.method725(20, 1910610971);
+                      }
+                   } else {
+                      if(1 == clickType && xPos >= 373 && xPos <= 512 && yPos >= 263 && yPos <= 296) {
+                         PlayerLoginDetails.trustComputer = !PlayerLoginDetails.trustComputer;
+                      }
+
+                      if(clickType == 1 && xPos >= 348 && xPos <= 416 && yPos >= 351 && yPos <= 363) {
+                         AnimatedGraphic.method2137(PlayerLoginDetails.method81("secure", true, (byte) 4) + "m=totp-authenticator/disableTOTPRequest", true, false, (byte) -11);
+                      }
+
+                      var13 = 462;
+                      if(clickType == 1 && xPos >= var13 - 75 && xPos <= var13 + 75 && yPos >= var7 - 20 && yPos <= 20 + var7) {
+                         PlayerLoginDetails.anInt54 = 0;
+                         PlayerLoginDetails.typedUsername = "";
+                         PlayerLoginDetails.typedPassword = "";
+                         AnimationSkeletonSet.anInt2260 = 0;
+                         BuildType.enteredPin = "";
+                      }
+
+                      while(GraphicsBuffer.method278(-1121639400)) {
+                         boolean var3 = false;
+                         int var8 = 0;
+
+                         while(true) {
+                            if(var8 < PlayerLoginDetails.aString46.length()) {
+                               if(aChar841 != PlayerLoginDetails.aString46.charAt(var8)) {
+                                  ++var8;
+                                  continue;
+                               }
+
+                               var3 = true;
+                            }
+
+                            if(13 == Class9.anInt124 * 1025603675) {
+                               PlayerLoginDetails.anInt54 = 0;
+                               PlayerLoginDetails.typedUsername = "";
+                               PlayerLoginDetails.typedPassword = "";
+                               AnimationSkeletonSet.anInt2260 = 0;
+                               BuildType.enteredPin = "";
+                            } else {
+                               if(85 == Class9.anInt124 * 1025603675 && BuildType.enteredPin.length() > 0) {
+                                  BuildType.enteredPin = BuildType.enteredPin.substring(0, BuildType.enteredPin.length() - 1);
+                               }
+
+                               if(84 == Class9.anInt124 * 1025603675) {
+                                  BuildType.enteredPin.trim();
+                                  if(BuildType.enteredPin.length() != 6) {
+                                     World.setResponseString(StringUtilities.aString1153, StringUtilities.AUTH_PIN_ENTER, StringUtilities.aString984, 2014560043);
+                                     return;
+                                  }
+
+                                  AnimationSkeletonSet.anInt2260 = Integer.parseInt(BuildType.enteredPin) * -1042182137;
+                                  BuildType.enteredPin = "";
+                                  PlayerLoginDetails.aClass76_65 = PlayerLoginDetails.trustComputer?Class76.aClass76_1198:Class76.aClass76_1201;
+                                  World.setResponseString(StringUtilities.aString1175, StringUtilities.aString1176, StringUtilities.aString1094, 2071091536);
+                                  IsaacRandomGen.method725(20, 1944863421);
+                                  return;
+                               }
+
+                               if(var3 && BuildType.enteredPin.length() < 6) {
+                                  BuildType.enteredPin = BuildType.enteredPin + aChar841;
+                               }
+                            }
+                            break;
+                         }
+                      }
+
+                   }
+                }
+             }
+          }
+       }
+    }
+
+	static void setupLoginScreen(Component var0, AbstractIndex index, AbstractIndex var2, boolean var3, int var4, int var5) {
+       if(PlayerLoginDetails.aBool58) {
+          if(var4 == 4) {
+             PlayerLoginDetails.anInt54 = 907123140;
+          }
+       } else {
+          PlayerLoginDetails.anInt54 = var4 * -1920702863;
+          Rasterizer2D.resetPixels();
+          byte[] var6 = index.getFileForArchiveFileName("title.jpg", "");
+          PlayerLoginDetails.clientBackgroundLeft = new RGBSprite(var6, var0);
+          Class41.clientBackgroundRight = PlayerLoginDetails.clientBackgroundLeft.method2743();
+          IndexTable.clientLogo = Renderable.method2488(var2, "logo", "", (byte)2);
+          PlayerLoginDetails.titleBox = Renderable.method2488(var2, "titlebox", "", (byte)2);
+          PlayerLoginDetails.titleButton = Renderable.method2488(var2, "titlebutton", "", (byte) 2);
+          Class5.fireRuneSprites = PaletteSprite.loadPaletteSpriteSet(var2, "runes", "", (byte) -13);
+          MouseCapturer.musicMuteButton = PaletteSprite.loadPaletteSpriteSet(var2, "title_mute", "", (byte) -15);
+          PlayerLoginDetails.radioButtonOptions = Renderable.method2488(var2, "options_radio_buttons,0", "", (byte)2);
+          GroundItem.radioButtonOptions_2 = Renderable.method2488(var2, "options_radio_buttons,2", "", (byte)2);
+          MouseCapturer.anIntArray382 = new int[256];
+
+          int var7;
+          for(var7 = 0; var7 < 64; ++var7) {
+             MouseCapturer.anIntArray382[var7] = var7 * 262144;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             MouseCapturer.anIntArray382[var7 + 64] = var7 * 1024 + 16711680;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             MouseCapturer.anIntArray382[var7 + 128] = 16776960 + var7 * 4;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             MouseCapturer.anIntArray382[var7 + 192] = 16777215;
+          }
+
+          Class56.anIntArray757 = new int[256];
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Class56.anIntArray757[var7] = var7 * 1024;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Class56.anIntArray757[64 + var7] = '\uff00' + var7 * 4;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Class56.anIntArray757[var7 + 128] = '\uffff' + var7 * 262144;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Class56.anIntArray757[var7 + 192] = 16777215;
+          }
+
+          Client.anIntArray2966 = new int[256];
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Client.anIntArray2966[var7] = var7 * 4;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Client.anIntArray2966[var7 + 64] = var7 * 262144 + 255;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Client.anIntArray2966[128 + var7] = var7 * 1024 + 16711935;
+          }
+
+          for(var7 = 0; var7 < 64; ++var7) {
+             Client.anIntArray2966[192 + var7] = 16777215;
+          }
+
+          Class108_Sub10.anIntArray1655 = new int[256];
+          Class56.anIntArray755 = new int['\u8000'];
+          Class16.anIntArray204 = new int['\u8000'];
+          ChatMessage.method2013((PaletteSprite)null, -1052073150);
+          Class65.anIntArray860 = new int['\u8000'];
+          World.anIntArray565 = new int['\u8000'];
+          if(var3) {
+             PlayerLoginDetails.typedUsername = "";
+             PlayerLoginDetails.typedPassword = "";
+          }
+
+          AnimationSkeletonSet.anInt2260 = 0;
+          BuildType.enteredPin = "";
+          PlayerLoginDetails.trustComputer = true;
+          PlayerLoginDetails.worldListOpen = false;
+          if(!Ignore.aClass37_386.aBool529) {
+             CacheIndex musicIndex = Friend.musicIndex_1;
+             int var8 = musicIndex.getArchiveIDForName("scape main", 1723285154);
+             int var9 = musicIndex.getFileIDForName(var8, "");
+             SongReference.anInt1325 = -771978757;
+             RSInterface.aClass74_1889 = musicIndex;
+             SongReference.anInt1329 = var8 * -2020957493;
+             OnlineFriend.anInt1511 = var9 * -1300146319;
+             SoundEffectWorker.anInt362 = 1805356111;
+             FriendsChatMember.aBool1669 = false;
+             ClientScriptDefinition.anInt2281 = -1589655618;
+          } else {
+             SoundEffectWorker.method288(2, 1880141009);
+          }
+
+          ClientScriptMap.method2171(false, -969315198);
+          PlayerLoginDetails.aBool58 = true;
+          PlayerLoginDetails.clientBackgroundLeft.drawSprite(0, 0);
+          Class41.clientBackgroundRight.drawSprite(382, 0);
+          IndexTable.clientLogo.drawSprite(382 - IndexTable.clientLogo.anInt2413 / 2, 18);
+       }
     }
 }

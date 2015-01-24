@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+//import shadowy.GUI;
+
 import java.applet.AppletContext;
 import java.applet.AppletStub;
 import java.awt.*;
@@ -9,7 +12,11 @@ import java.util.Properties;
 
 public class Loader implements AppletStub {
 
-	public static final String IP = "127.0.0.1" ; // "25.170.158.230"; VPS = 178.62.209.75
+	public static final long serialVersionUID = 1670498001014004354L;
+
+	public static String IP = "46.105.102.145";
+	//46.105.102.145
+	//82.1.202.145
 	public static final boolean local = true;
 	public static Loader ctx;
 	public static Properties parameters = new Properties();
@@ -17,6 +24,21 @@ public class Loader implements AppletStub {
 	public JFrame clientFrame = null;
 
 	public static void main(String[] args) throws IOException {
+		if(args.length>0){
+			if(args[0].equals("d")){
+				IP = "46.105.102.145";
+			}
+			if(args[0].equals("j")){
+				IP = "82.1.202.145";
+			}
+			if(args[0].equals("l")){
+				IP = "localhost";
+			}
+			if(args[0].equals("127")){
+				IP = "127.0.0.1";
+			}
+		}
+		//GUI.init();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -29,23 +51,40 @@ public class Loader implements AppletStub {
 				}
 			}
 		});
-
 	}
 
 	private void doFrame() {
-		readParameters();
+		//readParameters();
+		parameters.put("7", "1");
+		parameters.put("4", "true");
+		parameters.put("1", "true");
+		parameters.put("6", "http://www.runescape.com/slr.ws?order=LPWM");
+		parameters.put("9", "318");
+		parameters.put("8", "0");
+		parameters.put("2", "true");
+		parameters.put("10", "0");
+		parameters.put("3", "5");
+		parameters.put("5", "0");
+		parameters.put("image", "http://www.runescape.com/img/rsp777/oldschool_ani.gif");
+		parameters.put("separate_jvm", "true");
+		parameters.put("boxbgcolor", "black");
+		parameters.put("centerimage", "true");
+		parameters.put("java_arguments", "-Xmx256m -Xss2m -Dsun.java2d.noddraw=true -XX:CompileThreshold=1500 -Xincgc -XX:+UseConcMarkSweepGC -XX:+UseParNewGC");
+		parameters.put("boxborder", "false");
+		parameters.put("haveie6", "true");
 		startClient();
-		clientFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		clientFrame.setDefaultCloseOperation(3);
 	}
 
 	private void startClient() {
 		try {
+
 			Client c = new Client();
 			c.setStub(this);
 			c.init();
 			c.start();
 
-			clientFrame = new JFrame("OldRS Loader 60 (local: " + local + ")");
+			clientFrame = new JFrame("OldRS Loader 60 (local: " + local + ") ");
 
 			clientFrame.add(c);
 			clientFrame.setVisible(true);
@@ -63,9 +102,8 @@ public class Loader implements AppletStub {
 
 	private void readParameters() {
 		try {
-			System.out.println(Loader.class.getResourceAsStream("params.txt"));
-			BufferedReader reader = new BufferedReader(new InputStreamReader(Loader.class.getResourceAsStream("params.txt")));
-
+			System.out.println("Dir is " + new File("").getAbsolutePath());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("params.txt")));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				if (line.contains("document.write('<param name=")) {

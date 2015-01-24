@@ -56,7 +56,7 @@ public final class RSPacketBuffer extends RSByteBuffer {
 
    static final void method2598(RSInterface var0, int var1, int var2, byte var3) {
       if(null == Client.aClass108_Sub17_2877) {
-         if(!Client.actionMenuOpen) {
+         if(!ContextMenu.contextMenuOpen) {
             if(var0 != null) {
                RSInterface var8 = var0;
                int var5 = Js5Request.method2602(Class32.method576(var0, -366630917), (byte) -87);
@@ -123,8 +123,8 @@ public final class RSPacketBuffer extends RSByteBuffer {
                   Client.anInt2880 = var2 * 2043768653;
                   Class9.anInt127 = 0;
                   Client.aBool2888 = false;
-                  if(Client.menuActionRow * 391839991 > 0) {
-                     Tile.method1676(Client.menuActionRow * 391839991 - 1, 1460233291);
+                  if(ContextMenu.contextMenuRow * 391839991 > 0) {
+                     ContextMenu.setLastContextMenuRow(ContextMenu.contextMenuRow * 391839991 - 1, 1460233291);
                   }
                }
             }

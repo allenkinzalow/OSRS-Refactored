@@ -308,15 +308,15 @@ public class MachineInformation extends Node {
       int var4 = 1;
 
       for(int var5 = 0; var5 < 4; ++var5) {
-         if(Class4.anIntArray56[var5] != var0) {
-            var3[var4] = Class4.anIntArray56[var5];
-            var6[var4] = Class4.anIntArray63[var5];
+         if(PlayerLoginDetails.anIntArray56[var5] != var0) {
+            var3[var4] = PlayerLoginDetails.anIntArray56[var5];
+            var6[var4] = PlayerLoginDetails.anIntArray63[var5];
             ++var4;
          }
       }
 
-      Class4.anIntArray56 = var3;
-      Class4.anIntArray63 = var6;
-      Ignore.method398(Class4.worldList, 0, Class4.worldList.length - 1, Class4.anIntArray56, Class4.anIntArray63, 1945775527);
+      PlayerLoginDetails.anIntArray56 = var3;
+      PlayerLoginDetails.anIntArray63 = var6;
+      Ignore.method398(PlayerLoginDetails.worldList, 0, PlayerLoginDetails.worldList.length - 1, PlayerLoginDetails.anIntArray56, PlayerLoginDetails.anIntArray63, 1945775527);
    }
 }

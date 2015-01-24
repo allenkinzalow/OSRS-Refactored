@@ -171,7 +171,7 @@ public class CacheConstants {
                }
 
                Class50 var3 = var7[var4];
-               if(value == var3.method32(-1397647336)) {
+               if(value == var3.getID(-1397647336)) {
                   var8 = var3;
                   break;
                }

@@ -4,6 +4,7 @@ import java.io.IOException;
 public abstract class Entity extends Renderable {
 
    static RGBSprite[] headPrayerSprites;
+   static RGBSprite[] hintIconSprites;
    int anInt2338 = 0;
    int anInt2339;
    public static final int anInt2340 = 44;
@@ -65,6 +66,168 @@ public abstract class Entity extends Renderable {
    int anInt2396 = 0;
    int anInt2397 = 0;
    static int anInt2398;
+
+   static final void processEntityTextSpoken(int var0) {
+      int index;
+      int entityIndex;
+      for(index = -1; index < Client.numLocalPlayers * -43742683; ++index) {
+         if(index == -1) {
+            entityIndex = 2047;
+         } else {
+            entityIndex = Client.playerIndices[index];
+         }
+
+         Player player = Client.localPlayers[entityIndex];
+         if(player != null && player.textSpokenTime * 419314599 > 0) {
+            player.textSpokenTime -= 1259781143;
+            if(0 == player.textSpokenTime * 419314599) {
+               player.textSpoken = null;
+            }
+         }
+      }
+
+      for(index = 0; index < Client.anInt2749 * -1829405175; ++index) {
+         entityIndex = Client.npcIndices[index];
+         NPC npc = Client.localNPCs[entityIndex];
+         if(npc != null && npc.textSpokenTime * 419314599 > 0) {
+            npc.textSpokenTime -= 1259781143;
+            if(0 == npc.textSpokenTime * 419314599) {
+               npc.textSpoken = null;
+            }
+         }
+      }
+
+   }
+
+   static final void method578(Entity var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      if(null != var0) {
+         if(var0.method2731(-1454140729)) {
+            NPCDefinition var7;
+            if(var0 instanceof NPC) {
+               var7 = ((NPC)var0).definition;
+               if(var7.anIntArray2185 != null) {
+                  var7 = var7.method2290(1115175037);
+               }
+
+               if(var7 == null) {
+                  return;
+               }
+            }
+
+            int var9;
+            if(var1 < Client.numLocalPlayers * -43742683) {
+               var9 = 30;
+               Player var8 = (Player)var0;
+               if(var8.aBool2682) {
+                  return;
+               }
+
+               if(var8.pkicon * -1088697045 != -1 || -1 != var8.prayicon * -497976645) {
+                  Friend.method658(var0, var0.anInt2386 * 2106405885 + 15, 798331555);
+                  if(Client.anInt2808 * 1642143199 > -1) {
+                     if(-1 != var8.pkicon * -1088697045) {
+                        Wall.headIconSprites[var8.pkicon * -1088697045].method2746(var2 + Client.anInt2808 * 1642143199 - 12, Client.anInt2809 * -2062084395 + var3 - var9);
+                        var9 += 25;
+                     }
+
+                     if(var8.prayicon * -497976645 != -1) {
+                        headPrayerSprites[var8.prayicon * -497976645].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - var9);
+                        var9 += 25;
+                     }
+                  }
+               }
+
+               if(var1 >= 0 && Client.anInt2723 * -927004421 == 10 && Client.anInt2795 * 1790148709 == Client.playerIndices[var1]) {
+                  Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
+                  if(Client.anInt2808 * 1642143199 > -1) {
+                     hintIconSprites[1].method2746(var2 + Client.anInt2808 * 1642143199 - 12, Client.anInt2809 * -2062084395 + var3 - var9);
+                  }
+               }
+            } else {
+               var7 = ((NPC)var0).definition;
+               if(var7.anIntArray2185 != null) {
+                  var7 = var7.method2290(1942286194);
+               }
+
+               if(var7.headIcon * 1203154221 >= 0 && var7.headIcon * 1203154221 < headPrayerSprites.length) {
+                  Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
+                  if(Client.anInt2808 * 1642143199 > -1) {
+                     headPrayerSprites[var7.headIcon * 1203154221].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - 30);
+                  }
+               }
+
+               if(1 == Client.anInt2723 * -927004421 && Client.npcIndices[var1 - Client.numLocalPlayers * -43742683] == Client.anInt2724 * -923839899 && Client.cycle * -637317861 % 20 < 10) {
+                  Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
+                  if(Client.anInt2808 * 1642143199 > -1) {
+                     hintIconSprites[0].method2746(Client.anInt2808 * 1642143199 + var2 - 12, Client.anInt2809 * -2062084395 + var3 - 28);
+                  }
+               }
+            }
+
+            if(var0.textSpoken != null && (var1 >= Client.numLocalPlayers * -43742683 || Client.anInt2779 * 220652897 == 4 || !var0.aBool2352 && (Client.anInt2779 * 220652897 == 0 || 3 == Client.anInt2779 * 220652897 || 1 == Client.anInt2779 * 220652897 && Friend.isFriend(((Player) var0).playerName, false, (byte) -77)))) {
+               Friend.method658(var0, var0.anInt2386 * 2106405885, 798331555);
+               if(Client.anInt2808 * 1642143199 > -1 && Client.anInt2804 * 1837064243 < Client.anInt2797 * -797118177) {
+                  Client.anIntArray2817[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.getTextWidth(var0.textSpoken) / 2;
+                  Client.anIntArray2800[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.anInt2643;
+                  Client.anIntArray2798[Client.anInt2804 * 1837064243] = Client.anInt2808 * 1642143199;
+                  Client.anIntArray2799[Client.anInt2804 * 1837064243] = Client.anInt2809 * -2062084395;
+                  Client.anIntArray2776[Client.anInt2804 * 1837064243] = var0.anInt2377 * 638780813;
+                  Client.anIntArray2763[Client.anInt2804 * 1837064243] = var0.anInt2355 * 580693971;
+                  Client.anIntArray2947[Client.anInt2804 * 1837064243] = var0.textSpokenTime * 419314599;
+                  Client.aStringArray2805[Client.anInt2804 * 1837064243] = var0.textSpoken;
+                  Client.anInt2804 += 1959435003;
+               }
+            }
+
+            if(var0.anInt2342 * 166319025 > Client.cycle * -637317861) {
+               Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
+               if(Client.anInt2808 * 1642143199 > -1) {
+                  if(var1 < Client.numLocalPlayers * -43742683) {
+                     var9 = 30;
+                  } else {
+                     NPCDefinition var10 = ((NPC)var0).definition;
+                     var9 = var10.anInt2184 * -530501559;
+                  }
+
+                  int var11 = var9 * var0.anInt2360 * -1545297959 / (var0.anInt2361 * 769152649);
+                  if(var11 > var9) {
+                     var11 = var9;
+                  } else if(0 == var11 && var0.anInt2360 * -1545297959 > 0) {
+                     var11 = 1;
+                  }
+
+                  Rasterizer2D.drawFilledRectangle(var2 + Client.anInt2808 * 1642143199 - var9 / 2, Client.anInt2809 * -2062084395 + var3 - 3, var11, 5, '\uff00');
+                  Rasterizer2D.drawFilledRectangle(var11 + (Client.anInt2808 * 1642143199 + var2 - var9 / 2), Client.anInt2809 * -2062084395 + var3 - 3, var9 - var11, 5, 16711680);
+               }
+            }
+
+            for(var9 = 0; var9 < 4; ++var9) {
+               if(var0.anIntArray2369[var9] > Client.cycle * -637317861) {
+                  Friend.method658(var0, var0.anInt2386 * 2106405885 / 2, 798331555);
+                  if(Client.anInt2808 * 1642143199 > -1) {
+                     if(1 == var9) {
+                        Client.anInt2809 -= 948236740;
+                     }
+
+                     if(var9 == 2) {
+                        Client.anInt2808 += 1379728431;
+                        Client.anInt2809 += 1673365278;
+                     }
+
+                     if(3 == var9) {
+                        Client.anInt2808 -= 1379728431;
+                        Client.anInt2809 += 1673365278;
+                     }
+
+                     Client.hitmarkSprites[var0.anIntArray2356[var9]].method2746(Client.anInt2808 * 1642143199 + var2 - 12, var3 + Client.anInt2809 * -2062084395 - 12);
+                     RSTypeFace.p11_full_font.drawStringCenter(Integer.toString(var0.anIntArray2358[var9]), Client.anInt2808 * 1642143199 + var2 - 1, 3 + var3 + Client.anInt2809 * -2062084395, 16777215, 0);
+                  }
+               }
+            }
+
+         }
+      }
+   }
 
 
    final void method2720(int var1, int var2, boolean var3, int var4) {

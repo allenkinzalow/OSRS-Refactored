@@ -45,17 +45,17 @@ public final class IsaacRandomGen {
 
 			if (5 != var0 && var0 != 10) {
 				if (20 == var0) {
-					RSByteBuffer.method1890(Class1.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, true, 11 == Client.loginLoadingStage * 1315883169 ? 4 : 0, 2042385368);
+					LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, true, 11 == Client.loginLoadingStage * 1315883169 ? 4 : 0, 2042385368);
 				} else if (11 != var0) {
-					if (Class4.aBool58) {
-						Class4.titleBox = null;
-						Class4.titleButton = null;
-						Class5.aClass108_Sub20_Sub15_Sub2Array83 = null;
-						Class4.aClass108_Sub20_Sub15_Sub1_40 = null;
-						Class41.aClass108_Sub20_Sub15_Sub1_588 = null;
+					if (PlayerLoginDetails.aBool58) {
+						PlayerLoginDetails.titleBox = null;
+						PlayerLoginDetails.titleButton = null;
+						Class5.fireRuneSprites = null;
+						PlayerLoginDetails.clientBackgroundLeft = null;
+						Class41.clientBackgroundRight = null;
 						IndexTable.clientLogo = null;
-						MouseCapturer.aClass108_Sub20_Sub15_Sub2Array383 = null;
-						Class4.radioButtonOptions = null;
+						MouseCapturer.musicMuteButton = null;
+						PlayerLoginDetails.radioButtonOptions = null;
 						GroundItem.radioButtonOptions_2 = null;
 						World.worldBackSprites = null;
 						World.worldFlagSprites = null;
@@ -72,13 +72,13 @@ public final class IsaacRandomGen {
 						World.anIntArray565 = null;
 						SoundEffectWorker.method288(2, 1795393564);
 						ClientScriptMap.method2171(true, -1384693053);
-						Class4.aBool58 = false;
+						PlayerLoginDetails.aBool58 = false;
 					}
 				} else {
-					RSByteBuffer.method1890(Class1.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, false, 4, 1576119496);
+					LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, false, 4, 1576119496);
 				}
 			} else {
-				RSByteBuffer.method1890(Class1.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, true, 0, 1877519495);
+				LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, true, 0, 1877519495);
 			}
 
 			Client.loginLoadingStage = var0 * 985471841;
@@ -454,12 +454,6 @@ public final class IsaacRandomGen {
 				return false;
 			}
 		}
-	}
-
-	public static void method735(AbstractIndex var0, String var1, String var2, int var3, boolean var4, byte var5) {
-		int var6 = var0.getArchiveIDForName(var1, 1723285154);
-		int var7 = var0.getFileIDForName(var6, var2);
-		AnimationSkin.method1677(var0, var6, var7, var3, var4, 1390637341);
 	}
 
 	final int method736(byte var1) {

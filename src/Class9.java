@@ -10,7 +10,6 @@ public class Class9 {
    static int anInt127;
    static int anInt128;
    static int[] anIntArray130;
-   static RGBSprite[] hintIconSprites;
 
 
    public static void method219(AbstractIndex var0, AbstractIndex var1, int var2) {

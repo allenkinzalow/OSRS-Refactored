@@ -54,7 +54,7 @@ public final class NPC extends Entity {
 					}
 
 					projectile.process(Client.anInt2780 * 468305965, -1743142671);
-					Class56.gameScene.method412(VarpBit.plane * -570926309, (int) projectile.xPosition, (int) projectile.yPosition, (int) projectile.zPosition, 60, projectile, projectile.rotationY * -1160487113, -1, false);
+					Scene.gameScene.method412(VarpBit.plane * -570926309, (int) projectile.xPosition, (int) projectile.yPosition, (int) projectile.zPosition, 60, projectile, projectile.rotationY * -1160487113, -1, false);
 				}
 			} else {
 				projectile.unlink();
@@ -242,9 +242,9 @@ public final class NPC extends Entity {
 		Friend.method660(-626475724);
 		Rasterizer2D.drawFilledRectangle(var0, var1, var2, var3, 0);
 		Friend.method660(1883242703);
-		Class56.gameScene.method439(BZip2Context.xCameraPos * 1217916071, ClientScript.anInt1645 * 699100371, CacheFileAccessor.anInt1490 * 1498802843, RuntimeException_Sub1.anInt2625 * -611182019, GameConnection.anInt811 * -1717637923, var7);
+		Scene.gameScene.renderScene(BZip2Context.xCameraPos * 1217916071, ClientScript.anInt1645 * 699100371, CacheFileAccessor.anInt1490 * 1498802843, RuntimeException_Sub1.anInt2625 * -611182019, GameConnection.anInt811 * -1717637923, var7);
 		Friend.method660(1387450619);
-		Class56.gameScene.method415();
+		Scene.gameScene.resetInteractableObjects();
 		Client.anInt2804 = 0;
 		boolean var29 = false;
 		var15 = -1;
@@ -264,11 +264,11 @@ public final class NPC extends Entity {
 				var22 = Client.localNPCs[Client.npcIndices[var6 - Client.numLocalPlayers * -43742683]];
 			}
 
-			Class32.method578((Entity) var22, var6, var0, var1, var2, var3, 1325241763);
+			method578((Entity) var22, var6, var0, var1, var2, var3, 1325241763);
 		}
 
 		if (var29) {
-			Class32.method578(Client.localPlayers[Client.anInt2837 * 310098017], var15, var0, var1, var2, var3, 1325241763);
+			method578(Client.localPlayers[Client.anInt2837 * 310098017], var15, var0, var1, var2, var3, 1325241763);
 		}
 
 		for (var6 = 0; var6 < Client.anInt2804 * 1837064243; ++var6) {
@@ -388,7 +388,7 @@ public final class NPC extends Entity {
 		if (2 == Client.anInt2723 * -927004421) {
 			ChatMessage.method2017(Client.anInt2729 * -2009233023 + (Client.anInt2726 * -1330710259 - Class100.anInt1388 * 263051377 << 7), (Client.anInt2727 * -962677919 - SoundEffectWorker.anInt201 * -1743142671 << 7) + Client.anInt2832 * -786242817, Client.anInt2728 * -208332298, (short) 2048);
 			if (Client.anInt2808 * 1642143199 > -1 && Client.cycle * -637317861 % 20 < 10) {
-				Class9.hintIconSprites[0].method2746(Client.anInt2808 * 1642143199 + var0 - 12, var1 + Client.anInt2809 * -2062084395 - 28);
+				hintIconSprites[0].method2746(Client.anInt2808 * 1642143199 + var0 - 12, var1 + Client.anInt2809 * -2062084395 - 28);
 			}
 		}
 
@@ -445,95 +445,6 @@ public final class NPC extends Entity {
 
 	final boolean method2731(int var1) {
 		return this.definition != null;
-	}
-
-	static final void renderMinimap(int plane, byte var1) {
-		int[] mapPixels = Client.miniMapSprite.pixels;
-		int mapLength = mapPixels.length;
-
-		for (int pixel = 0; pixel < mapLength; ++pixel) {
-			mapPixels[pixel] = 0;
-		}
-
-		int var7;
-		int xTile;
-		for (int y = 1; y < 103; ++y) {
-			var7 = (103 - y) * 2048 + 24628;
-
-			for (int x = 1; x < 103; ++x) {
-				if (0 == (RegionReference.mapTileSettings[plane][x][y] & 24)) {
-					Class56.gameScene.drawMinimapTile(mapPixels, var7, 512, plane, x, y);
-				}
-
-				if (plane < 3 && (RegionReference.mapTileSettings[plane + 1][x][y] & 8) != 0) {
-					Class56.gameScene.drawMinimapTile(mapPixels, var7, 512, plane + 1, x, y);
-				}
-
-				var7 += 4;
-			}
-		}
-
-		int primaryColor = (238 + (int) (Math.random() * 20.0D) - 10 << 16) + (238 + (int) (Math.random() * 20.0D) - 10 << 8) + (238 + (int) (Math.random() * 20.0D) - 10);
-		int secondaryColor = 238 + (int) (Math.random() * 20.0D) - 10 << 16;
-		Client.miniMapSprite.method2744();
-
-		int yTile;
-		for (int y = 1; y < 103; ++y) {
-			for (int x = 1; x < 103; ++x) {
-				if ((RegionReference.mapTileSettings[plane][x][y] & 24) == 0) {
-					Class77.drawMapScenes(plane, x, y, primaryColor, secondaryColor, -1813376301);
-				}
-
-				if (plane < 3 && (RegionReference.mapTileSettings[plane + 1][x][y] & 8) != 0) {
-					Class77.drawMapScenes(plane + 1, x, y, primaryColor, secondaryColor, -1813376301);
-				}
-			}
-		}
-
-		Client.mapIconAmt = 0;
-
-		for (xTile = 0; xTile < 104; ++xTile) {
-			for (yTile = 0; yTile < 104; ++yTile) {
-				int var6 = Class56.gameScene.fetchGroundTileDecorationHash(VarpBit.plane * -570926309, xTile, yTile);
-				if (var6 != 0) {
-					var6 = var6 >> 14 & 32767;
-					int mapIconID = ObjectDefinition.getObjectDefForID(var6, (byte) 0).mapIconID * 334594829;
-					if (mapIconID >= 0) {
-						int xClip = xTile;
-						int yClip = yTile;
-						if (mapIconID != 22 && mapIconID != 29 && mapIconID != 34 && mapIconID != 36 && 46 != mapIconID && mapIconID != 47 && mapIconID != 48) {
-							int[][] clipData = Client.clippingPlanes[VarpBit.plane * -570926309].clipData;
-
-							for (int clipIndex = 0; clipIndex < 10; ++clipIndex) {
-								int var9 = (int) (Math.random() * 4.0D);
-								if (var9 == 0 && xClip > 0 && xClip > xTile - 3 && 0 == (clipData[xClip - 1][yClip] & 19136776)) {
-									--xClip;
-								}
-
-								if (1 == var9 && xClip < 103 && xClip < 3 + xTile && 0 == (clipData[1 + xClip][yClip] & 19136896)) {
-									++xClip;
-								}
-
-								if (2 == var9 && yClip > 0 && yClip > yTile - 3 && (clipData[xClip][yClip - 1] & 19136770) == 0) {
-									--yClip;
-								}
-
-								if (3 == var9 && yClip < 103 && yClip < yTile + 3 && (clipData[xClip][yClip + 1] & 19136800) == 0) {
-									++yClip;
-								}
-							}
-						}
-
-						Client.visibleMapIcons[Client.mapIconAmt * 396638539] = VarpBit.mapFunctionIcons[mapIconID];
-						Client.mapIconTileX[Client.mapIconAmt * 396638539] = xClip;
-						Client.mapIconTileY[Client.mapIconAmt * 396638539] = yClip;
-						Client.mapIconAmt += 745179235;
-					}
-				}
-			}
-		}
-
-		Class63.aClass13_830.method260(-1763862346);
 	}
 
 	static final void method3168(int var0) {

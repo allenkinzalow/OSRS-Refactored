@@ -68,7 +68,7 @@ public class CacheIndexRequest extends Node {
                   var3 += Integer.MIN_VALUE;
                }
 
-               Class56.gameScene.method412(VarpBit.plane * -570926309, var4.anInt2394 * 171470795, var4.anInt2339 * 826764905, RegionReference.getFloorDrawHeight(var4.anInt2394 * 171470795 + (var4.anInt2349 * -316782016 - 64), var4.anInt2339 * 826764905 + (var4.anInt2349 * -316782016 - 64), VarpBit.plane * -570926309, 1608876331), var4.anInt2349 * -316782016 - 64 + 60, var4, var4.anInt2345 * -376471767, var3, var4.aBool2348);
+               Scene.gameScene.method412(VarpBit.plane * -570926309, var4.anInt2394 * 171470795, var4.anInt2339 * 826764905, RegionReference.getFloorDrawHeight(var4.anInt2394 * 171470795 + (var4.anInt2349 * -316782016 - 64), var4.anInt2339 * 826764905 + (var4.anInt2349 * -316782016 - 64), VarpBit.plane * -570926309, 1608876331), var4.anInt2349 * -316782016 - 64 + 60, var4, var4.anInt2345 * -376471767, var3, var4.aBool2348);
             }
          }
       }

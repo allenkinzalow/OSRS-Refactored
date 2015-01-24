@@ -8,7 +8,7 @@ public class Class5 {
    static String[] stringStack = new String[1000];
    static int anInt81 = 0;
    static ClientScriptReference[] aClientScriptReferenceArray82 = new ClientScriptReference[50];
-   static PaletteSprite[] aClass108_Sub20_Sub15_Sub2Array83;
+   static PaletteSprite[] fireRuneSprites;
    static String[] dateString = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
 

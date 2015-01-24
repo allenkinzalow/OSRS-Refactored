@@ -9,6 +9,7 @@ import java.io.RandomAccessFile;
  */
 public final class CacheFileAccessor {
 
+   public static String[] possibleCacheDirectories;
    RandomAccessFile aRandomAccessFile1489;
    static int anInt1490;
    long aLong1491;

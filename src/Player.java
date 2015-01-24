@@ -107,6 +107,169 @@ public final class Player extends Entity {
        }
     }
 
+	static final void decodeAppearanceUpdate() {
+		for (int var1 = 0; var1 < Client.updateReqCount * -184592375; ++var1) {
+			int var2 = Client.playersNeedingUpdating[var1];
+			Player player = Client.localPlayers[var2];
+
+			int var4 = Client.packetBuffer.readUByte();
+			if (0 != (var4 & 4)) {
+				var4 += Client.packetBuffer.readUByte() << 8;
+			}
+			System.out.println("Got masks for " + player.playerName + " " + var4);
+
+			if (0 != (var4 & 1)) {
+				player.anInt2363 = Client.packetBuffer.method1706(179884786) * 1365888199;
+				player.anInt2387 = Client.packetBuffer.readUShortA() * -883213979;
+			}
+
+			if ((var4 & 2) != 0) {
+				player.textSpoken = Client.packetBuffer.getString_2((byte) 8);
+				if (player.textSpoken.charAt(0) == 126) {
+					player.textSpoken = player.textSpoken.substring(1);
+					ChatMessagesContainer.pushMessage(2, player.playerName, player.textSpoken, -501145397);
+				} else if (myPlayer == player) {
+					ChatMessagesContainer.pushMessage(2, player.playerName, player.textSpoken, 779446530);
+				}
+
+				player.aBool2352 = false;
+				player.anInt2377 = 0;
+				player.anInt2355 = 0;
+				player.textSpokenTime = -11389574;
+			}
+
+			int var5;
+			int var6;
+			if ((var4 & 256) != 0) {
+				var5 = Client.packetBuffer.readUShortLEA();
+				var6 = Client.packetBuffer.readUByte();
+				player.method2724(var5, var6, Client.cycle * -637317861, (byte) -65);
+				player.anInt2342 = Client.cycle * 1254497419 - 1701381396;
+				player.anInt2360 = Client.packetBuffer.method1751((byte) -7) * -1879576471;
+				player.anInt2361 = Client.packetBuffer.method1742(-1494849731) * 1056964537;
+			}
+
+			if ((var4 & 16) != 0) {
+				player.anInt2362 = Client.packetBuffer.method1706(179884786) * -990422189;
+				if ('\uffff' == player.anInt2362 * -2108972837) {
+					player.anInt2362 = 990422189;
+				}
+			}
+
+			if ((var4 & 0x80) != 0) {
+				var5 = Client.packetBuffer.readUByte();
+				byte[] var18 = new byte[var5];
+				RSByteBuffer var7 = new RSByteBuffer(var18);
+				Client.packetBuffer.method1781(var18, 0, var5, -497459829);
+				Client.cachedAppearances[var2] = var7;
+				player.decodeAppearance(var7);
+			}
+
+			if (0 != (var4 & 0x400)) { //gfx
+				player.anInt2373 = Client.packetBuffer.readUShort(-389943525) * 1279943663;
+				var5 = Client.packetBuffer.readInt();
+				player.anInt2388 = (var5 >> 16) * -663135519;//
+				player.anInt2381 = (Client.cycle * -637317861 + (var5 & 0xffff)) * 1163909499;//delay
+				player.anInt2374 = 0;
+				player.anInt2375 = 0;
+				if (player.anInt2381 * 2072518067 > Client.cycle * -637317861) {
+					player.anInt2374 = 530928865;
+				}
+
+				if ('\uffff' == player.anInt2373 * 1305815823) {
+					player.anInt2373 = -1279943663;
+				}
+			}
+
+			if ((var4 & 0x20) != 0) {
+				var5 = Client.packetBuffer.readUShortA();
+				if (var5 == '\uffff') {
+					var5 = -1;
+				}
+
+				var6 = Client.packetBuffer.readUNegByte((byte) 24);
+				System.out.println("Nigger orel " + var5 + ", " + var6);
+				method703(player, var5, var6, (short) -7028);
+			}
+
+			if ((var4 & 512) != 0) {
+				player.anInt2346 = Client.packetBuffer.method1751((byte) 47) * -1232457135;
+				player.anInt2380 = Client.packetBuffer.readUNegByte((byte) 108) * -2005510735;
+				player.anInt2379 = Client.packetBuffer.readUByte() * -968968421;
+				player.anInt2351 = Client.packetBuffer.readUByte() * 215276463;
+				player.anInt2382 = (Client.packetBuffer.readUShortA() + Client.cycle * -637317861) * -1135657951;
+				player.anInt2383 = (Client.packetBuffer.readUShort(1011764471) + Client.cycle * -637317861) * 1089374683;
+				player.anInt2384 = Client.packetBuffer.method1742(-1494849731) * 1682709515;
+				player.anInt2390 = -97254193;
+				player.anInt2395 = 0;
+			}
+
+			if ((var4 & 8) != 0) {
+				var5 = Client.packetBuffer.readUShortLEA();
+				var6 = Client.packetBuffer.readUByte();
+				player.method2724(var5, var6, Client.cycle * -637317861, (byte) -106);
+				player.anInt2342 = Client.cycle * 1254497419 - 1701381396;
+				player.anInt2360 = Client.packetBuffer.readUByte() * -1879576471;
+				player.anInt2361 = Client.packetBuffer.readUByte() * 1056964537;
+			}
+
+			if (0 != (var4 & 64)) {
+				var5 = Client.packetBuffer.method1706(179884786);
+				var6 = Client.packetBuffer.method1751((byte) 29);
+				boolean var19 = Client.packetBuffer.readUNegByte((byte) 47) == 1;
+				int var8 = Client.packetBuffer.readUByte();
+				int var9 = Client.packetBuffer.position * 798331555;
+				if (null != player.playerName && null != player.bodyEquipmentKit) {
+					boolean var10 = false;
+					if (var6 <= 1 && Ignore.isOnIgnore(player.playerName, 1393039656)) {
+						var10 = true;
+					}
+
+					if (!var10 && Client.anInt2822 * -526472263 == 0 && !player.aBool2682) {
+						Client.aClass108_Sub14_2824.position = 0;
+						Client.packetBuffer.readBytes(Client.aClass108_Sub14_2824.buf, 0, var8, 1307264336);
+						Client.aClass108_Sub14_2824.position = 0;
+						RSByteBuffer textBuffer = Client.aClass108_Sub14_2824;
+
+						String textSpoken;
+						try {
+							int var12 = textBuffer.readSmart((short) -14211);
+							if (var12 > 32767) {
+								var12 = 32767;
+							}
+
+							byte[] var13 = new byte[var12];
+							textBuffer.position += HuffmanEncoding.huffmanEncoding.decrypt(textBuffer.buf, textBuffer.position * 798331555, var13, 0, var12, -797949548) * 537964811;
+							String var14 = ClientScriptDefinition.method2569(var13, 0, var12, (short) 23990);
+							textSpoken = var14;
+						} catch (Exception var17) {
+							textSpoken = "Cabbage";
+						}
+
+						textSpoken = RSTypeFace.appendLTGTTags(Class66.method896(textSpoken, (byte) 0));
+						player.textSpoken = textSpoken.trim();
+						player.anInt2377 = (var5 >> 8) * 1753400645;
+						player.anInt2355 = (var5 & 255) * 562856027;
+						player.textSpokenTime = -11389574;
+						player.aBool2352 = var19;
+						if (2 != var6 && 3 != var6) {
+							if (1 == var6) {
+								ChatMessagesContainer.pushMessage(var19 ? 91 : 1, RSTypeFace.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
+							} else {
+								ChatMessagesContainer.pushMessage(var19 ? 90 : 2, player.playerName, textSpoken, 243104464);
+							}
+						} else {
+							ChatMessagesContainer.pushMessage(var19 ? 91 : 1, RSTypeFace.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
+						}
+					}
+				}
+
+				Client.packetBuffer.position = (var9 + var8) * 537964811;
+			}
+		}
+
+	}
+
 
 	final void decodeAppearance(RSByteBuffer buffer) {
 		buffer.position = 0;

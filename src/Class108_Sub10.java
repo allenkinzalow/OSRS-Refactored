@@ -29,7 +29,7 @@ public class Class108_Sub10 extends Node {
          MouseInputHandler.method775(var5, -16054773);
       }
 
-      Applet_Sub1.method3282((byte)56);
+      ContextMenu.method3282((byte) 56);
       if(-1 != Client.openInterfaceID * 1523906617) {
          LoginHandler.method882(Client.openInterfaceID * 1523906617, 1, (byte)35);
       }

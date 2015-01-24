@@ -571,18 +571,6 @@ public class Class108_Sub22 extends Node {
 
    }
 
-   static void method1996(int var0, byte var1) {
-      if(var0 >= 0) {
-         int var7 = Client.menuActionXInteractions[var0];
-         int var3 = Client.menuActionYInteractions[var0];
-         int var4 = Client.menuActionIdentifiers[var0];
-         int var5 = Client.menuActionParameters[var0];
-         String var6 = Client.menuActionNamePrefix[var0];
-         String var2 = Client.menuActionNames[var0];
-         MouseCapturer.processClickAction(var7, var3, var4, var5, var6, var2, MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, 1721706574);
-      }
-   }
-
    public static void sleep(long timeout) {
       if(timeout > 0L) {
          if(timeout % 10L != 0L) {

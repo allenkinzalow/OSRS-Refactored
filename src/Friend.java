@@ -26,7 +26,7 @@ public class Friend {
 
    static final void method659(Player player, int var1, int var2, int var3, short var4) {
       if(player != Player.myPlayer) {
-         if(Client.menuActionRow * 391839991 < 400) {
+         if(ContextMenu.contextMenuRow * 391839991 < 400) {
             String var6;
             if(player.skillLevel * -1817505683 == 0) {
                var6 = player.playerName + Class108_Sub13.method1702(player.combatLevel * -1769445007, Player.myPlayer.combatLevel * -1769445007, -409278148) + " " + Class47.OPEN_PAREN + StringUtilities.COMBAT_LEVEL + player.combatLevel * -1769445007 + Class47.CLOSE_PAREN;
@@ -36,10 +36,10 @@ public class Friend {
 
             int var7;
             if(Client.anInt2858 * -968945719 == 1) {
-               Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1661035400) + var6, 14, var1, var2, var3, 2121988882);
+               ContextMenu.setContextMenuRow(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1661035400) + var6, 14, var1, var2, var3, 2121988882);
             } else if(Client.aBool2881) {
                if((Class68.anInt902 * 401025055 & 8) == 8) {
-                  Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1562299690) + var6, 15, var1, var2, var3, 1855827336);
+                  ContextMenu.setContextMenuRow(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16777215, -1562299690) + var6, 15, var1, var2, var3, 1855827336);
                }
             } else {
                for(var7 = 7; var7 >= 0; --var7) {
@@ -63,14 +63,14 @@ public class Friend {
 
                      boolean var8 = false;
                      int var9 = var5 + Client.anIntArray2833[var7];
-                     Class4.method91(Client.aStringArray2834[var7], HuffmanEncoding.method690(16777215, -1013443787) + var6, var9, var1, var2, var3, 1965101199);
+                     ContextMenu.setContextMenuRow(Client.aStringArray2834[var7], HuffmanEncoding.method690(16777215, -1013443787) + var6, var9, var1, var2, var3, 1965101199);
                   }
                }
             }
 
-            for(var7 = 0; var7 < Client.menuActionRow * 391839991; ++var7) {
-               if(23 == Client.menuActionIdentifiers[var7]) {
-                  Client.menuActionNames[var7] = HuffmanEncoding.method690(16777215, -1551597452) + var6;
+            for(var7 = 0; var7 < ContextMenu.contextMenuRow * 391839991; ++var7) {
+               if(23 == ContextMenu.contextMenuIdentifiers[var7]) {
+                  ContextMenu.contextMenuActionNames[var7] = HuffmanEncoding.method690(16777215, -1551597452) + var6;
                   return;
                }
             }

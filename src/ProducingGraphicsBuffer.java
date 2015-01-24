@@ -153,7 +153,7 @@ public final class ProducingGraphicsBuffer extends GraphicsBuffer implements Ima
             int xOffset = var2 * var10 + var3 * var11 >> 16;
             int yOffset = var3 * var10 - var2 * var11 >> 16;
             if(radius > 2500) {
-               mapDotSprite.method2778(Class63.mapBackSprite, xPos + 94 + xOffset - mapDotSprite.maxWidth / 2 + 4, yPos + 83 - yOffset - mapDotSprite.maxHeight / 2 - 4);
+               mapDotSprite.method2778(MiniMap.mapBackSprite, xPos + 94 + xOffset - mapDotSprite.maxWidth / 2 + 4, yPos + 83 - yOffset - mapDotSprite.maxHeight / 2 - 4);
             } else {
                mapDotSprite.method2746(4 + (94 + xPos + xOffset - mapDotSprite.maxWidth / 2), 83 + yPos - yOffset - mapDotSprite.maxHeight / 2 - 4);
             }

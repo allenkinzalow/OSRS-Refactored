@@ -3,7 +3,6 @@ public class Class2 {
 
    static Class2 aClass2_14 = new Class2();
    static Class2 aClass2_15 = new Class2();
-   static byte[][] terrainData;
    static Class7 aClass7_17;
    static Class2 aClass2_24 = new Class2();
    static Class2 aClass2_25 = new Class2();

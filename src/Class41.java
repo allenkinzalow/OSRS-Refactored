@@ -1,7 +1,7 @@
 
 public class Class41 {
 
-   static RGBSprite aClass108_Sub20_Sub15_Sub1_588;
+   static RGBSprite clientBackgroundRight;
 
 
    static final void method649(byte var0) {
@@ -130,7 +130,7 @@ public class Class41 {
                   if(var3 < 103) {
                      if(var4 < 103) {
                         if(var10 == 0) {
-                           Wall var30 = Class56.gameScene.getWall(VarpBit.plane * -570926309, var3, var4);
+                           Wall var30 = Scene.gameScene.getWall(VarpBit.plane * -570926309, var3, var4);
                            if(null != var30) {
                               var43 = var30.hash * 639818003 >> 14 & 32767;
                               if(var9 == 2) {
@@ -143,7 +143,7 @@ public class Class41 {
                         }
 
                         if(var10 == 1) {
-                           WallDecoration var31 = Class56.gameScene.getWallDecorationForTile(VarpBit.plane * -570926309, var3, var4);
+                           WallDecoration var31 = Scene.gameScene.getWallDecorationForTile(VarpBit.plane * -570926309, var3, var4);
                            if(var31 != null) {
                               var43 = var31.hash * 414599861 >> 14 & 32767;
                               if(var9 != 4 && 5 != var9) {
@@ -162,7 +162,7 @@ public class Class41 {
                         }
 
                         if(var10 == 2) {
-                           InteractableObject var32 = Class56.gameScene.method502(VarpBit.plane * -570926309, var3, var4);
+                           InteractableObject var32 = Scene.gameScene.method502(VarpBit.plane * -570926309, var3, var4);
                            if(11 == var9) {
                               var9 = 10;
                            }
@@ -173,7 +173,7 @@ public class Class41 {
                         }
 
                         if(var10 == 3) {
-                           FloorDecoration var33 = Class56.gameScene.getFloorDecorationForTile(VarpBit.plane * -570926309, var3, var4);
+                           FloorDecoration var33 = Scene.gameScene.getFloorDecorationForTile(VarpBit.plane * -570926309, var3, var4);
                            if(var33 != null) {
                               var33.renderable = new GameObject(var33.hash * 1276953639 >> 14 & 32767, 22, var2, VarpBit.plane * -570926309, var3, var4, var5, false, var33.renderable);
                            }

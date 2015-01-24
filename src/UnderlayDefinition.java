@@ -110,7 +110,7 @@ public class UnderlayDefinition extends CacheableNode {
 			FriendsChatMember.method1684(Friend.anInt620 * 687278457, BuildType.anInt1238 * -365008633, VarpBit.plane * -570926309, Player.myPlayer.anIntArray2391[0], Player.myPlayer.anIntArray2392[0], (byte) 23);
 		} else if (VarpBit.plane * -570926309 != Client.lastKnownPlane * -313360225) {
 			Client.lastKnownPlane = VarpBit.plane * -220387323;
-			NPC.renderMinimap(VarpBit.plane * -570926309, (byte) 82);
+			MiniMap.renderMinimap(VarpBit.plane * -570926309, (byte) 82);
 		}
 	}
 

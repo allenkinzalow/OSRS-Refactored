@@ -70,24 +70,24 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          var2 = this;
       }
 
-      if(Class1.aCanvas3 != null) {
-         Class1.aCanvas3.removeFocusListener(this);
-         ((Container)var2).remove(Class1.aCanvas3);
+      if(ContextMenuRow.aCanvas3 != null) {
+         ContextMenuRow.aCanvas3.removeFocusListener(this);
+         ((Container)var2).remove(ContextMenuRow.aCanvas3);
       }
 
-      Class1.aCanvas3 = new Canvas_Sub1(this);
-      ((Container)var2).add(Class1.aCanvas3);
-      Class1.aCanvas3.setSize(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229);
-      Class1.aCanvas3.setVisible(true);
+      ContextMenuRow.aCanvas3 = new Canvas_Sub1(this);
+      ((Container)var2).add(ContextMenuRow.aCanvas3);
+      ContextMenuRow.aCanvas3.setSize(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229);
+      ContextMenuRow.aCanvas3.setVisible(true);
       if(UnderlayDefinition.aFrame2150 != null) {
          Insets var3 = UnderlayDefinition.aFrame2150.getInsets();
-         Class1.aCanvas3.setLocation(var3.left, var3.top);
+         ContextMenuRow.aCanvas3.setLocation(var3.left, var3.top);
       } else {
-         Class1.aCanvas3.setLocation(0, 0);
+         ContextMenuRow.aCanvas3.setLocation(0, 0);
       }
 
-      Class1.aCanvas3.addFocusListener(this);
-      Class1.aCanvas3.requestFocus();
+      ContextMenuRow.aCanvas3.addFocusListener(this);
+      ContextMenuRow.aCanvas3.requestFocus();
       aBool2688 = true;
       aBool2693 = false;
       aLong2697 = Timer.getCurrentTimeMillis(849846164) * 516356414042863577L;
@@ -98,7 +98,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          aBool2692 = true;
 
          try {
-            Class1.aCanvas3.removeFocusListener(this);
+            ContextMenuRow.aCanvas3.removeFocusListener(this);
          } catch (Exception var6) {
             ;
          }
@@ -142,13 +142,13 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
       if((anInt2691 += 1265438097) * 310858609 - 1 > 50) {
          anInt2691 += 1152604590;
          aBool2688 = true;
-         Class1.aCanvas3.setSize(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229);
-         Class1.aCanvas3.setVisible(true);
+         ContextMenuRow.aCanvas3.setSize(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229);
+         ContextMenuRow.aCanvas3.setVisible(true);
          if(null != UnderlayDefinition.aFrame2150) {
             Insets var7 = UnderlayDefinition.aFrame2150.getInsets();
-            Class1.aCanvas3.setLocation(var7.left, var7.top);
+            ContextMenuRow.aCanvas3.setLocation(var7.left, var7.top);
          } else {
-            Class1.aCanvas3.setLocation(0, 0);
+            ContextMenuRow.aCanvas3.setLocation(0, 0);
          }
       }
 
@@ -319,7 +319,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
 
          this.setFocusCycleRoot(true);
          this.method3185((byte)95);
-         Class63.aClass13_830 = ItemDefinition.method2127(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229, Class1.aCanvas3, 95766287);
+         Class63.aClass13_830 = ItemDefinition.method2127(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229, ContextMenuRow.aCanvas3, 95766287);
          this.method3196((byte)2);
 
          Object var16;
@@ -339,7 +339,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             }
 
             this.process((short)23545);
-            Renderable.method2491(ClientScriptMap.pringRequester, Class1.aCanvas3, (short)-23977);
+            Renderable.method2491(ClientScriptMap.pringRequester, ContextMenuRow.aCanvas3, (short)-23977);
          }
       } catch (Exception var15) {
          World.method647((String)null, var15, 926745782);
@@ -427,74 +427,6 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    }
 
    public abstract void init();
-
-   static final void setMenuPosAndDimmension(int x, int y, byte var2) {
-      int maxWidth = RSTypeFace.b12_full_font.getTextWidth(StringUtilities.CHOOSE_OPTION);
-
-      int menuActionIndex;
-      for(menuActionIndex = 0; menuActionIndex < Client.menuActionRow * 391839991; ++menuActionIndex) {
-         RSFont b12_full = RSTypeFace.b12_full_font;
-         String menuAction;
-         if(Client.menuActionNames[menuActionIndex].length() > 0) {
-            menuAction = Client.menuActionNamePrefix[menuActionIndex] + StringUtilities.aString1109 + Client.menuActionNames[menuActionIndex];
-         } else {
-            menuAction = Client.menuActionNamePrefix[menuActionIndex];
-         }
-
-         int menuActionWidth = b12_full.getTextWidth(menuAction);
-         if(menuActionWidth > maxWidth) {
-            maxWidth = menuActionWidth;
-         }
-      }
-
-      maxWidth += 8;
-      int height = Client.menuActionRow * 1582632569 + 21;
-      int xPos = x - maxWidth / 2;
-      if(xPos + maxWidth > 765) {
-         xPos = 765 - maxWidth;
-      }
-
-      if(xPos < 0) {
-         xPos = 0;
-      }
-
-      int yPos = y;
-      if(height + y > 503) {
-         yPos = 503 - height;
-      }
-
-      if(yPos < 0) {
-         yPos = 0;
-      }
-
-      Client.actionMenuOpen = true;
-      ClientScriptReference.actionMenuX = xPos * -1856507955;
-      MouseInputHandler.actionMenuY = yPos * 1712577663;
-      Class54.actionMenuWidth = maxWidth * 311400179;
-      Item.actionMenuHeight = Client.menuActionRow * 1309415031 - 1473975926;
-   }
-
-   static void method3282(byte var0) {
-      for(int var1 = 0; var1 < Client.menuActionRow * 391839991; ++var1) {
-         int identifier = Client.menuActionIdentifiers[var1];
-         boolean var4 = identifier == 57 || identifier == 58 || 1007 == identifier || identifier == 25 || 30 == identifier;
-         if(var4) {
-            if(var1 < Client.menuActionRow * 391839991 - 1) {
-               for(int var2 = var1; var2 < Client.menuActionRow * 391839991 - 1; ++var2) {
-                  Client.menuActionNamePrefix[var2] = Client.menuActionNamePrefix[var2 + 1];
-                  Client.menuActionNames[var2] = Client.menuActionNames[var2 + 1];
-                  Client.menuActionIdentifiers[var2] = Client.menuActionIdentifiers[var2 + 1];
-                  Client.menuActionParameters[var2] = Client.menuActionParameters[1 + var2];
-                  Client.menuActionXInteractions[var2] = Client.menuActionXInteractions[1 + var2];
-                  Client.menuActionYInteractions[var2] = Client.menuActionYInteractions[1 + var2];
-               }
-            }
-
-            Client.menuActionRow += 1954561849;
-         }
-      }
-
-   }
 
    static final int method3283(int var0, int var1, short var2) {
       int var3 = Projectile.method2988(var0 - 1, var1 - 1, (byte)45) + Projectile.method2988(var0 + 1, var1 - 1, (byte)89) + Projectile.method2988(var0 - 1, 1 + var1, (byte)53) + Projectile.method2988(1 + var0, 1 + var1, (byte)127);

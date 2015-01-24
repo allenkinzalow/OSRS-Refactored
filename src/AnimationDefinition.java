@@ -44,6 +44,11 @@ public class AnimationDefinition extends CacheableNode {
       }
    }
 
+   public static void clearAnimationDefMaps(byte var0) {
+      animationDefMap.clearCacheMap();
+      animDefCache.clearCacheMap();
+   }
+
 
    void decodeReadValues(RSByteBuffer buffer, int opcode, int var3) {
       int var4;
@@ -242,53 +247,6 @@ public class AnimationDefinition extends CacheableNode {
       var0.addMouseListener(MouseInputHandler.mouseInputHandler);
       var0.addMouseMotionListener(MouseInputHandler.mouseInputHandler);
       var0.addFocusListener(MouseInputHandler.mouseInputHandler);
-   }
-
-   static final void renderActionMenu(byte var0) {
-      int xPos = ClientScriptReference.actionMenuX * -745630459;
-      int yPos = MouseInputHandler.actionMenuY * -740301953;
-      int width = Class54.actionMenuWidth * 1703965243;
-      int height = Item.actionMenuHeight * 720768655;
-      int chooseColor = 6116423;
-      Rasterizer2D.drawFilledRectangle(xPos, yPos, width, height, chooseColor);
-      Rasterizer2D.drawFilledRectangle(1 + xPos, 1 + yPos, width - 2, 16, 0);
-      Rasterizer2D.drawUnfilledRectangle(xPos + 1, yPos + 18, width - 2, height - 19, 0);
-      RSTypeFace.b12_full_font.drawString(StringUtilities.CHOOSE_OPTION, 3 + xPos, yPos + 14, chooseColor, -1);
-      int mouseX = MouseInputHandler.mouseX * -367052265;
-      int mouseY = MouseInputHandler.mouseY * 1533395117;
-
-      int color;
-      int var10;
-      int yOffset;
-      for(var10 = 0; var10 < Client.menuActionRow * 391839991; ++var10) {
-         yOffset = yPos + 31 + (Client.menuActionRow * 391839991 - 1 - var10) * 15;
-         color = 16777215;
-         if(mouseX > xPos && mouseX < xPos + width && mouseY > yOffset - 13 && mouseY < yOffset + 3) {
-            color = 16776960;
-         }
-
-         RSFont b12_full = RSTypeFace.b12_full_font;
-         String menuActionName;
-         if(Client.menuActionNames[var10].length() > 0) {
-            menuActionName = Client.menuActionNamePrefix[var10] + StringUtilities.aString1109 + Client.menuActionNames[var10];
-         } else {
-            menuActionName = Client.menuActionNamePrefix[var10];
-         }
-
-         b12_full.drawString(menuActionName, xPos + 3, yOffset, color, 0);
-      }
-
-      var10 = ClientScriptReference.actionMenuX * -745630459;
-      yOffset = MouseInputHandler.actionMenuY * -740301953;
-      color = Class54.actionMenuWidth * 1703965243;
-      int var14 = Item.actionMenuHeight * 720768655;
-
-      for(int var13 = 0; var13 < Client.anInt2907 * -792079877; ++var13) {
-         if(Client.anIntArray2912[var13] + Client.anIntArray2914[var13] > var10 && Client.anIntArray2912[var13] < color + var10 && Client.anIntArray2913[var13] + Client.anIntArray2905[var13] > yOffset && Client.anIntArray2913[var13] < var14 + yOffset) {
-            Client.aBoolArray2910[var13] = true;
-         }
-      }
-
    }
 
    public ModelRasterizer method2265(ModelRasterizer var1, int var2, AnimationDefinition var3, int var4, byte var5) {

@@ -1,8 +1,8 @@
 
 public class Rasterizer2D extends CacheableNode {
 
-   public static int height;
-   public static int width;
+   public static int renderHeight;
+   public static int renderWidth;
    public static int[] renderPixels;
    public static int topY = 0;
    public static int bottomY = 0;
@@ -13,8 +13,8 @@ public class Rasterizer2D extends CacheableNode {
    public static void reset() {
       topX = 0;
       topY = 0;
-      bottomX = width;
-      bottomY = height;
+      bottomX = renderWidth;
+      bottomY = renderHeight;
    }
 
    static void drawVerticalLineAlpha(int x, int y, int height, int color, int alpha) {
@@ -33,7 +33,7 @@ public class Rasterizer2D extends CacheableNode {
             int colorR = (color >> 16 & 255) * alpha;
             int colorG = (color >> 8 & 255) * alpha;
             int colorB = (color & 255) * alpha;
-            int pixelOffset = x + y * width;
+            int pixelOffset = x + y * renderWidth;
 
             for(int pixelIndex = 0; pixelIndex < height; ++pixelIndex) {
                int r = (renderPixels[pixelOffset] >> 16 & 255) * colorA;
@@ -41,7 +41,7 @@ public class Rasterizer2D extends CacheableNode {
                int b = (renderPixels[pixelOffset] & 255) * colorA;
                int pixel = (colorR + r >> 8 << 16) + (colorG + g >> 8 << 8) + (colorB + b >> 8);
                renderPixels[pixelOffset] = pixel;
-               pixelOffset += width;
+               pixelOffset += renderWidth;
             }
 
          }
@@ -77,7 +77,7 @@ public class Rasterizer2D extends CacheableNode {
       int var0 = 0;
 
       int var1;
-      for(var1 = width * height - 7; var0 < var1; renderPixels[var0++] = 0) {
+      for(var1 = renderWidth * renderHeight - 7; var0 < var1; renderPixels[var0++] = 0) {
          renderPixels[var0++] = 0;
          renderPixels[var0++] = 0;
          renderPixels[var0++] = 0;
@@ -102,12 +102,12 @@ public class Rasterizer2D extends CacheableNode {
          y = 0;
       }
 
-      if(bX > width) {
-         bX = width;
+      if(bX > renderWidth) {
+         bX = renderWidth;
       }
 
-      if(bY > height) {
-         bY = height;
+      if(bY > renderHeight) {
+         bY = renderHeight;
       }
 
       topX = x;
@@ -138,8 +138,8 @@ public class Rasterizer2D extends CacheableNode {
          height = bottomY - y;
       }
 
-      int distance = Rasterizer2D.width - width;
-      int pixelOffset = x + y * Rasterizer2D.width;
+      int distance = Rasterizer2D.renderWidth - width;
+      int pixelOffset = x + y * Rasterizer2D.renderWidth;
 
       for(int pixelIndex = -height; pixelIndex < 0; ++pixelIndex) {
          int var11 = 65536 - var6 >> 8;
@@ -184,7 +184,7 @@ public class Rasterizer2D extends CacheableNode {
                length = bottomX - x;
             }
 
-            int pixelOffset = x + y * width;
+            int pixelOffset = x + y * renderWidth;
 
             for(int pixel = 0; pixel < length; ++pixel) {
                renderPixels[pixelOffset + pixel] = color;
@@ -206,10 +206,10 @@ public class Rasterizer2D extends CacheableNode {
                length = bottomY - y;
             }
 
-            int pixelOffset = x + y * width;
+            int pixelOffset = x + y * renderWidth;
 
             for(int pixel = 0; pixel < length; ++pixel) {
-               renderPixels[pixelOffset + pixel * width] = color;
+               renderPixels[pixelOffset + pixel * renderWidth] = color;
             }
 
          }
@@ -259,7 +259,7 @@ public class Rasterizer2D extends CacheableNode {
             while(y <= yLength) {
                var5 = x >> 16;
                if(var5 >= topX && var5 < bottomX) {
-                  renderPixels[var5 + y * width] = color;
+                  renderPixels[var5 + y * renderWidth] = color;
                }
 
                x += var6;
@@ -284,7 +284,7 @@ public class Rasterizer2D extends CacheableNode {
             while(x <= xLength) {
                var5 = y >> 16;
                if(var5 >= topY && var5 < bottomY) {
-                  renderPixels[x + var5 * width] = color;
+                  renderPixels[x + var5 * renderWidth] = color;
                }
 
                y += var6;
@@ -296,7 +296,7 @@ public class Rasterizer2D extends CacheableNode {
    }
 
    public static void method2511(int x, int y, int pixelColor, int[] offsets, int[] var4) {
-      int position = x + y * width;
+      int position = x + y * renderWidth;
 
       for(int pixelIndex = 0; pixelIndex < offsets.length; ++pixelIndex) {
          int pixelOffset = position + offsets[pixelIndex];
@@ -305,15 +305,15 @@ public class Rasterizer2D extends CacheableNode {
             renderPixels[pixelOffset++] = pixelColor;
          }
 
-         position += width;
+         position += renderWidth;
       }
 
    }
 
    public static void copySprite(int[] var0, int var1, int var2) {
       renderPixels = var0;
-      width = var1;
-      height = var2;
+      renderWidth = var1;
+      renderHeight = var2;
       setRasterizationRect(0, 0, var1, var2);
    }
 
@@ -338,8 +338,8 @@ public class Rasterizer2D extends CacheableNode {
 
       color = ((color & 16711935) * var5 >> 8 & 16711935) + ((color & '\uff00') * var5 >> 8 & '\uff00');
       int alpha = 256 - var5;
-      int var9 = Rasterizer2D.width - width;
-      int pixelOffset = x + y * Rasterizer2D.width;
+      int var9 = Rasterizer2D.renderWidth - width;
+      int pixelOffset = x + y * Rasterizer2D.renderWidth;
 
       for(int var6 = 0; var6 < height; ++var6) {
          for(int var10 = -width; var10 < 0; ++var10) {
@@ -369,7 +369,7 @@ public class Rasterizer2D extends CacheableNode {
             int colorR = (color >> 16 & 255) * alpha;
             int colorG = (color >> 8 & 255) * alpha;
             int colorB = (color & 255) * alpha;
-            int pixelOffset = x + y * Rasterizer2D.width;
+            int pixelOffset = x + y * Rasterizer2D.renderWidth;
 
             for(int pixelIndex = 0; pixelIndex < width; ++pixelIndex) {
                int r = (renderPixels[pixelOffset] >> 16 & 255) * colorAlpha;
@@ -409,8 +409,8 @@ public class Rasterizer2D extends CacheableNode {
          height = bottomY - y;
       }
 
-      int distance = Rasterizer2D.width - width;
-      int pixelOffset = x + y * Rasterizer2D.width;
+      int distance = Rasterizer2D.renderWidth - width;
+      int pixelOffset = x + y * Rasterizer2D.renderWidth;
 
       for(int yIndex = -height; yIndex < 0; ++yIndex) {
          for(int xIndex = -width; xIndex < 0; ++xIndex) {

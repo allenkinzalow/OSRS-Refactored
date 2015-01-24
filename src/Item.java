@@ -3,7 +3,6 @@ public final class Item extends Renderable {
 
    int anInt2614;
    static int anInt2616;
-   static int actionMenuHeight;
    int itemID;
 
 	protected final ModelRasterizer getModelRasterizer(byte var1) {

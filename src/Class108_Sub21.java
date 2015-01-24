@@ -1,7 +1,7 @@
 
 public class Class108_Sub21 extends Node {
 
-   static Class1 aClass1_1895;
+   static ContextMenuRow aContextMenuRow_1895;
    int anInt1896;
    int anInt1897;
    Class100 aClass100_1898;
@@ -71,7 +71,7 @@ public class Class108_Sub21 extends Node {
                if(null != player.aClass108_Sub20_Sub14_Sub3_2675 && Client.cycle * -637317861 >= player.anInt2665 * 1616333119 && Client.cycle * -637317861 < player.anInt2670 * -1285705355) {
                   player.aBool2680 = false;
                   player.anInt2669 = RegionReference.getFloorDrawHeight(player.anInt2394 * 171470795, player.anInt2339 * 826764905, VarpBit.plane * -570926309, 2140695436) * -380686299;
-                  Class56.gameScene.method413(VarpBit.plane * -570926309, player.anInt2394 * 171470795, player.anInt2339 * 826764905, player.anInt2669 * -1445368915, 60, player, player.anInt2345 * -376471767, var5, player.anInt2678 * 1474774453, player.anInt2677 * 1849026875, player.anInt2664 * 551930971, player.anInt2679 * -1849535703);
+                  Scene.gameScene.method413(VarpBit.plane * -570926309, player.anInt2394 * 171470795, player.anInt2339 * 826764905, player.anInt2669 * -1445368915, 60, player, player.anInt2345 * -376471767, var5, player.anInt2678 * 1474774453, player.anInt2677 * 1849026875, player.anInt2664 * 551930971, player.anInt2679 * -1849535703);
                } else {
                   if((player.anInt2394 * 171470795 & 127) == 64 && (player.anInt2339 * 826764905 & 127) == 64) {
                      if(Client.anIntArrayArray2806[var6][var7] == Client.anInt2807 * 1693763895) {
@@ -82,7 +82,7 @@ public class Class108_Sub21 extends Node {
                   }
 
                   player.anInt2669 = RegionReference.getFloorDrawHeight(player.anInt2394 * 171470795, player.anInt2339 * 826764905, VarpBit.plane * -570926309, 2067968875) * -380686299;
-                  Class56.gameScene.method412(VarpBit.plane * -570926309, player.anInt2394 * 171470795, player.anInt2339 * 826764905, player.anInt2669 * -1445368915, 60, player, player.anInt2345 * -376471767, var5, player.aBool2348);
+                  Scene.gameScene.method412(VarpBit.plane * -570926309, player.anInt2394 * 171470795, player.anInt2339 * 826764905, player.anInt2669 * -1445368915, 60, player, player.anInt2345 * -376471767, var5, player.aBool2348);
                }
             }
          }

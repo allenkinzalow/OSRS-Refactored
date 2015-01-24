@@ -3,7 +3,6 @@ public class ClientScriptReference {
 
    int anInt708 = -948638743;
    int[] localIntegers;
-   static int actionMenuX;
    ClientScriptDefinition clientScriptDefinition;
    String[] localStrings;
    static int anInt716;

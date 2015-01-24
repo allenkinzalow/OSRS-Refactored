@@ -18,6 +18,8 @@ public final class RegionReference {
    static int lightnessRandomizer = ((int)(Math.random() * 33.0D) - 16) * 1990361651;
    static int hueRandomizer = ((int)(Math.random() * 17.0D) - 8) * -1535870085;
    static int[] objectLandscapeIDs;
+   static byte[][] terrainData;
+   static int[] terrainLandscapeIDs;
 
 
    static void method587(int indexID, IndexTable indexTable, CacheIndex cacheIndex, int var3) {
@@ -74,39 +76,6 @@ public final class RegionReference {
       throw new Error();
    }
 
-   static final void method608() {
-      boolean finished = false;
-
-      while(!finished) {
-         finished = true;
-
-         for(int menuActionID = 0; menuActionID < Client.menuActionRow * 391839991 - 1; ++menuActionID) {
-            if(Client.menuActionIdentifiers[menuActionID] < 1000 && Client.menuActionIdentifiers[menuActionID + 1] > 1000) {
-               String menuName = Client.menuActionNames[menuActionID];
-               Client.menuActionNames[menuActionID] = Client.menuActionNames[1 + menuActionID];
-               Client.menuActionNames[menuActionID + 1] = menuName;
-               String menuNamePrefix = Client.menuActionNamePrefix[menuActionID];
-               Client.menuActionNamePrefix[menuActionID] = Client.menuActionNamePrefix[menuActionID + 1];
-               Client.menuActionNamePrefix[1 + menuActionID] = menuNamePrefix;
-               int var3 = Client.menuActionIdentifiers[menuActionID];
-               Client.menuActionIdentifiers[menuActionID] = Client.menuActionIdentifiers[1 + menuActionID];
-               Client.menuActionIdentifiers[menuActionID + 1] = var3;
-               int menuXInteraction = Client.menuActionXInteractions[menuActionID];
-               Client.menuActionXInteractions[menuActionID] = Client.menuActionXInteractions[menuActionID + 1];
-               Client.menuActionXInteractions[menuActionID + 1] = menuXInteraction;
-               int menuYInteraction = Client.menuActionYInteractions[menuActionID];
-               Client.menuActionYInteractions[menuActionID] = Client.menuActionYInteractions[1 + menuActionID];
-               Client.menuActionYInteractions[menuActionID + 1] = menuYInteraction;
-               int menuParam = Client.menuActionParameters[menuActionID];
-               Client.menuActionParameters[menuActionID] = Client.menuActionParameters[1 + menuActionID];
-               Client.menuActionParameters[1 + menuActionID] = menuParam;
-               finished = false;
-            }
-         }
-      }
-
-   }
-
    static final byte[] method618(byte[] var0) {
       RSByteBuffer var2 = new RSByteBuffer(var0);
       int var6 = var2.readUByte();
@@ -151,10 +120,10 @@ public final class RegionReference {
       boolean var6 = true;
 
       int var4;
-      for(var4 = 0; var4 < Class2.terrainData.length; ++var4) {
-         if(Class32.terrainLandscapeIDs[var4] != -1 && Class2.terrainData[var4] == null) {
-            Class2.terrainData[var4] = PingRequester.landscapeIndex.getFile(Class32.terrainLandscapeIDs[var4], 0, (byte) 7);
-            if(null == Class2.terrainData[var4]) {
+      for(var4 = 0; var4 < terrainData.length; ++var4) {
+         if(terrainLandscapeIDs[var4] != -1 && terrainData[var4] == null) {
+            terrainData[var4] = PingRequester.landscapeIndex.getFile(terrainLandscapeIDs[var4], 0, (byte) 7);
+            if(null == terrainData[var4]) {
                var6 = false;
                Client.anInt2759 -= 903859995;
             }
@@ -184,7 +153,7 @@ public final class RegionReference {
          int var20;
          int var21;
          int var22;
-         for(var4 = 0; var4 < Class2.terrainData.length; ++var4) {
+         for(var4 = 0; var4 < terrainData.length; ++var4) {
             byte[] data = ClientScriptDefinition.objectData[var4];
             if(data != null) {
                localX = (GraphicsBuffer.mapCoordinates[var4] >> 8) * 64 - Class100.anInt1388 * 263051377;
@@ -257,7 +226,7 @@ public final class RegionReference {
             Friend.method660(-2046935339);
             Class68.method929(-951349097);
             Friend.method660(-2073637062);
-            Class56.gameScene.method466();
+            Scene.gameScene.method466();
             Friend.method660(-1760599228);
             System.gc();
 
@@ -276,7 +245,7 @@ public final class RegionReference {
 
             Friend.method660(-1819534949);
             ChatMessagesContainer.method354(-1576804199);
-            int terrainDataAmt = Class2.terrainData.length;
+            int terrainDataAmt = terrainData.length;
             ChatMessage.method2010((short)-14602);
             Class23.method343(true, (byte)-61);
             int var7;
@@ -288,7 +257,7 @@ public final class RegionReference {
                for(var37 = 0; var37 < terrainDataAmt; ++var37) {
                   localX = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
                   localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
-                  terrainData = Class2.terrainData[var37];
+                  terrainData = terrainData[var37];
                   if(terrainData != null) {
                      Friend.method660(1338432946);
                      var7 = Friend.anInt620 * 1203260360 - 48;
@@ -320,7 +289,7 @@ public final class RegionReference {
                for(var37 = 0; var37 < terrainDataAmt; ++var37) {
                   localX = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
                   localY = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
-                  terrainData = Class2.terrainData[var37];
+                  terrainData = terrainData[var37];
                   if(terrainData == null && BuildType.anInt1238 * -365008633 < 800) {
                      Friend.method660(1989703340);
                      Class19.method337(localX, localY, 64, 64, 1185887909);
@@ -335,7 +304,7 @@ public final class RegionReference {
                      localY = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
                      var42 = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
                      Friend.method660(-967525957);
-                     ProducingGraphicsBuffer.method1593(objectData, localY, var42, Class56.gameScene, Client.clippingPlanes, (byte)8);
+                     ProducingGraphicsBuffer.method1593(objectData, localY, var42, Scene.gameScene, Client.clippingPlanes, (byte)8);
                   }
                }
             }
@@ -357,8 +326,8 @@ public final class RegionReference {
                            var5 = var12 / 8 + (var18 / 8 << 8);
 
                            for(var46 = 0; var46 < GraphicsBuffer.mapCoordinates.length; ++var46) {
-                              if(GraphicsBuffer.mapCoordinates[var46] == var5 && Class2.terrainData[var46] != null) {
-                                 method588(Class2.terrainData[var46], var37, localX * 8, localY * 8, x, (var18 & 7) * 8, (var12 & 7) * 8, y, Client.clippingPlanes, (short)-28440);
+                              if(GraphicsBuffer.mapCoordinates[var46] == var5 && terrainData[var46] != null) {
+                                 method588(terrainData[var46], var37, localX * 8, localY * 8, x, (var18 & 7) * 8, (var12 & 7) * 8, y, Client.clippingPlanes, (short)-28440);
                                  var43 = true;
                                  break;
                               }
@@ -404,7 +373,7 @@ public final class RegionReference {
                                  var21 = localY * 8;
                                  var15 = (y & 7) * 8;
                                  var22 = (var18 & 7) * 8;
-                                 Scene scene = Class56.gameScene;
+                                 Scene scene = Scene.gameScene;
                                  CollisionMap[] collisionMAp = Client.clippingPlanes;
                                  RSByteBuffer var49 = new RSByteBuffer(var47);
                                  int var25 = -1;
@@ -462,7 +431,7 @@ public final class RegionReference {
             Class23.method343(true, (byte)-65);
             Class68.method929(-1479308946);
             Friend.method660(-990519810);
-            Class1.createRegionScene(Class56.gameScene, Client.clippingPlanes, -2017189657);
+            createRegionScene(Scene.gameScene, Client.clippingPlanes, -2017189657);
             Class23.method343(true, (byte)78);
             var37 = anInt485 * -1362129233;
             if(var37 > VarpBit.plane * -570926309) {
@@ -474,9 +443,9 @@ public final class RegionReference {
             }
 
             if(Client.lowMemory) {
-               Class56.gameScene.method566(anInt485 * -1362129233);
+               Scene.gameScene.method566(anInt485 * -1362129233);
             } else {
-               Class56.gameScene.method566(0);
+               Scene.gameScene.method566(0);
             }
 
             for(localX = 0; localX < 104; ++localX) {
@@ -555,5 +524,537 @@ public final class RegionReference {
       } else {
          return 0;
       }
+   }
+
+   static final void createRegionScene(Scene scene, CollisionMap[] collisionMaps, int var2) {
+       int plane;
+       int x;
+       int y;
+       int originalPlane;
+       for (plane = 0; plane < 4; ++plane) {
+           for (x = 0; x < 104; ++x) {
+               for (y = 0; y < 104; ++y) {
+                   if ((mapTileSettings[plane][x][y] & 1) == 1) {
+                       originalPlane = plane;
+                       if ((mapTileSettings[1][x][y] & 2) == 2) {
+                           originalPlane = plane - 1;
+                       }
+
+                       if (originalPlane >= 0) {
+                           collisionMaps[originalPlane].markBlocked(x, y, 322466363);
+                       }
+                   }
+               }
+           }
+       }
+
+       hueRandomizer += ((int) (Math.random() * 5.0D) - 2) * -1535870085;
+       if (hueRandomizer * -2073023565 < -8) {
+           hueRandomizer = -597941208;
+       }
+
+       if (hueRandomizer * -2073023565 > 8) {
+           hueRandomizer = 597941208;
+       }
+
+       lightnessRandomizer += ((int) (Math.random() * 5.0D) - 2) * 1990361651;
+       if (lightnessRandomizer * -1983624965 < -16) {
+           lightnessRandomizer = -1781015344;
+       }
+
+       if (lightnessRandomizer * -1983624965 > 16) {
+           lightnessRandomizer = 1781015344;
+       }
+
+       int var6;
+       int var8;
+       int yPos;
+       int xPos;
+       int floorIDFetch;
+       int var25;
+       int xHeightDifference;
+       int var27;
+       int yHeightDifference;
+       int hueDivisor;
+       for (plane = 0; plane < 4; ++plane) {
+           byte[][] var46 = aByteArrayArrayArray488[plane];
+           var27 = (int) Math.sqrt(5100.0D);
+           var25 = var27 * 768 >> 8;
+
+           int directionalLightIntensity;
+           int var13;
+           for (yPos = 1; yPos < 103; ++yPos) {
+               for (xPos = 1; xPos < 103; ++xPos) {
+                   xHeightDifference = tileHeights[plane][1 + xPos][yPos] - tileHeights[plane][xPos - 1][yPos];
+                   yHeightDifference = tileHeights[plane][xPos][yPos + 1] - tileHeights[plane][xPos][yPos - 1];
+                   hueDivisor = (int) Math.sqrt((double) (yHeightDifference * yHeightDifference + xHeightDifference * xHeightDifference + 65536));
+                   floorIDFetch = (xHeightDifference << 8) / hueDivisor;
+                   var8 = 65536 / hueDivisor;
+                   var6 = (yHeightDifference << 8) / hueDivisor;
+                   directionalLightIntensity = 96 + (var6 * -50 + floorIDFetch * -50 + var8 * -10) / var25;
+                   var13 = (var46[xPos][yPos - 1] >> 2) + (var46[xPos - 1][yPos] >> 2) + (var46[1 + xPos][yPos] >> 3) + (var46[xPos][yPos + 1] >> 3) + (var46[xPos][yPos] >> 1);
+                   Class19.tileLightingIntensity[xPos][yPos] = directionalLightIntensity - var13;
+               }
+           }
+
+           for (yPos = 0; yPos < 104; ++yPos) {
+               blendedHue[yPos] = 0;
+               blendedSaturation[yPos] = 0;
+               IndexTable.blendedLightness[yPos] = 0;
+               LoginHandler.blendedHueDivisor[yPos] = 0;
+               Wall.blendedDirectionTracker[yPos] = 0;
+           }
+
+           for (yPos = -5; yPos < 109; ++yPos) {
+               for (xPos = 0; xPos < 104; ++xPos) {
+                   xHeightDifference = 5 + yPos;
+                   if (xHeightDifference >= 0 && xHeightDifference < 104) {
+                       int floorId = GZIPDecompressor.underlayFloorIds[plane][xHeightDifference][xPos] & 255;
+                       if (floorId > 0) {
+                           floorIDFetch = floorId - 1;
+                           UnderlayDefinition underlayDef = (UnderlayDefinition) UnderlayDefinition.aClass106_2143.get((long) floorIDFetch);
+                           UnderlayDefinition floor;
+                           if (null != underlayDef) {
+                               floor = underlayDef;
+                           } else {
+                               byte[] floorData = UnderlayDefinition.aClass74_2147.getFile(1, floorIDFetch, (byte) 7);
+                               underlayDef = new UnderlayDefinition();
+                               if (floorData != null) {
+                                   underlayDef.method2271(new RSByteBuffer(floorData), floorIDFetch, -1852305296);
+                               }
+
+                               underlayDef.method2278(749738555);
+                               UnderlayDefinition.aClass106_2143.put(underlayDef, (long) floorIDFetch);
+                               floor = underlayDef;
+                           }
+
+                           blendedHue[xPos] += floor.hue * -1957387667;
+                           blendedSaturation[xPos] += floor.saturation * -1288752181;
+                           IndexTable.blendedLightness[xPos] += floor.luminosity * -1539409761;
+                           LoginHandler.blendedHueDivisor[xPos] += floor.hueDivisor * -1997240389;
+                           ++Wall.blendedDirectionTracker[xPos];
+                       }
+                   }
+
+                   yHeightDifference = yPos - 5;
+                   if (yHeightDifference >= 0 && yHeightDifference < 104) {
+                       hueDivisor = GZIPDecompressor.underlayFloorIds[plane][yHeightDifference][xPos] & 255;
+                       if (hueDivisor > 0) {
+                           var8 = hueDivisor - 1;
+                           UnderlayDefinition underlayDef = (UnderlayDefinition) UnderlayDefinition.aClass106_2143.get((long) var8);
+                           UnderlayDefinition floor;
+                           if (null != underlayDef) {
+                               floor = underlayDef;
+                           } else {
+                               byte[] var49 = UnderlayDefinition.aClass74_2147.getFile(1, var8, (byte) 7);
+                               underlayDef = new UnderlayDefinition();
+                               if (var49 != null) {
+                                   underlayDef.method2271(new RSByteBuffer(var49), var8, -1852305296);
+                               }
+
+                               underlayDef.method2278(288310807);
+                               UnderlayDefinition.aClass106_2143.put(underlayDef, (long) var8);
+                               floor = underlayDef;
+                           }
+
+                           blendedHue[xPos] -= floor.hue * -1957387667;
+                           blendedSaturation[xPos] -= floor.saturation * -1288752181;
+                           IndexTable.blendedLightness[xPos] -= floor.luminosity * -1539409761;
+                           LoginHandler.blendedHueDivisor[xPos] -= floor.hueDivisor * -1997240389;
+                           --Wall.blendedDirectionTracker[xPos];
+                       }
+                   }
+               }
+
+               if (yPos >= 1 && yPos < 103) {
+                   xPos = 0;
+                   xHeightDifference = 0;
+                   yHeightDifference = 0;
+                   hueDivisor = 0;
+                   int blendedDirection = 0;
+
+                   for (var8 = -5; var8 < 109; ++var8) {
+                       var6 = var8 + 5;
+                       if (var6 >= 0 && var6 < 104) {
+                           xPos += blendedHue[var6];
+                           xHeightDifference += blendedSaturation[var6];
+                           yHeightDifference += IndexTable.blendedLightness[var6];
+                           hueDivisor += LoginHandler.blendedHueDivisor[var6];
+                           blendedDirection += Wall.blendedDirectionTracker[var6];
+                       }
+
+                       directionalLightIntensity = var8 - 5;
+                       if (directionalLightIntensity >= 0 && directionalLightIntensity < 104) {
+                           xPos -= blendedHue[directionalLightIntensity];
+                           xHeightDifference -= blendedSaturation[directionalLightIntensity];
+                           yHeightDifference -= IndexTable.blendedLightness[directionalLightIntensity];
+                           hueDivisor -= LoginHandler.blendedHueDivisor[directionalLightIntensity];
+                           blendedDirection -= Wall.blendedDirectionTracker[directionalLightIntensity];
+                       }
+
+                       if (var8 >= 1 && var8 < 103) {
+                           if (Client.lowMemory && 0 == (mapTileSettings[0][yPos][var8] & 2)) {
+                               if (0 != (mapTileSettings[plane][yPos][var8] & 16)) {
+                                   continue;
+                               }
+
+                               if ((mapTileSettings[plane][yPos][var8] & 8) != 0) {
+                                   var13 = 0;
+                               } else if (plane > 0 && (mapTileSettings[1][yPos][var8] & 2) != 0) {
+                                   var13 = plane - 1;
+                               } else {
+                                   var13 = plane;
+                               }
+
+                               if (Client.anInt2890 * -158871381 != var13) {
+                                   continue;
+                               }
+                           }
+
+                           if (plane < anInt485 * -1362129233) {
+                               anInt485 = plane * -1850046385;
+                           }
+
+                           int underlayFloorID = GZIPDecompressor.underlayFloorIds[plane][yPos][var8] & 255;
+                           int overlayFloorID = overlayFloorIds[plane][yPos][var8] & 255;
+                           if (underlayFloorID > 0 || overlayFloorID > 0) {
+                               int vertexSouthWest = tileHeights[plane][yPos][var8];
+                               int vertexSouthEast = tileHeights[plane][1 + yPos][var8];
+                               int vertexNorthEast = tileHeights[plane][yPos + 1][var8 + 1];
+                               int vertexNorthWest = tileHeights[plane][yPos][1 + var8];
+                               int var19 = Class19.tileLightingIntensity[yPos][var8];
+                               int var20 = Class19.tileLightingIntensity[1 + yPos][var8];
+                               int var21 = Class19.tileLightingIntensity[1 + yPos][1 + var8];
+                               int var22 = Class19.tileLightingIntensity[yPos][var8 + 1];
+                               int var18 = -1;
+                               int hslBitset = -1;
+                               int hue;
+                               int luminosity;
+                               int saturation;
+                               if (underlayFloorID > 0) {
+                                   hue = xPos * 256 / hueDivisor;
+                                   saturation = xHeightDifference / blendedDirection;
+                                   luminosity = yHeightDifference / blendedDirection;
+                                   var18 = Varp.packHSL(hue, saturation, luminosity, 1298455127);
+                                   hue = hue + hueRandomizer * -2073023565 & 255;
+                                   luminosity += lightnessRandomizer * -1983624965;
+                                   if (luminosity < 0) {
+                                       luminosity = 0;
+                                   } else if (luminosity > 255) {
+                                       luminosity = 255;
+                                   }
+
+                                   hslBitset = Varp.packHSL(hue, saturation, luminosity, 1802545195);
+                               }
+
+                               OverlayFloorDefinition overlayDef;
+                               if (plane > 0) {
+                                   boolean hideUnderlay = true;
+                                   if (underlayFloorID == 0 && overlayClippingPaths[plane][yPos][var8] != 0) {
+                                       hideUnderlay = false;
+                                   }
+
+                                   if (overlayFloorID > 0) {
+                                       int overlayID = overlayFloorID - 1;
+                                       overlayDef = (OverlayFloorDefinition) OverlayFloorDefinition.overlayFloorMap.get((long) overlayID);
+                                       OverlayFloorDefinition floor;
+                                       if (null != overlayDef) {
+                                           floor = overlayDef;
+                                       } else {
+                                           byte[] floorData = OverlayFloorDefinition.configArchive_ref_floor.getFile(4, overlayID, (byte) 7);
+                                           overlayDef = new OverlayFloorDefinition();
+                                           if (floorData != null) {
+                                               overlayDef.decode(new RSByteBuffer(floorData), overlayID, 198180841);
+                                           }
+
+                                           overlayDef.method2344((byte) -47);
+                                           OverlayFloorDefinition.overlayFloorMap.put(overlayDef, (long) overlayID);
+                                           floor = overlayDef;
+                                       }
+
+                                       if (!floor.hideUnderlay) {
+                                           hideUnderlay = false;
+                                       }
+                                   }
+
+                                   if (hideUnderlay && vertexSouthEast == vertexSouthWest && vertexSouthWest == vertexNorthEast && vertexNorthWest == vertexSouthWest) {
+                                       Class19.tileCullingBitset[plane][yPos][var8] |= 2340;
+                                   }
+                               }
+
+                               hue = 0;
+                               if (-1 != hslBitset) {
+                                   hue = Rasterizer3D.rgbTable[PlainTile.method622(hslBitset, 96, -1685737298)];
+                               }
+
+                               if (0 == overlayFloorID) {
+                                   scene.method406(plane, yPos, var8, 0, 0, -1, vertexSouthWest, vertexSouthEast, vertexNorthEast, vertexNorthWest, PlainTile.method622(var18, var19, -1685737298), PlainTile.method622(var18, var20, -1685737298), PlainTile.method622(var18, var21, -1685737298), PlainTile.method622(var18, var22, -1685737298), 0, 0, 0, 0, hue, 0);
+                               } else {
+                                   saturation = 1 + overlayClippingPaths[plane][yPos][var8];
+                                   byte rotation = AnimationSkeletonSet.overlayRotations[plane][yPos][var8];
+                                   int floorID = overlayFloorID - 1;
+                                   OverlayFloorDefinition overlayFloorDef = (OverlayFloorDefinition) OverlayFloorDefinition.overlayFloorMap.get((long) floorID);
+                                   if (overlayFloorDef != null) {
+                                       overlayDef = overlayFloorDef;
+                                   } else {
+                                       byte[] floorData = OverlayFloorDefinition.configArchive_ref_floor.getFile(4, floorID, (byte) 7);
+                                       overlayFloorDef = new OverlayFloorDefinition();
+                                       if (null != floorData) {
+                                           overlayFloorDef.decode(new RSByteBuffer(floorData), floorID, -656471882);
+                                       }
+
+                                       overlayFloorDef.method2344((byte) -37);
+                                       OverlayFloorDefinition.overlayFloorMap.put(overlayFloorDef, (long) floorID);
+                                       overlayDef = overlayFloorDef;
+                                   }
+
+                                   int textureID = overlayDef.textureID * 1133570979;
+                                   int var38;
+                                   int var41;
+                                   int var43;
+                                   int var44;
+                                   if (textureID >= 0) {
+                                       var41 = Rasterizer3D.anTextureImage_2501.method21(textureID, 72614764);
+                                       var44 = -1;
+                                   } else if (overlayDef.rgbColor * 308395211 == 16711935) {
+                                       var44 = -2;
+                                       textureID = -1;
+                                       var41 = -2;
+                                   } else {
+                                       var44 = Varp.packHSL(overlayDef.hue * 1297919561, overlayDef.saturation * -24553127, overlayDef.luminosity * -715881191, 1552822455);
+                                       var43 = overlayDef.hue * 1297919561 + hueRandomizer * -2073023565 & 255;
+                                       var38 = overlayDef.luminosity * -715881191 + lightnessRandomizer * -1983624965;
+                                       if (var38 < 0) {
+                                           var38 = 0;
+                                       } else if (var38 > 255) {
+                                           var38 = 255;
+                                       }
+
+                                       var41 = Varp.packHSL(var43, overlayDef.saturation * -24553127, var38, 1506801862);
+                                   }
+
+                                   var43 = 0;
+                                   if (-2 != var41) {
+                                       var43 = Rasterizer3D.rgbTable[CacheIndexRequest.method1927(var41, 96, 1263009375)];
+                                   }
+
+                                   if (overlayDef.anInt2211 * 839525211 != -1) {
+                                       var38 = hueRandomizer * -2073023565 + overlayDef.anInt2220 * -1618940341 & 255;
+                                       int var40 = overlayDef.anInt2222 * -1393574217 + lightnessRandomizer * -1983624965;
+                                       if (var40 < 0) {
+                                           var40 = 0;
+                                       } else if (var40 > 255) {
+                                           var40 = 255;
+                                       }
+
+                                       var41 = Varp.packHSL(var38, overlayDef.anInt2224 * -1327914801, var40, 1654676153);
+                                       var43 = Rasterizer3D.rgbTable[CacheIndexRequest.method1927(var41, 96, 1171927012)];
+                                   }
+
+                                   scene.method406(plane, yPos, var8, saturation, rotation, textureID, vertexSouthWest, vertexSouthEast, vertexNorthEast, vertexNorthWest, PlainTile.method622(var18, var19, -1685737298), PlainTile.method622(var18, var20, -1685737298), PlainTile.method622(var18, var21, -1685737298), PlainTile.method622(var18, var22, -1685737298), CacheIndexRequest.method1927(var44, var19, 499533796), CacheIndexRequest.method1927(var44, var20, 953040577), CacheIndexRequest.method1927(var44, var21, 523883285), CacheIndexRequest.method1927(var44, var22, 659891708), hue, var43);
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+
+           for (yPos = 1; yPos < 103; ++yPos) {
+               for (xPos = 1; xPos < 103; ++xPos) {
+                   if (0 != (mapTileSettings[plane][xPos][yPos] & 8)) {
+                       var8 = 0;
+                   } else if (plane > 0 && 0 != (mapTileSettings[1][xPos][yPos] & 2)) {
+                       var8 = plane - 1;
+                   } else {
+                       var8 = plane;
+                   }
+
+                   scene.method462(plane, xPos, yPos, var8);
+               }
+           }
+
+           GZIPDecompressor.underlayFloorIds[plane] = null;
+           overlayFloorIds[plane] = null;
+           overlayClippingPaths[plane] = null;
+           AnimationSkeletonSet.overlayRotations[plane] = null;
+           aByteArrayArrayArray488[plane] = null;
+       }
+
+       scene.method486(-50, -10, -50);
+
+       for (plane = 0; plane < 104; ++plane) {
+           for (x = 0; x < 104; ++x) {
+               if ((mapTileSettings[1][plane][x] & 2) == 2) {
+                   scene.method403(plane, x);
+               }
+           }
+       }
+
+       plane = 1;
+       x = 2;
+       y = 4;
+
+       for (originalPlane = 0; originalPlane < 4; ++originalPlane) {
+           if (originalPlane > 0) {
+               plane <<= 3;
+               x <<= 3;
+               y <<= 3;
+           }
+
+           for (int var23 = 0; var23 <= originalPlane; ++var23) {
+               for (int var35 = 0; var35 <= 104; ++var35) {
+                   for (int var36 = 0; var36 <= 104; ++var36) {
+                       short var53;
+                       if (0 != (Class19.tileCullingBitset[var23][var36][var35] & plane)) {
+                           var27 = var35;
+                           var25 = var35;
+                           yPos = var23;
+
+                           for (xPos = var23; var27 > 0 && 0 != (Class19.tileCullingBitset[var23][var36][var27 - 1] & plane); --var27) {
+                               ;
+                           }
+
+                           while (var25 < 104 && 0 != (Class19.tileCullingBitset[var23][var36][1 + var25] & plane)) {
+                               ++var25;
+                           }
+
+                           label517:
+                           while (yPos > 0) {
+                               for (xHeightDifference = var27; xHeightDifference <= var25; ++xHeightDifference) {
+                                   if (0 == (Class19.tileCullingBitset[yPos - 1][var36][xHeightDifference] & plane)) {
+                                       break label517;
+                                   }
+                               }
+
+                               --yPos;
+                           }
+
+                           label528:
+                           while (xPos < originalPlane) {
+                               for (xHeightDifference = var27; xHeightDifference <= var25; ++xHeightDifference) {
+                                   if (0 == (Class19.tileCullingBitset[xPos + 1][var36][xHeightDifference] & plane)) {
+                                       break label528;
+                                   }
+                               }
+
+                               ++xPos;
+                           }
+
+                           xHeightDifference = (1 + (var25 - var27)) * (1 + xPos - yPos);
+                           if (xHeightDifference >= 8) {
+                               var53 = 240;
+                               hueDivisor = tileHeights[xPos][var36][var27] - var53;
+                               floorIDFetch = tileHeights[yPos][var36][var27];
+                               Scene.addCullingCluster(originalPlane, 1, var36 * 128, var36 * 128, var27 * 128, var25 * 128 + 128, hueDivisor, floorIDFetch);
+
+                               for (var8 = yPos; var8 <= xPos; ++var8) {
+                                   for (var6 = var27; var6 <= var25; ++var6) {
+                                       Class19.tileCullingBitset[var8][var36][var6] &= ~plane;
+                                   }
+                               }
+                           }
+                       }
+
+                       if ((Class19.tileCullingBitset[var23][var36][var35] & x) != 0) {
+                           var27 = var36;
+                           var25 = var36;
+                           yPos = var23;
+
+                           for (xPos = var23; var27 > 0 && (Class19.tileCullingBitset[var23][var27 - 1][var35] & x) != 0; --var27) {
+                               ;
+                           }
+
+                           while (var25 < 104 && (Class19.tileCullingBitset[var23][1 + var25][var35] & x) != 0) {
+                               ++var25;
+                           }
+
+                           label566:
+                           while (yPos > 0) {
+                               for (xHeightDifference = var27; xHeightDifference <= var25; ++xHeightDifference) {
+                                   if ((Class19.tileCullingBitset[yPos - 1][xHeightDifference][var35] & x) == 0) {
+                                       break label566;
+                                   }
+                               }
+
+                               --yPos;
+                           }
+
+                           label577:
+                           while (xPos < originalPlane) {
+                               for (xHeightDifference = var27; xHeightDifference <= var25; ++xHeightDifference) {
+                                   if (0 == (Class19.tileCullingBitset[xPos + 1][xHeightDifference][var35] & x)) {
+                                       break label577;
+                                   }
+                               }
+
+                               ++xPos;
+                           }
+
+                           xHeightDifference = (xPos + 1 - yPos) * (1 + (var25 - var27));
+                           if (xHeightDifference >= 8) {
+                               var53 = 240;
+                               hueDivisor = tileHeights[xPos][var27][var35] - var53;
+                               floorIDFetch = tileHeights[yPos][var27][var35];
+                               Scene.addCullingCluster(originalPlane, 2, var27 * 128, var25 * 128 + 128, var35 * 128, var35 * 128, hueDivisor, floorIDFetch);
+
+                               for (var8 = yPos; var8 <= xPos; ++var8) {
+                                   for (var6 = var27; var6 <= var25; ++var6) {
+                                       Class19.tileCullingBitset[var8][var6][var35] &= ~x;
+                                   }
+                               }
+                           }
+                       }
+
+                       if ((Class19.tileCullingBitset[var23][var36][var35] & y) != 0) {
+                           var27 = var36;
+                           var25 = var36;
+                           yPos = var35;
+
+                           for (xPos = var35; yPos > 0 && 0 != (Class19.tileCullingBitset[var23][var36][yPos - 1] & y); --yPos) {
+                               ;
+                           }
+
+                           while (xPos < 104 && 0 != (Class19.tileCullingBitset[var23][var36][xPos + 1] & y)) {
+                               ++xPos;
+                           }
+
+                           label616:
+                           while (var27 > 0) {
+                               for (xHeightDifference = yPos; xHeightDifference <= xPos; ++xHeightDifference) {
+                                   if ((Class19.tileCullingBitset[var23][var27 - 1][xHeightDifference] & y) == 0) {
+                                       break label616;
+                                   }
+                               }
+
+                               --var27;
+                           }
+
+                           label627:
+                           while (var25 < 104) {
+                               for (xHeightDifference = yPos; xHeightDifference <= xPos; ++xHeightDifference) {
+                                   if (0 == (Class19.tileCullingBitset[var23][var25 + 1][xHeightDifference] & y)) {
+                                       break label627;
+                                   }
+                               }
+
+                               ++var25;
+                           }
+
+                           if ((var25 - var27 + 1) * (1 + (xPos - yPos)) >= 4) {
+                               xHeightDifference = tileHeights[var23][var27][yPos];
+                               Scene.addCullingCluster(originalPlane, 4, var27 * 128, var25 * 128 + 128, yPos * 128, 128 + xPos * 128, xHeightDifference, xHeightDifference);
+
+                               for (yHeightDifference = var27; yHeightDifference <= var25; ++yHeightDifference) {
+                                   for (hueDivisor = yPos; hueDivisor <= xPos; ++hueDivisor) {
+                                       Class19.tileCullingBitset[var23][yHeightDifference][hueDivisor] &= ~y;
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       }
+
    }
 }

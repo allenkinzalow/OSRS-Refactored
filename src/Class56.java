@@ -3,11 +3,9 @@ import java.applet.Applet;
 public class Class56 {
 
    static String operatingSystem = null;
-   static Scene gameScene;
    static int[] anIntArray755;
    static Applet anApplet756 = null;
    static int[] anIntArray757;
-   static RGBSprite[] mapMarkerSprites;
 
 
    Class56() throws Throwable {

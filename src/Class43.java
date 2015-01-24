@@ -1,4 +1,7 @@
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -195,18 +198,18 @@ public class Class43 {
 
    }
 
-   static void method656(int var0) {
+   static void initializeClient(int var0) {
       int var1;
       if(0 == Client.currentLoadingStep * -2390161) {
-         Class56.gameScene = new Scene(4, 104, 104, RegionReference.tileHeights);
+         Scene.gameScene = new Scene(4, 104, 104, RegionReference.tileHeights);
 
          for(var1 = 0; var1 < 4; ++var1) {
             Client.clippingPlanes[var1] = new CollisionMap(104, 104);
          }
 
-         Client.miniMapSprite = new RGBSprite(512, 512);
-         Class4.currentLoadingStatus = StringUtilities.PREPARE_GAME_ENGINE;
-         Class4.anInt52 = 2012125629;
+         MiniMap.miniMapSprite = new RGBSprite(512, 512);
+         PlayerLoginDetails.currentLoadingStatus = StringUtilities.PREPARE_GAME_ENGINE;
+         PlayerLoginDetails.anInt52 = 2012125629;
          Client.currentLoadingStep = 966940460;
       } else {
          int var2;
@@ -224,8 +227,8 @@ public class Class43 {
             }
 
             Scene.method476(var30, 500, 800, 512, 334);
-            Class4.currentLoadingStatus = StringUtilities.PREPARED_VISIBILTY_MAP;
-            Class4.anInt52 = -270716038;
+            PlayerLoginDetails.currentLoadingStatus = StringUtilities.PREPARED_VISIBILTY_MAP;
+            PlayerLoginDetails.anInt52 = -270716038;
             Client.currentLoadingStep = -697072958; 
          } else if(30 == Client.currentLoadingStep * -2390161) {
             Projectile.skeletonIndex = CacheIndex.initCacheIndex(0, false, true, true, -517502665);
@@ -237,15 +240,15 @@ public class Class43 {
             Friend.musicIndex_1 = CacheIndex.initCacheIndex(6, true, true, false, -1649811484);
             Class47.modelIndex = CacheIndex.initCacheIndex(7, false, true, true, -1786151476);
             Class23.spriteIndex = CacheIndex.initCacheIndex(8, false, true, true, -1203260803);
-            Class4.textureIndex = CacheIndex.initCacheIndex(9, false, true, true, -1786660079);
+            PlayerLoginDetails.textureIndex = CacheIndex.initCacheIndex(9, false, true, true, -1786660079);
             RuntimeException_Sub1.huffmanIndex = CacheIndex.initCacheIndex(10, false, true, true, -1850067732);
             ClientParameter.musicIndex_2 = CacheIndex.initCacheIndex(11, false, true, true, -596901743);
             Class108_Sub13.clientScriptIndex = CacheIndex.initCacheIndex(12, false, true, true, -2145575712);
             Class54.fontIndex = CacheIndex.initCacheIndex(13, true, false, true, -1957495351);
             HuffmanEncoding.soundEffectsIndex_2 = CacheIndex.initCacheIndex(14, false, true, false, -1772317315);
             IsaacRandomGen.soundEffectsIndex_3 = CacheIndex.initCacheIndex(15, false, true, true, -483363239);
-            Class4.currentLoadingStatus = StringUtilities.CONNECTING_UPDATE_SERVER;
-            Class4.anInt52 = -541432076; 
+            PlayerLoginDetails.currentLoadingStatus = StringUtilities.CONNECTING_UPDATE_SERVER;
+            PlayerLoginDetails.anInt52 = -541432076;
             Client.currentLoadingStep = 1933880920; 
          } else if(40 == Client.currentLoadingStep * -2390161) {
             byte var29 = 0;
@@ -258,7 +261,7 @@ public class Class43 {
             loadIndexPercent += Friend.musicIndex_1.method1899((byte)28) * 2 / 100;
             loadIndexPercent += Class47.modelIndex.method1899((byte)-35) * 60 / 100;
             loadIndexPercent += Class23.spriteIndex.method1899((byte)79) * 2 / 100;
-            loadIndexPercent += Class4.textureIndex.method1899((byte)-13) * 2 / 100;
+            loadIndexPercent += PlayerLoginDetails.textureIndex.method1899((byte)-13) * 2 / 100;
             loadIndexPercent += RuntimeException_Sub1.huffmanIndex.method1899((byte)42) * 2 / 100;
             loadIndexPercent += ClientParameter.musicIndex_2.method1899((byte)17) * 2 / 100;
             loadIndexPercent += Class108_Sub13.clientScriptIndex.method1899((byte)-31) * 2 / 100;
@@ -267,28 +270,28 @@ public class Class43 {
             loadIndexPercent += IsaacRandomGen.soundEffectsIndex_3.method1899((byte)-89) * 2 / 100;
             if(100 != loadIndexPercent) {
                if(loadIndexPercent != 0) {
-                  Class4.currentLoadingStatus = StringUtilities.CHECK_UPDATES + loadIndexPercent + "%";
+                  PlayerLoginDetails.currentLoadingStatus = StringUtilities.CHECK_UPDATES + loadIndexPercent + "%";
                }
 
-               Class4.anInt52 = -812148114;
+               PlayerLoginDetails.anInt52 = -812148114;
             } else {
-               Class4.currentLoadingStatus = StringUtilities.LOADED_UPDATE_LIST;
-               Class4.anInt52 = -812148114;
+               PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_UPDATE_LIST;
+               PlayerLoginDetails.anInt52 = -812148114;
                Client.currentLoadingStep = 1101874211;
             }
          } else if(Client.currentLoadingStep * -2390161 == 45) {
             Projectile.method2986(22050, !Client.lowMemory, 2, -2143336532);
             Class108_Sub4_Sub3 var28 = new Class108_Sub4_Sub3();
             var28.method2603(9, 128, (short)-16228);
-            Class2.aClass7_17 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, Class1.aCanvas3, 0, 22050, -1059713629);
+            Class2.aClass7_17 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, ContextMenuRow.aCanvas3, 0, 22050, -1059713629);
             Class2.aClass7_17.method117(var28, (byte)46);
             Entity.method2740(IsaacRandomGen.soundEffectsIndex_3, HuffmanEncoding.soundEffectsIndex_2, RSSoundEffect.soundEffectsIndex_1, var28, -685492007);
-            Class50.aClass7_697 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, Class1.aCanvas3, 1, 2048, 1579217328);
+            Class50.aClass7_697 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, ContextMenuRow.aCanvas3, 1, 2048, 1579217328);
             Class26.aClass108_Sub4_Sub1_352 = new Class108_Sub4_Sub1();
             Class50.aClass7_697.method117(Class26.aClass108_Sub4_Sub1_352, (byte)-45);
             GameObject.aClass19_2428 = new Class19(22050, Class7.anInt94 * -322018941);
-            Class4.currentLoadingStatus = StringUtilities.PREPARING_SOUND_ENGINE;
-            Class4.anInt52 = 1199977515;
+            PlayerLoginDetails.currentLoadingStatus = StringUtilities.PREPARING_SOUND_ENGINE;
+            PlayerLoginDetails.anInt52 = 1199977515;
             Client.currentLoadingStep = 269867502;
          } else {
             int fileID;
@@ -331,12 +334,12 @@ public class Class43 {
                }
 
                if(var1 < 3) {
-                  Class4.currentLoadingStatus = StringUtilities.LOADING_FONTS + var1 * 100 / 3 + "%";
-                  Class4.anInt52 = -1082864152;
+                  PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_FONTS + var1 * 100 / 3 + "%";
+                  PlayerLoginDetails.anInt52 = -1082864152;
                } else {
                   MachineInformation.aMachineInformation_1422 = new MachineInformation(true);
-                  Class4.currentLoadingStatus = StringUtilities.loading_fonts_2;
-                  Class4.anInt52 = -1082864152;
+                  PlayerLoginDetails.currentLoadingStatus = StringUtilities.loading_fonts_2;
+                  PlayerLoginDetails.anInt52 = -1082864152;
                   Client.currentLoadingStep = -1394145916;
                }
             } else {
@@ -384,22 +387,22 @@ public class Class43 {
                   spriteIndexRef.containsFileForAFName("sl_button", "");
                   var5 = Class37.method636(-567828897);
                   if(var4 < var5) {
-                     Class4.currentLoadingStatus = StringUtilities.LOADING_TITLE_SCREEN + var4 * 100 / var5 + "%";
-                     Class4.anInt52 = -1353580190;
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_TITLE_SCREEN + var4 * 100 / var5 + "%";
+                     PlayerLoginDetails.anInt52 = -1353580190;
                   } else {
-                     Class4.currentLoadingStatus = StringUtilities.LOADED_TITLE_SCREEN;
-                     Class4.anInt52 = -1353580190;
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_TITLE_SCREEN;
+                     PlayerLoginDetails.anInt52 = -1353580190;
                      IsaacRandomGen.method725(5, 1461889300);
                      Client.currentLoadingStep = 1236807962;
                   }
                } else if(70 == Client.currentLoadingStep * -2390161) {
                   if(!AbstractIndex.configIndex.loadArchive((byte)0)) {
-                     Class4.currentLoadingStatus = StringUtilities.loading_config + AbstractIndex.configIndex.getTotalCompletion(-1933073496) + "%";
-                     Class4.anInt52 = -1624296228;
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.loading_config + AbstractIndex.configIndex.getTotalCompletion(-1933073496) + "%";
+                     PlayerLoginDetails.anInt52 = -1624296228;
                   } else {
                      Projectile.method2987(AbstractIndex.configIndex, 2132047014);
-                     CacheIndex var26 = AbstractIndex.configIndex;
-                     UnderlayDefinition.aClass74_2147 = var26;
+                     CacheIndex configIndex = AbstractIndex.configIndex;
+                     UnderlayDefinition.aClass74_2147 = configIndex;
                      AnimationSkeletonSet.method2562(AbstractIndex.configIndex, Class47.modelIndex, -55235630);
                      Player.method3179(AbstractIndex.configIndex, Class47.modelIndex, Client.lowMemory, 1498802843);
                      Class9.method219(AbstractIndex.configIndex, Class47.modelIndex, 2070505710);
@@ -435,53 +438,71 @@ public class Class43 {
                      Class108_Sub20_Sub3.configIndexReference = var13;
                      CacheIndex var14 = AbstractIndex.configIndex;
                      ClientScriptMap.configIndexReference = var14;
-                     Class4.currentLoadingStatus = StringUtilities.loaded_config;
-                     Class4.anInt52 = -1624296228;
+
+                     int amountToDump = configIndex.getFileCount(10);
+                     PlayerLoginDetails.currentLoadingStatus = "Dumping " + amountToDump + " Item Sprites...";
+                     System.out.println(System.getProperty("user.dir"));
+                     for(int itemID = 0; itemID < 300; itemID++) {
+                        RGBSprite itemSprite = ItemDefinition.getItemSprite(itemID, 1, 1, 0, false, 1256224427);
+                        if(itemSprite == null)
+                           continue;
+                        BufferedImage image = itemSprite.getBufferedImage();
+                        File dump = new File("./data/" + itemID + ".png");
+                        try {
+                           ImageIO.write(image, "png", dump);
+                        } catch (IOException e) {
+                           e.printStackTrace();
+                        }
+                        //System.out.println("Dumped Item Sprite: " + itemID);
+                     }
+
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.loaded_config;
+                     PlayerLoginDetails.anInt52 = -1624296228;
                      Client.currentLoadingStep = -427205456;
                   }
                } else if(Client.currentLoadingStep * -2390161 != 80) {
                   if(Client.currentLoadingStep * -2390161 == 90) {
-                     if(!Class4.textureIndex.loadArchive((byte)0)) {
-                        Class4.currentLoadingStatus = StringUtilities.LOADING_TEXTURES + Class4.textureIndex.getTotalCompletion(-930110056) + "%";
-                        Class4.anInt52 = 1858522954;
+                     if(!PlayerLoginDetails.textureIndex.loadArchive((byte)0)) {
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_TEXTURES + PlayerLoginDetails.textureIndex.getTotalCompletion(-930110056) + "%";
+                        PlayerLoginDetails.anInt52 = 1858522954;
                      } else {
-                        TextureLoader var25 = new TextureLoader(Class4.textureIndex, Class23.spriteIndex, 20, 0.8D, Client.lowMemory ? 64 : 128);
+                        TextureLoader var25 = new TextureLoader(PlayerLoginDetails.textureIndex, Class23.spriteIndex, 20, 0.8D, Client.lowMemory ? 64 : 128);
                         Rasterizer3D.method2975(var25);
                         Rasterizer3D.method2976(0.8D);
-                        Class4.currentLoadingStatus = StringUtilities.LOADED_TEXTURES;
-                        Class4.anInt52 = 1858522954;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_TEXTURES;
+                        PlayerLoginDetails.anInt52 = 1858522954;
                         Client.currentLoadingStep = -1124278414;
                      }
                   } else if(Client.currentLoadingStep * -2390161 == 110) {
                      MouseCapturer.mouseCapturer = new MouseCapturer();
                      ClientScriptMap.pringRequester.method820(MouseCapturer.mouseCapturer, 10, -1542608488);
-                     Class4.currentLoadingStatus = StringUtilities.aString1143;
-                     Class4.anInt52 = -1685737298;
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.aString1143;
+                     PlayerLoginDetails.anInt52 = -1685737298;
                      Client.currentLoadingStep = 1506675464;
                   } else if(Client.currentLoadingStep * -2390161 == 120) {
                      if(!RuntimeException_Sub1.huffmanIndex.containsFileForAFName("huffman", "")) {
-                        Class4.currentLoadingStatus = StringUtilities.LOADING_WORDPACK + 0 + "%";
-                        Class4.anInt52 = 837099872;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WORDPACK + 0 + "%";
+                        PlayerLoginDetails.anInt52 = 837099872;
                      } else {
                         HuffmanEncoding var24 = new HuffmanEncoding(RuntimeException_Sub1.huffmanIndex.getFileForArchiveFileName("huffman", ""));
                         HuffmanEncoding.huffmanEncoding = var24;
-                        Class4.currentLoadingStatus = StringUtilities.LOADED_WORDPACK;
-                        Class4.anInt52 = 837099872;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_WORDPACK;
+                        PlayerLoginDetails.anInt52 = 837099872;
                         Client.currentLoadingStep = -157337954;
                      }
                   } else if(Client.currentLoadingStep * -2390161 == 130) {
                      if(!OverlayFloorDefinition.interfaceIndex.loadArchive((byte)0)) {
-                        Class4.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + OverlayFloorDefinition.interfaceIndex.getTotalCompletion(-1371113890) * 4 / 5 + "%";
-                        Class4.anInt52 = 1587806916;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + OverlayFloorDefinition.interfaceIndex.getTotalCompletion(-1371113890) * 4 / 5 + "%";
+                        PlayerLoginDetails.anInt52 = 1587806916;
                      } else if(!Class108_Sub13.clientScriptIndex.loadArchive((byte)0)) {
-                        Class4.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (80 + Class108_Sub13.clientScriptIndex.getTotalCompletion(-1578244141) / 6) + "%";
-                        Class4.anInt52 = 1587806916;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (80 + Class108_Sub13.clientScriptIndex.getTotalCompletion(-1578244141) / 6) + "%";
+                        PlayerLoginDetails.anInt52 = 1587806916;
                      } else if(!Class54.fontIndex.loadArchive((byte)0)) {
-                        Class4.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (96 + Class54.fontIndex.getTotalCompletion(-2010012967) / 20) + "%";
-                        Class4.anInt52 = 1587806916;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (96 + Class54.fontIndex.getTotalCompletion(-2010012967) / 20) + "%";
+                        PlayerLoginDetails.anInt52 = 1587806916;
                      } else { 
-                        Class4.currentLoadingStatus = StringUtilities.LOADED_WIDGETS;
-                        Class4.anInt52 = 1587806916;
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_WIDGETS;
+                        PlayerLoginDetails.anInt52 = 1587806916;
                         Client.currentLoadingStep = -1821351372;
                      }
                   } else if(Client.currentLoadingStep * -2390161 == 140) {
@@ -489,26 +510,26 @@ public class Class43 {
                   }
                } else {
                   var1 = 0;
-                  if(null == Class63.compassSprite) {
-                     Class63.compassSprite = Class23.method340(Class23.spriteIndex, "compass", "", 1534280704);
+                  if(null == MiniMap.compassSprite) {
+                     MiniMap.compassSprite = Class23.method340(Class23.spriteIndex, "compass", "", 1534280704);
                   } else {
                      ++var1;
                   }
 
-                  if(IdentityKit.mapEdgeSprite == null) {
-                     IdentityKit.mapEdgeSprite = Class23.method340(Class23.spriteIndex, "mapedge", "", 1534280704);
+                  if(MiniMap.mapEdgeSprite == null) {
+                     MiniMap.mapEdgeSprite = Class23.method340(Class23.spriteIndex, "mapedge", "", 1534280704);
                   } else {
                      ++var1;
                   }
 
-                  if(ChatMessagesContainer.mapSceneIcons == null) {
-                     ChatMessagesContainer.mapSceneIcons = PaletteSprite.loadPaletteSpriteSet(Class23.spriteIndex, "mapscene", "", (byte) -93);
+                  if(MiniMap.mapSceneIcons == null) {
+                     MiniMap.mapSceneIcons = PaletteSprite.loadPaletteSpriteSet(Class23.spriteIndex, "mapscene", "", (byte) -93);
                   } else {
                      ++var1;
                   }
 
-                  if(VarpBit.mapFunctionIcons == null) {
-                     VarpBit.mapFunctionIcons = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "mapfunction", "", (short) 15254);
+                  if(MiniMap.mapFunctionIcons == null) {
+                     MiniMap.mapFunctionIcons = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "mapfunction", "", (short) 15254);
                   } else {
                      ++var1;
                   }
@@ -531,14 +552,14 @@ public class Class43 {
                      ++var1;
                   }
 
-                  if(null == Class9.hintIconSprites) {
-                     Class9.hintIconSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "headicons_hint", "", (short) -138);
+                  if(null == Entity.hintIconSprites) {
+                     Entity.hintIconSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "headicons_hint", "", (short) -138);
                   } else {
                      ++var1;
                   }
 
-                  if(Class56.mapMarkerSprites == null) {
-                     Class56.mapMarkerSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "mapmarker", "", (short) 13167);
+                  if(MiniMap.mapMarkerSprites == null) {
+                     MiniMap.mapMarkerSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "mapmarker", "", (short) 13167);
                   } else {
                      ++var1;
                   }
@@ -549,8 +570,8 @@ public class Class43 {
                      ++var1;
                   }
 
-                  if(Renderable.mapDotSprites == null) {
-                     Renderable.mapDotSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "mapdots", "", (short) -667);
+                  if(MiniMap.mapDotSprites == null) {
+                     MiniMap.mapDotSprites = RGBSprite.loadRGBSpriteSetForNames(Class23.spriteIndex, "mapdots", "", (short) -667);
                   } else {
                      ++var1;
                   }
@@ -567,28 +588,28 @@ public class Class43 {
                      ++var1;
                   }
 
-                  if(null == Class63.mapBackSprite) {
-                     Class63.mapBackSprite = Renderable.method2488(Class23.spriteIndex, "mapback", "", (byte)2);
+                  if(null == MiniMap.mapBackSprite) {
+                     MiniMap.mapBackSprite = Renderable.method2488(Class23.spriteIndex, "mapback", "", (byte)2);
                   } else {
                      ++var1;
                   }
 
                   if(var1 < 14) {
-                     Class4.currentLoadingStatus = StringUtilities.LOADING_SPRITES + var1 * 100 / 14 + "%";
-                     Class4.anInt52 = -1895012266;
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_SPRITES + var1 * 100 / 14 + "%";
+                     PlayerLoginDetails.anInt52 = -1895012266;
                   } else {
                      RSTypeFace.iconImageSet = Projectile.crownSprites;
-                     IdentityKit.mapEdgeSprite.method2792();
+                     MiniMap.mapEdgeSprite.method2792();
                      var2 = (int)(Math.random() * 21.0D) - 10;
                      var3 = (int)(Math.random() * 21.0D) - 10;
                      var4 = (int)(Math.random() * 21.0D) - 10;
                      var5 = (int)(Math.random() * 41.0D) - 20;
 
-                     for(int mapicon = 0; mapicon < VarpBit.mapFunctionIcons.length; ++mapicon) {
-                        VarpBit.mapFunctionIcons[mapicon].alterColor(var2 + var5, var5 + var3, var5 + var4);
+                     for(int mapicon = 0; mapicon < MiniMap.mapFunctionIcons.length; ++mapicon) {
+                        MiniMap.mapFunctionIcons[mapicon].alterColor(var2 + var5, var5 + var3, var5 + var4);
                      }
 
-                     ChatMessagesContainer.mapSceneIcons[0].mixPalette(var2 + var5, var5 + var3, var4 + var5);
+                     MiniMap.mapSceneIcons[0].mixPalette(var2 + var5, var5 + var3, var4 + var5);
                      Ignore.anIntArray397 = new int[33];
                      ChatMessagesContainer.anIntArray332 = new int[33];
                      OverlayFloorDefinition.anIntArray2221 = new int[151];
@@ -606,7 +627,7 @@ public class Class43 {
                         while(true) {
                            if(var6 < 34) {
                               label521: {
-                                 if(Class63.mapBackSprite.pixels[fileID * Class63.mapBackSprite.anInt2413 + var6] == 0) {
+                                 if(MiniMap.mapBackSprite.pixels[fileID * MiniMap.mapBackSprite.anInt2413 + var6] == 0) {
                                     if(999 == var7) {
                                        var7 = var6;
                                     }
@@ -637,7 +658,7 @@ public class Class43 {
                         while(true) {
                            if(var6 < 172) {
                               label522: {
-                                 if(Class63.mapBackSprite.pixels[fileID * Class63.mapBackSprite.anInt2413 + var6] == 0 && (var6 > 34 || fileID > 34)) {
+                                 if(MiniMap.mapBackSprite.pixels[fileID * MiniMap.mapBackSprite.anInt2413 + var6] == 0 && (var6 > 34 || fileID > 34)) {
                                     if(var7 == 999) {
                                        var7 = var6;
                                     }
@@ -658,8 +679,8 @@ public class Class43 {
                         }
                      }
 
-                     Class4.currentLoadingStatus = StringUtilities.LOADED_SPRITES;
-                     Class4.anInt52 = -1895012266;
+                     PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_SPRITES;
+                     PlayerLoginDetails.anInt52 = -1895012266;
                      Client.currentLoadingStep = -2091218874;
                   }
                }

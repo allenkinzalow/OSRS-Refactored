@@ -238,7 +238,7 @@ public class ClientScriptDefinition extends CacheableNode {
 							}
 
 							if (component.anInt1886 * -917776085 == 1338) {
-								Class50.renderMiniMap(var21, var12, var19, (short) -4901);
+								MiniMap.renderMiniMap(var21, var12, var19, (short) -4901);
 								Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 								continue;
 							}
@@ -359,7 +359,7 @@ public class ClientScriptDefinition extends CacheableNode {
 																	MouseInputHandler.method775(var50, -16054773);
 																}
 															}
-														} else if (Class4.aClass108_Sub17_75 == component && itemIndex == Client.anInt2815 * -1269538377) {
+														} else if (PlayerLoginDetails.aClass108_Sub17_75 == component && itemIndex == Client.anInt2815 * -1269538377) {
 															itemSprite.method2818(xPos, yPos, 128);
 														} else {
 															itemSprite.method2746(xPos, yPos);

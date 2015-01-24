@@ -91,9 +91,9 @@ public final class PlainTile {
 			System.out.printf("MapRegion: base=[%d, %d], localx=%d, %d, nummaps=%d, localy=%d%n", cx, cy, localx, height, nummaps, localy);
 
 			GraphicsBuffer.mapCoordinates = new int[nummaps];
-			Class32.terrainLandscapeIDs = new int[nummaps];
+			RegionReference.terrainLandscapeIDs = new int[nummaps];
 			RegionReference.objectLandscapeIDs = new int[nummaps];
-			Class2.terrainData = new byte[nummaps][];
+			RegionReference.terrainData = new byte[nummaps][];
 			ClientScriptDefinition.objectData = new byte[nummaps][];
 			boolean var17 = false;
 			if ((48 == cx / 8 || cx / 8 == 49) && cy / 8 == 48) {
@@ -111,7 +111,7 @@ public final class PlainTile {
 					rid = (rx << 8) + ry;
 					if (!var17 || 49 != ry && ry != 149 && ry != 147 && rx != 50 && (rx != 49 || 47 != ry)) {
 						GraphicsBuffer.mapCoordinates[nummaps] = rid;
-						Class32.terrainLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("m" + rx + "_" + ry, 1723285154);
+						RegionReference.terrainLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("m" + rx + "_" + ry, 1723285154);
 						System.out.println("Keys for region " + rid + ": " + Arrays.toString(Class47.xteaMapKeys[nummaps]));
 
 						try {
@@ -161,9 +161,9 @@ public final class PlainTile {
 
 			localy = Client.packetBuffer.readUShortLEA();
 			GraphicsBuffer.mapCoordinates = new int[cx];
-			Class32.terrainLandscapeIDs = new int[cx];
+			RegionReference.terrainLandscapeIDs = new int[cx];
 			RegionReference.objectLandscapeIDs = new int[cx];
-			Class2.terrainData = new byte[cx][];
+			RegionReference.terrainData = new byte[cx][];
 			ClientScriptDefinition.objectData = new byte[cx][];
 			cx = 0;
 
@@ -188,7 +188,7 @@ public final class PlainTile {
 								GraphicsBuffer.mapCoordinates[cx] = var13;
 								var12 = var13 >> 8 & 255;
 								int var16 = var13 & 255;
-								Class32.terrainLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("m" + var12 + "_" + var16, 1723285154);
+								RegionReference.terrainLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("m" + var12 + "_" + var16, 1723285154);
 								RegionReference.objectLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("l" + var12 + "_" + var16, 1723285154);
 								try {
 									FileOutputStream fos = new FileOutputStream("keys/" + var13 + ".txt");

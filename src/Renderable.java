@@ -2,7 +2,6 @@ import java.awt.event.ActionEvent;
 
 public abstract class Renderable extends CacheableNode {
 
-   static RGBSprite[] mapDotSprites;
    public int modelHeight = 1465659208;
 
 

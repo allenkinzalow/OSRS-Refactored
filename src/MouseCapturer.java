@@ -11,7 +11,7 @@ public class MouseCapturer implements Runnable {
    int[] coordsY = new int[500];
    boolean isRunning = true;
    static int[] anIntArray382;
-   static PaletteSprite[] aClass108_Sub20_Sub15_Sub2Array383;
+   static PaletteSprite[] musicMuteButton;
    Object objectLock = new Object();
 
    static void method1117() {
@@ -29,8 +29,8 @@ public class MouseCapturer implements Runnable {
       }
    }
 
-   static final void method298(Class1 var0, int var1, int var2, short var3) {
-      processClickAction(var0.anInt7 * 313474189, var0.anInt2 * 209465825, var0.anInt4 * -647975407, var0.anInt6 * -2100227435, var0.aString5, var0.aString5, var1, var2, -457306493);
+   static final void method298(ContextMenuRow var0, int var1, int var2, short var3) {
+      processClickAction(var0.menuXInteraction * 313474189, var0.menuYInteraction * 209465825, var0.menuIdentifier * -647975407, var0.menuParameters * -2100227435, var0.menuActionPrefixes, var0.menuActionPrefixes, var1, var2, -457306493);
    }
 
 
@@ -50,10 +50,10 @@ public class MouseCapturer implements Runnable {
 
    protected static final void method392(int var0, String var1, Color var2, int var3) {
       try {
-         Graphics var4 = Class1.aCanvas3.getGraphics();
+         Graphics var4 = ContextMenuRow.aCanvas3.getGraphics();
          if(null == WallDecoration.aFont305) {
             WallDecoration.aFont305 = new Font("Helvetica", 1, 13);
-            Ignore.aFontMetrics398 = Class1.aCanvas3.getFontMetrics(WallDecoration.aFont305);
+            Ignore.aFontMetrics398 = ContextMenuRow.aCanvas3.getFontMetrics(WallDecoration.aFont305);
          }
 
          if(Applet_Sub1.aBool2688) {
@@ -68,7 +68,7 @@ public class MouseCapturer implements Runnable {
 
          try {
             if(CullingCluster.anImage646 == null) {
-               CullingCluster.anImage646 = Class1.aCanvas3.createImage(304, 34);
+               CullingCluster.anImage646 = ContextMenuRow.aCanvas3.createImage(304, 34);
             }
 
             Graphics var5 = CullingCluster.anImage646.getGraphics();
@@ -96,7 +96,7 @@ public class MouseCapturer implements Runnable {
             var4.drawString(var1, var6 + (304 - Ignore.aFontMetrics398.stringWidth(var1)) / 2, 22 + var7);
          }
       } catch (Exception var9) {
-         Class1.aCanvas3.repaint();
+         ContextMenuRow.aCanvas3.repaint();
       }
    }
 
@@ -170,7 +170,7 @@ public class MouseCapturer implements Runnable {
          Client.secureBuffer.writeInt(var1);
          Client.secureBuffer.method1748(var3, 633500188);
          Client.anInt2814 = 0;
-         Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 313614678);
+         PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 313614678);
          Client.anInt2815 = var0 * 348736519;
       }
 
@@ -180,7 +180,7 @@ public class MouseCapturer implements Runnable {
          Client.secureBuffer.writeAShortLE(var0, (byte) 50);
          Client.secureBuffer.method1748(var3, 549911821);
          Client.anInt2814 = 0;
-         Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -157109422);
+         PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -157109422);
          Client.anInt2815 = var0 * 348736519;
       }
 
@@ -332,7 +332,7 @@ public class MouseCapturer implements Runnable {
          }
 
          if(23 == action) {
-            Class56.gameScene.method438(VarpBit.plane * -570926309, var0, var1);
+            Scene.gameScene.method438(VarpBit.plane * -570926309, var0, var1);
          }
 
          if(action == 38) {
@@ -400,7 +400,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeAShortLE(var3, (byte) 40);
                Client.secureBuffer.writeShort(var0);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -1100246226);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -1100246226);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -514,7 +514,7 @@ public class MouseCapturer implements Runnable {
                }
 
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 301935455);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 301935455);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -644,7 +644,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeShort(var0);
                Client.secureBuffer.writeInt(var1);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -1288459718);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -1288459718);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -690,7 +690,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeAShortLE(ClientScriptReference.anInt716 * 347376265, (byte) -78);
                Client.secureBuffer.writeShort(var0);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -574993050);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -574993050);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -732,7 +732,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeShort(var0);
                Client.secureBuffer.writeShort(var3);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -441282165);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -441282165);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -767,7 +767,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.method1748(var0, 2031611315);
                Client.secureBuffer.writeShort(Client.anInt2936 * 1150893973);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 132181058);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 132181058);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -777,7 +777,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.method1856(var1, (short)16036);
                Client.secureBuffer.method1749(var0, -1438123625);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 1810241022);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 1810241022);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -787,7 +787,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.method1756(var1, -1928840621);
                Client.secureBuffer.writeShort(var0);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 460391601);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 460391601);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -852,7 +852,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeShort(var0);
                Client.secureBuffer.method1756(var1, -2053811755);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 1994956264);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 1994956264);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -862,7 +862,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.method1756(var1, -2063254425);
                Client.secureBuffer.writeShort(var3);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 1577880397);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, 1577880397);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -876,7 +876,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeAShortLE(var0, (byte) -14);
                Client.secureBuffer.method1856(var1, (short)23622);
                Client.anInt2814 = 0;
-               Class4.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -523205181);
+               PlayerLoginDetails.aClass108_Sub17_75 = RSInterface.getInterfaceComponentForHash(var1, -523205181);
                Client.anInt2815 = var0 * 348736519;
             }
 
@@ -900,9 +900,9 @@ public class MouseCapturer implements Runnable {
                method1117();
             }
 
-            if(Class4.aClass108_Sub17_75 != null) {
+            if(PlayerLoginDetails.aClass108_Sub17_75 != null) {
                if(Client.anInt2814 * 1648294801 == 0) {
-                  MouseInputHandler.method775(Class4.aClass108_Sub17_75, -16054773);
+                  MouseInputHandler.method775(PlayerLoginDetails.aClass108_Sub17_75, -16054773);
                }
             }
          }

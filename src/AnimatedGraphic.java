@@ -172,7 +172,7 @@ public class AnimatedGraphic extends CacheableNode {
    }
 
    static final void method2148(NPCDefinition npcDef, int var1, int var2, int var3, int var4) {
-      if(Client.menuActionRow * 391839991 < 400) {
+      if(ContextMenu.contextMenuRow * 391839991 < 400) {
          if(null != npcDef.anIntArray2185) {
             npcDef = npcDef.method2290(2122847973);
          }
@@ -186,10 +186,10 @@ public class AnimatedGraphic extends CacheableNode {
                   }
 
                   if(1 == Client.anInt2858 * -968945719) {
-                     Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1747962050) + var7, 7, var1, var2, var3, 1892745466);
+                     ContextMenu.setContextMenuRow(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1747962050) + var7, 7, var1, var2, var3, 1892745466);
                   } else if(Client.aBool2881) {
                      if((Class68.anInt902 * 401025055 & 2) == 2) {
-                        Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1649201849) + var7, 8, var1, var2, var3, 1878248083);
+                        ContextMenu.setContextMenuRow(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1649201849) + var7, 8, var1, var2, var3, 1878248083);
                      }
                   } else {
                      String[] npcOptions = npcDef.options;
@@ -222,7 +222,7 @@ public class AnimatedGraphic extends CacheableNode {
                                  var5 = 13;
                               }
 
-                              Class4.method91(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -1431624152) + var7, var5, var1, var2, var3, 1885794417);
+                              ContextMenu.setContextMenuRow(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -1431624152) + var7, var5, var1, var2, var3, 1885794417);
                            }
                         }
                      }
@@ -256,12 +256,12 @@ public class AnimatedGraphic extends CacheableNode {
                                  var9 = var10 + 13;
                               }
 
-                              Class4.method91(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -997355682) + var7, var9, var1, var2, var3, 1856696720);
+                              ContextMenu.setContextMenuRow(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -997355682) + var7, var9, var1, var2, var3, 1856696720);
                            }
                         }
                      }
 
-                     Class4.method91(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16776960, -769408508) + var7, 1003, var1, var2, var3, 1961932451);
+                     ContextMenu.setContextMenuRow(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16776960, -769408508) + var7, 1003, var1, var2, var3, 1961932451);
                   }
                }
             }

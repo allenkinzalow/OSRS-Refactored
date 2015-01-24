@@ -12,7 +12,6 @@ public class IdentityKit extends CacheableNode {
    short[] retextureToReplace;
    int[] headModels = new int[]{-1, -1, -1, -1, -1};
    public int bodyPartID = -1546880297;
-   static RGBSprite mapEdgeSprite;
    int[] bodyModels;
 
 

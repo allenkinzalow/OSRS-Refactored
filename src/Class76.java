@@ -1,5 +1,5 @@
 
-public class Class76 implements Interface3 {
+public class Class76 implements IdentifiableDefinition {
 
    public int anInt1197;
    public static Class76 aClass76_1198 = new Class76(2, 1);
@@ -9,7 +9,7 @@ public class Class76 implements Interface3 {
    int anInt1202;
 
 
-   public int method32(int var1) {
+   public int getID(int var1) {
       return this.anInt1202 * 447551109;
    }
 

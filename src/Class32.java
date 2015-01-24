@@ -3,9 +3,6 @@ import java.math.BigInteger;
 public class Class32 {
 
    public static Class108_Sub4_Sub3 aClass108_Sub4_Sub3_464;
-   static int[] terrainLandscapeIDs;
-   static BigInteger rsaModulus = new BigInteger("aead8fe7a0e8b2255e84597f391815600a4e02746698fea7bfe1b20b5a1f7ba47a2d9af413facda26925eafa2f7be93e3354d67a1210bf67beec2251eafacfe7a819be666c900843421e009ec16529131893fba57528dab31ff64013cdabc00c35e832ada7da6aca3d8cd18100fe79f2133c07be414142d8ba636d49f30b25cb", 16);
-   static BigInteger rsaExponent = new BigInteger("10001", 16);
 
 
    static void method575(int var0, int var1, int var2, ObjectDefinition var3, int var4, int var5) {
@@ -47,142 +44,12 @@ public class Class32 {
       if(var0 < 0) {
          return false;
       } else {
-         int var2 = Client.menuActionIdentifiers[var0];
+         int var2 = ContextMenu.contextMenuIdentifiers[var0];
          if(var2 >= 2000) {
             var2 -= 2000;
          }
 
          return var2 == 1007;
-      }
-   }
-
-   static final void method578(Entity var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-      if(null != var0) {
-         if(var0.method2731(-1454140729)) {
-            NPCDefinition var7;
-            if(var0 instanceof NPC) {
-               var7 = ((NPC)var0).definition;
-               if(var7.anIntArray2185 != null) {
-                  var7 = var7.method2290(1115175037);
-               }
-
-               if(var7 == null) {
-                  return;
-               }
-            }
-
-            int var9;
-            if(var1 < Client.numLocalPlayers * -43742683) {
-               var9 = 30;
-               Player var8 = (Player)var0;
-               if(var8.aBool2682) {
-                  return;
-               }
-
-               if(var8.pkicon * -1088697045 != -1 || -1 != var8.prayicon * -497976645) {
-                  Friend.method658(var0, var0.anInt2386 * 2106405885 + 15, 798331555);
-                  if(Client.anInt2808 * 1642143199 > -1) {
-                     if(-1 != var8.pkicon * -1088697045) {
-                        Wall.headIconSprites[var8.pkicon * -1088697045].method2746(var2 + Client.anInt2808 * 1642143199 - 12, Client.anInt2809 * -2062084395 + var3 - var9);
-                        var9 += 25;
-                     }
-
-                     if(var8.prayicon * -497976645 != -1) {
-                        Entity.headPrayerSprites[var8.prayicon * -497976645].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - var9);
-                        var9 += 25;
-                     }
-                  }
-               }
-
-               if(var1 >= 0 && Client.anInt2723 * -927004421 == 10 && Client.anInt2795 * 1790148709 == Client.playerIndices[var1]) {
-                  Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
-                  if(Client.anInt2808 * 1642143199 > -1) {
-                     Class9.hintIconSprites[1].method2746(var2 + Client.anInt2808 * 1642143199 - 12, Client.anInt2809 * -2062084395 + var3 - var9);
-                  }
-               }
-            } else {
-               var7 = ((NPC)var0).definition;
-               if(var7.anIntArray2185 != null) {
-                  var7 = var7.method2290(1942286194);
-               }
-
-               if(var7.headIcon * 1203154221 >= 0 && var7.headIcon * 1203154221 < Entity.headPrayerSprites.length) {
-                  Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
-                  if(Client.anInt2808 * 1642143199 > -1) {
-                     Entity.headPrayerSprites[var7.headIcon * 1203154221].method2746(var2 + Client.anInt2808 * 1642143199 - 12, var3 + Client.anInt2809 * -2062084395 - 30);
-                  }
-               }
-
-               if(1 == Client.anInt2723 * -927004421 && Client.npcIndices[var1 - Client.numLocalPlayers * -43742683] == Client.anInt2724 * -923839899 && Client.cycle * -637317861 % 20 < 10) {
-                  Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
-                  if(Client.anInt2808 * 1642143199 > -1) {
-                     Class9.hintIconSprites[0].method2746(Client.anInt2808 * 1642143199 + var2 - 12, Client.anInt2809 * -2062084395 + var3 - 28);
-                  }
-               }
-            }
-
-            if(var0.textSpoken != null && (var1 >= Client.numLocalPlayers * -43742683 || Client.anInt2779 * 220652897 == 4 || !var0.aBool2352 && (Client.anInt2779 * 220652897 == 0 || 3 == Client.anInt2779 * 220652897 || 1 == Client.anInt2779 * 220652897 && Friend.isFriend(((Player) var0).playerName, false, (byte) -77)))) {
-               Friend.method658(var0, var0.anInt2386 * 2106405885, 798331555);
-               if(Client.anInt2808 * 1642143199 > -1 && Client.anInt2804 * 1837064243 < Client.anInt2797 * -797118177) {
-                  Client.anIntArray2817[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.getTextWidth(var0.textSpoken) / 2;
-                  Client.anIntArray2800[Client.anInt2804 * 1837064243] = RSTypeFace.b12_full_font.anInt2643;
-                  Client.anIntArray2798[Client.anInt2804 * 1837064243] = Client.anInt2808 * 1642143199;
-                  Client.anIntArray2799[Client.anInt2804 * 1837064243] = Client.anInt2809 * -2062084395;
-                  Client.anIntArray2776[Client.anInt2804 * 1837064243] = var0.anInt2377 * 638780813;
-                  Client.anIntArray2763[Client.anInt2804 * 1837064243] = var0.anInt2355 * 580693971;
-                  Client.anIntArray2947[Client.anInt2804 * 1837064243] = var0.textSpokenTime * 419314599;
-                  Client.aStringArray2805[Client.anInt2804 * 1837064243] = var0.textSpoken;
-                  Client.anInt2804 += 1959435003;
-               }
-            }
-
-            if(var0.anInt2342 * 166319025 > Client.cycle * -637317861) {
-               Friend.method658(var0, 15 + var0.anInt2386 * 2106405885, 798331555);
-               if(Client.anInt2808 * 1642143199 > -1) {
-                  if(var1 < Client.numLocalPlayers * -43742683) {
-                     var9 = 30;
-                  } else {
-                     NPCDefinition var10 = ((NPC)var0).definition;
-                     var9 = var10.anInt2184 * -530501559;
-                  }
-
-                  int var11 = var9 * var0.anInt2360 * -1545297959 / (var0.anInt2361 * 769152649);
-                  if(var11 > var9) {
-                     var11 = var9;
-                  } else if(0 == var11 && var0.anInt2360 * -1545297959 > 0) {
-                     var11 = 1;
-                  }
-
-                  Rasterizer2D.drawFilledRectangle(var2 + Client.anInt2808 * 1642143199 - var9 / 2, Client.anInt2809 * -2062084395 + var3 - 3, var11, 5, '\uff00');
-                  Rasterizer2D.drawFilledRectangle(var11 + (Client.anInt2808 * 1642143199 + var2 - var9 / 2), Client.anInt2809 * -2062084395 + var3 - 3, var9 - var11, 5, 16711680);
-               }
-            }
-
-            for(var9 = 0; var9 < 4; ++var9) {
-               if(var0.anIntArray2369[var9] > Client.cycle * -637317861) {
-                  Friend.method658(var0, var0.anInt2386 * 2106405885 / 2, 798331555);
-                  if(Client.anInt2808 * 1642143199 > -1) {
-                     if(1 == var9) {
-                        Client.anInt2809 -= 948236740;
-                     }
-
-                     if(var9 == 2) {
-                        Client.anInt2808 += 1379728431;
-                        Client.anInt2809 += 1673365278;
-                     }
-
-                     if(3 == var9) {
-                        Client.anInt2808 -= 1379728431;
-                        Client.anInt2809 += 1673365278;
-                     }
-
-                     Client.hitmarkSprites[var0.anIntArray2356[var9]].method2746(Client.anInt2808 * 1642143199 + var2 - 12, var3 + Client.anInt2809 * -2062084395 - 12);
-                     RSTypeFace.p11_full_font.drawStringCenter(Integer.toString(var0.anIntArray2358[var9]), Client.anInt2808 * 1642143199 + var2 - 1, 3 + var3 + Client.anInt2809 * -2062084395, 16777215, 0);
-                  }
-               }
-            }
-
-         }
       }
    }
 

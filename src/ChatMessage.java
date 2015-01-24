@@ -90,9 +90,9 @@ public class ChatMessage extends CacheableNode {
          sprite.maxHeight = Class9.anInt121 * -1272520477;
          sprite.offsetX = Class88.anIntArray1316[0];
          sprite.offsetY = Class9.anIntArray123[0];
-         sprite.width = PaletteSprite.lastLoadedPaletteSpriteWidth[0];
-         sprite.height = Class9.anIntArray126[0];
-         int dimmension = sprite.width * sprite.height;
+         sprite.spriteWidth = PaletteSprite.lastLoadedPaletteSpriteWidth[0];
+         sprite.spriteHeight = Class9.anIntArray126[0];
+         int dimmension = sprite.spriteWidth * sprite.spriteHeight;
          byte[] var6 = AnimationSkeletonSet.loadedCharacterPixels[0];
          sprite.pixels = new int[dimmension]; 
 
@@ -141,7 +141,7 @@ public class ChatMessage extends CacheableNode {
                if(var1.aBool2612) {
                   var1.unlink();
                } else {
-                  Class56.gameScene.method412(var1.anInt2603 * -1644198771, var1.anInt2609 * -743735107, var1.anInt2605 * 1383152313, var1.anInt2606 * -1829119315, 60, var1, 0, -1, false);
+                  Scene.gameScene.method412(var1.anInt2603 * -1644198771, var1.anInt2609 * -743735107, var1.anInt2605 * 1383152313, var1.anInt2606 * -1829119315, 60, var1, 0, -1, false);
                }
             }
          } else {

@@ -32,12 +32,4 @@ public final class Tile extends Node {
       this.anInt1604 = var3 * 115534173;
    }
 
-   static void method1676(int var0, int var1) {
-      Class108_Sub21.aClass1_1895 = new Class1();
-      Class108_Sub21.aClass1_1895.anInt7 = Client.menuActionXInteractions[var0] * -1420368315;
-      Class108_Sub21.aClass1_1895.anInt2 = Client.menuActionYInteractions[var0] * 2071188001;
-      Class108_Sub21.aClass1_1895.anInt4 = Client.menuActionIdentifiers[var0] * -794819855;
-      Class108_Sub21.aClass1_1895.anInt6 = Client.menuActionParameters[var0] * -62510915;
-      Class108_Sub21.aClass1_1895.aString5 = Client.menuActionNamePrefix[var0];
-   }
 }

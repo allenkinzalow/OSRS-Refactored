@@ -323,7 +323,7 @@ public final class KeyFocusListener implements KeyListener, FocusListener {
          }
       }
 
-      Class4.method90(var0, (short)-19173);
+      PlayerLoginDetails.method90(var0, (short) -19173);
    }
 
    public final synchronized void focusLost(FocusEvent var1) {

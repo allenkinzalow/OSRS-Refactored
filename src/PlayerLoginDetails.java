@@ -1,10 +1,10 @@
 
-public class Class4 {
+public class PlayerLoginDetails {
 
    static int anInt37 = 0;
    static String typedUsername = "";
    static PaletteSprite titleButton;
-   static RGBSprite aClass108_Sub20_Sub15_Sub1_40;
+   static RGBSprite clientBackgroundLeft;
    static boolean worldListOpen = false;
    static PaletteSprite radioButtonOptions;
    static int[] anIntArray45 = new int[256];
@@ -22,7 +22,7 @@ public class Class4 {
    static int anInt57 = 0;
    static boolean aBool58;
    static String typedPassword = "";
-   static String aString60 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()-_=+[{]};:\'@#~,<.>/?\\| ";
+   static String validCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()-_=+[{]};:\'@#~,<.>/?\\| ";
    static boolean trustComputer = true;
    static int anInt62 = 0;
    static int[] anIntArray63 = new int[]{1, 1, 1, 1};
@@ -36,7 +36,7 @@ public class Class4 {
    static RSInterface aClass108_Sub17_75;
 
 
-   Class4() throws Throwable {
+   PlayerLoginDetails() throws Throwable {
       throw new Error();
    }
 
@@ -56,11 +56,6 @@ public class Class4 {
 
       String var4 = "runescape.com";
       return var3 + var0 + "." + var4 + "/l=" + Client.anInt2712 * 148074329 + "/";
-   }
-
-   public static void method89(byte var0) {
-      AnimationDefinition.animationDefMap.clearCacheMap();
-      AnimationDefinition.animDefCache.clearCacheMap();
    }
 
    static final void method90(Entity entity, short var1) {
@@ -154,17 +149,4 @@ public class Class4 {
       }
    }
 
-   static final void method91(String prefix, String var1, int menuActionIdentifier, int actionParameter, int x, int y, int var6) {
-      if(!Client.actionMenuOpen) {
-         if(Client.menuActionRow * 391839991 < 500) {
-            Client.menuActionNamePrefix[Client.menuActionRow * 391839991] = prefix;
-            Client.menuActionNames[Client.menuActionRow * 391839991] = var1;
-            Client.menuActionIdentifiers[Client.menuActionRow * 391839991] = menuActionIdentifier;
-            Client.menuActionParameters[Client.menuActionRow * 391839991] = actionParameter;
-            Client.menuActionXInteractions[Client.menuActionRow * 391839991] = x;
-            Client.menuActionYInteractions[Client.menuActionRow * 391839991] = y;
-            Client.menuActionRow -= 1954561849;
-         }
-      }
-   }
 }

@@ -10,6 +10,12 @@ public class RSSong extends Node {
       return songData == null ? null : new RSSong(new RSByteBuffer(songData));
    }
 
+   public static void playSong(AbstractIndex var0, String var1, String var2, int var3, boolean var4, byte var5) {
+       int var6 = var0.getArchiveIDForName(var1, 1723285154);
+       int var7 = var0.getFileIDForName(var6, var2);
+       AnimationSkin.method1677(var0, var6, var7, var3, var4, 1390637341);
+   }
+
    void method2001() {
       if(this.aClass101_1928 == null) {
          this.aClass101_1928 = new HashTable(16);

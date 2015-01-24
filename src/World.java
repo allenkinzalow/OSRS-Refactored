@@ -24,11 +24,11 @@ public class World {
                byte[] var1 = Class77.aClass43_1203.method650((byte) 36);
                if (var1 != null) {
                    RSByteBuffer var2 = new RSByteBuffer(var1);
-                   Class4.worldCount = var2.readUShort(267012221) * 2085782655;
-                   Class4.worldList = new World[Class4.worldCount * 301546367];
+                   PlayerLoginDetails.worldCount = var2.readUShort(267012221) * 2085782655;
+                   PlayerLoginDetails.worldList = new World[PlayerLoginDetails.worldCount * 301546367];
 
-                   for (int worldID = 0; worldID < Class4.worldCount * 301546367; ++worldID) {
-                       World world = Class4.worldList[worldID] = new World();
+                   for (int worldID = 0; worldID < PlayerLoginDetails.worldCount * 301546367; ++worldID) {
+                       World world = PlayerLoginDetails.worldList[worldID] = new World();
                        world.anInt569 = var2.readUShort(1576580328) * -762909535;
                        world.worldType = var2.readInt() * 694562061;
                        world.aString561 = var2.getString_2((byte) 8);
@@ -38,8 +38,8 @@ public class World {
                        world.worldID = worldID * 643700009;
                    }
 
-                   Ignore.method398(Class4.worldList, 0, Class4.worldList.length - 1, Class4.anIntArray56, Class4.anIntArray63, 2141773328);
-                   Class4.worldListOpen = true;
+                   Ignore.method398(PlayerLoginDetails.worldList, 0, PlayerLoginDetails.worldList.length - 1, PlayerLoginDetails.anIntArray56, PlayerLoginDetails.anIntArray63, 2141773328);
+                   PlayerLoginDetails.worldListOpen = true;
                    Class77.aClass43_1203 = null;
                }
            }
@@ -83,30 +83,30 @@ public class World {
                      boolean var22 = false;
                      boolean var14 = false;
                      if(var1 == 0) {
-                        var15 = Class56.gameScene.fetchWallObjectHash(var0, var2, var3);
+                        var15 = Scene.gameScene.fetchWallObjectHash(var0, var2, var3);
                      }
 
                      if(1 == var1) {
-                        var15 = Class56.gameScene.fetchWallDecorationHash(var0, var2, var3);
+                        var15 = Scene.gameScene.fetchWallDecorationHash(var0, var2, var3);
                      }
 
                      if(var1 == 2) {
-                        var15 = Class56.gameScene.fetchTileInteractableHash(var0, var2, var3);
+                        var15 = Scene.gameScene.fetchTileInteractableHash(var0, var2, var3);
                      }
 
                      if(3 == var1) {
-                        var15 = Class56.gameScene.fetchGroundTileDecorationHash(var0, var2, var3);
+                        var15 = Scene.gameScene.fetchGroundTileDecorationHash(var0, var2, var3);
                      }
 
                      int var18;
                      if(var15 != 0) {
-                        var18 = Class56.gameScene.method431(var0, var2, var3, var15);
+                        var18 = Scene.gameScene.method431(var0, var2, var3, var15);
                         int var36 = var15 >> 14 & 32767;
                         int var37 = var18 & 31;
                         int var35 = var18 >> 6 & 3;
                         ObjectDefinition var9;
                         if(var1 == 0) {
-                           Class56.gameScene.method418(var0, var2, var3);
+                           Scene.gameScene.removeWall(var0, var2, var3);
                            var9 = ObjectDefinition.getObjectDefForID(var36, (byte) 0);
                            if(0 != var9.anInt2094 * 795821915) {
                               Client.clippingPlanes[var0].method1408(var2, var3, var37, var35, var9.aBool2114, (short)-29724);
@@ -114,11 +114,11 @@ public class World {
                         }
 
                         if(var1 == 1) {
-                           Class56.gameScene.resetWallDecoration(var0, var2, var3);
+                           Scene.gameScene.resetWallDecoration(var0, var2, var3);
                         }
 
                         if(var1 == 2) {
-                           Class56.gameScene.method420(var0, var2, var3);
+                           Scene.gameScene.method420(var0, var2, var3);
                            var9 = ObjectDefinition.getObjectDefForID(var36, (byte) 0);
                            if(var9.sizeX * 721302265 + var2 > 103) {
                               return;
@@ -142,7 +142,7 @@ public class World {
                         }
 
                         if(var1 == 3) {
-                           Class56.gameScene.method421(var0, var2, var3);
+                           Scene.gameScene.removeFloorDecoration(var0, var2, var3);
                            var9 = ObjectDefinition.getObjectDefForID(var36, (byte) 0);
                            if(var9.anInt2094 * 795821915 == 1) {
                               Client.clippingPlanes[var0].method1410(var2, var3, (byte)14);
@@ -156,7 +156,7 @@ public class World {
                            var18 = var0 + 1;
                         }
 
-                        Scene var33 = Class56.gameScene;
+                        Scene var33 = Scene.gameScene;
                         CollisionMap var20 = Client.clippingPlanes[var0];
                         ObjectDefinition var8 = ObjectDefinition.getObjectDefForID(var4, (byte) 0);
                         int var17;
@@ -211,7 +211,7 @@ public class World {
                               var11 = new GameObject(var4, 22, var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                            }
 
-                           var33.method407(var0, var2, var3, var10, (Renderable)var11, var12, var13);
+                           var33.addFloorDecoration(var0, var2, var3, var10, (Renderable) var11, var12, var13);
                            if(1 == var8.anInt2094 * 795821915) {
                               var20.method1409(var2, var3, 183213884);
                            }
@@ -234,7 +234,7 @@ public class World {
                                  var11 = new GameObject(var4, 0, var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                               }
 
-                              var33.method409(var0, var2, var3, var10, (Renderable)var11, (Renderable)null, RegionReference.anIntArray491[var5], 0, var12, var13);
+                              var33.addWall(var0, var2, var3, var10, (Renderable) var11, (Renderable) null, RegionReference.anIntArray491[var5], 0, var12, var13);
                               if(var8.anInt2094 * 795821915 != 0) {
                                  var20.method1403(var2, var3, var6, var5, var8.aBool2114, -2050926990);
                               }
@@ -245,7 +245,7 @@ public class World {
                                  var11 = new GameObject(var4, 1, var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                               }
 
-                              var33.method409(var0, var2, var3, var10, (Renderable)var11, (Renderable)null, RegionReference.anIntArray483[var5], 0, var12, var13);
+                              var33.addWall(var0, var2, var3, var10, (Renderable) var11, (Renderable) null, RegionReference.anIntArray483[var5], 0, var12, var13);
                               if(var8.anInt2094 * 795821915 != 0) {
                                  var20.method1403(var2, var3, var6, var5, var8.aBool2114, -2050926990);
                               }
@@ -263,7 +263,7 @@ public class World {
                                     var16 = new GameObject(var4, 2, var34, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                  }
 
-                                 var33.method409(var0, var2, var3, var10, (Renderable)var38, (Renderable)var16, RegionReference.anIntArray491[var5], RegionReference.anIntArray491[var34], var12, var13);
+                                 var33.addWall(var0, var2, var3, var10, (Renderable) var38, (Renderable) var16, RegionReference.anIntArray491[var5], RegionReference.anIntArray491[var34], var12, var13);
                                  if(var8.anInt2094 * 795821915 != 0) {
                                     var20.method1403(var2, var3, var6, var5, var8.aBool2114, -2050926990);
                                  }
@@ -274,7 +274,7 @@ public class World {
                                     var11 = new GameObject(var4, 3, var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                  }
 
-                                 var33.method409(var0, var2, var3, var10, (Renderable)var11, (Renderable)null, RegionReference.anIntArray483[var5], 0, var12, var13);
+                                 var33.addWall(var0, var2, var3, var10, (Renderable) var11, (Renderable) null, RegionReference.anIntArray483[var5], 0, var12, var13);
                                  if(0 != var8.anInt2094 * 795821915) {
                                     var20.method1403(var2, var3, var6, var5, var8.aBool2114, -2050926990);
                                  }
@@ -296,7 +296,7 @@ public class World {
                                     var11 = new GameObject(var4, 4, var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                  }
 
-                                 var33.method410(var0, var2, var3, var10, (Renderable)var11, (Renderable)null, RegionReference.anIntArray491[var5], 0, 0, 0, var12, var13);
+                                 var33.addWallDecoration(var0, var2, var3, var10, (Renderable) var11, (Renderable) null, RegionReference.anIntArray491[var5], 0, 0, 0, var12, var13);
                               } else {
                                  int var23;
                                  if(var6 == 5) {
@@ -312,7 +312,7 @@ public class World {
                                        var16 = new GameObject(var4, 4, var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                     }
 
-                                    var33.method410(var0, var2, var3, var10, (Renderable)var16, (Renderable)null, RegionReference.anIntArray491[var5], 0, var34 * RegionReference.anIntArray493[var5], var34 * RegionReference.anIntArray494[var5], var12, var13);
+                                    var33.addWallDecoration(var0, var2, var3, var10, (Renderable) var16, (Renderable) null, RegionReference.anIntArray491[var5], 0, var34 * RegionReference.anIntArray493[var5], var34 * RegionReference.anIntArray494[var5], var12, var13);
                                  } else if(6 == var6) {
                                     var34 = 8;
                                     var23 = var33.fetchWallObjectHash(var0, var2, var3);
@@ -326,7 +326,7 @@ public class World {
                                        var16 = new GameObject(var4, 4, 4 + var5, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                     }
 
-                                    var33.method410(var0, var2, var3, var10, (Renderable)var16, (Renderable)null, 256, var5, RegionReference.anIntArray492[var5] * var34, var34 * RegionReference.anIntArray496[var5], var12, var13);
+                                    var33.addWallDecoration(var0, var2, var3, var10, (Renderable) var16, (Renderable) null, 256, var5, RegionReference.anIntArray492[var5] * var34, var34 * RegionReference.anIntArray496[var5], var12, var13);
                                  } else if(7 == var6) {
                                     var23 = 2 + var5 & 3;
                                     if(var8.animationID * -2061255559 == -1 && null == var8.configChangeDest) {
@@ -335,7 +335,7 @@ public class World {
                                        var11 = new GameObject(var4, 4, var23 + 4, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                     }
 
-                                    var33.method410(var0, var2, var3, var10, (Renderable)var11, (Renderable)null, 256, var23, 0, 0, var12, var13);
+                                    var33.addWallDecoration(var0, var2, var3, var10, (Renderable) var11, (Renderable) null, 256, var23, 0, 0, var12, var13);
                                  } else if(var6 == 8) {
                                     var34 = 8;
                                     var23 = var33.fetchWallObjectHash(var0, var2, var3);
@@ -353,7 +353,7 @@ public class World {
                                        var28 = new GameObject(var4, 4, 4 + var27, var18, var2, var3, var8.animationID * -2061255559, true, (Renderable)null);
                                     }
 
-                                    var33.method410(var0, var2, var3, var10, (Renderable)var16, (Renderable)var28, 256, var5, RegionReference.anIntArray492[var5] * var34, var34 * RegionReference.anIntArray496[var5], var12, var13);
+                                    var33.addWallDecoration(var0, var2, var3, var10, (Renderable) var16, (Renderable) var28, 256, var5, RegionReference.anIntArray492[var5] * var34, var34 * RegionReference.anIntArray496[var5], var12, var13);
                                  }
                               }
                            }
@@ -381,9 +381,9 @@ public class World {
    }
 
    static void setResponseString(String var0, String var1, String var2, int var3) {
-      Class4.aString74 = var0;
-      Class4.aString64 = var1;
-      Class4.aString55 = var2;
+      PlayerLoginDetails.aString74 = var0;
+      PlayerLoginDetails.aString64 = var1;
+      PlayerLoginDetails.aString55 = var2;
    }
 
    public static void method647(String var0, Throwable var1, int var2) {

@@ -34,7 +34,7 @@ public class Varp extends CacheableNode {
             double rotationAngle = Math.atan2((double)var14, (double)var15);
             int yRot = (int)(Math.sin(rotationAngle) * 63.0D);
             int xRot = (int)(Math.cos(rotationAngle) * 57.0D);
-            IdentityKit.mapEdgeSprite.method2765(yRot + 94 + x + 4 - 10, 83 + y - xRot - 20, 20, 20, 15, 15, rotationAngle, 256);
+            MiniMap.mapEdgeSprite.method2765(yRot + 94 + x + 4 - 10, 83 + y - xRot - 20, 20, 20, 15, 15, rotationAngle, 256);
          }
       } else {
          ProducingGraphicsBuffer.renderMapDotSprite(x, y, var2, var3, var4);

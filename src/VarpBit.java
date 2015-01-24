@@ -1,8 +1,7 @@
 
 public class VarpBit extends CacheableNode {
 
-   static RGBSprite[] mapFunctionIcons;
-   public int mostSigBit;
+    public int mostSigBit;
    public int leastSigBit;
    static AbstractIndex aClass74_1951;
    static int plane;

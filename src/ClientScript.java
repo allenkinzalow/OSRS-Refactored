@@ -680,12 +680,12 @@ public class ClientScript extends Node {
                                     continue;
                                  }
 
-                                 if(instruction == 1502) { // get component height
+                                 if(instruction == 1502) { // get component renderHeight
                                     intStack[iStackPtr++] = var35.height * -1281443035;
                                     continue;
                                  }
 
-                                 if(instruction == 1503) { // get component width
+                                 if(instruction == 1503) { // get component renderWidth
                                     intStack[iStackPtr++] = var35.width * 334099177;
                                     continue;
                                  }
@@ -2040,7 +2040,7 @@ public class ClientScript extends Node {
                                        continue;
                                     }
 
-                                    if(4109 == instruction) { // get text width with tags
+                                    if(4109 == instruction) { // get text renderWidth with tags
                                        --stringStackPtr;
                                        var83 = Class5.stringStack[stringStackPtr];
                                        iStackPtr -= 2;

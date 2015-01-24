@@ -13,7 +13,6 @@ public class MouseInputHandler implements MouseListener, MouseMotionListener, Fo
    static volatile long lastMousePressTime = 0L;
    public static int anInt769 = 0;
    public static int mouseX = 0;
-   static int actionMenuY;
    static volatile int anInt772 = 0;
    static volatile int lastMousePressX = 0;
    public static int mousePressX = 0;

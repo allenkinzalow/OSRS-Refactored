@@ -15,19 +15,19 @@ public class Class90 implements Iterator {
 
    public Object next() {
       Node var1;
-      if(this.aClass108_1322 != this.aClass95_1324.aClass108Array1357[this.anInt1323 - 1]) {
+      if(this.aClass108_1322 != this.aClass95_1324.cache[this.anInt1323 - 1]) {
          var1 = this.aClass108_1322;
          this.aClass108_1322 = var1.nextNode;
          this.aClass108_1321 = var1;
          return var1;
       } else {
          do {
-            if(this.anInt1323 >= this.aClass95_1324.anInt1359) {
+            if(this.anInt1323 >= this.aClass95_1324.size) {
                return null;
             }
 
-            var1 = this.aClass95_1324.aClass108Array1357[this.anInt1323++].nextNode;
-         } while(var1 == this.aClass95_1324.aClass108Array1357[this.anInt1323 - 1]);
+            var1 = this.aClass95_1324.cache[this.anInt1323++].nextNode;
+         } while(var1 == this.aClass95_1324.cache[this.anInt1323 - 1]);
 
          this.aClass108_1322 = var1.nextNode;
          this.aClass108_1321 = var1;
@@ -36,7 +36,7 @@ public class Class90 implements Iterator {
    }
 
    void method1132() {
-      this.aClass108_1322 = this.aClass95_1324.aClass108Array1357[0].nextNode;
+      this.aClass108_1322 = this.aClass95_1324.cache[0].nextNode;
       this.anInt1323 = 1;
       this.aClass108_1321 = null;
    }
@@ -51,16 +51,16 @@ public class Class90 implements Iterator {
    }
 
    public boolean hasNext() {
-      if(this.aClass108_1322 != this.aClass95_1324.aClass108Array1357[this.anInt1323 - 1]) {
+      if(this.aClass108_1322 != this.aClass95_1324.cache[this.anInt1323 - 1]) {
          return true;
       } else {
-         while(this.anInt1323 < this.aClass95_1324.anInt1359) {
-            if(this.aClass95_1324.aClass108Array1357[this.anInt1323++].nextNode != this.aClass95_1324.aClass108Array1357[this.anInt1323 - 1]) {
-               this.aClass108_1322 = this.aClass95_1324.aClass108Array1357[this.anInt1323 - 1].nextNode;
+         while(this.anInt1323 < this.aClass95_1324.size) {
+            if(this.aClass95_1324.cache[this.anInt1323++].nextNode != this.aClass95_1324.cache[this.anInt1323 - 1]) {
+               this.aClass108_1322 = this.aClass95_1324.cache[this.anInt1323 - 1].nextNode;
                return true;
             }
 
-            this.aClass108_1322 = this.aClass95_1324.aClass108Array1357[this.anInt1323 - 1];
+            this.aClass108_1322 = this.aClass95_1324.cache[this.anInt1323 - 1];
          }
 
          return false;

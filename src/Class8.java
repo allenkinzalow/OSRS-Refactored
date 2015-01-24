@@ -210,7 +210,7 @@ public class Class8 {
 
    static int method196(int var0, int var1) {
       int var2;
-      for(var2 = (int)Math.pow((double)var0, 1.0D / (double)var1) + 1; Class1.method36(var2, var1, 2030633151) > var0; --var2) {
+      for(var2 = (int)Math.pow((double)var0, 1.0D / (double)var1) + 1; ContextMenuRow.method36(var2, var1, 2030633151) > var0; --var2) {
          ;
       }
 

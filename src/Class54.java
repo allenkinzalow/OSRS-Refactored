@@ -2,7 +2,6 @@
 public final class Class54 {
 
    public static String operatingSystem;
-   static int actionMenuWidth;
    static AbstractIndex aClass74_734;
    static CacheIndex fontIndex;
 
@@ -97,9 +96,9 @@ public final class Class54 {
                      Client.secureBuffer.method1749(Client.aClass108_Sub17_2877.anInt1772 * -490007465, 862407246);
                   }
                }
-            } else if((1 == Client.anInt2765 * -1978050497 || Class32.method577(Client.menuActionRow * 391839991 - 1, 1315292886)) && Client.menuActionRow * 391839991 > 2) {
-               Applet_Sub1.setMenuPosAndDimmension(Client.anInt2879 * 1247450239 + Client.anInt2915 * 1257174125, Client.anInt2880 * 781803909 + Client.anInt2786 * 1625164373, (byte)125);
-            } else if(Client.menuActionRow * 391839991 > 0) {
+            } else if((1 == Client.anInt2765 * -1978050497 || Class32.method577(ContextMenu.contextMenuRow * 391839991 - 1, 1315292886)) && ContextMenu.contextMenuRow * 391839991 > 2) {
+               ContextMenu.setMenuPosAndDimmension(Client.anInt2879 * 1247450239 + Client.anInt2915 * 1257174125, Client.anInt2880 * 781803909 + Client.anInt2786 * 1625164373, (byte) 125);
+            } else if(ContextMenu.contextMenuRow * 391839991 > 0) {
                Client.method3552(Client.anInt2915 * 1257174125 + Client.anInt2879 * 1247450239, Client.anInt2786 * 1625164373 + Client.anInt2880 * 781803909, -1806912840);
             }
 

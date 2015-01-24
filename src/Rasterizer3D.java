@@ -463,11 +463,11 @@ public class Rasterizer3D extends Rasterizer2D {
          lineOffsets = new int[var4];
       }
 
-      var4 = var1 * width + var0;
+      var4 = var1 * renderWidth + var0;
 
       for(var5 = 0; var5 < _bottomY; ++var5) {
          lineOffsets[var5] = var4;
-         var4 += width;
+         var4 += renderWidth;
       }
 
    }
@@ -483,8 +483,8 @@ public class Rasterizer3D extends Rasterizer2D {
 
    public static final void method2926(int var0, int var1) {
       int var2 = lineOffsets[0];
-      int var3 = var2 / width;
-      int var4 = var2 - var3 * width;
+      int var3 = var2 / renderWidth;
+      int var4 = var2 - var3 * renderWidth;
       centerX = var0 - var4;
       centerY = var1 - var3;
       anInt2519 = -centerX;
@@ -664,7 +664,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var5 += var17;
                               var4 += var14;
                               var6 += var10;
-                              var0 += width;
+                              var0 += renderWidth;
                            }
                         }
 
@@ -672,7 +672,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var5 += var17;
                         var3 += var16;
                         var6 += var10;
-                        var0 += width;
+                        var0 += renderWidth;
                      }
                   } else {
                      var2 -= var1;
@@ -692,7 +692,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var5 += var17;
                               var4 += var14;
                               var6 += var10;
-                              var0 += width;
+                              var0 += renderWidth;
                            }
                         }
 
@@ -700,7 +700,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var5 += var17;
                         var3 += var16;
                         var6 += var10;
-                        var0 += width;
+                        var0 += renderWidth;
                      }
                   }
                } else {
@@ -736,7 +736,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var5 += var14;
                               var3 += var16;
                               var6 += var10;
-                              var0 += width;
+                              var0 += renderWidth;
                            }
                         }
 
@@ -744,7 +744,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var4 += var17;
                         var3 += var16;
                         var6 += var10;
-                        var0 += width;
+                        var0 += renderWidth;
                      }
                   } else {
                      var1 -= var2;
@@ -764,7 +764,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var5 += var14;
                               var3 += var16;
                               var6 += var10;
-                              var0 += width;
+                              var0 += renderWidth;
                            }
                         }
 
@@ -772,7 +772,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var4 += var17;
                         var3 += var16;
                         var6 += var10;
-                        var0 += width;
+                        var0 += renderWidth;
                      }
                   }
                }
@@ -821,7 +821,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var3 += var16;
                               var5 += var17;
                               var7 += var10;
-                              var1 += width;
+                              var1 += renderWidth;
                            }
                         }
 
@@ -829,7 +829,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var3 += var16;
                         var4 += var14;
                         var7 += var10;
-                        var1 += width;
+                        var1 += renderWidth;
                      }
                   } else {
                      var0 -= var2;
@@ -849,7 +849,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var3 += var16;
                               var5 += var17;
                               var7 += var10;
-                              var1 += width;
+                              var1 += renderWidth;
                            }
                         }
 
@@ -857,7 +857,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var3 += var16;
                         var4 += var14;
                         var7 += var10;
-                        var1 += width;
+                        var1 += renderWidth;
                      }
                   }
                } else {
@@ -893,7 +893,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var3 += var17;
                               var4 += var14;
                               var7 += var10;
-                              var1 += width;
+                              var1 += renderWidth;
                            }
                         }
 
@@ -901,7 +901,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var5 += var16;
                         var4 += var14;
                         var7 += var10;
-                        var1 += width;
+                        var1 += renderWidth;
                      }
                   } else {
                      var2 -= var0;
@@ -921,7 +921,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var3 += var17;
                               var4 += var14;
                               var7 += var10;
-                              var1 += width;
+                              var1 += renderWidth;
                            }
                         }
 
@@ -929,7 +929,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var5 += var16;
                         var4 += var14;
                         var7 += var10;
-                        var1 += width;
+                        var1 += renderWidth;
                      }
                   }
                }
@@ -977,7 +977,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var14;
                            var3 += var16;
                            var8 += var10;
-                           var2 += width;
+                           var2 += renderWidth;
                         }
                      }
 
@@ -985,7 +985,7 @@ public class Rasterizer3D extends Rasterizer2D {
                      var4 += var14;
                      var5 += var17;
                      var8 += var10;
-                     var2 += width;
+                     var2 += renderWidth;
                   }
                } else {
                   var1 -= var0;
@@ -1005,7 +1005,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var14;
                            var3 += var16;
                            var8 += var10;
-                           var2 += width;
+                           var2 += renderWidth;
                         }
                      }
 
@@ -1013,7 +1013,7 @@ public class Rasterizer3D extends Rasterizer2D {
                      var4 += var14;
                      var5 += var17;
                      var8 += var10;
-                     var2 += width;
+                     var2 += renderWidth;
                   }
                }
             } else {
@@ -1049,7 +1049,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var16;
                            var5 += var17;
                            var8 += var10;
-                           var2 += width;
+                           var2 += renderWidth;
                         }
                      }
 
@@ -1057,7 +1057,7 @@ public class Rasterizer3D extends Rasterizer2D {
                      var3 += var14;
                      var5 += var17;
                      var8 += var10;
-                     var2 += width;
+                     var2 += renderWidth;
                   }
                } else {
                   var0 -= var1;
@@ -1077,7 +1077,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var16;
                            var5 += var17;
                            var8 += var10;
-                           var2 += width;
+                           var2 += renderWidth;
                         }
                      }
 
@@ -1085,7 +1085,7 @@ public class Rasterizer3D extends Rasterizer2D {
                      var3 += var14;
                      var5 += var17;
                      var8 += var10;
-                     var2 += width;
+                     var2 += renderWidth;
                   }
                }
             }
@@ -1154,14 +1154,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var0, var6, 0, var4 >> 16, var5 >> 16);
                            var5 += var9;
                            var4 += var8;
-                           var0 += width;
+                           var0 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var0, var6, 0, var3 >> 16, var5 >> 16);
                      var5 += var9;
                      var3 += var7;
-                     var0 += width;
+                     var0 += renderWidth;
                   }
                } else {
                   var2 -= var1;
@@ -1180,14 +1180,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var0, var6, 0, var5 >> 16, var4 >> 16);
                            var5 += var9;
                            var4 += var8;
-                           var0 += width;
+                           var0 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var0, var6, 0, var5 >> 16, var3 >> 16);
                      var5 += var9;
                      var3 += var7;
-                     var0 += width;
+                     var0 += renderWidth;
                   }
                }
             } else {
@@ -1221,14 +1221,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var0, var6, 0, var3 >> 16, var5 >> 16);
                            var5 += var8;
                            var3 += var7;
-                           var0 += width;
+                           var0 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var0, var6, 0, var3 >> 16, var4 >> 16);
                      var4 += var9;
                      var3 += var7;
-                     var0 += width;
+                     var0 += renderWidth;
                   }
                } else {
                   var1 -= var2;
@@ -1247,14 +1247,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var0, var6, 0, var5 >> 16, var3 >> 16);
                            var5 += var8;
                            var3 += var7;
-                           var0 += width;
+                           var0 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var0, var6, 0, var4 >> 16, var3 >> 16);
                      var4 += var9;
                      var3 += var7;
-                     var0 += width;
+                     var0 += renderWidth;
                   }
                }
             }
@@ -1300,14 +1300,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var1, var6, 0, var5 >> 16, var3 >> 16);
                            var3 += var7;
                            var5 += var9;
-                           var1 += width;
+                           var1 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var1, var6, 0, var4 >> 16, var3 >> 16);
                      var3 += var7;
                      var4 += var8;
-                     var1 += width;
+                     var1 += renderWidth;
                   }
                } else {
                   var0 -= var2;
@@ -1326,14 +1326,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var1, var6, 0, var3 >> 16, var5 >> 16);
                            var3 += var7;
                            var5 += var9;
-                           var1 += width;
+                           var1 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var1, var6, 0, var3 >> 16, var4 >> 16);
                      var3 += var7;
                      var4 += var8;
-                     var1 += width;
+                     var1 += renderWidth;
                   }
                }
             } else {
@@ -1367,14 +1367,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var1, var6, 0, var3 >> 16, var4 >> 16);
                            var3 += var9;
                            var4 += var8;
-                           var1 += width;
+                           var1 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var1, var6, 0, var5 >> 16, var4 >> 16);
                      var5 += var7;
                      var4 += var8;
-                     var1 += width;
+                     var1 += renderWidth;
                   }
                } else {
                   var2 -= var0;
@@ -1393,14 +1393,14 @@ public class Rasterizer3D extends Rasterizer2D {
                            drawScanLine(renderPixels, var1, var6, 0, var4 >> 16, var3 >> 16);
                            var3 += var9;
                            var4 += var8;
-                           var1 += width;
+                           var1 += renderWidth;
                         }
                      }
 
                      drawScanLine(renderPixels, var1, var6, 0, var4 >> 16, var5 >> 16);
                      var5 += var7;
                      var4 += var8;
-                     var1 += width;
+                     var1 += renderWidth;
                   }
                }
             }
@@ -1445,14 +1445,14 @@ public class Rasterizer3D extends Rasterizer2D {
                         drawScanLine(renderPixels, var2, var6, 0, var4 >> 16, var3 >> 16);
                         var4 += var8;
                         var3 += var7;
-                        var2 += width;
+                        var2 += renderWidth;
                      }
                   }
 
                   drawScanLine(renderPixels, var2, var6, 0, var4 >> 16, var5 >> 16);
                   var4 += var8;
                   var5 += var9;
-                  var2 += width;
+                  var2 += renderWidth;
                }
             } else {
                var1 -= var0;
@@ -1471,14 +1471,14 @@ public class Rasterizer3D extends Rasterizer2D {
                         drawScanLine(renderPixels, var2, var6, 0, var3 >> 16, var4 >> 16);
                         var4 += var8;
                         var3 += var7;
-                        var2 += width;
+                        var2 += renderWidth;
                      }
                   }
 
                   drawScanLine(renderPixels, var2, var6, 0, var5 >> 16, var4 >> 16);
                   var4 += var8;
                   var5 += var9;
-                  var2 += width;
+                  var2 += renderWidth;
                }
             }
          } else {
@@ -1512,14 +1512,14 @@ public class Rasterizer3D extends Rasterizer2D {
                         drawScanLine(renderPixels, var2, var6, 0, var4 >> 16, var5 >> 16);
                         var4 += var7;
                         var5 += var9;
-                        var2 += width;
+                        var2 += renderWidth;
                      }
                   }
 
                   drawScanLine(renderPixels, var2, var6, 0, var3 >> 16, var5 >> 16);
                   var3 += var8;
                   var5 += var9;
-                  var2 += width;
+                  var2 += renderWidth;
                }
             } else {
                var0 -= var1;
@@ -1538,14 +1538,14 @@ public class Rasterizer3D extends Rasterizer2D {
                         drawScanLine(renderPixels, var2, var6, 0, var5 >> 16, var4 >> 16);
                         var4 += var7;
                         var5 += var9;
-                        var2 += width;
+                        var2 += renderWidth;
                      }
                   }
 
                   drawScanLine(renderPixels, var2, var6, 0, var5 >> 16, var3 >> 16);
                   var3 += var8;
                   var5 += var9;
-                  var2 += width;
+                  var2 += renderWidth;
                }
             }
          }
@@ -1741,7 +1741,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var22;
                                  var4 += var30;
                                  var6 += var20;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -1752,7 +1752,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var22;
                            var3 += var29;
                            var6 += var20;
-                           var0 += width;
+                           var0 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -1775,7 +1775,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var22;
                                  var4 += var30;
                                  var6 += var20;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -1786,7 +1786,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var22;
                            var3 += var29;
                            var6 += var20;
-                           var0 += width;
+                           var0 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -1829,7 +1829,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var30;
                                  var3 += var29;
                                  var6 += var20;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -1840,7 +1840,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var22;
                            var3 += var29;
                            var6 += var20;
-                           var0 += width;
+                           var0 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -1863,7 +1863,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var30;
                                  var3 += var29;
                                  var6 += var20;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -1874,7 +1874,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var22;
                            var3 += var29;
                            var6 += var20;
-                           var0 += width;
+                           var0 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -1930,7 +1930,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var29;
                                  var5 += var22;
                                  var7 += var20;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -1941,7 +1941,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var3 += var29;
                            var4 += var30;
                            var7 += var20;
-                           var1 += width;
+                           var1 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -1964,7 +1964,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var29;
                                  var5 += var22;
                                  var7 += var20;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -1975,7 +1975,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var3 += var29;
                            var4 += var30;
                            var7 += var20;
-                           var1 += width;
+                           var1 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -2018,7 +2018,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var22;
                                  var4 += var30;
                                  var7 += var20;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -2029,7 +2029,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var29;
                            var4 += var30;
                            var7 += var20;
-                           var1 += width;
+                           var1 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -2052,7 +2052,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var22;
                                  var4 += var30;
                                  var7 += var20;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var24 += var25;
                                  var36 += var37;
                                  var33 += var34;
@@ -2063,7 +2063,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var29;
                            var4 += var30;
                            var7 += var20;
-                           var1 += width;
+                           var1 += renderWidth;
                            var24 += var25;
                            var36 += var37;
                            var33 += var34;
@@ -2118,7 +2118,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var30;
                               var3 += var29;
                               var8 += var20;
-                              var2 += width;
+                              var2 += renderWidth;
                               var24 += var25;
                               var36 += var37;
                               var33 += var34;
@@ -2129,7 +2129,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var4 += var30;
                         var5 += var22;
                         var8 += var20;
-                        var2 += width;
+                        var2 += renderWidth;
                         var24 += var25;
                         var36 += var37;
                         var33 += var34;
@@ -2152,7 +2152,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var30;
                               var3 += var29;
                               var8 += var20;
-                              var2 += width;
+                              var2 += renderWidth;
                               var24 += var25;
                               var36 += var37;
                               var33 += var34;
@@ -2163,7 +2163,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var4 += var30;
                         var5 += var22;
                         var8 += var20;
-                        var2 += width;
+                        var2 += renderWidth;
                         var24 += var25;
                         var36 += var37;
                         var33 += var34;
@@ -2206,7 +2206,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var29;
                               var5 += var22;
                               var8 += var20;
-                              var2 += width;
+                              var2 += renderWidth;
                               var24 += var25;
                               var36 += var37;
                               var33 += var34;
@@ -2217,7 +2217,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var3 += var30;
                         var5 += var22;
                         var8 += var20;
-                        var2 += width;
+                        var2 += renderWidth;
                         var24 += var25;
                         var36 += var37;
                         var33 += var34;
@@ -2240,7 +2240,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var29;
                               var5 += var22;
                               var8 += var20;
-                              var2 += width;
+                              var2 += renderWidth;
                               var24 += var25;
                               var36 += var37;
                               var33 += var34;
@@ -2251,7 +2251,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var3 += var30;
                         var5 += var22;
                         var8 += var20;
-                        var2 += width;
+                        var2 += renderWidth;
                         var24 += var25;
                         var36 += var37;
                         var33 += var34;
@@ -2678,7 +2678,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var24;
                                  var4 += var33;
                                  var6 += var39;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2689,7 +2689,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var24;
                            var3 += var23;
                            var6 += var39;
-                           var0 += width;
+                           var0 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2712,7 +2712,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var24;
                                  var4 += var33;
                                  var6 += var39;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2723,7 +2723,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var24;
                            var3 += var23;
                            var6 += var39;
-                           var0 += width;
+                           var0 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2766,7 +2766,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var33;
                                  var3 += var23;
                                  var6 += var39;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2777,7 +2777,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var24;
                            var3 += var23;
                            var6 += var39;
-                           var0 += width;
+                           var0 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2800,7 +2800,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var5 += var33;
                                  var3 += var23;
                                  var6 += var39;
-                                 var0 += width;
+                                 var0 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2811,7 +2811,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var4 += var24;
                            var3 += var23;
                            var6 += var39;
-                           var0 += width;
+                           var0 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2867,7 +2867,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var23;
                                  var5 += var24;
                                  var7 += var39;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2878,7 +2878,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var3 += var23;
                            var4 += var33;
                            var7 += var39;
-                           var1 += width;
+                           var1 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2901,7 +2901,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var23;
                                  var5 += var24;
                                  var7 += var39;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2912,7 +2912,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var3 += var23;
                            var4 += var33;
                            var7 += var39;
-                           var1 += width;
+                           var1 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2955,7 +2955,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var24;
                                  var4 += var33;
                                  var7 += var39;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -2966,7 +2966,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var23;
                            var4 += var33;
                            var7 += var39;
-                           var1 += width;
+                           var1 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -2989,7 +2989,7 @@ public class Rasterizer3D extends Rasterizer2D {
                                  var3 += var24;
                                  var4 += var33;
                                  var7 += var39;
-                                 var1 += width;
+                                 var1 += renderWidth;
                                  var27 += var40;
                                  var20 += var21;
                                  var28 += var32;
@@ -3000,7 +3000,7 @@ public class Rasterizer3D extends Rasterizer2D {
                            var5 += var23;
                            var4 += var33;
                            var7 += var39;
-                           var1 += width;
+                           var1 += renderWidth;
                            var27 += var40;
                            var20 += var21;
                            var28 += var32;
@@ -3055,7 +3055,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var33;
                               var3 += var23;
                               var8 += var39;
-                              var2 += width;
+                              var2 += renderWidth;
                               var27 += var40;
                               var20 += var21;
                               var28 += var32;
@@ -3066,7 +3066,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var4 += var33;
                         var5 += var24;
                         var8 += var39;
-                        var2 += width;
+                        var2 += renderWidth;
                         var27 += var40;
                         var20 += var21;
                         var28 += var32;
@@ -3089,7 +3089,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var33;
                               var3 += var23;
                               var8 += var39;
-                              var2 += width;
+                              var2 += renderWidth;
                               var27 += var40;
                               var20 += var21;
                               var28 += var32;
@@ -3100,7 +3100,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var4 += var33;
                         var5 += var24;
                         var8 += var39;
-                        var2 += width;
+                        var2 += renderWidth;
                         var27 += var40;
                         var20 += var21;
                         var28 += var32;
@@ -3143,7 +3143,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var23;
                               var5 += var24;
                               var8 += var39;
-                              var2 += width;
+                              var2 += renderWidth;
                               var27 += var40;
                               var20 += var21;
                               var28 += var32;
@@ -3154,7 +3154,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var3 += var33;
                         var5 += var24;
                         var8 += var39;
-                        var2 += width;
+                        var2 += renderWidth;
                         var27 += var40;
                         var20 += var21;
                         var28 += var32;
@@ -3177,7 +3177,7 @@ public class Rasterizer3D extends Rasterizer2D {
                               var4 += var23;
                               var5 += var24;
                               var8 += var39;
-                              var2 += width;
+                              var2 += renderWidth;
                               var27 += var40;
                               var20 += var21;
                               var28 += var32;
@@ -3188,7 +3188,7 @@ public class Rasterizer3D extends Rasterizer2D {
                         var3 += var33;
                         var5 += var24;
                         var8 += var39;
-                        var2 += width;
+                        var2 += renderWidth;
                         var27 += var40;
                         var20 += var21;
                         var28 += var32;

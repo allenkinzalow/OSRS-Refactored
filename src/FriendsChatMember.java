@@ -128,23 +128,23 @@ public class FriendsChatMember extends Node {
       int var3 = 0;
       int var6 = 0;
       if(0 == var0.anInt1679 * -1012881333) {
-         hash = Class56.gameScene.fetchWallObjectHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Scene.gameScene.fetchWallObjectHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(var0.anInt1679 * -1012881333 == 1) {
-         hash = Class56.gameScene.fetchWallDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Scene.gameScene.fetchWallDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(2 == var0.anInt1679 * -1012881333) {
-         hash = Class56.gameScene.fetchTileInteractableHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Scene.gameScene.fetchTileInteractableHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(var0.anInt1679 * -1012881333 == 3) {
-         hash = Class56.gameScene.fetchGroundTileDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
+         hash = Scene.gameScene.fetchGroundTileDecorationHash(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981);
       }
 
       if(0 != hash) {
-         int var5 = Class56.gameScene.method431(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981, hash);
+         int var5 = Scene.gameScene.method431(var0.anInt1694 * -1237003511, var0.anInt1692 * -1711169553, var0.anInt1681 * -233897981, hash);
          objectID = hash >> 14 & 32767;
          var3 = var5 & 31;
          var6 = var5 >> 6 & 3;

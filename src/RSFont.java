@@ -6,8 +6,8 @@ public final class RSFont extends RSTypeFace {
    }
 
    final void method3136(byte[] var1, int var2, int var3, int var4, int var5, int var6) {
-      int var7 = var2 + var3 * width;
-      int var11 = width - var4;
+      int var7 = var2 + var3 * renderWidth;
+      int var11 = renderWidth - var4;
       int var8 = 0;
       int var9 = 0;
       int var10;
@@ -16,7 +16,7 @@ public final class RSFont extends RSTypeFace {
          var5 -= var10;
          var3 = topY;
          var9 += var10 * var4;
-         var7 += var10 * width;
+         var7 += var10 * renderWidth;
       }
 
       if(var3 + var5 > bottomY) {
@@ -48,8 +48,8 @@ public final class RSFont extends RSTypeFace {
    }
 
    final void method3108(byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-      int var8 = var2 + var3 * width;
-      int var11 = width - var4;
+      int var8 = var2 + var3 * renderWidth;
+      int var11 = renderWidth - var4;
       int var12 = 0;
       int var10 = 0;
       int var9;
@@ -58,7 +58,7 @@ public final class RSFont extends RSTypeFace {
          var5 -= var9;
          var3 = topY;
          var10 += var9 * var4;
-         var8 += var9 * width;
+         var8 += var9 * renderWidth;
       }
 
       if(var3 + var5 > bottomY) {

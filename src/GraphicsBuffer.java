@@ -22,38 +22,6 @@ public abstract class GraphicsBuffer {
 
    public abstract void method261(Graphics var1, int var2, int var3, int var4);
 
-   static final void processEntityTextSpoken(int var0) {
-      int index;
-      int entityIndex;
-      for(index = -1; index < Client.numLocalPlayers * -43742683; ++index) {
-         if(index == -1) {
-            entityIndex = 2047;
-         } else {
-            entityIndex = Client.playerIndices[index];
-         }
-
-         Player player = Client.localPlayers[entityIndex];
-         if(player != null && player.textSpokenTime * 419314599 > 0) {
-            player.textSpokenTime -= 1259781143;
-            if(0 == player.textSpokenTime * 419314599) {
-               player.textSpoken = null;
-            }
-         }
-      }
-
-      for(index = 0; index < Client.anInt2749 * -1829405175; ++index) {
-         entityIndex = Client.npcIndices[index];
-         NPC npc = Client.localNPCs[entityIndex];
-         if(npc != null && npc.textSpokenTime * 419314599 > 0) {
-            npc.textSpokenTime -= 1259781143;
-            if(0 == npc.textSpokenTime * 419314599) {
-               npc.textSpoken = null;
-            }
-         }
-      }
-
-   }
-
    public abstract void method270(Graphics var1, int var2, int var3, int var4, int var5, int var6);
 
    static final void method277(int var0) {

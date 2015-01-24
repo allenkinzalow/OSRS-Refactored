@@ -85,16 +85,16 @@ public class GameObject extends Renderable {
                } else if(MouseInputHandler.mousePressX * 472132205 >= 15 + var5 && MouseInputHandler.mousePressX * 472132205 <= var5 + 80 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressY * 1498262827 <= 18) {
                   MachineInformation.method1923(3, 1, (byte) 116);
                } else if(MouseInputHandler.mousePressX * 472132205 >= 708 && MouseInputHandler.mousePressY * 1498262827 >= 4 && MouseInputHandler.mousePressX * 472132205 <= 758 && MouseInputHandler.mousePressY * 1498262827 <= 20) {
-                  Class4.worldListOpen = false;
-                  Class4.aClass108_Sub20_Sub15_Sub1_40.drawSprite(0, 0);
-                  Class41.aClass108_Sub20_Sub15_Sub1_588.drawSprite(382, 0);
+                  PlayerLoginDetails.worldListOpen = false;
+                  PlayerLoginDetails.clientBackgroundLeft.drawSprite(0, 0);
+                  Class41.clientBackgroundRight.drawSprite(382, 0);
                   IndexTable.clientLogo.drawSprite(382 - IndexTable.clientLogo.anInt2413 / 2, 18);
-               } else if(Class4.hoveredWorldID * -202005965 != -1) {
-                  World var6 = Class4.worldList[Class4.hoveredWorldID * -202005965];
+               } else if(PlayerLoginDetails.hoveredWorldID * -202005965 != -1) {
+                  World var6 = PlayerLoginDetails.worldList[PlayerLoginDetails.hoveredWorldID * -202005965];
                   World.method103(var6, -1418644820);
-                  Class4.worldListOpen = false;
-                  Class4.aClass108_Sub20_Sub15_Sub1_40.drawSprite(0, 0);
-                  Class41.aClass108_Sub20_Sub15_Sub1_588.drawSprite(382, 0);
+                  PlayerLoginDetails.worldListOpen = false;
+                  PlayerLoginDetails.clientBackgroundLeft.drawSprite(0, 0);
+                  Class41.clientBackgroundRight.drawSprite(382, 0);
                   IndexTable.clientLogo.drawSprite(382 - IndexTable.clientLogo.anInt2413 / 2, 18);
                }
             }

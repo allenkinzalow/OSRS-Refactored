@@ -1,6 +1,6 @@
 import java.awt.Graphics;
 
-public class GameDefinition implements Interface3 {
+public class GameDefinition implements IdentifiableDefinition {
 
    static GameDefinition aClass82_1270 = new GameDefinition("game4", "Game 4", 3);
    static GameDefinition aClass82_1271 = new GameDefinition("stellardawn", "Stellar Dawn", 1);
@@ -16,7 +16,7 @@ public class GameDefinition implements Interface3 {
    }
 
 
-   public int method32(int var1) {
+   public int getID(int var1) {
       return this.gameID * -1083017933;
    }
 
@@ -65,10 +65,10 @@ public class GameDefinition implements Interface3 {
       ClientScriptMap.method2172(xPos - offset, yPos - offset, offset + xWidth + offset, offset + offset + yWidth, (byte)116);
       if(var1) {
          try {
-            Graphics var14 = Class1.aCanvas3.getGraphics();
+            Graphics var14 = ContextMenuRow.aCanvas3.getGraphics();
             Class63.aClass13_830.method261(var14, 0, 0, 486401268);
          } catch (Exception var13) {
-            Class1.aCanvas3.repaint();
+            ContextMenuRow.aCanvas3.repaint();
          }
       } else {
          int var8 = xPos;

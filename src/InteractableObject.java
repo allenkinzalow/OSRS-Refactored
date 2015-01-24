@@ -25,7 +25,7 @@ public final class InteractableObject {
       }
 
       Class68.method929(-1417557093);
-      Class56.gameScene.method466();
+      Scene.gameScene.method466();
 
       for(int var1 = 0; var1 < 4; ++var1) {
          Client.clippingPlanes[var1].method1402(1566511345);

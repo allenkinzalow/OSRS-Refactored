@@ -86,7 +86,7 @@ public class ItemDefinition extends CacheableNode {
 
           definition.method2089((byte)-97);
           if(definition.notedTemplate * -910205763 != -1) {
-             definition.method2123(getItemDefinition(definition.notedTemplate * -910205763, -702304258), getItemDefinition(definition.notedID * -616959653, -471384956), 2075734647);
+             definition.copyDefinitions(getItemDefinition(definition.notedTemplate * -910205763, -702304258), getItemDefinition(definition.notedID * -616959653, -471384956), 2075734647);
           }
 
           if(!aBool1974 && definition.members) {
@@ -100,6 +100,78 @@ public class ItemDefinition extends CacheableNode {
           return definition;
        }
     }
+
+	public static final RGBSprite createItemSpriteForDump(int itemID) {
+		boolean exist = false;
+		int var2 = 2;
+		int var3 = 0;
+		RGBSprite cachedSprite;
+
+		ItemDefinition itemDef = getItemDefinition(itemID, -221675425);
+
+		if(itemDef == null) {
+			System.out.println(itemID + " is null...");
+			return null;
+		}
+
+		ModelRasterizer modelRasterizer = itemDef.renderItem(1, (byte)24);
+		if(null == modelRasterizer) {
+			return null;
+		} else {
+			RGBSprite sprite = null;
+			if(-1 != itemDef.notedTemplate * -910205763) {
+				sprite = getItemSprite(itemDef.notedID * -616959653, 10, 1, 0, true, -944989678);
+				if(null == sprite) {
+					return null;
+				}
+			}
+
+			int[] pixels = Rasterizer2D.renderPixels;
+			int width = Rasterizer2D.renderWidth;
+			int height = Rasterizer2D.renderHeight;
+			int[] var18 = new int[4];
+			Rasterizer2D.populateArea(var18);
+			cachedSprite = new RGBSprite(36, 32);
+			Rasterizer2D.copySprite(cachedSprite.pixels, 36, 32);
+			Rasterizer2D.resetPixels();
+			Rasterizer3D.method2970();
+			Rasterizer3D.method2926(16, 16);
+			Rasterizer3D.aBool2518 = false;
+			int zoom = itemDef.zoom2d * 609600173;
+			if(exist) {
+				zoom = (int)(1.5D * (double)zoom);
+			} else if(var2 == 2) {
+				zoom = (int)((double)zoom * 1.04D);
+			}
+
+			int var12 = Rasterizer3D.SINE[itemDef.xan2d * 36515425] * zoom >> 16;
+			int var19 = zoom * Rasterizer3D.COSINE[itemDef.xan2d * 36515425] >> 16;
+			modelRasterizer.method2855();
+			modelRasterizer.method2916(0, itemDef.yan2d * 1922730437, itemDef.zan2d * 1605145061, itemDef.xan2d * 36515425, itemDef.xOffset2d * 1578900673, var12 + modelRasterizer.modelHeight * 782517621 / 2 + itemDef.yOffset2d * 1336895047, itemDef.yOffset2d * 1336895047 + var19);
+			if(var2 >= 1) {
+				cachedSprite.setPixels(1);
+			}
+
+			if(var2 >= 2) {
+				cachedSprite.setPixels(16777215);
+			}
+
+			if(var3 != 0) {
+				cachedSprite.method2814(var3);
+			}
+
+			Rasterizer2D.copySprite(cachedSprite.pixels, 36, 32);
+			if(-1 != itemDef.notedTemplate * -910205763) {
+				sprite.method2746(0, 0);
+			}
+
+			Rasterizer2D.copySprite(pixels, width, height);
+			Rasterizer2D.method2551(var18);
+			Rasterizer3D.method2970();
+			Rasterizer3D.aBool2518 = true;
+			return cachedSprite;
+		}
+	}
 
 	public static final RGBSprite getItemSprite(int itemID, int amount, int var2, int var3, boolean exist, int var5) {
        long itemHash = ((long)var3 << 40) + ((long)var2 << 38) + (long)itemID + ((long)amount << 16);
@@ -139,8 +211,8 @@ public class ItemDefinition extends CacheableNode {
           }
 
           int[] pixels = Rasterizer2D.renderPixels;
-          int width = Rasterizer2D.width;
-          int height = Rasterizer2D.height;
+          int width = Rasterizer2D.renderWidth;
+          int height = Rasterizer2D.renderHeight;
           int[] var18 = new int[4];
           Rasterizer2D.populateArea(var18);
           cachedSprite = new RGBSprite(36, 32);
@@ -585,7 +657,7 @@ public class ItemDefinition extends CacheableNode {
 		this.team = 0;
 	}
 
-	void method2123(ItemDefinition var1, ItemDefinition var2, int var3) {
+	void copyDefinitions(ItemDefinition var1, ItemDefinition var2, int var3) {
 		this.inventoryModel = var1.inventoryModel * 1;
 		this.zoom2d = var1.zoom2d * 1;
 		this.xan2d = var1.xan2d * 1;
@@ -612,169 +684,6 @@ public class ItemDefinition extends CacheableNode {
 
 		var3 = ~var3;
 		return var3;
-	}
-
-	static final void method2125() {
-		for (int var1 = 0; var1 < Client.updateReqCount * -184592375; ++var1) {
-			int var2 = Client.playersNeedingUpdating[var1];
-			Player player = Client.localPlayers[var2];
-
-			int var4 = Client.packetBuffer.readUByte();
-			if (0 != (var4 & 4)) {
-				var4 += Client.packetBuffer.readUByte() << 8;
-			}
-			System.out.println("Got masks for " + player.playerName + " " + var4);
-
-			if (0 != (var4 & 1)) {
-				player.anInt2363 = Client.packetBuffer.method1706(179884786) * 1365888199;
-				player.anInt2387 = Client.packetBuffer.readUShortA() * -883213979;
-			}
-
-			if ((var4 & 2) != 0) {
-				player.textSpoken = Client.packetBuffer.getString_2((byte) 8);
-				if (player.textSpoken.charAt(0) == 126) {
-					player.textSpoken = player.textSpoken.substring(1);
-					ChatMessagesContainer.pushMessage(2, player.playerName, player.textSpoken, -501145397);
-				} else if (Player.myPlayer == player) {
-					ChatMessagesContainer.pushMessage(2, player.playerName, player.textSpoken, 779446530);
-				}
-
-				player.aBool2352 = false;
-				player.anInt2377 = 0;
-				player.anInt2355 = 0;
-				player.textSpokenTime = -11389574;
-			}
-
-			int var5;
-			int var6;
-			if ((var4 & 256) != 0) {
-				var5 = Client.packetBuffer.readUShortLEA();
-				var6 = Client.packetBuffer.readUByte();
-				player.method2724(var5, var6, Client.cycle * -637317861, (byte) -65);
-				player.anInt2342 = Client.cycle * 1254497419 - 1701381396;
-				player.anInt2360 = Client.packetBuffer.method1751((byte) -7) * -1879576471;
-				player.anInt2361 = Client.packetBuffer.method1742(-1494849731) * 1056964537;
-			}
-
-			if ((var4 & 16) != 0) {
-				player.anInt2362 = Client.packetBuffer.method1706(179884786) * -990422189;
-				if ('\uffff' == player.anInt2362 * -2108972837) {
-					player.anInt2362 = 990422189;
-				}
-			}
-
-			if ((var4 & 0x80) != 0) {
-				var5 = Client.packetBuffer.readUByte();
-				byte[] var18 = new byte[var5];
-				RSByteBuffer var7 = new RSByteBuffer(var18);
-				Client.packetBuffer.method1781(var18, 0, var5, -497459829);
-				Client.cachedAppearances[var2] = var7;
-				player.decodeAppearance(var7);
-			}
-
-			if (0 != (var4 & 0x400)) { //gfx
-				player.anInt2373 = Client.packetBuffer.readUShort(-389943525) * 1279943663;
-				var5 = Client.packetBuffer.readInt();
-				player.anInt2388 = (var5 >> 16) * -663135519;//
-				player.anInt2381 = (Client.cycle * -637317861 + (var5 & 0xffff)) * 1163909499;//delay
-				player.anInt2374 = 0;
-				player.anInt2375 = 0;
-				if (player.anInt2381 * 2072518067 > Client.cycle * -637317861) {
-					player.anInt2374 = 530928865;
-				}
-
-				if ('\uffff' == player.anInt2373 * 1305815823) {
-					player.anInt2373 = -1279943663;
-				}
-			}
-
-			if ((var4 & 0x20) != 0) {
-				var5 = Client.packetBuffer.readUShortA();
-				if (var5 == '\uffff') {
-					var5 = -1;
-				}
-
-				var6 = Client.packetBuffer.readUNegByte((byte) 24);
-				System.out.println("Nigger orel " + var5 + ", " + var6);
-				Player.method703(player, var5, var6, (short) -7028);
-			}
-
-			if ((var4 & 512) != 0) {
-				player.anInt2346 = Client.packetBuffer.method1751((byte) 47) * -1232457135;
-				player.anInt2380 = Client.packetBuffer.readUNegByte((byte) 108) * -2005510735;
-				player.anInt2379 = Client.packetBuffer.readUByte() * -968968421;
-				player.anInt2351 = Client.packetBuffer.readUByte() * 215276463;
-				player.anInt2382 = (Client.packetBuffer.readUShortA() + Client.cycle * -637317861) * -1135657951;
-				player.anInt2383 = (Client.packetBuffer.readUShort(1011764471) + Client.cycle * -637317861) * 1089374683;
-				player.anInt2384 = Client.packetBuffer.method1742(-1494849731) * 1682709515;
-				player.anInt2390 = -97254193;
-				player.anInt2395 = 0;
-			}
-
-			if ((var4 & 8) != 0) {
-				var5 = Client.packetBuffer.readUShortLEA();
-				var6 = Client.packetBuffer.readUByte();
-				player.method2724(var5, var6, Client.cycle * -637317861, (byte) -106);
-				player.anInt2342 = Client.cycle * 1254497419 - 1701381396;
-				player.anInt2360 = Client.packetBuffer.readUByte() * -1879576471;
-				player.anInt2361 = Client.packetBuffer.readUByte() * 1056964537;
-			}
-
-			if (0 != (var4 & 64)) {
-				var5 = Client.packetBuffer.method1706(179884786);
-				var6 = Client.packetBuffer.method1751((byte) 29);
-				boolean var19 = Client.packetBuffer.readUNegByte((byte) 47) == 1;
-				int var8 = Client.packetBuffer.readUByte();
-				int var9 = Client.packetBuffer.position * 798331555;
-				if (null != player.playerName && null != player.bodyEquipmentKit) {
-					boolean var10 = false;
-					if (var6 <= 1 && Ignore.isOnIgnore(player.playerName, 1393039656)) {
-						var10 = true;
-					}
-
-					if (!var10 && Client.anInt2822 * -526472263 == 0 && !player.aBool2682) {
-						Client.aClass108_Sub14_2824.position = 0;
-						Client.packetBuffer.readBytes(Client.aClass108_Sub14_2824.buf, 0, var8, 1307264336);
-						Client.aClass108_Sub14_2824.position = 0;
-						RSByteBuffer textBuffer = Client.aClass108_Sub14_2824;
-
-						String textSpoken;
-						try {
-							int var12 = textBuffer.readSmart((short) -14211);
-							if (var12 > 32767) {
-								var12 = 32767;
-							}
-
-							byte[] var13 = new byte[var12];
-							textBuffer.position += HuffmanEncoding.huffmanEncoding.decrypt(textBuffer.buf, textBuffer.position * 798331555, var13, 0, var12, -797949548) * 537964811;
-							String var14 = ClientScriptDefinition.method2569(var13, 0, var12, (short) 23990);
-							textSpoken = var14;
-						} catch (Exception var17) {
-							textSpoken = "Cabbage";
-						}
-
-						textSpoken = RSTypeFace.appendLTGTTags(Class66.method896(textSpoken, (byte) 0));
-						player.textSpoken = textSpoken.trim();
-						player.anInt2377 = (var5 >> 8) * 1753400645;
-						player.anInt2355 = (var5 & 255) * 562856027;
-						player.textSpokenTime = -11389574;
-						player.aBool2352 = var19;
-						if (2 != var6 && 3 != var6) {
-							if (1 == var6) {
-								ChatMessagesContainer.pushMessage(var19 ? 91 : 1, RSTypeFace.getIconTag(0, 480603646) + player.playerName, textSpoken, 645579581);
-							} else {
-								ChatMessagesContainer.pushMessage(var19 ? 90 : 2, player.playerName, textSpoken, 243104464);
-							}
-						} else {
-							ChatMessagesContainer.pushMessage(var19 ? 91 : 1, RSTypeFace.getIconTag(1, 480603646) + player.playerName, textSpoken, -738572075);
-						}
-					}
-				}
-
-				Client.packetBuffer.position = (var9 + var8) * 537964811;
-			}
-		}
-
 	}
 
 	/**

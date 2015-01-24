@@ -17,7 +17,7 @@ public class Class68 {
       NPCDefinition.npcDefinitionCache.clearCacheMap();
       NPCDefinition.npcRasterizerMap.clearCacheMap();
       GroundItem.method585((byte)-123);
-      Class4.method89((byte)1);
+      AnimationDefinition.clearAnimationDefMaps((byte) 1);
       AnimatedGraphic.spotAnimCache.clearCacheMap();
       AnimatedGraphic.spotAnimRasterizerMap.clearCacheMap();
       Class5.method98(1194839351);
@@ -36,7 +36,7 @@ public class Class68 {
       Friend.musicIndex_1.resetCachedIndex();
       Class47.modelIndex.resetCachedIndex();
       Class23.spriteIndex.resetCachedIndex();
-      Class4.textureIndex.resetCachedIndex();
+      PlayerLoginDetails.textureIndex.resetCachedIndex();
       RuntimeException_Sub1.huffmanIndex.resetCachedIndex();
       ClientParameter.musicIndex_2.resetCachedIndex();
       Class108_Sub13.clientScriptIndex.resetCachedIndex();

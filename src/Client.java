@@ -162,12 +162,6 @@ public final class Client extends Applet_Sub1 {
 	static int anInt2844 = 2066221402;
 	static boolean isAtDynamicMap = false;
 	static int anInt2846 = 0;
-	static int menuActionRow = 0;
-	static int[] menuActionXInteractions = new int[500];
-	static int[] menuActionYInteractions = new int[500];
-	static int[] menuActionIdentifiers = new int[500];
-	static int[] menuActionParameters = new int[500];
-	static String[] menuActionNamePrefix = new String[500];
 	static int[] anIntArray2853 = new int[5];
 	static int anInt2854 = -2015274234;
 	static int lastKnownPlane = 1405183137;
@@ -183,7 +177,6 @@ public final class Client extends Applet_Sub1 {
 	static int openInterfaceID = -1256289801;
 	static HashTable aClass101_2866 = new HashTable(8);
 	static int anInt2867 = 0;
-	static String[] menuActionNames = new String[500];
 	static RSInterface aClass108_Sub17_2869 = null;
 	static int anInt2870 = 0;
 	static int anInt2871 = 0;
@@ -245,9 +238,6 @@ public final class Client extends Applet_Sub1 {
 	static int packetSize = 0;
 	static Deque aClass105_2928 = new Deque();
 	static int ignoreListCount = 0;
-	static int[] mapIconTileX = new int[1000];
-	static int[] mapIconTileY = new int[1000];
-	static RGBSprite[] visibleMapIcons = new RGBSprite[1000];
 	static int anInt2933 = 0;
 	static String aString2934 = null;
 	static int anInt2935 = 0;
@@ -266,7 +256,6 @@ public final class Client extends Applet_Sub1 {
 	static boolean[] aBoolArray2948 = new boolean[5];
 	static boolean aBool2949 = false;
 	static int[] anIntArray2950 = new int[5];
-	static boolean actionMenuOpen = false;
 	static int[] anIntArray2952 = new int[5];
 	static int friendListCount = 0;
 	static int anInt2954 = 0;
@@ -274,14 +263,12 @@ public final class Client extends Applet_Sub1 {
 	static LinkedList aClass102_2956 = new LinkedList();
 	static int anInt2957 = 0;
 	static Ignore[] ignoreList = new Ignore[400];
-	static int mapIconAmt = 0;
 	static int anInt2960 = 336140083;
 	static int anInt2961 = 723084555;
 	static RSInterface[] aClass108_Sub17Array2963;
 	static RGBSprite[] hitmarkSprites;
 	static int[] anIntArray2966;
 	static String aString2967 = null;
-	static RGBSprite miniMapSprite;
 	static RSInterface aClass108_Sub17_924;
 	static AbstractIndex configIndex_ref;
 
@@ -291,7 +278,7 @@ public final class Client extends Applet_Sub1 {
 
 	public final void init() {
 		if (this.hasCorrectHost(-1976950418)) {
-			ClientParameter[] paramters = RSByteBuffer.getClientParameterArray(452864001);
+			ClientParameter[] paramters = ClientParameter.getClientParameterArray(452864001);
 
 			int var33;
 			int var37;
@@ -326,7 +313,7 @@ public final class Client extends Applet_Sub1 {
 								}
 
 								GameDefinition var10 = var35[var37];
-								if (var33 == var10.method32(-1397647336)) {
+								if (var33 == var10.getID(-1397647336)) {
 									var40 = var10;
 									break;
 								}
@@ -430,7 +417,7 @@ public final class Client extends Applet_Sub1 {
 					Class19.cacheDirectory = "~/";
 				}
 
-				Class63.possibleCacheDirectories = new String[]{"c:/rscache/", "/rscache/", "c:/windows/", "c:/winnt/", "c:/", Class19.cacheDirectory, "/tmp/", ""};
+				CacheFileAccessor.possibleCacheDirectories = new String[]{"c:/rscache/", "/rscache/", "c:/windows/", "c:/winnt/", "c:/", Class19.cacheDirectory, "/tmp/", ""};
 				NPC.aStringArray2657 = new String[]{".jagex_cache_" + Class108_Sub13.anInt1686 * 1590926487, ".file_store_" + Class108_Sub13.anInt1686 * 1590926487};
 				int indices = 0;
 
@@ -501,8 +488,8 @@ public final class Client extends Applet_Sub1 {
 					if (var32 == null && indices == 0) {
 						label240:
 						for (var37 = 0; var37 < NPC.aStringArray2657.length; ++var37) {
-							for (int var47 = 0; var47 < Class63.possibleCacheDirectories.length; ++var47) {
-								File var50 = new File(Class63.possibleCacheDirectories[var47] + NPC.aStringArray2657[var37] + File.separatorChar + "oldschool" + File.separatorChar);
+							for (int var47 = 0; var47 < CacheFileAccessor.possibleCacheDirectories.length; ++var47) {
+								File var50 = new File(CacheFileAccessor.possibleCacheDirectories[var47] + NPC.aStringArray2657[var37] + File.separatorChar + "oldschool" + File.separatorChar);
 								if (var50.exists() && GZIPDecompressor.method670(new File(var50, "test.dat"), true, -2007474251)) {
 									var32 = var50.toString();
 									var36 = true;
@@ -584,8 +571,8 @@ public final class Client extends Applet_Sub1 {
 					} else {
 						label205:
 						for (int var29 = 0; var29 < NPC.aStringArray2657.length; ++var29) {
-							for (var49 = 0; var49 < Class63.possibleCacheDirectories.length; ++var49) {
-								File var45 = new File(Class63.possibleCacheDirectories[var49] + NPC.aStringArray2657[var29] + File.separatorChar + "random.dat");
+							for (var49 = 0; var49 < CacheFileAccessor.possibleCacheDirectories.length; ++var49) {
+								File var45 = new File(CacheFileAccessor.possibleCacheDirectories[var49] + NPC.aStringArray2657[var29] + File.separatorChar + "random.dat");
 								if (var45.exists()) {
 									CacheConstants.aClass123_1259 = new CacheFile(new CacheFileAccessor(var45, "rw", 25L), 24, 0);
 									break label205;
@@ -634,14 +621,14 @@ public final class Client extends Applet_Sub1 {
 		FriendsChatMember.aShortArray1668 = Class77.aShortArray1205;
 		EquipmentKit.aShortArrayArray1337 = Class77.aShortArrayArray1206;
 		TextureLoader.method389(-2061255559);
-		Canvas canvas = Class1.aCanvas3;
+		Canvas canvas = ContextMenuRow.aCanvas3;
 		canvas.setFocusTraversalKeysEnabled(false);
 		canvas.addKeyListener(KeyFocusListener.keyFocusListener);
 		canvas.addFocusListener(KeyFocusListener.keyFocusListener);
-		AnimationDefinition.method2237(Class1.aCanvas3, (byte) 69);
+		AnimationDefinition.method2237(ContextMenuRow.aCanvas3, (byte) 69);
 		AbstractMouseWheel.aAbstractMouseWheel_1585 = Class65.method885(851370914);
 		if (null != AbstractMouseWheel.aAbstractMouseWheel_1585) {
-			AbstractMouseWheel.aAbstractMouseWheel_1585.addListener(Class1.aCanvas3, (short) 12587);
+			AbstractMouseWheel.aAbstractMouseWheel_1585.addListener(ContextMenuRow.aCanvas3, (short) 12587);
 		}
 
 		IndexTable.cache255Index = new IndexTable(255, CacheConstants.cacheDataFile, CacheConstants.cache255File, 500000);
@@ -765,21 +752,21 @@ public final class Client extends Applet_Sub1 {
 				}
 
 				if (loginLoadingStage * 1315883169 == 0) {
-					Class43.method656(-1596001198);
+					Class43.initializeClient(-1596001198);
 					SoundEffectWorker.method296((byte) 15);
 				} else if (loginLoadingStage * 1315883169 == 5) {
-					Class108_Sub20_Sub3.method2067(this, -1618587604);
-					Class43.method656(-1762580645);
+					LoginHandler.processLoginAndWorldListClick(this, -1618587604);
+					Class43.initializeClient(-1762580645);
 					SoundEffectWorker.method296((byte) -128);
 				} else if (10 != loginLoadingStage * 1315883169 && loginLoadingStage * 1315883169 != 11) {
 					if (loginLoadingStage * 1315883169 == 20) {
-						Class108_Sub20_Sub3.method2067(this, -1254698849);
+						LoginHandler.processLoginAndWorldListClick(this, -1254698849);
 						LoginHandler.method884(-1857786071);
 					} else if (loginLoadingStage * 1315883169 == 25) {
 						RegionReference.loadAndRenderRegion((byte) 3);
 					}
 				} else {
-					Class108_Sub20_Sub3.method2067(this, -966283044);
+					LoginHandler.processLoginAndWorldListClick(this, -966283044);
 				}
 
 				if (30 != loginLoadingStage * 1315883169) {
@@ -805,11 +792,11 @@ public final class Client extends Applet_Sub1 {
 					return;
 				}
 
-				if (!actionMenuOpen) {
-					menuActionNamePrefix[0] = StringUtilities.CANCEL_OPTION;
-					menuActionNames[0] = "";
-					menuActionIdentifiers[0] = 1006;
-					menuActionRow = -1954561849;
+				if (!ContextMenu.contextMenuOpen) {
+					ContextMenu.contextMenuActionPrefixes[0] = StringUtilities.CANCEL_OPTION;
+					ContextMenu.contextMenuActionNames[0] = "";
+					ContextMenu.contextMenuIdentifiers[0] = 1006;
+					ContextMenu.contextMenuRow = -1954561849;
 				}
 
 				int value4;
@@ -1030,7 +1017,7 @@ public final class Client extends Applet_Sub1 {
 									var113.anInt1652 = value * 2096413155;
 									aClass101_2866.put(var113, (long) var7);
 									ClientScriptReference.method706(interfaceID, -1045871857);
-									Class1.method35(interfaceID, 318096228);
+									ContextMenuRow.method35(interfaceID, 318096228);
 									RSInterface var119 = RSInterface.getInterfaceComponentForHash(var7, 1425266031);
 									if (null != var119) {
 										MouseInputHandler.method775(var119, -16054773);
@@ -1041,7 +1028,7 @@ public final class Client extends Applet_Sub1 {
 										aClass108_Sub17_2869 = null;
 									}
 
-									Applet_Sub1.method3282((byte) -50);
+									ContextMenu.method3282((byte) -50);
 									if (openInterfaceID * 1523906617 != -1) {
 										var83 = openInterfaceID * 1523906617;
 										if (RSInterface.loadInterface(var83, 505201648)) {
@@ -1237,7 +1224,7 @@ public final class Client extends Applet_Sub1 {
 									}
 
 									packetBuffer.endBitAccess();
-									ItemDefinition.method2125();
+									Player.decodeAppearanceUpdate();
 
 									for (int idx = 0; idx < removedCounter * 104842469; ++idx) {
 										value2 = indicesPendingRemoval[idx];
@@ -2167,7 +2154,7 @@ public final class Client extends Applet_Sub1 {
 									System.out.println("Pane? " + value);
 									openInterfaceID = value * 1256289801;
 									ClientScriptReference.method706(value, -1045871857);
-									Class1.method35(openInterfaceID * 1523906617, 461752816);
+									ContextMenuRow.method35(openInterfaceID * 1523906617, 461752816);
 
 									for (value2 = 0; value2 < 100; ++value2) {
 										aBoolArray2909[value2] = true;
@@ -2599,7 +2586,7 @@ public final class Client extends Applet_Sub1 {
 									if (openInterfaceID * 1523906617 != value2) {
 										openInterfaceID = value2 * 1256289801;
 										ClientScriptReference.method706(openInterfaceID * 1523906617, -1045871857);
-										Class1.method35(openInterfaceID * 1523906617, 1732128252);
+										ContextMenuRow.method35(openInterfaceID * 1523906617, 1732128252);
 
 										for (verifyIndex = 0; verifyIndex < 100; ++verifyIndex) {
 											aBoolArray2909[verifyIndex] = true;
@@ -2623,7 +2610,7 @@ public final class Client extends Applet_Sub1 {
 											var15.anInt1652 = var10 * 2096413155;
 											aClass101_2866.put(var15, (long) verifyIndex);
 											ClientScriptReference.method706(type, -1045871857);
-											Class1.method35(type, -983856003);
+											ContextMenuRow.method35(type, -983856003);
 											RSInterface var16 = RSInterface.getInterfaceComponentForHash(verifyIndex, -308525920);
 											if (var16 != null) {
 												MouseInputHandler.method775(var16, -16054773);
@@ -2634,7 +2621,7 @@ public final class Client extends Applet_Sub1 {
 												aClass108_Sub17_2869 = null;
 											}
 
-											Applet_Sub1.method3282((byte) -46);
+											ContextMenu.method3282((byte) -46);
 											if (-1 != openInterfaceID * 1523906617) {
 												var17 = openInterfaceID * 1523906617;
 												if (RSInterface.loadInterface(var17, -280584818)) {
@@ -2972,7 +2959,7 @@ public final class Client extends Applet_Sub1 {
 							}
 						}
 
-						GraphicsBuffer.processEntityTextSpoken(2073836407);
+						Entity.processEntityTextSpoken(2073836407);
 						anInt2780 += 2046019493;
 						if (0 != anInt2813 * -1596091641) {
 							anInt2829 += 1054535436;
@@ -2981,11 +2968,11 @@ public final class Client extends Applet_Sub1 {
 							}
 						}
 
-						if (Class4.aClass108_Sub17_75 != null) {
+						if (PlayerLoginDetails.aClass108_Sub17_75 != null) {
 							anInt2814 += 149366129;
 							if (anInt2814 * 1648294801 >= 15) {
-								MouseInputHandler.method775(Class4.aClass108_Sub17_75, -16054773);
-								Class4.aClass108_Sub17_75 = null;
+								MouseInputHandler.method775(PlayerLoginDetails.aClass108_Sub17_75, -16054773);
+								PlayerLoginDetails.aClass108_Sub17_75 = null;
 							}
 						}
 
@@ -3017,7 +3004,7 @@ public final class Client extends Applet_Sub1 {
 
 						value4 = openInterfaceID * 1523906617;
 						if (RSInterface.loadInterface(value4, 698314354)) {
-							Ignore.buildRightClickMenu(RSInterface.interface_cache[value4], -1, 0, 0, 765, 503, 0, 0, -1861351226);
+							ContextMenu.buildContextMenu(RSInterface.interface_cache[value4], -1, 0, 0, 765, 503, 0, 0, -1861351226);
 						}
 
 						anInt2731 += 1649299627;
@@ -3031,51 +3018,51 @@ public final class Client extends Applet_Sub1 {
 										while (true) {
 											script = (ClientScript) aClass105_2737.method1337();
 											if (script == null) {
-												RegionReference.method608();
+												ContextMenu.shiftContextMenuActions();
 												if (IsaacRandomGen.aClass108_Sub17_745 == null && null == aClass108_Sub17_2877) {
 													value = MouseInputHandler.clickType * 1629072957;
-													if (actionMenuOpen) {
+													if (ContextMenu.contextMenuOpen) {
 														if (1 != value && (Class100.aBool1391 || value != 4)) {
 															value2 = MouseInputHandler.mouseX * -367052265;
 															var7 = MouseInputHandler.mouseY * 1533395117;
-															if (value2 < ClientScriptReference.actionMenuX * -745630459 - 10 || value2 > ClientScriptReference.actionMenuX * -745630459 + Class54.actionMenuWidth * 1703965243 + 10 || var7 < MouseInputHandler.actionMenuY * -740301953 - 10 || var7 > 10 + Item.actionMenuHeight * 720768655 + MouseInputHandler.actionMenuY * -740301953) {
-																actionMenuOpen = false;
-																ClientScriptMap.method2172(ClientScriptReference.actionMenuX * -745630459, MouseInputHandler.actionMenuY * -740301953, Class54.actionMenuWidth * 1703965243, Item.actionMenuHeight * 720768655, (byte) 25);
+															if (value2 < ContextMenu.contextMenuX * -745630459 - 10 || value2 > ContextMenu.contextMenuX * -745630459 + ContextMenu.contextMenuWidth * 1703965243 + 10 || var7 < ContextMenu.contextMenuY * -740301953 - 10 || var7 > 10 + ContextMenu.contextMenuHeight * 720768655 + ContextMenu.contextMenuY * -740301953) {
+																ContextMenu.contextMenuOpen = false;
+																ClientScriptMap.method2172(ContextMenu.contextMenuX * -745630459, ContextMenu.contextMenuY * -740301953, ContextMenu.contextMenuWidth * 1703965243, ContextMenu.contextMenuHeight * 720768655, (byte) 25);
 															}
 														}
 
 														if (value == 1 || !Class100.aBool1391 && 4 == value) {
-															value2 = ClientScriptReference.actionMenuX * -745630459;
-															var7 = MouseInputHandler.actionMenuY * -740301953;
-															verifyIndex = Class54.actionMenuWidth * 1703965243;
+															value2 = ContextMenu.contextMenuX * -745630459;
+															var7 = ContextMenu.contextMenuY * -740301953;
+															verifyIndex = ContextMenu.contextMenuWidth * 1703965243;
 															type = MouseInputHandler.mousePressX * 472132205;
 															var10 = MouseInputHandler.mousePressY * 1498262827;
 															var83 = -1;
 
-															for (variousValue = 0; variousValue < menuActionRow * 391839991; ++variousValue) {
-																var110 = (menuActionRow * 391839991 - 1 - variousValue) * 15 + 31 + var7;
+															for (variousValue = 0; variousValue < ContextMenu.contextMenuRow * 391839991; ++variousValue) {
+																var110 = (ContextMenu.contextMenuRow * 391839991 - 1 - variousValue) * 15 + 31 + var7;
 																if (type > value2 && type < verifyIndex + value2 && var10 > var110 - 13 && var10 < var110 + 3) {
 																	var83 = variousValue;
 																}
 															}
 
 															if (var83 != -1) {
-																Class108_Sub22.method1996(var83, (byte) 123);
+																ContextMenu.processContextMenuClick(var83, (byte) 123);
 															}
 
-															actionMenuOpen = false;
-															ClientScriptMap.method2172(ClientScriptReference.actionMenuX * -745630459, MouseInputHandler.actionMenuY * -740301953, Class54.actionMenuWidth * 1703965243, Item.actionMenuHeight * 720768655, (byte) 30);
+															ContextMenu.contextMenuOpen = false;
+															ClientScriptMap.method2172(ContextMenu.contextMenuX * -745630459, ContextMenu.contextMenuY * -740301953, ContextMenu.contextMenuWidth * 1703965243, ContextMenu.contextMenuHeight * 720768655, (byte) 30);
 														}
 													} else {
 														label2833:
 														{
-															if ((value == 1 || !Class100.aBool1391 && value == 4) && menuActionRow * 391839991 > 0) {
-																value2 = menuActionIdentifiers[menuActionRow * 391839991 - 1];
+															if ((value == 1 || !Class100.aBool1391 && value == 4) && ContextMenu.contextMenuRow * 391839991 > 0) {
+																value2 = ContextMenu.contextMenuIdentifiers[ContextMenu.contextMenuRow * 391839991 - 1];
 																if (39 == value2 || 40 == value2 || value2 == 41 || value2 == 42 || value2 == 43 || 33 == value2 || 34 == value2 || 35 == value2 || 36 == value2 || value2 == 37 || value2 == 38 || 1005 == value2) {
 																	label2815:
 																	{
-																		var7 = menuActionXInteractions[menuActionRow * 391839991 - 1];
-																		verifyIndex = menuActionYInteractions[menuActionRow * 391839991 - 1];
+																		var7 = ContextMenu.contextMenuXInteractions[ContextMenu.contextMenuRow * 391839991 - 1];
+																		verifyIndex = ContextMenu.contextMenuYInteractions[ContextMenu.contextMenuRow * 391839991 - 1];
 																		var77 = RSInterface.getInterfaceComponentForHash(verifyIndex, 279223576);
 																		if (!Class52.method712(Class32.method576(var77, -669137700), -629807847)) {
 																			var83 = Class32.method576(var77, -1479049997);
@@ -3085,7 +3072,7 @@ public final class Client extends Applet_Sub1 {
 																			}
 																		}
 
-																		if (null != IsaacRandomGen.aClass108_Sub17_745 && !aBool2860 && 1 != anInt2765 * -1978050497 && !Class32.method577(menuActionRow * 391839991 - 1, 1315292886) && menuActionRow * 391839991 > 0) {
+																		if (null != IsaacRandomGen.aClass108_Sub17_745 && !aBool2860 && 1 != anInt2765 * -1978050497 && !Class32.method577(ContextMenu.contextMenuRow * 391839991 - 1, 1315292886) && ContextMenu.contextMenuRow * 391839991 > 0) {
 																			method3552(anInt2900 * 785242869, anInt2903 * 685630743, -1806912840);
 																		}
 
@@ -3099,8 +3086,8 @@ public final class Client extends Applet_Sub1 {
 																		anInt2863 = var7 * 1510333713;
 																		anInt2900 = MouseInputHandler.mousePressX * -258582887;
 																		anInt2903 = MouseInputHandler.mousePressY * -472109811;
-																		if (menuActionRow * 391839991 > 0) {
-																			Tile.method1676(menuActionRow * 391839991 - 1, 734161922);
+																		if (ContextMenu.contextMenuRow * 391839991 > 0) {
+																			ContextMenu.setLastContextMenuRow(ContextMenu.contextMenuRow * 391839991 - 1, 734161922);
 																		}
 
 																		MouseInputHandler.method775(IsaacRandomGen.aClass108_Sub17_745, -16054773);
@@ -3109,16 +3096,16 @@ public final class Client extends Applet_Sub1 {
 																}
 															}
 
-															if ((value == 1 || !Class100.aBool1391 && 4 == value) && (anInt2765 * -1978050497 == 1 && menuActionRow * 391839991 > 2 || Class32.method577(menuActionRow * 391839991 - 1, 1315292886))) {
+															if ((value == 1 || !Class100.aBool1391 && 4 == value) && (anInt2765 * -1978050497 == 1 && ContextMenu.contextMenuRow * 391839991 > 2 || Class32.method577(ContextMenu.contextMenuRow * 391839991 - 1, 1315292886))) {
 																value = 2;
 															}
 
-															if ((value == 1 || !Class100.aBool1391 && value == 4) && menuActionRow * 391839991 > 0) {
-																Class108_Sub22.method1996(menuActionRow * 391839991 - 1, (byte) 118);
+															if ((value == 1 || !Class100.aBool1391 && value == 4) && ContextMenu.contextMenuRow * 391839991 > 0) {
+																ContextMenu.processContextMenuClick(ContextMenu.contextMenuRow * 391839991 - 1, (byte) 118);
 															}
 
-															if (2 == value && menuActionRow * 391839991 > 0) {
-																Applet_Sub1.setMenuPosAndDimmension(MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, (byte) 76);
+															if (2 == value && ContextMenu.contextMenuRow * 391839991 > 0) {
+																ContextMenu.setMenuPosAndDimmension(MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, (byte) 76);
 															}
 														}
 													}
@@ -3176,13 +3163,13 @@ public final class Client extends Applet_Sub1 {
 																secureBuffer.method1748(anInt2863 * -664226831, 393924825);
 																secureBuffer.method1756(IsaacRandomGen.aClass108_Sub17_745.interfaceHash * -1081473899, -1853537390);
 															}
-														} else if ((1 == anInt2765 * -1978050497 || Class32.method577(menuActionRow * 391839991 - 1, 1315292886)) && menuActionRow * 391839991 > 2) {
-															Applet_Sub1.setMenuPosAndDimmension(anInt2900 * 785242869, anInt2903 * 685630743, (byte) 54);
-														} else if (menuActionRow * 391839991 > 0) {
+														} else if ((1 == anInt2765 * -1978050497 || Class32.method577(ContextMenu.contextMenuRow * 391839991 - 1, 1315292886)) && ContextMenu.contextMenuRow * 391839991 > 2) {
+															ContextMenu.setMenuPosAndDimmension(anInt2900 * 785242869, anInt2903 * 685630743, (byte) 54);
+														} else if (ContextMenu.contextMenuRow * 391839991 > 0) {
 															value = anInt2900 * 785242869;
 															value2 = anInt2903 * 685630743;
-															MouseCapturer.method298(Class108_Sub21.aClass1_1895, value, value2, (short) 16256);
-															Class108_Sub21.aClass1_1895 = null;
+															MouseCapturer.method298(Class108_Sub21.aContextMenuRow_1895, value, value2, (short) 16256);
+															Class108_Sub21.aContextMenuRow_1895 = null;
 														}
 
 														anInt2814 = 1493661290;
@@ -3567,29 +3554,29 @@ public final class Client extends Applet_Sub1 {
 		}
 
 		if (aBool2693) {
-			Canvas var4 = Class1.aCanvas3;
+			Canvas var4 = ContextMenuRow.aCanvas3;
 			var4.removeKeyListener(KeyFocusListener.keyFocusListener);
 			var4.removeFocusListener(KeyFocusListener.keyFocusListener);
 			KeyFocusListener.anInt887 = -88447803;
-			GameObject.method2845(Class1.aCanvas3, -1756702108);
+			GameObject.method2845(ContextMenuRow.aCanvas3, -1756702108);
 			if (null != AbstractMouseWheel.aAbstractMouseWheel_1585) {
-				AbstractMouseWheel.aAbstractMouseWheel_1585.removeListener(Class1.aCanvas3, 530167426);
+				AbstractMouseWheel.aAbstractMouseWheel_1585.removeListener(ContextMenuRow.aCanvas3, 530167426);
 			}
 
 			this.method3185((byte) -92);
-			Canvas var5 = Class1.aCanvas3;
+			Canvas var5 = ContextMenuRow.aCanvas3;
 			var5.setFocusTraversalKeysEnabled(false);
 			var5.addKeyListener(KeyFocusListener.keyFocusListener);
 			var5.addFocusListener(KeyFocusListener.keyFocusListener);
-			AnimationDefinition.method2237(Class1.aCanvas3, (byte) 25);
+			AnimationDefinition.method2237(ContextMenuRow.aCanvas3, (byte) 25);
 			if (null != AbstractMouseWheel.aAbstractMouseWheel_1585) {
-				AbstractMouseWheel.aAbstractMouseWheel_1585.addListener(Class1.aCanvas3, (short) 15645);
+				AbstractMouseWheel.aAbstractMouseWheel_1585.addListener(ContextMenuRow.aCanvas3, (short) 15645);
 			}
 		}
 
 		int yPos;
 		if (loginLoadingStage * 1315883169 == 0) {
-			MouseCapturer.method392(Class4.anInt52 * 2070155241, Class4.currentLoadingStatus, (Color) null, -230014244);
+			MouseCapturer.method392(PlayerLoginDetails.anInt52 * 2070155241, PlayerLoginDetails.currentLoadingStatus, (Color) null, -230014244);
 		} else if (loginLoadingStage * 1315883169 == 5) {
 			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -91833970);
 		} else if (loginLoadingStage * 1315883169 != 10 && loginLoadingStage * 1315883169 != 11) {
@@ -3642,30 +3629,33 @@ public final class Client extends Applet_Sub1 {
 					}
 
 					Rasterizer2D.reset();
-					if (!actionMenuOpen) {
+					/**
+					 * Rendering the context menu & tooltip
+					 */
+					if (!ContextMenu.contextMenuOpen) {
 						if (-1 != anInt2735 * 1515589117) {
 							xPos = anInt2735 * 1515589117;
 							yPos = anInt2820 * -301567793;
-							if (menuActionRow * 391839991 >= 2 || 0 != anInt2858 * -968945719 || aBool2881) {
+							if (ContextMenu.contextMenuRow * 391839991 >= 2 || 0 != anInt2858 * -968945719 || aBool2881) {
 								String tooltip;
-								if (anInt2858 * -968945719 == 1 && menuActionRow * 391839991 < 2) {
+								if (anInt2858 * -968945719 == 1 && ContextMenu.contextMenuRow * 391839991 < 2) {
 									tooltip = StringUtilities.USE_OPTION + StringUtilities.aString1109 + aString2859 + " " + Class47.aString668; //use SOMETHING with...
-								} else if (aBool2881 && menuActionRow * 391839991 < 2) {
+								} else if (aBool2881 && ContextMenu.contextMenuRow * 391839991 < 2) {
 									tooltip = aString2941 + StringUtilities.aString1109 + aString2819 + " " + Class47.aString668; // ...
 								} else {
-									int highestMenuActionRow = menuActionRow * 391839991 - 1;
+									int highestMenuActionRow = ContextMenu.contextMenuRow * 391839991 - 1;
 									String secondMenuName;
-									if (menuActionNames[highestMenuActionRow].length() > 0) {
-										secondMenuName = menuActionNamePrefix[highestMenuActionRow] + StringUtilities.aString1109 + menuActionNames[highestMenuActionRow];
+									if (ContextMenu.contextMenuActionNames[highestMenuActionRow].length() > 0) {
+										secondMenuName = ContextMenu.contextMenuActionPrefixes[highestMenuActionRow] + StringUtilities.aString1109 + ContextMenu.contextMenuActionNames[highestMenuActionRow];
 									} else {
-										secondMenuName = menuActionNamePrefix[highestMenuActionRow];
+										secondMenuName = ContextMenu.contextMenuActionPrefixes[highestMenuActionRow];
 									}
 
 									tooltip = secondMenuName;
 								}
 
-								if (menuActionRow * 391839991 > 2) {
-									tooltip = tooltip + HuffmanEncoding.method690(16777215, -598146062) + " " + '/' + " " + (menuActionRow * 391839991 - 2) + StringUtilities.aString1044;
+								if (ContextMenu.contextMenuRow * 391839991 > 2) {
+									tooltip = tooltip + HuffmanEncoding.method690(16777215, -598146062) + " " + '/' + " " + (ContextMenu.contextMenuRow * 391839991 - 2) + StringUtilities.aString1044;
 								}
 
 								RSTypeFace.b12_full_font.drawShadedSeededAlphaString(tooltip, xPos + 4, 15 + yPos, 16777215, 0, cycle * -637317861 / 1000);
@@ -3673,7 +3663,7 @@ public final class Client extends Applet_Sub1 {
 							}
 						}
 					} else {
-						AnimationDefinition.renderActionMenu((byte) -70);
+						ContextMenu.renderContextMenu((byte) -70);
 					}
 					RSTypeFace.b12_full_font.drawShadedSeededAlphaString("Game tick: " + gametick, xPos + 4, 35, 16777215, 0, cycle * -637317861 / 1000);
 
@@ -3702,7 +3692,7 @@ public final class Client extends Applet_Sub1 {
 		Graphics var14;
 		if (30 == loginLoadingStage * 1315883169 && 0 == anInt2916 * 1531358553 && !aBool2688) {
 			try {
-				var14 = Class1.aCanvas3.getGraphics();
+				var14 = ContextMenuRow.aCanvas3.getGraphics();
 
 				for (yPos = 0; yPos < anInt2907 * -792079877; ++yPos) {
 					if (aBoolArray2910[yPos]) {
@@ -3712,11 +3702,11 @@ public final class Client extends Applet_Sub1 {
 				}
 
 			} catch (Exception var9) {
-				Class1.aCanvas3.repaint();
+				ContextMenuRow.aCanvas3.repaint();
 			}
 		} else if (loginLoadingStage * 1315883169 > 0) {
 			try {
-				var14 = Class1.aCanvas3.getGraphics();
+				var14 = ContextMenuRow.aCanvas3.getGraphics();
 				Class63.aClass13_830.method261(var14, 0, 0, -909326761);
 				aBool2688 = false;
 
@@ -3725,7 +3715,7 @@ public final class Client extends Applet_Sub1 {
 				}
 
 			} catch (Exception var10) {
-				Class1.aCanvas3.repaint();
+				ContextMenuRow.aCanvas3.repaint();
 			}
 		}
 	}
@@ -3891,8 +3881,8 @@ public final class Client extends Applet_Sub1 {
 	}
 
 	static void method3552(int var0, int var1, int var2) {
-		MouseCapturer.method298(Class108_Sub21.aClass1_1895, var0, var1, (short) 16256);
-		Class108_Sub21.aClass1_1895 = null;
+		MouseCapturer.method298(Class108_Sub21.aContextMenuRow_1895, var0, var1, (short) 16256);
+		Class108_Sub21.aContextMenuRow_1895 = null;
 	}
 
 	static void method3554(int var0) {

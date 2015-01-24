@@ -18,4 +18,8 @@ public class ClientParameter {
    ClientParameter(String paramID_unused, String paramID) {
       this.paramIdentifier = paramID;
    }
+
+   public static ClientParameter[] getClientParameterArray(int var0) {
+      return new ClientParameter[]{aClass103_1407, aClass103_1410, aClass103_1399, aClass103_1403, aClass103_1405, aClass103_1400, aClass103_1404, aClass103_1401, aClass103_1402, aClass103_1406};
+   }
 }

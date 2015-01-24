@@ -136,11 +136,11 @@ public final class PaletteSprite extends Rasterizer2D {
    public void drawSprite(int var1, int var2) {
       var1 += this.anInt2415;
       var2 += this.anInt2411;
-      int var5 = var1 + var2 * width;
+      int var5 = var1 + var2 * renderWidth;
       int var6 = 0;
       int var7 = this.anInt2414;
       int var8 = this.anInt2413;
-      int var3 = width - var8;
+      int var3 = renderWidth - var8;
       int var9 = 0;
       int var4;
       if(var2 < topY) {
@@ -148,7 +148,7 @@ public final class PaletteSprite extends Rasterizer2D {
          var7 -= var4;
          var2 = topY;
          var6 += var4 * var8;
-         var5 += var4 * width;
+         var5 += var4 * renderWidth;
       }
 
       if(var2 + var7 > bottomY) {

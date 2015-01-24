@@ -156,7 +156,7 @@ public class Class53_Sub1 extends Timer {
                var9 = new GameObject(objectID, 22, var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
             }
 
-            scene.method407(plane, localX, localY, var14, (Renderable)var9, var16, var24);
+            scene.addFloorDecoration(plane, localX, localY, var14, (Renderable) var9, var16, var24);
             if(1 == objectDef.anInt2094 * 795821915) {
                if(null != collisionMap) {
                   collisionMap.method1409(localX, localY, 183213884);
@@ -190,7 +190,7 @@ public class Class53_Sub1 extends Timer {
                   var9 = new GameObject(objectID, 0, var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                }
 
-               scene.method409(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, RegionReference.anIntArray491[var4], 0, var16, var24);
+               scene.addWall(plane, localX, localY, var14, (Renderable) var9, (Renderable) null, RegionReference.anIntArray491[var4], 0, var16, var24);
                if(0 == var4) {
                   if(objectDef.aBool2097) {
                      RegionReference.aByteArrayArrayArray488[plane][localX][localY] = 50;
@@ -243,7 +243,7 @@ public class Class53_Sub1 extends Timer {
                   var9 = new GameObject(objectID, 1, var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                }
 
-               scene.method409(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, RegionReference.anIntArray483[var4], 0, var16, var24);
+               scene.addWall(plane, localX, localY, var14, (Renderable) var9, (Renderable) null, RegionReference.anIntArray483[var4], 0, var16, var24);
                if(objectDef.aBool2097) {
                   if(var4 == 0) {
                      RegionReference.aByteArrayArrayArray488[plane][localX][1 + localY] = 50;
@@ -275,7 +275,7 @@ public class Class53_Sub1 extends Timer {
                      var29 = new GameObject(objectID, 2, var27, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method409(plane, localX, localY, var14, (Renderable)var31, (Renderable)var29, RegionReference.anIntArray491[var4], RegionReference.anIntArray491[var27], var16, var24);
+                  scene.addWall(plane, localX, localY, var14, (Renderable) var31, (Renderable) var29, RegionReference.anIntArray491[var4], RegionReference.anIntArray491[var27], var16, var24);
                   if(objectDef.aBool2111) {
                      if(0 == var4) {
                         Class19.tileCullingBitset[plane][localX][localY] |= 585;
@@ -306,7 +306,7 @@ public class Class53_Sub1 extends Timer {
                      var9 = new GameObject(objectID, 3, var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method409(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, RegionReference.anIntArray483[var4], 0, var16, var24);
+                  scene.addWall(plane, localX, localY, var14, (Renderable) var9, (Renderable) null, RegionReference.anIntArray483[var4], 0, var16, var24);
                   if(objectDef.aBool2097) {
                      if(0 == var4) {
                         RegionReference.aByteArrayArrayArray488[plane][localX][1 + localY] = 50;
@@ -346,7 +346,7 @@ public class Class53_Sub1 extends Timer {
                      var9 = new GameObject(objectID, 4, var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method410(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, RegionReference.anIntArray491[var4], 0, 0, 0, var16, var24);
+                  scene.addWallDecoration(plane, localX, localY, var14, (Renderable) var9, (Renderable) null, RegionReference.anIntArray491[var4], 0, 0, 0, var16, var24);
                } else if(var5 == 5) {
                   var27 = 16;
                   var25 = scene.fetchWallObjectHash(plane, localX, localY);
@@ -360,7 +360,7 @@ public class Class53_Sub1 extends Timer {
                      var29 = new GameObject(objectID, 4, var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method410(plane, localX, localY, var14, (Renderable)var29, (Renderable)null, RegionReference.anIntArray491[var4], 0, RegionReference.anIntArray493[var4] * var27, RegionReference.anIntArray494[var4] * var27, var16, var24);
+                  scene.addWallDecoration(plane, localX, localY, var14, (Renderable) var29, (Renderable) null, RegionReference.anIntArray491[var4], 0, RegionReference.anIntArray493[var4] * var27, RegionReference.anIntArray494[var4] * var27, var16, var24);
                } else if(var5 == 6) {
                   var27 = 8;
                   var25 = scene.fetchWallObjectHash(plane, localX, localY);
@@ -374,7 +374,7 @@ public class Class53_Sub1 extends Timer {
                      var29 = new GameObject(objectID, 4, 4 + var4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method410(plane, localX, localY, var14, (Renderable)var29, (Renderable)null, 256, var4, var27 * RegionReference.anIntArray492[var4], RegionReference.anIntArray496[var4] * var27, var16, var24);
+                  scene.addWallDecoration(plane, localX, localY, var14, (Renderable) var29, (Renderable) null, 256, var4, var27 * RegionReference.anIntArray492[var4], RegionReference.anIntArray496[var4] * var27, var16, var24);
                } else if(7 == var5) {
                   var25 = var4 + 2 & 3;
                   if(objectDef.animationID * -2061255559 == -1 && null == objectDef.configChangeDest) {
@@ -383,7 +383,7 @@ public class Class53_Sub1 extends Timer {
                      var9 = new GameObject(objectID, 4, 4 + var25, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method410(plane, localX, localY, var14, (Renderable)var9, (Renderable)null, 256, var25, 0, 0, var16, var24);
+                  scene.addWallDecoration(plane, localX, localY, var14, (Renderable) var9, (Renderable) null, 256, var25, 0, 0, var16, var24);
                } else if(8 == var5) {
                   var27 = 8;
                   var25 = scene.fetchWallObjectHash(plane, localX, localY);
@@ -401,7 +401,7 @@ public class Class53_Sub1 extends Timer {
                      var30 = new GameObject(objectID, 4, var26 + 4, plane, localX, localY, objectDef.animationID * -2061255559, true, (Renderable)null);
                   }
 
-                  scene.method410(plane, localX, localY, var14, (Renderable)var29, (Renderable)var30, 256, var4, RegionReference.anIntArray492[var4] * var27, RegionReference.anIntArray496[var4] * var27, var16, var24);
+                  scene.addWallDecoration(plane, localX, localY, var14, (Renderable) var29, (Renderable) var30, 256, var4, RegionReference.anIntArray492[var4] * var27, RegionReference.anIntArray496[var4] * var27, var16, var24);
                }
             }
          } else {

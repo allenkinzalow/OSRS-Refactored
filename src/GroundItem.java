@@ -18,12 +18,12 @@ public final class GroundItem {
 
 	static final void method582(int var0, short var1) {
 		short var2 = 256;
-		Class4.anInt48 += var0 * -1982538112;
+		PlayerLoginDetails.anInt48 += var0 * -1982538112;
 		int var3;
-		if (Class4.anInt48 * 397531541 > Class56.anIntArray755.length) {
-			Class4.anInt48 -= Class56.anIntArray755.length * 1729341885;
+		if (PlayerLoginDetails.anInt48 * 397531541 > Class56.anIntArray755.length) {
+			PlayerLoginDetails.anInt48 -= Class56.anIntArray755.length * 1729341885;
 			var3 = (int) (Math.random() * 12.0D);
-			ChatMessage.method2013(Class5.aClass108_Sub20_Sub15_Sub2Array83[var3], -606108613);
+			ChatMessage.method2013(Class5.fireRuneSprites[var3], -606108613);
 		}
 
 		var3 = 0;
@@ -33,7 +33,7 @@ public final class GroundItem {
 		int var7;
 		int var8;
 		for (var8 = 0; var8 < var5; ++var8) {
-			var7 = Class65.anIntArray860[var4 + var3] - Class56.anIntArray755[var3 + Class4.anInt48 * 397531541 & Class56.anIntArray755.length - 1] * var0 / 6;
+			var7 = Class65.anIntArray860[var4 + var3] - Class56.anIntArray755[var3 + PlayerLoginDetails.anInt48 * 397531541 & Class56.anIntArray755.length - 1] * var0 / 6;
 			if (var7 < 0) {
 				var7 = 0;
 			}
@@ -56,44 +56,44 @@ public final class GroundItem {
 			}
 		}
 
-		if (Class4.anInt57 * 250523231 > 0) {
-			Class4.anInt57 -= var0 * -1424705924;
+		if (PlayerLoginDetails.anInt57 * 250523231 > 0) {
+			PlayerLoginDetails.anInt57 -= var0 * -1424705924;
 		}
 
-		if (Class4.anInt67 * -713414969 > 0) {
-			Class4.anInt67 -= var0 * -1524438052;
+		if (PlayerLoginDetails.anInt67 * -713414969 > 0) {
+			PlayerLoginDetails.anInt67 -= var0 * -1524438052;
 		}
 
-		if (Class4.anInt57 * 250523231 == 0 && 0 == Class4.anInt67 * -713414969) {
+		if (PlayerLoginDetails.anInt57 * 250523231 == 0 && 0 == PlayerLoginDetails.anInt67 * -713414969) {
 			var8 = (int) (Math.random() * (double) (2000 / var0));
 			if (var8 == 0) {
-				Class4.anInt57 = 347503616;
+				PlayerLoginDetails.anInt57 = 347503616;
 			}
 
 			if (var8 == 1) {
-				Class4.anInt67 = 585882624;
+				PlayerLoginDetails.anInt67 = 585882624;
 			}
 		}
 
 		for (var8 = 0; var8 < var2 - var0; ++var8) {
-			Class4.anIntArray45[var8] = Class4.anIntArray45[var0 + var8];
+			PlayerLoginDetails.anIntArray45[var8] = PlayerLoginDetails.anIntArray45[var0 + var8];
 		}
 
 		for (var8 = var2 - var0; var8 < var2; ++var8) {
-			Class4.anIntArray45[var8] = (int) (Math.sin((double) (Class4.anInt37 * 432661575) / 14.0D) * 16.0D + Math.sin((double) (Class4.anInt37 * 432661575) / 15.0D) * 14.0D + Math.sin((double) (Class4.anInt37 * 432661575) / 16.0D) * 12.0D);
-			Class4.anInt37 += 1895990647;
+			PlayerLoginDetails.anIntArray45[var8] = (int) (Math.sin((double) (PlayerLoginDetails.anInt37 * 432661575) / 14.0D) * 16.0D + Math.sin((double) (PlayerLoginDetails.anInt37 * 432661575) / 15.0D) * 14.0D + Math.sin((double) (PlayerLoginDetails.anInt37 * 432661575) / 16.0D) * 12.0D);
+			PlayerLoginDetails.anInt37 += 1895990647;
 		}
 
-		Class4.anInt49 += var0 * -1061549843;
+		PlayerLoginDetails.anInt49 += var0 * -1061549843;
 		var8 = (var0 + (Client.cycle * -637317861 & 1)) / 2;
 		if (var8 > 0) {
-			for (var7 = 0; var7 < Class4.anInt49 * 379464052; ++var7) {
+			for (var7 = 0; var7 < PlayerLoginDetails.anInt49 * 379464052; ++var7) {
 				var6 = (int) (Math.random() * 124.0D) + 2;
 				var10 = (int) (Math.random() * 128.0D) + 128;
 				Class65.anIntArray860[(var10 << 7) + var6] = 192;
 			}
 
-			Class4.anInt49 = 0;
+			PlayerLoginDetails.anInt49 = 0;
 
 			int var9;
 			for (var7 = 0; var7 < var2; ++var7) {
@@ -177,31 +177,31 @@ public final class GroundItem {
 
 	static final void method586(RSInterface var0, int var1, int var2, int var3) {
 		if (var0.actionType * -2005807019 == 1) {
-			Class4.method91(var0.tooltip, "", 24, 0, 0, var0.interfaceHash * -1081473899, 2067353987);
+			ContextMenu.setContextMenuRow(var0.tooltip, "", 24, 0, 0, var0.interfaceHash * -1081473899, 2067353987);
 		}
 
 		String var5;
 		if (var0.actionType * -2005807019 == 2 && !Client.aBool2881) {
 			var5 = AnimationDefinition.method2234(var0, (byte) -21);
 			if (var5 != null) {
-				Class4.method91(var5, HuffmanEncoding.method690('\uff00', -2134841165) + var0.spellName, 25, 0, -1, var0.interfaceHash * -1081473899, 1882643240);
+				ContextMenu.setContextMenuRow(var5, HuffmanEncoding.method690('\uff00', -2134841165) + var0.spellName, 25, 0, -1, var0.interfaceHash * -1081473899, 1882643240);
 			}
 		}
 
 		if (3 == var0.actionType * -2005807019) {
-			Class4.method91(StringUtilities.aString1108, "", 26, 0, 0, var0.interfaceHash * -1081473899, 1930894399);
+			ContextMenu.setContextMenuRow(StringUtilities.aString1108, "", 26, 0, 0, var0.interfaceHash * -1081473899, 1930894399);
 		}
 
 		if (4 == var0.actionType * -2005807019) {
-			Class4.method91(var0.tooltip, "", 28, 0, 0, var0.interfaceHash * -1081473899, 1894350308);
+			ContextMenu.setContextMenuRow(var0.tooltip, "", 28, 0, 0, var0.interfaceHash * -1081473899, 1894350308);
 		}
 
 		if (var0.actionType * -2005807019 == 5) {
-			Class4.method91(var0.tooltip, "", 29, 0, 0, var0.interfaceHash * -1081473899, 2004086787);
+			ContextMenu.setContextMenuRow(var0.tooltip, "", 29, 0, 0, var0.interfaceHash * -1081473899, 2004086787);
 		}
 
 		if (6 == var0.actionType * -2005807019 && null == Client.aClass108_Sub17_2869) {
-			Class4.method91(var0.tooltip, "", 30, 0, -1, var0.interfaceHash * -1081473899, 1969748701);
+			ContextMenu.setContextMenuRow(var0.tooltip, "", 30, 0, -1, var0.interfaceHash * -1081473899, 1969748701);
 		}
 
 		int var8;
@@ -225,11 +225,11 @@ public final class GroundItem {
 							ItemDefinition itemDef = ItemDefinition.getItemDefinition(var0.widgetItems[var15] - 1, -1008729094);
 							if (Client.anInt2858 * -968945719 == 1 && Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, 618724156), 1422902481)) {
 								if (Class50.anInt699 * -932350913 != var0.interfaceHash * -1081473899 || var15 != ClientScriptReference.anInt716 * 347376265) {
-									Class4.method91(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -950562409) + itemDef.name, 31, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2028186126);
+									ContextMenu.setContextMenuRow(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -950562409) + itemDef.name, 31, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2028186126);
 								}
 							} else if (Client.aBool2881 && Class108_Sub20_Sub14_Sub6.method3075(Class32.method576(var0, -1016511227), 77070691)) {
 								if (16 == (Class68.anInt902 * 401025055 & 16)) {
-									Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -1123684096) + itemDef.name, 32, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 1878199344);
+									ContextMenu.setContextMenuRow(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16748608, -1123684096) + itemDef.name, 32, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 1878199344);
 								}
 							} else {
 								String[] var12 = itemDef.interfaceOptions;
@@ -247,9 +247,9 @@ public final class GroundItem {
 												var14 = 37;
 											}
 
-											Class4.method91(var12[var13], HuffmanEncoding.method690(16748608, -618418833) + itemDef.name, var14, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2124552684);
+											ContextMenu.setContextMenuRow(var12[var13], HuffmanEncoding.method690(16748608, -618418833) + itemDef.name, var14, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2124552684);
 										} else if (4 == var13) {
-											Class4.method91(StringUtilities.DROP_OPTION, HuffmanEncoding.method690(16748608, -1522975852) + itemDef.name, 37, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2096358408);
+											ContextMenu.setContextMenuRow(StringUtilities.DROP_OPTION, HuffmanEncoding.method690(16748608, -1522975852) + itemDef.name, 37, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2096358408);
 										}
 									}
 								}
@@ -257,7 +257,7 @@ public final class GroundItem {
 								int var19 = Class32.method576(var0, -1004510541);
 								boolean var18 = (var19 >> 31 & 1) != 0;
 								if (var18) {
-									Class4.method91(StringUtilities.USE_OPTION, HuffmanEncoding.method690(16748608, -1608586132) + itemDef.name, 38, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2079440851);
+									ContextMenu.setContextMenuRow(StringUtilities.USE_OPTION, HuffmanEncoding.method690(16748608, -1608586132) + itemDef.name, 38, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2079440851);
 								}
 
 								int var4;
@@ -278,7 +278,7 @@ public final class GroundItem {
 												var7 = 35;
 											}
 
-											Class4.method91(var12[var4], HuffmanEncoding.method690(16748608, -1956098771) + itemDef.name, var7, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2108310878);
+											ContextMenu.setContextMenuRow(var12[var4], HuffmanEncoding.method690(16748608, -1956098771) + itemDef.name, var7, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2108310878);
 										}
 									}
 								}
@@ -312,12 +312,12 @@ public final class GroundItem {
 												var7 = 43;
 											}
 
-											Class4.method91(var12[var4], HuffmanEncoding.method690(16748608, -597811846) + itemDef.name, var7, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2062771398);
+											ContextMenu.setContextMenuRow(var12[var4], HuffmanEncoding.method690(16748608, -597811846) + itemDef.name, var7, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2062771398);
 										}
 									}
 								}
 
-								Class4.method91(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16748608, -1806251069) + itemDef.name, 1005, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2048146797);
+								ContextMenu.setContextMenuRow(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16748608, -1806251069) + itemDef.name, 1005, itemDef.itemID * 754919629, var15, var0.interfaceHash * -1081473899, 2048146797);
 							}
 						}
 					}
@@ -331,7 +331,7 @@ public final class GroundItem {
 			if (Client.aBool2881) {
 				if (Class50.method698(Class32.method576(var0, -64885960), -1762520146)) {
 					if (32 == (Class68.anInt902 * 401025055 & 32)) {
-						Class4.method91(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + var0.aString1821, 58, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 2044989656);
+						ContextMenu.setContextMenuRow(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + var0.aString1821, 58, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 2044989656);
 					}
 				}
 			} else {
@@ -346,13 +346,13 @@ public final class GroundItem {
 					}
 
 					if (null != var16) {
-						Class4.method91(var16, var0.aString1821, 1007, var15 + 1, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 2131773219);
+						ContextMenu.setContextMenuRow(var16, var0.aString1821, 1007, var15 + 1, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 2131773219);
 					}
 				}
 
 				var5 = AnimationDefinition.method2234(var0, (byte) 49);
 				if (var5 != null) {
-					Class4.method91(var5, var0.aString1821, 25, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1822347335);
+					ContextMenu.setContextMenuRow(var5, var0.aString1821, 25, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1822347335);
 				}
 
 				for (var8 = 4; var8 >= 0; --var8) {
@@ -366,12 +366,12 @@ public final class GroundItem {
 					}
 
 					if (null != var17) {
-						Class4.method91(var17, var0.aString1821, 57, 1 + var8, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1895864650);
+						ContextMenu.setContextMenuRow(var17, var0.aString1821, 57, 1 + var8, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1895864650);
 					}
 				}
 
-				if (Class1.method37(Class32.method576(var0, -251089339), -437064376)) {
-					Class4.method91(StringUtilities.CONTINUE_MENU, "", 30, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1939368166);
+				if (ContextMenuRow.method37(Class32.method576(var0, -251089339), -437064376)) {
+					ContextMenu.setContextMenuRow(StringUtilities.CONTINUE_MENU, "", 30, 0, var0.anInt1772 * -490007465, var0.interfaceHash * -1081473899, 1939368166);
 				}
 			}
 		}
