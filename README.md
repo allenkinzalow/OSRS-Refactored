@@ -5,3 +5,6 @@ OSRS-Refactored is a personal project to help demonstrate the usefulness of reve
 This is a deobfuscated and refactored version of revision 60 of the OSRS client. Please only use this for reference and education!
 
 I tried to give credit where credit was due and hopefully I'll have a fully refactored osrs client soon. Feel free to make contributions.
+
+
+I have began some documentation on the wiki page: https://github.com/kinztechcom/OSRS-Refactored/wiki
