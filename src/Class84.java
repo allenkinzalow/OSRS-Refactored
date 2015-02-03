@@ -10,7 +10,7 @@ public class Class84 {
          Class50.aClass108_Sub14_693.position = var1 * 8751192 - 1605143241;
          int var3 = Class50.aClass108_Sub14_693.readInt();
          int var4 = Class50.aClass108_Sub14_693.readInt();
-         var0.method1893(var3, var4, 1387721033);
+         var0.setInformation(var3, var4, 1387721033);
       } else {
          Js5Request.submitJs5Request(null, 255, 255, 0, (byte) 0, true, (byte) 77);
          Class78.aClass74_Sub1Array1214[var1] = var0;

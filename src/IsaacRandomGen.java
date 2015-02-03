@@ -5,7 +5,7 @@ public final class IsaacRandomGen {
 	static RSByteBuffer js5WorkBuffer;
 	static byte js5EncryptionKey = 0;
 	static Js5Request activeJs5Job;
-	static RSByteBuffer aClass108_Sub14_1213 = new RSByteBuffer(8);
+	static RSByteBuffer js5buffer = new RSByteBuffer(8);
 	static boolean isUrgentRequest;
 	int anInt736;
 	int[] anIntArray739 = new int[256];
@@ -254,7 +254,7 @@ public final class IsaacRandomGen {
 		}
 
 		Class78.anInt1212 += var3 * 1810130545;
-		if (0 == Class78.anInt1224 * -374476139 && Class78.anInt1218 * 1577549363 == 0 && 0 == Class78.anInt1221 * 416352625 && 0 == Class78.anInt1216 * 1668849075) {
+		if (0 == Class78.delayableRequestsSubmitted * -374476139 && Class78.priorityRequestsSubmitted * 1577549363 == 0 && 0 == Class78.anInt1221 * 416352625 && 0 == Class78.anInt1216 * 1668849075) {
 			return true;
 		} else if (null == Class78.connection) {
 			return false;
@@ -265,19 +265,19 @@ public final class IsaacRandomGen {
 				} else {
 					Js5Request js5Request;
 					RSByteBuffer buffer;
-					while (Class78.anInt1218 * 1577549363 < 20 && Class78.anInt1216 * 1668849075 > 0) {
-						js5Request = (Js5Request) Class78.aClass101_1228.method1304();
+					while (Class78.priorityRequestsSubmitted * 1577549363 < 20 && Class78.anInt1216 * 1668849075 > 0) {
+						js5Request = (Js5Request) Class78.priorityRequestQueue.method1304();
 						buffer = new RSByteBuffer(4);
 						buffer.writeByte(1);
 						buffer.writeTriByte((int) js5Request.key);
 						Class78.connection.writeBytes(buffer.buf, 0, 4);
 						Class78.urgentJs5Requests.put(js5Request, js5Request.key);
 						Class78.anInt1216 += 1906091653;
-						Class78.anInt1218 += 2075110651;
+						Class78.priorityRequestsSubmitted += 2075110651;
 					}
 
-					while (Class78.anInt1224 * -374476139 < 20 && Class78.anInt1221 * 416352625 > 0) {
-						js5Request = (Js5Request) Class78.aClass98_1219.method1295();
+					while (Class78.delayableRequestsSubmitted * -374476139 < 20 && Class78.anInt1221 * 416352625 > 0) {
+						js5Request = (Js5Request) Class78.delayableRequestQueue.method1295();
 						buffer = new RSByteBuffer(4);
 						buffer.writeByte(0);
 						buffer.writeTriByte((int) js5Request.key);
@@ -285,7 +285,7 @@ public final class IsaacRandomGen {
 						js5Request.method1982();
 						Class78.regularJs5Requests.put(js5Request, js5Request.key);
 						Class78.anInt1221 -= 831035281;
-						Class78.anInt1224 += 1752320189;
+						Class78.delayableRequestsSubmitted += 1752320189;
 					}
 
 					for (int attempt = 0; attempt < 100; ++attempt) {
@@ -307,33 +307,32 @@ public final class IsaacRandomGen {
 						}
 
 						int totalread;
-						int var8;
+						int p;
 						int var9;
-						int var11;
 						if (minNeeded > 0) {
-							totalread = minNeeded - aClass108_Sub14_1213.position * 798331555;
+							totalread = minNeeded - js5buffer.position * 798331555;
 							if (totalread > available) {
 								totalread = available;
 							}
 
-							Class78.connection.read(aClass108_Sub14_1213.buf, aClass108_Sub14_1213.position * 798331555, totalread);
+							Class78.connection.read(js5buffer.buf, js5buffer.position * 798331555, totalread);
 							if (js5EncryptionKey != 0) {
-								for (var8 = 0; var8 < totalread; ++var8) {
-									aClass108_Sub14_1213.buf[var8 + aClass108_Sub14_1213.position * 798331555] ^= js5EncryptionKey;
+								for (p = 0; p < totalread; p++) {
+									js5buffer.buf[p + js5buffer.position * 798331555] ^= js5EncryptionKey;
 								}
 							}
 
-							aClass108_Sub14_1213.position += totalread * 537964811;
-							if (aClass108_Sub14_1213.position * 798331555 < minNeeded) {
+							js5buffer.position += totalread * 537964811;
+							if (js5buffer.position * 798331555 < minNeeded) {
 								break;
 							}
 
 							if (activeJs5Job == null) {
-								aClass108_Sub14_1213.position = 0;
-								int index = aClass108_Sub14_1213.readUByte();
-								int container = aClass108_Sub14_1213.readUShort(-276867365);
-								int compression = aClass108_Sub14_1213.readUByte();
-								int size = aClass108_Sub14_1213.readInt();
+								js5buffer.position = 0;
+								int index = js5buffer.readUByte();
+								int container = js5buffer.readUShort(-276867365);
+								int compression = js5buffer.readUByte();
+								int size = js5buffer.readInt();
 								long key = (long) ((index << 16) + container);
 								Js5Request request = (Js5Request) Class78.urgentJs5Requests.get(key);
 								isUrgentRequest = true;
@@ -353,46 +352,46 @@ public final class IsaacRandomGen {
 								js5WorkBuffer.writeByte(compression);
 								js5WorkBuffer.writeInt(size);
 								Class78.anInt1223 = -1511117560;
-								aClass108_Sub14_1213.position = 0;
+								js5buffer.position = 0;
 							} else if (0 == Class78.anInt1223 * 1512529505) {
-								if (aClass108_Sub14_1213.buf[0] == -1) {
+								if (js5buffer.buf[0] == -1) {
 									Class78.anInt1223 = -725760607;
-									aClass108_Sub14_1213.position = 0;
+									js5buffer.position = 0;
 								} else {
 									activeJs5Job = null;
 								}
 							}
 						} else {
 							totalread = js5WorkBuffer.buf.length - activeJs5Job.aByte2299;
-							var8 = 512 - Class78.anInt1223 * 1512529505;
-							if (var8 > totalread - js5WorkBuffer.position * 798331555) {
-								var8 = totalread - js5WorkBuffer.position * 798331555;
+							p = 512 - Class78.anInt1223 * 1512529505;
+							if (p > totalread - js5WorkBuffer.position * 798331555) {
+								p = totalread - js5WorkBuffer.position * 798331555;
 							}
 
-							if (var8 > available) {
-								var8 = available;
+							if (p > available) {
+								p = available;
 							}
 
-							Class78.connection.read(js5WorkBuffer.buf, js5WorkBuffer.position * 798331555, var8);
+							Class78.connection.read(js5WorkBuffer.buf, js5WorkBuffer.position * 798331555, p);
 							if (js5EncryptionKey != 0) {
-								for (var9 = 0; var9 < var8; ++var9) {
+								for (var9 = 0; var9 < p; ++var9) {
 									js5WorkBuffer.buf[var9 + js5WorkBuffer.position * 798331555] ^= js5EncryptionKey;
 								}
 							}
 
-							js5WorkBuffer.position += var8 * 537964811;
-							Class78.anInt1223 += var8 * -725760607;
+							js5WorkBuffer.position += p * 537964811;
+							Class78.anInt1223 += p * -725760607;
 							if (totalread == js5WorkBuffer.position * 798331555) {
 								if (activeJs5Job.key == 0xff00ffL) { /* Index 255, container 255 */
 									Class50.aClass108_Sub14_693 = js5WorkBuffer;
 
-									for (var9 = 0; var9 < 256; ++var9) {
-										CacheIndex var22 = Class78.aClass74_Sub1Array1214[var9];
-										if (var22 != null) {
-											Class50.aClass108_Sub14_693.position = var9 * 8751192 - 1605143241;
-											var11 = Class50.aClass108_Sub14_693.readInt();
-											int var16 = Class50.aClass108_Sub14_693.readInt();
-											var22.method1893(var11, var16, 1627815458);
+									for (int idx = 0; idx < 256; ++idx) {
+										CacheIndex index = Class78.aClass74_Sub1Array1214[idx];
+										if (index != null) {
+											Class50.aClass108_Sub14_693.position = idx * 8751192 - 1605143241;
+											int crc = Class50.aClass108_Sub14_693.readInt();
+											int revision = Class50.aClass108_Sub14_693.readInt();
+											index.setInformation(crc, revision, 1627815458);
 										}
 									}
 								} else {
@@ -407,22 +406,22 @@ public final class IsaacRandomGen {
 											;
 										}
 
-										Class78.anInt1229 += 1540718053;
+										Class78.failedJs5Attempts += 1540718053;
 										Class78.connection = null;
 										js5EncryptionKey = (byte) ((int) (Math.random() * 255.0D + 1.0D));
 										return false;
 									}
 
-									Class78.anInt1229 = 0;
+									Class78.failedJs5Attempts = 0;
 									Class78.anInt1230 = 0;
 									activeJs5Job.aClass74_Sub1_2300.pushCacheIndexRequest((int) (activeJs5Job.key & 65535L), js5WorkBuffer.buf, (activeJs5Job.key & 16711680L) == 16711680L, isUrgentRequest, 418822511);
 								}
 
 								activeJs5Job.unlink();
 								if (isUrgentRequest) {
-									Class78.anInt1218 -= 2075110651;
+									Class78.priorityRequestsSubmitted -= 2075110651;
 								} else {
-									Class78.anInt1224 -= 1752320189;
+									Class78.delayableRequestsSubmitted -= 1752320189;
 								}
 
 								Class78.anInt1223 = 0;

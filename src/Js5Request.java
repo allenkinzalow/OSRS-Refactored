@@ -196,7 +196,7 @@ public class Js5Request extends CacheableNode {
 
    static void submitJs5Request(CacheIndex var0, int index, int archive, int var3, byte var4, boolean var5, byte var6) {
        long key = (long) (archive + (index << 16));
-       Js5Request req = (Js5Request) Class78.aClass101_1228.get(key);
+       Js5Request req = (Js5Request) Class78.priorityRequestQueue.get(key);
 
        if (null == req) {
            req = (Js5Request) Class78.urgentJs5Requests.get(key);
@@ -205,7 +205,7 @@ public class Js5Request extends CacheableNode {
                if (req != null) {
                    if (var5) {
                        req.method1982();
-                       Class78.aClass101_1228.put(req, key);
+                       Class78.priorityRequestQueue.put(req, key);
                        Class78.anInt1221 -= 831035281;
                        Class78.anInt1216 -= 1906091653;
                    }
@@ -224,10 +224,10 @@ public class Js5Request extends CacheableNode {
                    req.aByte2299 = var4;
 
                    if (var5) {
-                       Class78.aClass101_1228.put(req, key);
+                       Class78.priorityRequestQueue.put(req, key);
                        Class78.anInt1216 -= 1906091653;
                    } else {
-                       Class78.aClass98_1219.method1282(req);
+                       Class78.delayableRequestQueue.method1282(req);
                        Class78.aClass101_1220.put(req, key);
                        Class78.anInt1221 += 831035281;
                    }

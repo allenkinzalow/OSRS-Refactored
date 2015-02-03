@@ -401,7 +401,7 @@ public final class NPC extends Entity {
 		SocketSession.anInt811 = var12 * -422753419;
 		if (Client.aBool2874) {
 			byte var30 = 0;
-			var15 = var30 + Class78.anInt1216 * 1668849075 + Class78.anInt1218 * 1577549363;
+			var15 = var30 + Class78.anInt1216 * 1668849075 + Class78.priorityRequestsSubmitted * 1577549363;
 			if (0 == var15) {
 				Client.aBool2874 = false;
 			}

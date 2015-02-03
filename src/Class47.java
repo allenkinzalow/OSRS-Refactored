@@ -126,7 +126,7 @@ public class Class47 {
 
       Class78.connection = var0;
       ClientScriptMap.method2171(var1, -1063552333);
-      IsaacRandomGen.aClass108_Sub14_1213.position = 0;
+      IsaacRandomGen.js5buffer.position = 0;
       IsaacRandomGen.activeJs5Job = null;
       IsaacRandomGen.js5WorkBuffer = null;
       Class78.anInt1223 = 0;
@@ -161,16 +161,16 @@ public class Class47 {
                   return;
                }
 
-               Class78.aClass98_1219.method1283(js5Request);
+               Class78.delayableRequestQueue.method1283(js5Request);
                Class78.aClass101_1220.put(js5Request, js5Request.key);
                Class78.anInt1221 += 831035281;
-               Class78.anInt1224 -= 1752320189;
+               Class78.delayableRequestsSubmitted -= 1752320189;
             }
          }
 
-         Class78.aClass101_1228.put(js5Request, js5Request.key);
+         Class78.priorityRequestQueue.put(js5Request, js5Request.key);
          Class78.anInt1216 -= 1906091653;
-         Class78.anInt1218 -= 2075110651;
+         Class78.priorityRequestsSubmitted -= 2075110651;
       }
    }
 }
