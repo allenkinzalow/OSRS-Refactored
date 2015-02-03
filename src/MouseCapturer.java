@@ -16,12 +16,12 @@ public class MouseCapturer implements Runnable {
 
    static void method1117() {
       if(Client.aBool2881) {
-         RSInterface var1 = LoginHandler.method878(Class43.anInt607 * 550337065, Client.anInt2936 * 1150893973, 1596774930);
+         RSInterface var1 = RSInterface.method878(URLSession.anInt607 * 550337065, Client.anInt2936 * 1150893973, 1596774930);
          if(null != var1 && var1.anObjectArray1773 != null) {
             ClientScript var2 = new ClientScript();
             var2.parentInterface = var1;
             var2.parameters = var1.anObjectArray1773;
-            GameObject.executeScript(var2, -1545456412);
+            ClientScript.executeScript(var2, -1545456412);
          }
 
          Client.aBool2881 = false;
@@ -30,7 +30,7 @@ public class MouseCapturer implements Runnable {
    }
 
    static final void method298(ContextMenuRow var0, int var1, int var2, short var3) {
-      processClickAction(var0.menuXInteraction * 313474189, var0.menuYInteraction * 209465825, var0.menuIdentifier * -647975407, var0.menuParameters * -2100227435, var0.menuActionPrefixes, var0.menuActionPrefixes, var1, var2, -457306493);
+      processMenuClickAction(var0.menuXInteraction * 313474189, var0.menuYInteraction * 209465825, var0.menuIdentifier * -647975407, var0.menuParameters * -2100227435, var0.menuActionPrefixes, var0.menuActionPrefixes, var1, var2, -457306493);
    }
 
 
@@ -107,7 +107,7 @@ public class MouseCapturer implements Runnable {
       Class26.anInt356 = 0;
    }
 
-   static final void processClickAction(int var0, int var1, int action, int var3, String var4, String var5, int var6, int var7, int var8) {
+   static final void processMenuClickAction(int var0, int var1, int action, int var3, String var4, String var5, int var6, int var7, int var8) {
       if(action >= 2000) {
          action -= 2000;
       }
@@ -123,7 +123,7 @@ public class MouseCapturer implements Runnable {
             Client.anInt2933 = var0 * -18058427;
             Client.anInt2894 = var1 * 1849977017;
             Client.secureBuffer.writePacket(61);
-            Client.secureBuffer.writeInt(Class43.anInt607 * 550337065);
+            Client.secureBuffer.writeInt(URLSession.anInt607 * 550337065);
             Client.secureBuffer.method1748(var3, 1231069106);
             Client.secureBuffer.method1748(Client.anInt2936 * 1150893973, 362745570);
             Client.secureBuffer.writeByteN(KeyFocusListener.aBoolArray895[82] ? 1 : 0, (byte) 1);
@@ -217,22 +217,22 @@ public class MouseCapturer implements Runnable {
       int var10;
       RSInterface var16;
       if(25 == action) {
-         var16 = LoginHandler.method878(var1, var0, 1652667486);
+         var16 = RSInterface.method878(var1, var0, 1652667486);
          if(var16 != null) {
             method1117();
             var10 = Class2.method41(Class32.method576(var16, 2018318857), -455189452);
             int var11 = var16.itemID * 703308511;
-            RSInterface var12 = LoginHandler.method878(var1, var0, 1557189892);
+            RSInterface var12 = RSInterface.method878(var1, var0, 1557189892);
             if(null != var12 && var12.anObjectArray1849 != null) {
                ClientScript var13 = new ClientScript();
                var13.parentInterface = var12;
                var13.parameters = var12.anObjectArray1849;
-               GameObject.executeScript(var13, -1927772691);
+               ClientScript.executeScript(var13, -1927772691);
             }
 
             Client.anInt2777 = var11 * 758271709;
             Client.aBool2881 = true;
-            Class43.anInt607 = var1 * -839073255;
+            URLSession.anInt607 = var1 * -839073255;
             Client.anInt2936 = var0 * 362025917;
             Class68.anInt902 = var10 * 2015253471;
             MouseInputHandler.method775(var12, -16054773);
@@ -282,7 +282,7 @@ public class MouseCapturer implements Runnable {
             Client.anInt2894 = var1 * 1849977017;
             Client.secureBuffer.writePacket(73);
             Client.secureBuffer.method1741(KeyFocusListener.aBoolArray895[82]?1:0, -63259956);
-            Client.secureBuffer.method1856(Class43.anInt607 * 550337065, (short)10992);
+            Client.secureBuffer.method1856(URLSession.anInt607 * 550337065, (short)10992);
             Client.secureBuffer.writeShort(var3 >> 14 & 32767);
             Client.secureBuffer.method1748(var1 + SoundEffectWorker.anInt201 * -1743142671, 644872903);
             Client.secureBuffer.writeShort(Client.anInt2936 * 1150893973);
@@ -447,7 +447,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writeShort(Client.anInt2936 * 1150893973);
                Client.secureBuffer.method1749(var3, -150877459);
                Client.secureBuffer.writeShort(SoundEffectWorker.anInt201 * -1743142671 + var1);
-               Client.secureBuffer.method1846(Class43.anInt607 * 550337065, -692938648);
+               Client.secureBuffer.method1846(URLSession.anInt607 * 550337065, -692938648);
                Client.secureBuffer.method1739(KeyFocusListener.aBoolArray895[82]?1:0, (byte)64);
                Client.secureBuffer.method1749(var0 + Class100.anInt1388 * 263051377, -1021378590);
             }
@@ -549,11 +549,11 @@ public class MouseCapturer implements Runnable {
             }
 
             if(58 == action) {
-               var16 = LoginHandler.method878(var1, var0, 1645722285);
+               var16 = RSInterface.method878(var1, var0, 1645722285);
                if(var16 != null) {
                   Client.secureBuffer.writePacket(95);
                   Client.secureBuffer.method1749(Client.anInt2936 * 1150893973, -891314067);
-                  Client.secureBuffer.method1846(Class43.anInt607 * 550337065, 75023682);
+                  Client.secureBuffer.method1846(URLSession.anInt607 * 550337065, 75023682);
                   Client.secureBuffer.writeInt(var1);
                   Client.secureBuffer.writeAShortLE(var16.itemID * 703308511, (byte) 82);
                   Client.secureBuffer.method1748(var0, 2020925017);
@@ -595,7 +595,7 @@ public class MouseCapturer implements Runnable {
             }
 
             if(action == 57 || 1007 == action) {
-               var16 = LoginHandler.method878(var1, var0, 2027572823);
+               var16 = RSInterface.method878(var1, var0, 2027572823);
                if(null != var16) {
                   GraphicsBuffer.method279(var3, var1, var0, var16.itemID * 703308511, var5, (byte)1);
                }
@@ -605,7 +605,7 @@ public class MouseCapturer implements Runnable {
                Client.secureBuffer.writePacket(250);
                Client.secureBuffer.writeInt(var1);
                Client.secureBuffer.writeAShortLE(var0, (byte) -50);
-               Client.aClass108_Sub17_2869 = LoginHandler.method878(var1, var0, 1913423174);
+               Client.aClass108_Sub17_2869 = RSInterface.method878(var1, var0, 1913423174);
                MouseInputHandler.method775(Client.aClass108_Sub17_2869, -16054773);
             }
 
@@ -719,7 +719,7 @@ public class MouseCapturer implements Runnable {
                   Client.anInt2933 = var0 * -18058427;
                   Client.anInt2894 = var1 * 1849977017;
                   Client.secureBuffer.writePacket(243);
-                  Client.secureBuffer.writeInt(Class43.anInt607 * 550337065);
+                  Client.secureBuffer.writeInt(URLSession.anInt607 * 550337065);
                   Client.secureBuffer.writeByte(KeyFocusListener.aBoolArray895[82] ? 1 : 0);
                   Client.secureBuffer.method1748(var3, 1189777157);
                   Client.secureBuffer.writeShort(Client.anInt2936 * 1150893973);
@@ -762,7 +762,7 @@ public class MouseCapturer implements Runnable {
             if(action == 32) {
                Client.secureBuffer.writePacket(106);
                Client.secureBuffer.writeAShortLE(var3, (byte) -85);
-               Client.secureBuffer.writeInt(Class43.anInt607 * 550337065);
+               Client.secureBuffer.writeInt(URLSession.anInt607 * 550337065);
                Client.secureBuffer.method1856(var1, (short)12988);
                Client.secureBuffer.method1748(var0, 2031611315);
                Client.secureBuffer.writeShort(Client.anInt2936 * 1150893973);

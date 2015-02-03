@@ -5,7 +5,7 @@ public class Class16 {
    int anInt206;
    static byte aByte207;
    int anInt209;
-   static GameConnection aGameConnection_211;
+   static SocketSession aConnection_Session_211;
    int anInt213;
 
 

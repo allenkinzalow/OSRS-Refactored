@@ -55,7 +55,7 @@ public class ItemDefinition extends CacheableNode {
 
 
 	public static RSFont loadFont(AbstractIndex spriteIndex, AbstractIndex fontIndex, int archiveID, int fileID, int var4) {
-		if (!FriendsChatMember.loadPaletteSprite(spriteIndex, archiveID, fileID, -930113977)) {
+		if (!PaletteSprite.loadPaletteSprite(spriteIndex, archiveID, fileID, -930113977)) {
 			return null;
 		} else {
 			byte[] fontData = fontIndex.getFile(archiveID, fileID, (byte) 7);
@@ -63,7 +63,7 @@ public class ItemDefinition extends CacheableNode {
 			if (null == fontData) {
 				font = null;
 			} else {
-				RSFont loadedFont = new RSFont(fontData, Class88.anIntArray1316, Class9.anIntArray123, PaletteSprite.lastLoadedPaletteSpriteWidth, Class9.anIntArray126, Class9.anIntArray130, AnimationSkeletonSet.loadedCharacterPixels);
+				RSFont loadedFont = new RSFont(fontData, Class88.anIntArray1316, Class9.anIntArray123, PaletteSprite.lastLoadedPaletteSpriteWidth, Class9.anIntArray126, Class9.anIntArray130, RSFont.loadedCharacterPixels);
 				PaletteSprite.resetLastPaletteValues((byte) 96);
 				font = loadedFont;
 			}

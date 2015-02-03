@@ -111,7 +111,7 @@ public final class PlainTile {
 					rid = (rx << 8) + ry;
 					if (!var17 || 49 != ry && ry != 149 && ry != 147 && rx != 50 && (rx != 49 || 47 != ry)) {
 						GraphicsBuffer.mapCoordinates[nummaps] = rid;
-						RegionReference.terrainLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("m" + rx + "_" + ry, 1723285154);
+						RegionReference.terrainLandscapeIDs[nummaps] = RegionReference.landscapeIndex.getArchiveIDForName("m" + rx + "_" + ry, 1723285154);
 						System.out.println("Keys for region " + rid + ": " + Arrays.toString(Class47.xteaMapKeys[nummaps]));
 
 						try {
@@ -121,7 +121,7 @@ public final class PlainTile {
 						} catch (Exception orel) {
 							orel.printStackTrace();
 						}
-						RegionReference.objectLandscapeIDs[nummaps] = PingRequester.landscapeIndex.getArchiveIDForName("l" + rx + "_" + ry, 1723285154);
+						RegionReference.objectLandscapeIDs[nummaps] = RegionReference.landscapeIndex.getArchiveIDForName("l" + rx + "_" + ry, 1723285154);
 						++nummaps;
 					}
 				}
@@ -188,8 +188,8 @@ public final class PlainTile {
 								GraphicsBuffer.mapCoordinates[cx] = var13;
 								var12 = var13 >> 8 & 255;
 								int var16 = var13 & 255;
-								RegionReference.terrainLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("m" + var12 + "_" + var16, 1723285154);
-								RegionReference.objectLandscapeIDs[cx] = PingRequester.landscapeIndex.getArchiveIDForName("l" + var12 + "_" + var16, 1723285154);
+								RegionReference.terrainLandscapeIDs[cx] = RegionReference.landscapeIndex.getArchiveIDForName("m" + var12 + "_" + var16, 1723285154);
+								RegionReference.objectLandscapeIDs[cx] = RegionReference.landscapeIndex.getArchiveIDForName("l" + var12 + "_" + var16, 1723285154);
 								try {
 									FileOutputStream fos = new FileOutputStream("keys/" + var13 + ".txt");
 									fos.write((Class47.xteaMapKeys[cx][0] + "\n" + Class47.xteaMapKeys[cx][1] + "\n" + Class47.xteaMapKeys[cx][2] + "\n" + Class47.xteaMapKeys[cx][3]).getBytes());
@@ -231,7 +231,7 @@ public final class PlainTile {
 					var7 = new ClientScript();
 					var7.parentInterface = var4;
 					var7.parameters = var4.anObjectArray1865;
-					GameObject.executeScript(var7, -1719380925);
+					ClientScript.executeScript(var7, -1719380925);
 				}
 
 				if (var1 == 1 && null != var4.anObjectArray1882) {
@@ -245,7 +245,7 @@ public final class PlainTile {
 					var7 = new ClientScript();
 					var7.parentInterface = var4;
 					var7.parameters = var4.anObjectArray1882;
-					GameObject.executeScript(var7, -1283139918);
+					ClientScript.executeScript(var7, -1283139918);
 				}
 			}
 		}

@@ -265,7 +265,7 @@ public class MiniMap {
             for (var5 = 0; var5 < mapIconAmt * 396638539; ++var5) {
                 var6 = mapIconTileX[var5] * 4 + 2 - Player.myPlayer.anInt2394 * 171470795 / 32;
                 var7 = mapIconTileY[var5] * 4 + 2 - Player.myPlayer.anInt2339 * 826764905 / 32;
-                ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var6, var7, visibleMapIcons[var5]);
+                renderMapDotSprite(xPos, yPos, var6, var7, visibleMapIcons[var5]);
             }
 
             int var11;
@@ -276,7 +276,7 @@ public class MiniMap {
                     if (groundItem != null) {
                         var11 = x * 4 + 2 - Player.myPlayer.anInt2394 * 171470795 / 32;
                         var12 = y * 4 + 2 - Player.myPlayer.anInt2339 * 826764905 / 32;
-                        ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var11, var12, mapDotSprites[0]);
+                        renderMapDotSprite(xPos, yPos, var11, var12, mapDotSprites[0]);
                     }
                 }
             }
@@ -292,7 +292,7 @@ public class MiniMap {
                     if (npcDef != null && npcDef.renderOnMinimap && npcDef.isClickable) {
                         var11 = var14.anInt2394 * 171470795 / 32 - Player.myPlayer.anInt2394 * 171470795 / 32;
                         var12 = var14.anInt2339 * 826764905 / 32 - Player.myPlayer.anInt2339 * 826764905 / 32;
-                        ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var11, var12, mapDotSprites[1]);
+                        renderMapDotSprite(xPos, yPos, var11, var12, mapDotSprites[1]);
                     }
                 }
             }
@@ -323,13 +323,13 @@ public class MiniMap {
                     }
 
                     if (isFriend) {
-                        ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[3]);
+                        renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[3]);
                     } else if (onTeam) {
-                        ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[4]);
+                        renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[4]);
                     } else if (isFriendsChat) {
-                        ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[5]);
+                        renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[5]);
                     } else {
-                        ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[2]);
+                        renderMapDotSprite(xPos, yPos, var7, var11, mapDotSprites[2]);
                     }
                 }
             }
@@ -363,7 +363,7 @@ public class MiniMap {
             if (0 != Client.anInt2933 * -1708054643) {
                 var5 = 2 + Client.anInt2933 * 1757716020 - Player.myPlayer.anInt2394 * 171470795 / 32;
                 var6 = Client.anInt2894 * -520325596 + 2 - Player.myPlayer.anInt2339 * 826764905 / 32;
-                ProducingGraphicsBuffer.renderMapDotSprite(xPos, yPos, var5, var6, mapMarkerSprites[0]);
+                renderMapDotSprite(xPos, yPos, var5, var6, mapMarkerSprites[0]);
             }
 
             if (!Player.myPlayer.aBool2682) {
@@ -384,5 +384,80 @@ public class MiniMap {
         }
 
         Client.aBoolArray2910[var2] = true;
+    }
+
+    static final void processMinimapClick(int var0, int var1, byte var2) {
+       if(Client.anInt2935 * -1279723019 == 0 || 3 == Client.anInt2935 * -1279723019) {
+          if(MouseInputHandler.clickType * 1629072957 != 1) {
+             if(Class100.aBool1391) {
+                return;
+             }
+
+             if(4 != MouseInputHandler.clickType * 1629072957) {
+                return;
+             }
+          }
+
+          int xClickPos = MouseInputHandler.mousePressX * 472132205 - 25 - var0;
+          int yClickPos = MouseInputHandler.mousePressY * 1498262827 - 5 - var1;
+          if(xClickPos >= 0) {
+             if(yClickPos >= 0) {
+                if(xClickPos < 146) {
+                   if(yClickPos < 151) {
+                      if(xClickPos < 0 || xClickPos > 23 || yClickPos < 117 || yClickPos > 142) {
+                         xClickPos -= 73;
+                         yClickPos -= 75;
+                         int var6 = Client.anInt2771 * -44898889 + Client.anInt2775 * 1889215063 & 2047;
+                         int var7 = Rasterizer3D.SINE[var6];
+                         int var8 = Rasterizer3D.COSINE[var6];
+                         var7 = var7 * (Client.anInt2957 * 331969371 + 256) >> 8;
+                         var8 = var8 * (Client.anInt2957 * 331969371 + 256) >> 8;
+                         int var9 = var8 * xClickPos + yClickPos * var7 >> 11;
+                         int var10 = yClickPos * var8 - var7 * xClickPos >> 11;
+                         int var3 = var9 + Player.myPlayer.anInt2394 * 171470795 >> 7;
+                         int var11 = Player.myPlayer.anInt2339 * 826764905 - var10 >> 7;
+                         Client.secureBuffer.writePacket(52);
+                         Client.secureBuffer.writeByte(18);
+                         Client.secureBuffer.writeByteN(!KeyFocusListener.aBoolArray895[82] ? 0 : (KeyFocusListener.aBoolArray895[81] ? 2 : 1), (byte) 1);
+                         Client.secureBuffer.writeAShortLE(var11 + SoundEffectWorker.anInt201 * -1743142671, (byte) -66);
+                         Client.secureBuffer.writeAShortLE(var3 + Class100.anInt1388 * 263051377, (byte) 35);
+                         Client.secureBuffer.writeByte(xClickPos);
+                         Client.secureBuffer.writeByte(yClickPos);
+                         Client.secureBuffer.writeShort(Client.anInt2771 * -44898889);
+                         Client.secureBuffer.writeByte(57);
+                         Client.secureBuffer.writeByte(Client.anInt2775 * 1889215063);
+                         Client.secureBuffer.writeByte(Client.anInt2957 * 331969371);
+                         Client.secureBuffer.writeByte(89);
+                         Client.secureBuffer.writeShort(Player.myPlayer.anInt2394 * 171470795);
+                         Client.secureBuffer.writeShort(Player.myPlayer.anInt2339 * 826764905);
+                         Client.secureBuffer.writeByte(63);
+                         Client.anInt2933 = var3 * -18058427;
+                         Client.anInt2894 = var11 * 1849977017;
+                      }
+                   }
+                }
+             }
+          }
+       }
+    }
+
+    static final void renderMapDotSprite(int xPos, int yPos, int var2, int var3, RGBSprite mapDotSprite) {
+       if(null != mapDotSprite) {
+          int delta = Client.anInt2775 * 1889215063 + Client.anInt2771 * -44898889 & 2047;
+          int radius = var3 * var3 + var2 * var2;
+          if(radius <= 6400) {
+             int var11 = Rasterizer3D.SINE[delta];
+             int var10 = Rasterizer3D.COSINE[delta];
+             var11 = var11 * 256 / (Client.anInt2957 * 331969371 + 256);
+             var10 = var10 * 256 / (Client.anInt2957 * 331969371 + 256);
+             int xOffset = var2 * var10 + var3 * var11 >> 16;
+             int yOffset = var3 * var10 - var2 * var11 >> 16;
+             if(radius > 2500) {
+                mapDotSprite.method2778(mapBackSprite, xPos + 94 + xOffset - mapDotSprite.maxWidth / 2 + 4, yPos + 83 - yOffset - mapDotSprite.maxHeight / 2 - 4);
+             } else {
+                mapDotSprite.method2746(4 + (94 + xPos + xOffset - mapDotSprite.maxWidth / 2), 83 + yPos - yOffset - mapDotSprite.maxHeight / 2 - 4);
+             }
+          }
+       }
     }
 }

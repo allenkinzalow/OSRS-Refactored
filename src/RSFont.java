@@ -1,6 +1,9 @@
 
 public final class RSFont extends RSTypeFace {
 
+   static CacheIndex fontIndex;
+   static byte[][] loadedCharacterPixels;
+
    public RSFont(byte[] var1) {
       super(var1);
    }

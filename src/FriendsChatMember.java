@@ -155,14 +155,4 @@ public class FriendsChatMember extends Node {
       var0.anInt1684 = var6 * 634911733;
    }
 
-   static boolean loadPaletteSprite(AbstractIndex index, int archiveId, int fileId, int var3) {
-      byte[] fileData = index.getFile(archiveId, fileId, (byte) 7);
-      if(null != fileData) { 
-         PaletteSprite.decodePaletteSprite(fileData, 878628031);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
 }

@@ -1,12 +1,28 @@
 
 public class Varp extends CacheableNode {
 
-   static GameConnection loginConnection;
+   static SocketSession loginConnection;
    public static CacheableNodeMap varpCacheMap = new CacheableNodeMap(64);
    public int configType = 0;
    static int anInt2042;
    static int[] anIntArray2043;
    public static int anInt2045;
+
+   public static Varp getVarpForID(int varpID, byte var1) {
+      Varp varp = (Varp) varpCacheMap.get((long) varpID);
+      if(null != varp) {
+         return varp;
+      } else {
+         byte[] varpData = Client.configIndex_ref.getFile(16, varpID, (byte) 7);
+         varp = new Varp();
+         if(varpData != null) {
+            varp.decode(new RSByteBuffer(varpData), -1057715015);
+         }
+
+         varpCacheMap.put(varp, (long) varpID);
+         return varp;
+      }
+   }
 
 
    void decode(RSByteBuffer buffer, int var2) {
@@ -37,7 +53,7 @@ public class Varp extends CacheableNode {
             MiniMap.mapEdgeSprite.method2765(yRot + 94 + x + 4 - 10, 83 + y - xRot - 20, 20, 20, 15, 15, rotationAngle, 256);
          }
       } else {
-         ProducingGraphicsBuffer.renderMapDotSprite(x, y, var2, var3, var4);
+         MiniMap.renderMapDotSprite(x, y, var2, var3, var4);
       }
    }
 

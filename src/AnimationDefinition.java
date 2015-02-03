@@ -4,10 +4,8 @@ public class AnimationDefinition extends CacheableNode {
 
    int[] anIntArray2118;
    public static AbstractIndex skeletonIndexReference;
-   static CacheableNodeMap animDefCache = new CacheableNodeMap(100);
-   public static final int anInt2121 = 143;
    public int priority = 1109376177;
-   public int[] frameDelays;
+   public int[] frameIDs;
    public static AbstractIndex skinIndexReference;
    public int[] frameLengths;
    public int[] anIntArray2126;
@@ -16,14 +14,10 @@ public class AnimationDefinition extends CacheableNode {
    public boolean oneSquareAnimation = false;
    public int forcedPriority = -2058263741;
    public int leftHandItem = 1255064447;
-   static final int anInt2132 = 72;
    public int anInt2133 = -646022153;
    public int rightHandItem = -1102454537;
    static CacheableNodeMap animationDefMap = new CacheableNodeMap(64);
    public int delayType = 1420123926;
-   static final int anInt2137 = 46;
-   static final int anInt2138 = 500;
-   static final int anInt2139 = 14;
    public static AbstractIndex configIndexReference;
    public int resetWhenWalk = 1662613047;
 
@@ -46,7 +40,7 @@ public class AnimationDefinition extends CacheableNode {
 
    public static void clearAnimationDefMaps(byte var0) {
       animationDefMap.clearCacheMap();
-      animDefCache.clearCacheMap();
+      AnimationSkeletonSet.skeletonSetMap.clearCacheMap();
    }
 
 
@@ -61,14 +55,14 @@ public class AnimationDefinition extends CacheableNode {
             this.frameLengths[index] = buffer.readUShort(-1773764172);
          }
 
-         this.frameDelays = new int[frameCount];
+         this.frameIDs = new int[frameCount];
 
          for(index = 0; index < frameCount; ++index) {
-            this.frameDelays[index] = buffer.readUShort(491148125);
+            this.frameIDs[index] = buffer.readUShort(491148125);
          }
 
          for(index = 0; index < frameCount; ++index) {
-            this.frameDelays[index] += buffer.readUShort(1498912548) << 16;
+            this.frameIDs[index] += buffer.readUShort(1498912548) << 16;
          }
 
       } else if(2 == opcode) {
@@ -140,27 +134,27 @@ public class AnimationDefinition extends CacheableNode {
    }
 
    public ModelRasterizer method2229(ModelRasterizer var1, int frame, int var3) {
-      int frameDelay = this.frameDelays[frame];
-      AnimationSkeletonSet skeletonSet = AnimationSkeletonSet.getAnimationSkeletonSet(frameDelay >> 16, 1418403418);
-      frameDelay &= '\uffff';
+      int frameID = this.frameIDs[frame];
+      AnimationSkeletonSet skeletonSet = AnimationSkeletonSet.getAnimationSkeletonSet(frameID >> 16, 1418403418);
+      frameID &= '\uffff';
       if(null == skeletonSet) {
          return var1.method2852(true);
       } else {
-         ModelRasterizer var5 = var1.method2852(!skeletonSet.method2563(frameDelay, (byte) 74));
-         var5.applyTransform(skeletonSet, frameDelay);
+         ModelRasterizer var5 = var1.method2852(!skeletonSet.isStepAlpha(frameID, (byte) 74));
+         var5.applyTransform(skeletonSet, frameID);
          return var5;
       }
    }
 
    ModelRasterizer getTransformedRasterizer(ModelRasterizer var1, int frame, int var3) {
-      int frameDelay = this.frameDelays[frame];
-      AnimationSkeletonSet skeletonSet = AnimationSkeletonSet.getAnimationSkeletonSet(frameDelay >> 16, 1925624292);
-      frameDelay &= '\uffff';
+      int frameID = this.frameIDs[frame];
+      AnimationSkeletonSet skeletonSet = AnimationSkeletonSet.getAnimationSkeletonSet(frameID >> 16, 1925624292);
+      frameID &= '\uffff';
       if(skeletonSet == null) {
          return var1.method2907(true);
       } else {
-         ModelRasterizer var4 = var1.method2907(!skeletonSet.method2563(frameDelay, (byte) 74));
-         var4.applyTransform(skeletonSet, frameDelay);
+         ModelRasterizer var4 = var1.method2907(!skeletonSet.isStepAlpha(frameID, (byte) 74));
+         var4.applyTransform(skeletonSet, frameID);
          return var4;
       }
    }
@@ -180,8 +174,8 @@ public class AnimationDefinition extends CacheableNode {
       }
    }
 
-   public ModelRasterizer method2233(ModelRasterizer var1, int var2, byte var3) {
-      int var4 = this.frameDelays[var2];
+   public ModelRasterizer method2233(ModelRasterizer var1, int frameID, byte var3) {
+      int var4 = this.frameIDs[frameID];
       AnimationSkeletonSet var8 = AnimationSkeletonSet.getAnimationSkeletonSet(var4 >> 16, 432968839);
       var4 &= '\uffff';
       if(null == var8) {
@@ -189,20 +183,20 @@ public class AnimationDefinition extends CacheableNode {
       } else {
          AnimationSkeletonSet var6 = null;
          int var7 = 0;
-         if(this.anIntArray2118 != null && var2 < this.anIntArray2118.length) {
-            var7 = this.anIntArray2118[var2];
+         if(this.anIntArray2118 != null && frameID < this.anIntArray2118.length) {
+            var7 = this.anIntArray2118[frameID];
             var6 = AnimationSkeletonSet.getAnimationSkeletonSet(var7 >> 16, 506279496);
             var7 &= '\uffff';
          }
 
          ModelRasterizer var5;
          if(var6 != null && var7 != '\uffff') {
-            var5 = var1.method2852(!var8.method2563(var4, (byte)74) & !var6.method2563(var7, (byte)74));
+            var5 = var1.method2852(!var8.isStepAlpha(var4, (byte) 74) & !var6.isStepAlpha(var7, (byte) 74));
             var5.applyTransform(var8, var4);
             var5.applyTransform(var6, var7);
             return var5;
          } else {
-            var5 = var1.method2852(!var8.method2563(var4, (byte)74));
+            var5 = var1.method2852(!var8.isStepAlpha(var4, (byte) 74));
             var5.applyTransform(var8, var4);
             return var5;
          }
@@ -214,13 +208,13 @@ public class AnimationDefinition extends CacheableNode {
    }
 
    ModelRasterizer method2235(ModelRasterizer var1, int var2, int var3, int var4) {
-      var2 = this.frameDelays[var2];
-      AnimationSkeletonSet var6 = AnimationSkeletonSet.getAnimationSkeletonSet(var2 >> 16, 1592292260);
+      var2 = this.frameIDs[var2];
+      AnimationSkeletonSet skeleton = AnimationSkeletonSet.getAnimationSkeletonSet(var2 >> 16, 1592292260);
       var2 &= '\uffff';
-      if(var6 == null) {
+      if(skeleton == null) {
          return var1.method2852(true);
       } else {
-         ModelRasterizer rasterizer = var1.method2852(!var6.method2563(var2, (byte)74));
+         ModelRasterizer rasterizer = var1.method2852(!skeleton.isStepAlpha(var2, (byte) 74));
          var3 &= 3;
          if(1 == var3) {
             rasterizer.method2863();
@@ -230,7 +224,7 @@ public class AnimationDefinition extends CacheableNode {
             rasterizer.rotate90();
          }
 
-         rasterizer.applyTransform(var6, var2);
+         rasterizer.applyTransform(skeleton, var2);
          if(var3 == 1) {
             rasterizer.rotate90();
          } else if(var3 == 2) {
@@ -250,22 +244,22 @@ public class AnimationDefinition extends CacheableNode {
    }
 
    public ModelRasterizer method2265(ModelRasterizer var1, int var2, AnimationDefinition var3, int var4, byte var5) {
-      var2 = this.frameDelays[var2];
+      var2 = this.frameIDs[var2];
       AnimationSkeletonSet var6 = AnimationSkeletonSet.getAnimationSkeletonSet(var2 >> 16, 1825573478);
       var2 &= '\uffff';
       if(var6 == null) {
          return var3.method2229(var1, var4, -1345282556);
       } else {
-         var4 = var3.frameDelays[var4];
+         var4 = var3.frameIDs[var4];
          AnimationSkeletonSet var7 = AnimationSkeletonSet.getAnimationSkeletonSet(var4 >> 16, 743656016);
          var4 &= '\uffff';
          ModelRasterizer rasterizer;
          if(var7 == null) {
-            rasterizer = var1.method2852(!var6.method2563(var2, (byte)74));
+            rasterizer = var1.method2852(!var6.isStepAlpha(var2, (byte) 74));
             rasterizer.applyTransform(var6, var2);
             return rasterizer;
          } else {
-            rasterizer = var1.method2852(!var6.method2563(var2, (byte)74) & !var7.method2563(var4, (byte)74));
+            rasterizer = var1.method2852(!var6.isStepAlpha(var2, (byte) 74) & !var7.isStepAlpha(var4, (byte) 74));
             rasterizer.method2859(var6, var2, var7, var4, this.animationFlowControl);
             return rasterizer;
          }

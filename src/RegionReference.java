@@ -20,6 +20,9 @@ public final class RegionReference {
    static int[] objectLandscapeIDs;
    static byte[][] terrainData;
    static int[] terrainLandscapeIDs;
+   static CacheIndex landscapeIndex;
+   static byte[][][] overlayRotations;
+   static int[][] tileLightingIntensity;
 
 
    static void method587(int indexID, IndexTable indexTable, CacheIndex cacheIndex, int var3) {
@@ -62,7 +65,7 @@ public final class RegionReference {
          for(int var11 = 0; var11 < 64; ++var11) {
             for(int var13 = 0; var13 < 64; ++var13) {
                if(var4 == var12 && var11 >= var5 && var11 < 8 + var5 && var13 >= var6 && var13 < var6 + 8) {
-                  ClientScriptDefinition.method2566(var14, var1, var2 + method621(var11 & 7, var13 & 7, var7, -617553596), var3 + Class43.method653(var11 & 7, var13 & 7, var7, 1379797264), 0, 0, var7, (byte)-58);
+                  ClientScriptDefinition.method2566(var14, var1, var2 + method621(var11 & 7, var13 & 7, var7, -617553596), var3 + URLSession.method653(var11 & 7, var13 & 7, var7, 1379797264), 0, 0, var7, (byte)-58);
                } else {
                   ClientScriptDefinition.method2566(var14, 0, -1, -1, 0, 0, 0, (byte)-48);
                }
@@ -122,7 +125,7 @@ public final class RegionReference {
       int var4;
       for(var4 = 0; var4 < terrainData.length; ++var4) {
          if(terrainLandscapeIDs[var4] != -1 && terrainData[var4] == null) {
-            terrainData[var4] = PingRequester.landscapeIndex.getFile(terrainLandscapeIDs[var4], 0, (byte) 7);
+            terrainData[var4] = landscapeIndex.getFile(terrainLandscapeIDs[var4], 0, (byte) 7);
             if(null == terrainData[var4]) {
                var6 = false;
                Client.anInt2759 -= 903859995;
@@ -130,7 +133,7 @@ public final class RegionReference {
          }
 
          if(-1 != objectLandscapeIDs[var4] && ClientScriptDefinition.objectData[var4] == null) {
-            ClientScriptDefinition.objectData[var4] = PingRequester.landscapeIndex.getFileData(objectLandscapeIDs[var4], 0, Class47.xteaMapKeys[var4]);
+            ClientScriptDefinition.objectData[var4] = landscapeIndex.getFileData(objectLandscapeIDs[var4], 0, Class47.xteaMapKeys[var4]);
             if(ClientScriptDefinition.objectData[var4] == null) {
                var6 = false;
                Client.anInt2759 -= 903859995;
@@ -231,7 +234,7 @@ public final class RegionReference {
             System.gc();
 
             for(int plane = 0; plane < 4; ++plane) {
-               Client.clippingPlanes[plane].method1402(1566511345);
+               Client.clippingPlanes[plane].reset(1566511345);
             }
 
             int var37;
@@ -304,7 +307,7 @@ public final class RegionReference {
                      localY = (GraphicsBuffer.mapCoordinates[var37] >> 8) * 64 - Class100.anInt1388 * 263051377;
                      var42 = (GraphicsBuffer.mapCoordinates[var37] & 255) * 64 - SoundEffectWorker.anInt201 * -1743142671;
                      Friend.method660(-967525957);
-                     ProducingGraphicsBuffer.method1593(objectData, localY, var42, Scene.gameScene, Client.clippingPlanes, (byte)8);
+                     loadObjectMap(objectData, localY, var42, Scene.gameScene, Client.clippingPlanes, (byte) 8);
                   }
                }
             }
@@ -415,7 +418,7 @@ public final class RegionReference {
                                                 var10 = collisionMAp[var9];
                                              }
 
-                                             Class53_Sub1.method1891(var37, var1, var2, var25, var29 + x & 3, var30, scene, var10, (short)-21330);
+                                             Class53_Sub1.setupObjectCollisionMap(var37, var1, var2, var25, var29 + x & 3, var30, scene, var10, (short) -21330);
                                           }
                                        }
                                     }
@@ -480,8 +483,8 @@ public final class RegionReference {
                for(x = localX - 1; x <= 1 + localY; ++x) {
                   for(y = var42 - 1; y <= var7 + 1; ++y) {
                      if(x < localX || x > localY || y < var42 || y > var7) {
-                        PingRequester.landscapeIndex.loadArchiveForName("m" + x + "_" + y);
-                        PingRequester.landscapeIndex.loadArchiveForName("l" + x + "_" + y);
+                        landscapeIndex.loadArchiveForName("m" + x + "_" + y);
+                        landscapeIndex.loadArchiveForName("l" + x + "_" + y);
                      }
                   }
                }
@@ -492,10 +495,10 @@ public final class RegionReference {
             GZIPDecompressor.underlayFloorIds = (byte[][][])null;
             overlayFloorIds = (byte[][][])null;
             overlayClippingPaths = (byte[][][])null;
-            AnimationSkeletonSet.overlayRotations = (byte[][][])null;
+            overlayRotations = (byte[][][])null;
             Class19.tileCullingBitset = (int[][][])null;
             aByteArrayArrayArray488 = (byte[][][])null;
-            Class19.tileLightingIntensity = (int[][])null;
+            tileLightingIntensity = (int[][])null;
             blendedHue = null;
             blendedSaturation = null;
             IndexTable.blendedLightness = null;
@@ -541,7 +544,7 @@ public final class RegionReference {
                        }
 
                        if (originalPlane >= 0) {
-                           collisionMaps[originalPlane].markBlocked(x, y, 322466363);
+                           collisionMaps[originalPlane].markBlocked(x, y);
                        }
                    }
                }
@@ -593,7 +596,7 @@ public final class RegionReference {
                    var6 = (yHeightDifference << 8) / hueDivisor;
                    directionalLightIntensity = 96 + (var6 * -50 + floorIDFetch * -50 + var8 * -10) / var25;
                    var13 = (var46[xPos][yPos - 1] >> 2) + (var46[xPos - 1][yPos] >> 2) + (var46[1 + xPos][yPos] >> 3) + (var46[xPos][yPos + 1] >> 3) + (var46[xPos][yPos] >> 1);
-                   Class19.tileLightingIntensity[xPos][yPos] = directionalLightIntensity - var13;
+                   tileLightingIntensity[xPos][yPos] = directionalLightIntensity - var13;
                }
            }
 
@@ -722,10 +725,10 @@ public final class RegionReference {
                                int vertexSouthEast = tileHeights[plane][1 + yPos][var8];
                                int vertexNorthEast = tileHeights[plane][yPos + 1][var8 + 1];
                                int vertexNorthWest = tileHeights[plane][yPos][1 + var8];
-                               int var19 = Class19.tileLightingIntensity[yPos][var8];
-                               int var20 = Class19.tileLightingIntensity[1 + yPos][var8];
-                               int var21 = Class19.tileLightingIntensity[1 + yPos][1 + var8];
-                               int var22 = Class19.tileLightingIntensity[yPos][var8 + 1];
+                               int var19 = tileLightingIntensity[yPos][var8];
+                               int var20 = tileLightingIntensity[1 + yPos][var8];
+                               int var21 = tileLightingIntensity[1 + yPos][1 + var8];
+                               int var22 = tileLightingIntensity[yPos][var8 + 1];
                                int var18 = -1;
                                int hslBitset = -1;
                                int hue;
@@ -791,7 +794,7 @@ public final class RegionReference {
                                    scene.method406(plane, yPos, var8, 0, 0, -1, vertexSouthWest, vertexSouthEast, vertexNorthEast, vertexNorthWest, PlainTile.method622(var18, var19, -1685737298), PlainTile.method622(var18, var20, -1685737298), PlainTile.method622(var18, var21, -1685737298), PlainTile.method622(var18, var22, -1685737298), 0, 0, 0, 0, hue, 0);
                                } else {
                                    saturation = 1 + overlayClippingPaths[plane][yPos][var8];
-                                   byte rotation = AnimationSkeletonSet.overlayRotations[plane][yPos][var8];
+                                   byte rotation = overlayRotations[plane][yPos][var8];
                                    int floorID = overlayFloorID - 1;
                                    OverlayFloorDefinition overlayFloorDef = (OverlayFloorDefinition) OverlayFloorDefinition.overlayFloorMap.get((long) floorID);
                                    if (overlayFloorDef != null) {
@@ -876,7 +879,7 @@ public final class RegionReference {
            GZIPDecompressor.underlayFloorIds[plane] = null;
            overlayFloorIds[plane] = null;
            overlayClippingPaths[plane] = null;
-           AnimationSkeletonSet.overlayRotations[plane] = null;
+           overlayRotations[plane] = null;
            aByteArrayArrayArray488[plane] = null;
        }
 
@@ -1056,5 +1059,50 @@ public final class RegionReference {
            }
        }
 
+   }
+
+   static final void loadObjectMap(byte[] objectData, int localX, int localY, Scene var3, CollisionMap[] var4, byte var5) {
+      RSByteBuffer objectDataBuffer = new RSByteBuffer(objectData);
+      int var10 = -1;
+
+      while(true) {
+         int var9 = objectDataBuffer.readSmart((short) -14454);
+         if(var9 == 0) {
+            return;
+         }
+
+         var10 += var9;
+         int var13 = 0;
+
+         while(true) {
+            int var12 = objectDataBuffer.readSmart((short) -8214);
+            if(var12 == 0) {
+               break;
+            }
+
+            var13 += var12 - 1;
+            int var14 = var13 & 63;
+            int var15 = var13 >> 6 & 63;
+            int var16 = var13 >> 12;
+            int var17 = objectDataBuffer.readUByte();
+            int var18 = var17 >> 2;
+            int var19 = var17 & 3;
+            int var7 = var15 + localX;
+            int var8 = localY + var14;
+            if(var7 > 0 && var8 > 0 && var7 < 103 && var8 < 103) {
+               int var11 = var16;
+               if(2 == (mapTileSettings[1][var7][var8] & 2)) {
+                  var11 = var16 - 1;
+               }
+
+               CollisionMap var20 = null;
+               if(var11 >= 0) {
+                  var20 = var4[var11];
+               }
+
+               Class53_Sub1.setupObjectCollisionMap(var16, var7, var8, var10, var19, var18, var3, var20, (short) -4427);
+            }
+         }
+      }
    }
 }

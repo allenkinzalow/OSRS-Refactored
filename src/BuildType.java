@@ -5,18 +5,16 @@ public class BuildType {
    static BuildType aClass79_1232 = new BuildType("BUILDLIVE", 3);
    static BuildType aClass79_1233 = new BuildType("RC", 1);
    static BuildType aClass79_1234 = new BuildType("WIP", 2);
-   public int anInt1235;
-   static final int anInt1236 = 36;
+   public int buildID;
    static BuildType aClass79_1237 = new BuildType("LIVE", 0);
    static int anInt1238;
    static String enteredPin;
-   public String aString1240;
-   public static final int anInt1241 = 221;
+   public String buildTitle;
 
 
    BuildType(String var1, int var2) {
-      this.aString1240 = var1;
-      this.anInt1235 = var2 * 208829069;
+      this.buildTitle = var1;
+      this.buildID = var2 * 208829069;
    }
 
    public static int method1093(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
@@ -37,5 +35,9 @@ public class BuildType {
       int mostSig = varpbit.mostSigBit * -944103735;
       int bit = Class88.anIntArray1314[mostSig - leastSig];
       return Class88.configSettings[configID] >> leastSig & bit;
+   }
+
+   public static BuildType[] method2557(byte var0) {
+       return new BuildType[]{aClass79_1234, aClass79_1237, aClass79_1232, aClass79_1233};
    }
 }

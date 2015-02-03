@@ -18,13 +18,13 @@ public class Deque {
 
    public void method1333() {
       while(true) {
-         Node var1 = this.aClass108_1435.nextNode;
-         if(var1 == this.aClass108_1435) {
+         Node node = this.aClass108_1435.nextNode;
+         if(node == this.aClass108_1435) {
             this.aClass108_1434 = null;
             return;
          }
 
-         var1.unlink();
+         node.unlink();
       }
    }
 

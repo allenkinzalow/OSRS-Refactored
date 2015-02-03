@@ -17,12 +17,24 @@ public class ContextMenu {
     static int[] contextMenuParameters = new int[500];
     static int[] contextMenuIdentifiers = new int[500];
 
+   /**
+    * I believe this message doesn't just handle context menus but also mouse interaction with interfaces and areas.
+    * @param components
+    * @param var1
+    * @param var2
+    * @param var3
+    * @param var4
+    * @param var5
+    * @param var6
+    * @param var7
+    * @param var8
+    */
     static final void buildContextMenu(RSInterface[] components, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
        for(int componentID = 0; componentID < components.length; ++componentID) {
           RSInterface component = components[componentID];
           if(null != component && (!component.aBool1855 || 0 == component.componentType * 942877543 || component.hasScript || Class32.method576(component, -1267315198) != 0 || Client.aClass108_Sub17_2878 == component) && var1 == component.hoverPopup * -867206361 && (!component.aBool1855 || !RSInterface.isComponentHidden(component, (byte) 8))) {
-             int var18 = var6 + component.anInt1776 * 985647797;
-             int var14 = var7 + component.anInt1824 * 1730176157;
+             int var18 = var6 + component.xPosition * 985647797;
+             int var14 = var7 + component.yPosition * 1730176157;
              int var10;
              int var11;
              int var13;
@@ -168,7 +180,7 @@ public class ContextMenu {
                                   for(entityIndex = 0; entityIndex < Client.anInt2749 * -1829405175; ++entityIndex) {
                                      var43 = Client.localNPCs[Client.npcIndices[entityIndex]];
                                      if(var43 != null && var43 != npc && var43.definition.tileSpacesOccupied * -87058581 == 1 && var43.anInt2394 * 171470795 == npc.anInt2394 * 171470795 && npc.anInt2339 * 826764905 == var43.anInt2339 * 826764905) {
-                                        AnimatedGraphic.method2148(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, -1405217342);
+                                        buildNPCContextMenu(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, -1405217342);
                                      }
                                   }
 
@@ -180,7 +192,7 @@ public class ContextMenu {
                                   }
                                }
 
-                               AnimatedGraphic.method2148(npc.definition, interactableID, xPos, yPos, 430491862);
+                               buildNPCContextMenu(npc.definition, interactableID, xPos, yPos, 430491862);
                             }
 
                             if(interactionMenuType == 0) {
@@ -193,7 +205,7 @@ public class ContextMenu {
                                   for(entityIndex = 0; entityIndex < Client.anInt2749 * -1829405175; ++entityIndex) {
                                      var43 = Client.localNPCs[Client.npcIndices[entityIndex]];
                                      if(null != var43 && 1 == var43.definition.tileSpacesOccupied * -87058581 && player.anInt2394 * 171470795 == var43.anInt2394 * 171470795 && var43.anInt2339 * 826764905 == player.anInt2339 * 826764905) {
-                                        AnimatedGraphic.method2148(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, 88805031);
+                                        buildNPCContextMenu(var43.definition, Client.npcIndices[entityIndex], xPos, yPos, 88805031);
                                      }
                                   }
 
@@ -263,14 +275,14 @@ public class ContextMenu {
                       }
                    }
                 } else if(1338 == component.anInt1886 * -917776085) {
-                   GameObject.method2847(var18, var14, (byte)-120);
+                   MiniMap.processMinimapClick(var18, var14, (byte) -120);
                 } else {
                    if(!contextMenuOpen && var10 >= var13 && var22 >= var19 && var10 < var11 && var22 < var20) {
                       GroundItem.method586(component, var10 - var18, var22 - var14, 1300959972);
                    }
 
                    if(0 == component.componentType * 942877543) {
-                      if(!component.aBool1855 && RSInterface.isComponentHidden(component, (byte) 37) && Client.aClass108_Sub17_924 != component) {
+                      if(!component.aBool1855 && RSInterface.isComponentHidden(component, (byte) 37) && Client.mouseHoveredComponent != component) {
                          continue;
                       }
 
@@ -354,12 +366,12 @@ public class ContextMenu {
 
                       if(component.hasScript) {
                          ClientScript script;
-                         if(var39 && 0 != Client.mouseWheelRotation * 1785327937 && null != component.anObjectArray1859) {
+                         if(var39 && 0 != Client.mouseWheelRotation * 1785327937 && null != component.mouseWheelTrigger) {
                             script = new ClientScript();
                             script.aBool1636 = true;
                             script.parentInterface = component;
                             script.mouseY = Client.mouseWheelRotation * 1433290219;
-                            script.parameters = component.anObjectArray1859;
+                            script.parameters = component.mouseWheelTrigger;
                             Client.aClass105_2737.insertBack(script);
                          }
 
@@ -582,9 +594,9 @@ public class ContextMenu {
                    if(!component.aBool1855 && null == Client.aClass108_Sub17_2877 && IsaacRandomGen.aClass108_Sub17_745 == null && !contextMenuOpen) {
                       if((component.anInt1846 * 1461842043 >= 0 || component.mouseOverColor * 256440005 != 0) && MouseInputHandler.mouseX * -367052265 >= var13 && MouseInputHandler.mouseY * 1533395117 >= var19 && MouseInputHandler.mouseX * -367052265 < var11 && MouseInputHandler.mouseY * 1533395117 < var20) {
                          if(component.anInt1846 * 1461842043 >= 0) {
-                            Client.aClass108_Sub17_924 = components[component.anInt1846 * 1461842043];
+                            Client.mouseHoveredComponent = components[component.anInt1846 * 1461842043];
                          } else {
-                            Client.aClass108_Sub17_924 = component;
+                            Client.mouseHoveredComponent = component;
                          }
                       }
 
@@ -593,7 +605,7 @@ public class ContextMenu {
                       }
 
                       if(component.anInt1787 * -1108406155 > component.width * 334099177) {
-                         Class43.method654(component, component.height * -1281443035 + var18, var14, component.width * 334099177, component.anInt1787 * -1108406155, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117, (short)-22019);
+                         URLSession.method654(component, component.height * -1281443035 + var18, var14, component.width * 334099177, component.anInt1787 * -1108406155, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117, (short) -22019);
                       }
                    }
                 }
@@ -759,7 +771,7 @@ public class ContextMenu {
           int var5 = contextMenuParameters[var0];
           String var6 = contextMenuActionPrefixes[var0];
           String var2 = contextMenuActionNames[var0];
-          MouseCapturer.processClickAction(var7, var3, var4, var5, var6, var2, MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, 1721706574);
+          MouseCapturer.processMenuClickAction(var7, var3, var4, var5, var6, var2, MouseInputHandler.mousePressX * 472132205, MouseInputHandler.mousePressY * 1498262827, 1721706574);
        }
     }
 
@@ -785,4 +797,102 @@ public class ContextMenu {
        Class108_Sub21.aContextMenuRow_1895.menuParameters = contextMenuParameters[var0] * -62510915;
        Class108_Sub21.aContextMenuRow_1895.menuActionPrefixes = contextMenuActionPrefixes[var0];
     }
+
+   static final void buildNPCContextMenu(NPCDefinition npcDef, int var1, int var2, int var3, int var4) {
+      if(contextMenuRow * 391839991 < 400) {
+         if(null != npcDef.anIntArray2185) {
+            npcDef = npcDef.method2290(2122847973);
+         }
+
+         if(null != npcDef) {
+            if(npcDef.isClickable) {
+               if(!npcDef.aBool2190 || var1 == Client.anInt2789 * -1399758439) {
+                  String var7 = npcDef.name;
+                  if(npcDef.combatLevel * -1840374219 != 0) {
+                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Player.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringUtilities.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
+                  }
+
+                  if(1 == Client.anInt2858 * -968945719) {
+                     setContextMenuRow(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1747962050) + var7, 7, var1, var2, var3, 1892745466);
+                  } else if(Client.aBool2881) {
+                     if((Class68.anInt902 * 401025055 & 2) == 2) {
+                        setContextMenuRow(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1649201849) + var7, 8, var1, var2, var3, 1878248083);
+                     }
+                  } else {
+                     String[] npcOptions = npcDef.options;
+                     if(Client.aBool2744) {
+                        npcOptions = Class23.method341(npcOptions, -33011240);
+                     }
+
+                     int optionIndex;
+                     if(npcOptions != null) {
+                        for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
+                           if(npcOptions[optionIndex] != null && !npcOptions[optionIndex].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
+                              byte var5 = 0;
+                              if(0 == optionIndex) {
+                                 var5 = 9;
+                              }
+
+                              if(optionIndex == 1) {
+                                 var5 = 10;
+                              }
+
+                              if(2 == optionIndex) {
+                                 var5 = 11;
+                              }
+
+                              if(3 == optionIndex) {
+                                 var5 = 12;
+                              }
+
+                              if(4 == optionIndex) {
+                                 var5 = 13;
+                              }
+
+                              setContextMenuRow(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -1431624152) + var7, var5, var1, var2, var3, 1885794417);
+                           }
+                        }
+                     }
+
+                     if(null != npcOptions) {
+                        for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
+                           if(npcOptions[optionIndex] != null && npcOptions[optionIndex].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
+                              short var10 = 0;
+                              if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Player.myPlayer.combatLevel * -1769445007) {
+                                 var10 = 2000;
+                              }
+
+                              int var9 = 0;
+                              if(0 == optionIndex) {
+                                 var9 = var10 + 9;
+                              }
+
+                              if(optionIndex == 1) {
+                                 var9 = var10 + 10;
+                              }
+
+                              if(optionIndex == 2) {
+                                 var9 = var10 + 11;
+                              }
+
+                              if(optionIndex == 3) {
+                                 var9 = var10 + 12;
+                              }
+
+                              if(4 == optionIndex) {
+                                 var9 = var10 + 13;
+                              }
+
+                              setContextMenuRow(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -997355682) + var7, var9, var1, var2, var3, 1856696720);
+                           }
+                        }
+                     }
+
+                     setContextMenuRow(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16776960, -769408508) + var7, 1003, var1, var2, var3, 1961932451);
+                  }
+               }
+            }
+         }
+      }
+   }
 }

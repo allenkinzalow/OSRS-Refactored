@@ -2,18 +2,13 @@
 public final class BZip2Context {
 
    int anInt241;
-   int anInt242 = 16;
    byte[] aByteArray243 = new byte[18002];
-   int anInt244 = 6;
-   int anInt245 = 50;
-   int anInt246 = 18002;
    byte[] aByteArray247;
    int anInt248 = 0;
    int anInt249;
    int[] anIntArray250 = new int[257];
    byte[] aByteArray251;
    int anInt252;
-   int anInt253 = 4096;
    byte aByte254;
    boolean[] aBoolArray255 = new boolean[16];
    int anInt256;
@@ -24,7 +19,6 @@ public final class BZip2Context {
    int anInt261;
    int[][] anIntArrayArray262 = new int[6][258];
    int anInt263;
-   int anInt264 = 258;
    int anInt265;
    boolean[] aBoolArray266 = new boolean[256];
    byte[] aByteArray267 = new byte[256];

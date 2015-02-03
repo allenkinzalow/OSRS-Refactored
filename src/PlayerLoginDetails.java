@@ -13,7 +13,6 @@ public class PlayerLoginDetails {
    static int anInt48 = 0;
    static int anInt49 = 0;
    static int anInt50 = 0;
-   static World[] worldList;
    static int anInt52 = -270716038;
    static String currentLoadingStatus = "";
    static int anInt54 = 0;
@@ -27,8 +26,7 @@ public class PlayerLoginDetails {
    static int anInt62 = 0;
    static int[] anIntArray63 = new int[]{1, 1, 1, 1};
    static String aString64 = "";
-   static Class76 aClass76_65 = Class76.aClass76_1199;
-   static int worldCount = 0;
+   static LoginType loginType = LoginType.aClass76_1199;
    static int anInt67 = 0;
    static int hoveredWorldID = 2115622661;
    static CacheIndex textureIndex;
@@ -42,20 +40,20 @@ public class PlayerLoginDetails {
 
    static String method81(String var0, boolean var1, byte var2) {
       String var3 = var1?"https://":"http://";
-      if(Client.anInt2708 * -759629273 == 1) {
+      if(Client.portType * -759629273 == 1) {
          var0 = var0 + "-wtrc";
-      } else if(2 == Client.anInt2708 * -759629273) {
+      } else if(2 == Client.portType * -759629273) {
          var0 = var0 + "-wtqa";
-      } else if(3 == Client.anInt2708 * -759629273) {
+      } else if(3 == Client.portType * -759629273) {
          var0 = var0 + "-wtwip";
-      } else if(Client.anInt2708 * -759629273 == 5) {
+      } else if(Client.portType * -759629273 == 5) {
          var0 = var0 + "-wti";
-      } else if(Client.anInt2708 * -759629273 == 4) {
+      } else if(Client.portType * -759629273 == 4) {
          var0 = "local";
       }
 
       String var4 = "runescape.com";
-      return var3 + var0 + "." + var4 + "/l=" + Client.anInt2712 * 148074329 + "/";
+      return var3 + var0 + "." + var4 + "/l=" + World.hideWorldList * 148074329 + "/";
    }
 
    static final void method90(Entity entity, short var1) {
@@ -63,18 +61,18 @@ public class PlayerLoginDetails {
       AnimationDefinition animDef;
       if(-1 != entity.anInt2365 * 1103885695) {
          animDef = AnimationDefinition.getAnimDefForID(entity.anInt2365 * 1103885695, 1736575732);
-         if(null != animDef && animDef.frameDelays != null) {
+         if(null != animDef && animDef.frameIDs != null) {
             entity.anInt2367 -= 1278050191;
-            if(entity.anInt2366 * -65543943 < animDef.frameDelays.length && entity.anInt2367 * -189185903 > animDef.frameLengths[entity.anInt2366 * -65543943]) {
+            if(entity.anInt2366 * -65543943 < animDef.frameIDs.length && entity.anInt2367 * -189185903 > animDef.frameLengths[entity.anInt2366 * -65543943]) {
                entity.anInt2367 = -1278050191;
                entity.anInt2366 -= 140058295;
-               GameConnection.method815(animDef, entity.anInt2366 * -65543943, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) -19054);
+               SocketSession.method815(animDef, entity.anInt2366 * -65543943, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) -19054);
             }
 
-            if(entity.anInt2366 * -65543943 >= animDef.frameDelays.length) {
+            if(entity.anInt2366 * -65543943 >= animDef.frameIDs.length) {
                entity.anInt2367 = 0;
                entity.anInt2366 = 0;
-               GameConnection.method815(animDef, entity.anInt2366 * -65543943, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) 1673);
+               SocketSession.method815(animDef, entity.anInt2366 * -65543943, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) 1673);
             }
          } else {
             entity.anInt2365 = 278541697;
@@ -89,15 +87,15 @@ public class PlayerLoginDetails {
          int spotAnimEmoteID = AnimatedGraphic.getSpotAnimForID(entity.anInt2373 * 1305815823, (byte) 0).animationID * 338579353;
          if(-1 != spotAnimEmoteID) {
             AnimationDefinition spotAnimDef = AnimationDefinition.getAnimDefForID(spotAnimEmoteID, 1789980921);
-            if(null != spotAnimDef && null != spotAnimDef.frameDelays) {
+            if(null != spotAnimDef && null != spotAnimDef.frameIDs) {
                entity.anInt2375 += 662771301;
-               if(entity.anInt2374 * -766701345 < spotAnimDef.frameDelays.length && entity.anInt2375 * 1216654189 > spotAnimDef.frameLengths[entity.anInt2374 * -766701345]) {
+               if(entity.anInt2374 * -766701345 < spotAnimDef.frameIDs.length && entity.anInt2375 * 1216654189 > spotAnimDef.frameLengths[entity.anInt2374 * -766701345]) {
                   entity.anInt2375 = 662771301;
                   entity.anInt2374 -= 530928865;
-                  GameConnection.method815(spotAnimDef, entity.anInt2374 * -766701345, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) -8973);
+                  SocketSession.method815(spotAnimDef, entity.anInt2374 * -766701345, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) -8973);
                }
 
-               if(entity.anInt2374 * -766701345 >= spotAnimDef.frameDelays.length && (entity.anInt2374 * -766701345 < 0 || entity.anInt2374 * -766701345 >= spotAnimDef.frameDelays.length)) {
+               if(entity.anInt2374 * -766701345 >= spotAnimDef.frameIDs.length && (entity.anInt2374 * -766701345 < 0 || entity.anInt2374 * -766701345 >= spotAnimDef.frameIDs.length)) {
                   entity.anInt2373 = -1279943663;
                }
             } else {
@@ -118,21 +116,21 @@ public class PlayerLoginDetails {
 
       if(entity.anInt2368 * 1647325343 != -1 && 0 == entity.anInt2371 * 843883743) {
          animDef = AnimationDefinition.getAnimDefForID(entity.anInt2368 * 1647325343, 1724689337);
-         if(null != animDef && animDef.frameDelays != null) {
+         if(null != animDef && animDef.frameIDs != null) {
             entity.anInt2396 -= 1617696911;
-            if(entity.anInt2341 * -2111206063 < animDef.frameDelays.length && entity.anInt2396 * -1771177583 > animDef.frameLengths[entity.anInt2341 * -2111206063]) {
+            if(entity.anInt2341 * -2111206063 < animDef.frameIDs.length && entity.anInt2396 * -1771177583 > animDef.frameLengths[entity.anInt2341 * -2111206063]) {
                entity.anInt2396 = -1617696911;
                entity.anInt2341 += 588372913;
-               GameConnection.method815(animDef, entity.anInt2341 * -2111206063, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) 22106);
+               SocketSession.method815(animDef, entity.anInt2341 * -2111206063, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) 22106);
             }
 
-            if(entity.anInt2341 * -2111206063 >= animDef.frameDelays.length) {
+            if(entity.anInt2341 * -2111206063 >= animDef.frameIDs.length) {
                entity.anInt2341 -= animDef.frameStep * -1797054519;
                entity.anInt2372 -= 1995028343;
                if(entity.anInt2372 * -694571591 >= animDef.anInt2133 * -722580491) {
                   entity.anInt2368 = 821761185;
-               } else if(entity.anInt2341 * -2111206063 >= 0 && entity.anInt2341 * -2111206063 < animDef.frameDelays.length) {
-                  GameConnection.method815(animDef, entity.anInt2341 * -2111206063, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) 1574);
+               } else if(entity.anInt2341 * -2111206063 >= 0 && entity.anInt2341 * -2111206063 < animDef.frameIDs.length) {
+                  SocketSession.method815(animDef, entity.anInt2341 * -2111206063, entity.anInt2394 * 171470795, entity.anInt2339 * 826764905, (short) 1574);
                } else {
                   entity.anInt2368 = 821761185;
                }

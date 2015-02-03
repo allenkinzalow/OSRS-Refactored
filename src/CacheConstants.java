@@ -30,7 +30,7 @@ public class CacheConstants {
    static final void method1097(int configID, byte var1) {
       Client.method3554(-1192704029);
       ChatMessagesContainer.method346(151864213);
-      int config = AnimatedGraphic.method2149(configID, (byte) 4).configType * -1110014191;
+      int config = Varp.getVarpForID(configID, (byte) 4).configType * -1110014191;
       if(0 != config) {
          int value = Class88.configSettings[configID];
          if(1 == config) { // adjust lighting
@@ -81,7 +81,7 @@ public class CacheConstants {
 
             if(Client.anInt2873 * 99489839 != var6) {
                if(0 == Client.anInt2873 * 99489839 && -1 != Client.anInt2937 * 111831401) {
-                  AnimationSkin.method1677(Friend.musicIndex_1, Client.anInt2937 * 111831401, 0, var6, false, -1604315584);
+                  RSSong.method1677(Friend.musicIndex_1, Client.anInt2937 * 111831401, 0, var6, false, -1604315584);
                   Client.aBool2938 = false;
                } else if(var6 == 0) {
                   Class32.aClass108_Sub4_Sub3_464.method2610(1521857055);

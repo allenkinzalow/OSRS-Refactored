@@ -4,13 +4,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public final class GameConnection implements Runnable {
+public final class SocketSession implements Runnable {
 
 	OutputStream output;
 	Socket socket;
 	int anInt802 = 0;
-	PingRequester aClass61_803;
-	PingRequest aClass85_804;
+	SessionRequestWorker sessionRequestWorker;
+	SessionRequest connectionThreadSession;
 	byte[] buffer;
 	boolean aBool806 = false;
 	int anInt807 = 0;
@@ -57,8 +57,8 @@ public final class GameConnection implements Runnable {
 						}
 					}
 
-					if (this.aClass85_804 == null) {
-						this.aClass85_804 = this.aClass61_803.method820(this, 3, -1672356969);
+					if (this.connectionThreadSession == null) {
+						this.connectionThreadSession = this.sessionRequestWorker.submitRunnableSession(this, 3, -1672356969);
 					}
 
 					this.notifyAll();
@@ -67,8 +67,8 @@ public final class GameConnection implements Runnable {
 		}
 	}
 
-	public GameConnection(Socket sock, PingRequester var2) throws IOException {
-		this.aClass61_803 = var2;
+	public SocketSession(Socket sock, SessionRequestWorker var2) throws IOException {
+		this.sessionRequestWorker = var2;
 		this.socket = sock;
 		this.socket.setSoTimeout(30000);
 		this.socket.setTcpNoDelay(true);
@@ -161,21 +161,21 @@ public final class GameConnection implements Runnable {
 				this.notifyAll();
 			}
 
-			if (this.aClass85_804 != null) {
-				while (this.aClass85_804.anInt1292 == 0) {
+			if (this.connectionThreadSession != null) {
+				while (this.connectionThreadSession.anInt1292 == 0) {
 					Class108_Sub22.sleep(1L);
 				}
 
-				if (this.aClass85_804.anInt1292 == 1) {
+				if (this.connectionThreadSession.anInt1292 == 1) {
 					try {
-						((Thread) this.aClass85_804.anObject1294).join();
+						((Thread) this.connectionThreadSession.connectionObject).join();
 					} catch (InterruptedException var4) {
 						;
 					}
 				}
 			}
 
-			this.aClass85_804 = null;
+			this.connectionThreadSession = null;
 		}
 	}
 

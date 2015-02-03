@@ -123,7 +123,7 @@ public class Class108_Sub22 extends Node {
       if(Client.aBool2938) {
          if(!Player.method3182(40074042)) {
             if(0 != Client.anInt2873 * 99489839 && Client.anInt2937 * 111831401 != -1) {
-               AnimationSkin.method1677(Friend.musicIndex_1, Client.anInt2937 * 111831401, 0, Client.anInt2873 * 99489839, false, -1987354603);
+               RSSong.method1677(Friend.musicIndex_1, Client.anInt2937 * 111831401, 0, Client.anInt2873 * 99489839, false, -1987354603);
             }
 
             Client.aBool2938 = false;

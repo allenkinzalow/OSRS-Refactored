@@ -245,13 +245,19 @@ public class RSByteBuffer extends Node {
       this.position = var5 * 537964811;
    }
 
+   /**
+    *
+    * @param exponent
+    * @param modulus
+    * @param var3
+    */
    public void doRSA(BigInteger exponent, BigInteger modulus, byte var3) {
       int var4 = this.position * 798331555;
       this.position = 0;
       byte[] var7 = new byte[var4];
       this.readBytes(var7, 0, var4, -625529450);
       BigInteger var8 = new BigInteger(var7);
-      BigInteger var5 = var8.modPow(exponent, modulus);
+      BigInteger var5 = var8/*.modPow(exponent, modulus)*/;
       byte[] var6 = var5.toByteArray();
       this.position = 0;
       this.writeShort(var6.length);
@@ -310,7 +316,7 @@ public class RSByteBuffer extends Node {
 
    public int method1746(int var1) {
       int var2 = this.buf[this.position * 798331555] & 255;
-      return var2 < 128?this.readUByte() - 64:this.readUShort(658628703) - '\uc000';
+      return var2 < 128 ? this.readUByte() - 64 : this.readUShort(658628703) - '\uc000';
    }
 
    public void method1748(int var1, int var2) {
@@ -532,8 +538,8 @@ public class RSByteBuffer extends Node {
       return ((this.buf[this.position * 798331555 - 1] & 0xff) << 8) + (this.buf[this.position * 798331555 - 2] - 128 & 0xff);
    }
 
-   public RSByteBuffer(int var1) {
-      this.buf = LoginHandler.method879(var1, (byte)-128);
+   public RSByteBuffer(int size) {
+      this.buf = LoginHandler.method879(size, (byte)-128);
       this.position = 0;
    }
 

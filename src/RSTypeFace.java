@@ -356,7 +356,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
       }
    }
 
-   public void method3095(String message, int x, int y, int var4, int var5) {
+   public void drawStringRight(String message, int x, int y, int var4, int var5) {
       if(message != null) {
          this.method3113(var4, var5);
          this.drawBasicString(message, x - this.getTextWidth(message), y);
@@ -370,8 +370,8 @@ public abstract class RSTypeFace extends Rasterizer2D {
       }
    }
 
-   public int method3097(String var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
-      if(var1 == null) {
+   public int method3097(String message, int x, int y, int var4, int var5, int var6, int var7, int drawType, int var9, int var10) {
+      if(message == null) {
          return 0;
       } else {
          this.method3113(var6, var7);
@@ -384,7 +384,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
             var12 = null;
          }
 
-         int var11 = this.method3090(var1, var12, aStringArray2652);
+         int var11 = this.method3090(message, var12, aStringArray2652);
          if(var9 == 3 && var11 == 1) {
             var9 = 1;
          }
@@ -392,33 +392,33 @@ public abstract class RSTypeFace extends Rasterizer2D {
          int var13;
          int var14;
          if(var9 == 0) {
-            var14 = var3 + this.anInt2656;
+            var14 = y + this.anInt2656;
          } else if(var9 == 1) {
-            var14 = var3 + this.anInt2656 + (var5 - this.anInt2656 - this.anInt2641 - (var11 - 1) * var10) / 2;
+            var14 = y + this.anInt2656 + (var5 - this.anInt2656 - this.anInt2641 - (var11 - 1) * var10) / 2;
          } else if(var9 == 2) {
-            var14 = var3 + var5 - this.anInt2641 - (var11 - 1) * var10;
+            var14 = y + var5 - this.anInt2641 - (var11 - 1) * var10;
          } else {
             var13 = (var5 - this.anInt2656 - this.anInt2641 - (var11 - 1) * var10) / (var11 + 1);
             if(var13 < 0) {
                var13 = 0;
             }
 
-            var14 = var3 + this.anInt2656 + var13;
+            var14 = y + this.anInt2656 + var13;
             var10 += var13;
          }
 
          for(var13 = 0; var13 < var11; ++var13) {
-            if(var8 == 0) {
-               this.drawBasicString(aStringArray2652[var13], var2, var14);
-            } else if(var8 == 1) {
-               this.drawBasicString(aStringArray2652[var13], var2 + (var4 - this.getTextWidth(aStringArray2652[var13])) / 2, var14);
-            } else if(var8 == 2) {
-               this.drawBasicString(aStringArray2652[var13], var2 + var4 - this.getTextWidth(aStringArray2652[var13]), var14);
+            if(drawType == 0) {
+               this.drawBasicString(aStringArray2652[var13], x, var14);
+            } else if(drawType == 1) {
+               this.drawBasicString(aStringArray2652[var13], x + (var4 - this.getTextWidth(aStringArray2652[var13])) / 2, var14);
+            } else if(drawType == 2) {
+               this.drawBasicString(aStringArray2652[var13], x + var4 - this.getTextWidth(aStringArray2652[var13]), var14);
             } else if(var13 == var11 - 1) {
-               this.drawBasicString(aStringArray2652[var13], var2, var14);
+               this.drawBasicString(aStringArray2652[var13], x, var14);
             } else {
                this.method3116(aStringArray2652[var13], var4);
-               this.drawBasicString(aStringArray2652[var13], var2, var14);
+               this.drawBasicString(aStringArray2652[var13], x, var14);
                anInt2650 = 0;
             }
 

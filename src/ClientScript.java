@@ -5,6 +5,7 @@ public class ClientScript extends Node {
    static int[] intLocals;
    static int[] intStack = new int[1000];
    static String[] stringLocals;
+   static String[] stringStack = new String[1000];
 
    boolean aBool1636;
    int mouseX;
@@ -135,7 +136,7 @@ public class ClientScript extends Node {
                   }
 
                   if(instruction == 3) {
-                     Class5.stringStack[stringStackPtr++] = definition.aStringArray2272[step];
+                     stringStack[stringStackPtr++] = definition.aStringArray2272[step];
                      continue;
                   }
 
@@ -245,25 +246,25 @@ public class ClientScript extends Node {
                   }
 
                   if(instruction == 35) { // send local strings to stck
-                     Class5.stringStack[stringStackPtr++] = stringLocals[intOperands[step]];
+                     stringStack[stringStackPtr++] = stringLocals[intOperands[step]];
                      continue;
                   }
 
                   if(36 == instruction) { // set local strings
                      var10001 = intOperands[step];
                      --stringStackPtr;
-                     stringLocals[var10001] = Class5.stringStack[stringStackPtr];
+                     stringLocals[var10001] = stringStack[stringStackPtr];
                      continue;
                   }
 
                   if(instruction == 37) { // build parameters?
                      parameter = intOperands[step];
                      stringStackPtr -= parameter;
-                     String[] stringStack = Class5.stringStack;
+                     String[] currentStringStack = stringStack;
                      if(0 == parameter) {
                         var83 = "";
                      } else if(1 == parameter) {
-                        var76 = stringStack[stringStackPtr];
+                        var76 = currentStringStack[stringStackPtr];
                         if(null == var76) {
                            var83 = "null";
                         } else {
@@ -274,7 +275,7 @@ public class ClientScript extends Node {
                         var41 = 0;
 
                         for(var50 = stringStackPtr; var50 < var38; ++var50) {
-                           var58 = stringStack[var50];
+                           var58 = currentStringStack[var50];
                            if(var58 == null) {
                               var41 += 4;
                            } else {
@@ -285,7 +286,7 @@ public class ClientScript extends Node {
                         StringBuilder var87 = new StringBuilder(var41);
 
                         for(var21 = stringStackPtr; var21 < var38; ++var21) {
-                           var56 = stringStack[var21];
+                           var56 = currentStringStack[var21];
                            if(var56 == null) {
                               var87.append("null");
                            } else {
@@ -296,7 +297,7 @@ public class ClientScript extends Node {
                         var83 = var87.toString();
                      }
 
-                     Class5.stringStack[stringStackPtr++] = var83;
+                     stringStack[stringStackPtr++] = var83;
                      continue;
                   }
 
@@ -321,7 +322,7 @@ public class ClientScript extends Node {
                      }
 
                      for(var41 = 0; var41 < scriptDef.anInt2276 * -1101265763; ++var41) {
-                        var71[var41] = Class5.stringStack[stringStackPtr - scriptDef.anInt2276 * -1101265763 + var41];
+                        var71[var41] = stringStack[stringStackPtr - scriptDef.anInt2276 * -1101265763 + var41];
                      }
 
                      iStackPtr -= scriptDef.anInt2269 * -268834427;
@@ -410,14 +411,14 @@ public class ClientScript extends Node {
                         strInstr = "null";
                      }
 
-                     Class5.stringStack[stringStackPtr++] = strInstr;
+                     stringStack[stringStackPtr++] = strInstr;
                      continue;
                   }
 
                   if(instruction == 48) {
                      var10001 = intOperands[step];
                      --stringStackPtr;
-                     Client.aStringArray2901[var10001] = Class5.stringStack[stringStackPtr];
+                     Client.aStringArray2901[var10001] = stringStack[stringStackPtr];
                      continue;
                   }
                }
@@ -497,7 +498,7 @@ public class ClientScript extends Node {
                      iStackPtr -= 2;
                      var16 = intStack[iStackPtr];
                      var17 = intStack[iStackPtr + 1];
-                     var18 = LoginHandler.method878(var16, var17, 2110196290);
+                     var18 = RSInterface.method878(var16, var17, 2110196290);
                      if(var18 != null && var17 != -1) {
                         intStack[iStackPtr++] = 1;
                         if(var52) {
@@ -529,7 +530,7 @@ public class ClientScript extends Node {
                                  }
 
                                  --stringStackPtr;
-                                 var39 = Class5.stringStack[stringStackPtr];
+                                 var39 = stringStack[stringStackPtr];
                                  var51 = null;
                                  if(var39.length() > 0 && var39.charAt(var39.length() - 1) == 89) {
                                     --iStackPtr;
@@ -548,7 +549,7 @@ public class ClientScript extends Node {
                                  for(var50 = var90.length - 1; var50 >= 1; --var50) {
                                     if(var39.charAt(var50 - 1) == 115) {
                                        --stringStackPtr;
-                                       var90[var50] = Class5.stringStack[stringStackPtr];
+                                       var90[var50] = stringStack[stringStackPtr];
                                     } else {
                                        Integer var10002;
                                        --iStackPtr;
@@ -633,7 +634,7 @@ public class ClientScript extends Node {
                                  }
 
                                  if(1417 == instruction) {
-                                    var35.anObjectArray1859 = var90;
+                                    var35.mouseWheelTrigger = var90;
                                  }
 
                                  if(instruction == 1418) {
@@ -671,12 +672,12 @@ public class ClientScript extends Node {
                               if(instruction < 1600) {
                                  var35 = var52?Class19.aClass108_Sub17_230:BuildType.aClass108_Sub17_1231;
                                  if(instruction == 1500) {
-                                    intStack[iStackPtr++] = var35.anInt1776 * 985647797;
+                                    intStack[iStackPtr++] = var35.xPosition * 985647797;
                                     continue;
                                  }
 
                                  if(instruction == 1501) {
-                                    intStack[iStackPtr++] = var35.anInt1824 * 1730176157;
+                                    intStack[iStackPtr++] = var35.yPosition * 1730176157;
                                     continue;
                                  }
 
@@ -712,7 +713,7 @@ public class ClientScript extends Node {
                                  }
 
                                  if(1602 == instruction) { // component string
-                                    Class5.stringStack[stringStackPtr++] = var35.componentString;
+                                    stringStack[stringStackPtr++] = var35.componentString;
                                     continue;
                                  }
 
@@ -777,19 +778,19 @@ public class ClientScript extends Node {
                                     var17 = intStack[iStackPtr];
                                     --var17;
                                     if(null != var35.aStringArray1832 && var17 < var35.aStringArray1832.length && var35.aStringArray1832[var17] != null) {
-                                       Class5.stringStack[stringStackPtr++] = var35.aStringArray1832[var17];
+                                       stringStack[stringStackPtr++] = var35.aStringArray1832[var17];
                                        continue;
                                     }
 
-                                    Class5.stringStack[stringStackPtr++] = "";
+                                    stringStack[stringStackPtr++] = "";
                                     continue;
                                  }
 
                                  if(1802 == instruction) {
                                     if(null == var35.aString1821) {
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                     } else {
-                                       Class5.stringStack[stringStackPtr++] = var35.aString1821;
+                                       stringStack[stringStackPtr++] = var35.aString1821;
                                     }
                                     continue;
                                  }
@@ -797,12 +798,12 @@ public class ClientScript extends Node {
                                  --iStackPtr;
                                  var35 = RSInterface.getInterfaceComponentForHash(intStack[iStackPtr], -752744204);
                                  if(2500 == instruction) {
-                                    intStack[iStackPtr++] = var35.anInt1776 * 985647797;
+                                    intStack[iStackPtr++] = var35.xPosition * 985647797;
                                     continue;
                                  }
 
                                  if(instruction == 2501) {
-                                    intStack[iStackPtr++] = var35.anInt1824 * 1730176157;
+                                    intStack[iStackPtr++] = var35.yPosition * 1730176157;
                                     continue;
                                  }
 
@@ -839,7 +840,7 @@ public class ClientScript extends Node {
                                  }
 
                                  if(instruction == 2602) {
-                                    Class5.stringStack[stringStackPtr++] = var35.componentString;
+                                    stringStack[stringStackPtr++] = var35.componentString;
                                     continue;
                                  }
 
@@ -915,19 +916,19 @@ public class ClientScript extends Node {
                                     var17 = intStack[iStackPtr];
                                     --var17;
                                     if(null != var35.aStringArray1832 && var17 < var35.aStringArray1832.length && var35.aStringArray1832[var17] != null) {
-                                       Class5.stringStack[stringStackPtr++] = var35.aStringArray1832[var17];
+                                       stringStack[stringStackPtr++] = var35.aStringArray1832[var17];
                                        continue;
                                     }
 
-                                    Class5.stringStack[stringStackPtr++] = "";
+                                    stringStack[stringStackPtr++] = "";
                                     continue;
                                  }
 
                                  if(2802 == instruction) {
                                     if(null == var35.aString1821) {
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                     } else {
-                                       Class5.stringStack[stringStackPtr++] = var35.aString1821;
+                                       stringStack[stringStackPtr++] = var35.aString1821;
                                     }
                                     continue;
                                  }
@@ -940,7 +941,7 @@ public class ClientScript extends Node {
                                  if(instruction < 3200) {
                                     if(3100 == instruction) { // send chat message
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        ChatMessagesContainer.pushMessage(0, "", var83, -819691502);
                                        continue;
                                     }
@@ -958,7 +959,7 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3104) {
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        var17 = 0;
                                        boolean var47 = false;
                                        boolean var49 = false;
@@ -1031,7 +1032,7 @@ public class ClientScript extends Node {
 
                                     if(3105 == instruction) { // write user
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        Client.secureBuffer.writePacket(58);
                                        Client.secureBuffer.writeByte(var83.length() + 1);
                                        Client.secureBuffer.writeString(var83);
@@ -1040,7 +1041,7 @@ public class ClientScript extends Node {
 
                                     if(3106 == instruction) { // write user
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        Client.secureBuffer.writePacket(65);
                                        Client.secureBuffer.writeByte(var83.length() + 1);
                                        Client.secureBuffer.writeString(var83);
@@ -1051,7 +1052,7 @@ public class ClientScript extends Node {
                                        --iStackPtr;
                                        var16 = intStack[iStackPtr];
                                        --stringStackPtr;
-                                       var39 = Class5.stringStack[stringStackPtr];
+                                       var39 = stringStack[stringStackPtr];
                                        var43 = false;
 
                                        for(var41 = 0; var41 < Client.numLocalPlayers * -43742683; ++var41) {
@@ -1112,20 +1113,20 @@ public class ClientScript extends Node {
                                     }
 
                                     if(3111 == instruction) {
-                                       intStack[iStackPtr++] = Ignore.aClass37_386.aBool528?1:0;
+                                       intStack[iStackPtr++] = Ignore.clientSettings.hideRoofs ?1:0;
                                        continue;
                                     }
 
                                     if(3112 == instruction) { // possibly load cache file preferences? or save
                                        --iStackPtr;
-                                       Ignore.aClass37_386.aBool528 = intStack[iStackPtr] == 1;
+                                       Ignore.clientSettings.hideRoofs = intStack[iStackPtr] == 1;
                                        Timer.method713(-1212311019);
                                        continue;
                                     }
 
                                     if(3113 == instruction) { // open link, i believe
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var37 = intStack[iStackPtr] == 1;
                                        AnimatedGraphic.method2137(var83, var37, false, (byte) 31);
@@ -1352,7 +1353,7 @@ public class ClientScript extends Node {
                                     }
 
                                     if(3318 == instruction) { // get world id
-                                       intStack[iStackPtr++] = Client.worldID * 292541855;
+                                       intStack[iStackPtr++] = Client.selectedWorldID * 292541855;
                                        continue;
                                     }
 
@@ -1376,7 +1377,7 @@ public class ClientScript extends Node {
                                     }
 
                                     if(3324 == instruction) { // push world type to stack
-                                       intStack[iStackPtr++] = Client.worldType * 164398169;
+                                       intStack[iStackPtr++] = Client.selectedWorldType * 164398169;
                                        continue;
                                     }
                                  } else if(instruction < 3500) { // push cs map string values
@@ -1391,14 +1392,14 @@ public class ClientScript extends Node {
 
                                        for(var41 = 0; var41 < csMap.csMapValueCount * -1484660039; ++var41) {
                                           if(var17 == csMap.anIntArray2058[var41]) {
-                                             Class5.stringStack[stringStackPtr++] = csMap.csMapStringValues[var41];
+                                             stringStack[stringStackPtr++] = csMap.csMapStringValues[var41];
                                              csMap = null;
                                              break;
                                           }
                                        }
 
                                        if(csMap != null) {
-                                          Class5.stringStack[stringStackPtr++] = csMap.csMapStringIdentifier;
+                                          stringStack[stringStackPtr++] = csMap.csMapStringIdentifier;
                                        }
                                        continue;
                                     }
@@ -1414,7 +1415,7 @@ public class ClientScript extends Node {
                                           for(int csMapValue = 0; csMapValue < csMap.csMapValueCount * -1484660039; ++csMapValue) {
                                              if(csMap.anIntArray2058[csMapValue] == var41) {
                                                 if(var17 == 115) {
-                                                   Class5.stringStack[stringStackPtr++] = csMap.csMapStringValues[csMapValue];
+                                                   stringStack[stringStackPtr++] = csMap.csMapStringValues[csMapValue];
                                                 } else {
                                                    intStack[iStackPtr++] = csMap.csMapIntValues[csMapValue];
                                                 }
@@ -1426,7 +1427,7 @@ public class ClientScript extends Node {
 
                                           if(null != csMap) {
                                              if(var17 == 115) {
-                                                Class5.stringStack[stringStackPtr++] = csMap.csMapStringIdentifier;
+                                                stringStack[stringStackPtr++] = csMap.csMapStringIdentifier;
                                              } else {
                                                 intStack[iStackPtr++] = csMap.csMapIntIdentifier * 282426955;
                                              }
@@ -1435,7 +1436,7 @@ public class ClientScript extends Node {
                                        }
 
                                        if(115 == var17) {
-                                          Class5.stringStack[stringStackPtr++] = "null";
+                                          stringStack[stringStackPtr++] = "null";
                                        } else {
                                           intStack[iStackPtr++] = 0;
                                        }
@@ -1457,13 +1458,13 @@ public class ClientScript extends Node {
                                        --iStackPtr;
                                        var16 = intStack[iStackPtr];
                                        if(2 == Client.anInt2954 * 1676461513 && var16 < Client.friendListCount * -163737695) {
-                                          Class5.stringStack[stringStackPtr++] = Client.friendList[var16].username;
-                                          Class5.stringStack[stringStackPtr++] = Client.friendList[var16].displayName;
+                                          stringStack[stringStackPtr++] = Client.friendList[var16].username;
+                                          stringStack[stringStackPtr++] = Client.friendList[var16].displayName;
                                           continue;
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = "";
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                        continue;
                                     }
 
@@ -1493,7 +1494,7 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3604) { // pop some value and send packet
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = intStack[iStackPtr];
                                        Class19.method327(var83, var17, (byte)18);
@@ -1504,7 +1505,7 @@ public class ClientScript extends Node {
                                     String actualUsername;
                                     if(instruction == 3605) { // pop username and add to friend list
                                        --stringStackPtr;
-                                       String username = Class5.stringStack[stringStackPtr];
+                                       String username = stringStack[stringStackPtr];
                                        if(username == null) {
                                           continue;
                                        }
@@ -1565,21 +1566,21 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3606) { // pop username and remove friend
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        Friend.removeFriend(var83, 1604645946);
                                        continue;
                                     }
 
                                     if(3607 == instruction) { // pop string to ignore list
                                        --stringStackPtr;
-                                       String name = Class5.stringStack[stringStackPtr];
+                                       String name = stringStack[stringStackPtr];
                                        Ignore.addToIgnoreList(name, false, -1320321926);
                                        continue;
                                     }
 
                                     if(3608 == instruction) { // editing something with ignore list
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        if(var83 == null) {
                                           continue;
                                        }
@@ -1630,7 +1631,7 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3609) { // is username friend
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        if(var83.startsWith(RSTypeFace.getIconTag(0, 480603646)) || var83.startsWith(RSTypeFace.getIconTag(1, 480603646))) {
                                           var83 = var83.substring(7);
                                        }
@@ -1641,9 +1642,9 @@ public class ClientScript extends Node {
 
                                     if(3611 == instruction) {
                                        if(null != Client.aString2967) {
-                                          Class5.stringStack[stringStackPtr++] = EquipmentKit.method1180(Client.aString2967, (byte)0);
+                                          stringStack[stringStackPtr++] = EquipmentKit.method1180(Client.aString2967, (byte)0);
                                        } else {
-                                          Class5.stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
                                        }
                                        continue;
                                     }
@@ -1661,11 +1662,11 @@ public class ClientScript extends Node {
                                        --iStackPtr;
                                        var16 = intStack[iStackPtr];
                                        if(Client.aString2967 != null && var16 < Friend.friendsChatListCount * 1727166727) {
-                                          Class5.stringStack[stringStackPtr++] = FriendsChatMember.friendsChatList[var16].username;
+                                          stringStack[stringStackPtr++] = FriendsChatMember.friendsChatList[var16].username;
                                           continue;
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                        continue;
                                     }
 
@@ -1700,7 +1701,7 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3617) { // same as instr 3619, except packet 22
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        if(null != FriendsChatMember.friendsChatList) {
                                           Client.secureBuffer.writePacket(22);
                                           Client.secureBuffer.writeByte(StringUtilities.getStringLengthPlusOne(var83));
@@ -1716,7 +1717,7 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3619) { // writes packet 107: var83.length + 1, var83
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        Class5.method102(var83, -1545607057);
                                        continue;
                                     }
@@ -1739,19 +1740,19 @@ public class ClientScript extends Node {
                                        --iStackPtr;
                                        var16 = intStack[iStackPtr]; // ignoreindex
                                        if(0 != Client.anInt2954 * 1676461513 && var16 < Client.ignoreListCount * -1283681697) {
-                                          Class5.stringStack[stringStackPtr++] = Client.ignoreList[var16].username;
-                                          Class5.stringStack[stringStackPtr++] = Client.ignoreList[var16].displayName;
+                                          stringStack[stringStackPtr++] = Client.ignoreList[var16].username;
+                                          stringStack[stringStackPtr++] = Client.ignoreList[var16].displayName;
                                           continue;
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = "";
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                        continue;
                                     }
 
                                     if(3623 == instruction) { // check if username is on ignore list
                                        --stringStackPtr;
-                                       String name = Class5.stringStack[stringStackPtr];
+                                       String name = stringStack[stringStackPtr];
                                        if(name.startsWith(RSTypeFace.getIconTag(0, 480603646)) || name.startsWith(RSTypeFace.getIconTag(1, 480603646))) { // remove crown
                                           name = name.substring(7);
                                        }
@@ -1774,9 +1775,9 @@ public class ClientScript extends Node {
 
                                     if(instruction == 3625) {
                                        if(Client.aString2934 != null) {
-                                          Class5.stringStack[stringStackPtr++] = EquipmentKit.method1180(Client.aString2934, (byte)0);
+                                          stringStack[stringStackPtr++] = EquipmentKit.method1180(Client.aString2934, (byte)0);
                                        } else {
-                                          Class5.stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
                                        }
                                        continue;
                                     }
@@ -1922,27 +1923,27 @@ public class ClientScript extends Node {
                                  } else if(instruction < 4200) { // append int to string
                                     if(4100 == instruction) {
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = intStack[iStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = var83 + var17;
+                                       stringStack[stringStackPtr++] = var83 + var17;
                                        continue;
                                     }
 
                                     if(instruction == 4101) { // append two strings
                                        stringStackPtr -= 2;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       var39 = Class5.stringStack[1 + stringStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = var83 + var39;
+                                       var83 = stringStack[stringStackPtr];
+                                       var39 = stringStack[1 + stringStackPtr];
+                                       stringStack[stringStackPtr++] = var83 + var39;
                                        continue;
                                     }
 
                                     if(instruction == 4102) {
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = intStack[iStackPtr];
-                                       var71 = Class5.stringStack;
+                                       var71 = stringStack;
                                        var41 = stringStackPtr++;
                                        if(var17 < 0) {
                                           var58 = Integer.toString(var17);
@@ -1983,8 +1984,8 @@ public class ClientScript extends Node {
 
                                     if(instruction == 4103) { // string to lowercase
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = var83.toLowerCase();
+                                       var83 = stringStack[stringStackPtr];
+                                       stringStack[stringStackPtr++] = var83.toLowerCase();
                                        continue;
                                     }
 
@@ -1996,33 +1997,33 @@ public class ClientScript extends Node {
                                        var41 = Class5.aCalendar76.get(5);
                                        var50 = Class5.aCalendar76.get(2);
                                        var21 = Class5.aCalendar76.get(1);
-                                       Class5.stringStack[stringStackPtr++] = var41 + "-" + Class5.dateString[var50] + "-" + var21;
+                                       stringStack[stringStackPtr++] = var41 + "-" + Class5.dateString[var50] + "-" + var21;
                                        continue;
                                     }
 
                                     if(4105 == instruction) { // add string to stack if female, another string if male
                                        stringStackPtr -= 2;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       var39 = Class5.stringStack[stringStackPtr + 1];
+                                       var83 = stringStack[stringStackPtr];
+                                       var39 = stringStack[stringStackPtr + 1];
                                        if(null != Player.myPlayer.bodyEquipmentKit && Player.myPlayer.bodyEquipmentKit.isFemale) {
-                                          Class5.stringStack[stringStackPtr++] = var39;
+                                          stringStack[stringStackPtr++] = var39;
                                           continue;
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = var83;
+                                       stringStack[stringStackPtr++] = var83;
                                        continue;
                                     }
 
                                     if(4106 == instruction) { // int to string
                                        --iStackPtr;
                                        var16 = intStack[iStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = Integer.toString(var16);
+                                       stringStack[stringStackPtr++] = Integer.toString(var16);
                                        continue;
                                     }
 
                                     if(instruction == 4107) {
                                        stringStackPtr -= 2;
-                                       intStack[iStackPtr++] = ChatMessage.method2021(PingRequester.method835(Class5.stringStack[stringStackPtr], Class5.stringStack[1 + stringStackPtr], Client.anInt2712 * 148074329, -493022987), (byte)16);
+                                       intStack[iStackPtr++] = ChatMessage.method2021(SessionRequestWorker.method835(stringStack[stringStackPtr], stringStack[1 + stringStackPtr], World.hideWorldList * 148074329, -493022987), (byte)16);
                                        continue;
                                     }
 
@@ -2030,11 +2031,11 @@ public class ClientScript extends Node {
                                     RSFont var72;
                                     if(4108 == instruction) { // get some kind of length related to font, either length with tags or without.
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        iStackPtr -= 2;
                                        var17 = intStack[iStackPtr];
                                        var38 = intStack[1 + iStackPtr];
-                                       var68 = Class54.fontIndex.getFile(var38, 0, (byte) 7);
+                                       var68 = RSFont.fontIndex.getFile(var38, 0, (byte) 7);
                                        var72 = new RSFont(var68);
                                        intStack[iStackPtr++] = var72.method3092(var83, var17);
                                        continue;
@@ -2042,11 +2043,11 @@ public class ClientScript extends Node {
 
                                     if(4109 == instruction) { // get text renderWidth with tags
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        iStackPtr -= 2;
                                        var17 = intStack[iStackPtr];
                                        var38 = intStack[1 + iStackPtr]; // file id
-                                       var68 = Class54.fontIndex.getFile(var38, 0, (byte) 7); // font data
+                                       var68 = RSFont.fontIndex.getFile(var38, 0, (byte) 7); // font data
                                        var72 = new RSFont(var68);
                                        intStack[iStackPtr++] = var72.method3091(var83, var17);
                                        continue;
@@ -2054,30 +2055,30 @@ public class ClientScript extends Node {
 
                                     if(4110 == instruction) { // if intstack =  1 set string stack 1st string else 2nd string ...?
                                        stringStackPtr -= 2;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       var39 = Class5.stringStack[1 + stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
+                                       var39 = stringStack[1 + stringStackPtr];
                                        --iStackPtr;
                                        if(intStack[iStackPtr] == 1) {
-                                          Class5.stringStack[stringStackPtr++] = var83;
+                                          stringStack[stringStackPtr++] = var83;
                                        } else {
-                                          Class5.stringStack[stringStackPtr++] = var39;
+                                          stringStack[stringStackPtr++] = var39;
                                        }
                                        continue;
                                     }
 
                                     if(instruction == 4111) { // append <lt> <gt> tags
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = RSTypeFace.appendLTGTTags(var83);
+                                       var83 = stringStack[stringStackPtr];
+                                       stringStack[stringStackPtr++] = RSTypeFace.appendLTGTTags(var83);
                                        continue;
                                     }
 
                                     if(instruction == 4112) { // append char to string
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = intStack[iStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = var83 + (char)var17;
+                                       stringStack[stringStackPtr++] = var83 + (char)var17;
                                        continue;
                                     }
 
@@ -2133,7 +2134,7 @@ public class ClientScript extends Node {
 
                                     if(4117 == instruction) { // get string length
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        if(var83 != null) {
                                           intStack[iStackPtr++] = var83.length();
                                        } else {
@@ -2144,17 +2145,17 @@ public class ClientScript extends Node {
 
                                     if(4118 == instruction) { // substring arg1,arg2
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        iStackPtr -= 2;
                                        var17 = intStack[iStackPtr];
                                        var38 = intStack[1 + iStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = var83.substring(var17, var38);
+                                       stringStack[stringStackPtr++] = var83.substring(var17, var38);
                                        continue;
                                     }
 
                                     if(4119 == instruction) { // rebuild a string excluding char 60
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        StringBuilder builtString = new StringBuilder(var83.length());
                                        var43 = false;
 
@@ -2169,13 +2170,13 @@ public class ClientScript extends Node {
                                           }
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = builtString.toString();
+                                       stringStack[stringStackPtr++] = builtString.toString();
                                        continue;
                                     }
 
                                     if(instruction == 4120) { // get a string at indexof #
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = intStack[iStackPtr];
                                        intStack[iStackPtr++] = var83.indexOf(var17);
@@ -2184,8 +2185,8 @@ public class ClientScript extends Node {
 
                                     if(4121 == instruction) { //get a string at indexof string,#
                                        stringStackPtr -= 2;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       var39 = Class5.stringStack[1 + stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
+                                       var39 = stringStack[1 + stringStackPtr];
                                        --iStackPtr;
                                        var38 = intStack[iStackPtr];
                                        intStack[iStackPtr++] = var83.indexOf(var39, var38);
@@ -2195,7 +2196,7 @@ public class ClientScript extends Node {
                                     if(instruction == 4200) {
                                        --iStackPtr;
                                        var16 = intStack[iStackPtr];
-                                       Class5.stringStack[stringStackPtr++] = ItemDefinition.getItemDefinition(var16, -13500590).name;
+                                       stringStack[stringStackPtr++] = ItemDefinition.getItemDefinition(var16, -13500590).name;
                                        continue;
                                     }
 
@@ -2206,11 +2207,11 @@ public class ClientScript extends Node {
                                        var17 = intStack[iStackPtr + 1];
                                        var73 = ItemDefinition.getItemDefinition(var16, -1642198338);
                                        if(var17 >= 1 && var17 <= 5 && null != var73.options[var17 - 1]) {
-                                          Class5.stringStack[stringStackPtr++] = var73.options[var17 - 1];
+                                          stringStack[stringStackPtr++] = var73.options[var17 - 1];
                                           continue;
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                        continue;
                                     }
 
@@ -2220,11 +2221,11 @@ public class ClientScript extends Node {
                                        var17 = intStack[1 + iStackPtr];
                                        var73 = ItemDefinition.getItemDefinition(var16, -1925560779);
                                        if(var17 >= 1 && var17 <= 5 && null != var73.interfaceOptions[var17 - 1]) {
-                                          Class5.stringStack[stringStackPtr++] = var73.interfaceOptions[var17 - 1];
+                                          stringStack[stringStackPtr++] = var73.interfaceOptions[var17 - 1];
                                           continue;
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = "";
+                                       stringStack[stringStackPtr++] = "";
                                        continue;
                                     }
 
@@ -2319,7 +2320,7 @@ public class ClientScript extends Node {
 
                                     if(5002 == instruction) {
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        iStackPtr -= 2;
                                        var17 = intStack[iStackPtr];
                                        var38 = intStack[iStackPtr + 1];
@@ -2335,19 +2336,19 @@ public class ClientScript extends Node {
                                        iStackPtr -= 2;
                                        var16 = intStack[iStackPtr];
                                        var17 = intStack[iStackPtr + 1];
-                                       ChatMessage var80 = ChatMessagesContainer.getChatMessageFromContainer(var16, var17, (byte) -55);
-                                       if(var80 != null) {
-                                          intStack[iStackPtr++] = var80.anInt1944 * -1818271001;
-                                          intStack[iStackPtr++] = var80.messagePushTime * -1204791759;
-                                          Class5.stringStack[stringStackPtr++] = var80.messagePrefix != null?var80.messagePrefix:"";
-                                          Class5.stringStack[stringStackPtr++] = null != var80.messageString?var80.messageString:"";
-                                          Class5.stringStack[stringStackPtr++] = var80.messageSuffix != null?var80.messageSuffix:"";
+                                       ChatMessage message = ChatMessagesContainer.getChatMessageFromContainer(var16, var17, (byte) -55);
+                                       if(message != null) {
+                                          intStack[iStackPtr++] = message.anInt1944 * -1818271001;
+                                          intStack[iStackPtr++] = message.messagePushTime * -1204791759;
+                                          stringStack[stringStackPtr++] = message.messagePrefix != null?message.messagePrefix:"";
+                                          stringStack[stringStackPtr++] = null != message.messageString?message.messageString:"";
+                                          stringStack[stringStackPtr++] = message.messageSuffix != null?message.messageSuffix:"";
                                        } else {
                                           intStack[iStackPtr++] = -1;
                                           intStack[iStackPtr++] = 0;
-                                          Class5.stringStack[stringStackPtr++] = "";
-                                          Class5.stringStack[stringStackPtr++] = "";
-                                          Class5.stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
                                        }
                                        continue;
                                     }
@@ -2359,15 +2360,15 @@ public class ClientScript extends Node {
                                        if(chatMessage != null) {
                                           intStack[iStackPtr++] = chatMessage.messageType * 1488157137;
                                           intStack[iStackPtr++] = chatMessage.messagePushTime * -1204791759;
-                                          Class5.stringStack[stringStackPtr++] = null != chatMessage.messagePrefix? chatMessage.messagePrefix : "";
-                                          Class5.stringStack[stringStackPtr++] = chatMessage.messageString != null?chatMessage.messageString : "";
-                                          Class5.stringStack[stringStackPtr++] = null != chatMessage.messageSuffix?chatMessage.messageSuffix : "";
+                                          stringStack[stringStackPtr++] = null != chatMessage.messagePrefix? chatMessage.messagePrefix : "";
+                                          stringStack[stringStackPtr++] = chatMessage.messageString != null?chatMessage.messageString : "";
+                                          stringStack[stringStackPtr++] = null != chatMessage.messageSuffix?chatMessage.messageSuffix : "";
                                        } else {
                                           intStack[iStackPtr++] = -1;
                                           intStack[iStackPtr++] = 0;
-                                          Class5.stringStack[stringStackPtr++] = "";
-                                          Class5.stringStack[stringStackPtr++] = "";
-                                          Class5.stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
+                                          stringStack[stringStackPtr++] = "";
                                        }
                                        continue;
                                     }
@@ -2383,7 +2384,7 @@ public class ClientScript extends Node {
 
                                     if(5008 == instruction) { // write chat packet
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        --iStackPtr;
                                        var17 = intStack[iStackPtr];
                                        var76 = var83.toLowerCase();
@@ -2424,7 +2425,7 @@ public class ClientScript extends Node {
                                        } else if(var76.startsWith(StringUtilities.aString1144)) {
                                           var79 = 11;
                                           var83 = var83.substring(StringUtilities.aString1144.length());
-                                       } else if(0 != Client.anInt2712 * 148074329) {
+                                       } else if(0 != World.hideWorldList * 148074329) {
                                           if(var76.startsWith(StringUtilities.aString1126)) {
                                              var79 = 0;
                                              var83 = var83.substring(StringUtilities.aString1126.length());
@@ -2481,7 +2482,7 @@ public class ClientScript extends Node {
                                        } else if(var76.startsWith(StringUtilities.aString1157)) {
                                           var78 = 5;
                                           var83 = var83.substring(StringUtilities.aString1157.length());
-                                       } else if(Client.anInt2712 * 148074329 != 0) {
+                                       } else if(World.hideWorldList * 148074329 != 0) {
                                           if(var76.startsWith(StringUtilities.aString1172)) {
                                              var78 = 1;
                                              var83 = var83.substring(StringUtilities.aString1172.length());
@@ -2517,8 +2518,8 @@ public class ClientScript extends Node {
 
                                     if(instruction == 5009) {
                                        stringStackPtr -= 2;
-                                       var83 = Class5.stringStack[stringStackPtr];
-                                       var39 = Class5.stringStack[stringStackPtr + 1];
+                                       var83 = stringStack[stringStackPtr];
+                                       var39 = stringStack[stringStackPtr + 1];
                                        Client.secureBuffer.writePacket(12);
                                        Client.secureBuffer.writeShort(0);
                                        var38 = Client.secureBuffer.position * 798331555;
@@ -2539,7 +2540,7 @@ public class ClientScript extends Node {
                                           var83 = "";
                                        }
 
-                                       Class5.stringStack[stringStackPtr++] = var83;
+                                       stringStack[stringStackPtr++] = var83;
                                        continue;
                                     }
 
@@ -2591,7 +2592,7 @@ public class ClientScript extends Node {
 
                                     if(5020 == instruction) { // talk
                                        --stringStackPtr;
-                                       var83 = Class5.stringStack[stringStackPtr];
+                                       var83 = stringStack[stringStackPtr];
                                        ChatMessagesContainer.sendText(var83, -2117328929);
                                        continue;
                                     }
@@ -2611,7 +2612,7 @@ public class ClientScript extends Node {
                                  var17 = intStack[iStackPtr] - 1;
                                  if(var17 >= 0 && var17 <= 9) {
                                     --stringStackPtr;
-                                    var35.method1940(var17, Class5.stringStack[stringStackPtr], 929747449);
+                                    var35.method1940(var17, stringStack[stringStackPtr], 929747449);
                                     continue;
                                  }
 
@@ -2623,7 +2624,7 @@ public class ClientScript extends Node {
                                  iStackPtr -= 2;
                                  var17 = intStack[iStackPtr];
                                  var38 = intStack[iStackPtr + 1];
-                                 var35.aClass108_Sub17_1833 = LoginHandler.method878(var17, var38, 2133087913);
+                                 var35.aClass108_Sub17_1833 = RSInterface.method878(var17, var38, 2133087913);
                                  continue;
                               }
 
@@ -2647,13 +2648,13 @@ public class ClientScript extends Node {
 
                               if(instruction == 1305) {
                                  --stringStackPtr;
-                                 var35.aString1821 = Class5.stringStack[stringStackPtr];
+                                 var35.aString1821 = stringStack[stringStackPtr];
                                  continue;
                               }
 
                               if(1306 == instruction) { // set selected action name in component
                                  --stringStackPtr;
-                                 var35.selectedActionName = Class5.stringStack[stringStackPtr];
+                                 var35.selectedActionName = stringStack[stringStackPtr];
                                  continue;
                               }
 
@@ -2827,7 +2828,7 @@ public class ClientScript extends Node {
 
                         if(1112 == instruction) {
                            --stringStackPtr;
-                           var39 = Class5.stringStack[stringStackPtr];
+                           var39 = stringStack[stringStackPtr];
                            if(!var39.equals(var35.componentString)) {
                               var35.componentString = var39;
                               MouseInputHandler.method775(var35, -16054773);
@@ -2916,8 +2917,8 @@ public class ClientScript extends Node {
 
                      if(instruction == 1000) {
                         iStackPtr -= 2;
-                        var35.anInt1776 = intStack[iStackPtr] * 604525469;
-                        var35.anInt1824 = intStack[iStackPtr + 1] * -1129233995;
+                        var35.xPosition = intStack[iStackPtr] * 604525469;
+                        var35.yPosition = intStack[iStackPtr + 1] * -1129233995;
                         MouseInputHandler.method775(var35, -16054773);
                         continue;
                      }
@@ -2966,5 +2967,9 @@ public class ClientScript extends Node {
             World.method647(var13.toString(), var32, 926745782);
          }
       }
+   }
+
+   static void executeScript(ClientScript script, int var1) {
+      executeScript(script, 200000, (short) -28048);
    }
 }

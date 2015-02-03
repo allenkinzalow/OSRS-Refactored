@@ -227,7 +227,7 @@ public abstract class AbstractIndex {
       }
    }
 
-   public int[] method1013(int var1) {
+   public int[] getFileIDs(int var1) {
       return this.fileSizes[var1];
    }
 

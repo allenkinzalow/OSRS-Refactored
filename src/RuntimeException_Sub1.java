@@ -9,7 +9,6 @@ public class RuntimeException_Sub1 extends RuntimeException {
    Throwable aThrowable2630;
    static Applet anApplet2631;
    String aString2632;
-   static CacheIndex huffmanIndex;
 
 
    RuntimeException_Sub1(Throwable var1, String var2) {

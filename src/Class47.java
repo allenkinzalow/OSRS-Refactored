@@ -21,7 +21,7 @@ public class Class47 {
          if(null != var4 && var4.hoverPopup * -867206361 == var1 && (!var4.aBool1855 || !RSInterface.isComponentHidden(var4, (byte) 38))) {
             int var6;
             if(0 == var4.componentType * 942877543) {
-               if(!var4.aBool1855 && RSInterface.isComponentHidden(var4, (byte) 13) && Client.aClass108_Sub17_924 != var4) {
+               if(!var4.aBool1855 && RSInterface.isComponentHidden(var4, (byte) 13) && Client.mouseHoveredComponent != var4) {
                   continue;
                }
 
@@ -54,9 +54,9 @@ public class Class47 {
                      for(var4.anInt1805 += Client.anInt2780 * 1677688223; var4.anInt1805 * 443666099 > var7.frameLengths[var4.anInt1877 * -1365409805]; MouseInputHandler.method775(var4, -16054773)) {
                         var4.anInt1805 -= var7.frameLengths[var4.anInt1877 * -1365409805] * 1933545595;
                         var4.anInt1877 += 1450324283;
-                        if(var4.anInt1877 * -1365409805 >= var7.frameDelays.length) {
+                        if(var4.anInt1877 * -1365409805 >= var7.frameIDs.length) {
                            var4.anInt1877 -= var7.frameStep * -1800118973;
-                           if(var4.anInt1877 * -1365409805 < 0 || var4.anInt1877 * -1365409805 >= var7.frameDelays.length) {
+                           if(var4.anInt1877 * -1365409805 < 0 || var4.anInt1877 * -1365409805 >= var7.frameIDs.length) {
                               var4.anInt1877 = 0;
                            }
                         }
@@ -113,7 +113,7 @@ public class Class47 {
       var5.anIntArray1675[var1] = var3;
    }
 
-   public static void method680(GameConnection var0, boolean var1, int var2) {
+   public static void method680(SocketSession var0, boolean var1, int var2) {
       if(Class78.connection != null) {
          try {
             Class78.connection.disconnect();
@@ -132,18 +132,18 @@ public class Class47 {
       Class78.anInt1223 = 0;
 
       while(true) {
-         Js5Request var3 = (Js5Request)Class78.urgentJs5Requests.method1304();
-         if(var3 == null) {
+         Js5Request js5Request = (Js5Request)Class78.urgentJs5Requests.method1304();
+         if(js5Request == null) {
             while(true) {
-               var3 = (Js5Request)Class78.regularJs5Requests.method1304();
-               if(null == var3) {
+               js5Request = (Js5Request)Class78.regularJs5Requests.method1304();
+               if(null == js5Request) {
                   if(0 != IsaacRandomGen.js5EncryptionKey) {
                      try {
-                        RSByteBuffer var8 = new RSByteBuffer(4);
-                        var8.writeByte(4);
-                        var8.writeByte(IsaacRandomGen.js5EncryptionKey);
-                        var8.writeShort(0);
-                        Class78.connection.writeBytes(var8.buf, 0, 4);
+                        RSByteBuffer bufer = new RSByteBuffer(4);
+                        bufer.writeByte(4);
+                        bufer.writeByte(IsaacRandomGen.js5EncryptionKey);
+                        bufer.writeShort(0);
+                        Class78.connection.writeBytes(bufer.buf, 0, 4);
                      } catch (IOException var6) {
                         try {
                            Class78.connection.disconnect();
@@ -161,14 +161,14 @@ public class Class47 {
                   return;
                }
 
-               Class78.aClass98_1219.method1283(var3);
-               Class78.aClass101_1220.put(var3, var3.key);
+               Class78.aClass98_1219.method1283(js5Request);
+               Class78.aClass101_1220.put(js5Request, js5Request.key);
                Class78.anInt1221 += 831035281;
                Class78.anInt1224 -= 1752320189;
             }
          }
 
-         Class78.aClass101_1228.put(var3, var3.key);
+         Class78.aClass101_1228.put(js5Request, js5Request.key);
          Class78.anInt1216 -= 1906091653;
          Class78.anInt1218 -= 2075110651;
       }

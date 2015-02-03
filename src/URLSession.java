@@ -1,14 +1,11 @@
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class Class43 {
+public class URLSession {
 
    static int anInt607;
-   PingRequest aClass85_608;
+   SessionRequest aClass85_608;
    DataInputStream aDataInputStream609;
    byte[] aByteArray610 = new byte[4];
    int anInt611;
@@ -19,13 +16,13 @@ public class Class43 {
    static int anInt619;
 
 
-   Class43(PingRequester var1, URL var2) {
-      this.aClass85_608 = var1.method822(var2, (short)128);
+   URLSession(SessionRequestWorker var1, URL var2) {
+      this.aClass85_608 = var1.submitURLConnectionSession(var2, (short) 128);
       this.anInt618 = 0;
       this.aLong614 = (Timer.getCurrentTimeMillis(849846164) + 30000L) * 7909828926640958115L;
    }
 
-   byte[] method650(byte var1) throws IOException {
+   byte[] getByteData(byte var1) throws IOException {
       if(Timer.getCurrentTimeMillis(849846164) > this.aLong614 * -2717684605281117941L) {
          throw new IOException();
       } else {
@@ -35,7 +32,7 @@ public class Class43 {
             }
 
             if(1 == this.aClass85_608.anInt1292) {
-               this.aDataInputStream609 = (DataInputStream)this.aClass85_608.anObject1294;
+               this.aDataInputStream609 = (DataInputStream)this.aClass85_608.connectionObject;
                this.anInt618 = 47200243;
             }
          }
@@ -236,15 +233,15 @@ public class Class43 {
             AbstractIndex.configIndex = CacheIndex.initCacheIndex(2, true, false, true, -868873085);
             OverlayFloorDefinition.interfaceIndex = CacheIndex.initCacheIndex(3, false, true, true, -377716183);
             RSSoundEffect.soundEffectsIndex_1 = CacheIndex.initCacheIndex(4, false, true, true, -1122417526);
-            PingRequester.landscapeIndex = CacheIndex.initCacheIndex(5, true, true, true, -1364602569);
+            RegionReference.landscapeIndex = CacheIndex.initCacheIndex(5, true, true, true, -1364602569);
             Friend.musicIndex_1 = CacheIndex.initCacheIndex(6, true, true, false, -1649811484);
             Class47.modelIndex = CacheIndex.initCacheIndex(7, false, true, true, -1786151476);
             Class23.spriteIndex = CacheIndex.initCacheIndex(8, false, true, true, -1203260803);
             PlayerLoginDetails.textureIndex = CacheIndex.initCacheIndex(9, false, true, true, -1786660079);
-            RuntimeException_Sub1.huffmanIndex = CacheIndex.initCacheIndex(10, false, true, true, -1850067732);
+            HuffmanEncoding.huffmanIndex = CacheIndex.initCacheIndex(10, false, true, true, -1850067732);
             ClientParameter.musicIndex_2 = CacheIndex.initCacheIndex(11, false, true, true, -596901743);
             Class108_Sub13.clientScriptIndex = CacheIndex.initCacheIndex(12, false, true, true, -2145575712);
-            Class54.fontIndex = CacheIndex.initCacheIndex(13, true, false, true, -1957495351);
+            RSFont.fontIndex = CacheIndex.initCacheIndex(13, true, false, true, -1957495351);
             HuffmanEncoding.soundEffectsIndex_2 = CacheIndex.initCacheIndex(14, false, true, false, -1772317315);
             IsaacRandomGen.soundEffectsIndex_3 = CacheIndex.initCacheIndex(15, false, true, true, -483363239);
             PlayerLoginDetails.currentLoadingStatus = StringUtilities.CONNECTING_UPDATE_SERVER;
@@ -257,15 +254,15 @@ public class Class43 {
             loadIndexPercent += AbstractIndex.configIndex.method1899((byte)38) * 2 / 100;
             loadIndexPercent += OverlayFloorDefinition.interfaceIndex.method1899((byte)-30) * 2 / 100;
             loadIndexPercent += RSSoundEffect.soundEffectsIndex_1.method1899((byte)31) * 6 / 100;
-            loadIndexPercent += PingRequester.landscapeIndex.method1899((byte)-51) * 4 / 100;
+            loadIndexPercent += RegionReference.landscapeIndex.method1899((byte)-51) * 4 / 100;
             loadIndexPercent += Friend.musicIndex_1.method1899((byte)28) * 2 / 100;
             loadIndexPercent += Class47.modelIndex.method1899((byte)-35) * 60 / 100;
             loadIndexPercent += Class23.spriteIndex.method1899((byte)79) * 2 / 100;
             loadIndexPercent += PlayerLoginDetails.textureIndex.method1899((byte)-13) * 2 / 100;
-            loadIndexPercent += RuntimeException_Sub1.huffmanIndex.method1899((byte)42) * 2 / 100;
+            loadIndexPercent += HuffmanEncoding.huffmanIndex.method1899((byte)42) * 2 / 100;
             loadIndexPercent += ClientParameter.musicIndex_2.method1899((byte)17) * 2 / 100;
             loadIndexPercent += Class108_Sub13.clientScriptIndex.method1899((byte)-31) * 2 / 100;
-            loadIndexPercent += Class54.fontIndex.method1899((byte)-5) * 2 / 100;
+            loadIndexPercent += RSFont.fontIndex.method1899((byte)-5) * 2 / 100;
             loadIndexPercent += HuffmanEncoding.soundEffectsIndex_2.method1899((byte)-80) * 2 / 100;
             loadIndexPercent += IsaacRandomGen.soundEffectsIndex_3.method1899((byte)-89) * 2 / 100;
             if(100 != loadIndexPercent) {
@@ -283,10 +280,10 @@ public class Class43 {
             Projectile.method2986(22050, !Client.lowMemory, 2, -2143336532);
             Class108_Sub4_Sub3 var28 = new Class108_Sub4_Sub3();
             var28.method2603(9, 128, (short)-16228);
-            Class2.aClass7_17 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, ContextMenuRow.aCanvas3, 0, 22050, -1059713629);
+            Class2.aClass7_17 = SoundEffectWorker.method284(ClientScriptMap.sessionRequestWorker, ContextMenuRow.aCanvas3, 0, 22050, -1059713629);
             Class2.aClass7_17.method117(var28, (byte)46);
             Entity.method2740(IsaacRandomGen.soundEffectsIndex_3, HuffmanEncoding.soundEffectsIndex_2, RSSoundEffect.soundEffectsIndex_1, var28, -685492007);
-            Class50.aClass7_697 = SoundEffectWorker.method284(ClientScriptMap.pringRequester, ContextMenuRow.aCanvas3, 1, 2048, 1579217328);
+            Class50.aClass7_697 = SoundEffectWorker.method284(ClientScriptMap.sessionRequestWorker, ContextMenuRow.aCanvas3, 1, 2048, 1579217328);
             Class26.aClass108_Sub4_Sub1_352 = new Class108_Sub4_Sub1();
             Class50.aClass7_697.method117(Class26.aClass108_Sub4_Sub1_352, (byte)-45);
             GameObject.aClass19_2428 = new Class19(22050, Class7.anInt94 * -322018941);
@@ -302,7 +299,7 @@ public class Class43 {
                CacheIndex var23;
                if(null == RSTypeFace.p11_full_font) {
                   var17 = Class23.spriteIndex;
-                  var23 = Class54.fontIndex;
+                  var23 = RSFont.fontIndex;
                   var5 = var17.getArchiveIDForName("p11_full", 1723285154);
                   fileID = var17.getFileIDForName(var5, "");
                   loadedFont = ItemDefinition.loadFont(var17, var23, var5, fileID, 1102237653);
@@ -313,7 +310,7 @@ public class Class43 {
 
                if(null == ObjectDefinition.p12_full_font) {
                   var17 = Class23.spriteIndex;
-                  var23 = Class54.fontIndex;
+                  var23 = RSFont.fontIndex;
                   var5 = var17.getArchiveIDForName("p12_full", 1723285154);
                   fileID = var17.getFileIDForName(var5, "");
                   loadedFont = ItemDefinition.loadFont(var17, var23, var5, fileID, 1541584219);
@@ -324,7 +321,7 @@ public class Class43 {
 
                if(RSTypeFace.b12_full_font == null) {
                   var17 = Class23.spriteIndex;
-                  var23 = Class54.fontIndex; 
+                  var23 = RSFont.fontIndex;
                   var5 = var17.getArchiveIDForName("b12_full", 1723285154);
                   fileID = var17.getFileIDForName(var5, "");
                   loadedFont = ItemDefinition.loadFont(var17, var23, var5, fileID, 388816519);
@@ -345,7 +342,7 @@ public class Class43 {
             } else {
                CacheIndex var15;
                if(60 == Client.currentLoadingStep * -2390161) {
-                  var15 = RuntimeException_Sub1.huffmanIndex;
+                  var15 = HuffmanEncoding.huffmanIndex;
                   CacheIndex spriteIndexRef = Class23.spriteIndex;
                   var4 = 0;
                   if(var15.containsFileForAFName("title.jpg", "")) {
@@ -385,7 +382,7 @@ public class Class43 {
                   spriteIndexRef.containsFileForAFName("sl_arrows", "");
                   spriteIndexRef.containsFileForAFName("sl_stars", "");
                   spriteIndexRef.containsFileForAFName("sl_button", "");
-                  var5 = Class37.method636(-567828897);
+                  var5 = ClientSettings.method636(-567828897);
                   if(var4 < var5) {
                      PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_TITLE_SCREEN + var4 * 100 / var5 + "%";
                      PlayerLoginDetails.anInt52 = -1353580190;
@@ -416,22 +413,22 @@ public class Class43 {
                      ItemDefinition.configIndexReference.getFileCount(10);
                      ItemDefinition.itemAmountFont = p11_reference;
                      CacheIndex var22 = AbstractIndex.configIndex;
-                     CacheIndex var21 = Projectile.skeletonIndex;
-                     CacheIndex var27 = AnimationSkin.skinIndex;
+                     CacheIndex skeletonIndex = Projectile.skeletonIndex;
+                     CacheIndex skinIndex = AnimationSkin.skinIndex;
                      AnimationDefinition.configIndexReference = var22;
-                     AnimationDefinition.skeletonIndexReference = var21;
-                     AnimationDefinition.skinIndexReference = var27;
+                     AnimationDefinition.skeletonIndexReference = skeletonIndex;
+                     AnimationDefinition.skinIndexReference = skinIndex;
                      NPCDefinition.method2300(AbstractIndex.configIndex, Class47.modelIndex, -610787023);
                      Ignore.method399(AbstractIndex.configIndex, (byte)59);
                      Class2.method39(AbstractIndex.configIndex, 558494300);
                      CacheIndex var20 = OverlayFloorDefinition.interfaceIndex;
-                     CacheIndex var9 = Class47.modelIndex;
-                     CacheIndex var11 = Class23.spriteIndex; 
-                     CacheIndex var12 = Class54.fontIndex;
+                     CacheIndex modelIndex = Class47.modelIndex;
+                     CacheIndex spriteIndex = Class23.spriteIndex;
+                     CacheIndex fontIndex = RSFont.fontIndex;
                      RSInterface.interfaceIndexReference = var20;
-                     RSInterface.modelIndexRef_intermedia = var9;
-                     RSInterface.aClass74_1765 = var11;
-                     VarpBit.aClass74_1954 = var12;
+                     RSInterface.modelIndexRef_intermedia = modelIndex;
+                     RSInterface.aClass74_1765 = spriteIndex;
+                     VarpBit.aClass74_1954 = fontIndex;
                      RSInterface.interface_cache = new RSInterface[RSInterface.interfaceIndexReference.getArchiveCount()][];
                      RSInterface.interfacesLoadedArray = new boolean[RSInterface.interfaceIndexReference.getArchiveCount()];
                      CacheIndex var13 = AbstractIndex.configIndex;
@@ -439,7 +436,7 @@ public class Class43 {
                      CacheIndex var14 = AbstractIndex.configIndex;
                      ClientScriptMap.configIndexReference = var14;
 
-                     int amountToDump = configIndex.getFileCount(10);
+                     /*int amountToDump = configIndex.getFileCount(10);
                      PlayerLoginDetails.currentLoadingStatus = "Dumping " + amountToDump + " Item Sprites...";
                      System.out.println(System.getProperty("user.dir"));
                      for(int itemID = 0; itemID < 300; itemID++) {
@@ -454,7 +451,7 @@ public class Class43 {
                            e.printStackTrace();
                         }
                         //System.out.println("Dumped Item Sprite: " + itemID);
-                     }
+                     }*/
 
                      PlayerLoginDetails.currentLoadingStatus = StringUtilities.loaded_config;
                      PlayerLoginDetails.anInt52 = -1624296228;
@@ -475,17 +472,17 @@ public class Class43 {
                      }
                   } else if(Client.currentLoadingStep * -2390161 == 110) {
                      MouseCapturer.mouseCapturer = new MouseCapturer();
-                     ClientScriptMap.pringRequester.method820(MouseCapturer.mouseCapturer, 10, -1542608488);
+                     ClientScriptMap.sessionRequestWorker.submitRunnableSession(MouseCapturer.mouseCapturer, 10, -1542608488);
                      PlayerLoginDetails.currentLoadingStatus = StringUtilities.aString1143;
                      PlayerLoginDetails.anInt52 = -1685737298;
                      Client.currentLoadingStep = 1506675464;
                   } else if(Client.currentLoadingStep * -2390161 == 120) {
-                     if(!RuntimeException_Sub1.huffmanIndex.containsFileForAFName("huffman", "")) {
+                     if(!HuffmanEncoding.huffmanIndex.containsFileForAFName("huffman", "")) {
                         PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WORDPACK + 0 + "%";
                         PlayerLoginDetails.anInt52 = 837099872;
                      } else {
-                        HuffmanEncoding var24 = new HuffmanEncoding(RuntimeException_Sub1.huffmanIndex.getFileForArchiveFileName("huffman", ""));
-                        HuffmanEncoding.huffmanEncoding = var24;
+                        HuffmanEncoding huffmanEncoding = new HuffmanEncoding(HuffmanEncoding.huffmanIndex.getFileForArchiveFileName("huffman", ""));
+                        HuffmanEncoding.huffmanEncoding = huffmanEncoding;
                         PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_WORDPACK;
                         PlayerLoginDetails.anInt52 = 837099872;
                         Client.currentLoadingStep = -157337954;
@@ -497,8 +494,8 @@ public class Class43 {
                      } else if(!Class108_Sub13.clientScriptIndex.loadArchive((byte)0)) {
                         PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (80 + Class108_Sub13.clientScriptIndex.getTotalCompletion(-1578244141) / 6) + "%";
                         PlayerLoginDetails.anInt52 = 1587806916;
-                     } else if(!Class54.fontIndex.loadArchive((byte)0)) {
-                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (96 + Class54.fontIndex.getTotalCompletion(-2010012967) / 20) + "%";
+                     } else if(!RSFont.fontIndex.loadArchive((byte)0)) {
+                        PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADING_WIDGETS + (96 + RSFont.fontIndex.getTotalCompletion(-2010012967) / 20) + "%";
                         PlayerLoginDetails.anInt52 = 1587806916;
                      } else { 
                         PlayerLoginDetails.currentLoadingStatus = StringUtilities.LOADED_WIDGETS;
@@ -511,13 +508,13 @@ public class Class43 {
                } else {
                   var1 = 0;
                   if(null == MiniMap.compassSprite) {
-                     MiniMap.compassSprite = Class23.method340(Class23.spriteIndex, "compass", "", 1534280704);
+                     MiniMap.compassSprite = RGBSprite.getRGBSpriteForName(Class23.spriteIndex, "compass", "", 1534280704);
                   } else {
                      ++var1;
                   }
 
                   if(MiniMap.mapEdgeSprite == null) {
-                     MiniMap.mapEdgeSprite = Class23.method340(Class23.spriteIndex, "mapedge", "", 1534280704);
+                     MiniMap.mapEdgeSprite = RGBSprite.getRGBSpriteForName(Class23.spriteIndex, "mapedge", "", 1534280704);
                   } else {
                      ++var1;
                   }
@@ -589,7 +586,7 @@ public class Class43 {
                   }
 
                   if(null == MiniMap.mapBackSprite) {
-                     MiniMap.mapBackSprite = Renderable.method2488(Class23.spriteIndex, "mapback", "", (byte)2);
+                     MiniMap.mapBackSprite = PaletteSprite.getPaletteSpriteForName(Class23.spriteIndex, "mapback", "", (byte) 2);
                   } else {
                      ++var1;
                   }

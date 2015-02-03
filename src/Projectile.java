@@ -88,9 +88,9 @@ public final class Projectile extends Renderable {
          while(this.tick * -465090397 > this.animation.frameLengths[this.currentFrame * -1472651671]) {
             this.tick -= this.animation.frameLengths[this.currentFrame * -1472651671] * -828790005;
             this.currentFrame -= 628731431;
-            if(this.currentFrame * -1472651671 >= this.animation.frameDelays.length) {
+            if(this.currentFrame * -1472651671 >= this.animation.frameIDs.length) {
                this.currentFrame -= this.animation.frameStep * 2010527153;
-               if(this.currentFrame * -1472651671 < 0 || this.currentFrame * -1472651671 >= this.animation.frameDelays.length) {
+               if(this.currentFrame * -1472651671 < 0 || this.currentFrame * -1472651671 >= this.animation.frameIDs.length) {
                   this.currentFrame = 0;
                }
             }
@@ -121,7 +121,7 @@ public final class Projectile extends Renderable {
       if(var0 >= 8000 && var0 <= '\ubb80') {
          Class7.anInt94 = var0 * -557009621;
          Class7.aBool99 = var1;
-         PingRequester.anInt918 = var2 * -983992405;
+         SessionRequestWorker.anInt918 = var2 * -983992405;
       } else {
          throw new IllegalArgumentException();
       }

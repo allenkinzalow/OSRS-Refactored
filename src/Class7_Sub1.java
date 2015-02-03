@@ -30,7 +30,7 @@ public class Class7_Sub1 extends Class7 {
       anInterface1_1518.method5(this.anInt1519, 923938533);
    }
 
-   Class7_Sub1(PingRequester var1, int var2) {
+   Class7_Sub1(SessionRequestWorker var1, int var2) {
       anInterface1_1518 = var1.method832((byte)113);
       this.anInt1519 = var2;
    }

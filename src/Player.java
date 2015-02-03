@@ -378,7 +378,7 @@ public final class Player extends Entity {
 		 */
 		System.out.println("Last: " + aBool2682 + ", " + (combatLevel * -1769445007) + ", " + (-1817505683 * skillLevel));
 
-		if (0 == Client.anInt2708 * -759629273 && Client.rights * 171939335 >= 2) {
+		if (0 == Client.portType * -759629273 && Client.rights * 171939335 >= 2) {
 			this.aBool2682 = false;
 		}
 

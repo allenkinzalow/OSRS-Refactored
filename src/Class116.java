@@ -1,4 +1,6 @@
-
+/**
+ * Something to do with text encoding & length
+ */
 public class Class116 {
 
    static Class116 aClass116_1472 = new Class116(4, 3, "", "");

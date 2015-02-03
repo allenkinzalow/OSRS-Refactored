@@ -6,12 +6,6 @@ public class Class23 {
    static CacheIndex spriteIndex;
 
 
-   public static RGBSprite method340(AbstractIndex var0, String var1, String var2, int var3) {
-      int var4 = var0.getArchiveIDForName(var1, 1723285154);
-      int var5 = var0.getFileIDForName(var4, var2);
-      return ChatMessage.method2016(var0, var4, var5, (byte)80);
-   }
-
    Class23() throws Throwable {
       throw new Error();
    }

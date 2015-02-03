@@ -15,7 +15,7 @@ public final class PaletteSprite extends Rasterizer2D {
        int var4 = var0.getArchiveIDForName(var1, 1723285154);
        int var6 = var0.getFileIDForName(var4, var2);
        PaletteSprite[] var5;
-       if (!FriendsChatMember.loadPaletteSprite(var0, var4, var6, -1818735158)) {
+       if (!loadPaletteSprite(var0, var4, var6, -1818735158)) {
            var5 = null;
        } else {
            PaletteSprite[] var8 = new PaletteSprite[Class9.anInt125 * 2039617935];
@@ -29,7 +29,7 @@ public final class PaletteSprite extends Rasterizer2D {
                var7.anInt2413 = lastLoadedPaletteSpriteWidth[var9];
                var7.anInt2414 = Class9.anIntArray126[var9];
                var7.palette = Class9.anIntArray130;
-               var7.pixels = AnimationSkeletonSet.loadedCharacterPixels[var9];
+               var7.pixels = RSFont.loadedCharacterPixels[var9];
            }
 
            resetLastPaletteValues((byte) 82);
@@ -48,7 +48,7 @@ public final class PaletteSprite extends Rasterizer2D {
       paletteSprite.anInt2413 = lastLoadedPaletteSpriteWidth[0];
       paletteSprite.anInt2414 = Class9.anIntArray126[0];
       paletteSprite.palette = Class9.anIntArray130;
-      paletteSprite.pixels = AnimationSkeletonSet.loadedCharacterPixels[0];
+      paletteSprite.pixels = RSFont.loadedCharacterPixels[0];
       resetLastPaletteValues((byte) 112);
       return paletteSprite;
    }
@@ -61,7 +61,7 @@ public final class PaletteSprite extends Rasterizer2D {
       Class9.anIntArray123 = new int[Class9.anInt125 * 2039617935];
       lastLoadedPaletteSpriteWidth = new int[Class9.anInt125 * 2039617935];
       Class9.anIntArray126 = new int[Class9.anInt125 * 2039617935];
-      AnimationSkeletonSet.loadedCharacterPixels = new byte[Class9.anInt125 * 2039617935][];
+      RSFont.loadedCharacterPixels = new byte[Class9.anInt125 * 2039617935][];
       buffer.position = (data.length - 7 - Class9.anInt125 * -862925704) * 537964811;
       Class9.anInt122 = buffer.readUShort(-821144934) * -1400179639;
       Class9.anInt121 = buffer.readUShort(-1985241913) * -187603765;
@@ -101,7 +101,7 @@ public final class PaletteSprite extends Rasterizer2D {
          int var9 = Class9.anIntArray126[var6];
          int var10 = var7 * var9;
          byte[] var11 = new byte[var10];
-         AnimationSkeletonSet.loadedCharacterPixels[var6] = var11;
+         RSFont.loadedCharacterPixels[var6] = var11;
          int var4 = buffer.readUByte();
          int var5;
          if(var4 == 0) {
@@ -120,7 +120,7 @@ public final class PaletteSprite extends Rasterizer2D {
    }
 
    static PaletteSprite getPaletteSprite(AbstractIndex spriteIndex, int archiveID, int fileID, byte var3) {
-      return !FriendsChatMember.loadPaletteSprite(spriteIndex, archiveID, fileID, -1425645056) ? null : getLastLoadedPaletteSprite(1969691175);
+      return !loadPaletteSprite(spriteIndex, archiveID, fileID, -1425645056) ? null : getLastLoadedPaletteSprite(1969691175);
    }
 
    static void resetLastPaletteValues(byte var0) {
@@ -129,7 +129,23 @@ public final class PaletteSprite extends Rasterizer2D {
       lastLoadedPaletteSpriteWidth = null;
       Class9.anIntArray126 = null;
       Class9.anIntArray130 = null;
-      AnimationSkeletonSet.loadedCharacterPixels = (byte[][])null;
+      RSFont.loadedCharacterPixels = (byte[][])null;
+   }
+
+   public static PaletteSprite getPaletteSpriteForName(AbstractIndex index, String archiveName, String fileName, byte var3) {
+      int archiveID = index.getArchiveIDForName(archiveName, 1723285154);
+      int fileID = index.getFileIDForName(archiveID, fileName);
+      return getPaletteSprite(index, archiveID, fileID, (byte) 0);
+   }
+
+   static boolean loadPaletteSprite(AbstractIndex index, int archiveId, int fileId, int var3) {
+      byte[] fileData = index.getFile(archiveId, fileId, (byte) 7);
+      if(null != fileData) {
+         decodePaletteSprite(fileData, 878628031);
+         return true;
+      } else {
+         return false;
+      }
    }
 
 

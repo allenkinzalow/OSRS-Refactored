@@ -16,7 +16,7 @@ public class TextureLoader implements TextureImage {
       this.anInt373 = this.anInt371 * -1593709107;
       this.brightness = var4;
       this.anInt370 = var6 * -1712063211;
-      int[] files = textureIndex.method1013(0);
+      int[] files = textureIndex.getFileIDs(0);
       int fileCount = files.length;
       this.loadedTextures = new Texture[textureIndex.getFileCount(0)];
 
@@ -94,7 +94,7 @@ public class TextureLoader implements TextureImage {
    }
 
    public static void method389(int var0) {
-      if(PingRequester.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
+      if(SessionRequestWorker.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
          KeyFocusListener.anIntArray876[186] = 57;
          KeyFocusListener.anIntArray876[187] = 27;
          KeyFocusListener.anIntArray876[188] = 71;

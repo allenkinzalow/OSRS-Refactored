@@ -166,7 +166,7 @@ public final class GroundItem {
 		ClientScript.anInt1645 = (var1 - var8) * 1023920987;
 		CacheFileAccessor.anInt1490 = (var2 - var10) * 365620115;
 		RuntimeException_Sub1.anInt2625 = var3 * -1558852331;
-		GameConnection.anInt811 = var4 * -422753419;
+		SocketSession.anInt811 = var4 * -422753419;
 	}
 
 	public static void method585(byte var0) {

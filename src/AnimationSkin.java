@@ -1,18 +1,26 @@
-
+/**
+ * The Animation Skin contains the type of animation for a frame
+ *    and the
+ */
 public class AnimationSkin extends Node {
 
-   static final int anInt1628 = 8;
    static CacheIndex skinIndex;
    int count;
-   int anInt1630;
+   int skinId;
    int[][] skinList;
-   static final int anInt1632 = 29;
-   static final int anInt1633 = 512;
+
+   /**
+    * 0 set reference point
+    * 1 translation
+    * 2 rotation
+    * 3 scale
+    * 5 transparency
+    */
    int[] transformationTypes;
 
 
-   AnimationSkin(int var1, byte[] data) {
-      this.anInt1630 = var1 * -1827915669;
+   AnimationSkin(int id, byte[] data) {
+      this.skinId = id * -1827915669;
       RSByteBuffer buffer = new RSByteBuffer(data);
       this.count = buffer.readUByte() * 521415453;
       this.transformationTypes = new int[this.count * 1198518069];
@@ -34,13 +42,4 @@ public class AnimationSkin extends Node {
 
    }
 
-   public static void method1677(AbstractIndex musicIndex, int var1, int var2, int var3, boolean var4, int var5) {
-      SongReference.anInt1325 = -771978757;
-      RSInterface.aClass74_1889 = musicIndex;
-      SongReference.anInt1329 = var1 * -2020957493;
-      OnlineFriend.anInt1511 = var2 * -1300146319;
-      SoundEffectWorker.anInt362 = var3 * 495527089;
-      FriendsChatMember.aBool1669 = var4;
-      ClientScriptDefinition.anInt2281 = 1706374896;
-   }
 }

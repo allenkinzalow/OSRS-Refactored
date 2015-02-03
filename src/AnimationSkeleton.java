@@ -1,5 +1,8 @@
 /**
  * Credits to Velocity for some of the naming.
+ *
+ * The skeleton contains the skin and the values for the
+ *    translation/rotation/scaling of the vertices.
  */
 public class AnimationSkeleton {
 
@@ -13,24 +16,24 @@ public class AnimationSkeleton {
    int[] translator_y;
    static int[] alter_z = new int[500];
    int[] translator_z;
-   boolean aBool606 = false;
+   boolean hasAlpha = false;
 
 
    AnimationSkeleton(byte[] data, AnimationSkin skin) {
       this.skin = skin;
-      RSByteBuffer var8 = new RSByteBuffer(data);
+      RSByteBuffer settingsBuffer = new RSByteBuffer(data);
       RSByteBuffer buffer = new RSByteBuffer(data);
-      var8.position = 1075929622;
-      int animationCount = var8.readUByte();
+      settingsBuffer.position = 1075929622;
+      int animationCount = settingsBuffer.readUByte();
       int var10 = -1;
       int stepCount = 0;
-      buffer.position = (var8.position * 798331555 + animationCount) * 537964811;
+      buffer.position = (settingsBuffer.position * 798331555 + animationCount) * 537964811;
 
       int var3;
       for(var3 = 0; var3 < animationCount; ++var3) {
-         int setting = var8.readUByte();
+         int setting = settingsBuffer.readUByte();
          if(setting > 0) {
-            if(this.skin.transformationTypes[var3] != 0) {
+            if(this.skin.transformationTypes[var3] != 0) { // set reference point
                for(int var4 = var3 - 1; var4 > var10; --var4) {
                   if(this.skin.transformationTypes[var4] == 0) {
                      instructions[stepCount] = var4;
@@ -70,7 +73,7 @@ public class AnimationSkeleton {
             var10 = var3;
             ++stepCount;
             if(this.skin.transformationTypes[var3] == 5) {
-               this.aBool606 = true;
+               this.hasAlpha = true;
             }
          }
       }

@@ -44,7 +44,7 @@ public abstract class GraphicsBuffer {
    }
 
    static void method279(int var0, int var1, int var2, int var3, String var4, byte var5) {
-      RSInterface var6 = LoginHandler.method878(var1, var2, 1492993418);
+      RSInterface var6 = RSInterface.method878(var1, var2, 1492993418);
       if(var6 != null) {
          if(null != var6.anObjectArray1795) {
             ClientScript var7 = new ClientScript();
@@ -52,7 +52,7 @@ public abstract class GraphicsBuffer {
             var7.anInt1640 = var0 * -1232467355;
             var7.aString1642 = var4;
             var7.parameters = var6.anObjectArray1795;
-            GameObject.executeScript(var7, -1381816630);
+            ClientScript.executeScript(var7, -1381816630);
          }
 
          boolean var8 = true;

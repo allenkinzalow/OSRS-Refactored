@@ -131,10 +131,10 @@ public class Js5Request extends CacheableNode {
          Client.anInt2822 = 0;
       }
 
-      if(Client.aBool2721) {
+      if(Client.showFPS) {
          xPos = xOffset + 512 - 5;
          yPos = 20 + yOffset;
-         ObjectDefinition.p12_full_font.method3095("Fps:" + Client.clientFPS * 1402361595, xPos, yPos, 16776960, -1);
+         ObjectDefinition.p12_full_font.drawStringRight("Fps:" + Client.clientFPS * 1402361595, xPos, yPos, 16776960, -1);
          yPos += 15;
          Runtime runtime = Runtime.getRuntime();
          int memory = (int)((runtime.totalMemory() - runtime.freeMemory()) / 1024L);
@@ -147,7 +147,7 @@ public class Js5Request extends CacheableNode {
             color = 16711680;
          }
 
-         ObjectDefinition.p12_full_font.method3095("Mem:" + memory + "k", xPos, yPos, color, -1);
+         ObjectDefinition.p12_full_font.drawStringRight("Mem:" + memory + "k", xPos, yPos, color, -1);
          yPos += 15;
       }
    }

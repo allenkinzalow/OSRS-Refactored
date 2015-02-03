@@ -317,6 +317,6 @@ public class MachineInformation extends Node {
 
       PlayerLoginDetails.anIntArray56 = var3;
       PlayerLoginDetails.anIntArray63 = var6;
-      Ignore.method398(PlayerLoginDetails.worldList, 0, PlayerLoginDetails.worldList.length - 1, PlayerLoginDetails.anIntArray56, PlayerLoginDetails.anIntArray63, 1945775527);
+      World.sortWorlds(World.worldList, 0, World.worldList.length - 1, PlayerLoginDetails.anIntArray56, PlayerLoginDetails.anIntArray63, 1945775527);
    }
 }

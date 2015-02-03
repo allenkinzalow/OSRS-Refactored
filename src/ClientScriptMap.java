@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.Date;
 
 public class ClientScriptMap extends CacheableNode {
 
@@ -8,7 +7,7 @@ public class ClientScriptMap extends CacheableNode {
    public char aChar2053;
    public static AbstractIndex configIndexReference;
    public char aChar2055;
-   public static PingRequester pringRequester;
+   public static SessionRequestWorker sessionRequestWorker;
    public String csMapStringIdentifier = "null";
    public int[] anIntArray2058;
    public int csMapValueCount = 0;

@@ -16,7 +16,7 @@ public class RSInterface extends Node {
    public Object[] anObjectArray1773;
    public int anInt1774;
    public int anInt1775;
-   public int anInt1776 = 0;
+   public int xPosition = 0;
    public int[] conditionValues;
    public int anInt1778 = 0;
    public int anInt1779 = 0;
@@ -64,7 +64,7 @@ public class RSInterface extends Node {
    public String aString1821 = "";
    public Object[] anObjectArray1822;
    public boolean textCentered = false;
-   public int anInt1824 = 0;
+   public int yPosition = 0;
    public int widgetItemPaddingY = 0;
    public boolean aBool1826;
    public int[] spritesX;
@@ -99,7 +99,7 @@ public class RSInterface extends Node {
    public int[] anIntArray1856;
    public Object[] anObjectArray1857;
    public static RSInterface[][] interface_cache;
-   public Object[] anObjectArray1859;
+   public Object[] mouseWheelTrigger;
    public int anInt1860 = 0;
    public Object[] anObjectArray1861;
    public int anInt1862 = 0;
@@ -226,7 +226,7 @@ public class RSInterface extends Node {
            Client.aClass108_Sub17Array2963 = null;
            ClientScriptDefinition.renderInterfaceComponents(interface_cache[interfaceID], -1, x, y, width, height, var5, var6, var7, 2123082435);
            if (null != Client.aClass108_Sub17Array2963) {
-               ClientScriptDefinition.renderInterfaceComponents(Client.aClass108_Sub17Array2963, -1412584499, x, y, width, height, Class43.anInt619 * 1576174687, EquipmentKit.anInt1344 * 1005459417, var7, 1843051657);
+               ClientScriptDefinition.renderInterfaceComponents(Client.aClass108_Sub17Array2963, -1412584499, x, y, width, height, URLSession.anInt619 * 1576174687, EquipmentKit.anInt1344 * 1005459417, var7, 1843051657);
                Client.aClass108_Sub17Array2963 = null;
            }
        } else if (var7 != -1) {
@@ -239,14 +239,19 @@ public class RSInterface extends Node {
        }
    }
 
+   public static RSInterface method878(int var0, int var1, int var2) {
+       RSInterface var3 = getInterfaceComponentForHash(var0, 2146838109);
+       return var1 == -1 ? var3 : (null != var3 && null != var3.aClass108_Sub17Array1879 && var1 < var3.aClass108_Sub17Array1879.length ? var3.aClass108_Sub17Array1879[var1] : null);
+   }
+
 
    void decodeInterface(RSByteBuffer buffer, int var2) {
       this.aBool1855 = false;
       this.componentType = buffer.readUByte() * -820395945;
       this.actionType = buffer.readUByte() * -1923306243;
       this.anInt1886 = buffer.readUShort(62060155) * 2093096323;
-      this.anInt1778 = (this.anInt1776 = buffer.method1721(-1677425383) * 604525469) * -1179451723;
-      this.anInt1779 = (this.anInt1824 = buffer.method1721(1090663751) * -1129233995) * -1011651193;
+      this.anInt1778 = (this.xPosition = buffer.method1721(-1677425383) * 604525469) * -1179451723;
+      this.anInt1779 = (this.yPosition = buffer.method1721(1090663751) * -1129233995) * -1011651193;
       this.height = buffer.readUShort(488704945) * 1526393005;
       this.width = buffer.readUShort(-377150642) * -955513511;
       this.alpha = buffer.readUByte() * -1040068631;
@@ -495,8 +500,8 @@ public class RSInterface extends Node {
       this.aBool1855 = true;
       this.componentType = buffer.readUByte() * -820395945;
       this.anInt1886 = buffer.readUShort(1014343736) * 2093096323;
-      this.anInt1778 = (this.anInt1776 = buffer.method1721(-1635210062) * 604525469) * -1179451723;
-      this.anInt1779 = (this.anInt1824 = buffer.method1721(-1592402753) * -1129233995) * -1011651193;
+      this.anInt1778 = (this.xPosition = buffer.method1721(-1635210062) * 604525469) * -1179451723;
+      this.anInt1779 = (this.yPosition = buffer.method1721(-1592402753) * -1129233995) * -1011651193;
       this.height = buffer.readUShort(1680164131) * 1526393005;
       if(9 == this.componentType * 942877543) {
          this.width = buffer.method1721(-765028792) * -955513511;
@@ -607,7 +612,7 @@ public class RSInterface extends Node {
       this.anObjectArray1843 = this.readScriptParameters(buffer, (byte)41);
       this.anObjectArray1847 = this.readScriptParameters(buffer, (byte)105);
       this.anObjectArray1848 = this.readScriptParameters(buffer, (byte)59);
-      this.anObjectArray1859 = this.readScriptParameters(buffer, (byte)3);
+      this.mouseWheelTrigger = this.readScriptParameters(buffer, (byte)3);
       this.configChangeTriggers = this.readTriggers(buffer, 2025977477);
       this.itemUpdateTriggers = this.readTriggers(buffer, 2102476719);
       this.anIntArray1856 = this.readTriggers(buffer, 2079814240);
@@ -675,7 +680,7 @@ public class RSInterface extends Node {
          if(sprite != null) {
             return sprite;
          } else {
-            sprite = ChatMessage.method2016(aClass74_1765, spriteID, 0, (byte)17);
+            sprite = RGBSprite.getRGBSprite(aClass74_1765, spriteID, 0, (byte) 17);
             if(sprite == null) {
                mediaUnavailable = true;
                return null;
@@ -758,7 +763,7 @@ public class RSInterface extends Node {
             if(null != sprite) {
                return sprite;
             } else {
-               sprite = ChatMessage.method2016(aClass74_1765, spriteIdentifier, 0, (byte)43);
+               sprite = RGBSprite.getRGBSprite(aClass74_1765, spriteIdentifier, 0, (byte) 43);
                if(null != sprite) {
                   spriteMap.put(sprite, (long)spriteIdentifier);
                } else {

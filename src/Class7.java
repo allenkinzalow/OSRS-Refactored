@@ -305,7 +305,7 @@ public class Class7 {
          InteractableObject.method648('\uff00');
       } else {
          IsaacRandomGen.method725(40, 2105282132);
-         Class16.aGameConnection_211 = Varp.loginConnection;
+         Class16.aConnection_Session_211 = Varp.loginConnection;
          Varp.loginConnection = null;
       }
    }

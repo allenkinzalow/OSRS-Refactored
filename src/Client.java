@@ -18,14 +18,13 @@ public final class Client extends Applet_Sub1 {
 	static int anInt2702 = 0;
 	static Client aclient2703;
 	static int[] anIntArray2704 = new int[50];
-	static int worldID = 985794143;
-	static int worldType = 0;
-	static BuildType aClass79_2707;
-	static int anInt2708 = 0;
+	static int selectedWorldID = 985794143;
+	static int selectedWorldType = 0;
+	static BuildType clientBuildType;
+	static int portType = 0;
 	static GameDefinition gameDefinition;
 	static boolean aBool2710 = false;
 	static boolean lowMemory = false;
-	static int anInt2712 = 0;
 	static int loginLoadingStage = 0;
 	static int anInt2714 = -1445469673;
 	static int cycle = 0;
@@ -34,7 +33,7 @@ public final class Client extends Applet_Sub1 {
 	static int lastYCoord = -91399121;
 	static boolean aBool2719 = false;
 	static boolean lastSentFocusGained = true;
-	static boolean aBool2721 = false;
+	static boolean showFPS = false;
 	static int anInt2722 = 0;
 	static int anInt2723 = 0;
 	static int anInt2724 = 0;
@@ -45,7 +44,7 @@ public final class Client extends Applet_Sub1 {
 	static int anInt2729 = 0;
 	static int anInt2730 = 0;
 	static int anInt2731 = 1649299627;
-	static PingRequest aClass85_2732;
+	static SessionRequest aClass85_2732;
 	static Class50 aClass50_2733 = Class50.aClass50_698;
 	static int currentLoadingStep = 0;
 	static int anInt2735 = -735852373;
@@ -56,7 +55,7 @@ public final class Client extends Applet_Sub1 {
 	static int anInt2797 = 1896914830;
 	static int anInt2740 = 0;
 	static RSSoundEffect[] aClass6Array2741 = new RSSoundEffect[50];
-	static int anInt2742;
+	static int selectedWorldGamePort;
 	static NPC[] localNPCs = new NPC['\u8000'];
 	static boolean aBool2744 = false;
 	static int[] npcIndices = new int['\u8000'];
@@ -269,7 +268,7 @@ public final class Client extends Applet_Sub1 {
 	static RGBSprite[] hitmarkSprites;
 	static int[] anIntArray2966;
 	static String aString2967 = null;
-	static RSInterface aClass108_Sub17_924;
+	static RSInterface mouseHoveredComponent;
 	static AbstractIndex configIndex_ref;
 
 
@@ -280,7 +279,7 @@ public final class Client extends Applet_Sub1 {
 		if (this.hasCorrectHost(-1976950418)) {
 			ClientParameter[] paramters = ClientParameter.getClientParameterArray(452864001);
 
-			int var33;
+			int definitionID;
 			int var37;
 			for (int paramIndex = 0; paramIndex < paramters.length; ++paramIndex) {
 				ClientParameter parameter = paramters[paramIndex];
@@ -299,29 +298,29 @@ public final class Client extends Applet_Sub1 {
 								;
 							}
 							break;
-						case 3:
+						case 3: // set the game definition type
 							GameDefinition[] gameDefinitions = GameDefinition.getGameDefinitions();
-							var33 = Integer.parseInt(paramValue);
-							GameDefinition[] var35 = gameDefinitions;
-							var37 = 0;
+							definitionID = Integer.parseInt(paramValue);
+							GameDefinition[] definitionList = gameDefinitions;
+							int definitionIndex = 0;
 
-							GameDefinition var40;
+							GameDefinition currentDefinition;
 							while (true) {
-								if (var37 >= var35.length) {
-									var40 = null;
+								if (definitionIndex >= definitionList.length) {
+									currentDefinition = null;
 									break;
 								}
 
-								GameDefinition var10 = var35[var37];
-								if (var33 == var10.getID(-1397647336)) {
-									var40 = var10;
+								GameDefinition definitionForID = definitionList[definitionIndex];
+								if (definitionID == definitionForID.getID(-1397647336)) {
+									currentDefinition = definitionForID;
 									break;
 								}
 
-								++var37;
+								++definitionIndex;
 							}
 
-							gameDefinition = (GameDefinition) var40;
+							gameDefinition = (GameDefinition) currentDefinition;
 							if (gameDefinition == GameDefinition.aClass82_1275) {
 								UnderlayDefinition.aClass116_2142 = Class116.aClass116_1479;
 							} else {
@@ -330,50 +329,50 @@ public final class Client extends Applet_Sub1 {
 						case 4:
 						default:
 							break;
-						case 5:
-							int var5 = Integer.parseInt(paramValue);
-							BuildType[] var6 = AnimationSkeletonSet.method2557((byte) 13);
-							int var7 = 0;
+						case 5: // the build type
+							int buildID = Integer.parseInt(paramValue);
+							BuildType[] buildList = BuildType.method2557((byte) 13);
+							int buildIndex = 0;
 
-							BuildType var9;
+							BuildType currentBuild;
 							while (true) {
-								if (var7 >= var6.length) {
-									var9 = null;
+								if (buildIndex >= buildList.length) {
+									currentBuild = null;
 									break;
 								}
 
-								BuildType var8 = var6[var7];
-								if (var8.anInt1235 * 70703173 == var5) {
-									var9 = var8;
+								BuildType buildForID = buildList[buildIndex];
+								if (buildForID.buildID * 70703173 == buildID) {
+									currentBuild = buildForID;
 									break;
 								}
 
-								++var7;
+								++buildIndex;
 							}
 
-							aClass79_2707 = var9;
+							clientBuildType = currentBuild;
 							break;
-						case 6:
-							IsaacRandomGen.aString740 = paramValue;
+						case 6: // world list url
+							World.worldListURL = paramValue;
 							break;
 						case 7:
-							worldType = Integer.parseInt(paramValue) * -1175288855;
+							selectedWorldType = Integer.parseInt(paramValue) * -1175288855;
 							break;
-						case 8:
-							anInt2708 = Integer.parseInt(paramValue) * 812570007;
+						case 8: // default port(43594) = 0 ELSE 1 for (40000 + worldID)
+							portType = Integer.parseInt(paramValue) * 812570007;
 							break;
-						case 9:
-							worldID = Integer.parseInt(paramValue) * 985794143;
+						case 9: // world ID
+							selectedWorldID = Integer.parseInt(paramValue) * 985794143;
 							break;
-						case 10:
-							anInt2712 = Integer.parseInt(paramValue) * -637540119;
+						case 10: // 0 == show world list 1 == hide world list
+							World.hideWorldList = Integer.parseInt(paramValue) * -637540119;
 					}
 				}
 			}
 
 			GraphicsBuffer.method277(6602165);
-			Applet_Sub1.aString2701 = this.getCodeBase().getHost();
-			String var24 = aClass79_2707.aString1240;
+			Applet_Sub1.selectedWorldIP = this.getCodeBase().getHost();
+			String var24 = clientBuildType.buildTitle;
 			byte var25 = 0;
 
 			try {
@@ -389,9 +388,9 @@ public final class Client extends Applet_Sub1 {
 				VertexNormal.lowerOperatingSystem = Class54.operatingSystem.toLowerCase();
 
 				try {
-					Class19.cacheDirectory = System.getProperty("user.home");
-					if (Class19.cacheDirectory != null) {
-						Class19.cacheDirectory = Class19.cacheDirectory + "/";
+					CacheFileAccessor.cacheDirectory = System.getProperty("user.home");
+					if (CacheFileAccessor.cacheDirectory != null) {
+						CacheFileAccessor.cacheDirectory = CacheFileAccessor.cacheDirectory + "/";
 					}
 				} catch (Exception var18) {
 					;
@@ -399,32 +398,32 @@ public final class Client extends Applet_Sub1 {
 
 				try {
 					if (VertexNormal.lowerOperatingSystem.startsWith("win")) {
-						if (Class19.cacheDirectory == null) {
-							Class19.cacheDirectory = System.getenv("USERPROFILE");
+						if (CacheFileAccessor.cacheDirectory == null) {
+							CacheFileAccessor.cacheDirectory = System.getenv("USERPROFILE");
 						}
-					} else if (null == Class19.cacheDirectory) {
-						Class19.cacheDirectory = System.getenv("HOME");
+					} else if (null == CacheFileAccessor.cacheDirectory) {
+						CacheFileAccessor.cacheDirectory = System.getenv("HOME");
 					}
 
-					if (null != Class19.cacheDirectory) {
-						Class19.cacheDirectory = Class19.cacheDirectory + "/";
+					if (null != CacheFileAccessor.cacheDirectory) {
+						CacheFileAccessor.cacheDirectory = CacheFileAccessor.cacheDirectory + "/";
 					}
 				} catch (Exception var17) {
 					;
 				}
 
-				if (Class19.cacheDirectory == null) {
-					Class19.cacheDirectory = "~/";
+				if (CacheFileAccessor.cacheDirectory == null) {
+					CacheFileAccessor.cacheDirectory = "~/";
 				}
 
-				CacheFileAccessor.possibleCacheDirectories = new String[]{"c:/rscache/", "/rscache/", "c:/windows/", "c:/winnt/", "c:/", Class19.cacheDirectory, "/tmp/", ""};
+				CacheFileAccessor.possibleCacheDirectories = new String[]{"c:/rscache/", "/rscache/", "c:/windows/", "c:/winnt/", "c:/", CacheFileAccessor.cacheDirectory, "/tmp/", ""};
 				NPC.aStringArray2657 = new String[]{".jagex_cache_" + Class108_Sub13.anInt1686 * 1590926487, ".file_store_" + Class108_Sub13.anInt1686 * 1590926487};
 				int indices = 0;
 
 				label275:
 				while (indices < 4) {
 					String var46 = indices == 0 ? "" : "" + indices;
-					CacheConstants.aFile1255 = new File(Class19.cacheDirectory, "jagex_cl_oldschool_" + var24 + var46 + ".dat");
+					CacheConstants.aFile1255 = new File(CacheFileAccessor.cacheDirectory, "jagex_cl_oldschool_" + var24 + var46 + ".dat");
 					String var32 = null;
 					String var34 = null;
 					boolean var36 = false;
@@ -500,7 +499,7 @@ public final class Client extends Applet_Sub1 {
 					}
 
 					if (var32 == null) {
-						var32 = Class19.cacheDirectory + File.separatorChar + "jagexcache" + var46 + File.separatorChar + "oldschool" + File.separatorChar + var24 + File.separatorChar;
+						var32 = CacheFileAccessor.cacheDirectory + File.separatorChar + "jagexcache" + var46 + File.separatorChar + "oldschool" + File.separatorChar + var24 + File.separatorChar;
 						var36 = true;
 					}
 
@@ -544,27 +543,27 @@ public final class Client extends Applet_Sub1 {
 					}
 
 					File[] var43 = var48;
-					var33 = 0;
+					definitionID = 0;
 
 					while (true) {
-						if (var33 >= var43.length) {
+						if (definitionID >= var43.length) {
 							break label275;
 						}
 
-						File var39 = var43[var33];
+						File var39 = var43[definitionID];
 						if (!GZIPDecompressor.method670(var39, false, -1222711523)) {
 							++indices;
 							break;
 						}
 
-						++var33;
+						++definitionID;
 					}
 				}
 
 				Projectile.method2989(CacheConstants.aFile1252, -1061604907);
 
 				try {
-					File var27 = new File(Class19.cacheDirectory, "random.dat");
+					File var27 = new File(CacheFileAccessor.cacheDirectory, "random.dat");
 					int var49;
 					if (var27.exists()) {
 						CacheConstants.aClass123_1259 = new CacheFile(new CacheFileAccessor(var27, "rw", 25L), 24, 0);
@@ -613,9 +612,9 @@ public final class Client extends Applet_Sub1 {
 	}
 
 	protected final void method3196(byte var1) {
-		anInt2742 = -186785803 * (anInt2708 * -759629273 == 0 ? '\uaa4a' : '\u9c40' + worldID * 292541855);
-		Class26.anInt351 = (anInt2708 * -759629273 == 0 ? 443 : '\uc350' + worldID * 292541855) * 1733308657;
-		IndexTable.anInt790 = anInt2742 * 130259471;
+		selectedWorldGamePort = -186785803 * (portType * -759629273 == 0 ? '\uaa4a' : '\u9c40' + selectedWorldID * 292541855);
+		Class26.selectedWorldJS5Port = (portType * -759629273 == 0 ? 443 : '\uc350' + selectedWorldID * 292541855) * 1733308657;
+		IndexTable.currentWorldPort = selectedWorldGamePort * 130259471;
 		Class88.colorsToFind = Class77.aShortArray1208;
 		EquipmentKit.colorsToReplace = Class77.aShortArrayArray1204;
 		FriendsChatMember.aShortArray1668 = Class77.aShortArray1205;
@@ -633,7 +632,7 @@ public final class Client extends Applet_Sub1 {
 
 		IndexTable.cache255Index = new IndexTable(255, CacheConstants.cacheDataFile, CacheConstants.cache255File, 500000);
 		CacheFileAccessor var3 = null;
-		Class37 var4 = new Class37();
+		ClientSettings var4 = new ClientSettings();
 
 		try {
 			var3 = CacheFileAccessor.getPreferencesFileAccessor("", gameDefinition.gameName, false, (byte) 73);
@@ -647,7 +646,7 @@ public final class Client extends Applet_Sub1 {
 				}
 			}
 
-			var4 = new Class37(new RSByteBuffer(var5));
+			var4 = new ClientSettings(new RSByteBuffer(var5));
 		} catch (Exception var10) {
 			;
 		}
@@ -660,11 +659,11 @@ public final class Client extends Applet_Sub1 {
 			;
 		}
 
-		Ignore.aClass37_386 = var4;
+		Ignore.clientSettings = var4;
 		Friend.clientClipboard = this.getToolkit().getSystemClipboard();
 		setApplet(this, aString525, 224845935);
-		if (anInt2708 * -759629273 != 0) {
-			aBool2721 = true;
+		if (portType * -759629273 != 0) {
+			showFPS = true;
 		}
 	}
 
@@ -752,16 +751,16 @@ public final class Client extends Applet_Sub1 {
 				}
 
 				if (loginLoadingStage * 1315883169 == 0) {
-					Class43.initializeClient(-1596001198);
+					URLSession.initializeClient(-1596001198);
 					SoundEffectWorker.method296((byte) 15);
 				} else if (loginLoadingStage * 1315883169 == 5) {
 					LoginHandler.processLoginAndWorldListClick(this, -1618587604);
-					Class43.initializeClient(-1762580645);
+					URLSession.initializeClient(-1762580645);
 					SoundEffectWorker.method296((byte) -128);
 				} else if (10 != loginLoadingStage * 1315883169 && loginLoadingStage * 1315883169 != 11) {
 					if (loginLoadingStage * 1315883169 == 20) {
 						LoginHandler.processLoginAndWorldListClick(this, -1254698849);
-						LoginHandler.method884(-1857786071);
+						LoginHandler.processLoginStages(-1857786071);
 					} else if (loginLoadingStage * 1315883169 == 25) {
 						RegionReference.loadAndRenderRegion((byte) 3);
 					}
@@ -774,7 +773,7 @@ public final class Client extends Applet_Sub1 {
 						return;
 					}
 
-					LoginHandler.method884(-456787454);
+					LoginHandler.processLoginStages(-456787454);
 					return;
 				}
 
@@ -1077,7 +1076,7 @@ public final class Client extends Applet_Sub1 {
 									paramArray[0] = new Integer(packetBuffer.readInt());
 									ClientScript var130 = new ClientScript();
 									var130.parameters = paramArray;
-									GameObject.executeScript(var130, -1758103353);
+									ClientScript.executeScript(var130, -1758103353);
 									packetID = 859744123;
 									var62 = true;
 									break label2607;
@@ -1278,7 +1277,7 @@ public final class Client extends Applet_Sub1 {
 
 								if (221 == packetID * -1441472435) {
 									for (value = 0; value < Varp.anInt2045 * -1989920909; ++value) {
-										Varp var128 = AnimatedGraphic.method2149(value, (byte) 4);
+										Varp var128 = Varp.getVarpForID(value, (byte) 4);
 										if (null != var128) {
 											Class88.anIntArray1317[value] = 0;
 											Class88.configSettings[value] = 0;
@@ -1575,7 +1574,7 @@ public final class Client extends Applet_Sub1 {
 											var98 = false;
 											Friend var90 = friendList[var7];
 											Friend var101 = friendList[1 + var7];
-											if (worldID * 292541855 != var90.friendHash * -62644779 && worldID * 292541855 == var101.friendHash * -62644779) {
+											if (selectedWorldID * 292541855 != var90.friendHash * -62644779 && selectedWorldID * 292541855 == var101.friendHash * -62644779) {
 												var98 = true;
 											}
 
@@ -1728,17 +1727,17 @@ public final class Client extends Applet_Sub1 {
 											var62 = true;
 										} else {
 											Friend.friendsChatListCount = var10 * 436577463;
-											FriendsChatMember[] var92 = new FriendsChatMember[100];
+											FriendsChatMember[] friendChatMember = new FriendsChatMember[100];
 
 											for (variousValue = 0; variousValue < Friend.friendsChatListCount * 1727166727; ++variousValue) {
-												var92[variousValue] = new FriendsChatMember();
-												var92[variousValue].username = packetBuffer.getString_2((byte) 8);
-												var92[variousValue].aString1670 = Class108_Sub10.method1683(var92[variousValue].username, UnderlayDefinition.aClass116_2142, -1909536491);
-												var92[variousValue].anInt1663 = packetBuffer.readUShort(1322436717) * -810672663;
-												var92[variousValue].rank = packetBuffer.readByte();
+												friendChatMember[variousValue] = new FriendsChatMember();
+												friendChatMember[variousValue].username = packetBuffer.getString_2((byte) 8);
+												friendChatMember[variousValue].aString1670 = Class108_Sub10.method1683(friendChatMember[variousValue].username, UnderlayDefinition.aClass116_2142, -1909536491);
+												friendChatMember[variousValue].anInt1663 = packetBuffer.readUShort(1322436717) * -810672663;
+												friendChatMember[variousValue].rank = packetBuffer.readByte();
 												packetBuffer.getString_2((byte) 8);
-												if (var92[variousValue].username.equals(Player.myPlayer.playerName)) {
-													NPCDefinition.aByte2194 = var92[variousValue].rank;
+												if (friendChatMember[variousValue].username.equals(Player.myPlayer.playerName)) {
+													NPCDefinition.aByte2194 = friendChatMember[variousValue].rank;
 												}
 											}
 
@@ -1750,10 +1749,10 @@ public final class Client extends Applet_Sub1 {
 												--nameIndex;
 
 												for (var17 = 0; var17 < nameIndex; ++var17) {
-													if (var92[var17].aString1670.compareTo(var92[var17 + 1].aString1670) > 0) {
-														FriendsChatMember var108 = var92[var17];
-														var92[var17] = var92[1 + var17];
-														var92[1 + var17] = var108;
+													if (friendChatMember[var17].aString1670.compareTo(friendChatMember[var17 + 1].aString1670) > 0) {
+														FriendsChatMember var108 = friendChatMember[var17];
+														friendChatMember[var17] = friendChatMember[1 + var17];
+														friendChatMember[1 + var17] = var108;
 														var96 = false;
 													}
 												}
@@ -1763,7 +1762,7 @@ public final class Client extends Applet_Sub1 {
 												}
 											}
 
-											FriendsChatMember.friendsChatList = var92;
+											FriendsChatMember.friendsChatList = friendChatMember;
 											packetID = 859744123;
 											var62 = true;
 										}
@@ -2002,9 +2001,9 @@ public final class Client extends Applet_Sub1 {
 									var87 = RSInterface.getInterfaceComponentForHash(value2, -849506061);
 									type = var7 + var87.anInt1778 * -972219391;
 									var10 = var87.anInt1779 * -1482275397 + value;
-									if (var87.anInt1776 * 985647797 != type || var87.anInt1824 * 1730176157 != var10) {
-										var87.anInt1776 = type * 604525469;
-										var87.anInt1824 = var10 * -1129233995;
+									if (var87.xPosition * 985647797 != type || var87.yPosition * 1730176157 != var10) {
+										var87.xPosition = type * 604525469;
+										var87.yPosition = var10 * -1129233995;
 										MouseInputHandler.method775(var87, -16054773);
 									}
 
@@ -2181,7 +2180,7 @@ public final class Client extends Applet_Sub1 {
 										var10 = value2 - CacheFileAccessor.anInt1490 * 1498802843;
 										var83 = (int) Math.sqrt((double) (var10 * var10 + verifyIndex * verifyIndex));
 										RuntimeException_Sub1.anInt2625 = ((int) (Math.atan2((double) type, (double) var83) * 325.949D) & 2047) * -1558852331;
-										GameConnection.anInt811 = ((int) (Math.atan2((double) verifyIndex, (double) var10) * -325.949D) & 2047) * -422753419;
+										SocketSession.anInt811 = ((int) (Math.atan2((double) verifyIndex, (double) var10) * -325.949D) & 2047) * -422753419;
 										if (RuntimeException_Sub1.anInt2625 * -611182019 < 128) {
 											RuntimeException_Sub1.anInt2625 = -1964602752;
 										}
@@ -2271,15 +2270,15 @@ public final class Client extends Applet_Sub1 {
 								}
 
 								if (158 == packetID * -1441472435) {
-									World var85 = new World();
-									var85.aString561 = packetBuffer.getString_2((byte) 8);
-									var85.anInt569 = packetBuffer.readUShort(719155465) * -762909535;
+									World world = new World();
+									world.worldIPAddress = packetBuffer.getString_2((byte) 8);
+									world.worldID = packetBuffer.readUShort(719155465) * -762909535;
 									value2 = packetBuffer.readInt();
-									var85.worldType = value2 * 694562061;
+									world.worldType = value2 * 694562061;
 									IsaacRandomGen.method725(45, 1392851632);
 									Varp.loginConnection.disconnect();
 									Varp.loginConnection = null;
-									World.method103(var85, -354343931);
+									World.method103(world, -354343931);
 									packetID = 859744123;
 									var62 = false;
 									break label2607;
@@ -2329,7 +2328,7 @@ public final class Client extends Applet_Sub1 {
 
 								if (packetID * -1441472435 == 120) {
 									value = packetBuffer.readInt();
-									aClass85_2732 = ClientScriptMap.pringRequester.method821(value, 124248993);
+									aClass85_2732 = ClientScriptMap.sessionRequestWorker.submitIPHostSession(value, 124248993);
 									packetID = 859744123;
 									var62 = true;
 									break label2607;
@@ -2976,9 +2975,9 @@ public final class Client extends Applet_Sub1 {
 							}
 						}
 
-						RSInterface var73 = aClass108_Sub17_924;
+						RSInterface var73 = mouseHoveredComponent;
 						RSInterface var139 = NPCDefinition.aClass108_Sub17_2193;
-						aClass108_Sub17_924 = null;
+						mouseHoveredComponent = null;
 						NPCDefinition.aClass108_Sub17_2193 = null;
 						aClass108_Sub17_2818 = null;
 						aBool2885 = false;
@@ -3197,13 +3196,13 @@ public final class Client extends Applet_Sub1 {
 													anInt2894 = value2 * 1849977017;
 												}
 
-												if (aClass108_Sub17_924 != var73) {
+												if (mouseHoveredComponent != var73) {
 													if (null != var73) {
 														MouseInputHandler.method775(var73, -16054773);
 													}
 
-													if (aClass108_Sub17_924 != null) {
-														MouseInputHandler.method775(aClass108_Sub17_924, -16054773);
+													if (mouseHoveredComponent != null) {
+														MouseInputHandler.method775(mouseHoveredComponent, -16054773);
 													}
 												}
 
@@ -3306,7 +3305,7 @@ public final class Client extends Applet_Sub1 {
 														}
 													}
 
-													nameIndex = var110 - GameConnection.anInt811 * -1717637923;
+													nameIndex = var110 - SocketSession.anInt811 * -1717637923;
 													if (nameIndex > 1024) {
 														nameIndex -= 2048;
 													}
@@ -3316,16 +3315,16 @@ public final class Client extends Applet_Sub1 {
 													}
 
 													if (nameIndex > 0) {
-														GameConnection.anInt811 += (GraphicsBuffer.anInt183 * 1726673899 * nameIndex / 1000 + ClientScriptMap.anInt2063 * -1788141347) * -422753419;
-														GameConnection.anInt811 = (GameConnection.anInt811 * -1717637923 & 2047) * -422753419;
+														SocketSession.anInt811 += (GraphicsBuffer.anInt183 * 1726673899 * nameIndex / 1000 + ClientScriptMap.anInt2063 * -1788141347) * -422753419;
+														SocketSession.anInt811 = (SocketSession.anInt811 * -1717637923 & 2047) * -422753419;
 													}
 
 													if (nameIndex < 0) {
-														GameConnection.anInt811 -= (GraphicsBuffer.anInt183 * 1726673899 * -nameIndex / 1000 + ClientScriptMap.anInt2063 * -1788141347) * -422753419;
-														GameConnection.anInt811 = (GameConnection.anInt811 * -1717637923 & 2047) * -422753419;
+														SocketSession.anInt811 -= (GraphicsBuffer.anInt183 * 1726673899 * -nameIndex / 1000 + ClientScriptMap.anInt2063 * -1788141347) * -422753419;
+														SocketSession.anInt811 = (SocketSession.anInt811 * -1717637923 & 2047) * -422753419;
 													}
 
-													var17 = var110 - GameConnection.anInt811 * -1717637923;
+													var17 = var110 - SocketSession.anInt811 * -1717637923;
 													if (var17 > 1024) {
 														var17 -= 2048;
 													}
@@ -3335,7 +3334,7 @@ public final class Client extends Applet_Sub1 {
 													}
 
 													if (var17 < 0 && nameIndex > 0 || var17 > 0 && nameIndex < 0) {
-														GameConnection.anInt811 = var110 * -422753419;
+														SocketSession.anInt811 = var110 * -422753419;
 													}
 												}
 
@@ -3467,7 +3466,7 @@ public final class Client extends Applet_Sub1 {
 												}
 											}
 
-											GameObject.executeScript(script, -2141005462);
+											ClientScript.executeScript(script, -2141005462);
 										}
 									}
 
@@ -3479,7 +3478,7 @@ public final class Client extends Applet_Sub1 {
 										}
 									}
 
-									GameObject.executeScript(script, -1818309482);
+									ClientScript.executeScript(script, -1818309482);
 								}
 							}
 
@@ -3491,7 +3490,7 @@ public final class Client extends Applet_Sub1 {
 								}
 							}
 
-							GameObject.executeScript(script, -1834260314);
+							ClientScript.executeScript(script, -1834260314);
 						}
 					}
 
@@ -3578,10 +3577,10 @@ public final class Client extends Applet_Sub1 {
 		if (loginLoadingStage * 1315883169 == 0) {
 			MouseCapturer.method392(PlayerLoginDetails.anInt52 * 2070155241, PlayerLoginDetails.currentLoadingStatus, (Color) null, -230014244);
 		} else if (loginLoadingStage * 1315883169 == 5) {
-			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -91833970);
+			LoginHandler.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -91833970);
 		} else if (loginLoadingStage * 1315883169 != 10 && loginLoadingStage * 1315883169 != 11) {
 			if (loginLoadingStage * 1315883169 == 20) {
-				ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -768421256);
+				LoginHandler.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, -768421256);
 			} else {
 				int xPos;
 				if (loginLoadingStage * 1315883169 == 25) {
@@ -3670,14 +3669,14 @@ public final class Client extends Applet_Sub1 {
 					if (3 == anInt2916 * 1531358553) {
 						for (xPos = 0; xPos < anInt2907 * -792079877; ++xPos) {
 							if (aBoolArray2831[xPos]) {
-								Rasterizer2D.method2529(anIntArray2912[xPos], anIntArray2913[xPos], anIntArray2914[xPos], anIntArray2905[xPos], 16711935, 128);
+								Rasterizer2D.drawFilledRectangleAlpha(anIntArray2912[xPos], anIntArray2913[xPos], anIntArray2914[xPos], anIntArray2905[xPos], 16711935, 128);
 							} else if (aBoolArray2910[xPos]) {
-								Rasterizer2D.method2529(anIntArray2912[xPos], anIntArray2913[xPos], anIntArray2914[xPos], anIntArray2905[xPos], 16711680, 128);
+								Rasterizer2D.drawFilledRectangleAlpha(anIntArray2912[xPos], anIntArray2913[xPos], anIntArray2914[xPos], anIntArray2905[xPos], 16711680, 128);
 							}
 						}
 					}
 
-					Class43.method655(VarpBit.plane * -570926309, Player.myPlayer.anInt2394 * 171470795, Player.myPlayer.anInt2339 * 826764905, anInt2780 * 468305965, -518827825);
+					URLSession.method655(VarpBit.plane * -570926309, Player.myPlayer.anInt2394 * 171470795, Player.myPlayer.anInt2339 * 826764905, anInt2780 * 468305965, -518827825);
 					anInt2780 = 0;
 				} else if (40 == loginLoadingStage * 1315883169) {
 					GameDefinition.method1107(StringUtilities.CONNECTION_LOST + Class47.LINE_BREAK + StringUtilities.PLEASE_WAIT_ESTABLISHING, false, -507251184);
@@ -3686,7 +3685,7 @@ public final class Client extends Applet_Sub1 {
 				}
 			}
 		} else {
-			ObjectDefinition.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, 1086962024);
+			LoginHandler.renderLoginAndWorldList(RSTypeFace.b12_full_font, RSTypeFace.p11_full_font, 1086962024);
 		}
 
 		Graphics var14;
@@ -3784,39 +3783,39 @@ public final class Client extends Applet_Sub1 {
 			if ((anInt2736 -= 882643057) * -2086817647 + 1 <= 0) {
 				try {
 					if (0 == anInt2702 * -90801939) {
-						AnimationSkeletonSet.aClass85_2259 = ClientScriptMap.pringRequester.method816(Applet_Sub1.aString2701, IndexTable.anInt790 * -2083273005, -1135204174);
+						AnimationSkeletonSet.js5Session = ClientScriptMap.sessionRequestWorker.submitSocketSession(Applet_Sub1.selectedWorldIP, IndexTable.currentWorldPort * -2083273005, -1135204174);
 						anInt2702 += 1642505445;
 					}
 
 					if (anInt2702 * -90801939 == 1) {
-						if (2 == AnimationSkeletonSet.aClass85_2259.anInt1292) {
+						if (2 == AnimationSkeletonSet.js5Session.anInt1292) {
 							this.method3415(-1, (byte) 8);
 							return;
 						}
 
-						if (AnimationSkeletonSet.aClass85_2259.anInt1292 == 1) {
+						if (AnimationSkeletonSet.js5Session.anInt1292 == 1) {
 							anInt2702 += 1642505445;
 						}
 					}
 
 					if (2 == anInt2702 * -90801939) {
-						AnimatedGraphic.aGameConnection_2037 = new GameConnection((Socket) AnimationSkeletonSet.aClass85_2259.anObject1294, ClientScriptMap.pringRequester);
-						RSByteBuffer var2 = new RSByteBuffer(5);
-						var2.writeByte(15);
-						var2.writeInt(60);
-						AnimatedGraphic.aGameConnection_2037.writeBytes(var2.buf, 0, 5);
+						AnimatedGraphic.aConnection_Session_2037 = new SocketSession((Socket) AnimationSkeletonSet.js5Session.connectionObject, ClientScriptMap.sessionRequestWorker);
+						RSByteBuffer buffer = new RSByteBuffer(5);
+						buffer.writeByte(15); // js5 header
+						buffer.writeInt(60); // version
+						AnimatedGraphic.aConnection_Session_2037.writeBytes(buffer.buf, 0, 5);
 						anInt2702 += 1642505445;
 						Class108_Sub12.aLong1672 = Timer.getCurrentTimeMillis(849846164) * -6175035716183725541L;
 					}
 
 					if (3 == anInt2702 * -90801939) {
-						if (loginLoadingStage * 1315883169 > 5 && AnimatedGraphic.aGameConnection_2037.available() <= 0) {
+						if (loginLoadingStage * 1315883169 > 5 && AnimatedGraphic.aConnection_Session_2037.available() <= 0) {
 							if (Timer.getCurrentTimeMillis(849846164) - Class108_Sub12.aLong1672 * -6521459471039733741L > 30000L) {
 								this.method3415(-2, (byte) 87);
 								return;
 							}
 						} else {
-							int var4 = AnimatedGraphic.aGameConnection_2037.read();
+							int var4 = AnimatedGraphic.aConnection_Session_2037.read();
 							if (0 != var4) {
 								this.method3415(var4, (byte) 71);
 								return;
@@ -3827,9 +3826,9 @@ public final class Client extends Applet_Sub1 {
 					}
 
 					if (4 == anInt2702 * -90801939) {
-						Class47.method680(AnimatedGraphic.aGameConnection_2037, loginLoadingStage * 1315883169 > 20, 2016067664);
-						AnimationSkeletonSet.aClass85_2259 = null;
-						AnimatedGraphic.aGameConnection_2037 = null;
+						Class47.method680(AnimatedGraphic.aConnection_Session_2037, loginLoadingStage * 1315883169 > 20, 2016067664);
+						AnimationSkeletonSet.js5Session = null;
+						AnimatedGraphic.aConnection_Session_2037 = null;
 						anInt2702 = 0;
 						anInt2839 = 0;
 					}
@@ -3850,13 +3849,13 @@ public final class Client extends Applet_Sub1 {
 	}
 
 	void method3415(int var1, byte var2) {
-		AnimationSkeletonSet.aClass85_2259 = null;
-		AnimatedGraphic.aGameConnection_2037 = null;
+		AnimationSkeletonSet.js5Session = null;
+		AnimatedGraphic.aConnection_Session_2037 = null;
 		anInt2702 = 0;
-		if (anInt2742 * 1455199325 == IndexTable.anInt790 * -2083273005) {
-			IndexTable.anInt790 = Class26.anInt351 * 2139936523;
+		if (selectedWorldGamePort * 1455199325 == IndexTable.currentWorldPort * -2083273005) {
+			IndexTable.currentWorldPort = Class26.selectedWorldJS5Port * 2139936523;
 		} else {
-			IndexTable.anInt790 = anInt2742 * 130259471;
+			IndexTable.currentWorldPort = selectedWorldGamePort * 130259471;
 		}
 
 		anInt2839 += 1440494247;

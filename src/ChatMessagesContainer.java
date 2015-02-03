@@ -37,9 +37,9 @@ public class ChatMessagesContainer {
 
 	static final void sendText(String text, int var1) {
        if(text.equalsIgnoreCase("toggleroof")) {
-          Ignore.aClass37_386.aBool528 = !Ignore.aClass37_386.aBool528;
+          Ignore.clientSettings.hideRoofs = !Ignore.clientSettings.hideRoofs;
           Timer.method713(-563726063);
-          if(Ignore.aClass37_386.aBool528) {
+          if(Ignore.clientSettings.hideRoofs) {
              pushMessage(99, "", "Roofs are now all hidden", -1992448970);
           } else {
              pushMessage(99, "", "Roofs will only be removed selectively", -594140255);
@@ -48,11 +48,11 @@ public class ChatMessagesContainer {
 
        if(Client.rights * 171939335 >= 2) {
           if(text.equalsIgnoreCase("fpson")) {
-             Client.aBool2721 = true;
+             Client.showFPS = true;
           }
 
           if(text.equalsIgnoreCase("fpsoff")) {
-             Client.aBool2721 = false;
+             Client.showFPS = false;
           }
 
           if(text.equalsIgnoreCase("gc")) {
@@ -63,7 +63,7 @@ public class ChatMessagesContainer {
              Class7.method180(-535663951);
           }
 
-          if(text.equalsIgnoreCase("errortest") && 2 == Client.anInt2708 * -759629273) {
+          if(text.equalsIgnoreCase("errortest") && 2 == Client.portType * -759629273) {
              throw new RuntimeException();
           }
        }
@@ -126,10 +126,10 @@ public class ChatMessagesContainer {
 		GZIPDecompressor.underlayFloorIds = new byte[4][104][104];
 		RegionReference.overlayFloorIds = new byte[4][104][104];
 		RegionReference.overlayClippingPaths = new byte[4][104][104];
-		AnimationSkeletonSet.overlayRotations = new byte[4][104][104];
+		RegionReference.overlayRotations = new byte[4][104][104];
 		Class19.tileCullingBitset = new int[4][105][105];
 		RegionReference.aByteArrayArrayArray488 = new byte[4][105][105];
-		Class19.tileLightingIntensity = new int[105][105];
+		RegionReference.tileLightingIntensity = new int[105][105];
 		RegionReference.blendedHue = new int[104];
 		RegionReference.blendedSaturation = new int[104];
 		IndexTable.blendedLightness = new int[104];

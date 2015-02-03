@@ -18,7 +18,7 @@ public abstract class Timer {
 
       try {
          var1 = CacheFileAccessor.getPreferencesFileAccessor("", Client.gameDefinition.gameName, true, (byte) 70);
-         RSByteBuffer var2 = Ignore.aClass37_386.method631(2045058579);
+         RSByteBuffer var2 = Ignore.clientSettings.getSettingsBuffer(2045058579);
          var1.method1491(var2.buf, 0, var2.position * 798331555, 473414132);
       } catch (Exception var4) {
          ;
@@ -91,7 +91,7 @@ public abstract class Timer {
    static void method722(int var0, int var1, int var2) {
       if(0 != Client.anInt2873 * 99489839) {
          if(-1 != var0) {
-            AnimationSkin.method1677(ClientParameter.musicIndex_2, var0, 0, Client.anInt2873 * 99489839, false, -733285856);
+            RSSong.method1677(ClientParameter.musicIndex_2, var0, 0, Client.anInt2873 * 99489839, false, -733285856);
             Client.aBool2938 = true;
          }
       }

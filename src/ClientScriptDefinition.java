@@ -58,7 +58,7 @@ public class ClientScriptDefinition extends CacheableNode {
 				if (opcode <= 49) {
 					RegionReference.overlayFloorIds[plane][localX][localY] = buffer.readByte();
 					RegionReference.overlayClippingPaths[plane][localX][localY] = (byte) ((opcode - 2) / 4);
-					AnimationSkeletonSet.overlayRotations[plane][localX][localY] = (byte) (opcode - 2 + rotation & 3);
+					RegionReference.overlayRotations[plane][localX][localY] = (byte) (opcode - 2 + rotation & 3);
 				} else if (opcode <= 81) {
 					RegionReference.mapTileSettings[plane][localX][localY] = (byte) (opcode - 49);
 				} else {
@@ -84,7 +84,7 @@ public class ClientScriptDefinition extends CacheableNode {
 		}
 	}
 
-	static final void renderInterfaceComponents(RSInterface[] components, int var1, int xRender, int yRender, int renderWidth, int renderHeight, int var6, int var7, int var8, int var9) {
+	static final void renderInterfaceComponents(RSInterface[] components, int var1, int xRender, int yRender, int renderWidth, int renderHeight, int xOffset, int yOffset, int var8, int var9) {
 		Rasterizer2D.setRasterizationRect(xRender, yRender, renderWidth, renderHeight);
 		Rasterizer3D.method2970();
 
@@ -93,8 +93,8 @@ public class ClientScriptDefinition extends CacheableNode {
 			if (null != component && (var1 == component.hoverPopup * -867206361 || var1 == -1412584499 && component == Client.aClass108_Sub17_2877)) {
 				int var19;
 				if (-1 == var8) {
-					Client.anIntArray2912[Client.anInt2907 * -792079877] = component.anInt1776 * 985647797 + var6;
-					Client.anIntArray2913[Client.anInt2907 * -792079877] = var7 + component.anInt1824 * 1730176157;
+					Client.anIntArray2912[Client.anInt2907 * -792079877] = component.xPosition * 985647797 + xOffset;
+					Client.anIntArray2913[Client.anInt2907 * -792079877] = yOffset + component.yPosition * 1730176157;
 					Client.anIntArray2914[Client.anInt2907 * -792079877] = component.height * -1281443035;
 					Client.anIntArray2905[Client.anInt2907 * -792079877] = component.width * 334099177;
 					var19 = (Client.anInt2907 += 1557434675) * -792079877 - 1;
@@ -143,16 +143,16 @@ public class ClientScriptDefinition extends CacheableNode {
 						}
 					}
 
-					var21 = var6 + component.anInt1776 * 985647797;
-					int var12 = var7 + component.anInt1824 * 1730176157;
+					var21 = xOffset + component.xPosition * 985647797;
+					int var12 = yOffset + component.yPosition * 1730176157;
 					int transparency = component.alpha * 1076754521;
 					int var24;
 					int var29;
 					if (component == Client.aClass108_Sub17_2877) {
 						if (var1 != -1412584499 && !component.aBool1836) {
 							Client.aClass108_Sub17Array2963 = components;
-							Class43.anInt619 = var6 * 1934415775;
-							EquipmentKit.anInt1344 = var7 * -1922107287;
+							URLSession.anInt619 = xOffset * 1934415775;
+							EquipmentKit.anInt1344 = yOffset * -1922107287;
 							continue;
 						}
 
@@ -245,7 +245,7 @@ public class ClientScriptDefinition extends CacheableNode {
 						}
 
 						if (0 == component.componentType * 942877543) { // container or scrolling container?
-							if (!component.aBool1855 && RSInterface.isComponentHidden(component, (byte) 83) && component != Client.aClass108_Sub17_924) {
+							if (!component.aBool1855 && RSInterface.isComponentHidden(component, (byte) 83) && component != Client.mouseHoveredComponent) {
 								continue;
 							}
 
@@ -380,15 +380,15 @@ public class ClientScriptDefinition extends CacheableNode {
 											++itemIndex;
 										}
 									}
-								} else if (3 == component.componentType * 942877543) {
+								} else if (3 == component.componentType * 942877543) { // draw colored filled/unfilled rectangle
 									if (GameDefinition.method1103(component, (byte) -28)) {
 										var22 = component.componentActiveColor * -310727379;
-										if (component == Client.aClass108_Sub17_924 && component.mouseOverActiveColor * -1067295333 != 0) {
+										if (component == Client.mouseHoveredComponent && component.mouseOverActiveColor * -1067295333 != 0) {
 											var22 = component.mouseOverActiveColor * -1067295333;
 										}
 									} else {
 										var22 = component.componentColor * -1484361639;
-										if (component == Client.aClass108_Sub17_924 && 0 != component.mouseOverColor * 256440005) {
+										if (component == Client.mouseHoveredComponent && 0 != component.mouseOverColor * 256440005) {
 											var22 = component.mouseOverColor * 256440005;
 										}
 									}
@@ -400,9 +400,9 @@ public class ClientScriptDefinition extends CacheableNode {
 											Rasterizer2D.drawUnfilledRectangle(var21, var12, component.height * -1281443035, component.width * 334099177, var22);
 										}
 									} else if (component.filled) {
-										Rasterizer2D.method2529(var21, var12, component.height * -1281443035, component.width * 334099177, var22, 256 - (transparency & 255));
+										Rasterizer2D.drawFilledRectangleAlpha(var21, var12, component.height * -1281443035, component.width * 334099177, var22, 256 - (transparency & 255));
 									} else {
-										Rasterizer2D.method2505(var21, var12, component.height * -1281443035, component.width * 334099177, var22, 256 - (transparency & 255));
+										Rasterizer2D.drawUnfilledRectangleAlpha(var21, var12, component.height * -1281443035, component.width * 334099177, var22, 256 - (transparency & 255));
 									}
 								} else {
 									RSFont interfaceFont;
@@ -416,7 +416,7 @@ public class ClientScriptDefinition extends CacheableNode {
 											String componentString = component.componentString;
 											if (GameDefinition.method1103(component, (byte) -58)) {
 												var30 = component.componentActiveColor * -310727379;
-												if (Client.aClass108_Sub17_924 == component && component.mouseOverActiveColor * -1067295333 != 0) {
+												if (Client.mouseHoveredComponent == component && component.mouseOverActiveColor * -1067295333 != 0) {
 													var30 = component.mouseOverActiveColor * -1067295333;
 												}
 
@@ -425,7 +425,7 @@ public class ClientScriptDefinition extends CacheableNode {
 												}
 											} else {
 												var30 = component.componentColor * -1484361639;
-												if (Client.aClass108_Sub17_924 == component && component.mouseOverColor * 256440005 != 0) {
+												if (Client.mouseHoveredComponent == component && component.mouseOverColor * 256440005 != 0) {
 													var30 = component.mouseOverColor * 256440005;
 												}
 											}
@@ -511,7 +511,7 @@ public class ClientScriptDefinition extends CacheableNode {
 										}
 									} else {
 										ItemDefinition itemDef;
-										if (component.componentType * 942877543 == 6) {
+										if (component.componentType * 942877543 == 6) { // media
 											boolean var48 = GameDefinition.method1103(component, (byte) -14);
 											if (var48) {
 												var30 = component.activeMediaAnimID * -1534484025;
@@ -533,7 +533,7 @@ public class ClientScriptDefinition extends CacheableNode {
 														MouseInputHandler.method775(component, -16054773);
 													}
 												}
-											} else if (component.mediaType * -1873872195 == 5) {
+											} else if (component.mediaType * -1873872195 == 5) { // player
 												if (component.mediaID * 2030124439 == 0) {
 													rasterizer = Client.aClass93_2926.getModelRasterizer((AnimationDefinition) null, -1, (AnimationDefinition) null, -1, -1132359552);
 												} else {
@@ -599,7 +599,7 @@ public class ClientScriptDefinition extends CacheableNode {
 															} else if (component.anInt1863 * -164762721 == 1) {
 																interfaceFont.drawStringCenter(var23, var16 + component.height * -1281443035 / 2, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
 															} else {
-																interfaceFont.method3095(var23, var16 + component.height * -1281443035 - 1, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
+																interfaceFont.drawStringRight(var23, var16 + component.height * -1281443035 - 1, var10, component.componentColor * -1484361639, component.textCentered ? 0 : -1);
 															}
 														}
 

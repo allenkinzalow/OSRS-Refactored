@@ -2,10 +2,8 @@
 public class Class19 {
 
    static RSInterface aClass108_Sub17_230;
-   static int[][] tileLightingIntensity;
    int anInt232;
    int[][] anIntArrayArray234;
-   public static String cacheDirectory;
    static int[][][] tileCullingBitset;
    int anInt240;
 

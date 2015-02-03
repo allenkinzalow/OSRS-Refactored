@@ -5,7 +5,6 @@ public class Class5 {
    static Calendar aCalendar76 = Calendar.getInstance();
    static int[] anIntArray77 = new int[5];
    static int[][] anIntArrayArray78 = new int[5][5000];
-   static String[] stringStack = new String[1000];
    static int anInt81 = 0;
    static ClientScriptReference[] aClientScriptReferenceArray82 = new ClientScriptReference[50];
    static PaletteSprite[] fireRuneSprites;

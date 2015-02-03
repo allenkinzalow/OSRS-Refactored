@@ -4,7 +4,7 @@ public class Class14 implements Runnable {
    volatile Class7[] aClass7Array189 = new Class7[2];
    volatile boolean aBool190 = false;
    volatile boolean aBool191 = false;
-   PingRequester aClass61_192;
+   SessionRequestWorker aClass61_192;
 
 
    public static int method281(int var0, byte var1) {

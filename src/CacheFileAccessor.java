@@ -10,6 +10,7 @@ import java.io.RandomAccessFile;
 public final class CacheFileAccessor {
 
    public static String[] possibleCacheDirectories;
+   public static String cacheDirectory;
    RandomAccessFile aRandomAccessFile1489;
    static int anInt1490;
    long aLong1491;
@@ -33,7 +34,7 @@ public final class CacheFileAccessor {
          var5 = "_wip";
       }
 
-      File var6 = new File(Class19.cacheDirectory, "jagex_" + var1 + "_preferences" + var0 + var5 + ".dat");
+      File var6 = new File(cacheDirectory, "jagex_" + var1 + "_preferences" + var0 + var5 + ".dat");
       CacheFileAccessor var7;
       if(!var2 && var6.exists()) {
          try {

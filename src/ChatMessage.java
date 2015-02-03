@@ -81,30 +81,6 @@ public class ChatMessage extends CacheableNode {
       this.messageSuffix = var4;
    }
 
-   public static RGBSprite method2016(AbstractIndex index, int archiveId, int fileId, byte var3) {
-      if(!FriendsChatMember.loadPaletteSprite(index, archiveId, fileId, -1593817854)) {
-         return null;
-      } else {
-         RGBSprite sprite = new RGBSprite();
-         sprite.maxWidth = Class9.anInt122 * 93011449;
-         sprite.maxHeight = Class9.anInt121 * -1272520477;
-         sprite.offsetX = Class88.anIntArray1316[0];
-         sprite.offsetY = Class9.anIntArray123[0];
-         sprite.spriteWidth = PaletteSprite.lastLoadedPaletteSpriteWidth[0];
-         sprite.spriteHeight = Class9.anIntArray126[0];
-         int dimmension = sprite.spriteWidth * sprite.spriteHeight;
-         byte[] var6 = AnimationSkeletonSet.loadedCharacterPixels[0];
-         sprite.pixels = new int[dimmension]; 
-
-         for(int pos = 0; pos < dimmension; ++pos) {
-            sprite.pixels[pos] = Class9.anIntArray130[var6[pos] & 255];
-         }
-
-         PaletteSprite.resetLastPaletteValues((byte) 99);
-         return sprite;
-      }
-   }
-
    static final void method2017(int var0, int var1, int var2, short var3) {
       if(var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
          int var4 = RegionReference.getFloorDrawHeight(var0, var1, VarpBit.plane * -570926309, 1332864502) - var2;
@@ -113,8 +89,8 @@ public class ChatMessage extends CacheableNode {
          var1 -= CacheFileAccessor.anInt1490 * 1498802843;
          int var6 = Rasterizer3D.SINE[RuntimeException_Sub1.anInt2625 * -611182019];
          int var5 = Rasterizer3D.COSINE[RuntimeException_Sub1.anInt2625 * -611182019];
-         int var8 = Rasterizer3D.SINE[GameConnection.anInt811 * -1717637923];
-         int var9 = Rasterizer3D.COSINE[GameConnection.anInt811 * -1717637923];
+         int var8 = Rasterizer3D.SINE[SocketSession.anInt811 * -1717637923];
+         int var9 = Rasterizer3D.COSINE[SocketSession.anInt811 * -1717637923];
          int var7 = var0 * var9 + var1 * var8 >> 16;
          var1 = var1 * var9 - var8 * var0 >> 16;
          var0 = var7;

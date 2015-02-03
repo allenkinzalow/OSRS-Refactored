@@ -85,7 +85,7 @@ public final class NPC extends Entity {
 		int var19;
 		int var21;
 		if (!Client.aBool2886) {
-			if (Ignore.aClass37_386.aBool528) {
+			if (Ignore.clientSettings.hideRoofs) {
 				var28 = VarpBit.plane * -570926309;
 			} else {
 				var14 = 3;
@@ -188,7 +188,7 @@ public final class NPC extends Entity {
 		var14 = ClientScript.anInt1645 * 699100371;
 		var11 = CacheFileAccessor.anInt1490 * 1498802843;
 		var19 = RuntimeException_Sub1.anInt2625 * -611182019;
-		var12 = GameConnection.anInt811 * -1717637923;
+		var12 = SocketSession.anInt811 * -1717637923;
 
 		for (var21 = 0; var21 < 5; ++var21) {
 			if (Client.aBoolArray2948[var21]) {
@@ -206,7 +206,7 @@ public final class NPC extends Entity {
 				}
 
 				if (var21 == 3) {
-					GameConnection.anInt811 = (GameConnection.anInt811 * -1717637923 + var8 & 2047) * -422753419;
+					SocketSession.anInt811 = (SocketSession.anInt811 * -1717637923 + var8 & 2047) * -422753419;
 				}
 
 				if (4 == var21) {
@@ -242,7 +242,7 @@ public final class NPC extends Entity {
 		Friend.method660(-626475724);
 		Rasterizer2D.drawFilledRectangle(var0, var1, var2, var3, 0);
 		Friend.method660(1883242703);
-		Scene.gameScene.renderScene(BZip2Context.xCameraPos * 1217916071, ClientScript.anInt1645 * 699100371, CacheFileAccessor.anInt1490 * 1498802843, RuntimeException_Sub1.anInt2625 * -611182019, GameConnection.anInt811 * -1717637923, var7);
+		Scene.gameScene.renderScene(BZip2Context.xCameraPos * 1217916071, ClientScript.anInt1645 * 699100371, CacheFileAccessor.anInt1490 * 1498802843, RuntimeException_Sub1.anInt2625 * -611182019, SocketSession.anInt811 * -1717637923, var7);
 		Friend.method660(1387450619);
 		Scene.gameScene.resetInteractableObjects();
 		Client.anInt2804 = 0;
@@ -398,7 +398,7 @@ public final class NPC extends Entity {
 		ClientScript.anInt1645 = var14 * 1023920987;
 		CacheFileAccessor.anInt1490 = var11 * 365620115;
 		RuntimeException_Sub1.anInt2625 = var19 * -1558852331;
-		GameConnection.anInt811 = var12 * -422753419;
+		SocketSession.anInt811 = var12 * -422753419;
 		if (Client.aBool2874) {
 			byte var30 = 0;
 			var15 = var30 + Class78.anInt1216 * 1668849075 + Class78.anInt1218 * 1577549363;

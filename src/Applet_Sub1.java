@@ -27,7 +27,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
    static Applet_Sub1 currentApplet = null;
    static volatile boolean focusGained = true;
    public static final int anInt2700 = 154;
-   static String aString2701;
+   static String selectedWorldIP;
 
    public static void setApplet(Applet var0, String var1, int var2) {
       Class56.anApplet756 = var0;
@@ -50,11 +50,11 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             ProducingGraphicsBuffer.clientHeight = height * -1515364509;
             RuntimeException_Sub1.anInt2627 = var3 * -1328331175;
             RuntimeException_Sub1.anApplet2631 = this;
-            if(null == ClientScriptMap.pringRequester) {
-               ClientScriptMap.pringRequester = new PingRequester();
+            if(null == ClientScriptMap.sessionRequestWorker) {
+               ClientScriptMap.sessionRequestWorker = new SessionRequestWorker();
             }
 
-            ClientScriptMap.pringRequester.method820(this, 1, -1962227119);
+            ClientScriptMap.sessionRequestWorker.submitRunnableSession(this, 1, -1962227119);
          }
       } catch (Exception var6) {
          World.method647((String)null, var6, 926745782);
@@ -117,9 +117,9 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             }
          }
 
-         if(ClientScriptMap.pringRequester != null) {
+         if(ClientScriptMap.sessionRequestWorker != null) {
             try {
-               ClientScriptMap.pringRequester.method839(-818149209);
+               ClientScriptMap.sessionRequestWorker.method839(-818149209);
             } catch (Exception var3) {
                ;
             }
@@ -229,8 +229,8 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
 
    public void run() {
       try {
-         if(null != PingRequester.javaVendor) {
-            String var1 = PingRequester.javaVendor.toLowerCase();
+         if(null != SessionRequestWorker.javaVendor) {
+            String var1 = SessionRequestWorker.javaVendor.toLowerCase();
             if(var1.indexOf("sun") != -1 || var1.indexOf("apple") != -1) {
                String var2 = MachineInformation.javaVersion;
                if(var2.equals("1.1") || var2.startsWith("1.1.") || var2.equals("1.2") || var2.startsWith("1.2.") || var2.equals("1.3") || var2.startsWith("1.3.") || var2.equals("1.4") || var2.startsWith("1.4.") || var2.equals("1.5") || var2.startsWith("1.5.") || var2.equals("1.6.0")) {
@@ -339,7 +339,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
             }
 
             this.process((short)23545);
-            Renderable.method2491(ClientScriptMap.pringRequester, ContextMenuRow.aCanvas3, (short)-23977);
+            Renderable.method2491(ClientScriptMap.sessionRequestWorker, ContextMenuRow.aCanvas3, (short)-23977);
          }
       } catch (Exception var15) {
          World.method647((String)null, var15, 926745782);

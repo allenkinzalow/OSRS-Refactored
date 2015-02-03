@@ -19,7 +19,7 @@ public class AnimatedGraphic extends CacheableNode {
    int rotation = 0;
    int modelID;
    int contrast = 0;
-   static GameConnection aGameConnection_2037;
+   static SocketSession aConnection_Session_2037;
 
    public static AnimatedGraphic getSpotAnimForID(int spotAnimID, byte var1) {
       AnimatedGraphic gfx = (AnimatedGraphic) spotAnimCache.get((long) spotAnimID);
@@ -171,117 +171,4 @@ public class AnimatedGraphic extends CacheableNode {
       }
    }
 
-   static final void method2148(NPCDefinition npcDef, int var1, int var2, int var3, int var4) {
-      if(ContextMenu.contextMenuRow * 391839991 < 400) {
-         if(null != npcDef.anIntArray2185) {
-            npcDef = npcDef.method2290(2122847973);
-         }
-
-         if(null != npcDef) {
-            if(npcDef.isClickable) {
-               if(!npcDef.aBool2190 || var1 == Client.anInt2789 * -1399758439) {
-                  String var7 = npcDef.name;
-                  if(npcDef.combatLevel * -1840374219 != 0) {
-                     var7 = var7 + Class108_Sub13.method1702(npcDef.combatLevel * -1840374219, Player.myPlayer.combatLevel * -1769445007, -1429433422) + " " + Class47.OPEN_PAREN + StringUtilities.COMBAT_LEVEL + npcDef.combatLevel * -1840374219 + Class47.CLOSE_PAREN;
-                  }
-
-                  if(1 == Client.anInt2858 * -968945719) {
-                     ContextMenu.setContextMenuRow(StringUtilities.USE_OPTION, Client.aString2859 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1747962050) + var7, 7, var1, var2, var3, 1892745466);
-                  } else if(Client.aBool2881) {
-                     if((Class68.anInt902 * 401025055 & 2) == 2) {
-                        ContextMenu.setContextMenuRow(Client.aString2941, Client.aString2819 + " " + Class47.aString668 + " " + HuffmanEncoding.method690(16776960, -1649201849) + var7, 8, var1, var2, var3, 1878248083);
-                     }
-                  } else {
-                     String[] npcOptions = npcDef.options;
-                     if(Client.aBool2744) {
-                        npcOptions = Class23.method341(npcOptions, -33011240);
-                     }
-
-                     int optionIndex;
-                     if(npcOptions != null) {
-                        for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
-                           if(npcOptions[optionIndex] != null && !npcOptions[optionIndex].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
-                              byte var5 = 0;
-                              if(0 == optionIndex) {
-                                 var5 = 9;
-                              }
-
-                              if(optionIndex == 1) {
-                                 var5 = 10;
-                              }
-
-                              if(2 == optionIndex) {
-                                 var5 = 11; 
-                              }
-
-                              if(3 == optionIndex) {
-                                 var5 = 12;
-                              }
-
-                              if(4 == optionIndex) {
-                                 var5 = 13;
-                              }
-
-                              ContextMenu.setContextMenuRow(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -1431624152) + var7, var5, var1, var2, var3, 1885794417);
-                           }
-                        }
-                     }
-
-                     if(null != npcOptions) {
-                        for(optionIndex = 4; optionIndex >= 0; --optionIndex) {
-                           if(npcOptions[optionIndex] != null && npcOptions[optionIndex].equalsIgnoreCase(StringUtilities.ATTACK_OPTION)) {
-                              short var10 = 0;
-                              if(Class50.aClass50_701 == Client.aClass50_2733 || Class50.aClass50_698 == Client.aClass50_2733 && npcDef.combatLevel * -1840374219 > Player.myPlayer.combatLevel * -1769445007) {
-                                 var10 = 2000;
-                              }
-
-                              int var9 = 0;
-                              if(0 == optionIndex) {
-                                 var9 = var10 + 9;
-                              }
-
-                              if(optionIndex == 1) {
-                                 var9 = var10 + 10;
-                              }
-
-                              if(optionIndex == 2) {
-                                 var9 = var10 + 11;
-                              }
-
-                              if(optionIndex == 3) {
-                                 var9 = var10 + 12;
-                              }
-
-                              if(4 == optionIndex) {
-                                 var9 = var10 + 13;
-                              }
-
-                              ContextMenu.setContextMenuRow(npcOptions[optionIndex], HuffmanEncoding.method690(16776960, -997355682) + var7, var9, var1, var2, var3, 1856696720);
-                           }
-                        }
-                     }
-
-                     ContextMenu.setContextMenuRow(StringUtilities.EXAMINE_OPTION, HuffmanEncoding.method690(16776960, -769408508) + var7, 1003, var1, var2, var3, 1961932451);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public static Varp method2149(int var0, byte var1) {
-      Varp varp = (Varp)Varp.varpCacheMap.get((long)var0);
-      if(null != varp) {
-         return varp;
-      } else {
-         byte[] var3 = Client.configIndex_ref.getFile(16, var0, (byte) 7);
-         varp = new Varp();
-         if(var3 != null) {
-            varp.decode(new RSByteBuffer(var3), -1057715015);
-         }
-
-         Varp.varpCacheMap.put(varp, (long)var0);
-         return varp;
-      }
-   }
 }

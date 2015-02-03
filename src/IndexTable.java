@@ -9,7 +9,7 @@ public final class IndexTable {
    int index;
    static PaletteSprite clientLogo;
    static int[] blendedLightness;
-   static int anInt790;
+   static int currentWorldPort;
    int descsriptorIndex = -1391642344;
    static byte[] buffer = new byte[520];
    static PaletteSprite[] scrollBarSprites;

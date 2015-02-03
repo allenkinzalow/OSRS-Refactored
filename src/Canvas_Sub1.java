@@ -4,10 +4,7 @@ import java.awt.Graphics;
 
 public final class Canvas_Sub1 extends Canvas {
 
-   static final int anInt2285 = 35;
-   static final int anInt2286 = 47;
    Component aComponent2287;
-   public static final int anInt2288 = 55;
 
 
    public final void update(Graphics var1) {

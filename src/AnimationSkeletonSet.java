@@ -1,63 +1,55 @@
-
+/**
+ *
+ * Contains a map for the skeleton of each frame in an animation.
+ */
 public class AnimationSkeletonSet extends CacheableNode {
 
-	static PingRequest aClass85_2259;
-	static int anInt2260;
-	static byte[][][] overlayRotations;
-	public static final int anInt2262 = 202;
-	static byte[][] loadedCharacterPixels;
-	AnimationSkeleton[] animations;
-	public static final int anInt2265 = 97;
-	static final int anInt2266 = 70;
-	static final int anInt2267 = 4096;
-	public static final int anInt2268 = 60;
+	static SessionRequest js5Session;
+	static CacheableNodeMap skeletonSetMap = new CacheableNodeMap(100);
+	AnimationSkeleton[] animationSkeletons;
 
 
-	AnimationSkeletonSet(AbstractIndex var1, AbstractIndex var2, int archiveID, boolean var4) {
-		Deque var12 = new Deque();
-		int var6 = var1.getFileCount(archiveID);
-		this.animations = new AnimationSkeleton[var6];
-		int[] fileList = var1.method1013(archiveID);
-		int fileID = 0;
+	AnimationSkeletonSet(AbstractIndex skeletonIndex, AbstractIndex skinIndex, int animationID, boolean var4) {
+		Deque skinDeque = new Deque();
+		int skeletonCount = skeletonIndex.getFileCount(animationID);
+		this.animationSkeletons = new AnimationSkeleton[skeletonCount];
+		int[] fileList = skeletonIndex.getFileIDs(animationID);
+		int fileIDIndex = 0;
 
-		while (fileID < fileList.length) {
-			byte[] var8 = var1.getFile(archiveID, fileList[fileID], (byte) 7);
+		while (fileIDIndex < fileList.length) {
+			byte[] skeletonData = skeletonIndex.getFile(animationID, fileList[fileIDIndex], (byte) 7);
 			AnimationSkin animSkin = null;
-			int var10 = (var8[0] & 255) << 8 | var8[1] & 255;
-			AnimationSkin var13 = (AnimationSkin) var12.getFront();
+			int skinID = (skeletonData[0] & 255) << 8 | skeletonData[1] & 255;
+			AnimationSkin skin = (AnimationSkin) skinDeque.getFront();
 
 			while (true) {
-				if (null != var13) {
-					if (var13.anInt1630 * -1259948989 != var10) {
-						var13 = (AnimationSkin) var12.getNext();
+				if (null != skin) {
+					if (skin.skinId * -1259948989 != skinID) {
+						skin = (AnimationSkin) skinDeque.getNext();
 						continue;
 					}
 
-					animSkin = var13;
+					animSkin = skin;
 				}
 
 				if (animSkin == null) {
-					byte[] var11;
+					byte[] skinData;
 					if (var4) {
-						var11 = var2.getFileData(0, var10, -28237808);
+						skinData = skinIndex.getFileData(0, skinID, -28237808);
 					} else {
-						var11 = var2.getFileData(var10, 0, 1160605957);
+						skinData = skinIndex.getFileData(skinID, 0, 1160605957);
 					}
 
-					animSkin = new AnimationSkin(var10, var11);
-					var12.insertBack(animSkin);
+					animSkin = new AnimationSkin(skinID, skinData);
+					skinDeque.insertBack(animSkin);
 				}
 
-				this.animations[fileList[fileID]] = new AnimationSkeleton(var8, animSkin);
-				++fileID;
+				this.animationSkeletons[fileList[fileIDIndex]] = new AnimationSkeleton(skeletonData, animSkin);
+				++fileIDIndex;
 				break;
 			}
 		}
 
-	}
-
-	public static BuildType[] method2557(byte var0) {
-		return new BuildType[]{BuildType.aClass79_1234, BuildType.aClass79_1237, BuildType.aClass79_1232, BuildType.aClass79_1233};
 	}
 
 	public static void method2562(AbstractIndex var0, AbstractIndex var1, int var2) {
@@ -68,7 +60,7 @@ public class AnimationSkeletonSet extends CacheableNode {
 
 	public static AnimationSkeletonSet initAnimSkeletonSet(AbstractIndex skeletonIndex, AbstractIndex skinIndex, int animationID, boolean firstArchive, int var4) {
        boolean shouldContinue = true;
-       int[] fileIDs = skeletonIndex.method1013(animationID);
+       int[] fileIDs = skeletonIndex.getFileIDs(animationID);
 
        for(int fileIndex = 0; fileIndex < fileIDs.length; ++fileIndex) {
           byte[] skeletonData = skeletonIndex.getFileData(animationID, fileIDs[fileIndex], -1906233178);
@@ -101,21 +93,21 @@ public class AnimationSkeletonSet extends CacheableNode {
     }
 
 	static AnimationSkeletonSet getAnimationSkeletonSet(int animationID, int var1) {
-       AnimationSkeletonSet skeletonSet = (AnimationSkeletonSet)AnimationDefinition.animDefCache.get((long)animationID);
+       AnimationSkeletonSet skeletonSet = (AnimationSkeletonSet) skeletonSetMap.get((long)animationID);
        if(null != skeletonSet) {
           return skeletonSet;
        } else {
           skeletonSet = initAnimSkeletonSet(AnimationDefinition.skeletonIndexReference, AnimationDefinition.skinIndexReference, animationID, false, 949323318);
           if(null != skeletonSet) {
-             AnimationDefinition.animDefCache.put(skeletonSet, (long)animationID);
+             skeletonSetMap.put(skeletonSet, (long) animationID);
           }
 
           return skeletonSet;
        }
     }
 
-	public boolean method2563(int var1, byte var2) {
-		return this.animations[var1].aBool606;
+	public boolean isStepAlpha(int skeletonID, byte var2) {
+		return this.animationSkeletons[skeletonID].hasAlpha;
 	}
 
 }

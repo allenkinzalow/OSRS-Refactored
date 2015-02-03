@@ -13,7 +13,17 @@ public class RSSong extends Node {
    public static void playSong(AbstractIndex var0, String var1, String var2, int var3, boolean var4, byte var5) {
        int var6 = var0.getArchiveIDForName(var1, 1723285154);
        int var7 = var0.getFileIDForName(var6, var2);
-       AnimationSkin.method1677(var0, var6, var7, var3, var4, 1390637341);
+       method1677(var0, var6, var7, var3, var4, 1390637341);
+   }
+
+   public static void method1677(AbstractIndex musicIndex, int var1, int var2, int var3, boolean var4, int var5) {
+      SongReference.anInt1325 = -771978757;
+      RSInterface.aClass74_1889 = musicIndex;
+      SongReference.anInt1329 = var1 * -2020957493;
+      OnlineFriend.anInt1511 = var2 * -1300146319;
+      SoundEffectWorker.anInt362 = var3 * 495527089;
+      FriendsChatMember.aBool1669 = var4;
+      ClientScriptDefinition.anInt2281 = 1706374896;
    }
 
    void method2001() {

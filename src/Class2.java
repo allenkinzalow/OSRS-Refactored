@@ -44,9 +44,9 @@ public class Class2 {
 
             String ipAddress = "";
             if(null != Client.aClass85_2732) {
-               ipAddress = IndexTable.getIPAddress(Client.aClass85_2732.anInt1296, -1219476815);
-               if(Client.aClass85_2732.anObject1294 != null) {
-                  ipAddress = (String) Client.aClass85_2732.anObject1294;
+               ipAddress = IndexTable.getIPAddress(Client.aClass85_2732.connectParameter, -1219476815);
+               if(Client.aClass85_2732.connectionObject != null) {
+                  ipAddress = (String) Client.aClass85_2732.connectionObject;
                }
             }
 

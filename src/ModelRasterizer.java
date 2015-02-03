@@ -185,7 +185,7 @@ public class ModelRasterizer extends Renderable {
    public void applyTransform(AnimationSkeletonSet animSet, int frame) {
       if(this.anIntArrayArray2439 != null) {
          if(frame != -1) {
-            AnimationSkeleton animation = animSet.animations[frame];
+            AnimationSkeleton animation = animSet.animationSkeletons[frame];
             AnimationSkin skins = animation.skin;
             vertexXModifier = 0;
             vertexYModifier = 0;
@@ -204,8 +204,8 @@ public class ModelRasterizer extends Renderable {
    public void method2859(AnimationSkeletonSet var1, int var2, AnimationSkeletonSet var3, int var4, int[] var5) {
       if(var2 != -1) {
          if(var5 != null && var4 != -1) {
-            AnimationSkeleton var6 = var1.animations[var2];
-            AnimationSkeleton var10 = var3.animations[var4];
+            AnimationSkeleton var6 = var1.animationSkeletons[var2];
+            AnimationSkeleton var10 = var3.animationSkeletons[var4];
             AnimationSkin var7 = var6.skin;
             vertexXModifier = 0;
             vertexYModifier = 0;
@@ -250,20 +250,20 @@ public class ModelRasterizer extends Renderable {
       }
    }
 
-   void transformStep(int var1, int[] var2, int var3, int var4, int var5) {
-      int var6 = var2.length;
+   void transformStep(int transformType, int[] skinList, int xTranslate, int yTranslate, int zTranslate) {
+      int skinCount = skinList.length;
       int var8;
       int var10;
       int var11;
       int var12;
-      if(var1 == 0) {
+      if(transformType == 0) { // set reference point
          var8 = 0;
          vertexXModifier = 0;
          vertexYModifier = 0;
          vertexZModifier = 0;
 
-         for(var11 = 0; var11 < var6; ++var11) {
-            int var19 = var2[var11];
+         for(var11 = 0; var11 < skinCount; ++var11) {
+            int var19 = skinList[var11];
             if(var19 < this.anIntArrayArray2439.length) {
                int[] var18 = this.anIntArrayArray2439[var19];
 
@@ -278,35 +278,35 @@ public class ModelRasterizer extends Renderable {
          }
 
          if(var8 > 0) {
-            vertexXModifier = vertexXModifier / var8 + var3;
-            vertexYModifier = vertexYModifier / var8 + var4;
-            vertexZModifier = vertexZModifier / var8 + var5;
+            vertexXModifier = vertexXModifier / var8 + xTranslate;
+            vertexYModifier = vertexYModifier / var8 + yTranslate;
+            vertexZModifier = vertexZModifier / var8 + zTranslate;
          } else {
-            vertexXModifier = var3;
-            vertexYModifier = var4;
-            vertexZModifier = var5;
+            vertexXModifier = xTranslate;
+            vertexYModifier = yTranslate;
+            vertexZModifier = zTranslate;
          }
       } else {
          int var7;
          int[] var9;
-         if(var1 == 1) {
-            for(var8 = 0; var8 < var6; ++var8) {
-               var11 = var2[var8];
+         if(transformType == 1) { // translation
+            for(var8 = 0; var8 < skinCount; ++var8) {
+               var11 = skinList[var8];
                if(var11 < this.anIntArrayArray2439.length) {
                   var9 = this.anIntArrayArray2439[var11];
 
                   for(var7 = 0; var7 < var9.length; ++var7) {
                      var10 = var9[var7];
-                     this.vertexXCoordinate[var10] += var3;
-                     this.vertexYCoordinate[var10] += var4;
-                     this.vertexZCoordinate[var10] += var5;
+                     this.vertexXCoordinate[var10] += xTranslate;
+                     this.vertexYCoordinate[var10] += yTranslate;
+                     this.vertexZCoordinate[var10] += zTranslate;
                   }
                }
             }
 
-         } else if(var1 == 2) {
-            for(var8 = 0; var8 < var6; ++var8) {
-               var11 = var2[var8];
+         } else if(transformType == 2) { // rotation
+            for(var8 = 0; var8 < skinCount; ++var8) {
+               var11 = skinList[var8];
                if(var11 < this.anIntArrayArray2439.length) {
                   var9 = this.anIntArrayArray2439[var11];
 
@@ -315,9 +315,9 @@ public class ModelRasterizer extends Renderable {
                      this.vertexXCoordinate[var10] -= vertexXModifier;
                      this.vertexYCoordinate[var10] -= vertexYModifier;
                      this.vertexZCoordinate[var10] -= vertexZModifier;
-                     var12 = (var3 & 255) * 8;
-                     int var16 = (var4 & 255) * 8;
-                     int var13 = (var5 & 255) * 8;
+                     var12 = (xTranslate & 255) * 8;
+                     int var16 = (yTranslate & 255) * 8;
+                     int var13 = (zTranslate & 255) * 8;
                      int var14;
                      int var15;
                      int var17;
@@ -352,9 +352,9 @@ public class ModelRasterizer extends Renderable {
                }
             }
 
-         } else if(var1 == 3) {
-            for(var8 = 0; var8 < var6; ++var8) {
-               var11 = var2[var8];
+         } else if(transformType == 3) { // scale
+            for(var8 = 0; var8 < skinCount; ++var8) {
+               var11 = skinList[var8];
                if(var11 < this.anIntArrayArray2439.length) {
                   var9 = this.anIntArrayArray2439[var11];
 
@@ -363,9 +363,9 @@ public class ModelRasterizer extends Renderable {
                      this.vertexXCoordinate[var10] -= vertexXModifier;
                      this.vertexYCoordinate[var10] -= vertexYModifier;
                      this.vertexZCoordinate[var10] -= vertexZModifier;
-                     this.vertexXCoordinate[var10] = this.vertexXCoordinate[var10] * var3 / 128;
-                     this.vertexYCoordinate[var10] = this.vertexYCoordinate[var10] * var4 / 128;
-                     this.vertexZCoordinate[var10] = this.vertexZCoordinate[var10] * var5 / 128;
+                     this.vertexXCoordinate[var10] = this.vertexXCoordinate[var10] * xTranslate / 128;
+                     this.vertexYCoordinate[var10] = this.vertexYCoordinate[var10] * yTranslate / 128;
+                     this.vertexZCoordinate[var10] = this.vertexZCoordinate[var10] * zTranslate / 128;
                      this.vertexXCoordinate[var10] += vertexXModifier;
                      this.vertexYCoordinate[var10] += vertexYModifier;
                      this.vertexZCoordinate[var10] += vertexZModifier;
@@ -373,17 +373,17 @@ public class ModelRasterizer extends Renderable {
                }
             }
 
-         } else if(var1 == 5) {
+         } else if(transformType == 5) { // make alpha
             if(this.anIntArrayArray2456 != null) {
                if(this.triangleAlphaValues != null) {
-                  for(var8 = 0; var8 < var6; ++var8) {
-                     var11 = var2[var8];
+                  for(var8 = 0; var8 < skinCount; ++var8) {
+                     var11 = skinList[var8];
                      if(var11 < this.anIntArrayArray2456.length) {
                         var9 = this.anIntArrayArray2456[var11];
 
                         for(var7 = 0; var7 < var9.length; ++var7) {
                            var10 = var9[var7];
-                           var12 = (this.triangleAlphaValues[var10] & 255) + var3 * 8;
+                           var12 = (this.triangleAlphaValues[var10] & 255) + xTranslate * 8;
                            if(var12 < 0) {
                               var12 = 0;
                            } else if(var12 > 255) {

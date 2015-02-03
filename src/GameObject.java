@@ -43,7 +43,7 @@ public class GameObject extends Renderable {
 
          if(var8) {
             if(-1 != this.animationSequence.frameStep * 1569702809) {
-               this.animationFrame = (int)(Math.random() * (double)this.animationSequence.frameDelays.length) * 958071567;
+               this.animationFrame = (int)(Math.random() * (double)this.animationSequence.frameIDs.length) * 958071567;
                this.animationCycleDelay -= (int)(Math.random() * (double)this.animationSequence.frameLengths[this.animationFrame * -1661891601]) * -1355118769;
             }
          }
@@ -90,7 +90,7 @@ public class GameObject extends Renderable {
                   Class41.clientBackgroundRight.drawSprite(382, 0);
                   IndexTable.clientLogo.drawSprite(382 - IndexTable.clientLogo.anInt2413 / 2, 18);
                } else if(PlayerLoginDetails.hoveredWorldID * -202005965 != -1) {
-                  World var6 = PlayerLoginDetails.worldList[PlayerLoginDetails.hoveredWorldID * -202005965];
+                  World var6 = World.worldList[PlayerLoginDetails.hoveredWorldID * -202005965];
                   World.method103(var6, -1418644820);
                   PlayerLoginDetails.worldListOpen = false;
                   PlayerLoginDetails.clientBackgroundLeft.drawSprite(0, 0);
@@ -112,9 +112,9 @@ public class GameObject extends Renderable {
          while(var4 > this.animationSequence.frameLengths[this.animationFrame * -1661891601]) {
             var4 -= this.animationSequence.frameLengths[this.animationFrame * -1661891601];
             this.animationFrame += 958071567;
-            if(this.animationFrame * -1661891601 >= this.animationSequence.frameDelays.length) {
+            if(this.animationFrame * -1661891601 >= this.animationSequence.frameIDs.length) {
                this.animationFrame -= this.animationSequence.frameStep * -589676297;
-               if(this.animationFrame * -1661891601 < 0 || this.animationFrame * -1661891601 >= this.animationSequence.frameDelays.length) {
+               if(this.animationFrame * -1661891601 < 0 || this.animationFrame * -1661891601 >= this.animationSequence.frameIDs.length) {
                   this.animationSequence = null;
                   break;
                }
@@ -154,62 +154,4 @@ public class GameObject extends Renderable {
       }
    }
 
-   static final void method2847(int var0, int var1, byte var2) {
-      if(Client.anInt2935 * -1279723019 == 0 || 3 == Client.anInt2935 * -1279723019) {
-         if(MouseInputHandler.clickType * 1629072957 != 1) {
-            if(Class100.aBool1391) {
-               return;
-            }
-
-            if(4 != MouseInputHandler.clickType * 1629072957) {
-               return;
-            }
-         }
-
-         int var5 = MouseInputHandler.mousePressX * 472132205 - 25 - var0;
-         int var4 = MouseInputHandler.mousePressY * 1498262827 - 5 - var1;
-         if(var5 >= 0) {
-            if(var4 >= 0) {
-               if(var5 < 146) {
-                  if(var4 < 151) {
-                     if(var5 < 0 || var5 > 23 || var4 < 117 || var4 > 142) {
-                        var5 -= 73;
-                        var4 -= 75;
-                        int var6 = Client.anInt2771 * -44898889 + Client.anInt2775 * 1889215063 & 2047;
-                        int var7 = Rasterizer3D.SINE[var6];
-                        int var8 = Rasterizer3D.COSINE[var6];
-                        var7 = var7 * (Client.anInt2957 * 331969371 + 256) >> 8;
-                        var8 = var8 * (Client.anInt2957 * 331969371 + 256) >> 8;
-                        int var9 = var8 * var5 + var4 * var7 >> 11;
-                        int var10 = var4 * var8 - var7 * var5 >> 11;
-                        int var3 = var9 + Player.myPlayer.anInt2394 * 171470795 >> 7;
-                        int var11 = Player.myPlayer.anInt2339 * 826764905 - var10 >> 7;
-                        Client.secureBuffer.writePacket(52);
-                        Client.secureBuffer.writeByte(18);
-                        Client.secureBuffer.writeByteN(!KeyFocusListener.aBoolArray895[82] ? 0 : (KeyFocusListener.aBoolArray895[81] ? 2 : 1), (byte) 1);
-                        Client.secureBuffer.writeAShortLE(var11 + SoundEffectWorker.anInt201 * -1743142671, (byte) -66);
-                        Client.secureBuffer.writeAShortLE(var3 + Class100.anInt1388 * 263051377, (byte) 35);
-                        Client.secureBuffer.writeByte(var5);
-                        Client.secureBuffer.writeByte(var4);
-                        Client.secureBuffer.writeShort(Client.anInt2771 * -44898889);
-                        Client.secureBuffer.writeByte(57);
-                        Client.secureBuffer.writeByte(Client.anInt2775 * 1889215063);
-                        Client.secureBuffer.writeByte(Client.anInt2957 * 331969371);
-                        Client.secureBuffer.writeByte(89);
-                        Client.secureBuffer.writeShort(Player.myPlayer.anInt2394 * 171470795);
-                        Client.secureBuffer.writeShort(Player.myPlayer.anInt2339 * 826764905);
-                        Client.secureBuffer.writeByte(63);
-                        Client.anInt2933 = var3 * -18058427;
-                        Client.anInt2894 = var11 * 1849977017;
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   static void executeScript(ClientScript script, int var1) {
-      ClientScript.executeScript(script, 200000, (short) -28048);
-   }
 }

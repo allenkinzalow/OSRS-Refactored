@@ -4,7 +4,7 @@ public class Class78 {
 
    static int anInt1212 = 0;
 	static CacheIndex[] aClass74_Sub1Array1214 = new CacheIndex[256];
-   static GameConnection connection;
+   static SocketSession connection;
    public static int anInt1216 = 0;
    static HashTable urgentJs5Requests = new HashTable(32);
    public static int anInt1218 = 0;

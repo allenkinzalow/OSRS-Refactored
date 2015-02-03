@@ -7,37 +7,36 @@ import java.net.URL;
 /**
  * This is actually something beyond just a ping requester - will be refactored later.
  */
-public class PingRequester implements Runnable {
+public class SessionRequestWorker implements Runnable {
 
 	static int anInt918;
 	Interface1 anInterface1_814;
-	PingRequest aClass85_815 = null;
-	PingRequest aClass85_816 = null;
+	SessionRequest currentSessionRequest = null;
+	SessionRequest previousSessionRequest = null;
 	Thread thread;
 	boolean shutdown = false;
-	static CacheIndex landscapeIndex;
 	EventQueue eventQueue;
 	static String javaVendor;
 
 
-	public final PingRequest method816(String var1, int var2, int var3) {
-		return this.method818(1, var2, 0, var1, 1791848445);
+	public final SessionRequest submitSocketSession(String ipAddress, int port, int var3) {
+		return this.submitSessionRequest(1, port, 0, ipAddress, 1791848445);
 	}
 
 	public final void run() {
 		while (true) {
-			PingRequest var2;
+			SessionRequest request;
 			synchronized (this) {
 				while (true) {
 					if (this.shutdown) {
 						return;
 					}
 
-					if (null != this.aClass85_815) {
-						var2 = this.aClass85_815;
-						this.aClass85_815 = this.aClass85_815.aClass85_1288;
-						if (null == this.aClass85_815) {
-							this.aClass85_816 = null;
+					if (null != this.currentSessionRequest) {
+						request = this.currentSessionRequest;
+						this.currentSessionRequest = this.currentSessionRequest.nextSessionRequest;
+						if (null == this.currentSessionRequest) {
+							this.previousSessionRequest = null;
 						}
 						break;
 					}
@@ -51,57 +50,58 @@ public class PingRequester implements Runnable {
 			}
 
 			try {
-				int type = var2.anInt1293 * 664810861;
+				int type = request.connectionType * 664810861;
 				if (type == 1) {
-					var2.anObject1294 = new Socket(InetAddress.getByName((String) var2.anObject1295), var2.anInt1296);
+					System.out.println("IP: " + ((String) request.connectionAddress) + " Port: " + request.connectParameter);
+					request.connectionObject = new Socket(InetAddress.getByName((String) request.connectionAddress), request.connectParameter);
 				} else if (type == 2) {
-					Thread var3 = new Thread((Runnable) var2.anObject1295);
+					Thread var3 = new Thread((Runnable) request.connectionAddress);
 					var3.setDaemon(true);
 					var3.start();
-					var3.setPriority(var2.anInt1296);
-					var2.anObject1294 = var3;
+					var3.setPriority(request.connectParameter);
+					request.connectionObject = var3;
 				} else if (4 == type) {
-					var2.anObject1294 = new DataInputStream(((URL) var2.anObject1295).openStream());
+					request.connectionObject = new DataInputStream(((URL) request.connectionAddress).openStream());
 				} else if (type == 3) {
-					String ipAddress = (var2.anInt1296 >> 24 & 255) + "." + (var2.anInt1296 >> 16 & 255) + "." + (var2.anInt1296 >> 8 & 255) + "." + (var2.anInt1296 & 255);
-					var2.anObject1294 = InetAddress.getByName(ipAddress).getHostName();
+					String ipAddress = (request.connectParameter >> 24 & 255) + "." + (request.connectParameter >> 16 & 255) + "." + (request.connectParameter >> 8 & 255) + "." + (request.connectParameter & 255);
+					request.connectionObject = InetAddress.getByName(ipAddress).getHostName();
 				}
 
-				var2.anInt1292 = 1;
+				request.anInt1292 = 1;
 			} catch (Throwable var5) {
-				var2.anInt1292 = 2;
+				request.anInt1292 = 2;
 			}
 		}
 	}
 
-	final PingRequest method818(int var1, int var2, int var3, Object var4, int var5) {
-		PingRequest var6 = new PingRequest();
-		var6.anInt1293 = var1 * -958456731;
-		var6.anInt1296 = var2;
-		var6.anObject1295 = var4;
+	final SessionRequest submitSessionRequest(int connectionType, int connectionParameter, int var3, Object connectionAddress, int var5) {
+		SessionRequest request = new SessionRequest();
+		request.connectionType = connectionType * -958456731;
+		request.connectParameter = connectionParameter;
+		request.connectionAddress = connectionAddress;
 		synchronized (this) {
-			if (null != this.aClass85_816) {
-				this.aClass85_816.aClass85_1288 = var6;
-				this.aClass85_816 = var6;
+			if (null != this.previousSessionRequest) {
+				this.previousSessionRequest.nextSessionRequest = request;
+				this.previousSessionRequest = request;
 			} else {
-				this.aClass85_816 = this.aClass85_815 = var6;
+				this.previousSessionRequest = this.currentSessionRequest = request;
 			}
 
 			this.notify();
-			return var6;
+			return request;
 		}
 	}
 
-	public final PingRequest method820(Runnable var1, int var2, int var3) {
-		return this.method818(2, var2, 0, var1, 1461448449);
+	public final SessionRequest submitRunnableSession(Runnable var1, int var2, int var3) {
+		return this.submitSessionRequest(2, var2, 0, var1, 1461448449);
 	}
 
-	public final PingRequest method821(int var1, int var2) {
-		return this.method818(3, var1, 0, (Object) null, -1051579055);
+	public final SessionRequest submitIPHostSession(int var1, int var2) {
+		return this.submitSessionRequest(3, var1, 0, (Object) null, -1051579055);
 	}
 
-	public final PingRequest method822(URL var1, short var2) {
-		return this.method818(4, 0, 0, var1, 262653276);
+	public final SessionRequest submitURLConnectionSession(URL var1, short var2) {
+		return this.submitSessionRequest(4, 0, 0, var1, 262653276);
 	}
 
 	public final Interface1 method832(byte var1) {
@@ -199,7 +199,7 @@ public class PingRequester implements Runnable {
 		}
 	}
 
-	PingRequester() {
+	SessionRequestWorker() {
 		javaVendor = "Unknown";
 		MachineInformation.javaVersion = "1.1";
 

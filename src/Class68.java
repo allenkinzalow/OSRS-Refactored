@@ -32,12 +32,12 @@ public class Class68 {
       AnimationSkin.skinIndex.resetCachedIndex();
       OverlayFloorDefinition.interfaceIndex.resetCachedIndex();
       RSSoundEffect.soundEffectsIndex_1.resetCachedIndex();
-      PingRequester.landscapeIndex.resetCachedIndex();
+      RegionReference.landscapeIndex.resetCachedIndex();
       Friend.musicIndex_1.resetCachedIndex();
       Class47.modelIndex.resetCachedIndex();
       Class23.spriteIndex.resetCachedIndex();
       PlayerLoginDetails.textureIndex.resetCachedIndex();
-      RuntimeException_Sub1.huffmanIndex.resetCachedIndex();
+      HuffmanEncoding.huffmanIndex.resetCachedIndex();
       ClientParameter.musicIndex_2.resetCachedIndex();
       Class108_Sub13.clientScriptIndex.resetCachedIndex();
    }
@@ -46,7 +46,7 @@ public class Class68 {
       Object var1 = CacheRequestDispatcher.anObject1297;
       synchronized(var1) {
          if(0 == CacheRequestDispatcher.anInt1299 * 1495359531) {
-            ClientScriptMap.pringRequester.method820(new CacheRequestDispatcher(), 5, -2013972179);
+            ClientScriptMap.sessionRequestWorker.submitRunnableSession(new CacheRequestDispatcher(), 5, -2013972179);
          }
 
          CacheRequestDispatcher.anInt1299 = -373456120;

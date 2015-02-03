@@ -10,7 +10,7 @@ public class SoundEffectWorker {
    HashTable aClass101_202 = new HashTable(256);
 
 
-   public static final Class7 method284(PingRequester var0, Component var1, int var2, int var3, int var4) {
+   public static final Class7 method284(SessionRequestWorker var0, Component var1, int var2, int var3, int var4) {
       if(Class7.anInt94 * -322018941 == 0) {
          throw new IllegalStateException();
       } else if(var2 >= 0 && var2 < 2) {
@@ -29,10 +29,10 @@ public class SoundEffectWorker {
             }
 
             var8.method126(var8.anInt100 * 741136993);
-            if(PingRequester.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
+            if(SessionRequestWorker.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
                Class108_Sub20_Sub3.aClass14_1965 = new Class14();
                Class108_Sub20_Sub3.aClass14_1965.aClass61_192 = var0;
-               var0.method820(Class108_Sub20_Sub3.aClass14_1965, PingRequester.anInt918 * 523094787, -1606001026);
+               var0.submitRunnableSession(Class108_Sub20_Sub3.aClass14_1965, SessionRequestWorker.anInt918 * 523094787, -1606001026);
             }
 
             if(null != Class108_Sub20_Sub3.aClass14_1965) {
@@ -52,10 +52,10 @@ public class SoundEffectWorker {
                var5.method125(var1);
                var5.anInt100 = 1382563840;
                var5.method126(var5.anInt100 * 741136993);
-               if(PingRequester.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
+               if(SessionRequestWorker.anInt918 * 523094787 > 0 && null == Class108_Sub20_Sub3.aClass14_1965) {
                   Class108_Sub20_Sub3.aClass14_1965 = new Class14();
                   Class108_Sub20_Sub3.aClass14_1965.aClass61_192 = var0;
-                  var0.method820(Class108_Sub20_Sub3.aClass14_1965, PingRequester.anInt918 * 523094787, -1673424199);
+                  var0.submitRunnableSession(Class108_Sub20_Sub3.aClass14_1965, SessionRequestWorker.anInt918 * 523094787, -1673424199);
                }
 
                if(null != Class108_Sub20_Sub3.aClass14_1965) {

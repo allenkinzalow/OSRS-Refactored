@@ -74,7 +74,7 @@ public class Class53_Sub1 extends Timer {
 
    }
 
-   static final void method1891(int plane, int localX, int localY, int objectID, int var4, int var5, Scene scene, CollisionMap collisionMap, short var8) {
+   static final void setupObjectCollisionMap(int plane, int localX, int localY, int objectID, int var4, int var5, Scene scene, CollisionMap collisionMap, short var8) {
       if(Client.lowMemory && (RegionReference.mapTileSettings[0][localX][localY] & 2) == 0) {
          if(0 != (RegionReference.mapTileSettings[plane][localX][localY] & 16)) {
             return;
@@ -180,7 +180,7 @@ public class Class53_Sub1 extends Timer {
 
                if(objectDef.anInt2094 * 795821915 != 0) {
                   if(collisionMap != null) {
-                     collisionMap.method1404(localX, localY, var17, var19, objectDef.aBool2114, 527456735);
+                     collisionMap.markSolidOccupant(localX, localY, var17, var19, objectDef.aBool2114, 527456735);
                   }
                }
             } else if(0 == var5) {
@@ -230,7 +230,7 @@ public class Class53_Sub1 extends Timer {
                }
 
                if(0 != objectDef.anInt2094 * 795821915 && null != collisionMap) {
-                  collisionMap.method1403(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
+                  collisionMap.markWall(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
                }
 
                if(16 != objectDef.anInt2069 * -225839219) {
@@ -258,7 +258,7 @@ public class Class53_Sub1 extends Timer {
 
                if(0 != objectDef.anInt2094 * 795821915) {
                   if(collisionMap != null) {
-                     collisionMap.method1403(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
+                     collisionMap.markWall(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
                   }
                }
             } else {
@@ -293,7 +293,7 @@ public class Class53_Sub1 extends Timer {
                   }
 
                   if(objectDef.anInt2094 * 795821915 != 0 && collisionMap != null) {
-                     collisionMap.method1403(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
+                     collisionMap.markWall(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
                   }
 
                   if(16 != objectDef.anInt2069 * -225839219) {
@@ -321,7 +321,7 @@ public class Class53_Sub1 extends Timer {
 
                   if(objectDef.anInt2094 * 795821915 != 0) {
                      if(collisionMap != null) {
-                        collisionMap.method1403(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
+                        collisionMap.markWall(localX, localY, var5, var4, objectDef.aBool2114, -2050926990);
                      }
                   }
                } else if(var5 == 9) {
@@ -333,7 +333,7 @@ public class Class53_Sub1 extends Timer {
 
                   scene.method411(plane, localX, localY, var14, 1, 1, (Renderable)var9, 0, var16, var24);
                   if(0 != objectDef.anInt2094 * 795821915 && collisionMap != null) {
-                     collisionMap.method1404(localX, localY, var17, var19, objectDef.aBool2114, 1266257088);
+                     collisionMap.markSolidOccupant(localX, localY, var17, var19, objectDef.aBool2114, 1266257088);
                   }
 
                   if(16 != objectDef.anInt2069 * -225839219) {
@@ -431,7 +431,7 @@ public class Class53_Sub1 extends Timer {
 
             if(0 != objectDef.anInt2094 * 795821915) {
                if(collisionMap != null) {
-                  collisionMap.method1404(localX, localY, var17, var19, objectDef.aBool2114, 782148817);
+                  collisionMap.markSolidOccupant(localX, localY, var17, var19, objectDef.aBool2114, 782148817);
                }
             }
          }

@@ -163,7 +163,7 @@ public class Rasterizer2D extends CacheableNode {
       drawVerticalLine(var0 + var2 - 1, var1, var3, var4);
    }
 
-   public static void method2505(int var0, int var1, int var2, int var3, int var4, int var5) {
+   public static void drawUnfilledRectangleAlpha(int var0, int var1, int var2, int var3, int var4, int var5) {
       drawHorizontalLineAlpha(var0, var1, var2, var4, var5);
       drawHorizontalLineAlpha(var0, var1 + var3 - 1, var2, var4, var5);
       if(var3 >= 3) {
@@ -317,7 +317,7 @@ public class Rasterizer2D extends CacheableNode {
       setRasterizationRect(0, 0, var1, var2);
    }
 
-   public static void method2529(int x, int y, int width, int height, int color, int var5) {
+   public static void drawFilledRectangleAlpha(int x, int y, int width, int height, int color, int var5) {
       if(x < topX) {
          width -= topX - x;
          x = topX;

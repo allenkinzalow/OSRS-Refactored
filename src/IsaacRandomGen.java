@@ -9,7 +9,6 @@ public final class IsaacRandomGen {
 	static boolean isUrgentRequest;
 	int anInt736;
 	int[] anIntArray739 = new int[256];
-	static String aString740;
 	int anInt741;
 	int[] anIntArray742 = new int[256];
 	int anInt743;
@@ -30,9 +29,9 @@ public final class IsaacRandomGen {
 				Client.anInt2740 = 0;
 			}
 
-			if (20 != var0 && 40 != var0 && Class16.aGameConnection_211 != null) {
-				Class16.aGameConnection_211.disconnect();
-				Class16.aGameConnection_211 = null;
+			if (20 != var0 && 40 != var0 && Class16.aConnection_Session_211 != null) {
+				Class16.aConnection_Session_211.disconnect();
+				Class16.aConnection_Session_211 = null;
 			}
 
 			if (25 == Client.loginLoadingStage * 1315883169) {
@@ -45,7 +44,7 @@ public final class IsaacRandomGen {
 
 			if (5 != var0 && var0 != 10) {
 				if (20 == var0) {
-					LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, true, 11 == Client.loginLoadingStage * 1315883169 ? 4 : 0, 2042385368);
+					LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, HuffmanEncoding.huffmanIndex, Class23.spriteIndex, true, 11 == Client.loginLoadingStage * 1315883169 ? 4 : 0, 2042385368);
 				} else if (11 != var0) {
 					if (PlayerLoginDetails.aBool58) {
 						PlayerLoginDetails.titleBox = null;
@@ -75,10 +74,10 @@ public final class IsaacRandomGen {
 						PlayerLoginDetails.aBool58 = false;
 					}
 				} else {
-					LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, false, 4, 1576119496);
+					LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, HuffmanEncoding.huffmanIndex, Class23.spriteIndex, false, 4, 1576119496);
 				}
 			} else {
-				LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, RuntimeException_Sub1.huffmanIndex, Class23.spriteIndex, true, 0, 1877519495);
+				LoginHandler.setupLoginScreen(ContextMenuRow.aCanvas3, HuffmanEncoding.huffmanIndex, Class23.spriteIndex, true, 0, 1877519495);
 			}
 
 			Client.loginLoadingStage = var0 * 985471841;
@@ -264,27 +263,27 @@ public final class IsaacRandomGen {
 				if (Class78.anInt1212 * -1826448751 > 30000) {
 					throw new IOException();
 				} else {
-					Js5Request var4;
+					Js5Request js5Request;
 					RSByteBuffer buffer;
 					while (Class78.anInt1218 * 1577549363 < 20 && Class78.anInt1216 * 1668849075 > 0) {
-						var4 = (Js5Request) Class78.aClass101_1228.method1304();
+						js5Request = (Js5Request) Class78.aClass101_1228.method1304();
 						buffer = new RSByteBuffer(4);
 						buffer.writeByte(1);
-						buffer.writeTriByte((int) var4.key);
+						buffer.writeTriByte((int) js5Request.key);
 						Class78.connection.writeBytes(buffer.buf, 0, 4);
-						Class78.urgentJs5Requests.put(var4, var4.key);
+						Class78.urgentJs5Requests.put(js5Request, js5Request.key);
 						Class78.anInt1216 += 1906091653;
 						Class78.anInt1218 += 2075110651;
 					}
 
 					while (Class78.anInt1224 * -374476139 < 20 && Class78.anInt1221 * 416352625 > 0) {
-						var4 = (Js5Request) Class78.aClass98_1219.method1295();
+						js5Request = (Js5Request) Class78.aClass98_1219.method1295();
 						buffer = new RSByteBuffer(4);
 						buffer.writeByte(0);
-						buffer.writeTriByte((int) var4.key);
+						buffer.writeTriByte((int) js5Request.key);
 						Class78.connection.writeBytes(buffer.buf, 0, 4);
-						var4.method1982();
-						Class78.regularJs5Requests.put(var4, var4.key);
+						js5Request.method1982();
+						Class78.regularJs5Requests.put(js5Request, js5Request.key);
 						Class78.anInt1221 -= 831035281;
 						Class78.anInt1224 += 1752320189;
 					}
@@ -457,8 +456,8 @@ public final class IsaacRandomGen {
 	}
 
 	final int method736(byte var1) {
-		// if (Loader.local)
-		//   return 0;
+		 if (Loader.local)
+		   return 0;
 		if (0 == (this.anInt743 += 968761983) * 1812226689 + 1) {
 			this.method726((byte) 10);
 			this.anInt743 = 2073797503;

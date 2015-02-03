@@ -4,16 +4,16 @@ import java.awt.image.*;
 public final class RGBSprite extends Rasterizer2D {
 
    /*int offsetY;
-   int width;
-   int height;
+   int clipWidth;
+   int setY;
    int offsetX;
    public int maxHeight;
    public int maxWidth;
    public int[] pixels;
 
    public BufferedImage getBufferedImage() {
-      BufferedImage bi = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
-      bi.setRGB(0, 0, this.width, this.height, pixels, 0, this.width);
+      BufferedImage bi = new BufferedImage(this.clipWidth, this.setY, BufferedImage.TYPE_INT_RGB);
+      bi.setRGB(0, 0, this.clipWidth, this.setY, pixels, 0, this.clipWidth);
       Image img = makeColorTransparent(bi, new Color(0, 0, 0));
       BufferedImage trans = imageToBufferedImage(img);
       return trans;
@@ -60,9 +60,9 @@ public final class RGBSprite extends Rasterizer2D {
             var8.maxWidth = Class9.anInt121 * -1272520477;
             var8.offsetY = Class88.anIntArray1316[var6];
             var8.offsetX = Class9.anIntArray123[var6];
-            var8.width = PaletteSprite.lastLoadedPaletteSpriteWidth[var6];
-            var8.height = Class9.anIntArray126[var6];
-            int var5 = var8.width * var8.height;
+            var8.clipWidth = PaletteSprite.lastLoadedPaletteSpriteWidth[var6];
+            var8.setY = Class9.anIntArray126[var6];
+            int var5 = var8.clipWidth * var8.setY;
             byte[] var9 = AnimationSkeletonSet.loadedCharacterPixels[var6];
             var8.pixels = new int[var5];
 
@@ -86,12 +86,12 @@ public final class RGBSprite extends Rasterizer2D {
          int var21 = (int)Math.floor(Math.cos(var18) * (double)var6 + 0.5D);
          int var22 = -var1 * var21 + -var2 * var20;
          int var23 = -(-var1) * var20 + -var2 * var21;
-         int var29 = ((this.width << 4) - var1) * var21 + -var2 * var20;
-         int var34 = -((this.width << 4) - var1) * var20 + -var2 * var21;
-         int var32 = -var1 * var21 + ((this.height << 4) - var2) * var20;
-         int var26 = -(-var1) * var20 + ((this.height << 4) - var2) * var21;
-         int var27 = ((this.width << 4) - var1) * var21 + ((this.height << 4) - var2) * var20;
-         int var28 = -((this.width << 4) - var1) * var20 + ((this.height << 4) - var2) * var21;
+         int var29 = ((this.clipWidth << 4) - var1) * var21 + -var2 * var20;
+         int var34 = -((this.clipWidth << 4) - var1) * var20 + -var2 * var21;
+         int var32 = -var1 * var21 + ((this.setY << 4) - var2) * var20;
+         int var26 = -(-var1) * var20 + ((this.setY << 4) - var2) * var21;
+         int var27 = ((this.clipWidth << 4) - var1) * var21 + ((this.setY << 4) - var2) * var20;
+         int var28 = -((this.clipWidth << 4) - var1) * var20 + ((this.setY << 4) - var2) * var21;
          int var24;
          int var31;
          if(var22 < var29) {
@@ -176,7 +176,7 @@ public final class RGBSprite extends Rasterizer2D {
          if(var24 < 0) {
             var30 = var25 - var30;
             if(var30 < 0) {
-               int var12 = var25 * width + var31;
+               int var12 = var25 * clipWidth + var31;
                double var36 = 1.6777216E7D / (double)var6;
                int var9 = (int)Math.floor(Math.sin(var18) * var36 + 0.5D);
                int var11 = (int)Math.floor(Math.cos(var18) * var36 + 0.5D);
@@ -193,14 +193,14 @@ public final class RGBSprite extends Rasterizer2D {
                int var35;
                if(var11 == 0) {
                   if(var9 == 0) {
-                     for(var7 = var30; var7 < 0; var12 += width) {
+                     for(var7 = var30; var7 < 0; var12 += clipWidth) {
                         var35 = var12;
                         var15 = var8;
                         var13 = var10;
                         var17 = var24;
-                        if(var8 >= 0 && var10 >= 0 && var8 - (this.width << 12) < 0 && var10 - (this.height << 12) < 0) {
+                        if(var8 >= 0 && var10 >= 0 && var8 - (this.clipWidth << 12) < 0 && var10 - (this.setY << 12) < 0) {
                            for(; var17 < 0; ++var17) {
-                              var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                              var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                               if(var33 != 0) {
                                  renderPixels[var35++] = var33;
                               } else {
@@ -213,13 +213,13 @@ public final class RGBSprite extends Rasterizer2D {
                      }
 
                   } else if(var9 < 0) {
-                     for(var7 = var30; var7 < 0; var12 += width) {
+                     for(var7 = var30; var7 < 0; var12 += clipWidth) {
                         var35 = var12;
                         var15 = var8;
                         var13 = var10 + (var14 * var9 >> 4);
                         var17 = var24;
-                        if(var8 >= 0 && var8 - (this.width << 12) < 0) {
-                           if((var16 = var13 - (this.height << 12)) >= 0) {
+                        if(var8 >= 0 && var8 - (this.clipWidth << 12) < 0) {
+                           if((var16 = var13 - (this.setY << 12)) >= 0) {
                               var16 = (var9 - var16) / var9;
                               var17 = var24 + var16;
                               var13 += var9 * var16;
@@ -231,7 +231,7 @@ public final class RGBSprite extends Rasterizer2D {
                            }
 
                            while(var17 < 0) {
-                              var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                              var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                               if(var33 != 0) {
                                  renderPixels[var35++] = var33;
                               } else {
@@ -248,12 +248,12 @@ public final class RGBSprite extends Rasterizer2D {
                      }
 
                   } else {
-                     for(var7 = var30; var7 < 0; var12 += width) {
+                     for(var7 = var30; var7 < 0; var12 += clipWidth) {
                         var35 = var12;
                         var15 = var8;
                         var13 = var10 + (var14 * var9 >> 4);
                         var17 = var24;
-                        if(var8 >= 0 && var8 - (this.width << 12) < 0) {
+                        if(var8 >= 0 && var8 - (this.clipWidth << 12) < 0) {
                            if(var13 < 0) {
                               var16 = (var9 - 1 - var13) / var9;
                               var17 = var24 + var16;
@@ -261,12 +261,12 @@ public final class RGBSprite extends Rasterizer2D {
                               var35 = var12 + var16;
                            }
 
-                           if((var16 = (1 + var13 - (this.height << 12) - var9) / var9) > var17) {
+                           if((var16 = (1 + var13 - (this.setY << 12) - var9) / var9) > var17) {
                               var17 = var16;
                            }
 
                            while(var17 < 0) {
-                              var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                              var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                               if(var33 != 0) {
                                  renderPixels[var35++] = var33;
                               } else {
@@ -285,13 +285,13 @@ public final class RGBSprite extends Rasterizer2D {
                   }
                } else if(var11 < 0) {
                   if(var9 == 0) {
-                     for(var7 = var30; var7 < 0; var12 += width) {
+                     for(var7 = var30; var7 < 0; var12 += clipWidth) {
                         var35 = var12;
                         var15 = var8 + (var14 * var11 >> 4);
                         var13 = var10;
                         var17 = var24;
-                        if(var10 >= 0 && var10 - (this.height << 12) < 0) {
-                           if((var16 = var15 - (this.width << 12)) >= 0) {
+                        if(var10 >= 0 && var10 - (this.setY << 12) < 0) {
+                           if((var16 = var15 - (this.clipWidth << 12)) >= 0) {
                               var16 = (var11 - var16) / var11;
                               var17 = var24 + var16;
                               var15 += var11 * var16;
@@ -303,7 +303,7 @@ public final class RGBSprite extends Rasterizer2D {
                            }
 
                            while(var17 < 0) {
-                              var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                              var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                               if(var33 != 0) {
                                  renderPixels[var35++] = var33;
                               } else {
@@ -320,12 +320,12 @@ public final class RGBSprite extends Rasterizer2D {
                      }
 
                   } else if(var9 < 0) {
-                     for(var7 = var30; var7 < 0; var12 += width) {
+                     for(var7 = var30; var7 < 0; var12 += clipWidth) {
                         var35 = var12;
                         var15 = var8 + (var14 * var11 >> 4);
                         var13 = var10 + (var14 * var9 >> 4);
                         var17 = var24;
-                        if((var16 = var15 - (this.width << 12)) >= 0) {
+                        if((var16 = var15 - (this.clipWidth << 12)) >= 0) {
                            var16 = (var11 - var16) / var11;
                            var17 = var24 + var16;
                            var15 += var11 * var16;
@@ -337,7 +337,7 @@ public final class RGBSprite extends Rasterizer2D {
                            var17 = var16;
                         }
 
-                        if((var16 = var13 - (this.height << 12)) >= 0) {
+                        if((var16 = var13 - (this.setY << 12)) >= 0) {
                            var16 = (var9 - var16) / var9;
                            var17 += var16;
                            var15 += var11 * var16;
@@ -350,7 +350,7 @@ public final class RGBSprite extends Rasterizer2D {
                         }
 
                         while(var17 < 0) {
-                           var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                           var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                            if(var33 != 0) {
                               renderPixels[var35++] = var33;
                            } else {
@@ -368,12 +368,12 @@ public final class RGBSprite extends Rasterizer2D {
                      }
 
                   } else {
-                     for(var7 = var30; var7 < 0; var12 += width) {
+                     for(var7 = var30; var7 < 0; var12 += clipWidth) {
                         var35 = var12;
                         var15 = var8 + (var14 * var11 >> 4);
                         var13 = var10 + (var14 * var9 >> 4);
                         var17 = var24;
-                        if((var16 = var15 - (this.width << 12)) >= 0) {
+                        if((var16 = var15 - (this.clipWidth << 12)) >= 0) {
                            var16 = (var11 - var16) / var11;
                            var17 = var24 + var16;
                            var15 += var11 * var16;
@@ -393,12 +393,12 @@ public final class RGBSprite extends Rasterizer2D {
                            var35 += var16;
                         }
 
-                        if((var16 = (1 + var13 - (this.height << 12) - var9) / var9) > var17) {
+                        if((var16 = (1 + var13 - (this.setY << 12) - var9) / var9) > var17) {
                            var17 = var16;
                         }
 
                         while(var17 < 0) {
-                           var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                           var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                            if(var33 != 0) {
                               renderPixels[var35++] = var33;
                            } else {
@@ -417,12 +417,12 @@ public final class RGBSprite extends Rasterizer2D {
 
                   }
                } else if(var9 == 0) {
-                  for(var7 = var30; var7 < 0; var12 += width) {
+                  for(var7 = var30; var7 < 0; var12 += clipWidth) {
                      var35 = var12;
                      var15 = var8 + (var14 * var11 >> 4);
                      var13 = var10;
                      var17 = var24;
-                     if(var10 >= 0 && var10 - (this.height << 12) < 0) {
+                     if(var10 >= 0 && var10 - (this.setY << 12) < 0) {
                         if(var15 < 0) {
                            var16 = (var11 - 1 - var15) / var11;
                            var17 = var24 + var16;
@@ -430,12 +430,12 @@ public final class RGBSprite extends Rasterizer2D {
                            var35 = var12 + var16;
                         }
 
-                        if((var16 = (1 + var15 - (this.width << 12) - var11) / var11) > var17) {
+                        if((var16 = (1 + var15 - (this.clipWidth << 12) - var11) / var11) > var17) {
                            var17 = var16;
                         }
 
                         while(var17 < 0) {
-                           var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                           var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                            if(var33 != 0) {
                               renderPixels[var35++] = var33;
                            } else {
@@ -452,7 +452,7 @@ public final class RGBSprite extends Rasterizer2D {
                   }
 
                } else if(var9 < 0) {
-                  for(var7 = var30; var7 < 0; var12 += width) {
+                  for(var7 = var30; var7 < 0; var12 += clipWidth) {
                      var35 = var12;
                      var15 = var8 + (var14 * var11 >> 4);
                      var13 = var10 + (var14 * var9 >> 4);
@@ -465,11 +465,11 @@ public final class RGBSprite extends Rasterizer2D {
                         var35 = var12 + var16;
                      }
 
-                     if((var16 = (1 + var15 - (this.width << 12) - var11) / var11) > var17) {
+                     if((var16 = (1 + var15 - (this.clipWidth << 12) - var11) / var11) > var17) {
                         var17 = var16;
                      }
 
-                     if((var16 = var13 - (this.height << 12)) >= 0) {
+                     if((var16 = var13 - (this.setY << 12)) >= 0) {
                         var16 = (var9 - var16) / var9;
                         var17 += var16;
                         var15 += var11 * var16;
@@ -482,7 +482,7 @@ public final class RGBSprite extends Rasterizer2D {
                      }
 
                      while(var17 < 0) {
-                        var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                        var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                         if(var33 != 0) {
                            renderPixels[var35++] = var33;
                         } else {
@@ -500,7 +500,7 @@ public final class RGBSprite extends Rasterizer2D {
                   }
 
                } else {
-                  for(var7 = var30; var7 < 0; var12 += width) {
+                  for(var7 = var30; var7 < 0; var12 += clipWidth) {
                      var35 = var12;
                      var15 = var8 + (var14 * var11 >> 4);
                      var13 = var10 + (var14 * var9 >> 4);
@@ -513,7 +513,7 @@ public final class RGBSprite extends Rasterizer2D {
                         var35 = var12 + var16;
                      }
 
-                     if((var16 = (1 + var15 - (this.width << 12) - var11) / var11) > var17) {
+                     if((var16 = (1 + var15 - (this.clipWidth << 12) - var11) / var11) > var17) {
                         var17 = var16;
                      }
 
@@ -525,12 +525,12 @@ public final class RGBSprite extends Rasterizer2D {
                         var35 += var16;
                      }
 
-                     if((var16 = (1 + var13 - (this.height << 12) - var9) / var9) > var17) {
+                     if((var16 = (1 + var13 - (this.setY << 12) - var9) / var9) > var17) {
                         var17 = var16;
                      }
 
                      while(var17 < 0) {
-                        var33 = this.pixels[(var13 >> 12) * this.width + (var15 >> 12)];
+                        var33 = this.pixels[(var13 >> 12) * this.clipWidth + (var15 >> 12)];
                         if(var33 != 0) {
                            renderPixels[var35++] = var33;
                         } else {
@@ -553,24 +553,24 @@ public final class RGBSprite extends Rasterizer2D {
       }
    }
 
-   public RGBSprite(int width, int height) {
-      this.pixels = new int[width * height];
-      this.width = this.maxWidth = width;
-      this.height = this.maxHeight = height;
+   public RGBSprite(int clipWidth, int setY) {
+      this.pixels = new int[clipWidth * setY];
+      this.clipWidth = this.maxWidth = clipWidth;
+      this.setY = this.maxHeight = setY;
       this.offsetY = 0;
       this.offsetX = 0;
    }
 
    public RGBSprite method2743() {
-      RGBSprite var1 = new RGBSprite(this.width, this.height);
+      RGBSprite var1 = new RGBSprite(this.clipWidth, this.setY);
       var1.maxWidth = this.maxWidth;
       var1.maxHeight = this.maxHeight;
-      var1.offsetX = this.maxWidth - this.width - this.offsetX;
+      var1.offsetX = this.maxWidth - this.clipWidth - this.offsetX;
       var1.offsetY = this.offsetY;
 
-      for(int var2 = 0; var2 < this.height; ++var2) {
-         for(int var3 = 0; var3 < this.width; ++var3) {
-            var1.pixels[var2 * this.width + var3] = this.pixels[var2 * this.width + this.width - 1 - var3];
+      for(int var2 = 0; var2 < this.setY; ++var2) {
+         for(int var3 = 0; var3 < this.clipWidth; ++var3) {
+            var1.pixels[var2 * this.clipWidth + var3] = this.pixels[var2 * this.clipWidth + this.clipWidth - 1 - var3];
          }
       }
 
@@ -578,7 +578,7 @@ public final class RGBSprite extends Rasterizer2D {
    }
 
    public void method2744() {
-      copySprite(this.pixels, this.width, this.height);
+      copySprite(this.pixels, this.clipWidth, this.setY);
    }
 
    public void alterColor(int var1, int var2, int var3) {
@@ -618,11 +618,11 @@ public final class RGBSprite extends Rasterizer2D {
    public void method2746(int x, int y) {
       x += this.offsetX;
       y += this.offsetY;
-      int var4 = x + y * width;
+      int var4 = x + y * clipWidth;
       int var8 = 0;
-      int var6 = this.height;
-      int var3 = this.width;
-      int var9 = width - var3;
+      int var6 = this.setY;
+      int var3 = this.clipWidth;
+      int var9 = clipWidth - var3;
       int var7 = 0;
       int var5;
       if(y < topY) {
@@ -630,7 +630,7 @@ public final class RGBSprite extends Rasterizer2D {
          var6 -= var5;
          y = topY;
          var8 += var5 * var3;
-         var4 += var5 * width;
+         var4 += var5 * clipWidth;
       }
 
       if(y + var6 > bottomY) {
@@ -662,34 +662,34 @@ public final class RGBSprite extends Rasterizer2D {
    }
 
    public void flipHorizontal() {
-      int[] newPixels = new int[this.width * this.height];
+      int[] newPixels = new int[this.clipWidth * this.setY];
       int pos = 0;
 
-      for(int y = this.height - 1; y >= 0; --y) {
-         for(int x = 0; x < this.width; ++x) {
-            newPixels[pos++] = this.pixels[x + y * this.width];
+      for(int y = this.setY - 1; y >= 0; --y) {
+         for(int x = 0; x < this.clipWidth; ++x) {
+            newPixels[pos++] = this.pixels[x + y * this.clipWidth];
          }
       }
 
       this.pixels = newPixels;
-      this.offsetY = this.maxHeight - this.height - this.offsetY;
+      this.offsetY = this.maxHeight - this.setY - this.offsetY;
    }
 
    public void setPixels(int newPixel) {
-      int[] newPixels = new int[this.width * this.height];
+      int[] newPixels = new int[this.clipWidth * this.setY];
       int pos = 0;
 
-      for(int y = 0; y < this.height; ++y) {
-         for(int x = 0; x < this.width; ++x) {
+      for(int y = 0; y < this.setY; ++y) {
+         for(int x = 0; x < this.clipWidth; ++x) {
             int pixel = this.pixels[pos];
             if(pixel == 0) {
                if(x > 0 && this.pixels[pos - 1] != 0) {
                   pixel = newPixel;
-               } else if(y > 0 && this.pixels[pos - this.width] != 0) {
+               } else if(y > 0 && this.pixels[pos - this.clipWidth] != 0) {
                   pixel = newPixel;
-               } else if(x < this.width - 1 && this.pixels[pos + 1] != 0) {
+               } else if(x < this.clipWidth - 1 && this.pixels[pos + 1] != 0) {
                   pixel = newPixel;
-               } else if(y < this.height - 1 && this.pixels[pos + this.width] != 0) {
+               } else if(y < this.setY - 1 && this.pixels[pos + this.clipWidth] != 0) {
                   pixel = newPixel;
                }
             }
@@ -756,7 +756,7 @@ public final class RGBSprite extends Rasterizer2D {
          var14 = var14 * var8 >> 8;
          int var15 = (var5 << 16) + var12 * var13 + var11 * var14;
          int var16 = (var6 << 16) + (var12 * var14 - var11 * var13);
-         int var17 = var1 + var2 * width;
+         int var17 = var1 + var2 * clipWidth;
 
          for(var2 = 0; var2 < var4; ++var2) {
             int var18 = var9[var2];
@@ -765,14 +765,14 @@ public final class RGBSprite extends Rasterizer2D {
             int var21 = var16 - var13 * var18;
 
             for(var1 = -var10[var2]; var1 < 0; ++var1) {
-               renderPixels[var19++] = this.pixels[(var20 >> 16) + (var21 >> 16) * this.width];
+               renderPixels[var19++] = this.pixels[(var20 >> 16) + (var21 >> 16) * this.clipWidth];
                var20 += var14;
                var21 -= var13;
             }
 
             var15 += var13;
             var16 += var14;
-            var17 += width;
+            var17 += clipWidth;
          }
 
       } catch (Exception var22) {
@@ -783,8 +783,8 @@ public final class RGBSprite extends Rasterizer2D {
    public void method2756(int var1, int var2, int var3, int var4) {
       if(var3 > 0) {
          if(var4 > 0) {
-            int var10 = this.width;
-            int var5 = this.height;
+            int var10 = this.clipWidth;
+            int var5 = this.setY;
             int var11 = 0;
             int var6 = 0;
             int var15 = this.maxWidth;
@@ -812,8 +812,8 @@ public final class RGBSprite extends Rasterizer2D {
                var4 = ((var5 << 16) - var6 + var7 - 1) / var7;
             }
 
-            var14 = var1 + var2 * width;
-            int var8 = width - var3;
+            var14 = var1 + var2 * clipWidth;
+            int var8 = clipWidth - var3;
             if(var2 + var4 > bottomY) {
                var4 -= var2 + var4 - bottomY;
             }
@@ -822,7 +822,7 @@ public final class RGBSprite extends Rasterizer2D {
             if(var2 < topY) {
                var9 = topY - var2;
                var4 -= var9;
-               var14 += var9 * width;
+               var14 += var9 * clipWidth;
                var6 += var7 * var9;
             }
 
@@ -875,11 +875,11 @@ public final class RGBSprite extends Rasterizer2D {
       } else {
          var1 += this.offsetX;
          var2 += this.offsetY;
-         int var7 = var1 + var2 * width;
+         int var7 = var1 + var2 * clipWidth;
          int var11 = 0;
-         int var8 = this.height;
-         int var5 = this.width;
-         int var9 = width - var5;
+         int var8 = this.setY;
+         int var5 = this.clipWidth;
+         int var9 = clipWidth - var5;
          int var10 = 0;
          int var6;
          if(var2 < topY) {
@@ -887,7 +887,7 @@ public final class RGBSprite extends Rasterizer2D {
             var8 -= var6;
             var2 = topY;
             var11 += var6 * var5;
-            var7 += var6 * width;
+            var7 += var6 * clipWidth;
          }
 
          if(var2 + var8 > bottomY) {
@@ -942,8 +942,8 @@ public final class RGBSprite extends Rasterizer2D {
    public void method2762(int var1, int var2, int var3, int var4, int var5) {
       if(var3 > 0) {
          if(var4 > 0) {
-            int var15 = this.width;
-            int var10 = this.height;
+            int var15 = this.clipWidth;
+            int var10 = this.setY;
             int var11 = 0;
             int var8 = 0;
             int var16 = this.maxWidth;
@@ -971,8 +971,8 @@ public final class RGBSprite extends Rasterizer2D {
                var4 = ((var10 << 16) - var8 + var9 - 1) / var9;
             }
 
-            var6 = var1 + var2 * width;
-            int var14 = width - var3;
+            var6 = var1 + var2 * clipWidth;
+            int var14 = clipWidth - var3;
             if(var2 + var4 > bottomY) {
                var4 -= var2 + var4 - bottomY;
             }
@@ -981,7 +981,7 @@ public final class RGBSprite extends Rasterizer2D {
             if(var2 < topY) {
                var7 = topY - var2;
                var4 -= var7;
-               var6 += var7 * width;
+               var6 += var7 * clipWidth;
                var8 += var9 * var7;
             }
 
@@ -1038,7 +1038,7 @@ public final class RGBSprite extends Rasterizer2D {
          var13 = var13 * var9 >> 8;
          int var14 = (var5 << 16) + var11 * var12 + var10 * var13;
          int var15 = (var6 << 16) + (var11 * var13 - var10 * var12);
-         int var16 = var1 + var2 * width;
+         int var16 = var1 + var2 * clipWidth;
 
          for(var2 = 0; var2 < var4; ++var2) {
             int var17 = var16;
@@ -1046,7 +1046,7 @@ public final class RGBSprite extends Rasterizer2D {
             int var19 = var15;
 
             for(var1 = -var3; var1 < 0; ++var1) {
-               int var20 = this.pixels[(var18 >> 16) + (var19 >> 16) * this.width];
+               int var20 = this.pixels[(var18 >> 16) + (var19 >> 16) * this.clipWidth];
                if(var20 != 0) {
                   renderPixels[var17++] = var20;
                } else {
@@ -1059,7 +1059,7 @@ public final class RGBSprite extends Rasterizer2D {
 
             var14 += var12;
             var15 += var13;
-            var16 += width;
+            var16 += clipWidth;
          }
 
       } catch (Exception var21) {
@@ -1074,11 +1074,11 @@ public final class RGBSprite extends Rasterizer2D {
    public void drawSprite(int var1, int var2) {
       var1 += this.offsetX;
       var2 += this.offsetY;
-      int var8 = var1 + var2 * width;
+      int var8 = var1 + var2 * clipWidth;
       int var5 = 0;
-      int var3 = this.height;
-      int var6 = this.width;
-      int var9 = width - var6;
+      int var3 = this.setY;
+      int var6 = this.clipWidth;
+      int var9 = clipWidth - var6;
       int var4 = 0;
       int var7;
       if(var2 < topY) {
@@ -1086,7 +1086,7 @@ public final class RGBSprite extends Rasterizer2D {
          var3 -= var7;
          var2 = topY;
          var5 += var7 * var6;
-         var8 += var7 * width;
+         var8 += var7 * clipWidth;
       }
 
       if(var2 + var3 > bottomY) {
@@ -1233,11 +1233,11 @@ public final class RGBSprite extends Rasterizer2D {
       if(bottomX - topX == var1.anInt2413 && bottomY - topY == var1.anInt2414) {
          var2 += this.offsetX;
          var3 += this.offsetY;
-         int var10 = var2 + var3 * width;
+         int var10 = var2 + var3 * clipWidth;
          int var7 = 0;
-         int var6 = this.height;
-         int var4 = this.width;
-         int var8 = width - var4;
+         int var6 = this.setY;
+         int var4 = this.clipWidth;
+         int var8 = clipWidth - var4;
          int var9 = 0;
          int var5;
          if(var3 < topY) {
@@ -1245,7 +1245,7 @@ public final class RGBSprite extends Rasterizer2D {
             var6 -= var5;
             var3 = topY;
             var7 += var5 * var4;
-            var10 += var5 * width;
+            var10 += var5 * clipWidth;
          }
 
          if(var3 + var6 > bottomY) {
@@ -1282,15 +1282,15 @@ public final class RGBSprite extends Rasterizer2D {
    }
 
    public void method2782(int offset) {
-      if(this.width != this.maxWidth || this.height != this.maxHeight) {
+      if(this.clipWidth != this.maxWidth || this.setY != this.maxHeight) {
          int xOff = offset;
          if(offset > this.offsetX) {
             xOff = this.offsetX;
          }
 
          int xPos = offset;
-         if(offset + this.offsetX + this.width > this.maxWidth) {
-            xPos = this.maxWidth - this.offsetX - this.width;
+         if(offset + this.offsetX + this.clipWidth > this.maxWidth) {
+            xPos = this.maxWidth - this.offsetX - this.clipWidth;
          }
 
          int yOff = offset;
@@ -1299,52 +1299,52 @@ public final class RGBSprite extends Rasterizer2D {
          }
 
          int yPos = offset;
-         if(offset + this.offsetY + this.height > this.maxHeight) {
-            yPos = this.maxHeight - this.offsetY - this.height;
+         if(offset + this.offsetY + this.setY > this.maxHeight) {
+            yPos = this.maxHeight - this.offsetY - this.setY;
          }
 
-         int newWidth = this.width + xOff + xPos;
-         int newHeight = this.height + yOff + yPos;
+         int newWidth = this.clipWidth + xOff + xPos;
+         int newHeight = this.setY + yOff + yPos;
          int[] newPixels = new int[newWidth * newHeight];
 
-         for(int y = 0; y < this.height; ++y) {
-            for(int x = 0; x < this.width; ++x) {
-               newPixels[(y + yOff) * newWidth + x + xOff] = this.pixels[y * this.width + x];
+         for(int y = 0; y < this.setY; ++y) {
+            for(int x = 0; x < this.clipWidth; ++x) {
+               newPixels[(y + yOff) * newWidth + x + xOff] = this.pixels[y * this.clipWidth + x];
             }
          }
 
          this.pixels = newPixels;
-         this.width = newWidth;
-         this.height = newHeight;
+         this.clipWidth = newWidth;
+         this.setY = newHeight;
          this.offsetX -= xOff;
          this.offsetY -= yOff;
       }
    }
 
    public void method2792() {
-      if(this.width != this.maxWidth || this.height != this.maxHeight) {
+      if(this.clipWidth != this.maxWidth || this.setY != this.maxHeight) {
          int[] newPixels = new int[this.maxWidth * this.maxHeight];
 
-         for(int y = 0; y < this.height; ++y) {
-            for(int x = 0; x < this.width; ++x) {
-               newPixels[(y + this.offsetY) * this.maxWidth + x + this.offsetX] = this.pixels[y * this.width + x];
+         for(int y = 0; y < this.setY; ++y) {
+            for(int x = 0; x < this.clipWidth; ++x) {
+               newPixels[(y + this.offsetY) * this.maxWidth + x + this.offsetX] = this.pixels[y * this.clipWidth + x];
             }
          }
 
          this.pixels = newPixels;
-         this.width = this.maxWidth;
-         this.height = this.maxHeight;
+         this.clipWidth = this.maxWidth;
+         this.setY = this.maxHeight;
          this.offsetX = 0;
          this.offsetY = 0;
       }
    }
 
    public void method2814(int newPixel) {
-      for(int yPos = this.height - 1; yPos > 0; --yPos) {
-         int xOff = yPos * this.width;
+      for(int yPos = this.setY - 1; yPos > 0; --yPos) {
+         int xOff = yPos * this.clipWidth;
 
-         for(int xPos = this.width - 1; xPos > 0; --xPos) {
-            if(this.pixels[xPos + xOff] == 0 && this.pixels[xPos + xOff - 1 - this.width] != 0) {
+         for(int xPos = this.clipWidth - 1; xPos > 0; --xPos) {
+            if(this.pixels[xPos + xOff] == 0 && this.pixels[xPos + xOff - 1 - this.clipWidth] != 0) {
                this.pixels[xPos + xOff] = newPixel;
             }
          }
@@ -1355,11 +1355,11 @@ public final class RGBSprite extends Rasterizer2D {
    public void method2818(int var1, int var2, int var3) {
       var1 += this.offsetX;
       var2 += this.offsetY;
-      int var6 = var1 + var2 * width;
+      int var6 = var1 + var2 * clipWidth;
       int var10 = 0;
-      int var7 = this.height;
-      int var4 = this.width;
-      int var8 = width - var4;
+      int var7 = this.setY;
+      int var4 = this.clipWidth;
+      int var8 = clipWidth - var4;
       int var9 = 0;
       int var5;
       if(var2 < topY) {
@@ -1367,7 +1367,7 @@ public final class RGBSprite extends Rasterizer2D {
          var7 -= var5;
          var2 = topY;
          var10 += var5 * var4;
-         var6 += var5 * width;
+         var6 += var5 * clipWidth;
       }
 
       if(var2 + var7 > bottomY) {
@@ -1399,17 +1399,17 @@ public final class RGBSprite extends Rasterizer2D {
    }
 
    public void flipVertical() {
-      int[] newPixels = new int[this.width * this.height];
+      int[] newPixels = new int[this.clipWidth * this.setY];
       int pos = 0;
 
-      for(int y = 0; y < this.height; ++y) {
-         for(int x = this.width - 1; x >= 0; --x) {
-            newPixels[pos++] = this.pixels[x + y * this.width];
+      for(int y = 0; y < this.setY; ++y) {
+         for(int x = this.clipWidth - 1; x >= 0; --x) {
+            newPixels[pos++] = this.pixels[x + y * this.clipWidth];
          }
       }
 
       this.pixels = newPixels;
-      this.offsetX = this.maxWidth - this.width - this.offsetX;
+      this.offsetX = this.maxWidth - this.clipWidth - this.offsetX;
    }
 
    public RGBSprite(byte[] imageData, Component var2) {
@@ -1418,14 +1418,14 @@ public final class RGBSprite extends Rasterizer2D {
          MediaTracker var4 = new MediaTracker(var2);
          var4.addImage(var3, 0);
          var4.waitForAll();
-         this.width = var3.getWidth(var2);
-         this.height = var3.getHeight(var2);
-         this.maxWidth = this.width;
-         this.maxHeight = this.height;
+         this.clipWidth = var3.getWidth(var2);
+         this.setY = var3.getHeight(var2);
+         this.maxWidth = this.clipWidth;
+         this.maxHeight = this.setY;
          this.offsetX = 0;
          this.offsetY = 0;
-         this.pixels = new int[this.width * this.height];
-         PixelGrabber var5 = new PixelGrabber(var3, 0, 0, this.width, this.height, this.pixels, 0, this.width);
+         this.pixels = new int[this.clipWidth * this.setY];
+         PixelGrabber var5 = new PixelGrabber(var3, 0, 0, this.clipWidth, this.setY, this.pixels, 0, this.clipWidth);
          var5.grabPixels();
       } catch (InterruptedException var6) {
          ;
@@ -1439,6 +1439,36 @@ public final class RGBSprite extends Rasterizer2D {
    public int maxHeight;
    public int maxWidth;
    public int[] pixels;
+
+   public static RGBSprite getRGBSprite(AbstractIndex index, int archiveId, int fileId, byte var3) {
+      if(!PaletteSprite.loadPaletteSprite(index, archiveId, fileId, -1593817854)) {
+         return null;
+      } else {
+         RGBSprite sprite = new RGBSprite();
+         sprite.maxWidth = Class9.anInt122 * 93011449;
+         sprite.maxHeight = Class9.anInt121 * -1272520477;
+         sprite.offsetX = Class88.anIntArray1316[0];
+         sprite.offsetY = Class9.anIntArray123[0];
+         sprite.spriteWidth = PaletteSprite.lastLoadedPaletteSpriteWidth[0];
+         sprite.spriteHeight = Class9.anIntArray126[0];
+         int dimmension = sprite.spriteWidth * sprite.spriteHeight;
+         byte[] var6 = RSFont.loadedCharacterPixels[0];
+         sprite.pixels = new int[dimmension];
+
+         for(int pos = 0; pos < dimmension; ++pos) {
+            sprite.pixels[pos] = Class9.anIntArray130[var6[pos] & 255];
+         }
+
+         PaletteSprite.resetLastPaletteValues((byte) 99);
+         return sprite;
+      }
+   }
+
+   public static RGBSprite getRGBSpriteForName(AbstractIndex spriteIndex, String archiveName, String fileName, int var3) {
+      int archiveID = spriteIndex.getArchiveIDForName(archiveName, 1723285154);
+      int fileID = spriteIndex.getFileIDForName(archiveID, fileName);
+      return getRGBSprite(spriteIndex, archiveID, fileID, (byte) 80);
+   }
 
 
    public BufferedImage getBufferedImage() {
@@ -1479,7 +1509,7 @@ public final class RGBSprite extends Rasterizer2D {
    }
 
    static RGBSprite[] loadRGBSpriteSet(AbstractIndex var0, int var1, int var2, int var3) {
-      if (!FriendsChatMember.loadPaletteSprite(var0, var1, var2, -1626517407)) {
+      if (!PaletteSprite.loadPaletteSprite(var0, var1, var2, -1626517407)) {
          return null;
       } else {
          RGBSprite[] var7 = new RGBSprite[Class9.anInt125 * 2039617935];
@@ -1493,7 +1523,7 @@ public final class RGBSprite extends Rasterizer2D {
             var8.spriteWidth = PaletteSprite.lastLoadedPaletteSpriteWidth[var6];
             var8.spriteHeight = Class9.anIntArray126[var6];
             int var5 = var8.spriteWidth * var8.spriteHeight;
-            byte[] var9 = AnimationSkeletonSet.loadedCharacterPixels[var6];
+            byte[] var9 = RSFont.loadedCharacterPixels[var6];
             var8.pixels = new int[var5];
 
             for (int var4 = 0; var4 < var5; ++var4) {
@@ -2045,40 +2075,40 @@ public final class RGBSprite extends Rasterizer2D {
 
    }
 
-   public void method2746(int var1, int var2) {
-      var1 += this.offsetY;
-      var2 += this.offsetX;
-      int var4 = var1 + var2 * renderWidth;
+   public void method2746(int x, int y) {
+      x += this.offsetY;
+      y += this.offsetX;
+      int var4 = x + y * renderWidth;
       int var8 = 0;
       int var6 = this.spriteHeight;
       int var3 = this.spriteWidth;
       int var9 = renderWidth - var3;
       int var7 = 0;
       int var5;
-      if(var2 < topY) {
-         var5 = topY - var2;
+      if(y < topY) {
+         var5 = topY - y;
          var6 -= var5;
-         var2 = topY;
+         y = topY;
          var8 += var5 * var3;
          var4 += var5 * renderWidth;
       }
 
-      if(var2 + var6 > bottomY) {
-         var6 -= var2 + var6 - bottomY;
+      if(y + var6 > bottomY) {
+         var6 -= y + var6 - bottomY;
       }
 
-      if(var1 < topX) {
-         var5 = topX - var1;
+      if(x < topX) {
+         var5 = topX - x;
          var3 -= var5;
-         var1 = topX;
+         x = topX;
          var8 += var5;
          var4 += var5;
          var7 += var5;
          var9 += var5;
       }
 
-      if(var1 + var3 > bottomX) {
-         var5 = var1 + var3 - bottomX;
+      if(x + var3 > bottomX) {
+         var5 = x + var3 - bottomX;
          var3 -= var5;
          var7 += var5;
          var9 += var5;

@@ -35,41 +35,41 @@ public class Class108_Sub10 extends Node {
       }
    }
 
-   public static String method1683(CharSequence var0, Class116 var1, int var2) {
-      if(null == var0) {
+   public static String method1683(CharSequence string, Class116 var1, int var2) {
+      if(null == string) {
          return null;
       } else {
          int var5 = 0;
 
          int var6;
-         for(var6 = var0.length(); var5 < var6 && method1394(var0.charAt(var5), 848678187); ++var5) {
+         for(var6 = string.length(); var5 < var6 && method1394(string.charAt(var5), 848678187); ++var5) {
             ;
          }
 
-         while(var6 > var5 && method1394(var0.charAt(var6 - 1), -1938358645)) {
+         while(var6 > var5 && method1394(string.charAt(var6 - 1), -1938358645)) {
             --var6;
          }
 
          int var7 = var6 - var5;
          if(var7 >= 1) {
-            byte var8;
+            byte length;
             if(null == var1) {
-               var8 = 12;
+               length = 12;
             } else {
                switch(var1.anInt1480 * 605961063) {
                case 1:
-                  var8 = 20;
+                  length = 20;
                   break;
                default:
-                  var8 = 12;
+                  length = 12;
                }
             }
 
-            if(var7 <= var8) {
+            if(var7 <= length) {
                StringBuilder var9 = new StringBuilder(var7);
 
                for(int var15 = var5; var15 < var6; ++var15) {
-                  char var10 = var0.charAt(var15);
+                  char var10 = string.charAt(var15);
                   boolean var11;
                   if(Character.isISOControl(var10)) {
                      var11 = false;

@@ -3,7 +3,6 @@ public final class Class54 {
 
    public static String operatingSystem;
    static AbstractIndex aClass74_734;
-   static CacheIndex fontIndex;
 
 
    static final void method723(byte var0) {
@@ -46,7 +45,7 @@ public final class Class54 {
             script.mouseX = var10 * 710802815;
             script.mouseY = var9 * 1647493163;
             script.parameters = Client.aClass108_Sub17_2877.anObjectArray1847;
-            GameObject.executeScript(script, -1652091811);
+            ClientScript.executeScript(script, -1652091811);
          }
 
          if(MouseInputHandler.anInt769 * 1251070677 == 0) {
@@ -58,7 +57,7 @@ public final class Class54 {
                   script.mouseY = var9 * 1647493163;
                   script.aClass108_Sub17_1641 = Client.aClass108_Sub17_2818;
                   script.parameters = Client.aClass108_Sub17_2877.anObjectArray1848;
-                  GameObject.executeScript(script, -1878622480);
+                  ClientScript.executeScript(script, -1878622480);
                }
 
                if(null != Client.aClass108_Sub17_2818) {
