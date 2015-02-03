@@ -41,7 +41,7 @@ public class CacheIndex extends AbstractIndex {
       }
    }
 
-   void method1893(int var1, int var2, int var3) {
+   void setInformation(int var1, int var2, int var3) {
       this.crcValue = var1 * -1492563333;
       this.anInt1720 = var2 * 1660478651;
       if(this.aClass59_1716 != null) {

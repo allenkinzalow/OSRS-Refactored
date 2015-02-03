@@ -7,17 +7,17 @@ public class Class78 {
    static SocketSession connection;
    public static int anInt1216 = 0;
    static HashTable urgentJs5Requests = new HashTable(32);
-   public static int anInt1218 = 0;
-   static Queue aClass98_1219 = new Queue();
+   public static int priorityRequestsSubmitted = 0;
+   static Queue delayableRequestQueue = new Queue();
    static HashTable aClass101_1220 = new HashTable(4096);
    public static int anInt1221 = 0;
    static HashTable regularJs5Requests = new HashTable(4096);
    static int anInt1223 = 0;
-   public static int anInt1224 = 0;
+   public static int delayableRequestsSubmitted = 0;
    static long aLong1225;
    static CRC32 crc32 = new CRC32();
-	static HashTable aClass101_1228 = new HashTable(4096);
-   public static int anInt1229 = 0;
+	static HashTable priorityRequestQueue = new HashTable(4096);
+   public static int failedJs5Attempts = 0;
    public static int anInt1230 = 0;
 
 

@@ -3765,7 +3765,7 @@ public final class Client extends Applet_Sub1 {
 	}
 
 	void method3287(int var1) {
-		if (Class78.anInt1229 * -1053722643 >= 4) {
+		if (Class78.failedJs5Attempts * -1053722643 >= 4) {
 			this.sendError("js5crc", -1271013870);
 			loginLoadingStage = 1924330216;
 		} else {

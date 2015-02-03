@@ -31,7 +31,7 @@ public class Class23 {
             ;
          }
       } else {
-         Class78.aClass98_1219.method1283(var5);
+         Class78.delayableRequestQueue.method1283(var5);
       }
    }
 
