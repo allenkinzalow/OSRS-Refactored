@@ -152,7 +152,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          }
       }
 
-      this.method3198((byte)-56);
+      this.processRendering((byte) -56);
    }
 
    public void start() {
@@ -217,13 +217,13 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
 
    public final void windowOpened(WindowEvent var1) {}
 
-   protected abstract void method3196(byte var1);
+   protected abstract void initialize(byte var1);
 
-   protected abstract void method3198(byte var1);
+   protected abstract void processRendering(byte var1);
 
    protected abstract void method3201(int var1);
 
-   protected abstract void method3210(int var1);
+   protected abstract void processLogic(int var1);
 
    public final void windowDeactivated(WindowEvent var1) {}
 
@@ -320,7 +320,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          this.setFocusCycleRoot(true);
          this.method3185((byte)95);
          Class63.aClass13_830 = ItemDefinition.method2127(ProducingGraphicsBuffer.clientWidth * 1080367531, ProducingGraphicsBuffer.clientHeight * -2030626229, ContextMenuRow.aCanvas3, 95766287);
-         this.method3196((byte)2);
+         this.initialize((byte) 2);
 
          Object var16;
          try {
@@ -362,7 +362,7 @@ public abstract class Applet_Sub1 extends Applet implements Runnable, FocusListe
          LoginHandler.focusGained = focusGained;
       }
 
-      this.method3210(353301511);
+      this.processLogic(353301511);
    }
 
    protected abstract void method3228(int var1);

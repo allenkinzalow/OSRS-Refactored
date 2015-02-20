@@ -14,6 +14,22 @@ public class IdentityKit extends CacheableNode {
    public int bodyPartID = -1546880297;
    int[] bodyModels;
 
+   public static IdentityKit getIDKForBodyPart(int bodyPartID, int var1) {
+      IdentityKit idk = (IdentityKit) identityKitMap.get((long) bodyPartID);
+      if(null == idk) {
+         byte[] idkData = aClass74_2197.getFile(3, bodyPartID, (byte) 7);
+         idk = new IdentityKit();
+         if(idkData != null) {
+            idk.decode(new RSByteBuffer(idkData), -1216155848);
+         }
+
+         identityKitMap.put(idk, (long) bodyPartID);
+         return idk;
+      } else {
+         return idk;
+      }
+   }
+
 
    void decode(RSByteBuffer buffer, int var2) {
       while(true) {

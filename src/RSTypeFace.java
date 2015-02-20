@@ -18,9 +18,9 @@ public abstract class RSTypeFace extends Rasterizer2D {
    static int anInt2646 = -1;
    static int anInt2647 = -1;
    static int anInt2648 = -1;
-   static int color = -1;
+   static int textShadowColor = -1;
    static int anInt2650 = 0;
-   static int anInt2651 = 0;
+   static int textColor = 0;
    static String[] aStringArray2652 = new String[100];
    byte[] aByteArray2653;
    static int anInt2654 = 0;
@@ -349,23 +349,39 @@ public abstract class RSTypeFace extends Rasterizer2D {
       return appendedString.toString();
    }
 
-   public void drawString(String message, int x, int y, int var4, int var5) {
+   public void drawString(String message, int x, int y, int color, int shadow) {
       if(message != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(color, shadow);
+         this.drawBasicString(message, x, y);
+      }
+   }
+
+   public void drawString(String message, int x, int y, int color, int shadow, int alpha) {
+      if(message != null) {
+         this.setColorShadow(color, shadow);
+         this.setAlpha(alpha);
          this.drawBasicString(message, x, y);
       }
    }
 
    public void drawStringRight(String message, int x, int y, int var4, int var5) {
       if(message != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(var4, var5);
+         this.drawBasicString(message, x - this.getTextWidth(message), y);
+      }
+   }
+
+   public void drawStringRight(String message, int x, int y, int var4, int var5, int alpha) {
+      if(message != null) {
+         this.setColorShadow(var4, var5);
+         this.setAlpha(alpha);
          this.drawBasicString(message, x - this.getTextWidth(message), y);
       }
    }
 
    public void drawStringCenter(String message, int x, int y, int var4, int var5) {
       if(message != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(var4, var5);
          this.drawBasicString(message, x - this.getTextWidth(message) / 2, y);
       }
    }
@@ -374,7 +390,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
       if(message == null) {
          return 0;
       } else {
-         this.method3113(var6, var7);
+         this.setColorShadow(var6, var7);
          if(var10 == 0) {
             var10 = this.anInt2643;
          }
@@ -431,7 +447,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    public void method3100(String var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       if(var1 != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(var4, var5);
          double var9 = 7.0D - (double)var7 / 8.0D;
          if(var9 < 0.0D) {
             var9 = 0.0D;
@@ -449,7 +465,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    public void drawShadedSeededAlphaString(String var1, int var2, int var3, int var4, int var5, int var6) {
       if(var1 != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(var4, var5);
          aRandom2655.setSeed((long)var6);
          alpha = 192 + (aRandom2655.nextInt() & 31);
          int[] var8 = new int[var1.length()];
@@ -469,9 +485,9 @@ public abstract class RSTypeFace extends Rasterizer2D {
    void method3103(String var1) {
       try {
          if(var1.startsWith("col=")) {
-            anInt2651 = Class84.method1121(var1.substring(4), 16, (byte)41);
+            textColor = Class84.method1121(var1.substring(4), 16, (byte)41);
          } else if(var1.equals("/col")) {
-            anInt2651 = anInt2635;
+            textColor = anInt2635;
          } else if(var1.startsWith("str=")) {
             anInt2646 = Class84.method1121(var1.substring(4), 16, (byte)2);
          } else if(var1.equals("str")) {
@@ -485,13 +501,13 @@ public abstract class RSTypeFace extends Rasterizer2D {
          } else if(var1.equals("/u")) {
             anInt2647 = -1;
          } else if(var1.startsWith("shad=")) {
-            color = Class84.method1121(var1.substring(5), 16, (byte)7);
+            textShadowColor = Class84.method1121(var1.substring(5), 16, (byte)7);
          } else if(var1.equals("shad")) {
-            color = 0;
+            textShadowColor = 0;
          } else if(var1.equals("/shad")) {
-            color = anInt2648;
+            textShadowColor = anInt2648;
          } else if(var1.equals("br")) {
-            this.method3113(anInt2635, anInt2648);
+            this.setColorShadow(anInt2635, anInt2648);
          }
       } catch (Exception var3) {
          ;
@@ -633,17 +649,17 @@ public abstract class RSTypeFace extends Rasterizer2D {
                   ++var8;
                   if(character != 32) {
                      if(alpha == 256) {
-                        if(color != -1) {
-                           drawCharacter(this.characerPixels[character], x + this.anIntArray2639[character] + 1 + var13, y + this.anIntArray2640[character] + 1 + var14, width, height, color);
+                        if(textShadowColor != -1) {
+                           drawCharacter(this.characerPixels[character], x + this.anIntArray2639[character] + 1 + var13, y + this.anIntArray2640[character] + 1 + var14, width, height, textShadowColor);
                         }
 
-                        this.method3136(this.characerPixels[character], x + this.anIntArray2639[character] + var13, y + this.anIntArray2640[character] + var14, width, height, anInt2651);
+                        this.method3136(this.characerPixels[character], x + this.anIntArray2639[character] + var13, y + this.anIntArray2640[character] + var14, width, height, textColor);
                      } else {
-                        if(color != -1) {
-                           drawAlphaCharacter(this.characerPixels[character], x + this.anIntArray2639[character] + 1 + var13, y + this.anIntArray2640[character] + 1 + var14, width, height, color, alpha);
+                        if(textShadowColor != -1) {
+                           drawAlphaCharacter(this.characerPixels[character], x + this.anIntArray2639[character] + 1 + var13, y + this.anIntArray2640[character] + 1 + var14, width, height, textShadowColor, alpha);
                         }
 
-                        this.method3108(this.characerPixels[character], x + this.anIntArray2639[character] + var13, y + this.anIntArray2640[character] + var14, width, height, anInt2651, alpha);
+                        this.method3108(this.characerPixels[character], x + this.anIntArray2639[character] + var13, y + this.anIntArray2640[character] + var14, width, height, textColor, alpha);
                      }
                   } else if(anInt2650 > 0) {
                      anInt2654 += anInt2650;
@@ -671,7 +687,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    public void method3107(String var1, int var2, int var3, int var4, int var5, int var6) {
       if(var1 != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(var4, var5);
          int[] var8 = new int[var1.length()];
 
          for(int var7 = 0; var7 < var1.length(); ++var7) {
@@ -726,16 +742,20 @@ public abstract class RSTypeFace extends Rasterizer2D {
       }
    }
 
-   void method3113(int var1, int var2) {
+   void setColorShadow(int var1, int colorSet) {
       anInt2646 = -1;
       anInt2647 = -1;
-      anInt2648 = var2;
-      color = var2;
+      anInt2648 = colorSet;
+      textShadowColor = colorSet;
       anInt2635 = var1;
-      anInt2651 = var1;
+      textColor = var1;
       alpha = 256;
       anInt2650 = 0;
       anInt2654 = 0;
+   }
+
+   void setAlpha(int alpha) {
+      this.alpha = alpha;
    }
 
    void method3116(String var1, int var2) {
@@ -764,7 +784,7 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    public void method3131(String var1, int var2, int var3, int var4, int var5, int var6) {
       if(var1 != null) {
-         this.method3113(var4, var5);
+         this.setColorShadow(var4, var5);
          int[] var7 = new int[var1.length()];
          int[] var9 = new int[var1.length()];
 
@@ -823,8 +843,8 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
    }
 
-   void drawBasicString(String message, int var2, int var3) {
-      var3 -= this.anInt2643;
+   void drawBasicString(String message, int x, int y) {
+      y -= this.anInt2643;
       int var4 = -1;
       int var5 = -1;
 
@@ -846,8 +866,8 @@ public abstract class RSTypeFace extends Rasterizer2D {
                            try {
                               var9 = VertexNormal.method692(var8.substring(4), 1972669162);
                               PaletteSprite icon = iconImageSet[var9];
-                              icon.drawSprite(var2, var3 + this.anInt2643 - icon.anInt2412);
-                              var2 += icon.anInt2418;
+                              icon.drawSprite(x, y + this.anInt2643 - icon.anInt2412);
+                              x += icon.anInt2418;
                               var5 = -1;
                            } catch (Exception var11) {
                               ;
@@ -868,41 +888,41 @@ public abstract class RSTypeFace extends Rasterizer2D {
 
                if(var4 == -1) {
                   if(this.aByteArray2653 != null && var5 != -1) {
-                     var2 += this.aByteArray2653[(var5 << 8) + character];
+                     x += this.aByteArray2653[(var5 << 8) + character];
                   }
 
                   int var12 = this.characterWidths[character];
                   var9 = this.characterHeights[character];
                   if(character != 32) {
                      if(alpha == 256) {
-                        if(color != -1) {
-                           drawCharacter(this.characerPixels[character], var2 + this.anIntArray2639[character] + 1, var3 + this.anIntArray2640[character] + 1, var12, var9, color);
+                        if(textShadowColor != -1) {
+                           drawCharacter(this.characerPixels[character], x + this.anIntArray2639[character] + 1, y + this.anIntArray2640[character] + 1, var12, var9, textShadowColor);
                         }
 
-                        this.method3136(this.characerPixels[character], var2 + this.anIntArray2639[character], var3 + this.anIntArray2640[character], var12, var9, anInt2651);
+                        this.method3136(this.characerPixels[character], x + this.anIntArray2639[character], y + this.anIntArray2640[character], var12, var9, textColor);
                      } else {
-                        if(color != -1) {
-                           drawAlphaCharacter(this.characerPixels[character], var2 + this.anIntArray2639[character] + 1, var3 + this.anIntArray2640[character] + 1, var12, var9, color, alpha);
+                        if(textShadowColor != -1) {
+                           drawAlphaCharacter(this.characerPixels[character], x + this.anIntArray2639[character] + 1, y + this.anIntArray2640[character] + 1, var12, var9, textShadowColor, alpha);
                         }
 
-                        this.method3108(this.characerPixels[character], var2 + this.anIntArray2639[character], var3 + this.anIntArray2640[character], var12, var9, anInt2651, alpha);
+                        this.method3108(this.characerPixels[character], x + this.anIntArray2639[character], y + this.anIntArray2640[character], var12, var9, textColor, alpha);
                      }
                   } else if(anInt2650 > 0) {
                      anInt2654 += anInt2650;
-                     var2 += anInt2654 >> 8;
+                     x += anInt2654 >> 8;
                      anInt2654 &= 255;
                   }
 
                   int var10 = this.anIntArray2636[character];
                   if(anInt2646 != -1) {
-                     drawHorizontalLine(var2, var3 + (int) ((double) this.anInt2643 * 0.7D), var10, anInt2646);
+                     drawHorizontalLine(x, y + (int) ((double) this.anInt2643 * 0.7D), var10, anInt2646);
                   }
 
                   if(anInt2647 != -1) {
-                     drawHorizontalLine(var2, var3 + this.anInt2643 + 1, var10, anInt2647);
+                     drawHorizontalLine(x, y + this.anInt2643 + 1, var10, anInt2647);
                   }
 
-                  var2 += var10;
+                  x += var10;
                   var5 = character;
                }
             }

@@ -229,7 +229,7 @@ public class ClientScriptDefinition extends CacheableNode {
 
 					if (!component.aBool1855 || var24 < var28 && var29 < var25) {
 						if (0 != component.anInt1886 * -917776085) {
-							if (component.anInt1886 * -917776085 == 1337) {
+							if (component.anInt1886 * -917776085 == 1337) { // render the scene
 								Client.anInt2735 = var21 * 735852373;
 								Client.anInt2820 = var12 * -1949788625;
 								NPC.method3165(var21, var12, component.height * -1281443035, component.width * 334099177, 2061404552);
@@ -286,7 +286,7 @@ public class ClientScriptDefinition extends CacheableNode {
 								int var47;
 								if (component.componentType * 942877543 == 2) {
 									int itemIndex = 0;
-
+									// sprite issue is within this loop...
 									for (var30 = 0; var30 < component.width * 334099177; ++var30) {
 										for (var15 = 0; var15 < component.height * -1281443035; ++var15) {
 											int xPos = (component.widgetItemPaddingX * 876962455 + 32) * var15 + var21;
@@ -327,6 +327,11 @@ public class ClientScriptDefinition extends CacheableNode {
 															}
 
 															itemSprite.method2818(var47 + xPos, var16 + yPos, 128);
+															if(MouseInputHandler.mouseX * -367052265 >= xPos && MouseInputHandler.mouseX * -367052265 <= (xPos + itemSprite.maxWidth)
+																	&& MouseInputHandler.mouseY * 1533395117 >= yPos && MouseInputHandler.mouseY * 1533395117 <= (yPos + itemSprite.maxHeight)) {
+																//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+																RSFont.p11_full_font.drawBasicString("Type11: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+															}
 															if (var1 != -1) {
 																RSInterface var50 = components[var1 & '\uffff'];
 																if (yPos + var16 < Rasterizer2D.topY && var50.scrollPosition * -643576081 > 0) {
@@ -361,8 +366,18 @@ public class ClientScriptDefinition extends CacheableNode {
 															}
 														} else if (PlayerLoginDetails.aClass108_Sub17_75 == component && itemIndex == Client.anInt2815 * -1269538377) {
 															itemSprite.method2818(xPos, yPos, 128);
+															//if(MouseInputHandler.mouseX * -367052265 >= xPos && MouseInputHandler.mouseX * -367052265 <= (xPos + itemSprite.maxWidth)
+																	//&& MouseInputHandler.mouseY * 1533395117 >= yPos && MouseInputHandler.mouseY * 1533395117 <= (yPos + itemSprite.maxHeight)) {
+																//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+																RSFont.p11_full_font.drawBasicString("Type9: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+															//}
 														} else {
 															itemSprite.method2746(xPos, yPos);
+															//if(MouseInputHandler.mouseX * -367052265 >= xPos && MouseInputHandler.mouseX * -367052265 <= (xPos + itemSprite.maxWidth)
+																	//&& MouseInputHandler.mouseY * 1533395117 >= yPos && MouseInputHandler.mouseY * 1533395117 <= (yPos + itemSprite.maxHeight)) {
+																//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+																RSFont.p11_full_font.drawBasicString("Type10: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+															//}
 														}
 													} else {
 														MouseInputHandler.method775(component, -16054773);
@@ -372,6 +387,11 @@ public class ClientScriptDefinition extends CacheableNode {
 												RGBSprite var53 = component.method1959(itemIndex, 682458473);
 												if (var53 != null) {
 													var53.method2746(xPos, yPos);
+													//if(MouseInputHandler.mouseX * -367052265 >= xPos && MouseInputHandler.mouseX * -367052265 <= (xPos + var53.maxWidth)
+															//&& MouseInputHandler.mouseY * 1533395117 >= yPos && MouseInputHandler.mouseY * 1533395117 <= (yPos + var53.maxHeight)) {
+														//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+														RSFont.p11_full_font.drawBasicString("Type8: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+													//}
 												} else if (RSInterface.mediaUnavailable) {
 													MouseInputHandler.method775(component, -16054773);
 												}
@@ -444,7 +464,7 @@ public class ClientScriptDefinition extends CacheableNode {
 
 											if (Client.aClass108_Sub17_2869 == component) {
 												StringUtilities var10000 = (StringUtilities) null;
-												componentString = StringUtilities.aString1041;
+												componentString = StringUtilities.PLEASE_WAIT;
 												var30 = component.componentColor * -1484361639;
 											}
 
@@ -455,38 +475,65 @@ public class ClientScriptDefinition extends CacheableNode {
 											interfaceFont.method3097(componentString, var21, var12, component.height * -1281443035, component.width * 334099177, var30, component.textCentered ? 0 : -1, component.anInt1863 * -164762721, component.anInt1862 * 1189093849, component.anInt1820 * -861430413);
 										}
 									} else if (component.componentType * 942877543 == 5) {
-										RGBSprite var49;
+										RGBSprite componentSprite;
 										if (!component.aBool1855) {
-											var49 = component.method1938(GameDefinition.method1103(component, (byte) 98), 301049466);
-											if (null != var49) {
-												var49.method2746(var21, var12);
+											componentSprite = component.method1938(GameDefinition.method1103(component, (byte) 98), 301049466);
+											if (null != componentSprite) {
+												componentSprite.method2746(var21, var12);
+												if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+														&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+													//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+													RSFont.p11_full_font.drawBasicString("Type0: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+												}
 											} else if (RSInterface.mediaUnavailable) {
 												MouseInputHandler.method775(component, -16054773);
 											}
 										} else {
 											if (component.itemID * 703308511 != -1) {
-												var49 = ItemDefinition.getItemSprite(component.itemID * 703308511, component.anInt1775 * 1939717269, component.anInt1799 * 411719917, component.anInt1800 * -563686383, false, -364961531);
+												componentSprite = ItemDefinition.getItemSprite(component.itemID * 703308511, component.anInt1775 * 1939717269, component.anInt1799 * 411719917, component.anInt1800 * -563686383, false, -364961531);
 											} else {
-												var49 = component.method1938(false, 301049466);
+												componentSprite = component.method1938(false, 301049466);
 											}
 
-											if (null == var49) {
+											if (null == componentSprite) {
 												if (RSInterface.mediaUnavailable) {
 													MouseInputHandler.method775(component, -16054773);
 												}
 											} else {
-												var30 = var49.maxWidth;
-												var15 = var49.maxHeight;
+												var30 = componentSprite.maxWidth;
+												var15 = componentSprite.maxHeight;
 												if (!component.aBool1798) {
 													var20 = component.height * -340635648 / var30;
 													if (0 != component.anInt1797 * 879589047) {
-														var49.method2766(component.height * -1281443035 / 2 + var21, component.width * 334099177 / 2 + var12, component.anInt1797 * 879589047, var20);
+														componentSprite.method2766(component.height * -1281443035 / 2 + var21, component.width * 334099177 / 2 + var12, component.anInt1797 * 879589047, var20);
+														if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+															//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+															RSFont.p11_full_font.drawBasicString("Type1: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+														}
 													} else if (0 != transparency) {
-														var49.method2762(var21, var12, component.height * -1281443035, component.width * 334099177, 256 - (transparency & 255));
+														componentSprite.method2762(var21, var12, component.height * -1281443035, component.width * 334099177, 256 - (transparency & 255));
+														if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+															//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+															RSFont.p11_full_font.drawBasicString("Type2: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+														}
 													} else if (var30 == component.height * -1281443035 && component.width * 334099177 == var15) {
-														var49.method2746(var21, var12);
+														componentSprite.method2746(var21, var12);
+														//System.out.println("hello");
+														if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+															//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+															RSFont.p11_full_font.drawBasicString("Type3: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+														}
 													} else {
-														var49.method2756(var21, var12, component.height * -1281443035, component.width * 334099177);
+														componentSprite.method2756(var21, var12, component.height * -1281443035, component.width * 334099177);
+														//System.out.println("hello");
+														if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+															//Rasterizer2D.drawFilledRectangle(var21, var12, componentSprite.maxWidth, componentSprite.maxHeight, 0);
+															RSFont.p11_full_font.drawBasicString("Type4: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+														}
 													}
 												} else {
 													Rasterizer2D.setRasterizerArea(var21, var12, component.height * -1281443035 + var21, component.width * 334099177 + var12);
@@ -496,11 +543,23 @@ public class ClientScriptDefinition extends CacheableNode {
 													for (var47 = 0; var47 < var20; ++var47) {
 														for (var16 = 0; var16 < var41; ++var16) {
 															if (component.anInt1797 * 879589047 != 0) {
-																var49.method2766(var30 / 2 + var21 + var30 * var47, var15 / 2 + var12 + var16 * var15, component.anInt1797 * 879589047, 4096);
+																componentSprite.method2766(var30 / 2 + var21 + var30 * var47, var15 / 2 + var12 + var16 * var15, component.anInt1797 * 879589047, 4096);
+																if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																		&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+																	RSFont.p11_full_font.drawBasicString("Type5: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+																}
 															} else if (0 != transparency) {
-																var49.method2818(var47 * var30 + var21, var12 + var15 * var16, 256 - (transparency & 255));
+																componentSprite.method2818(var47 * var30 + var21, var12 + var15 * var16, 256 - (transparency & 255));
+																if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																		&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+																	RSFont.p11_full_font.drawBasicString("Type6: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+																}
 															} else {
-																var49.method2746(var30 * var47 + var21, var12 + var15 * var16);
+																componentSprite.method2746(var30 * var47 + var21, var12 + var15 * var16);
+																if(MouseInputHandler.mouseX * -367052265 >= var21 && MouseInputHandler.mouseX * -367052265 <= (var21 + componentSprite.maxWidth)
+																		&& MouseInputHandler.mouseY * 1533395117 >= var12 && MouseInputHandler.mouseY * 1533395117 <= (var12 + componentSprite.maxHeight)) {
+																	RSFont.p11_full_font.drawBasicString("Type7: " + component.componentType * 942877543, MouseInputHandler.mouseX * -367052265, MouseInputHandler.mouseY * 1533395117);
+																}
 															}
 														}
 													}

@@ -2505,7 +2505,7 @@ public class ClientScript extends Node {
                                        Client.secureBuffer.writeByte(0);
                                        var21 = Client.secureBuffer.position * 798331555;
                                        Client.secureBuffer.writeByte(var17);
-                                       Client.secureBuffer.writeByte(var79); // text color effect
+                                       Client.secureBuffer.writeByte(var79); // text textShadowColor effect
                                        Client.secureBuffer.writeByte(var78); // text effect
                                        RSPacketBuffer var61 = Client.secureBuffer;
                                        var23 = var61.position * 798331555;

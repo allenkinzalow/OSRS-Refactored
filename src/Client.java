@@ -7,6 +7,7 @@ import java.io.RandomAccessFile;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -270,6 +271,7 @@ public final class Client extends Applet_Sub1 {
 	static String aString2967 = null;
 	static RSInterface mouseHoveredComponent;
 	static AbstractIndex configIndex_ref;
+	static ArrayList<XPDrop> drops = new ArrayList<XPDrop>();
 
 
 	protected final void method3201(int var1) {
@@ -611,8 +613,8 @@ public final class Client extends Applet_Sub1 {
 		}
 	}
 
-	protected final void method3196(byte var1) {
-		selectedWorldGamePort = -186785803 * (portType * -759629273 == 0 ? '\uaa4a' : '\u9c40' + selectedWorldID * 292541855);
+	protected final void initialize(byte var1) {
+		selectedWorldGamePort = -186785803 * (portType * -759629273 == 0 ? 43597 : '\u9c40' + selectedWorldID * 292541855);
 		Class26.selectedWorldJS5Port = (portType * -759629273 == 0 ? 443 : '\uc350' + selectedWorldID * 292541855) * 1733308657;
 		IndexTable.currentWorldPort = selectedWorldGamePort * 130259471;
 		Class88.colorsToFind = Class77.aShortArray1208;
@@ -667,7 +669,7 @@ public final class Client extends Applet_Sub1 {
 		}
 	}
 
-	protected final void method3210(int var1) {
+	protected final void processLogic(int var1) {
 		cycle -= 964999917;
 		this.method3369(-1971077163);
 
@@ -1881,6 +1883,10 @@ public final class Client extends Applet_Sub1 {
 									int skillID = packetBuffer.readUByte(); //id
 									int level = packetBuffer.readUByte(); //lv
 									var7 = packetBuffer.readIntLE(483019546);
+									if(skillXPs[skillID] > 1 && (Math.abs(skillXPs[skillID] - var7) > 0)) {
+										int xpDrop = Math.abs(skillXPs[skillID] - var7);
+										drops.add(new XPDrop(skillID, xpDrop, drops.size() * 12));
+									}
 									skillXPs[skillID] = var7;
 									skillLevels[skillID] = level;
 									anIntArray2843[skillID] = 1;
@@ -3506,7 +3512,7 @@ public final class Client extends Applet_Sub1 {
 		}
 	}
 
-	protected final void method3198(byte var1) {
+	protected final void processRendering(byte var1) {
 		boolean var2;
 		label206:
 		{
@@ -3627,6 +3633,17 @@ public final class Client extends Applet_Sub1 {
 						RSInterface.renderInterface(openInterfaceID * 1523906617, 0, 0, 765, 503, 0, 0, -1, -1671525335);
 					}
 
+					//RSFont.p11_full_font.drawBasicString("test", 400, 5);
+
+					ArrayList<XPDrop> currentDrops = new ArrayList<XPDrop>(drops);
+					for(XPDrop drop : currentDrops) {
+						if(!drop.isFinished()) {
+							drop.processXPDrop();
+						} else {
+							drops.remove(drop);
+						}
+					}
+
 					Rasterizer2D.reset();
 					/**
 					 * Rendering the context menu & tooltip
@@ -3654,7 +3671,7 @@ public final class Client extends Applet_Sub1 {
 								}
 
 								if (ContextMenu.contextMenuRow * 391839991 > 2) {
-									tooltip = tooltip + HuffmanEncoding.method690(16777215, -598146062) + " " + '/' + " " + (ContextMenu.contextMenuRow * 391839991 - 2) + StringUtilities.aString1044;
+									tooltip = tooltip + HuffmanEncoding.method690(16777215, -598146062) + " " + '/' + " " + (ContextMenu.contextMenuRow * 391839991 - 2) + StringUtilities.MORE_OPTIONS;
 								}
 
 								RSTypeFace.b12_full_font.drawShadedSeededAlphaString(tooltip, xPos + 4, 15 + yPos, 16777215, 0, cycle * -637317861 / 1000);
@@ -3664,7 +3681,8 @@ public final class Client extends Applet_Sub1 {
 					} else {
 						ContextMenu.renderContextMenu((byte) -70);
 					}
-					RSTypeFace.b12_full_font.drawShadedSeededAlphaString("Game tick: " + gametick, xPos + 4, 35, 16777215, 0, cycle * -637317861 / 1000);
+					RSTypeFace.b12_full_font.drawShadedSeededAlphaString("mX: " + MouseInputHandler.mouseX * -367052265, xPos + 4, 35, 16777215, 0, cycle * -637317861 / 1000);
+					RSTypeFace.b12_full_font.drawShadedSeededAlphaString("mY: " + MouseInputHandler.mouseY * 1533395117, xPos + 4, 50, 16777215, 0, cycle * -637317861 / 1000);
 
 					if (3 == anInt2916 * 1531358553) {
 						for (xPos = 0; xPos < anInt2907 * -792079877; ++xPos) {
@@ -3681,7 +3699,7 @@ public final class Client extends Applet_Sub1 {
 				} else if (40 == loginLoadingStage * 1315883169) {
 					GameDefinition.method1107(StringUtilities.CONNECTION_LOST + Class47.LINE_BREAK + StringUtilities.PLEASE_WAIT_ESTABLISHING, false, -507251184);
 				} else if (loginLoadingStage * 1315883169 == 45) {
-					GameDefinition.method1107(StringUtilities.aString1041, false, 2056448493);
+					GameDefinition.method1107(StringUtilities.PLEASE_WAIT, false, 2056448493);
 				}
 			}
 		} else {

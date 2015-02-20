@@ -392,7 +392,7 @@ public class RSInterface extends Node {
          this.mouseOverActiveColor = buffer.readInt() * 15777939;
       }
 
-      if(this.componentType * 942877543 == 5) {
+      if(this.componentType * 942877543 == 5) { // sprite
          this.anInt1870 = buffer.readInt() * -149205505;
          this.anInt1796 = buffer.readInt() * -409060445;
       }

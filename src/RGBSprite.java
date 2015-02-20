@@ -19,9 +19,9 @@ public final class RGBSprite extends Rasterizer2D {
       return trans;
    }
 
-   public static Image makeColorTransparent(BufferedImage im, final Color color) {
+   public static Image makeColorTransparent(BufferedImage im, final Color textShadowColor) {
       RGBImageFilter filter = new RGBImageFilter() {
-         public int markerRGB = color.getRGB() | 0xFF000000;
+         public int markerRGB = textShadowColor.getRGB() | 0xFF000000;
          public final int filterRGB(int x, int y, int rgb) {
             if ((rgb | 0xFF000000) == markerRGB) {
                return 0x00FFFFFF & rgb;

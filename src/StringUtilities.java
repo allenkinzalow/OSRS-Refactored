@@ -93,10 +93,10 @@ public class StringUtilities {
    public static String aString1038 = "";
    public static String aString1039 = "Account locked as we suspect it has been stolen.";
    public static String aString1040 = "Press \'recover a locked account\' on front page.";
-   public static String aString1041 = "Please wait...";
+   public static String PLEASE_WAIT = "Please wait...";
    public static String aString1042 = "This world is running a closed Beta.";
    public static String aString1043 = "Sorry invited players only.";
-   public static String aString1044 = " more options";
+   public static String MORE_OPTIONS = " more options";
    public static String aString1045 = "shake:";
    public static String aString1046 = "in order to play the game.  Please set it";
    public static String aString1047 = "";

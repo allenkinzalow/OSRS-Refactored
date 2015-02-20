@@ -10,6 +10,7 @@ public class ClientSettings {
    LinkedHashMap loginTrustList = new LinkedHashMap();
 
 
+
    ClientSettings(RSByteBuffer buffer) {
       if(null != buffer && buffer.buf != null) {
          int settingsSize = buffer.readUByte();

@@ -7,7 +7,6 @@ public abstract class Entity extends Renderable {
    static RGBSprite[] hintIconSprites;
    int anInt2338 = 0;
    int anInt2339;
-   public static final int anInt2340 = 44;
    int anInt2341 = 0;
    int anInt2342 = 1376304024;
    int standAnimationID = -1915601577;

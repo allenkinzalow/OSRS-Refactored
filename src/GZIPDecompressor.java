@@ -34,22 +34,6 @@ public class GZIPDecompressor {
       this(-1, 1000000, 1000000);
    }
 
-   public static IdentityKit getIDKForBodyPart(int bodyPartID, int var1) {
-      IdentityKit idk = (IdentityKit)IdentityKit.identityKitMap.get((long)bodyPartID);
-      if(null == idk) {
-         byte[] idkData = IdentityKit.aClass74_2197.getFile(3, bodyPartID, (byte) 7);
-         idk = new IdentityKit();
-         if(idkData != null) {
-            idk.decode(new RSByteBuffer(idkData), -1216155848);
-         }
-
-         IdentityKit.identityKitMap.put(idk, (long)bodyPartID);
-         return idk;
-      } else {
-         return idk;
-      }
-   }
-
    public static boolean method670(File var0, boolean var1, int var2) {
       try {
          RandomAccessFile raf = new RandomAccessFile(var0, "rw");

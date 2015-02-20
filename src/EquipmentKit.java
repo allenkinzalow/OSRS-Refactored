@@ -38,7 +38,7 @@ public class EquipmentKit {
                   }
                }
 
-               identityKit = GZIPDecompressor.getIDKForBodyPart(var4, -1591400417);
+               identityKit = IdentityKit.getIDKForBodyPart(var4, -1591400417);
             } while(null == identityKit || identityKit.nonSelectable || identityKit.bodyPartID * 1565583129 != (this.isFemale?7:0) + var1);
 
             this.bodyPartIDs[anIntArray1340[var1]] = 256 + var4;
@@ -103,7 +103,7 @@ public class EquipmentKit {
             int bodyPartId;
             for(int bodyPartIndex = 0; bodyPartIndex < 12; ++bodyPartIndex) {
                bodyPartId = bodyPartIDs[bodyPartIndex];
-               if(bodyPartId >= 256 && bodyPartId < 512 && !GZIPDecompressor.getIDKForBodyPart(bodyPartId - 256, -1105406816).hasBodyModel(-1030866702)) {
+               if(bodyPartId >= 256 && bodyPartId < 512 && !IdentityKit.getIDKForBodyPart(bodyPartId - 256, -1105406816).hasBodyModel(-1030866702)) {
                   hasModel = true;
                }
 
@@ -131,7 +131,7 @@ public class EquipmentKit {
                   bodyPartID = bodyPartIDs[bodyPartIndex];
                   RSModel bodyPartModel;
                   if(bodyPartID >= 256 && bodyPartID < 512) {
-                     bodyPartModel = GZIPDecompressor.getIDKForBodyPart(bodyPartID - 256, -66503897).getModel(-1329593252);
+                     bodyPartModel = IdentityKit.getIDKForBodyPart(bodyPartID - 256, -66503897).getModel(-1329593252);
                      if(bodyPartModel != null) {
                         bodyParts[bodyPartId++] = bodyPartModel;
                      }
@@ -189,7 +189,7 @@ public class EquipmentKit {
          int bodyPartId;
          for(int bodyPartIndex = 0; bodyPartIndex < 12; ++bodyPartIndex) {
             bodyPartId = this.bodyPartIDs[bodyPartIndex];
-            if(bodyPartId >= 256 && bodyPartId < 512 && !GZIPDecompressor.getIDKForBodyPart(bodyPartId - 256, -636787522).hasHeadModel(1561830083)) {
+            if(bodyPartId >= 256 && bodyPartId < 512 && !IdentityKit.getIDKForBodyPart(bodyPartId - 256, -636787522).hasHeadModel(1561830083)) {
                hasModel = true;
             }
 
@@ -209,7 +209,7 @@ public class EquipmentKit {
                bodyPartID = this.bodyPartIDs[bodyPartIndex];
                RSModel bodyModel;
                if(bodyPartID >= 256 && bodyPartID < 512) {
-                  bodyModel = GZIPDecompressor.getIDKForBodyPart(bodyPartID - 256, -539438048).getHeadModel(-1038604602);
+                  bodyModel = IdentityKit.getIDKForBodyPart(bodyPartID - 256, -539438048).getHeadModel(-1038604602);
                   if(null != bodyModel) {
                      bodyPartModels[bodyPartId++] = bodyModel;
                   }
@@ -255,7 +255,7 @@ public class EquipmentKit {
 
          for(int var7 = 0; var7 < 7; ++var7) {
             for(int bodyPartID = 0; bodyPartID < IdentityKit.anInt2198 * -841275303; ++bodyPartID) {
-               IdentityKit identityKit = GZIPDecompressor.getIDKForBodyPart(bodyPartID, -517576834);
+               IdentityKit identityKit = IdentityKit.getIDKForBodyPart(bodyPartID, -517576834);
                if(null != identityKit && !identityKit.nonSelectable && identityKit.bodyPartID * 1565583129 == (isFemale ? 7 : 0) + var7) {
                   bodyPartIDs[anIntArray1340[var7]] = bodyPartID + 256;
                   break;
