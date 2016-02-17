@@ -11,3 +11,6 @@ I have began some documentation on the wiki page: https://github.com/kinztechcom
 
 Update 2/16/2016:
 For reference, the current OSRS revision 107.
+I've been asked if I will refactor the latest revision of OSRS considering the addition of GE and full-screen since
+my last refactoring project. I do aim to repeat the project in the future and hope to extend past the point I did with 
+revision 60.
