@@ -8,3 +8,6 @@ I tried to give credit where credit was due and hopefully I'll have a fully refa
 
 
 I have began some documentation on the wiki page: https://github.com/kinztechcom/OSRS-Refactored/wiki
+
+Update 2/16/2016:
+For reference, the current OSRS revision 107.
